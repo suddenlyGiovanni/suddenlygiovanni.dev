@@ -5,15 +5,15 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
 
 type Props = {
   title: string
   description?: string
   lang?: string
-  meta?: object[]
+  meta?: Record<string, unknown>[]
 }
 
 function SEO({
@@ -44,7 +44,7 @@ function SEO({
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site?.siteMetadata?.title}`}
+      titleTemplate={`%s | ${site?.siteMetadata?.title ?? ''}`}
       meta={[
         {
           name: `description`,
@@ -79,7 +79,7 @@ function SEO({
           content: metaDescription,
         },
       ].concat(
-        /*@ts-ignore */
+        /*  @ts-ignore */
         meta
       )}
     />
