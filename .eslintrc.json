@@ -7,6 +7,7 @@
 
   "env": {
     "node": true,
+    "browser": true,
     "es6": true,
     "jest": true
   },
@@ -25,12 +26,6 @@
   },
 
   "settings": {
-    "import/resolver": {
-      "node": {
-        "paths": ["src"],
-        "extensions": [".js", ".ts"]
-      }
-    },
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]
     },
@@ -68,7 +63,7 @@
     "no-prototype-builtins": "off",
     // https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
     "import/prefer-default-export": "off",
-    "import/no-default-export": "error",
+    "import/no-default-export": "off",
     // Use function hoisting to improve code readability
     "no-use-before-define": [
       "error",
@@ -281,6 +276,7 @@
           "order": "alphabetically"
         }
       }
-    ]
+    ],
+    "react/prop-types": "off"
   }
 }

@@ -1788,6 +1788,9 @@ enum SiteFieldsEnum {
   siteMetadata___title = 'siteMetadata.title',
   siteMetadata___description = 'siteMetadata.description',
   siteMetadata___author = 'siteMetadata.author',
+  siteMetadata___miniBio = 'siteMetadata.miniBio',
+  siteMetadata___twitterHandle = 'siteMetadata.twitterHandle',
+  siteMetadata___twitter = 'siteMetadata.twitter',
   port = 'port',
   host = 'host',
   polyfill = 'polyfill',
@@ -2082,7 +2085,9 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___name = 'pluginCreator.pluginOptions.name',
   pluginCreator___pluginOptions___path = 'pluginCreator.pluginOptions.path',
   pluginCreator___pluginOptions___short_name = 'pluginCreator.pluginOptions.short_name',
+  pluginCreator___pluginOptions___description = 'pluginCreator.pluginOptions.description',
   pluginCreator___pluginOptions___start_url = 'pluginCreator.pluginOptions.start_url',
+  pluginCreator___pluginOptions___lang = 'pluginCreator.pluginOptions.lang',
   pluginCreator___pluginOptions___background_color = 'pluginCreator.pluginOptions.background_color',
   pluginCreator___pluginOptions___theme_color = 'pluginCreator.pluginOptions.theme_color',
   pluginCreator___pluginOptions___display = 'pluginCreator.pluginOptions.display',
@@ -2286,7 +2291,9 @@ enum SitePluginFieldsEnum {
   pluginOptions___name = 'pluginOptions.name',
   pluginOptions___path = 'pluginOptions.path',
   pluginOptions___short_name = 'pluginOptions.short_name',
+  pluginOptions___description = 'pluginOptions.description',
   pluginOptions___start_url = 'pluginOptions.start_url',
+  pluginOptions___lang = 'pluginOptions.lang',
   pluginOptions___background_color = 'pluginOptions.background_color',
   pluginOptions___theme_color = 'pluginOptions.theme_color',
   pluginOptions___display = 'pluginOptions.display',
@@ -2417,7 +2424,9 @@ type SitePluginPluginOptions = {
   readonly name: Maybe<Scalars['String']>;
   readonly path: Maybe<Scalars['String']>;
   readonly short_name: Maybe<Scalars['String']>;
+  readonly description: Maybe<Scalars['String']>;
   readonly start_url: Maybe<Scalars['String']>;
+  readonly lang: Maybe<Scalars['String']>;
   readonly background_color: Maybe<Scalars['String']>;
   readonly theme_color: Maybe<Scalars['String']>;
   readonly display: Maybe<Scalars['String']>;
@@ -2455,7 +2464,9 @@ type SitePluginPluginOptionsFilterInput = {
   readonly name: Maybe<StringQueryOperatorInput>;
   readonly path: Maybe<StringQueryOperatorInput>;
   readonly short_name: Maybe<StringQueryOperatorInput>;
+  readonly description: Maybe<StringQueryOperatorInput>;
   readonly start_url: Maybe<StringQueryOperatorInput>;
+  readonly lang: Maybe<StringQueryOperatorInput>;
   readonly background_color: Maybe<StringQueryOperatorInput>;
   readonly theme_color: Maybe<StringQueryOperatorInput>;
   readonly display: Maybe<StringQueryOperatorInput>;
@@ -2480,12 +2491,18 @@ type SiteSiteMetadata = {
   readonly title: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
   readonly author: Maybe<Scalars['String']>;
+  readonly miniBio: Maybe<Scalars['String']>;
+  readonly twitterHandle: Maybe<Scalars['String']>;
+  readonly twitter: Maybe<Scalars['String']>;
 };
 
 type SiteSiteMetadataFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
   readonly author: Maybe<StringQueryOperatorInput>;
+  readonly miniBio: Maybe<StringQueryOperatorInput>;
+  readonly twitterHandle: Maybe<StringQueryOperatorInput>;
+  readonly twitter: Maybe<StringQueryOperatorInput>;
 };
 
 type SiteSortInput = {
@@ -2507,11 +2524,6 @@ type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
-type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SiteTitleQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
-
 type GetImageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2520,12 +2532,7 @@ type GetImageQuery = { readonly placeholderImage: Maybe<{ readonly childImageSha
 type GetSiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type GetSiteMetadataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author'>> }> };
-
-type BuildTimeQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type BuildTimeQuery = { readonly site: Maybe<Pick<Site, 'buildTime'>> };
+type GetSiteMetadataQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title' | 'description' | 'author' | 'miniBio' | 'twitterHandle' | 'twitter'>> }> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 

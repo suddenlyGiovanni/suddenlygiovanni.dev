@@ -1,82 +1,61 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
+import { useSiteMetadata } from '../hooks/use-sitemetadata'
+
 type Props = {
-  title: string
   description?: string
   lang?: string
   meta?: Record<string, unknown>[]
+  title?: string
 }
 
-function SEO({
+export function SEO({
   title,
-  description = '',
+  description,
   lang = 'en',
   meta = [],
 }: Props): JSX.Element {
-  const { site } = useStaticQuery<GatsbyTypes.GetSiteMetadataQuery>(
-    graphql`
-      query GetSiteMetadata {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  )
-
-  const metaDescription = description || site?.siteMetadata?.description
-
+  const metadata = useSiteMetadata()
+  const metaDescription = description || metadata.description
+  const metaTitle = title ?? metadata.title
   return (
     <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site?.siteMetadata?.title ?? ''}`}
+      htmlAttributes={{ lang }}
+      title={metaTitle}
+      titleTemplate={`%s | ${metaTitle}`}
       meta={[
         {
+          content: metaDescription,
           name: `description`,
-          content: metaDescription,
         },
         {
+          content: metaTitle,
           property: `og:title`,
-          content: title,
         },
         {
+          content: metaDescription,
           property: `og:description`,
-          content: metaDescription,
         },
         {
-          property: `og:type`,
           content: `website`,
+          property: `og:type`,
         },
         {
-          name: `twitter:card`,
           content: `summary`,
+          name: `twitter:card`,
         },
         {
+          content: metadata.author,
           name: `twitter:creator`,
-          content: site?.siteMetadata?.author,
         },
         {
+          content: metaTitle,
           name: `twitter:title`,
-          content: title,
         },
         {
-          name: `twitter:description`,
           content: metaDescription,
+          name: `twitter:description`,
         },
       ].concat(
         /*  @ts-ignore */
@@ -85,5 +64,3 @@ function SEO({
     />
   )
 }
-
-export default SEO

@@ -1605,6 +1605,9 @@ enum SiteFieldsEnum {
   siteMetadata___title
   siteMetadata___description
   siteMetadata___author
+  siteMetadata___miniBio
+  siteMetadata___twitterHandle
+  siteMetadata___twitter
   port
   host
   polyfill
@@ -1887,7 +1890,9 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___name
   pluginCreator___pluginOptions___path
   pluginCreator___pluginOptions___short_name
+  pluginCreator___pluginOptions___description
   pluginCreator___pluginOptions___start_url
+  pluginCreator___pluginOptions___lang
   pluginCreator___pluginOptions___background_color
   pluginCreator___pluginOptions___theme_color
   pluginCreator___pluginOptions___display
@@ -2079,7 +2084,9 @@ enum SitePluginFieldsEnum {
   pluginOptions___name
   pluginOptions___path
   pluginOptions___short_name
+  pluginOptions___description
   pluginOptions___start_url
+  pluginOptions___lang
   pluginOptions___background_color
   pluginOptions___theme_color
   pluginOptions___display
@@ -2210,7 +2217,9 @@ type SitePluginPluginOptions {
   name: String
   path: String
   short_name: String
+  description: String
   start_url: String
+  lang: String
   background_color: String
   theme_color: String
   display: String
@@ -2248,7 +2257,9 @@ input SitePluginPluginOptionsFilterInput {
   name: StringQueryOperatorInput
   path: StringQueryOperatorInput
   short_name: StringQueryOperatorInput
+  description: StringQueryOperatorInput
   start_url: StringQueryOperatorInput
+  lang: StringQueryOperatorInput
   background_color: StringQueryOperatorInput
   theme_color: StringQueryOperatorInput
   display: StringQueryOperatorInput
@@ -2273,12 +2284,18 @@ type SiteSiteMetadata {
   title: String
   description: String
   author: String
+  miniBio: String
+  twitterHandle: String
+  twitter: String
 }
 
 input SiteSiteMetadataFilterInput {
   title: StringQueryOperatorInput
   description: StringQueryOperatorInput
   author: StringQueryOperatorInput
+  miniBio: StringQueryOperatorInput
+  twitterHandle: StringQueryOperatorInput
+  twitter: StringQueryOperatorInput
 }
 
 input SiteSortInput {
