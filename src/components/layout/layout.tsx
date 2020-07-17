@@ -1,11 +1,12 @@
 import { Global } from '@emotion/core'
 import React, { FC } from 'react'
 
-import { Header, SEO } from '..'
+import { Header } from '../header'
+import { SEO } from '../seo'
 
 import { global, main } from './layout.styles'
 
-export const Layout: FC = ({ children }) => {
+const Layout: FC = ({ children }) => {
   return (
     <>
       <Global styles={global} />
@@ -15,3 +16,5 @@ export const Layout: FC = ({ children }) => {
     </>
   )
 }
+
+export default Layout
