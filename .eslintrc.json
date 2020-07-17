@@ -49,9 +49,11 @@
     "plugin:import/warnings",
     "plugin:import/typescript",
 
-    "plugin:jest/all",
     "plugin:promise/recommended",
     "plugin:unicorn/recommended",
+
+    "plugin:jest/all",
+    "plugin:testing-library/react",
 
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint",

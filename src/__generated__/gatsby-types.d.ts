@@ -2507,6 +2507,16 @@ type StringQueryOperatorInput = {
   readonly glob: Maybe<Scalars['String']>;
 };
 
+type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SiteTitleQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+
+type GetImageQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type GetImageQuery = { readonly placeholderImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
+
 type GetSiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2566,16 +2576,6 @@ type GatsbyImageSharpSizes_withWebp_tracedSVGFragment = Pick<ImageSharpSizes, 't
 type GatsbyImageSharpSizes_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpSizes_withWebp_noBase64Fragment = Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type SiteTitleQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SiteTitleQueryQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
-
-type GetImageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type GetImageQuery = { readonly placeholderImage: Maybe<{ readonly childImageSharp: Maybe<{ readonly fluid: Maybe<GatsbyImageSharpFluidFragment> }> }> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
