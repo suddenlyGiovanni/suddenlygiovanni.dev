@@ -572,6 +572,7 @@ type File implements Node {
   parent: Node
   children: [Node!]!
   internal: Internal!
+  childMdx: Mdx
 }
 
 type FileConnection {
@@ -801,6 +802,61 @@ enum FileFieldsEnum {
   internal___mediaType
   internal___owner
   internal___type
+  childMdx___rawBody
+  childMdx___fileAbsolutePath
+  childMdx___frontmatter___title
+  childMdx___frontmatter___slug
+  childMdx___frontmatter___author
+  childMdx___body
+  childMdx___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___headings @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___headings___value @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___headings___depth @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___html @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___mdxAST @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___tableOfContents @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___timeToRead @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___wordCount___paragraphs @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___wordCount___sentences @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___wordCount___words @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___parent___internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___parent___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___children___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___children___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___children___internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___internal___content @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___internal___contentDigest @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___internal___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___internal___fieldOwners @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___internal___ignoreType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___internal___mediaType @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___internal___owner @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___internal___type @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
 }
 
 input FileFilterInput {
@@ -843,6 +899,7 @@ input FileFilterInput {
   parent: NodeFilterInput
   children: NodeFilterListInput
   internal: InternalFilterInput
+  childMdx: MdxFilterInput
 }
 
 type FileGroupConnection {
@@ -1377,6 +1434,8 @@ enum MdxFieldsEnum {
   rawBody
   fileAbsolutePath
   frontmatter___title
+  frontmatter___slug
+  frontmatter___author
   body
   excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   headings @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1497,10 +1556,14 @@ input MdxFilterInput {
 
 type MdxFrontmatter {
   title: String!
+  slug: String
+  author: String
 }
 
 input MdxFrontmatterFilterInput {
   title: StringQueryOperatorInput
+  slug: StringQueryOperatorInput
+  author: StringQueryOperatorInput
 }
 
 type MdxGroupConnection {
@@ -1594,7 +1657,7 @@ enum PotraceTurnPolicy {
 }
 
 type Query {
-  file(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, publicURL: StringQueryOperatorInput, childImageSharp: ImageSharpFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): File
+  file(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, publicURL: StringQueryOperatorInput, childImageSharp: ImageSharpFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, childMdx: MdxFilterInput): File
   allFile(filter: FileFilterInput, sort: FileSortInput, skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, blksize: IntQueryOperatorInput, blocks: IntQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
   allDirectory(filter: DirectoryFilterInput, sort: DirectorySortInput, skip: Int, limit: Int): DirectoryConnection!
@@ -2111,7 +2174,6 @@ enum SitePageFieldsEnum {
   pluginCreator___name
   pluginCreator___version
   pluginCreator___pluginOptions___name
-  pluginCreator___pluginOptions___path
   pluginCreator___pluginOptions___short_name
   pluginCreator___pluginOptions___description
   pluginCreator___pluginOptions___start_url
@@ -2130,6 +2192,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
   pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_graphql
   pluginCreator___pluginOptions___defaultLayouts___default
+  pluginCreator___pluginOptions___path
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___nodeAPIs
   pluginCreator___browserAPIs
@@ -2306,7 +2369,6 @@ enum SitePluginFieldsEnum {
   name
   version
   pluginOptions___name
-  pluginOptions___path
   pluginOptions___short_name
   pluginOptions___description
   pluginOptions___start_url
@@ -2325,6 +2387,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
   pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_graphql
   pluginOptions___defaultLayouts___default
+  pluginOptions___path
   pluginOptions___pathCheck
   nodeAPIs
   browserAPIs
@@ -2440,7 +2503,6 @@ input SitePluginPackageJsonPeerDependenciesFilterListInput {
 
 type SitePluginPluginOptions {
   name: String
-  path: String
   short_name: String
   description: String
   start_url: String
@@ -2458,6 +2520,7 @@ type SitePluginPluginOptions {
   emitSchema: SitePluginPluginOptionsEmitSchema
   emitPluginDocuments: SitePluginPluginOptionsEmitPluginDocuments
   defaultLayouts: SitePluginPluginOptionsDefaultLayouts
+  path: String
   pathCheck: Boolean
 }
 
@@ -2489,7 +2552,6 @@ input SitePluginPluginOptionsEmitSchemaFilterInput {
 
 input SitePluginPluginOptionsFilterInput {
   name: StringQueryOperatorInput
-  path: StringQueryOperatorInput
   short_name: StringQueryOperatorInput
   description: StringQueryOperatorInput
   start_url: StringQueryOperatorInput
@@ -2507,6 +2569,7 @@ input SitePluginPluginOptionsFilterInput {
   emitSchema: SitePluginPluginOptionsEmitSchemaFilterInput
   emitPluginDocuments: SitePluginPluginOptionsEmitPluginDocumentsFilterInput
   defaultLayouts: SitePluginPluginOptionsDefaultLayoutsFilterInput
+  path: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
 }
 
