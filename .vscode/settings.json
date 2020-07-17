@@ -9,8 +9,8 @@
     "**/node_modules": true,
     "**.tsbuildinfo": true,
     "lib": true
-  },
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
   }
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": true
+  // }
 }

@@ -13,7 +13,7 @@ import React, { FC } from 'react'
  * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-const Image: FC = () => {
+export const Image: FC = () => {
   const data = useStaticQuery<GatsbyTypes.GetImageQuery>(graphql`
     query GetImage {
       placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
@@ -28,5 +28,3 @@ const Image: FC = () => {
 
   return <Img fluid={data?.placeholderImage?.childImageSharp?.fluid} />
 }
-
-export default Image

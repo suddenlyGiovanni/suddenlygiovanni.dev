@@ -1,11 +1,17 @@
+//@ts-check
+const config = require('./config/website')
+
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
-    description:
-      'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: '@gatsbyjs',
+    title: config.siteTitle,
+    description: config.siteDescription,
+    author: config.author,
+    miniBio: config.minibio,
+    twitterHandle: config.twitterHandle,
+    twitter: config.twitter,
   },
   plugins: [
+    'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -19,11 +25,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
+        name: config.siteTitle,
+        short_name: config.siteTitleShort,
+        description: config.siteDescription,
+        start_url: config.pathPrefix,
+        lang: config.lang,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
         display: 'minimal-ui',
         icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
       },
