@@ -1,5 +1,4 @@
-//@ts-check
-module.exports = {
+export default {
   siteTitle: 'suddenlyGiovanni', // Navigation and Site Title
   siteTitleAlt: 'The personal website of Giovanni Ravalico', // Alternative Site title for SEO
   siteTitleShort: 'suddenlyGiovanni', // short_name for manifest
@@ -22,4 +21,4 @@ module.exports = {
   twitterHandle: '@suddenlyGio',
   github: 'https://github.com/suddenlyGiovanni/',
   linkedin: 'https://www.linkedin.com/in/giovanni-ravalico/',
-}
+} as const
