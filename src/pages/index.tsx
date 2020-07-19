@@ -1,10 +1,10 @@
-import { Link } from 'gatsby'
-import React from 'react'
+import { Link, PageProps } from 'gatsby'
+import React, { FC } from 'react'
 
 import { Layout, PostPreview } from '../components'
 import { usePosts } from '../hooks/use-posts'
 
-const IndexPage = (): JSX.Element => {
+const IndexPage: FC<PageProps> = () => {
   const posts = usePosts()
   return (
     <Layout>
