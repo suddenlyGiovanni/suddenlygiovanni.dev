@@ -1,5 +1,20 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
+const getSiteMetadata = graphql`
+  query GetSiteMetadata {
+    site {
+      siteMetadata {
+        title
+        description
+        author
+        miniBio
+        twitterHandle
+        twitter
+      }
+    }
+  }
+`
+
 export const useSiteMetadata = (): {
   author: string
   description: string
@@ -8,20 +23,7 @@ export const useSiteMetadata = (): {
   twitter: string
   twitterHandle: string
 } => {
-  const data = useStaticQuery<GatsbyTypes.GetSiteMetadataQuery>(graphql`
-    query GetSiteMetadata {
-      site {
-        siteMetadata {
-          title
-          description
-          author
-          miniBio
-          twitterHandle
-          twitter
-        }
-      }
-    }
-  `)
+  const data = useStaticQuery<GatsbyTypes.GetSiteMetadataQuery>(getSiteMetadata)
 
   return {
     author: data.site?.siteMetadata?.author || 'fallback author',
