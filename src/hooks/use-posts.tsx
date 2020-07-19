@@ -1,5 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
+import { GetPostsQuery } from '../../typings/graphql-types'
+
 export type Post = {
   author: string
   excerpt: string
@@ -12,7 +14,7 @@ export type Posts = Post[]
 const getPostsQuery = graphql`
   query GetPosts {
     allMdx {
-      nodes {
+      posts: nodes {
         frontmatter {
           title
           slug
@@ -25,8 +27,8 @@ const getPostsQuery = graphql`
 `
 export const usePosts = (): Post[] => {
   const {
-    allMdx: { nodes: posts },
-  } = useStaticQuery<GatsbyTypes.GetPostsQuery>(getPostsQuery)
+    allMdx: { posts },
+  } = useStaticQuery<GetPostsQuery>(getPostsQuery)
 
   return posts.map((post) => ({
     author: post?.frontmatter?.author || '',

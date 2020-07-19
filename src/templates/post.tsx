@@ -3,8 +3,8 @@ import { PageProps, graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React, { FC } from 'react'
 
+import { GetPostDataQuery } from '../../typings/graphql-types'
 import { Layout, ReadLink } from '../components'
-import type { Nullable } from '../types'
 
 // this graphql query will be called by gatsby-node at build time and its content will be injected
 // in the PageProps at the data label
@@ -26,7 +26,7 @@ type PageContextType = {
   slug: string
 }
 
-type DataType = GatsbyTypes.GetPostDataQuery
+type DataType = GetPostDataQuery // TODO: add the correct datatype
 type Props = PageProps<DataType, PageContextType>
 
 const PostTemplate: FC<Props> = ({ data: { mdx: post } }) => {
@@ -38,13 +38,13 @@ const PostTemplate: FC<Props> = ({ data: { mdx: post } }) => {
         </>
       ) : (
         <>
-          <h1>{post.frontmatter.title}</h1>
+          <h1>{post?.frontmatter?.title}</h1>
           <p
             css={css`
               font-size: 0.75re;
             `}
           >
-            posted by {post.frontmatter.author}
+            posted by {post?.frontmatter?.author}
           </p>
           <MDXRenderer>{post.body}</MDXRenderer>
         </>

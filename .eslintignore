@@ -1,0 +1,4 @@
+typings/graphql-types.d.ts
+*.css
+*.png
+*.mdx

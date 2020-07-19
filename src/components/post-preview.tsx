@@ -2,7 +2,7 @@ import { css } from '@emotion/core'
 import { Link } from 'gatsby'
 import React, { FC } from 'react'
 
-import { ReadLink } from '.'
+import { ReadLink } from './read-link'
 
 type Props = {
   post: {
