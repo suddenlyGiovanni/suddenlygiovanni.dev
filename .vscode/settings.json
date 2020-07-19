@@ -10,9 +10,7 @@
     "**.tsbuildinfo": true,
     "lib": true
   },
-  "cSpell.words": [
-    "frontmatter"
-  ]
+  "cSpell.words": ["frontmatter"]
   // "editor.codeActionsOnSave": {
   //   "source.fixAll.eslint": true
   // }

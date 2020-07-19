@@ -1,28 +1,27 @@
 {
   "root": true,
 
-  "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
-
-  "plugins": ["@typescript-eslint", "jest", "import"],
-
   "env": {
     "node": true,
     "browser": true,
-    "es6": true,
-    "jest": true
+    "jest": true,
+    "es2020": true
   },
-
-  "globals": {
-    "Atomics": "readonly"
-  },
-
+  "parser": "@typescript-eslint/parser", // Specifies the ESLint parser
   "parserOptions": {
     "ecmaVersion": 2020, // Allows for the parsing of modern ECMAScript features
     "sourceType": "module", // Allows for the use of imports
     "project": "./tsconfig.json",
     "ecmaFeatures": {
-      "impliedStrict": true
+      "impliedStrict": true,
+      "jsx": true
     }
+  },
+
+  "plugins": ["@typescript-eslint", "jest", "import"],
+
+  "globals": {
+    "Atomics": "readonly"
   },
 
   "settings": {
@@ -45,16 +44,16 @@
     "plugin:import/typescript",
 
     "plugin:promise/recommended",
-    "plugin:unicorn/recommended",
 
     "plugin:jest/all",
     "plugin:testing-library/react",
+
+    "plugin:mdx/recommended",
 
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint",
     "prettier"
   ],
-
   "rules": {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
@@ -165,22 +164,6 @@
         "natural": true
       }
     ],
-    "unicorn/consistent-function-scoping": "off",
-    "unicorn/filename-case": [
-      "error",
-      {
-        "case": "kebabCase"
-      }
-    ],
-    "unicorn/prevent-abbreviations": [
-      "error",
-      {
-        "whitelist": {
-          "props": true
-        }
-      }
-    ],
-
     // TypeScript's `noFallthroughCasesInSwitch` option is more robust (#6906)
     "default-case": "off",
     // 'tsc' already handles this (https://github.com/typescript-eslint/typescript-eslint/issues/291)
@@ -213,7 +196,7 @@
     "@typescript-eslint/no-useless-constructor": "warn",
     // "jest/no-disabled-tests": "warn",
     "@typescript-eslint/member-ordering": [
-      "error",
+      "off",
       {
         "default": {
           "memberTypes": [
@@ -277,6 +260,7 @@
         }
       }
     ],
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "react/jsx-one-expression-per-line": "off"
   }
 }

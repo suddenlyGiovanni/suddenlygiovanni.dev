@@ -1,5 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
+import { GetSiteMetadataQuery } from '../../typings/graphql-types'
+
 const getSiteMetadata = graphql`
   query GetSiteMetadata {
     site {
@@ -23,7 +25,7 @@ export const useSiteMetadata = (): {
   twitter: string
   twitterHandle: string
 } => {
-  const data = useStaticQuery<GatsbyTypes.GetSiteMetadataQuery>(getSiteMetadata)
+  const data = useStaticQuery<GetSiteMetadataQuery>(getSiteMetadata)
 
   return {
     author: data.site?.siteMetadata?.author || 'fallback author',

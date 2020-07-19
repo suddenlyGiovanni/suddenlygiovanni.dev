@@ -4,11 +4,9 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
-
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
-    query {
+    query GetPostsSlug {
       allMdx {
         nodes {
           frontmatter {
@@ -23,7 +21,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     reporter.panic('fail to create posts', result.console.error)
   }
 
-  const posts = result.data.allMdx.nodes
+  const posts = result.data?.allMdx?.nodes
 
   posts.forEach((post) => {
     actions.createPage({
