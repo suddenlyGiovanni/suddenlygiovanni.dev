@@ -1,21 +1,21 @@
-import { Link, PageProps } from 'gatsby'
+import { PageProps } from 'gatsby'
 import React, { FC } from 'react'
 
-import { Layout, PostPreview } from '../components'
+import { Hero, Layout, PostPreview } from '../components'
 import { usePosts } from '../hooks/use-posts'
 
 const IndexPage: FC<PageProps> = () => {
   const posts = usePosts()
   return (
-    <Layout>
-      <h1>Home</h1>
-      <p>Hello fellow developers</p>
-      <Link to="/about">Learn about me &rarr;</Link>
-      <h2>Read my blog</h2>
-      {posts.map((post) => (
-        <PostPreview key={post.slug} post={post} />
-      ))}
-    </Layout>
+    <>
+      <Hero />
+      <Layout>
+        <h2>Read my blog</h2>
+        {posts.map((post) => (
+          <PostPreview key={post.slug} post={post} />
+        ))}
+      </Layout>
+    </>
   )
 }
 

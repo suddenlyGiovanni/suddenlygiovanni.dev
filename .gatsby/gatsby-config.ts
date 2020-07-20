@@ -109,7 +109,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
         background_color: config.backgroundColor,
         description: config.siteDescription,
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'images/gatsby-icon.png', // This path is relative to the root of the site.
         lang: config.lang,
         name: config.siteTitle,
         short_name: config.siteTitleShort,
@@ -123,20 +123,22 @@ const gatsbyConfig: GatsbyConfig = () => ({
         defaultLayouts: {
           default: require.resolve('../src/components/layout/layout.tsx'),
         },
+        gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
+        plugins: [{ resolve: 'gatsby-remark-images' }],
       },
       resolve: 'gatsby-plugin-mdx',
     },
     {
       options: {
         name: 'images',
-        path: `${__dirname}/../src/images`,
+        path: 'images',
       },
       resolve: 'gatsby-source-filesystem',
     },
     {
       options: {
-        name: 'posts',
-        path: `${__dirname}/../content/`,
+        name: 'content',
+        path: 'content',
       },
       resolve: 'gatsby-source-filesystem',
     },
@@ -144,63 +146,3 @@ const gatsbyConfig: GatsbyConfig = () => ({
 })
 
 export default gatsbyConfig
-
-// export default {
-//   plugins: [
-//     {
-//       options: {
-//         documentPaths: [
-//           './src/**/*.{ts,tsx}',
-//           './node_modules/gatsby-*/**/*.js',
-//           './gatsby-node.js',
-//         ],
-//         fileName: `typings/graphql-types.d.ts`,
-//       },
-//       resolve: `gatsby-plugin-graphql-codegen`,
-//     },
-//     'gatsby-plugin-emotion',
-//     'gatsby-plugin-react-helmet',
-//     'gatsby-transformer-sharp',
-//     'gatsby-plugin-sharp',
-//     {
-//       options: {
-//         background_color: config.backgroundColor,
-//         description: config.siteDescription,
-//         display: 'minimal-ui',
-//         icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
-//         lang: config.lang,
-//         name: config.siteTitle,
-//         short_name: config.siteTitleShort,
-//         start_url: config.pathPrefix,
-//         theme_color: config.themeColor,
-//       },
-//       resolve: 'gatsby-plugin-manifest',
-//     },
-//     // this (optional) plugin enables Progressive Web App + Offline functionality
-//     // To learn more, visit: https://gatsby.dev/offline
-//     // 'gatsby-plugin-offline',
-//     {
-//       options: {
-//         defaultLayouts: {
-//           default: require.resolve('./src/components/layout/layout.tsx'),
-//         },
-//       },
-//       resolve: 'gatsby-plugin-mdx',
-//     },
-//     {
-//       options: {
-//         name: 'images',
-//         path: `${__dirname}/src/images`,
-//       },
-//       resolve: 'gatsby-source-filesystem',
-//     },
-//     {
-//       options: {
-//         name: 'posts',
-//         path: `${__dirname}/content/`,
-//       },
-//       resolve: 'gatsby-source-filesystem',
-//     },
-//   ],
-//   siteMetadata: siteMetadata,
-// }
