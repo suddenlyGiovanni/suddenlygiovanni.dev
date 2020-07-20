@@ -65,6 +65,17 @@ type GatsbyPluginGraphqlCodegenConfig = IMergePluginOptions<
   }
 >
 
+// 'gatsby-plugin-webpack-bundle-analyzer'
+type GatsbyPluginWebpackBundleAnalyzerConfig = IMergePluginOptions<
+  'gatsby-plugin-webpack-bundle-analyzer',
+  {
+    production: boolean
+    disable: boolean
+    generateStatsFile: boolean
+    analyzerMode: string
+  }
+>
+
 type GatsbyConfig = ITSConfigFn<
   'config',
   | GatsbySourceFilesystemConfig
@@ -75,6 +86,7 @@ type GatsbyConfig = ITSConfigFn<
   | GatsbyPluginReactHelmetConfig
   | GatsbyPluginEmotionConfig
   | GatsbyPluginGraphqlCodegenConfig
+  | GatsbyPluginWebpackBundleAnalyzerConfig
 >
 
 const siteMetadata = {
@@ -141,6 +153,15 @@ const gatsbyConfig: GatsbyConfig = () => ({
         path: 'content',
       },
       resolve: 'gatsby-source-filesystem',
+    },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+      options: {
+        production: true,
+        disable: !process.env.ANALYZE_BUNDLE_SIZE,
+        generateStatsFile: true,
+        analyzerMode: 'static',
+      },
     },
   ],
 })
