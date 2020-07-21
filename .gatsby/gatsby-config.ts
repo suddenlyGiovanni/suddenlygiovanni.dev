@@ -103,6 +103,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
   plugins: [
     {
       options: {
+        codegen: true,
         documentPaths: [
           './src/**/*.{ts,tsx}',
           './node_modules/gatsby-*/**/*.js',
@@ -133,7 +134,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
     {
       options: {
         defaultLayouts: {
-          default: require.resolve('../src/components/layout/layout.tsx'),
+          default: require.resolve('../src/components/layout.tsx'),
         },
         gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
         plugins: [{ resolve: 'gatsby-remark-images' }],

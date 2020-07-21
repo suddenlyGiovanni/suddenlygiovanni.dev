@@ -1,6 +1,10 @@
-import { css } from '@emotion/core'
+import { Global, css } from '@emotion/core'
+import React, { FC } from 'react'
 
-export const global = css`
+import { Header } from './header'
+import { SEO } from './seo'
+
+const globalStyles = css`
   * {
     box-sizing: border-box;
     margin: 0;
@@ -22,9 +26,9 @@ export const global = css`
     line-height: 1.4;
 
     /* remove margin for the main div that Gatsby mounts into */
-    > div {
+    /* > div {
       margin-top: 0;
-    }
+    } */
   }
 
   h1,
@@ -50,8 +54,22 @@ export const global = css`
   }
 `
 
-export const main = css`
+const mainStyles = css`
   margin: 2rem auto 4rem;
   max-width: 90vw;
   width: 550px;
 `
+
+
+export const Layout: FC = ({ children }) => {
+  return (
+    <>
+      <Global styles={globalStyles} />
+      <SEO />
+      <Header />
+      <main css={mainStyles}>{children}</main>
+    </>
+  )
+}
+
+export default Layout

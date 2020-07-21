@@ -1,14 +1,14 @@
 import { PageProps } from 'gatsby'
 import React, { FC } from 'react'
 
-import { Hero, Layout, PostPreview } from '../components'
+import { Layout, PostPreview } from '../components'
 import { usePosts } from '../hooks/use-posts'
 
 const IndexPage: FC<PageProps> = () => {
   const posts = usePosts()
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
       <Layout>
         <h2>Read my blog</h2>
         {posts.map((post) => (
