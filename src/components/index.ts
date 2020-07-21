@@ -1,10 +1,9 @@
-import Layout from './layout/layout'
-
 export { Header } from './header'
-
 export { SEO } from './seo'
 export { Wave } from './wave'
 export { PostPreview } from './post-preview'
 export { ReadLink } from './read-link'
 export { Hero } from './hero'
-export { Layout }
+export { Layout } from './layout'
+export { SuddenlyGiovanni } from './suddenly-giovanni'
+export { NavLink } from './nav-link'
