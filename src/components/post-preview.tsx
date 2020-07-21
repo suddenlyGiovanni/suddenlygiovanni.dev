@@ -20,7 +20,6 @@ export const PostPreview: FC<Props> = ({ post }) => (
     css={css`
       display: flex;
       border-bottom: 1px solid #ddd;
-      margin-top: 0;
       padding-bottom: 1rem;
 
       ::first-of-type {
@@ -37,11 +36,6 @@ export const PostPreview: FC<Props> = ({ post }) => (
     >
       <Image
         fluid={post.image || undefined}
-        css={css`
-          * {
-            margin-top: 0;
-          }
-        `}
         alt={post.title}
       />
     </Link>

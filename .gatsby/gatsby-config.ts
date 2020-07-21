@@ -103,7 +103,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
   plugins: [
     {
       options: {
-        codegen: true,
+        codegen: false, // TODO: enable!!
         documentPaths: [
           './src/**/*.{ts,tsx}',
           './node_modules/gatsby-*/**/*.js',

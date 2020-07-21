@@ -10,11 +10,6 @@ const globalStyles = css`
     margin: 0;
   }
 
-  /* More info: https://bit.ly/2PsCnzk */
-  * + * {
-    margin-top: 1rem;
-  }
-
   html,
   body {
     margin: 0;
@@ -54,22 +49,36 @@ const globalStyles = css`
   }
 `
 
-const mainStyles = css`
-  margin: 2rem auto 4rem;
-  max-width: 90vw;
-  width: 550px;
-`
-
-
 export const Layout: FC = ({ children }) => {
   return (
     <>
       <Global styles={globalStyles} />
       <SEO />
-      <Header />
-      <main css={mainStyles}>{children}</main>
+      <div
+        css={css`
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          min-height: 100vh;
+        `}
+      >
+        <Header />
+        <main
+          css={css`
+            margin: 2rem auto 4rem;
+            max-width: 90vw;
+            width: 550px;
+          `}
+        >
+          {children}
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }
+
+// TODO: implement a footer
+const Footer = (): JSX.Element => <div>footer</div>
 
 export default Layout
