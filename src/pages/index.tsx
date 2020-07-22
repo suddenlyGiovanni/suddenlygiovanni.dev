@@ -7,15 +7,12 @@ import { usePosts } from '../hooks/use-posts'
 const IndexPage: FC<PageProps> = () => {
   const posts = usePosts()
   return (
-    <>
-      {/* <Hero /> */}
-      <Layout>
-        <h2>Read my blog</h2>
-        {posts.map((post) => (
-          <PostPreview key={post.slug} post={post} />
-        ))}
-      </Layout>
-    </>
+    <Layout>
+      <h2>Blog</h2>
+      {posts.map((post) => (
+        <PostPreview key={post.slug} post={post} />
+      ))}
+    </Layout>
   )
 }
 

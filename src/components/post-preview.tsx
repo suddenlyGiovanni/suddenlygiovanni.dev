@@ -1,9 +1,7 @@
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
-import Image, { FluidObject } from 'gatsby-image'
 import React, { FC } from 'react'
 
-import { ReadLink } from './read-link'
 
 type Props = {
   post: {
@@ -11,41 +9,46 @@ type Props = {
     excerpt: string
     slug: string
     title: string
-    image: FluidObject | undefined
+    date?: string
   }
 }
 
 export const PostPreview: FC<Props> = ({ post }) => (
-  <article
-    css={css`
-      display: flex;
-      padding-bottom: 1rem;
+  <article key={post.slug}>
+    <header>
+      <h3
+        css={css`
+          margin-bottom: 0.5rem;
+        `}
+      >
+        <Link
+          css={css`
+            color: unset;
+            text-decoration: none;
 
-      border-bottom: 1px solid #ddd;
-
-      ::first-of-type {
-        margin-top: 1rem;
-      }
-    `}
-  >
-    <Link
-      to={post.slug}
-      css={css`
-        width: 100px;
-        margin: 1rem 1rem 0 0;
-      `}
-    >
-      <Image
-        fluid={post.image || undefined}
-        alt={post.title}
-      />
-    </Link>
-    <div>
-      <h3>
-        <Link to={post.slug}>{post.title}</Link>
+            box-shadow: none;
+            &:visited {
+              color: unset;
+            }
+          `}
+          to={post.slug}
+        >
+          {post.title}
+        </Link>
       </h3>
+      <small>
+        {post?.date ||
+          new Date().toLocaleString('en-US', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric',
+          })}{' '}
+        • 🎂 1 min read
+      </small>
+    </header>
+
+    <section>
       <p>{post.excerpt}</p>
-      <ReadLink to={post.slug}>read this post &rarr;</ReadLink>
-    </div>
+    </section>
   </article>
 )

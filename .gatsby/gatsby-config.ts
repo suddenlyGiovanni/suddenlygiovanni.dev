@@ -134,7 +134,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
     {
       options: {
         defaultLayouts: {
-          default: require.resolve('../src/components/layout.tsx'),
+          default: require.resolve('../src/components/layout/layout.tsx'),
         },
         gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
         plugins: [{ resolve: 'gatsby-remark-images' }],
