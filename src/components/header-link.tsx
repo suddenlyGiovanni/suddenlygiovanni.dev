@@ -13,14 +13,16 @@ export const HeaderLink: FC<GatsbyLinkProps<unknown>> = ({
     <Link
       activeClassName="current-page"
       css={css`
-        text-decoration: none;
         color: inherit;
+        text-decoration: none;
+
         background: transparent;
 
         &:hover,
         &:focus {
-          background: rgba(40, 28, 77, 0.3);
           color: white;
+
+          background: rgba(40, 28, 77, 0.3);
         }
         &.current-page {
           background: rgba(40, 28, 77, 0.3);
