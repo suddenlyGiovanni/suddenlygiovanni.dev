@@ -1,8 +1,10 @@
 import { Global, css } from '@emotion/core'
 import React, { FC } from 'react'
 
+import { Footer } from './footer'
 import { Header } from './header'
 import { SEO } from './seo'
+
 
 const globalStyles = css`
   * {
@@ -54,6 +56,7 @@ export const Layout: FC = ({ children }) => {
         css={css`
           display: flex;
           flex-direction: column;
+          align-items: stretch;
           width: 100%;
           min-width: 320px;
           min-height: 100vh;
@@ -62,6 +65,8 @@ export const Layout: FC = ({ children }) => {
         <Header />
         <main
           css={css`
+            flex-grow: 1;
+            flex-shrink: 0;
             width: 550px;
             max-width: 90vw;
             margin: 2rem auto 4rem;
@@ -74,8 +79,5 @@ export const Layout: FC = ({ children }) => {
     </>
   )
 }
-
-// TODO: implement a footer
-const Footer = (): JSX.Element => <div>footer</div>
 
 export default Layout
