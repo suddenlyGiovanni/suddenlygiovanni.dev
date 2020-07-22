@@ -1,16 +1,18 @@
 import { Global, css } from '@emotion/core'
 import React, { FC } from 'react'
 
-import { Footer } from '../footer'
-import { Header } from '../header'
-import { SEO } from '../seo'
+import { globalStyles } from '../lib/global.styles'
+// import { reset } from '../lib/reset.styles'
 
-import { globalStyles } from './layout.styles'
+import { Footer } from './footer'
+import { Header } from './header'
+import { SEO } from './seo'
 
 export const Layout: FC = ({ children }) => {
   return (
     <>
       <Global styles={globalStyles} />
+      {/* <Global styles={reset} /> */}
       <SEO />
       <div
         css={css`
