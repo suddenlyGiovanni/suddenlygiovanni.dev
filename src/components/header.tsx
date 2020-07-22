@@ -88,20 +88,19 @@ export const Header: FC = () => {
             activeStyle={undefined}
             css={css`
               position: relative;
-
+              text-decoration: none;
               display: flex;
               flex-direction: row;
               align-items: center;
               :hover,
               :focus {
                 color: unset;
-
                 background: unset;
+                text-decoration: none;
               }
               &.current-page {
                 background: transparent;
               }
-
               span {
                 display: inline-block;
                 margin: 0;

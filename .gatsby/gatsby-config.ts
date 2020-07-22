@@ -115,6 +115,12 @@ const gatsbyConfig: GatsbyConfig = () => ({
     },
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `./src/lib/typography`,
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
@@ -134,7 +140,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
     {
       options: {
         defaultLayouts: {
-          default: require.resolve('../src/components/layout/layout.tsx'),
+          default: require.resolve('../src/components/layout.tsx'),
         },
         gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
         plugins: [{ resolve: 'gatsby-remark-images' }],

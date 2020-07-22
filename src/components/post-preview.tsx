@@ -43,7 +43,7 @@ export const PostPreview: FC<Props> = ({ post }) => (
             month: 'long',
             year: 'numeric',
           })}{' '}
-        • 🎂 1 min read
+        • 🍺 1 min read
       </small>
     </header>
 
