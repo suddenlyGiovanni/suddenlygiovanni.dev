@@ -13,17 +13,13 @@ const globalStyles = css`
   html,
   body {
     margin: 0;
+
     color: #555;
+    font-size: 18px;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
       Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
       'Segoe UI Symbol';
-    font-size: 18px;
     line-height: 1.4;
-
-    /* remove margin for the main div that Gatsby mounts into */
-    /* > div {
-      margin-top: 0;
-    } */
   }
 
   h1,
@@ -59,15 +55,16 @@ export const Layout: FC = ({ children }) => {
           display: flex;
           flex-direction: column;
           width: 100%;
+          min-width: 320px;
           min-height: 100vh;
         `}
       >
         <Header />
         <main
           css={css`
-            margin: 2rem auto 4rem;
-            max-width: 90vw;
             width: 550px;
+            max-width: 90vw;
+            margin: 2rem auto 4rem;
           `}
         >
           {children}

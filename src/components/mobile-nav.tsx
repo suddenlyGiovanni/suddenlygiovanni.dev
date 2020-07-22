@@ -14,9 +14,13 @@ export const MobileNav: FC<{ color?: string }> = ({ color = 'black' }) => {
         onClick={(): void => setToggle(!isToggledOn)}
         aria-label={`${isToggledOn ? 'close menu' : 'open menu'}`}
         css={css`
-          z-index: 30;
-          top: -5px;
           position: relative;
+          top: -5px;
+          z-index: 30;
+
+          width: 24px;
+          height: 24px;
+
           background: transparent;
           border: none;
           :hover:not(.touch),
@@ -31,17 +35,23 @@ export const MobileNav: FC<{ color?: string }> = ({ color = 'black' }) => {
           css={css`
             width: 24px;
             height: 2px;
+
             background: ${color};
+
             position: absolute;
             left: 0;
             ${isToggledOn ? 'background: transparent' : `background: ${color}`};
             transition: all 250ms cubic-bezier(0.86, 0, 0.07, 1);
             ::before {
               content: '';
+
               top: -8px;
+
               width: 24px;
               height: 2px;
+
               background: ${isToggledOn ? 'black' : `${color}`};
+
               position: absolute;
               left: 0;
               ${isToggledOn
@@ -51,10 +61,14 @@ export const MobileNav: FC<{ color?: string }> = ({ color = 'black' }) => {
             }
             ::after {
               top: 8px;
+
               content: '';
+
               width: 24px;
               height: 2px;
+
               background: ${isToggledOn ? 'black' : `${color}`};
+
               position: absolute;
               left: 0;
               ${isToggledOn
@@ -69,13 +83,15 @@ export const MobileNav: FC<{ color?: string }> = ({ color = 'black' }) => {
         <div
           css={css`
             position: absolute;
-            z-index: 20;
-            left: 0;
             top: 0;
-            width: 100vw;
-            height: 100vh;
+            left: 0;
+            z-index: 20;
+
             display: flex;
             align-items: center;
+            width: 100vw;
+            height: 100vh;
+
             background: white;
           `}
         >
@@ -86,10 +102,12 @@ export const MobileNav: FC<{ color?: string }> = ({ color = 'black' }) => {
               align-items: center;
               justify-content: space-evenly;
               a {
-                color: black;
-                font-size: 22px;
                 margin: 10px 0;
                 padding: 10px;
+
+                color: black;
+                font-size: 22px;
+
                 border-radius: 5px;
                 :hover {
                   background: rgba(0, 0, 0, 0.2);

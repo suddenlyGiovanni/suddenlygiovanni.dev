@@ -10,10 +10,11 @@ export const Wave = (): JSX.Element => {
       type="button"
       onClick={increment}
       css={css`
-        background-color: rebeccapurple;
-        border: none;
         color: white;
         font-size: 1.25rem;
+
+        background-color: rebeccapurple;
+        border: none;
       `}
     >
       {label}

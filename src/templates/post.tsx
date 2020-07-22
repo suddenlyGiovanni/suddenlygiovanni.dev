@@ -41,7 +41,7 @@ const PostTemplate: FC<Props> = ({ data: { mdx: post } }) => {
           <h1>{post?.frontmatter?.title}</h1>
           <p
             css={css`
-              font-size: 0.75re;
+              font-size: 0.75rem;
             `}
           >
             posted by {post?.frontmatter?.author}

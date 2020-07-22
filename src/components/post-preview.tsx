@@ -19,8 +19,9 @@ export const PostPreview: FC<Props> = ({ post }) => (
   <article
     css={css`
       display: flex;
-      border-bottom: 1px solid #ddd;
       padding-bottom: 1rem;
+
+      border-bottom: 1px solid #ddd;
 
       ::first-of-type {
         margin-top: 1rem;
@@ -30,8 +31,8 @@ export const PostPreview: FC<Props> = ({ post }) => (
     <Link
       to={post.slug}
       css={css`
-        margin: 1rem 1rem 0 0;
         width: 100px;
+        margin: 1rem 1rem 0 0;
       `}
     >
       <Image

@@ -26,8 +26,8 @@ export const Container: FC<Props> = ({
     <div
       css={css`
         width: 100%;
-        margin: 0 auto;
         max-width: ${fullMaxWidth};
+        margin: 0 auto;
         padding: ${noVerticalPadding ? 0 : '40'}px
           ${noHorizontalPadding ? 0 : '40'}px;
         ${bpMaxSM} {

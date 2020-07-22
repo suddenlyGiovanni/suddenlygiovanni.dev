@@ -18,7 +18,7 @@ const NavLink = styled(HeaderLink)({
   marginTop: 'unset',
   padding: '8px 10px',
   // media query
-  [bpMaxSM]: {
+  /* stylelint-disable-line */ [bpMaxSM]: {
     display: 'none',
   },
 })
@@ -58,15 +58,17 @@ export const Header: FC = () => {
   return (
     <header
       css={css`
-        width: 100%;
-        flex-shrink: 0;
-        background: none;
+        z-index: 10;
+
         display: flex;
-        justify-content: space-between;
+        flex-shrink: 0;
         align-items: center;
+        justify-content: space-between;
+        width: 100%;
 
         padding: 1rem 0;
-        z-index: 10;
+
+        background: none;
 
         border-bottom: 1px dashed;
       `}
@@ -74,10 +76,10 @@ export const Header: FC = () => {
       <Container maxWidth={720} noVerticalPadding>
         <nav
           css={css`
-            width: 100%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            width: 100%;
           `}
         >
           <HeaderLink
@@ -86,13 +88,15 @@ export const Header: FC = () => {
             activeStyle={undefined}
             css={css`
               position: relative;
+
               display: flex;
               flex-direction: row;
               align-items: center;
               :hover,
               :focus {
-                background: unset;
                 color: unset;
+
+                background: unset;
               }
               &.current-page {
                 background: transparent;
@@ -109,6 +113,7 @@ export const Header: FC = () => {
               css={css`
                 max-width: 50px;
                 overflow: hidden;
+
                 border-radius: 100%;
                 picture {
                   margin: 0;
@@ -119,7 +124,7 @@ export const Header: FC = () => {
               `}
               alt="Giovanni Ravalico's profile picture"
               fixed={profilePictureFix}
-              critical
+              loading="eager"
             />
             <span>suddenlyGiovanni</span>
           </HeaderLink>
@@ -127,15 +132,16 @@ export const Header: FC = () => {
           <div
             css={css`
               display: flex;
-              justify-content: space-between;
               align-items: center;
-              margin-top: unset;
+              justify-content: space-between;
 
               .mobile-nav {
                 display: none;
+
                 visibility: hidden;
                 ${bpMaxSM} {
                   display: block;
+
                   visibility: visible;
                 }
               }
@@ -146,6 +152,7 @@ export const Header: FC = () => {
               Blog
             </NavLink>
 
+            {/* faking a disabled NavLink until ready to add this section */}
             <span
               aria-label="go to reading journal"
               css={css({
@@ -156,7 +163,8 @@ export const Header: FC = () => {
                 ':hover': {
                   cursor: 'not-allowed',
                 },
-                [bpMaxSM]: {
+
+                /* stylelint-disable-line */ [bpMaxSM]: {
                   display: 'none',
                 },
               })}
