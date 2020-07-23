@@ -102,6 +102,27 @@ const gatsbyConfig: GatsbyConfig = () => ({
   siteMetadata,
   plugins: [
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: 'content/blog',
+        name: 'blog',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: 'content/assets',
+        name: 'assets',
+      },
+    },
+    {
+      options: {
+        name: 'images',
+        path: 'images',
+      },
+      resolve: 'gatsby-source-filesystem',
+    },
+    {
       options: {
         codegen: false, // TODO: enable!!
         documentPaths: [
@@ -147,20 +168,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
       },
       resolve: 'gatsby-plugin-mdx',
     },
-    {
-      options: {
-        name: 'images',
-        path: 'images',
-      },
-      resolve: 'gatsby-source-filesystem',
-    },
-    {
-      options: {
-        name: 'content',
-        path: 'content',
-      },
-      resolve: 'gatsby-source-filesystem',
-    },
+
     {
       resolve: 'gatsby-plugin-webpack-bundle-analyzer',
       options: {
