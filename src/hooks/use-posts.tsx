@@ -1,58 +1,60 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { graphql, useStaticQuery } from 'gatsby'
-import { FluidObject } from 'gatsby-image'
 
+import { PostsPreviewDataQuery } from '../../typings/graphql-types'
 
-import {
-  GetPostsQuery,
-  GatsbyImageSharpFluid_WithWebpFragment as ImageSharpFluid,
-} from '../../typings/graphql-types'
-
-export type Post = {
-  author: string
-  excerpt: string
+export type PostPreviewData = {
+  id: string
   slug: string
+  author: string
   title: string
-  image: FluidObject | undefined
+  description: string
+  date: string
+  timeToRead: number
 }
 
-export type Posts = Post[]
-
 const getPostsQuery = graphql`
-  query GetPosts {
-    allMdx {
+  fragment PostPreviewData on Mdx {
+    id
+    frontmatter {
+      slug
+      author
+      title
+      description
+      date
+    }
+    timeToRead
+  }
+
+  query PostsPreviewData {
+    allMdx(
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: {
+        frontmatter: { published: { ne: false }, unlisted: { ne: false } }
+      }
+    ) {
       posts: nodes {
-        frontmatter {
-          title
-          slug
-          author
-          image {
-            sharp: childImageSharp {
-              fluid(
-                maxWidth: 100
-                maxHeight: 100
-                duotone: { shadow: "#663399", highlight: "#ddbbff" }
-              ) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
-        }
-        excerpt
+        ...PostPreviewData
       }
     }
   }
 `
-export const usePosts = (): Post[] => {
+export const usePostsPreview = (): PostPreviewData[] => {
   const {
     allMdx: { posts },
-  } = useStaticQuery<GetPostsQuery>(getPostsQuery)
+  } = useStaticQuery<PostsPreviewDataQuery>(getPostsQuery)
 
-  return posts.map((post) => ({
-    author: post?.frontmatter?.author || '',
-    excerpt: post?.excerpt || '',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-    image: post?.frontmatter?.image?.sharp?.fluid || undefined,
-    slug: post?.frontmatter?.slug || '',
-    title: post?.frontmatter?.title || '',
+  if (posts.length === 0) return []
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
+  return posts.map(({ frontmatter, timeToRead, id }) => ({
+    author: frontmatter?.author || '',
+    date: frontmatter?.date || '',
+    description: frontmatter?.description || '',
+    id: id || '',
+    slug: frontmatter?.slug || '',
+    timeToRead: timeToRead || 0,
+    title: frontmatter?.title || '',
   }))
 }

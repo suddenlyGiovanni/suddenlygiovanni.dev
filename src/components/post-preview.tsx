@@ -2,21 +2,24 @@ import { css } from '@emotion/core'
 import { Link } from 'gatsby'
 import React, { FC } from 'react'
 
+import { formatReadingTime } from '../lib/helpers'
 
 type Props = {
   post: {
-    author: string
-    excerpt: string
+    id: string
     slug: string
+    author: string
     title: string
-    date?: string
+    description: string
+    date: string
+    timeToRead: number
   }
 }
 
 export const PostPreview: FC<Props> = ({ post }) => (
-  <article key={post.slug}>
+  <article key={post.id}>
     <header>
-      <h3
+      <h2
         css={css`
           margin-bottom: 0.5rem;
         `}
@@ -35,20 +38,15 @@ export const PostPreview: FC<Props> = ({ post }) => (
         >
           {post.title}
         </Link>
-      </h3>
+      </h2>
       <small>
-        {post?.date ||
-          new Date().toLocaleString('en-US', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-          })}{' '}
-        • 🍺 1 min read
+        {post.date}
+        {` • ${formatReadingTime(post.timeToRead)}`}
       </small>
     </header>
 
     <section>
-      <p>{post.excerpt}</p>
+      <p>{post.description}</p>
     </section>
   </article>
 )
