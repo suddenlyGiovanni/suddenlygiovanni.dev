@@ -1,59 +1,57 @@
 import { css } from '@emotion/core'
 import React from 'react'
 
+import { bpMaxSM } from '../lib/breakpoints'
+
 import { Container } from './container'
 import { GitHub, LinkedIn, Twitter } from './social'
+
+const footerStyles = css`
+  position: relative;
+
+  flex-shrink: 0;
+  width: 100%;
+
+  border-top: thin solid black;
+`
+const containerStyles = css`
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  padding-bottom: 1rem;
+  ${bpMaxSM} {
+    padding-bottom: 1rem;
+  }
+`
+const copyrightStyles = css`
+  flex: 1 auto;
+  margin-top: 1rem;
+  margin-bottom: 0;
+`
+
+const socialsStyles = css`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 120px;
+  margin-top: 1rem;
+`
 
 type Props = {
   maxWidth?: number
 }
-
-export const Footer = ({ maxWidth = 720 }: Props): JSX.Element => (
-  <footer
-    css={css`
-      position: relative;
-
-      flex-shrink: 0;
-      width: 100%;
-    `}
-  >
-    <Container
-      maxWidth={maxWidth}
-      css={css`
-        display: flex;
-        flex-flow: row wrap;
-        align-content: space-between;
-      `}
-    >
-      <p
-        css={css`
-          flex: 1 auto;
-          margin-top: 1rem;
-
-          /* unset default margin styles */
-          margin-bottom: 0;
-        `}
-      >
-        ©{' '}
-        {
-          // TODO: use the build year time
-          new Date().getFullYear()
-        }{' '}
-        Giovanni Ravalico
-      </p>
-      <div
-        css={css`
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          min-width: 120px;
-          margin-top: 1rem;
-        `}
-      >
-        <Twitter color="black" />
-        <GitHub color="black" />
-        <LinkedIn color="black" />
-      </div>
-    </Container>
-  </footer>
-)
+export const Footer = ({ maxWidth = 720 }: Props): JSX.Element => {
+  const copyrightYear = new Date().getFullYear() // TODO: use the build year time
+  return (
+    <footer css={footerStyles}>
+      <Container maxWidth={maxWidth} css={containerStyles} noVerticalPadding>
+        <p css={copyrightStyles}>© {copyrightYear} Giovanni Ravalico</p>
+        <div css={socialsStyles}>
+          <Twitter color="black" />
+          <GitHub color="black" />
+          <LinkedIn color="black" />
+        </div>
+      </Container>
+    </footer>
+  )
+}

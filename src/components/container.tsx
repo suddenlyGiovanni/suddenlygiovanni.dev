@@ -19,20 +19,22 @@ export const Container: FC<Props> = ({
   children,
   ...restProps
 }) => {
-  const fullMaxWidth = Number.isNaN(Number(maxWidth))
-    ? maxWidth
-    : `${maxWidth + (noHorizontalPadding ? 0 : 80)}px`
   return (
     <div
       css={css`
         width: 100%;
-        max-width: ${fullMaxWidth};
+        max-width: ${maxWidth + (noHorizontalPadding ? 0 : 80)}px;
         margin: 0 auto;
-        padding: ${noVerticalPadding ? 0 : '40'}px
-          ${noHorizontalPadding ? 0 : '40'}px;
+        padding-top: ${noVerticalPadding ? 0 : '40'}px;
+        padding-right: ${noHorizontalPadding ? 0 : '40'}px;
+        padding-bottom: ${noVerticalPadding ? 0 : '40'}px;
+        padding-left: ${noHorizontalPadding ? 0 : '40'}px;
+
         ${bpMaxSM} {
-          padding: ${noVerticalPadding ? 0 : '20'}px
-            ${noHorizontalPadding ? 0 : '20'}px;
+          padding-top: ${noVerticalPadding ? 0 : '20'}px;
+          padding-right: ${noHorizontalPadding ? 0 : '20'}px;
+          padding-bottom: ${noVerticalPadding ? 0 : '20'}px;
+          padding-left: ${noHorizontalPadding ? 0 : '20'}px;
         }
       `}
       // eslint-disable-next-line react/jsx-props-no-spreading

@@ -1,4 +1,5 @@
-import { Global, css } from '@emotion/core'
+import { Global } from '@emotion/core'
+import styled from '@emotion/styled'
 import React, { FC } from 'react'
 
 import { globalStyles } from '../lib/global.styles'
@@ -6,7 +7,17 @@ import { globalStyles } from '../lib/global.styles'
 
 import { Footer } from './footer'
 import { Header } from './header'
+import { Main } from './main'
 import { SEO } from './seo'
+
+const Wrapper = styled('div')`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+`
 
 export const Layout: FC = ({ children }) => {
   return (
@@ -14,30 +25,11 @@ export const Layout: FC = ({ children }) => {
       <Global styles={globalStyles} />
       {/* <Global styles={reset} /> */}
       <SEO />
-      <div
-        css={css`
-          display: flex;
-          flex-direction: column;
-          align-items: stretch;
-          width: 100%;
-          min-width: 320px;
-          min-height: 100vh;
-        `}
-      >
+      <Wrapper>
         <Header />
-        <main
-          css={css`
-            flex-grow: 1;
-            flex-shrink: 0;
-            width: 550px;
-            max-width: 90vw;
-            margin: 2rem auto 4rem;
-          `}
-        >
-          {children}
-        </main>
+        <Main>{children}</Main>
         <Footer />
-      </div>
+      </Wrapper>
     </>
   )
 }

@@ -53,26 +53,63 @@ const useProfilePictureFix = (): FixedObject | undefined => {
   return undefined
 }
 
+const headerLinkStyles = css`
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  font-weight: bold;
+  text-decoration: none;
+
+  :hover,
+  :focus {
+    color: unset;
+    text-decoration: none;
+
+    background: unset;
+  }
+
+  &.current-page {
+    background: transparent;
+  }
+
+  span {
+    display: inline-block;
+    margin: 0;
+    margin-left: 1rem;
+  }
+`
+const imageStyles = css`
+  max-width: 50px;
+  overflow: hidden;
+
+  border-radius: 100%;
+  picture {
+    margin: 0;
+  }
+  picture > * {
+    margin: 0;
+  }
+`
+const headerStyles = css`
+  z-index: 10;
+
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 0;
+
+  background: none;
+  border-bottom: thin solid black;
+`
 export const Header: FC = () => {
   const profilePictureFix = useProfilePictureFix()
   return (
-    <header
-      css={css`
-        z-index: 10;
-
-        display: flex;
-        flex-shrink: 0;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-
-        padding: 1rem 0;
-
-        background: none;
-
-        border-bottom: 1px dashed;
-      `}
-    >
+    <header css={headerStyles}>
       <Container maxWidth={720} noVerticalPadding>
         <nav
           css={css`
@@ -86,41 +123,10 @@ export const Header: FC = () => {
             to="/"
             aria-label="go to homepage"
             activeStyle={undefined}
-            css={css`
-              position: relative;
-              text-decoration: none;
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              :hover,
-              :focus {
-                color: unset;
-                background: unset;
-                text-decoration: none;
-              }
-              &.current-page {
-                background: transparent;
-              }
-              span {
-                display: inline-block;
-                margin: 0;
-                margin-left: 1rem;
-              }
-            `}
+            css={headerLinkStyles}
           >
             <Image
-              css={css`
-                max-width: 50px;
-                overflow: hidden;
-
-                border-radius: 100%;
-                picture {
-                  margin: 0;
-                }
-                picture > * {
-                  margin: 0;
-                }
-              `}
+              css={imageStyles}
               alt="Giovanni Ravalico's profile picture"
               fixed={profilePictureFix}
               loading="eager"
