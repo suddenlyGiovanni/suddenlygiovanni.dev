@@ -108,13 +108,13 @@ const gatsbyConfig: GatsbyConfig = () => ({
         name: 'blog',
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: 'content/assets',
-        name: 'assets',
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: 'content/assets',
+    //     name: 'assets',
+    //   },
+    // },
     {
       options: {
         name: 'images',
