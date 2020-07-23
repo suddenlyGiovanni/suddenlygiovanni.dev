@@ -2,10 +2,10 @@ import { PageProps } from 'gatsby'
 import React, { FC } from 'react'
 
 import { Layout, PostPreview } from '../components'
-import { usePosts } from '../hooks/use-posts'
+import { usePostsPreview } from '../hooks/use-posts'
 
 const IndexPage: FC<PageProps> = () => {
-  const posts = usePosts()
+  const posts = usePostsPreview()
   return (
     <Layout>
       <h1>Blog</h1>

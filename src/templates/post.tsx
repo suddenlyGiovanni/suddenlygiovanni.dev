@@ -1,54 +1,54 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { css } from '@emotion/core'
 import { PageProps, graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React, { FC } from 'react'
 
-import { GetPostDataQuery } from '../../typings/graphql-types'
+import { PostDetailsFragment, PostQuery } from '../../typings/graphql-types'
 import { Layout, ReadLink } from '../components'
 
 // this graphql query will be called by gatsby-node at build time and its content will be injected
 // in the PageProps at the data label
 // remember to export it!
-export const query = graphql`
-  query GetPostData($slug: String!) {
-    mdx(frontmatter: { slug: { eq: $slug } }) {
+export const postQuery = graphql`
+  query Post($id: String!) {
+    post: mdx(id: { eq: $id }) {
       frontmatter {
         title
-        slug
         author
+        slug
       }
       body
     }
   }
 `
 
+// this page context comes from the injected context of Gatsby's createPage
 type PageContextType = {
-  slug: string
+  id: string
+  prev: Nullable<PostDetailsFragment>
+  next: Nullable<PostDetailsFragment>
 }
 
-type DataType = GetPostDataQuery // TODO: add the correct datatype
-type Props = PageProps<DataType, PageContextType>
+type Props = PageProps<PostQuery, PageContextType>
 
-const PostTemplate: FC<Props> = ({ data: { mdx: post } }) => {
+const PostTemplate: FC<Props> = ({ data: { post } }) => {
+  const title = post?.frontmatter?.title || ''
+  const author = post?.frontmatter?.author || ''
+  const body = post?.body || ''
   return (
     <Layout>
-      {!post ? (
-        <>
-          <h1>No post found!</h1>
-        </>
-      ) : (
-        <>
-          <h1>{post?.frontmatter?.title}</h1>
-          <p
-            css={css`
-              font-size: 0.75rem;
-            `}
-          >
-            posted by {post?.frontmatter?.author}
-          </p>
-          <MDXRenderer>{post.body}</MDXRenderer>
-        </>
-      )}
+      <h1>{title}</h1>
+      <p
+        css={css`
+          font-size: 0.75rem;
+        `}
+      >
+        posted by {author}
+      </p>
+      <MDXRenderer>{body}</MDXRenderer>
+
       <ReadLink to="/">&larr; back to all posts</ReadLink>
     </Layout>
   )
