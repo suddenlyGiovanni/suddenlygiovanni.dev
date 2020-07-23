@@ -74,7 +74,8 @@
     "stylelint": "^13.6.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-standard": "^20.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
     "stylelint-order": "^4.1.0",
     "typescript": "^4.0.0-beta"
   },
@@ -87,7 +88,7 @@
     "type-check:watch": "npm run type-check -- --watch",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "lint": "eslint \"src/**\"",
-    "lint:css": "stylelint './src/*.tsx'",
+    "lint:css": "stylelint './src/*.{ts,tsx,css}'",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
