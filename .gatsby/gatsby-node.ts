@@ -42,33 +42,3 @@ const gatsbyNode: ITSConfigFn<'node'> = () => ({
 
 
 export default gatsbyNode
-
-// const createPages = async ({ actions, graphql, reporter }) => {
-//   const result = await graphql(`
-//     query GetPostsSlug {
-//       allMdx {
-//         nodes {
-//           frontmatter {
-//             slug
-//           }
-//         }
-//       }
-//     }
-//   `)
-
-//   if (result.errors) {
-//     reporter.panic('fail to create posts', result.errors)
-//   }
-
-//   const posts = result.data?.allMdx?.nodes
-
-//   posts.forEach((post) => {
-//     actions.createPage({
-//       path: post.frontmatter.slug,
-//       component: require.resolve('./src/templates/post.tsx'),
-//       context: {
-//         slug: post.frontmatter.slug,
-//       },
-//     })
-//   })
-// }
