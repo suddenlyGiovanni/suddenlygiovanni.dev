@@ -5,8 +5,8 @@ import React from 'react'
 import { bpMaxSM } from '../lib/breakpoints'
 
 import { Container } from './container'
-import { MobileNav } from './mobile-nav'
-import { NavLink } from './nav-link'
+import { NavDesktop } from './nav-desktop'
+import { NavMobile } from './nav-mobile'
 import { SuddenlyGiovanni } from './suddenly-giovanni'
 
 export const Header = (): JSX.Element => (
@@ -14,21 +14,9 @@ export const Header = (): JSX.Element => (
     <Container maxWidth={720} noVerticalPadding>
       <Nav>
         <SuddenlyGiovanni to="/" ariaLabel="go to homepage" />
-
         <NavLinksContainer>
-          <MobileNav />
-          <NavLink to="/" aria-label="go to homepage">
-            Blog
-          </NavLink>
-
-          {/* faking a disabled NavLink until ready to add this section */}
-          <ReadingJournalLink aria-label="go to reading journal">
-            Reading journal
-          </ReadingJournalLink>
-
-          <NavLink to="/about" aria-label="go to about">
-            About
-          </NavLink>
+          <NavMobile />
+          <NavDesktop />
         </NavLinksContainer>
       </Nav>
     </Container>
@@ -72,17 +60,3 @@ const NavLinksContainer = styled('div')`
     }
   }
 `
-
-const ReadingJournalLink = styled('span')({
-  background: 'transparent',
-  borderRadius: '3px',
-  marginTop: 'unset',
-  padding: '8px 10px',
-  ':hover': {
-    cursor: 'not-allowed',
-  },
-
-  /* stylelint-disable-line */ [bpMaxSM]: {
-    display: 'none',
-  },
-})

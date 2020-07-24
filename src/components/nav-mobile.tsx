@@ -4,7 +4,7 @@ import React, { FC, useState } from 'react'
 
 import { Container } from './container'
 
-export const MobileNav: FC<{ color?: string }> = ({ color = 'black' }) => {
+export const NavMobile: FC<{ color?: string }> = ({ color = 'black' }) => {
   const [isToggledOn, setToggle] = useState<boolean>(false)
 
   return (

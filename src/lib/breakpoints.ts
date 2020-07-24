@@ -1,6 +1,6 @@
-const maxXS = 320
-const maxSM = 767
-const maxMD = 1023
+export const maxXS = 320
+export const maxSM = 767
+export const maxMD = 1023
 
 export const bpMaxXS = `@media (max-width: ${maxXS}px)`
 export const bpMaxSM = `@media (max-width: ${maxSM}px)`

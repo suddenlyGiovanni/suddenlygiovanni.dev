@@ -124,7 +124,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
     },
     {
       options: {
-        codegen: true, // TODO: enable!!
+        codegen: false, // TODO: enable!!
         documentPaths: [
           './src/**/*.{ts,tsx}',
           './node_modules/gatsby-*/**/*.js',
@@ -172,9 +172,9 @@ const gatsbyConfig: GatsbyConfig = () => ({
     {
       resolve: 'gatsby-plugin-webpack-bundle-analyzer',
       options: {
-        production: true,
+        production: false,
         disable: !process.env.ANALYZE_BUNDLE_SIZE,
-        generateStatsFile: true,
+        generateStatsFile: false,
         analyzerMode: 'static',
       },
     },
