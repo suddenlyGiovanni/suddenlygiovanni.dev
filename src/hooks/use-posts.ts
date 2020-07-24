@@ -5,7 +5,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import { PostsPreviewDataQuery } from '../../typings/graphql-types'
 
-export type PostPreviewData = {
+type PostPreviewData = {
   id: string
   slug: string
   author: string

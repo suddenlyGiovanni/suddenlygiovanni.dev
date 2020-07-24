@@ -17,7 +17,7 @@ type Props = {
 }
 
 export const PostPreview: FC<Props> = ({ post }) => (
-  <article key={post.id}>
+  <article>
     <header>
       <h2
         css={css`
