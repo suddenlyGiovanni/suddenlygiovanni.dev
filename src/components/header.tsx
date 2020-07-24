@@ -2,8 +2,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
 
-import { bpMaxSM } from '../lib/breakpoints'
-
 import { Container } from './container'
 import { NavDesktop } from './nav-desktop'
 import { NavMobile } from './nav-mobile'
@@ -13,11 +11,9 @@ export const Header = (): JSX.Element => (
   <HeaderComp>
     <Container maxWidth={720} noVerticalPadding>
       <Nav>
-        <SuddenlyGiovanni to="/" ariaLabel="go to homepage" />
-        <NavLinksContainer>
-          <NavMobile />
-          <NavDesktop />
-        </NavLinksContainer>
+        <SuddenlyGiovanni />
+        <NavMobile />
+        <NavDesktop />
       </Nav>
     </Container>
   </HeaderComp>
@@ -42,21 +38,4 @@ const Nav = styled('nav')`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-`
-
-const NavLinksContainer = styled('div')`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  .mobile-nav {
-    display: none;
-
-    visibility: hidden;
-    ${bpMaxSM} {
-      display: block;
-
-      visibility: visible;
-    }
-  }
 `

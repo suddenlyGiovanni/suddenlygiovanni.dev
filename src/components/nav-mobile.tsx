@@ -1,17 +1,31 @@
 import { css } from '@emotion/core'
-import { Link } from 'gatsby'
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 
-import { Container } from './container'
+import { maxSM } from '../lib/breakpoints'
+import { scale } from '../lib/typography'
 
-export const NavMobile: FC<{ color?: string }> = ({ color = 'black' }) => {
+import { NavLink } from './nav-link'
+
+export const NavMobile = (): JSX.Element => {
   const [isToggledOn, setToggle] = useState<boolean>(false)
-
+  const toggle = (): void => setToggle(!isToggledOn)
   return (
-    <div className="mobile-nav">
+    <div
+      css={css`
+        display: none;
+
+        visibility: hidden;
+
+        @media (max-width: ${maxSM}px) {
+          display: block;
+
+          visibility: visible;
+        }
+      `}
+    >
       <button
         type="button"
-        onClick={(): void => setToggle(!isToggledOn)}
+        onClick={toggle}
         aria-label={`${isToggledOn ? 'close menu' : 'open menu'}`}
         css={css`
           position: relative;
@@ -23,6 +37,7 @@ export const NavMobile: FC<{ color?: string }> = ({ color = 'black' }) => {
 
           background: transparent;
           border: none;
+
           :hover:not(.touch),
           :focus {
             background: transparent;
@@ -33,54 +48,57 @@ export const NavMobile: FC<{ color?: string }> = ({ color = 'black' }) => {
       >
         <div
           css={css`
+            position: absolute;
+            left: 0;
+
             width: 24px;
             height: 2px;
 
-            background: ${color};
+            background: ${isToggledOn ? 'transparent' : `black`};
 
-            position: absolute;
-            left: 0;
-            ${isToggledOn ? 'background: transparent' : `background: ${color}`};
             transition: all 250ms cubic-bezier(0.86, 0, 0.07, 1);
-            ::before {
-              content: '';
 
+            ::before {
+              position: absolute;
               top: -8px;
+              left: 0;
 
               width: 24px;
               height: 2px;
 
-              background: ${isToggledOn ? 'black' : `${color}`};
+              background: black;
 
-              position: absolute;
-              left: 0;
+              transition: all 250ms cubic-bezier(0.86, 0, 0.07, 1);
+
+              content: '';
+
               ${isToggledOn
                 ? 'transform: rotate(45deg); top: 0; '
                 : 'transform: rotate(0)'};
-              transition: all 250ms cubic-bezier(0.86, 0, 0.07, 1);
             }
             ::after {
+              position: absolute;
               top: 8px;
-
-              content: '';
+              left: 0;
 
               width: 24px;
               height: 2px;
 
-              background: ${isToggledOn ? 'black' : `${color}`};
+              background: black;
 
-              position: absolute;
-              left: 0;
+              transition: all 250ms cubic-bezier(0.86, 0, 0.07, 1);
+
+              content: '';
+
               ${isToggledOn
                 ? 'transform: rotate(-45deg); top: 0;'
                 : 'transform: rotate(0)'};
-              transition: all 250ms cubic-bezier(0.86, 0, 0.07, 1);
             }
           `}
         />
       </button>
       {isToggledOn && (
-        <div
+        <ul
           css={css`
             position: absolute;
             top: 0;
@@ -88,48 +106,72 @@ export const NavMobile: FC<{ color?: string }> = ({ color = 'black' }) => {
             z-index: 20;
 
             display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             width: 100vw;
             height: 100vh;
+            margin: 0 auto;
+            padding-top: 20px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+
+            list-style: unset;
 
             background: white;
+
+            counter-reset: unset;
+            margin-block-start: unset;
+            margin-block-end: unset;
+            padding-inline-start: unset;
+
+            & > li {
+              display: block;
+
+              margin: 2rem auto;
+              padding-left: unset;
+
+              font-size: ${scale(0.7).fontSize};
+
+              text-align: unset;
+            }
           `}
         >
-          <Container
-            css={css`
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: space-evenly;
-              a {
-                margin: 10px 0;
-                padding: 10px;
-
-                color: black;
-                font-size: 22px;
-
-                border-radius: 5px;
-                :hover {
-                  background: rgba(0, 0, 0, 0.2);
-                }
-              }
-              .active {
-                background: rgba(0, 0, 0, 0.2);
-              }
-            `}
-          >
-            <Link aria-label="View blog page" to="/" activeClassName="active">
+          <li>
+            <NavLink
+              aria-label="View blog page"
+              to="/"
+              activeClassName="current-page"
+            >
               Blog
-            </Link>
-            <Link
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/"
+              aria-label="go to reading journal"
+              css={css`
+                text-decoration: line-through;
+
+                cursor: not-allowed;
+              `}
+            >
+              Reading journal
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
               aria-label="View about page"
               to="/about"
-              activeClassName="active"
+              activeClassName="current-page"
             >
               About
-            </Link>
-          </Container>
-        </div>
+            </NavLink>
+          </li>
+        </ul>
       )}
     </div>
   )

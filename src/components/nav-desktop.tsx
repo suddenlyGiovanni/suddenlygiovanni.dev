@@ -32,6 +32,7 @@ export const NavDesktop = (): JSX.Element => (
           margin-right: 0;
         }
       }
+
       @media (max-width: ${maxSM}px) {
         display: none;
       }
@@ -52,7 +53,12 @@ export const NavDesktop = (): JSX.Element => (
         to="/"
         aria-label="go to reading journal"
         css={css`
+          text-decoration: line-through;
+
           cursor: not-allowed;
+          :hover {
+            text-decoration: line-through;
+          }
         `}
       >
         Reading journal
