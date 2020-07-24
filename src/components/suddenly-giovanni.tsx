@@ -3,19 +3,15 @@ import { Link } from 'gatsby'
 import Image from 'gatsby-image'
 import React from 'react'
 
+import { scale } from '../lib/typography'
 import { useProfilePictureFix } from '../hooks/use-profile-picture-fix'
 
-type Props = {
-  to: string
-  ariaLabel: string
-}
-
-export const SuddenlyGiovanni = ({ to, ariaLabel }: Props): JSX.Element => {
+export const SuddenlyGiovanni = (): JSX.Element => {
   const profilePictureFix = useProfilePictureFix()
   return (
     <Link
-      to={to}
-      aria-label={ariaLabel}
+      to="/"
+      aria-label="go to homepage"
       activeStyle={undefined}
       css={css`
         position: relative;
@@ -54,7 +50,7 @@ export const SuddenlyGiovanni = ({ to, ariaLabel }: Props): JSX.Element => {
           margin-bottom: 0;
           margin-left: 1rem;
 
-          font-size: 1.25rem;
+          font-size: ${scale(1 / 2).fontSize};
 
           border-bottom: unset;
         `}
