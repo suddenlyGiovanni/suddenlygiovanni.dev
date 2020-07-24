@@ -3,7 +3,6 @@ import styled from '@emotion/styled'
 import React, { FC } from 'react'
 
 import { globalStyles } from '../lib/global.styles'
-// import { reset } from '../lib/reset.styles'
 
 import { Footer } from './footer'
 import { Header } from './header'

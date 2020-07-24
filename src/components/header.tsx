@@ -1,99 +1,41 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, sort-keys */
-import { css } from '@emotion/core'
 import styled from '@emotion/styled'
-import { graphql, useStaticQuery } from 'gatsby'
-import Image, { FixedObject } from 'gatsby-image'
-import React, { FC } from 'react'
+import React from 'react'
 
-import { GetProfilePictureQuery } from '../../typings/graphql-types'
 import { bpMaxSM } from '../lib/breakpoints'
 
 import { Container } from './container'
-import { HeaderLink } from './header-link'
 import { MobileNav } from './mobile-nav'
+import { NavLink } from './nav-link'
+import { SuddenlyGiovanni } from './suddenly-giovanni'
 
-const NavLink = styled(HeaderLink)({
-  background: 'transparent',
-  borderRadius: '3px',
-  marginTop: 'unset',
-  padding: '8px 10px',
-  // media query
-  /* stylelint-disable-line */ [bpMaxSM]: {
-    display: 'none',
-  },
-})
+export const Header = (): JSX.Element => (
+  <HeaderComp>
+    <Container maxWidth={720} noVerticalPadding>
+      <Nav>
+        <SuddenlyGiovanni to="/" ariaLabel="go to homepage" />
 
-const useProfilePictureFix = (): FixedObject | undefined => {
-  const getProfilePicture = graphql`
-    query GetProfilePicture {
-      file(name: { eq: "giovanni_ravalico-profile_bw" }) {
-        image: childImageSharp {
-          fixed(width: 50, height: 50) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
-        }
-      }
-    }
-  `
-  const data = useStaticQuery<GetProfilePictureQuery>(getProfilePicture)
+        <NavLinksContainer>
+          <MobileNav />
+          <NavLink to="/" aria-label="go to homepage">
+            Blog
+          </NavLink>
 
-  if (data.file?.image?.fixed) {
-    const { fixed } = data.file.image
-    const fixedObject: FixedObject = {
-      width: fixed.width,
-      height: fixed.height,
-      src: fixed.src,
-      srcSet: fixed.srcSet,
-      base64: fixed.base64 || undefined,
-      srcWebp: fixed.srcWebp || undefined,
-      srcSetWebp: fixed.srcSetWebp || undefined,
-    }
-    return fixedObject
-  }
-  return undefined
-}
+          {/* faking a disabled NavLink until ready to add this section */}
+          <ReadingJournalLink aria-label="go to reading journal">
+            Reading journal
+          </ReadingJournalLink>
 
-const headerLinkStyles = css`
-  position: relative;
+          <NavLink to="/about" aria-label="go to about">
+            About
+          </NavLink>
+        </NavLinksContainer>
+      </Nav>
+    </Container>
+  </HeaderComp>
+)
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  font-weight: bold;
-  text-decoration: none;
-
-  :hover,
-  :focus {
-    color: unset;
-    text-decoration: none;
-
-    background: unset;
-  }
-
-  &.current-page {
-    background: transparent;
-  }
-
-  span {
-    display: inline-block;
-    margin: 0;
-    margin-left: 1rem;
-  }
-`
-const imageStyles = css`
-  max-width: 50px;
-  overflow: hidden;
-
-  border-radius: 100%;
-  picture {
-    margin: 0;
-  }
-  picture > * {
-    margin: 0;
-  }
-`
-const headerStyles = css`
+const HeaderComp = styled('header')`
   z-index: 10;
 
   display: flex;
@@ -106,83 +48,41 @@ const headerStyles = css`
   background: none;
   border-bottom: thin solid black;
 `
-export const Header: FC = () => {
-  const profilePictureFix = useProfilePictureFix()
-  return (
-    <header css={headerStyles}>
-      <Container maxWidth={720} noVerticalPadding>
-        <nav
-          css={css`
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-          `}
-        >
-          <HeaderLink
-            to="/"
-            aria-label="go to homepage"
-            activeStyle={undefined}
-            css={headerLinkStyles}
-          >
-            <Image
-              css={imageStyles}
-              alt="Giovanni Ravalico's profile picture"
-              fixed={profilePictureFix}
-              loading="eager"
-            />
-            <span>suddenlyGiovanni</span>
-          </HeaderLink>
 
-          <div
-            css={css`
-              display: flex;
-              align-items: center;
-              justify-content: space-between;
+const Nav = styled('nav')`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`
 
-              .mobile-nav {
-                display: none;
+const NavLinksContainer = styled('div')`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-                visibility: hidden;
-                ${bpMaxSM} {
-                  display: block;
+  .mobile-nav {
+    display: none;
 
-                  visibility: visible;
-                }
-              }
-            `}
-          >
-            <MobileNav />
-            <NavLink to="/" aria-label="go to homepage">
-              Blog
-            </NavLink>
+    visibility: hidden;
+    ${bpMaxSM} {
+      display: block;
 
-            {/* faking a disabled NavLink until ready to add this section */}
-            <span
-              aria-label="go to reading journal"
-              css={css({
-                background: 'transparent',
-                borderRadius: '3px',
-                marginTop: 'unset',
-                padding: '8px 10px',
-                ':hover': {
-                  cursor: 'not-allowed',
-                },
+      visibility: visible;
+    }
+  }
+`
 
-                /* stylelint-disable-line */ [bpMaxSM]: {
-                  display: 'none',
-                },
-              })}
-            >
-              Reading journal
-            </span>
+const ReadingJournalLink = styled('span')({
+  background: 'transparent',
+  borderRadius: '3px',
+  marginTop: 'unset',
+  padding: '8px 10px',
+  ':hover': {
+    cursor: 'not-allowed',
+  },
 
-            <NavLink to="/about" aria-label="go to about">
-              About
-            </NavLink>
-          </div>
-        </nav>
-      </Container>
-    </header>
-  )
-}
+  /* stylelint-disable-line */ [bpMaxSM]: {
+    display: 'none',
+  },
+})

@@ -1,21 +1,36 @@
 import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+// import { Link } from 'gatsby'
 
-export const NavLink = styled(Link)<{ fontWeight?: string }>`
-  margin: 0 0.5rem 0 0;
-  padding: 0.25rem;
+import { bpMaxSM } from '../lib/breakpoints'
 
-  color: #222;
-  font-weight: ${({ fontweight }) => fontweight || 'normal'};
-  font-size: 1rem;
-  line-height: 1;
-  text-decoration: none;
+import { HeaderLink } from './header-link'
 
-  &.current-page {
-    border-bottom: 2px solid #222;
-  }
+// export const NavLink = styled(Link)<{ fontWeight?: string }>`
+//   margin: 0 0.5rem 0 0;
+//   padding: 0.25rem;
 
-  &:last-of-type {
-    margin-right: 0;
-  }
-`
+//   color: #222;
+//   font-weight: ${({ fontweight }) => fontweight || 'normal'};
+//   font-size: 1rem;
+//   line-height: 1;
+//   text-decoration: none;
+
+//   &.current-page {
+//     border-bottom: 2px solid #222;
+//   }
+
+//   &:last-of-type {
+//     margin-right: 0;
+//   }
+// `
+
+export const NavLink = styled(HeaderLink)({
+  background: 'transparent',
+  borderRadius: '3px',
+  marginTop: 'unset',
+  padding: '8px 10px',
+  // media query
+  /* stylelint-disable-line */ [bpMaxSM]: {
+    display: 'none',
+  },
+})
