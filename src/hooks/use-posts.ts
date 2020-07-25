@@ -4,6 +4,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
 import { PostsPreviewDataQuery } from '../../typings/graphql-types'
+import { convertStringToDate, formatDate } from '../lib/helpers'
 
 type PostPreviewData = {
   id: string
@@ -50,7 +51,7 @@ export const usePostsPreview = (): PostPreviewData[] => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   return posts.map(({ frontmatter, timeToRead, id }) => ({
     author: frontmatter?.author || '',
-    date: frontmatter?.date || '',
+    date: formatDate(convertStringToDate(frontmatter?.date || '')),
     description: frontmatter?.description || '',
     id: id || '',
     slug: frontmatter?.slug || '',
