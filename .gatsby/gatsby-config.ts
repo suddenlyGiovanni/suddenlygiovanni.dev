@@ -149,7 +149,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
         background_color: config.backgroundColor,
         description: config.siteDescription,
         display: 'minimal-ui',
-        icon: 'images/gatsby-icon.png', // This path is relative to the root of the site.
+        icon: 'images/suddenly_giovanni-icon-white.svg', // This path is relative to the root of the site.
         lang: config.lang,
         name: config.siteTitle,
         short_name: config.siteTitleShort,

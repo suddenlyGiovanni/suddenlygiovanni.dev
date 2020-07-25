@@ -144,7 +144,7 @@ export const NavMobile = (): JSX.Element => {
               to="/"
               activeClassName="current-page"
             >
-              Blog
+              BLOG
             </NavLink>
           </li>
 
@@ -158,17 +158,27 @@ export const NavMobile = (): JSX.Element => {
                 cursor: not-allowed;
               `}
             >
-              Reading journal
+              READING JOURNAL
             </NavLink>
           </li>
 
           <li>
             <NavLink
               aria-label="View about page"
-              to="/about"
+              to="/about-me"
               activeClassName="current-page"
             >
-              About
+              ABOUT ME
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/resume"
+              aria-label="go to resume"
+              activeClassName="current-page"
+            >
+              RÉSUMÉ
             </NavLink>
           </li>
         </ul>

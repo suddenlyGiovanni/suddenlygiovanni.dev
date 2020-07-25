@@ -44,7 +44,7 @@ export const NavDesktop = (): JSX.Element => (
         aria-label="go to homepage"
         activeClassName="current-page"
       >
-        Blog
+        BLOG
       </NavLink>
     </li>
 
@@ -61,17 +61,27 @@ export const NavDesktop = (): JSX.Element => (
           }
         `}
       >
-        Reading journal
+        READING JOURNAL
       </NavLink>
     </li>
 
     <li>
       <NavLink
-        to="/about"
+        to="/about-me"
         aria-label="go to about"
         activeClassName="current-page"
       >
-        About
+        ABOUT ME
+      </NavLink>
+    </li>
+
+    <li>
+      <NavLink
+        to="/resume"
+        aria-label="go to resume"
+        activeClassName="current-page"
+      >
+        RÉSUMÉ
       </NavLink>
     </li>
   </ul>
