@@ -108,23 +108,16 @@ const gatsbyConfig: GatsbyConfig = () => ({
         name: 'blog',
       },
     },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     path: 'content/assets',
-    //     name: 'assets',
-    //   },
-    // },
     {
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'images',
-        path: 'images',
+        path: 'content/assets',
+        name: 'assets',
       },
-      resolve: 'gatsby-source-filesystem',
     },
     {
       options: {
-        codegen: false, // TODO: enable!!
+        codegen: true, // TODO: enable!!
         documentPaths: [
           './src/**/*.{ts,tsx}',
           './node_modules/gatsby-*/**/*.js',
@@ -149,7 +142,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
         background_color: config.backgroundColor,
         description: config.siteDescription,
         display: 'minimal-ui',
-        icon: 'images/suddenly_giovanni-icon-white.svg', // This path is relative to the root of the site.
+        icon: 'content/assets/suddenly_giovanni-icon-white.svg', // This path is relative to the root of the site.
         lang: config.lang,
         name: config.siteTitle,
         short_name: config.siteTitleShort,
