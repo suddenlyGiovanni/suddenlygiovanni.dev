@@ -2,7 +2,7 @@ import { css } from '@emotion/core'
 import { Link } from 'gatsby'
 import React, { FC } from 'react'
 
-import { formatReadingTime } from '../lib/helpers'
+import { DateAndReadingTime } from './date-and-reading-time'
 
 type Props = {
   post: {
@@ -11,7 +11,7 @@ type Props = {
     author: string
     title: string
     description: string
-    date: string
+    date: Date
     timeToRead: number
   }
 }
@@ -39,10 +39,7 @@ export const PostPreview: FC<Props> = ({ post }) => (
           {post.title}
         </Link>
       </h2>
-      <small>
-        {post.date}
-        {` • ${formatReadingTime(post.timeToRead)}`}
-      </small>
+      <DateAndReadingTime date={post.date} timeToRead={post.timeToRead} />
     </header>
 
     <section>
