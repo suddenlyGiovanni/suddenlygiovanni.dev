@@ -101,6 +101,10 @@ const siteMetadata = {
 const gatsbyConfig: GatsbyConfig = () => ({
   siteMetadata,
   plugins: [
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -127,16 +131,14 @@ const gatsbyConfig: GatsbyConfig = () => ({
       },
       resolve: `gatsby-plugin-graphql-codegen`,
     },
-    'gatsby-plugin-emotion',
-    'gatsby-plugin-react-helmet',
+
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `./src/lib/typography`,
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+
     {
       options: {
         background_color: config.backgroundColor,
@@ -156,7 +158,17 @@ const gatsbyConfig: GatsbyConfig = () => ({
         defaultLayouts: {
           default: require.resolve('../src/components/layout.tsx'),
         },
-        gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1200,
+              linkImagesToOriginal: false,
+              withWebp: true,
+              tracedSVG: true,
+            },
+          },
+        ],
         plugins: [{ resolve: 'gatsby-remark-images' }],
       },
       resolve: 'gatsby-plugin-mdx',
