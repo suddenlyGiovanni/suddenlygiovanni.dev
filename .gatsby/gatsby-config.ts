@@ -102,6 +102,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
   siteMetadata,
   plugins: [
     'gatsby-transformer-sharp',
+    'gatsby-transformer-json',
     'gatsby-plugin-sharp',
     'gatsby-plugin-emotion',
     'gatsby-plugin-react-helmet',
@@ -117,6 +118,13 @@ const gatsbyConfig: GatsbyConfig = () => ({
       options: {
         path: 'content/assets',
         name: 'assets',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: 'content/resume',
+        name: 'resume',
       },
     },
     {
