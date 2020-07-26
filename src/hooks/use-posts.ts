@@ -12,7 +12,7 @@ type PostPreviewData = {
   author: string
   title: string
   description: string
-  date: string
+  date: Date
   timeToRead: number
 }
 
@@ -51,7 +51,7 @@ export const usePostsPreview = (): PostPreviewData[] => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
   return posts.map(({ frontmatter, timeToRead, id }) => ({
     author: frontmatter?.author || '',
-    date: formatDate(convertStringToDate(frontmatter?.date || '')),
+    date: convertStringToDate(frontmatter?.date || ''),
     description: frontmatter?.description || '',
     id: id || '',
     slug: frontmatter?.slug || '',
