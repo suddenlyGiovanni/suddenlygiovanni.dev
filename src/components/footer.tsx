@@ -46,11 +46,11 @@ export const Footer = ({ maxWidth = 720 }: Props): JSX.Element => {
     <footer css={footerStyles}>
       <Container maxWidth={maxWidth} css={containerStyles} noVerticalPadding>
         <p css={copyrightStyles}>© {copyrightYear} Giovanni Ravalico</p>
-        <div css={socialsStyles}>
+        <address css={socialsStyles}>
           <Twitter color="black" />
           <GitHub color="black" />
           <LinkedIn color="black" />
-        </div>
+        </address>
       </Container>
     </footer>
   )
