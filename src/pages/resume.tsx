@@ -2,9 +2,22 @@ import { css } from '@emotion/core'
 import { Link, PageProps } from 'gatsby'
 import React, { FC } from 'react'
 
-import { Basics } from '../../typings/resume'
-
-import { Contacts, Layout, ReadLink } from '../components/index'
+import { Layout, ReadLink } from '../components/index'
+import {
+  Awards,
+  Contacts,
+  Educations,
+  Interests,
+  Languages,
+  ProfessionalExperience,
+  ProgrammingLanguages,
+  Projects,
+  Publications,
+  References,
+  Skills,
+  TechnicalSkills,
+  Volunteer,
+} from '../components/resume-sections'
 import { useResume } from '../hooks'
 
 const ResumePage: FC<PageProps> = () => {
@@ -53,21 +66,40 @@ const ResumePage: FC<PageProps> = () => {
               <Link to="/motivations"> my motivations</Link> first.
             </em>
           </p>
+          {basics && <Contacts basics={basics} />}
 
-          <Contacts
-            basics={basics as Basics /* TODO: Remove this type casting */}
-          />
+          <pre>{JSON.stringify(basics, null, 2)}</pre>
         </header>
 
-        {/* SKILLS */}
-        {/* PROGRAMMING LANGUAGES */}
-        {/* TECHNICAL SKILLS */}
-        {/* PROFESSIONAL EXPERIENCE */}
-        {/* EDUCATION */}
-        {/* INTERESTS */}
-        {/* LANGUAGES */}
-        {/* PROJECTS */}
-        <pre>{JSON.stringify(resume, null, 2)}</pre>
+        {skills && <Skills skills={skills} />}
+
+        <TechnicalSkills />
+
+        <ProgrammingLanguages />
+
+        {work && <ProfessionalExperience works={work} />}
+
+        {education && <Educations educations={education} />}
+
+        {interests && <Interests interests={interests} />}
+
+        {languages && <Languages languages={languages} />}
+
+        {projects && <Projects projects={projects} />}
+
+        {awards && <Awards awards={awards} />}
+
+        {volunteer && <Volunteer volunteers={volunteer} />}
+
+        {publications && <Publications publications={publications} />}
+
+        {references && <References references={references} />}
+
+        <small>
+          <p>last modified: {meta?.lastModified}</p>
+          <p>version: {meta?.version}</p>
+        </small>
+
         <ReadLink to="/">&larr; back to my Blog</ReadLink>
       </article>
     </Layout>
