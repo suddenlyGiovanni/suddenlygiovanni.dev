@@ -2,9 +2,9 @@ import { css } from '@emotion/core'
 import React from 'react'
 import { FaBlog, FaEnvelope, FaMapMarkerAlt, FaMobile } from 'react-icons/fa'
 
-import { Basics } from '../../typings/resume'
+import type { Basics } from '../../../typings/resume'
 
-import { SocialIcon } from './social-icon'
+import { SocialIcon } from '../social-icon'
 
 type Props = { basics: Basics }
 export const Contacts = ({ basics }: Props): JSX.Element => {
