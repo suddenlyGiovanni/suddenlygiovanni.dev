@@ -10,82 +10,103 @@ const resumeQuery = graphql`
   query Resume {
     resumeJson {
       basics {
-        name
-        label
-        picture
         email
+        image
+        label
+        name
         phone
-        website
         summary
+        url
         profiles {
           network
-          username
           url
+          username
         }
         location {
           address
-          postalCode
           city
           countryCode
+          postalCode
           region
         }
       }
       work {
-        company
-        position
-        website
-        startDate(formatString: "MM, YYYY")
+        description
         endDate(formatString: "MM, YYYY")
-        summary
         highlights
+        location
+        name
+        position
+        startDate(formatString: "MM, YYYY")
+        summary
+        url
       }
       volunteer {
+        endDate(formatString: "MM, YYYY")
+        highlights
         organization
         position
-        website
         startDate(formatString: "MM, YYYY")
-        endDate(formatString: "MM, YYYY")
         summary
-        highlights
+        url
       }
       education {
-        institution
         area
-        studyType
-        startDate(formatString: "MM, YYYY")
+        courses
         endDate(formatString: "MM, YYYY")
         gpa
-        courses
+        institution
+        startDate(formatString: "MM, YYYY")
+        studyType
+        url
+      }
+      projects {
+        description
+        endDate
+        endDate
+        entity
+        highlights
+        keywords
+        name
+        roles
+        startDate
+        type
+        url
       }
       awards {
-        title
-        date(formatString: "MM/YYYY")
         awarder
+        date(formatString: "MM/YYYY")
         summary
+        title
       }
       publications {
         name
         publisher
         releaseDate(formatString: "MM/YYYY")
-        website
         summary
+        url
       }
       skills {
-        name
-        level
         keywords
+        level
+        name
       }
       languages {
-        language
         fluency
+        language
       }
       interests {
-        name
         keywords
+        name
       }
       references {
         name
         reference
+      }
+      meta {
+        canonical
+        lastModified
+        version
       }
     }
   }
@@ -94,11 +115,13 @@ const resumeQuery = graphql`
 export const useResume = (): Resume => {
   const { resumeJson } = useStaticQuery<ResumeQuery>(resumeQuery)
   const resume: Resume = {
+    awards: resumeJson?.awards,
     basics: resumeJson?.basics,
     education: resumeJson?.education,
     interests: resumeJson?.interests,
     languages: resumeJson?.languages,
-    // projects: resumeJson?.projects || [],
+    meta: resumeJson?.meta,
+    projects: resumeJson?.projects || [],
     publications: resumeJson?.publications || [],
     references: resumeJson?.references || [],
     skills: resumeJson?.skills || [],
