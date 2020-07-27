@@ -9,7 +9,6 @@ import { Resume } from '../../typings/resume'
 const resumeQuery = graphql`
   query Resume {
     resumeJson {
-      id
       basics {
         name
         label
@@ -18,13 +17,25 @@ const resumeQuery = graphql`
         phone
         website
         summary
+        profiles {
+          network
+          username
+          url
+        }
+        location {
+          address
+          postalCode
+          city
+          countryCode
+          region
+        }
       }
       work {
         company
         position
         website
-        startDate
-        endDate
+        startDate(formatString: "MM, YYYY")
+        endDate(formatString: "MM, YYYY")
         summary
         highlights
       }
@@ -32,8 +43,8 @@ const resumeQuery = graphql`
         organization
         position
         website
-        startDate
-        endDate
+        startDate(formatString: "MM, YYYY")
+        endDate(formatString: "MM, YYYY")
         summary
         highlights
       }
@@ -41,21 +52,21 @@ const resumeQuery = graphql`
         institution
         area
         studyType
-        startDate
-        endDate
+        startDate(formatString: "MM, YYYY")
+        endDate(formatString: "MM, YYYY")
         gpa
         courses
       }
       awards {
         title
-        date
+        date(formatString: "MM/YYYY")
         awarder
         summary
       }
       publications {
         name
         publisher
-        releaseDate
+        releaseDate(formatString: "MM/YYYY")
         website
         summary
       }

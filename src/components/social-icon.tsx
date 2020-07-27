@@ -1,4 +1,3 @@
-import React from 'react'
 import { IconBaseProps } from 'react-icons'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 

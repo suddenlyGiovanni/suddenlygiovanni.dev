@@ -18,13 +18,18 @@
     "profiles": [
       {
         "network": "Twitter",
-        "username": "neutralthoughts",
-        "url": ""
+        "username": "suddenlyGio",
+        "url": "https://twitter.com/suddenlyGio"
       },
       {
-        "network": "SoundCloud",
-        "username": "dandymusicnl",
-        "url": "https://soundcloud.com/dandymusicnl"
+        "network": "GitHub",
+        "username": "suddenlyGiovanni",
+        "url": "https://github.com/suddenlyGiovanni"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "giovanni-ravalico",
+        "url": "https://www.linkedin.com/in/giovanni-ravalico"
       }
     ]
   },
