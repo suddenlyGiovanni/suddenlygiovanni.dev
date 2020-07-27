@@ -1,8 +1,9 @@
 import { css } from '@emotion/core'
 import React from 'react'
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 import config from '../../config/website'
+
+import { SocialIcon } from './social-icon'
 
 type Props = {
   color?: string
@@ -27,7 +28,7 @@ export const Twitter = ({
     `}
     aria-label="Visit my Twitter"
   >
-    <FaTwitter size={24} />
+    <SocialIcon network="twitter" size={24} />
   </a>
 )
 
@@ -49,7 +50,7 @@ export const LinkedIn = ({
     `}
     aria-label="Visit my LinkedIn"
   >
-    <FaLinkedin size={24} />
+    <SocialIcon network="linkedin" size={24} />
   </a>
 )
 
@@ -71,6 +72,6 @@ export const GitHub = ({
     `}
     aria-label="Visit my GitHub"
   >
-    <FaGithub size={24} />
+    <SocialIcon network="github" size={24} />
   </a>
 )
