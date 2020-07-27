@@ -28,7 +28,7 @@ export const Twitter = ({
     `}
     aria-label="Visit my Twitter"
   >
-    <SocialIcon network="twitter" size={24} />
+    <SocialIcon network="twitter" size={24} aria-label="Twitter icon" />
   </a>
 )
 
@@ -50,7 +50,7 @@ export const LinkedIn = ({
     `}
     aria-label="Visit my LinkedIn"
   >
-    <SocialIcon network="linkedin" size={24} />
+    <SocialIcon network="linkedin" size={24} aria-label="LinkedIn icon" />
   </a>
 )
 
@@ -72,6 +72,6 @@ export const GitHub = ({
     `}
     aria-label="Visit my GitHub"
   >
-    <SocialIcon network="github" size={24} />
+    <SocialIcon network="github" size={24} aria-label="GitHub icon" />
   </a>
 )
