@@ -19,6 +19,7 @@ import {
   Volunteer,
 } from '../components/resume-sections'
 import { useResume } from '../hooks'
+import { formatDate } from '../lib/helpers'
 
 const ResumePage: FC<PageProps> = () => {
   const resume = useResume()
@@ -96,7 +97,9 @@ const ResumePage: FC<PageProps> = () => {
         {references && <References references={references} />}
 
         <small>
-          <p>last modified: {meta?.lastModified}</p>
+          {meta?.lastModified && (
+            <p>last modified: {formatDate(meta.lastModified)}</p>
+          )}
           <p>version: {meta?.version}</p>
         </small>
 
