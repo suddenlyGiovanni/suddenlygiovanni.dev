@@ -3,8 +3,8 @@ import { Link } from 'gatsby'
 import Image from 'gatsby-image'
 import React from 'react'
 
-import { scale } from '../lib/typography'
 import { useProfilePictureFix } from '../hooks/use-profile-picture-fix'
+import { scale } from '../lib/typography'
 
 export const SuddenlyGiovanni = (): JSX.Element => {
   const profilePictureFix = useProfilePictureFix()
@@ -47,12 +47,14 @@ export const SuddenlyGiovanni = (): JSX.Element => {
       />
       <h1
         css={css`
-          margin-bottom: 0;
+          margin-top: unset;
+          margin-bottom: unset;
           margin-left: 1rem;
+          padding-bottom: unset;
 
           font-size: ${scale(1 / 2).fontSize};
 
-          border-bottom: unset;
+          border: unset;
         `}
       >
         suddenlyGiovanni
