@@ -69,7 +69,6 @@ const ResumePage: FC<PageProps> = () => {
           </p>
           {basics && <Contacts basics={basics} />}
 
-          <pre>{JSON.stringify(basics, null, 2)}</pre>
         </header>
 
         {skills && <Skills skills={skills} />}
