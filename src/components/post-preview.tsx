@@ -21,7 +21,7 @@ export const PostPreview: FC<Props> = ({ post }) => (
     <header>
       <h2
         css={css`
-          margin-bottom: 0.5rem;
+          margin-top: unset;
         `}
       >
         <Link
