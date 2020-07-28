@@ -32,31 +32,31 @@ const resumeQuery = graphql`
       }
       work {
         description
-        endDate(formatString: "MM, YYYY")
+        endDate
         highlights
         location
         name
         position
-        startDate(formatString: "MM, YYYY")
+        startDate
         summary
         url
       }
       volunteer {
-        endDate(formatString: "MM, YYYY")
+        endDate
         highlights
         organization
         position
-        startDate(formatString: "MM, YYYY")
+        startDate
         summary
         url
       }
       education {
         area
         courses
-        endDate(formatString: "MM, YYYY")
+        endDate
         gpa
         institution
-        startDate(formatString: "MM, YYYY")
+        startDate
         studyType
         url
       }
@@ -75,14 +75,14 @@ const resumeQuery = graphql`
       }
       awards {
         awarder
-        date(formatString: "MM/YYYY")
+        date
         summary
         title
       }
       publications {
         name
         publisher
-        releaseDate(formatString: "MM/YYYY")
+        releaseDate
         summary
         url
       }
@@ -115,18 +115,49 @@ const resumeQuery = graphql`
 export const useResume = (): Resume => {
   const { resumeJson } = useStaticQuery<ResumeQuery>(resumeQuery)
   const resume: Resume = {
-    awards: resumeJson?.awards,
+    awards: resumeJson?.awards?.map((award) => ({
+      ...award,
+      date: new Date(award?.date),
+    })),
     basics: resumeJson?.basics,
-    education: resumeJson?.education,
+    education: resumeJson?.education?.map((ed) => ({
+      ...ed,
+      endDate: new Date(ed?.endDate),
+      startDate: new Date(ed?.startDate),
+    })),
     interests: resumeJson?.interests,
     languages: resumeJson?.languages,
-    meta: resumeJson?.meta,
-    projects: resumeJson?.projects || [],
-    publications: resumeJson?.publications || [],
+    meta: resumeJson?.meta && {
+      ...resumeJson.meta,
+      lastModified: new Date(resumeJson.meta.lastModified),
+    },
+    projects:
+      resumeJson?.projects?.map((pr) => ({
+        ...pr,
+        endDate: new Date(pr?.endDate),
+        startDate: new Date(pr?.startDate),
+      })) || [],
+    publications:
+      resumeJson?.publications?.map((pub) => ({
+        ...pub,
+        releaseDate: new Date(pub?.releaseDate),
+      })) || [],
     references: resumeJson?.references || [],
     skills: resumeJson?.skills || [],
-    volunteer: resumeJson?.volunteer || [],
-    work: resumeJson?.work || [],
+    volunteer:
+      resumeJson?.volunteer?.map((vol) => ({
+        ...vol,
+        endDate: new Date(vol?.endDate),
+        startDate: new Date(vol?.startDate),
+      })) || [],
+    work:
+      resumeJson?.work?.map((w) => {
+        return {
+          ...w,
+          endDate: new Date(w?.endDate),
+          startDate: new Date(w?.startDate),
+        }
+      }) || [],
   } as Resume // TODO: remove this temporary casting!
   return resume
 }
