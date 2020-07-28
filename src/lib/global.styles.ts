@@ -1,11 +1,13 @@
 import { css } from '@emotion/core'
 
+import { reset } from './reset.styles'
+
 export const globalStyles = css`
+  ${reset}
+
   pre {
     overflow: auto;
 
-    font-size: 0.85rem;
-    line-height: 1.42;
     word-wrap: normal;
 
     background: hsla(0, 0%, 0%, 0.04);

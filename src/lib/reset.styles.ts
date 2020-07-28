@@ -29,7 +29,7 @@ export const reset = css`
 
   /* @@@ Initial values are based on existing browser defaults */
 
-  h1 {
+  /* h1 {
     font-size: 2rem;
   }
   h2 {
@@ -46,12 +46,12 @@ export const reset = css`
   }
   h6 {
     font-size: 0.67rem;
-  }
+  } */
 
   /* Keep h1 margins consistent, even when nested */
-  h1 {
+  /* h1 {
     margin: 0.67em 0;
-  }
+  } */
 
   /* Typography *************/
 
