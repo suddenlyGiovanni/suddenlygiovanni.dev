@@ -12,6 +12,13 @@ export const Main = styled('main')`
   max-width: 800px;
   margin: 2rem auto 2rem;
   padding: 0 40px;
+
+  & > h1 {
+    margin-top: unset;
+    padding-bottom: unset;
+
+    border-bottom: unset;
+  }
   ${bpMaxSM} {
     padding: 0 20px;
   }
