@@ -7,13 +7,13 @@
     "email": "ravalico.giovanni@gmail.com",
     "phone": "+49 (0) 162 455 6031",
     "url": "https://suddenlyGiovanni.dev",
-    "summary": "Richard hails from Tulsa. He has earned degrees from the University of Oklahoma and Stanford. (Go Sooners and Cardinals!) Before starting Pied Piper, he worked for Hooli as a part time software developer. While his work focuses on applied information theory, mostly optimizing lossless compression schema of both the length-limited and adaptive variants, his non-work interests range widely, everything from quantum computing to chaos theory. He could tell you about it, but THAT would NOT be a “length-limited” conversation!",
+    "summary": "I am a Software Developer, a geek and more generally a problem solver. I am also a young father of two and a devoted husband. My transition from the social sciences to software engineering has enhanced my innate curiosity, my pragmatic approach, and desire to find new ways to solve old problems. I’m looking to work in an environment where I can continuously grow as a developer, where experimentation is encouraged and where I can tackle the hardest problems.",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "address": "Ferdinandstraße 11",
+      "postalCode": "12209",
+      "city": "Berlin",
+      "countryCode": "Germany",
+      "region": "Berlin"
     },
     "profiles": [
       {
@@ -35,105 +35,197 @@
   },
   "work": [
     {
-      "name": "Facebook",
-      "location": "Menlo Park, CA",
-      "description": "Social Media Company",
-      "position": "CEO/President",
-      "url": "http://facebook.example.com",
-      "startDate": "2013-12-01",
-      "endDate": "2014-12-01",
-      "summary": "Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.",
+      "name": "ToolTime Gmbh",
+      "location": "Berlin, Germany",
+      "description": "",
+      "position": "Senior Frontend Engineer",
+      "url": "https://www.tooltime.de/",
+      "startDate": "2019-09-01",
+      "endDate": "2020-02-29",
+      "summary": "A software-as-a-service solution that helps craftsmen tackle all administrative tasks of their business.",
       "highlights": [
-        "Build an algorithm for artist to detect if their music was violating copy right infringement laws",
-        "Successfully won Techcrunch Disrupt",
-        "Optimized an algorithm that holds the current world record for Weisman Scores"
+        "Design, build, scale and maintain ToolTime’s software solutions (Frontend: Typescript, React and React Native, GraphQL)",
+        "Help shaping the technical areas of the product",
+        "Work closely with product managers, product designers, frontend and backend engineers",
+        "Help to grow and develop the front-end team, playing a role in the process of hiring new team members",
+        "Foster a culture of continuous delivery and test-driven development",
+        "Solving challenging problems in the areas of: communication & chat, scheduling & disposition, routing & navigation, order management and documentation",
+        "Tech: [Typescript, React and React Native, CSS-in-JS, GraphQL]"
+      ]
+    },
+    {
+      "name": "Appico Gmbh",
+      "location": "Hamburg, Germany",
+      "description": "Digital Product Design Studio",
+      "position": "Full Stack Web Developer",
+      "url": "https://appico.com/",
+      "startDate": "2018-01-01",
+      "endDate": "2019-02-28",
+      "summary": "From Jan 2018 to Dec 2018 I worked on Carie™. A two-dimensional telemedicine platform that enables doctors to interact with patients and other doctors remotely by scheduling appointments, and allows messaging, video consultation, online medication prescription, and file sharing.",
+      "highlights": [
+        "Architected of the front-end as a Progressive Single Page App built with React, Redux, and Apollo (GraphQL client) to enable a resilient user experience.",
+        "Lead the front-end team (a small group of talents)",
+        "Managed project tasks and issues by delegating them to the most effective developer and thus increasing team efficiency.",
+        "Motivated my team to enforce type safety by teaching “Flow” and thus reducing the number of bug reports.",
+        "Introduced “component driven development” company-wide by coaching the designer team. The adoption of this practice and `Storybook` lead to a more streamlined development process.",
+        "Delivered and maintained the MVP since Oct 2018.",
+        "Studied React Native by implementing several in house app prototypes. By sharing this knowledge the company was able to offer a new service to its customers. (since Jan 2019)",
+        "Develop a boilerplate project setup based on company requirements and best practices which allowed to reduce the time needed to go from idea to prototype.",
+        "Tech: [ ESNext, TypeScript, Flow, React, React Native, Redux, Storybook, Apollo, GraphQL, styled-components, Lottie, Jest, Twilio, AWS IoT, Serverless, Node, AWS Lambda, Docker ]"
+      ]
+    },
+    {
+      "name": "MadeByEnka",
+      "location": "Rijeka, Croatia",
+      "description": "Handmade Fashion ecommerce",
+      "position": "Front-end Web Developer",
+      "url": "",
+      "startDate": "2016-10-01",
+      "endDate": "2017-06-30",
+      "summary": "Co-founded and managed a Lifestyle brand with my wife.",
+      "highlights": [
+        "Designed, developed and implemented the brand online presence by building the frontend on top of Shopify headless cms",
+        "Tech: [JS, HTML, CSS, JQuery, Shopify]"
+      ]
+    },
+    {
+      "name": "Ravalico Real Estate s.a.s",
+      "location": "Trieste, Italy",
+      "description": "Real Estate Agency",
+      "position": "Front-end Web Developer",
+      "url": "",
+      "startDate": "2015-10-01",
+      "endDate": "2016-10-30",
+      "summary": "Helped the company in its modernization process and to pivot its business model from Brick and Mortar to an online first presence.",
+      "highlights": [
+        "Architected, designed, and code multiple iterations of an in-house real estate CMS web app.",
+        "Tech: [WebComponents, Polymer, Firebase, Sails.js]"
       ]
     }
   ],
-  "volunteer": [
-    {
-      "organization": "CoderDojo",
-      "position": "Teacher",
-      "url": "http://coderdojo.com/",
-      "startDate": "2012-01-01",
-      "endDate": "2013-01-01",
-      "summary": "Global movement of free coding clubs for young people.",
-      "highlights": ["Awarded 'Teacher of the Month'"]
-    }
-  ],
+  "volunteer": [],
   "education": [
     {
-      "institution": "University of Oklahoma",
-      "url": "http://facebook.example.com",
-      "area": "Information Technology",
-      "studyType": "Bachelor",
-      "startDate": "2011-06-01",
-      "endDate": "2014-01-01",
-      "gpa": "4.0",
-      "courses": ["DB1101 - Basic SQL", "CS2011 - Java Introduction"]
-    }
-  ],
-  "awards": [
-    {
-      "title": "Digital Compression Pioneer Award",
-      "date": "2014-11-01",
-      "awarder": "Techcrunch",
-      "summary": "There is no spoon."
-    }
-  ],
-  "publications": [
-    {
-      "name": "Video compression for 3d media",
-      "publisher": "Hooli",
-      "releaseDate": "2014-10-01",
-      "url": "http://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)",
-      "summary": "Innovative middle-out compression algorithm that changes the way we store data."
-    }
-  ],
-  "skills": [
-    {
-      "name": "Web Development",
-      "level": "Master",
-      "keywords": ["HTML", "CSS", "Javascript"]
+      "institution": "SPICED Academy",
+      "url": "https://www.spiced-academy.com/",
+      "area": "Web Development",
+      "studyType": "Coding Bootcamp",
+      "startDate": "2017-06-01",
+      "endDate": "2017-09-30",
+      "gpa": "",
+      "courses": [
+        "Graduated from the program in Sep. 2017 by logging 1100+ hours of coding time.",
+        "Developed various web application including ‘Petition,’ ‘Imageboard,’ ‘Social Network,’ ‘P2P Chat’ (Final Project - one-week coding challenge).",
+        "Tech: [JavaScript, Node, SQL, React, Redux, Express, Backbone]"
+      ]
     },
     {
-      "name": "Compression",
-      "level": "Master",
-      "keywords": ["Mpeg", "MP4", "GIF"]
+      "institution": "Innovation Factory, AREA Science Park, Italy",
+      "url": "",
+      "area": "Entrepreneurship",
+      "studyType": "Business Boot Camp in Disciplined Entrepreneurship",
+      "startDate": "2015-04-01",
+      "endDate": "2015-05-30",
+      "gpa": "",
+      "courses": [
+        "Graduated from the program in July 2015.",
+        "Learned how to transform innovative business ideas into real products and services.",
+        "Applied innovation-driven entrepreneurship process to develop a B2B startup in the real estate industry."
+      ]
+    },
+    {
+      "institution": "Università degli studi di Trieste",
+      "url": "",
+      "area": "History",
+      "studyType": "Bachelor",
+      "startDate": "2011-09-01",
+      "endDate": "2014-09-01",
+      "gpa": "",
+      "courses": [
+        "Completed 90% of required credits toward Bachelor of Arts in Modern History"
+      ]
+    }
+  ],
+  "awards": [],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Programming languages",
+      "level": "",
+      "keywords": ["TypeScript", "Flow", "JavaScript", "SQL", "GraphQL"]
+    },
+    {
+      "name": "Back-end",
+      "level": "",
+      "keywords": [
+        "Node",
+        "Next.js",
+        "Express",
+        "Sails.js",
+        "Keystone.js",
+        "Handlebars"
+      ]
+    },
+    {
+      "name": "Front-end",
+      "level": "",
+      "keywords": [
+        "HTML",
+        "Canvas",
+        "CSS",
+        "SCSS",
+        "React",
+        "React Native",
+        "Redux",
+        "Apollo",
+        "Storybook",
+        "Polymer",
+        "Backbone",
+        "Gatsby"
+      ]
+    },
+    {
+      "name": "Databases",
+      "level": "",
+      "keywords": [
+        "PostgreSQL",
+        "Waterline",
+        "Redis",
+        "Firebase Realtime Database"
+      ]
+    },
+    {
+      "name": "Software Development Concepts",
+      "level": "",
+      "keywords": [
+        "Source Control",
+        "SC branching models",
+        "Functional programming (FP)",
+        "Object-oriented programming (OOP)",
+        "Test Driven Development (TDD)",
+        "Clean Code Principles",
+        "Design Driven Development"
+      ]
     }
   ],
   "languages": [
     {
       "language": "English",
-      "fluency": "Native speaker"
+      "fluency": " Fluent"
+    },
+    {
+      "fluency": "Native speaker",
+      "language": "Italian"
     }
   ],
   "interests": [
     {
-      "name": "Wildlife",
-      "keywords": ["Ferrets", "Unicorns"]
+      "name": "Functional Programming",
+      "keywords": ["ReasonML", "Clojure", "Haskell"]
     }
   ],
-  "references": [
-    {
-      "name": "Erlich Bachman",
-      "reference": "It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company."
-    }
-  ],
-  "projects": [
-    {
-      "name": "e.g. The World Wide Web",
-      "description": "Short summary of project. e.g. Collated works of 2017",
-      "highlights": ["features"],
-      "keywords": ["special elements involved"],
-      "startDate": "2014-06-29",
-      "endDate": "2014-06-29",
-      "url": "http://www.computer.org/csdl/mags/co/1996/10/rx069-abs.html",
-      "roles": ["Team Lead", "Speaker", "Writer"],
-      "entity": "corporationXYZ",
-      "type": "volunteering"
-    }
-  ],
+  "references": [],
+  "projects": [],
   "meta": {
     "canonical": "",
     "lastModified": "2020-07-27T18:21:47.286Z",
