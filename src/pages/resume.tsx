@@ -7,15 +7,13 @@ import {
   Awards,
   Contacts,
   Educations,
+  Experience,
   Interests,
   Languages,
-  ProfessionalExperience,
-  ProgrammingLanguages,
   Projects,
   Publications,
   References,
   Skills,
-  TechnicalSkills,
   Volunteer,
 } from '../components/resume-sections'
 import { useResume } from '../hooks'
@@ -68,16 +66,11 @@ const ResumePage: FC<PageProps> = () => {
             </em>
           </p>
           {basics && <Contacts basics={basics} />}
-
         </header>
 
         {skills && <Skills skills={skills} />}
 
-        <TechnicalSkills />
-
-        <ProgrammingLanguages />
-
-        {work && <ProfessionalExperience works={work} />}
+        {work && <Experience works={work} />}
 
         {education && <Educations educations={education} />}
 

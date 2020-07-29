@@ -8,7 +8,7 @@ type Props = {
   works: Work[]
 }
 
-export function ProfessionalExperience({ works }: Props): JSX.Element {
+export function Experience({ works }: Props): JSX.Element {
   function formatDate(date: Date): string {
     return date.toLocaleDateString('en-US', {
       month: 'short',
@@ -18,7 +18,7 @@ export function ProfessionalExperience({ works }: Props): JSX.Element {
 
   return (
     <section>
-      <h2>Professional experience</h2>
+      <h2>Experience</h2>
       {works.map(
         ({
           description,
