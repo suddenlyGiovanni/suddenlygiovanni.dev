@@ -32,6 +32,7 @@ export function ProfessionalExperience({ works }: Props): JSX.Element {
           url,
         }) => (
           <dl
+            key={name}
             css={css`
               border: solid thin;
             `}
@@ -72,11 +73,9 @@ export function ProfessionalExperience({ works }: Props): JSX.Element {
               <span
                 aria-label="company"
                 css={css`
-                  & {
-                    color: var(--body-color) !important;
-                    font-size: 1rem !important;
-                    font-style: unset !important;
-                  }
+                  color: var(--body-color) !important;
+                  font-size: 1rem !important;
+                  font-style: unset !important;
                 `}
               >
                 {name}
@@ -88,7 +87,7 @@ export function ProfessionalExperience({ works }: Props): JSX.Element {
                     margin-left: 0.5rem;
                   `}
                 >
-                  <FaExternalLinkAlt />
+                  <FaExternalLinkAlt aria-label="link to external resource" />
                 </a>
               </span>
               <span
@@ -146,8 +145,8 @@ export function ProfessionalExperience({ works }: Props): JSX.Element {
                   }
                 `}
               >
-                {highlights?.map((highlight) => (
-                  <li>{highlight}</li>
+                {highlights?.map((highlight, i) => (
+                  <li key={`${i}${highlight[0]}`}>{highlight}</li>
                 ))}
               </ul>
             </dd>
