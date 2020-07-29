@@ -39,7 +39,6 @@ export function Educations({ educations }: Props): JSX.Element {
           />
         )
       )}
-      <pre>{JSON.stringify(educations[0], null, 2)}</pre>
     </section>
   )
 }
