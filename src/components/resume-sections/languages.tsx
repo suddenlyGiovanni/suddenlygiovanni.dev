@@ -24,7 +24,7 @@ export function Languages({ languages }: Props): JSX.Element {
                 margin-bottom: unset;
               }
               dd {
-                margin-left: 1rem;
+                margin-left: 1em;
               }
             `}
           >

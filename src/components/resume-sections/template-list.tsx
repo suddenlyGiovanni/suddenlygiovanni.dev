@@ -22,7 +22,7 @@ export function TemplateList({ heading, stringList }: Props): JSX.Element {
 
             list-style: none;
             li {
-              margin-right: 1rem;
+              margin-right: 1em;
               margin-bottom: unset;
             }
           `}

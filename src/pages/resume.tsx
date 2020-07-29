@@ -37,14 +37,16 @@ const ResumePage: FC<PageProps> = () => {
   } = resume
   return (
     <Layout>
-      <h1>Résumé</h1>
-
       <article>
         <header>
           <hgroup
             css={css`
-              & > h1,
-              & h2 {
+              text-align: center;
+              h1,
+              h2 {
+                margin: 0 auto;
+                padding-bottom: unset;
+
                 border-bottom: unset;
               }
             `}
@@ -53,7 +55,13 @@ const ResumePage: FC<PageProps> = () => {
             <h1>{basics?.name || 'name'}</h1>
 
             {/* ROLE */}
-            <h2>{basics?.label || 'title'}</h2>
+            <h2
+              css={css`
+                color: var();
+              `}
+            >
+              {basics?.label || 'title'}
+            </h2>
           </hgroup>
 
           {/* SUMMARY */}
@@ -88,14 +96,29 @@ const ResumePage: FC<PageProps> = () => {
 
         {references && <References references={references} />}
 
-        <small>
-          {meta?.lastModified && (
-            <p>last modified: {formatDateLocaleLong(meta.lastModified)}</p>
-          )}
-          <p>version: {meta?.version}</p>
-        </small>
-
-        <ReadLink to="/">&larr; back to my Blog</ReadLink>
+        <div
+          css={css`
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          `}
+        >
+          <ReadLink to="/about-me">&larr; back to my About Me</ReadLink>
+          <small>
+            {meta?.lastModified && (
+              <span>
+                last modified: {formatDateLocaleLong(meta.lastModified)}
+              </span>
+            )}
+            <span
+              css={css`
+                margin-left: 1em;
+              `}
+            >
+              version: {meta?.version}
+            </span>
+          </small>
+        </div>
       </article>
     </Layout>
   )

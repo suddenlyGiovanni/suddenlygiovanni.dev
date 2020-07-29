@@ -3,6 +3,7 @@ import React from 'react'
 import { FaBlog, FaEnvelope, FaMapMarkerAlt, FaMobile } from 'react-icons/fa'
 
 import type { Basics } from '../../../typings/resume'
+import { bpMaxSM } from '../../lib/breakpoints'
 
 import { SocialIcon } from '../social-icon'
 
@@ -17,10 +18,19 @@ export const Contacts = ({ basics }: Props): JSX.Element => {
     >
       <ul
         css={css`
+          display: flex;
+          flex-flow: column wrap;
+          align-content: space-evenly;
+          align-items: flex-start;
+          justify-content: flex-start;
+          max-height: 10em;
           margin-bottom: unset;
           margin-left: unset;
 
           list-style: none;
+          ${bpMaxSM} {
+            max-height: unset;
+          }
           li {
             display: flex;
             flex-direction: row;

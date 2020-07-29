@@ -8,7 +8,6 @@ const IndexPage: FC<PageProps> = () => {
   const posts = usePostsPreview()
   return (
     <Layout>
-      <h1>Blog</h1>
       {posts.map((post) => (
         <PostPreview key={post.id} post={post} />
       ))}
