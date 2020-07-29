@@ -47,6 +47,7 @@ const resumeQuery = graphql`
         endDate
         gpa
         institution
+        location
         startDate
         studyType
         url
