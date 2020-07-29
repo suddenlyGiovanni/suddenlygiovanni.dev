@@ -697,16 +697,7 @@ export type FileFieldsEnum =
   | 'childMdx___fileAbsolutePath'
   | 'childMdx___frontmatter___title'
   | 'childMdx___frontmatter___slug'
-  | 'childMdx___frontmatter___date'
   | 'childMdx___frontmatter___author'
-  | 'childMdx___frontmatter___description'
-  | 'childMdx___frontmatter___categories'
-  | 'childMdx___frontmatter___keywords'
-  | 'childMdx___frontmatter___banner'
-  | 'childMdx___frontmatter___bannerCredit'
-  | 'childMdx___frontmatter___published'
-  | 'childMdx___frontmatter___unlisted'
-  | 'childMdx___frontmatter___redirects'
   | 'childMdx___frontmatter___image___sourceInstanceName'
   | 'childMdx___frontmatter___image___absolutePath'
   | 'childMdx___frontmatter___image___relativePath'
@@ -743,6 +734,15 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___image___publicURL'
   | 'childMdx___frontmatter___image___id'
   | 'childMdx___frontmatter___image___children'
+  | 'childMdx___frontmatter___date'
+  | 'childMdx___frontmatter___description'
+  | 'childMdx___frontmatter___categories'
+  | 'childMdx___frontmatter___keywords'
+  | 'childMdx___frontmatter___banner'
+  | 'childMdx___frontmatter___bannerCredit'
+  | 'childMdx___frontmatter___published'
+  | 'childMdx___frontmatter___unlisted'
+  | 'childMdx___frontmatter___redirects'
   | 'childMdx___slug'
   | 'childMdx___body'
   | 'childMdx___excerpt'
@@ -1567,16 +1567,7 @@ export type MdxFieldsEnum =
   | 'fileAbsolutePath'
   | 'frontmatter___title'
   | 'frontmatter___slug'
-  | 'frontmatter___date'
   | 'frontmatter___author'
-  | 'frontmatter___description'
-  | 'frontmatter___categories'
-  | 'frontmatter___keywords'
-  | 'frontmatter___banner'
-  | 'frontmatter___bannerCredit'
-  | 'frontmatter___published'
-  | 'frontmatter___unlisted'
-  | 'frontmatter___redirects'
   | 'frontmatter___image___sourceInstanceName'
   | 'frontmatter___image___absolutePath'
   | 'frontmatter___image___relativePath'
@@ -1647,6 +1638,15 @@ export type MdxFieldsEnum =
   | 'frontmatter___image___childResumeJson___skills'
   | 'frontmatter___image___childResumeJson___languages'
   | 'frontmatter___image___childResumeJson___interests'
+  | 'frontmatter___date'
+  | 'frontmatter___description'
+  | 'frontmatter___categories'
+  | 'frontmatter___keywords'
+  | 'frontmatter___banner'
+  | 'frontmatter___bannerCredit'
+  | 'frontmatter___published'
+  | 'frontmatter___unlisted'
+  | 'frontmatter___redirects'
   | 'slug'
   | 'body'
   | 'excerpt'
@@ -1769,8 +1769,9 @@ export type MdxFilterInput = {
 export type MdxFrontmatter = {
   title: Scalars['String'];
   slug?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['String']>;
   author?: Maybe<Scalars['String']>;
+  image?: Maybe<File>;
+  date?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   categories?: Maybe<Array<Maybe<Scalars['String']>>>;
   keywords?: Maybe<Array<Maybe<Scalars['String']>>>;
@@ -1779,14 +1780,14 @@ export type MdxFrontmatter = {
   published?: Maybe<Scalars['Boolean']>;
   unlisted?: Maybe<Scalars['Boolean']>;
   redirects?: Maybe<Array<Maybe<Scalars['String']>>>;
-  image?: Maybe<File>;
 };
 
 export type MdxFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
-  date?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<StringQueryOperatorInput>;
+  image?: Maybe<FileFilterInput>;
+  date?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
   categories?: Maybe<StringQueryOperatorInput>;
   keywords?: Maybe<StringQueryOperatorInput>;
@@ -1795,7 +1796,6 @@ export type MdxFrontmatterFilterInput = {
   published?: Maybe<BooleanQueryOperatorInput>;
   unlisted?: Maybe<BooleanQueryOperatorInput>;
   redirects?: Maybe<StringQueryOperatorInput>;
-  image?: Maybe<FileFilterInput>;
 };
 
 export type MdxGroupConnection = {
