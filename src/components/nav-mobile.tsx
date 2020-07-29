@@ -156,6 +156,11 @@ export const NavMobile = (): JSX.Element => {
                 text-decoration: line-through;
 
                 cursor: not-allowed;
+                &:hover {
+                  text-decoration: line-through;
+
+                  cursor: not-allowed;
+                }
               `}
             >
               READING JOURNAL
