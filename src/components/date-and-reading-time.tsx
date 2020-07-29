@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { formatDate, formatReadingTime } from '../lib/helpers'
+import { formatDateLocaleLong, formatReadingTime } from '../lib/helpers'
 
 type Props = {
   /** minutes in integer */
@@ -12,7 +12,7 @@ export const DateAndReadingTime = ({
   date,
 }: Props): JSX.Element => {
   const dateISO = date.toISOString()
-  const dateLocalized = formatDate(date)
+  const dateLocalized = formatDateLocaleLong(date)
   const readingTime = formatReadingTime(timeToRead)
   const timeDuration = `PT${timeToRead}M`
   return (
