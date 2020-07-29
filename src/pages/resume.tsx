@@ -17,7 +17,7 @@ import {
   Volunteer,
 } from '../components/resume-sections'
 import { useResume } from '../hooks'
-import { formatDate } from '../lib/helpers'
+import { formatDateLocaleLong } from '../lib/helpers'
 
 const ResumePage: FC<PageProps> = () => {
   const resume = useResume()
@@ -90,7 +90,7 @@ const ResumePage: FC<PageProps> = () => {
 
         <small>
           {meta?.lastModified && (
-            <p>last modified: {formatDate(meta.lastModified)}</p>
+            <p>last modified: {formatDateLocaleLong(meta.lastModified)}</p>
           )}
           <p>version: {meta?.version}</p>
         </small>

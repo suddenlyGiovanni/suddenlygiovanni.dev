@@ -4,7 +4,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
 import { PostsPreviewDataQuery } from '../../typings/graphql-types'
-import { convertStringToDate, formatDate } from '../lib/helpers'
+import { convertStringToDate } from '../lib/helpers'
 
 type PostPreviewData = {
   id: string
