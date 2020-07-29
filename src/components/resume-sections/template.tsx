@@ -34,11 +34,7 @@ export function Template({
   highlights,
 }: Props): JSX.Element {
   return (
-    <dl
-      css={css`
-        border: solid thin;
-      `}
-    >
+    <dl>
       <dt
         css={css`
           display: flex;
@@ -77,6 +73,7 @@ export function Template({
           aria-label={heading2AriaLabel}
           css={css`
             color: var(--body-color) !important;
+            font-weight: 550 !important;
             font-size: 1rem !important;
             font-style: unset !important;
           `}
