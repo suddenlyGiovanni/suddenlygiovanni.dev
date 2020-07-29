@@ -117,10 +117,11 @@
         "Graduated from the program in Sep. 2017 by logging 1100+ hours of coding time.",
         "Developed various web application including ‘Petition,’ ‘Imageboard,’ ‘Social Network,’ ‘P2P Chat’ (Final Project - one-week coding challenge).",
         "Tech: [JavaScript, Node, SQL, React, Redux, Express, Backbone]"
-      ]
+      ],
+      "location": "Berlin, Germany"
     },
     {
-      "institution": "Innovation Factory, AREA Science Park, Italy",
+      "institution": "Innovation Factory, AREA Science Park",
       "url": "",
       "area": "Entrepreneurship",
       "studyType": "Business Boot Camp in Disciplined Entrepreneurship",
@@ -131,11 +132,12 @@
         "Graduated from the program in July 2015.",
         "Learned how to transform innovative business ideas into real products and services.",
         "Applied innovation-driven entrepreneurship process to develop a B2B startup in the real estate industry."
-      ]
+      ],
+      "location": "Trieste, Italy"
     },
     {
       "institution": "Università degli studi di Trieste",
-      "url": "",
+      "url": "https://www.units.it/",
       "area": "History",
       "studyType": "Bachelor",
       "startDate": "2011-09-01",
@@ -143,7 +145,8 @@
       "gpa": "",
       "courses": [
         "Completed 90% of required credits toward Bachelor of Arts in Modern History"
-      ]
+      ],
+      "location": "Trieste, Italy"
     }
   ],
   "awards": [],

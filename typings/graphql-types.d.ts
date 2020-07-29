@@ -868,6 +868,7 @@ export type FileFieldsEnum =
   | 'childResumeJson___education___endDate'
   | 'childResumeJson___education___gpa'
   | 'childResumeJson___education___courses'
+  | 'childResumeJson___education___location'
   | 'childResumeJson___skills'
   | 'childResumeJson___skills___name'
   | 'childResumeJson___skills___level'
@@ -2280,6 +2281,7 @@ export type ResumeJsonEducation = {
   endDate?: Maybe<Scalars['Date']>;
   gpa?: Maybe<Scalars['String']>;
   courses?: Maybe<Array<Maybe<Scalars['String']>>>;
+  location?: Maybe<Scalars['String']>;
 };
 
 
@@ -2307,6 +2309,7 @@ export type ResumeJsonEducationFilterInput = {
   endDate?: Maybe<DateQueryOperatorInput>;
   gpa?: Maybe<StringQueryOperatorInput>;
   courses?: Maybe<StringQueryOperatorInput>;
+  location?: Maybe<StringQueryOperatorInput>;
 };
 
 export type ResumeJsonEducationFilterListInput = {
@@ -2436,6 +2439,7 @@ export type ResumeJsonFieldsEnum =
   | 'education___endDate'
   | 'education___gpa'
   | 'education___courses'
+  | 'education___location'
   | 'skills'
   | 'skills___name'
   | 'skills___level'
@@ -3680,7 +3684,7 @@ export type ResumeQueryVariables = Exact<{ [key: string]: never; }>;
 export type ResumeQuery = { resumeJson?: Maybe<{ basics?: Maybe<(
       Pick<ResumeJsonBasics, 'email' | 'image' | 'label' | 'name' | 'phone' | 'summary' | 'url'>
       & { profiles?: Maybe<Array<Maybe<Pick<ResumeJsonBasicsProfiles, 'network' | 'url' | 'username'>>>>, location?: Maybe<Pick<ResumeJsonBasicsLocation, 'address' | 'city' | 'countryCode' | 'postalCode' | 'region'>> }
-    )>, work?: Maybe<Array<Maybe<Pick<ResumeJsonWork, 'description' | 'endDate' | 'highlights' | 'location' | 'name' | 'position' | 'startDate' | 'summary' | 'url'>>>>, education?: Maybe<Array<Maybe<Pick<ResumeJsonEducation, 'area' | 'courses' | 'endDate' | 'gpa' | 'institution' | 'startDate' | 'studyType' | 'url'>>>>, skills?: Maybe<Array<Maybe<Pick<ResumeJsonSkills, 'keywords' | 'level' | 'name'>>>>, languages?: Maybe<Array<Maybe<Pick<ResumeJsonLanguages, 'fluency' | 'language'>>>>, interests?: Maybe<Array<Maybe<Pick<ResumeJsonInterests, 'keywords' | 'name'>>>>, meta?: Maybe<Pick<ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>> }> };
+    )>, work?: Maybe<Array<Maybe<Pick<ResumeJsonWork, 'description' | 'endDate' | 'highlights' | 'location' | 'name' | 'position' | 'startDate' | 'summary' | 'url'>>>>, education?: Maybe<Array<Maybe<Pick<ResumeJsonEducation, 'area' | 'courses' | 'endDate' | 'gpa' | 'institution' | 'location' | 'startDate' | 'studyType' | 'url'>>>>, skills?: Maybe<Array<Maybe<Pick<ResumeJsonSkills, 'keywords' | 'level' | 'name'>>>>, languages?: Maybe<Array<Maybe<Pick<ResumeJsonLanguages, 'fluency' | 'language'>>>>, interests?: Maybe<Array<Maybe<Pick<ResumeJsonInterests, 'keywords' | 'name'>>>>, meta?: Maybe<Pick<ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>> }> };
 
 export type GetSiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
