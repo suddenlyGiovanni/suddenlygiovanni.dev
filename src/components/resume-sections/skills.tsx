@@ -11,7 +11,7 @@ type Props = {
 export function Skills({ skills }: Props): JSX.Element {
   return (
     <section>
-      <h2>SKILLS</h2>
+      <h2>Skills</h2>
       {skills.map(({ name, keywords }) => (
         <TemplateList
           key={name}

@@ -1,13 +1,12 @@
 import { css } from '@emotion/core'
 import React from 'react'
 
-export function TemplateList({
-  heading,
-  stringList,
-}: {
+type Props = {
   stringList: string[]
   heading: string
-}): JSX.Element {
+}
+
+export function TemplateList({ heading, stringList }: Props): JSX.Element {
   return (
     <dl>
       <dt>{heading}</dt>
