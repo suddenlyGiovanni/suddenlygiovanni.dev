@@ -159,6 +159,7 @@
       "level": "",
       "keywords": [
         "Node",
+        "Deno",
         "Next.js",
         "Express",
         "Sails.js",
@@ -171,9 +172,7 @@
       "level": "",
       "keywords": [
         "HTML",
-        "Canvas",
         "CSS",
-        "SCSS",
         "React",
         "React Native",
         "Redux",
