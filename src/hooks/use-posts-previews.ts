@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { graphql, useStaticQuery } from 'gatsby'
 
-import { PostsPreviewDataQuery } from '../../typings/graphql-types'
+import { PostsPreviewsQuery } from '../../typings/graphql-types'
 import { convertStringToDate } from '../lib/helpers'
 
 type PostPreviewData = {
@@ -16,7 +16,7 @@ type PostPreviewData = {
   timeToRead: number
 }
 
-const getPostsQuery = graphql`
+const postsPreviewsQuery = graphql`
   fragment PostPreviewData on Mdx {
     id
     frontmatter {
@@ -26,10 +26,14 @@ const getPostsQuery = graphql`
       description
       date
     }
+    excerpt(pruneLength: 250)
     timeToRead
+    fields {
+      slug
+    }
   }
 
-  query PostsPreviewData {
+  query PostsPreviews {
     allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       filter: {
@@ -45,7 +49,7 @@ const getPostsQuery = graphql`
 export const usePostsPreview = (): PostPreviewData[] => {
   const {
     allMdx: { posts },
-  } = useStaticQuery<PostsPreviewDataQuery>(getPostsQuery)
+  } = useStaticQuery<PostsPreviewsQuery>(postsPreviewsQuery)
 
   if (posts.length === 0) return []
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call

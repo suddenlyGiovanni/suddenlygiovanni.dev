@@ -1,7 +1,7 @@
 import { css } from '@emotion/core'
 import React from 'react'
 
-import config from '../../config/website'
+import { config } from '../../config/website'
 
 import { SocialIcon } from './social-icon'
 

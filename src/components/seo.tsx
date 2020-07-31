@@ -16,9 +16,9 @@ export function SEO({
   lang = 'en',
   meta = [],
 }: Props): JSX.Element {
-  const metadata = useSiteMetadata()
-  const metaDescription = description || metadata.description
-  const metaTitle = title ?? metadata.title
+  const siteMetadata = useSiteMetadata()
+  const metaDescription = description || siteMetadata.description
+  const metaTitle = title ?? siteMetadata.title
   return (
     <Helmet
       htmlAttributes={{ lang }}
@@ -46,7 +46,7 @@ export function SEO({
           name: `twitter:card`,
         },
         {
-          content: metadata.author,
+          content: siteMetadata.author.name,
           name: `twitter:creator`,
         },
         {
