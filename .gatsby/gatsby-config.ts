@@ -1,6 +1,8 @@
 import { ITSConfigFn, IMergePluginOptions } from 'gatsby-plugin-ts-config'
-import config from '../config/website'
 import { FileSystemConfig } from 'gatsby-source-filesystem'
+
+import { config } from '../config/website'
+import { siteMetadata } from '../config/site-metadata'
 
 // 'gatsby-source-filesystem'
 type GatsbySourceFilesystemConfig = IMergePluginOptions<
@@ -89,15 +91,6 @@ type GatsbyConfig = ITSConfigFn<
   | GatsbyPluginWebpackBundleAnalyzerConfig
 >
 
-const siteMetadata = {
-  author: config.author,
-  description: config.siteDescription,
-  miniBio: config.minibio,
-  title: config.siteTitle,
-  twitter: config.twitter,
-  twitterHandle: config.twitterHandle,
-} as const
-
 const gatsbyConfig: GatsbyConfig = () => ({
   siteMetadata,
   plugins: [
@@ -129,11 +122,11 @@ const gatsbyConfig: GatsbyConfig = () => ({
     },
     {
       options: {
-        codegen: true, // TODO: enable!!
+        codegen: true, // TODO: disable this for production builds!!
         documentPaths: [
           './src/**/*.{ts,tsx}',
           './node_modules/gatsby-*/**/*.js',
-          './.gatsby/gatsby-node.ts',
+          './.gatsby/**/*.ts',
         ],
         fileName: `typings/graphql-types.d.ts`,
       },

@@ -1,39 +1,52 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { graphql, useStaticQuery } from 'gatsby'
 
-import { GetSiteMetadataQuery } from '../../typings/graphql-types'
+import { SiteMetadataQuery } from '../../typings/graphql-types'
 
-const getSiteMetadata = graphql`
-  query GetSiteMetadata {
+const siteMetadataQuery = graphql`
+  query SiteMetadata {
     site {
       siteMetadata {
+        siteUrl
         title
         description
-        author
-        miniBio
+        keywords
         twitterHandle
-        twitter
+        canonicalUrl
+        image
+        social {
+          twitter
+          twitterHandle
+        }
+        author {
+          name
+          minibio
+        }
       }
     }
   }
 `
 
-export const useSiteMetadata = (): {
-  author: string
-  description: string
-  miniBio: string
+interface SiteMetadata {
+  siteUrl: string
   title: string
-  twitter: string
+  description: string
+  keywords: string[]
   twitterHandle: string
-} => {
-  const data = useStaticQuery<GetSiteMetadataQuery>(getSiteMetadata)
-
-  return {
-    author: data.site?.siteMetadata?.author || 'fallback author',
-    description: data.site?.siteMetadata?.description || 'fallback description',
-    miniBio: data.site?.siteMetadata?.miniBio || 'fallback minibio',
-    title: data.site?.siteMetadata?.title || 'fallback title',
-    twitter: data.site?.siteMetadata?.twitter || 'fallback twitter',
-    twitterHandle:
-      data.site?.siteMetadata?.twitterHandle || 'fallback twitter handle',
+  canonicalUrl: string
+  image: string
+  social: {
+    twitter: string
+    twitterHandle: string
   }
+  author: {
+    name: string
+    minibio: string
+  }
+}
+
+export const useSiteMetadata = (): SiteMetadata => {
+  const { site } = useStaticQuery<SiteMetadataQuery>(siteMetadataQuery)
+  return site?.siteMetadata as SiteMetadata
 }
