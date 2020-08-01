@@ -6,7 +6,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 
 import { PostByIdQuery, PostDetailsFragment } from '../../typings/graphql-types'
-import { Dump, Layout, ReadLink } from '../components'
+import { Layout, ReadLink } from '../components'
 
 // this graphql query will be called by gatsby-node at build time and its content will be injected
 // in the PageProps at the data label
@@ -67,49 +67,64 @@ export default function PostTemplate({
         posted by {author} {post?.frontmatter?.date}
       </p>
       <MDXRenderer>{body}</MDXRenderer>
-      {/* <Dump previous={previous} /> */}
-      {/* <Dump next={next} /> */}
 
-      <div
-        css={css`
-          display: flex;
-          flex-direction: row;
-          align-items: flex-end;
-          justify-content: space-between;
-          width: 100%;
-        `}
-      >
-        {previous && (
-          <span
-            css={css`
-              display: flex;
-              flex-direction: column;
-              align-items: flex-end;
-            `}
-          >
-            &larr; previous post
-            <ReadLink to={`/${previous.frontmatter?.slug || ''}`}>
-              {previous.frontmatter?.title || 'previous'}
-            </ReadLink>
-          </span>
-        )}
+      <nav>
+        <ul
+          css={css`
+            display: flex;
+            flex-flow: row wrap;
+            align-items: flex-end;
+            justify-content: space-between;
+            width: 100%;
+            margin: 0;
+            padding: 0;
 
-        <ReadLink to="/">back to all posts</ReadLink>
-
-        {next && (
-          <span
-            css={css`
-              display: flex;
-              flex-direction: column;
-            `}
-          >
-            next post &rarr;
-            <ReadLink to={`/${next.frontmatter?.slug || ''}`}>
-              {next.frontmatter?.title || 'next'}
-            </ReadLink>
-          </span>
-        )}
-      </div>
+            list-style: none;
+            & > li {
+              margin-bottom: unset;
+              padding-left: unset;
+            }
+          `}
+        >
+          {previous && (
+            <li>
+              <span
+                css={css`
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-end;
+                `}
+              >
+                &larr; previous post
+                <ReadLink
+                  to={`/${previous.frontmatter?.slug || ''}`}
+                  rel="prev"
+                >
+                  {previous.frontmatter?.title || 'previous'}
+                </ReadLink>
+              </span>
+            </li>
+          )}
+          <li>
+            <ReadLink to="/">back to all posts</ReadLink>
+          </li>
+          {next && (
+            <li>
+              <span
+                css={css`
+                  display: flex;
+                  flex-direction: column;
+                `}
+              >
+                next post &rarr;
+                <ReadLink to={`/${next.frontmatter?.slug || ''}`} rel="next">
+                  {next.frontmatter?.title || 'next'}
+                </ReadLink>
+              </span>
+            </li>
+          )}
+        </ul>
+      </nav>
     </Layout>
   )
 }
