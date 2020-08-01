@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
 import styled from '@emotion/styled'
@@ -5,8 +6,16 @@ import Highlight, { Prism } from 'prism-react-renderer'
 import type { Language } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwl'
 import React from 'react'
+import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 
 import { copyToClipboard } from '../../utils/copy-to-clipboard'
+
+
+const Wrapper = styled.div`
+  position: relative;
+
+  overflow: auto;
+`
 
 const Pre = styled.pre`
   position: relative;
@@ -14,6 +23,8 @@ const Pre = styled.pre`
   margin: 1em 0;
   padding: 0.5em;
   overflow-x: auto;
+
+  white-space: pre;
 
   text-align: left;
 
@@ -45,9 +56,9 @@ const LineContent = styled.span`
 
 const CopyCode = styled.button`
   position: absolute;
-  top: 0.25rem;
+  top: 1.25rem;
   right: 0.25rem;
-  z-index: auto;
+  z-index: 1;
 
   margin: 0.25em;
 
@@ -61,8 +72,13 @@ const CopyCode = styled.button`
 type Props = {
   codeString: string
   language: Language
+  'react-live': boolean
 }
-export const Code = ({ codeString, language }: Props): JSX.Element => {
+export const Code = ({
+  codeString,
+  language,
+  ...props
+}: Props): JSX.Element => {
   const handleClick = (
     _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
@@ -74,6 +90,15 @@ export const Code = ({ codeString, language }: Props): JSX.Element => {
       )
     })
   }
+  if (props['react-live']) {
+    return (
+      <LiveProvider code={codeString} theme={theme}>
+        <LiveEditor />
+        <LiveError />
+        <LivePreview />
+      </LiveProvider>
+    )
+  }
   return (
     <Highlight
       Prism={Prism}
@@ -82,19 +107,23 @@ export const Code = ({ codeString, language }: Props): JSX.Element => {
       theme={theme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Pre className={className} style={style}>
+        <Wrapper>
           <CopyCode onClick={handleClick}>Copy</CopyCode>
-          {tokens.map((line, i) => (
-            <Line key={i} {...getLineProps({ line, key: i })}>
-              <LineNo>{i + 1}</LineNo>
-              <LineContent>
-                {line.map((token, key) => (
-                  <span key={key} {...getTokenProps({ token, key })} />
-                ))}
-              </LineContent>
-            </Line>
-          ))}
-        </Pre>
+          <Pre className={className} style={style}>
+            <code className={`language-${language}`}>
+              {tokens.map((line, i) => (
+                <Line key={i} {...getLineProps({ line, key: i })}>
+                  <LineNo>{i + 1}</LineNo>
+                  <LineContent>
+                    {line.map((token, key) => (
+                      <span key={key} {...getTokenProps({ token, key })} />
+                    ))}
+                  </LineContent>
+                </Line>
+              ))}
+            </code>
+          </Pre>
+        </Wrapper>
       )}
     </Highlight>
   )
