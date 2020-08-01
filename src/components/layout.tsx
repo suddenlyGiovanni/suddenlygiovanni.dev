@@ -1,5 +1,6 @@
 import { Global } from '@emotion/core'
 import styled from '@emotion/styled'
+import { MDXProvider } from '@mdx-js/react'
 import React, { FC } from 'react'
 
 import { globalStyles } from '../lib/global.styles'
@@ -7,6 +8,7 @@ import { globalStyles } from '../lib/global.styles'
 import { Footer } from './footer'
 import { Header } from './header'
 import { Main } from './main'
+import { mdxComponents } from './mdx'
 import { SEO } from './seo'
 
 const Wrapper = styled('div')`
@@ -22,11 +24,12 @@ export const Layout: FC = ({ children }) => {
   return (
     <>
       <Global styles={globalStyles} />
-      {/* <Global styles={reset} /> */}
       <SEO />
       <Wrapper>
         <Header />
-        <Main>{children}</Main>
+        <MDXProvider components={mdxComponents}>
+          <Main>{children}</Main>
+        </MDXProvider>
         <Footer />
       </Wrapper>
     </>
