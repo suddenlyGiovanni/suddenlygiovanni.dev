@@ -2876,16 +2876,15 @@ export type SiteEdge = {
 
 export type SiteFieldsEnum = 
   | 'buildTime'
+  | 'siteMetadata___siteTitle'
+  | 'siteMetadata___siteTitleTemplate'
+  | 'siteMetadata___siteDescription'
   | 'siteMetadata___siteUrl'
-  | 'siteMetadata___title'
-  | 'siteMetadata___description'
-  | 'siteMetadata___twitterHandle'
+  | 'siteMetadata___siteImage'
+  | 'siteMetadata___siteLanguage'
+  | 'siteMetadata___siteLocale'
   | 'siteMetadata___keywords'
-  | 'siteMetadata___canonicalUrl'
-  | 'siteMetadata___image'
   | 'siteMetadata___author___name'
-  | 'siteMetadata___author___minibio'
-  | 'siteMetadata___social___twitter'
   | 'siteMetadata___social___twitterHandle'
   | 'port'
   | 'host'
@@ -3381,8 +3380,6 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___description'
   | 'pluginCreator___pluginOptions___display'
   | 'pluginCreator___pluginOptions___icon'
-  | 'pluginCreator___pluginOptions___lang'
-  | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
   | 'pluginCreator___pluginOptions___theme_color'
   | 'pluginCreator___pluginOptions___cache_busting_mode'
@@ -3604,8 +3601,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___description'
   | 'pluginOptions___display'
   | 'pluginOptions___icon'
-  | 'pluginOptions___lang'
-  | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
   | 'pluginOptions___theme_color'
   | 'pluginOptions___cache_busting_mode'
@@ -3620,6 +3615,14 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___gatsbyRemarkPlugins___options___linkImagesToOriginal'
   | 'pluginOptions___gatsbyRemarkPlugins___options___withWebp'
   | 'pluginOptions___gatsbyRemarkPlugins___options___tracedSVG'
+  | 'pluginOptions___gatsbyRemarkPlugins___options___pathPrefix'
+  | 'pluginOptions___gatsbyRemarkPlugins___options___wrapperStyle'
+  | 'pluginOptions___gatsbyRemarkPlugins___options___backgroundColor'
+  | 'pluginOptions___gatsbyRemarkPlugins___options___showCaptions'
+  | 'pluginOptions___gatsbyRemarkPlugins___options___markdownCaptions'
+  | 'pluginOptions___gatsbyRemarkPlugins___options___loading'
+  | 'pluginOptions___gatsbyRemarkPlugins___options___disableBgImageOnAlpha'
+  | 'pluginOptions___gatsbyRemarkPlugins___options___disableBgImage'
   | 'pluginOptions___production'
   | 'pluginOptions___disable'
   | 'pluginOptions___generateStatsFile'
@@ -3753,8 +3756,6 @@ export type SitePluginPluginOptions = {
   description?: Maybe<Scalars['String']>;
   display?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
-  lang?: Maybe<Scalars['String']>;
-  short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   theme_color?: Maybe<Scalars['String']>;
   cache_busting_mode?: Maybe<Scalars['String']>;
@@ -3793,8 +3794,6 @@ export type SitePluginPluginOptionsFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   display?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
-  lang?: Maybe<StringQueryOperatorInput>;
-  short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   theme_color?: Maybe<StringQueryOperatorInput>;
   cache_busting_mode?: Maybe<StringQueryOperatorInput>;
@@ -3832,6 +3831,14 @@ export type SitePluginPluginOptionsGatsbyRemarkPluginsOptions = {
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
   withWebp?: Maybe<Scalars['Boolean']>;
   tracedSVG?: Maybe<Scalars['Boolean']>;
+  pathPrefix?: Maybe<Scalars['String']>;
+  wrapperStyle?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
+  showCaptions?: Maybe<Scalars['Boolean']>;
+  markdownCaptions?: Maybe<Scalars['Boolean']>;
+  loading?: Maybe<Scalars['String']>;
+  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>;
+  disableBgImage?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput = {
@@ -3839,6 +3846,14 @@ export type SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput = {
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
   withWebp?: Maybe<BooleanQueryOperatorInput>;
   tracedSVG?: Maybe<BooleanQueryOperatorInput>;
+  pathPrefix?: Maybe<StringQueryOperatorInput>;
+  wrapperStyle?: Maybe<StringQueryOperatorInput>;
+  backgroundColor?: Maybe<StringQueryOperatorInput>;
+  showCaptions?: Maybe<BooleanQueryOperatorInput>;
+  markdownCaptions?: Maybe<BooleanQueryOperatorInput>;
+  loading?: Maybe<StringQueryOperatorInput>;
+  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>;
+  disableBgImage?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPlugins = {
@@ -3869,46 +3884,44 @@ export type SitePluginSortInput = {
 };
 
 export type SiteSiteMetadata = {
+  siteTitle?: Maybe<Scalars['String']>;
+  siteTitleTemplate?: Maybe<Scalars['String']>;
+  siteDescription?: Maybe<Scalars['String']>;
   siteUrl?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  description?: Maybe<Scalars['String']>;
-  twitterHandle?: Maybe<Scalars['String']>;
+  siteImage?: Maybe<Scalars['String']>;
+  siteLanguage?: Maybe<Scalars['String']>;
+  siteLocale?: Maybe<Scalars['String']>;
   keywords?: Maybe<Array<Maybe<Scalars['String']>>>;
-  canonicalUrl?: Maybe<Scalars['String']>;
-  image?: Maybe<Scalars['String']>;
   author?: Maybe<SiteSiteMetadataAuthor>;
   social?: Maybe<SiteSiteMetadataSocial>;
 };
 
 export type SiteSiteMetadataAuthor = {
   name?: Maybe<Scalars['String']>;
-  minibio?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataAuthorFilterInput = {
   name?: Maybe<StringQueryOperatorInput>;
-  minibio?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SiteSiteMetadataFilterInput = {
+  siteTitle?: Maybe<StringQueryOperatorInput>;
+  siteTitleTemplate?: Maybe<StringQueryOperatorInput>;
+  siteDescription?: Maybe<StringQueryOperatorInput>;
   siteUrl?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  twitterHandle?: Maybe<StringQueryOperatorInput>;
+  siteImage?: Maybe<StringQueryOperatorInput>;
+  siteLanguage?: Maybe<StringQueryOperatorInput>;
+  siteLocale?: Maybe<StringQueryOperatorInput>;
   keywords?: Maybe<StringQueryOperatorInput>;
-  canonicalUrl?: Maybe<StringQueryOperatorInput>;
-  image?: Maybe<StringQueryOperatorInput>;
   author?: Maybe<SiteSiteMetadataAuthorFilterInput>;
   social?: Maybe<SiteSiteMetadataSocialFilterInput>;
 };
 
 export type SiteSiteMetadataSocial = {
-  twitter?: Maybe<Scalars['String']>;
   twitterHandle?: Maybe<Scalars['String']>;
 };
 
 export type SiteSiteMetadataSocialFilterInput = {
-  twitter?: Maybe<StringQueryOperatorInput>;
   twitterHandle?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -3956,10 +3969,14 @@ export type ResumeQuery = { resumeJson?: Maybe<{ basics?: Maybe<(
 export type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SiteMetadataQuery = { site?: Maybe<{ siteMetadata?: Maybe<(
-      Pick<SiteSiteMetadata, 'siteUrl' | 'title' | 'description' | 'keywords' | 'twitterHandle' | 'canonicalUrl' | 'image'>
-      & { social?: Maybe<Pick<SiteSiteMetadataSocial, 'twitter' | 'twitterHandle'>>, author?: Maybe<Pick<SiteSiteMetadataAuthor, 'name' | 'minibio'>> }
-    )> }> };
+export type SiteMetadataQuery = { site?: Maybe<(
+    Pick<Site, 'buildTime'>
+    & { siteMetadata?: Maybe<(
+      Pick<SiteSiteMetadata, 'siteUrl' | 'keywords' | 'siteLocale' | 'siteLanguage'>
+      & { defaultTitle: SiteSiteMetadata['siteTitle'], titleTemplate: SiteSiteMetadata['siteTitleTemplate'], defaultDescription: SiteSiteMetadata['siteDescription'], defaultImage: SiteSiteMetadata['siteImage'] }
+      & { social?: Maybe<Pick<SiteSiteMetadataSocial, 'twitterHandle'>>, author?: Maybe<Pick<SiteSiteMetadataAuthor, 'name'>> }
+    )> }
+  )> };
 
 export type PostByIdQueryVariables = Exact<{
   id: Scalars['String'];
@@ -3968,10 +3985,7 @@ export type PostByIdQueryVariables = Exact<{
 
 export type PostByIdQuery = { post?: Maybe<(
     Pick<Mdx, 'body'>
-    & { frontmatter?: Maybe<(
-      Pick<MdxFrontmatter, 'title' | 'slug' | 'date' | 'author' | 'description' | 'categories' | 'keywords' | 'banner' | 'bannerCredit' | 'published' | 'unlisted' | 'redirects'>
-      & { image?: Maybe<Pick<File, 'id'>> }
-    )> }
+    & { fields?: Maybe<Pick<MdxFields, 'id' | 'published' | 'title' | 'author' | 'description' | 'slug' | 'date' | 'categories' | 'keywords' | 'redirects' | 'editLink' | 'historyLink'>>, frontmatter?: Maybe<Pick<MdxFrontmatter, 'unlisted'>> }
   )> };
 
 export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;

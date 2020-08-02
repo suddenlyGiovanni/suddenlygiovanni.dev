@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 
-import { bpMaxSM } from '../lib/breakpoints'
+import { bpMaxSM } from '../../lib/breakpoints'
 
 export const Main = styled('main')`
   display: flex;

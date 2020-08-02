@@ -1,10 +1,10 @@
 import { css } from '@emotion/core'
 import React from 'react'
 
-import { bpMaxSM } from '../lib/breakpoints'
+import { bpMaxSM } from '../../lib/breakpoints'
 
-import { Container } from './container'
-import { GitHub, LinkedIn, Twitter } from './social'
+import { Container } from '../container'
+import { GitHub, LinkedIn, Twitter } from '../social'
 
 const footerStyles = css`
   position: relative;

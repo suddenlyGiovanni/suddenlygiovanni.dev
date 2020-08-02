@@ -3,13 +3,15 @@ import styled from '@emotion/styled'
 import { MDXProvider } from '@mdx-js/react'
 import React, { FC } from 'react'
 
-import { globalStyles } from '../lib/global.styles'
+import { globalStyles } from '../../lib/global.styles'
+
+import { mdxComponents } from '../mdx'
+
+import { SEO } from '../seo/seo'
 
 import { Footer } from './footer'
 import { Header } from './header'
 import { Main } from './main'
-import { mdxComponents } from './mdx'
-import { SEO } from './seo'
 
 const Wrapper = styled('div')`
   display: flex;
@@ -20,11 +22,15 @@ const Wrapper = styled('div')`
   min-height: 100vh;
 `
 
-export const Layout: FC = ({ children }) => {
+type Props = {
+  customSEO?: boolean
+}
+
+export const Layout: FC<Props> = ({ children, customSEO = false }) => {
   return (
     <>
       <Global styles={globalStyles} />
-      <SEO />
+      {!customSEO && <SEO />}
       <Wrapper>
         <Header />
         <MDXProvider components={mdxComponents}>

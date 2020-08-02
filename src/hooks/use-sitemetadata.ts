@@ -7,46 +7,49 @@ import { SiteMetadataQuery } from '../../typings/graphql-types'
 const siteMetadataQuery = graphql`
   query SiteMetadata {
     site {
+      buildTime(formatString: "YYYY-MM-DD")
       siteMetadata {
+        defaultTitle: siteTitle
+        titleTemplate: siteTitleTemplate
+        defaultDescription: siteDescription
         siteUrl
-        title
-        description
+        defaultImage: siteImage
         keywords
-        twitterHandle
-        canonicalUrl
-        image
+        siteLocale
+        siteLanguage
         social {
-          twitter
           twitterHandle
         }
         author {
           name
-          minibio
         }
       }
     }
   }
 `
 
-interface SiteMetadata {
+interface SEO {
+  buildTime: string
+  defaultTitle: string
+  titleTemplate: string
+  defaultDescription: string
   siteUrl: string
-  title: string
-  description: string
+  defaultImage: string
   keywords: string[]
-  twitterHandle: string
-  canonicalUrl: string
-  image: string
+  defaultLocale: string
+  defaultLanguage: string
   social: {
-    twitter: string
     twitterHandle: string
   }
   author: {
     name: string
-    minibio: string
   }
 }
 
-export const useSiteMetadata = (): SiteMetadata => {
+export const useSiteMetadata = (): SEO => {
   const { site } = useStaticQuery<SiteMetadataQuery>(siteMetadataQuery)
-  return site?.siteMetadata as SiteMetadata
+  return ({
+    buildTime: site?.buildTime,
+    ...site?.siteMetadata,
+  } as unknown) as SEO
 }

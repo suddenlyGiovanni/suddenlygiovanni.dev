@@ -2,7 +2,7 @@ import { css } from '@emotion/core'
 import { Link, PageProps } from 'gatsby'
 import React, { FC } from 'react'
 
-import { Layout, ReadLink } from '../components/index'
+import { Layout, ReadLink, SEO } from '../components/index'
 import {
   Awards,
   Contacts,
@@ -36,7 +36,8 @@ const ResumePage: FC<PageProps> = () => {
     work,
   } = resume
   return (
-    <Layout>
+    <Layout customSEO>
+      <SEO description="Giovanni Ravalico's Résumé" titleTemplate="Résumé" />
       <article>
         <header>
           <hgroup

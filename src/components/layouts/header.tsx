@@ -2,10 +2,10 @@
 import styled from '@emotion/styled'
 import React from 'react'
 
-import { Container } from './container'
-import { NavDesktop } from './nav-desktop'
-import { NavMobile } from './nav-mobile'
-import { SuddenlyGiovanni } from './suddenly-giovanni'
+import { Container } from '../container'
+import { NavDesktop } from '../nav-desktop'
+import { NavMobile } from '../nav-mobile'
+import { SuddenlyGiovanni } from '../suddenly-giovanni'
 
 export const Header = (): JSX.Element => (
   <HeaderComp>

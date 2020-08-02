@@ -8,9 +8,20 @@ const IndexPage: FC<PageProps> = () => {
   const posts = usePostsPreview()
   return (
     <Layout>
-      {posts.map((post) => (
-        <PostPreview key={post.id} post={post} />
-      ))}
+      {posts.map(
+        ({ id, slug, author, title, description, date, timeToRead }) => (
+          <PostPreview
+            key={id}
+            id={id}
+            slug={slug}
+            author={author}
+            title={title}
+            description={description}
+            date={date}
+            timeToRead={timeToRead}
+          />
+        )
+      )}
     </Layout>
   )
 }

@@ -6,7 +6,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 
 import { PostByIdQuery, PostDetailsFragment } from '../../typings/graphql-types'
-import { Layout, ReadLink } from '../components'
+import { Layout, ReadLink, SEO } from '../components'
 
 // this graphql query will be called by gatsby-node at build time and its content will be injected
 // in the PageProps at the data label
@@ -14,22 +14,22 @@ import { Layout, ReadLink } from '../components'
 export const postByIdQuery = graphql`
   query PostById($id: String!) {
     post: mdx(id: { eq: $id }) {
-      frontmatter {
+      fields {
+        id
+        published
         title
-        slug
-        date
         author
         description
+        slug
+        date(formatString: "YYYY-MM-DD")
         categories
         keywords
-        banner
-        bannerCredit
-        published
-        unlisted
         redirects
-        image {
-          id
-        }
+        editLink
+        historyLink
+      }
+      frontmatter {
+        unlisted
       }
       body
     }
@@ -48,23 +48,32 @@ type Props = PageProps<PostByIdQuery, PageContextType>
 export default function PostTemplate({
   data,
   pageContext,
-}: Props): JSX.Element {
+}: Props): JSX.Element | null {
   const { post } = data
   const { previous, next } = pageContext
-
-  const title = post?.frontmatter?.title || ''
-  const author = post?.frontmatter?.author || ''
+  if (!post) {
+    return null
+  }
+  const title = post.fields?.title || ''
+  const author = post.fields?.author || ''
   const body = post?.body || ''
 
   return (
-    <Layout>
+    <Layout customSEO>
+      <SEO
+        titleTemplate={title}
+        description={post.fields?.description || 'nothing'}
+        datePublished={new Date(post.fields?.date).toISOString()}
+        dateModified={new Date(Date.now()).toISOString()}
+        article
+      />
       <h1>{title}</h1>
       <p
         css={css`
           font-size: 0.75rem;
         `}
       >
-        posted by {author} {post?.frontmatter?.date}
+        posted by {author} {post.fields?.date}
       </p>
       <MDXRenderer>{body}</MDXRenderer>
 
