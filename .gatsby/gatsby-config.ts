@@ -146,9 +146,9 @@ const gatsbyConfig: GatsbyConfig = () => ({
         description: config.siteDescription,
         display: 'minimal-ui',
         icon: 'content/assets/suddenly_giovanni-icon-white.svg', // This path is relative to the root of the site.
-        lang: config.lang,
-        name: config.siteTitle,
-        short_name: config.siteTitleShort,
+        lang: config.language,
+        name: config.title,
+        short_name: config.titleShort,
         start_url: config.pathPrefix,
         theme_color: config.themeColor,
       },
@@ -157,7 +157,7 @@ const gatsbyConfig: GatsbyConfig = () => ({
     {
       options: {
         defaultLayouts: {
-          default: require.resolve('../src/components/layout.tsx'),
+          default: require.resolve('../src/components/layouts/layout.tsx'),
         },
         gatsbyRemarkPlugins: [
           {

@@ -5,18 +5,24 @@ import React, { FC } from 'react'
 import { DateAndReadingTime } from './date-and-reading-time'
 
 type Props = {
-  post: {
-    id: string
-    slug: string
-    author: string
-    title: string
-    description: string
-    date: Date
-    timeToRead: number
-  }
+  id: string
+  slug: string
+  author: string
+  title: string
+  description: string
+  date: Date
+  timeToRead: number
 }
 
-export const PostPreview: FC<Props> = ({ post }) => (
+export const PostPreview: FC<Props> = ({
+  id,
+  slug,
+  author,
+  title,
+  description,
+  date,
+  timeToRead,
+}) => (
   <article>
     <header>
       <h2
@@ -34,16 +40,16 @@ export const PostPreview: FC<Props> = ({ post }) => (
               color: unset;
             }
           `}
-          to={post.slug}
+          to={slug}
         >
-          {post.title}
+          {title}
         </Link>
       </h2>
-      <DateAndReadingTime date={post.date} timeToRead={post.timeToRead} />
+      <DateAndReadingTime date={date} timeToRead={timeToRead} />
     </header>
 
     <section>
-      <p>{post.description}</p>
+      <p>{description}</p>
     </section>
   </article>
 )

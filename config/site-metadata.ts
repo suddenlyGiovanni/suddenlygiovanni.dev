@@ -6,25 +6,18 @@ import { config } from './website'
 type SiteMetadata = GatsbyConfig['siteMetadata']
 
 export const siteMetadata: SiteMetadata = {
+  siteTitle: config.siteTitle,
+  siteTitleTemplate: config.siteTitleTemplate,
+  siteDescription: config.siteDescription,
   siteUrl: config.siteUrl,
-  title: config.siteTitle,
-  description: config.siteDescription,
-  twitterHandle: config.twitterHandle,
-  keywords: [
-    'Software Engineer',
-    'Blog',
-    'Strongly Typed',
-    'Functional Programming',
-    'FP',
-  ],
-  canonicalUrl: config.siteUrl,
-  image: config.siteLogo,
+  siteImage: config.image,
+  siteLanguage: config.siteLanguage,
+  siteLocale: config.siteLocale,
+  keywords: config.keywords,
   author: {
     name: config.author,
-    minibio: config.minibio,
   },
   social: {
-    twitter: config.twitter,
     twitterHandle: config.twitterHandle,
   },
 }
