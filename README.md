@@ -1,5 +1,15 @@
 # [suddenlyGiovanni.dev]
 
+- [Contributing](#contributing)
+- [Getting Started](#getting-started)
+  - [Installing](#installing)
+  - [Running](#running)
+- [🧐 What's inside?](#---what-s-inside-)
+- [Built With](#built-with)
+- [Versioning](#versioning)
+- [Authors](#authors)
+- [License](#license)
+
 My personal JAM Stack Website, built with Gatsby, TypeScript, React, and deployed with Netlify
 
 It host **my blog** and some auxiliary resources.
