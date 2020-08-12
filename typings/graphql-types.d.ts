@@ -1,5 +1,5 @@
 export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -2112,7 +2112,7 @@ export type QueryAllSitePageArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<DateQueryOperatorInput>;
+  port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -2667,7 +2667,7 @@ export type ResumeJsonWorkFilterListInput = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>;
   siteMetadata?: Maybe<SiteSiteMetadata>;
-  port?: Maybe<Scalars['Date']>;
+  port?: Maybe<Scalars['Int']>;
   host?: Maybe<Scalars['String']>;
   polyfill?: Maybe<Scalars['Boolean']>;
   pathPrefix?: Maybe<Scalars['String']>;
@@ -2679,14 +2679,6 @@ export type Site = Node & {
 
 
 export type SiteBuildTimeArgs = {
-  formatString?: Maybe<Scalars['String']>;
-  fromNow?: Maybe<Scalars['Boolean']>;
-  difference?: Maybe<Scalars['String']>;
-  locale?: Maybe<Scalars['String']>;
-};
-
-
-export type SitePortArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
@@ -2980,7 +2972,7 @@ export type SiteFieldsEnum =
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>;
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>;
-  port?: Maybe<DateQueryOperatorInput>;
+  port?: Maybe<IntQueryOperatorInput>;
   host?: Maybe<StringQueryOperatorInput>;
   polyfill?: Maybe<BooleanQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
@@ -3040,16 +3032,12 @@ export type SitePageConnectionGroupArgs = {
 export type SitePageContext = {
   id?: Maybe<Scalars['String']>;
   slug?: Maybe<Scalars['String']>;
-  previous?: Maybe<SitePageContextPrevious>;
-  next?: Maybe<SitePageContextNext>;
   frontmatter?: Maybe<SitePageContextFrontmatter>;
 };
 
 export type SitePageContextFilterInput = {
   id?: Maybe<StringQueryOperatorInput>;
   slug?: Maybe<StringQueryOperatorInput>;
-  previous?: Maybe<SitePageContextPreviousFilterInput>;
-  next?: Maybe<SitePageContextNextFilterInput>;
   frontmatter?: Maybe<SitePageContextFrontmatterFilterInput>;
 };
 
@@ -3061,130 +3049,6 @@ export type SitePageContextFrontmatter = {
 export type SitePageContextFrontmatterFilterInput = {
   title?: Maybe<StringQueryOperatorInput>;
   description?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextNext = {
-  fileAbsolutePath?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  fields?: Maybe<SitePageContextNextFields>;
-  parent?: Maybe<SitePageContextNextParent>;
-  excerpt?: Maybe<Scalars['String']>;
-  frontmatter?: Maybe<SitePageContextNextFrontmatter>;
-};
-
-export type SitePageContextNextFields = {
-  slug?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextNextFieldsFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextNextFilterInput = {
-  fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  fields?: Maybe<SitePageContextNextFieldsFilterInput>;
-  parent?: Maybe<SitePageContextNextParentFilterInput>;
-  excerpt?: Maybe<StringQueryOperatorInput>;
-  frontmatter?: Maybe<SitePageContextNextFrontmatterFilterInput>;
-};
-
-export type SitePageContextNextFrontmatter = {
-  slug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  author?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  description?: Maybe<Scalars['String']>;
-  banner?: Maybe<Scalars['String']>;
-  bannerCredit?: Maybe<Scalars['String']>;
-  published?: Maybe<Scalars['Boolean']>;
-  unlisted?: Maybe<Scalars['Boolean']>;
-  redirects?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type SitePageContextNextFrontmatterFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  author?: Maybe<StringQueryOperatorInput>;
-  date?: Maybe<DateQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  banner?: Maybe<StringQueryOperatorInput>;
-  bannerCredit?: Maybe<StringQueryOperatorInput>;
-  published?: Maybe<BooleanQueryOperatorInput>;
-  unlisted?: Maybe<BooleanQueryOperatorInput>;
-  redirects?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextNextParent = {
-  name?: Maybe<Scalars['String']>;
-  sourceInstanceName?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextNextParentFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextPrevious = {
-  fileAbsolutePath?: Maybe<Scalars['String']>;
-  id?: Maybe<Scalars['String']>;
-  fields?: Maybe<SitePageContextPreviousFields>;
-  parent?: Maybe<SitePageContextPreviousParent>;
-  excerpt?: Maybe<Scalars['String']>;
-  frontmatter?: Maybe<SitePageContextPreviousFrontmatter>;
-};
-
-export type SitePageContextPreviousFields = {
-  slug?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextPreviousFieldsFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextPreviousFilterInput = {
-  fileAbsolutePath?: Maybe<StringQueryOperatorInput>;
-  id?: Maybe<StringQueryOperatorInput>;
-  fields?: Maybe<SitePageContextPreviousFieldsFilterInput>;
-  parent?: Maybe<SitePageContextPreviousParentFilterInput>;
-  excerpt?: Maybe<StringQueryOperatorInput>;
-  frontmatter?: Maybe<SitePageContextPreviousFrontmatterFilterInput>;
-};
-
-export type SitePageContextPreviousFrontmatter = {
-  slug?: Maybe<Scalars['String']>;
-  title?: Maybe<Scalars['String']>;
-  author?: Maybe<Scalars['String']>;
-  date?: Maybe<Scalars['Date']>;
-  description?: Maybe<Scalars['String']>;
-  banner?: Maybe<Scalars['String']>;
-  bannerCredit?: Maybe<Scalars['String']>;
-  published?: Maybe<Scalars['Boolean']>;
-  unlisted?: Maybe<Scalars['Boolean']>;
-  redirects?: Maybe<Array<Maybe<Scalars['String']>>>;
-};
-
-export type SitePageContextPreviousFrontmatterFilterInput = {
-  slug?: Maybe<StringQueryOperatorInput>;
-  title?: Maybe<StringQueryOperatorInput>;
-  author?: Maybe<StringQueryOperatorInput>;
-  date?: Maybe<DateQueryOperatorInput>;
-  description?: Maybe<StringQueryOperatorInput>;
-  banner?: Maybe<StringQueryOperatorInput>;
-  bannerCredit?: Maybe<StringQueryOperatorInput>;
-  published?: Maybe<BooleanQueryOperatorInput>;
-  unlisted?: Maybe<BooleanQueryOperatorInput>;
-  redirects?: Maybe<StringQueryOperatorInput>;
-};
-
-export type SitePageContextPreviousParent = {
-  name?: Maybe<Scalars['String']>;
-  sourceInstanceName?: Maybe<Scalars['String']>;
-};
-
-export type SitePageContextPreviousParentFilterInput = {
-  name?: Maybe<StringQueryOperatorInput>;
-  sourceInstanceName?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePageEdge = {
@@ -3288,38 +3152,6 @@ export type SitePageFieldsEnum =
   | 'isCreatedByStatefulCreatePages'
   | 'context___id'
   | 'context___slug'
-  | 'context___previous___fileAbsolutePath'
-  | 'context___previous___id'
-  | 'context___previous___fields___slug'
-  | 'context___previous___parent___name'
-  | 'context___previous___parent___sourceInstanceName'
-  | 'context___previous___excerpt'
-  | 'context___previous___frontmatter___slug'
-  | 'context___previous___frontmatter___title'
-  | 'context___previous___frontmatter___author'
-  | 'context___previous___frontmatter___date'
-  | 'context___previous___frontmatter___description'
-  | 'context___previous___frontmatter___banner'
-  | 'context___previous___frontmatter___bannerCredit'
-  | 'context___previous___frontmatter___published'
-  | 'context___previous___frontmatter___unlisted'
-  | 'context___previous___frontmatter___redirects'
-  | 'context___next___fileAbsolutePath'
-  | 'context___next___id'
-  | 'context___next___fields___slug'
-  | 'context___next___parent___name'
-  | 'context___next___parent___sourceInstanceName'
-  | 'context___next___excerpt'
-  | 'context___next___frontmatter___slug'
-  | 'context___next___frontmatter___title'
-  | 'context___next___frontmatter___author'
-  | 'context___next___frontmatter___date'
-  | 'context___next___frontmatter___description'
-  | 'context___next___frontmatter___banner'
-  | 'context___next___frontmatter___bannerCredit'
-  | 'context___next___frontmatter___published'
-  | 'context___next___frontmatter___unlisted'
-  | 'context___next___frontmatter___redirects'
   | 'context___frontmatter___title'
   | 'context___frontmatter___description'
   | 'pluginCreator___id'
@@ -3380,6 +3212,8 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___description'
   | 'pluginCreator___pluginOptions___display'
   | 'pluginCreator___pluginOptions___icon'
+  | 'pluginCreator___pluginOptions___lang'
+  | 'pluginCreator___pluginOptions___short_name'
   | 'pluginCreator___pluginOptions___start_url'
   | 'pluginCreator___pluginOptions___theme_color'
   | 'pluginCreator___pluginOptions___cache_busting_mode'
@@ -3601,6 +3435,8 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___description'
   | 'pluginOptions___display'
   | 'pluginOptions___icon'
+  | 'pluginOptions___lang'
+  | 'pluginOptions___short_name'
   | 'pluginOptions___start_url'
   | 'pluginOptions___theme_color'
   | 'pluginOptions___cache_busting_mode'
@@ -3615,14 +3451,6 @@ export type SitePluginFieldsEnum =
   | 'pluginOptions___gatsbyRemarkPlugins___options___linkImagesToOriginal'
   | 'pluginOptions___gatsbyRemarkPlugins___options___withWebp'
   | 'pluginOptions___gatsbyRemarkPlugins___options___tracedSVG'
-  | 'pluginOptions___gatsbyRemarkPlugins___options___pathPrefix'
-  | 'pluginOptions___gatsbyRemarkPlugins___options___wrapperStyle'
-  | 'pluginOptions___gatsbyRemarkPlugins___options___backgroundColor'
-  | 'pluginOptions___gatsbyRemarkPlugins___options___showCaptions'
-  | 'pluginOptions___gatsbyRemarkPlugins___options___markdownCaptions'
-  | 'pluginOptions___gatsbyRemarkPlugins___options___loading'
-  | 'pluginOptions___gatsbyRemarkPlugins___options___disableBgImageOnAlpha'
-  | 'pluginOptions___gatsbyRemarkPlugins___options___disableBgImage'
   | 'pluginOptions___production'
   | 'pluginOptions___disable'
   | 'pluginOptions___generateStatsFile'
@@ -3756,6 +3584,8 @@ export type SitePluginPluginOptions = {
   description?: Maybe<Scalars['String']>;
   display?: Maybe<Scalars['String']>;
   icon?: Maybe<Scalars['String']>;
+  lang?: Maybe<Scalars['String']>;
+  short_name?: Maybe<Scalars['String']>;
   start_url?: Maybe<Scalars['String']>;
   theme_color?: Maybe<Scalars['String']>;
   cache_busting_mode?: Maybe<Scalars['String']>;
@@ -3794,6 +3624,8 @@ export type SitePluginPluginOptionsFilterInput = {
   description?: Maybe<StringQueryOperatorInput>;
   display?: Maybe<StringQueryOperatorInput>;
   icon?: Maybe<StringQueryOperatorInput>;
+  lang?: Maybe<StringQueryOperatorInput>;
+  short_name?: Maybe<StringQueryOperatorInput>;
   start_url?: Maybe<StringQueryOperatorInput>;
   theme_color?: Maybe<StringQueryOperatorInput>;
   cache_busting_mode?: Maybe<StringQueryOperatorInput>;
@@ -3831,14 +3663,6 @@ export type SitePluginPluginOptionsGatsbyRemarkPluginsOptions = {
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
   withWebp?: Maybe<Scalars['Boolean']>;
   tracedSVG?: Maybe<Scalars['Boolean']>;
-  pathPrefix?: Maybe<Scalars['String']>;
-  wrapperStyle?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
-  showCaptions?: Maybe<Scalars['Boolean']>;
-  markdownCaptions?: Maybe<Scalars['Boolean']>;
-  loading?: Maybe<Scalars['String']>;
-  disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>;
-  disableBgImage?: Maybe<Scalars['Boolean']>;
 };
 
 export type SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput = {
@@ -3846,14 +3670,6 @@ export type SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput = {
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
   withWebp?: Maybe<BooleanQueryOperatorInput>;
   tracedSVG?: Maybe<BooleanQueryOperatorInput>;
-  pathPrefix?: Maybe<StringQueryOperatorInput>;
-  wrapperStyle?: Maybe<StringQueryOperatorInput>;
-  backgroundColor?: Maybe<StringQueryOperatorInput>;
-  showCaptions?: Maybe<BooleanQueryOperatorInput>;
-  markdownCaptions?: Maybe<BooleanQueryOperatorInput>;
-  loading?: Maybe<StringQueryOperatorInput>;
-  disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>;
-  disableBgImage?: Maybe<BooleanQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsPlugins = {
