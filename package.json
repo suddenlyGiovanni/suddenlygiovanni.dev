@@ -74,7 +74,7 @@
     "gatsby-plugin-ts-config": "1.0.0",
     "gatsby-plugin-webpack-bundle-analyzer": "1.0.5",
     "identity-obj-proxy": "3.0.0",
-    "jest": "26.3.0",
+    "jest": "26.4.0",
     "prettier": "2.0.5",
     "react-test-renderer": "16.13.1",
     "start-server-and-test": "1.11.3",
