@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fb78a4e6-1971-4bc5-bbba-dea431a51fb3/deploy-status)](https://app.netlify.com/sites/suddenlygiovanni/deploys)
 # [suddenlyGiovanni.dev]
 
 - [Contributing](#contributing)
