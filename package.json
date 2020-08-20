@@ -84,7 +84,7 @@
     "stylelint-config-recommended": "3.0.0",
     "stylelint-config-styled-components": "0.1.1",
     "stylelint-order": "4.1.0",
-    "typescript": "4.1.0-dev.20200818"
+    "typescript": "4.1.0-dev.20200819"
   },
   "license": "0BSD",
   "scripts": {
