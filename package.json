@@ -69,7 +69,7 @@
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-react": "7.20.6",
     "eslint-plugin-react-hooks": "4.1.0",
-    "eslint-plugin-testing-library": "3.6.0",
+    "eslint-plugin-testing-library": "3.7.0",
     "eslint-plugin-unicorn": "21.0.0",
     "gatsby-plugin-ts-config": "1.0.0",
     "gatsby-plugin-webpack-bundle-analyzer": "1.0.5",
