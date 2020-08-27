@@ -22,7 +22,7 @@
     "gatsby-plugin-sharp": "2.6.28",
     "gatsby-plugin-typography": "2.5.10",
     "gatsby-remark-images": "3.3.26",
-    "gatsby-source-filesystem": "2.3.25",
+    "gatsby-source-filesystem": "2.3.26",
     "gatsby-transformer-json": "2.4.11",
     "gatsby-transformer-sharp": "2.5.13",
     "prism-react-renderer": "1.1.1",
