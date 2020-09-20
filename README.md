@@ -117,7 +117,7 @@ This website codebase is licensed under the BSD Zero Clause License - see the [L
 The code snippets are licensed under the MIT License - see the [LICENSE-code-snippets] file for details
 The post are protected by copyright - see the [LICENSE-posts] file for details
 
-[suddenlygiovanni.dev]: https://overreacted.io/
+[suddenlygiovanni.dev]: https://www.suddenlygiovanni.dev/
 [gatsby]: https://www.gatsbyjs.org
 [typescript]: https://www.typescriptlang.org
 [jest]: https://jestjs.io
