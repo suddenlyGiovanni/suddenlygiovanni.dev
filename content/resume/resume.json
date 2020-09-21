@@ -37,20 +37,36 @@
     {
       "name": "ToolTime Gmbh",
       "location": "Berlin, Germany",
-      "description": "",
+      "description": "B2B SAAS",
       "position": "Senior Frontend Engineer",
       "url": "https://www.tooltime.de/",
       "startDate": "2019-09-01",
       "endDate": "2020-02-29",
-      "summary": "A software-as-a-service solution that helps craftsmen tackle all administrative tasks of their business.",
+      "summary": "ToolTime's mission is to help craftsmen tackle all their administrative tasks digitally with ease.",
       "highlights": [
-        "Design, build, scale and maintain ToolTime’s software solutions (Frontend: Typescript, React and React Native, GraphQL)",
-        "Help shaping the technical areas of the product",
-        "Work closely with product managers, product designers, frontend and backend engineers",
-        "Help to grow and develop the front-end team, playing a role in the process of hiring new team members",
-        "Foster a culture of continuous delivery and test-driven development",
-        "Solving challenging problems in the areas of: communication & chat, scheduling & disposition, routing & navigation, order management and documentation",
-        "Tech: [Typescript, React and React Native, CSS-in-JS, GraphQL]"
+        "Design, build, scale, and maintain ToolTime’s software solutions.",
+        "Help to shape the technical areas of the product.",
+        "Work closely with product managers, product designers, front-end, and backend engineers.",
+        "Help to grow and develop the front-end team, playing a role in hiring new team members.",
+        "Foster a culture of continuous delivery, pair programming, and test-driven development.",
+        "Solving challenging problems in the areas of communication & chat, scheduling & disposition, routing & navigation, order management, and documentation.",
+        "Tech: [ Typescript, React and React Native, CSS-in-JS, GraphQL, Redux, RxJs, Apollo, Jest, Cypress ]."
+      ]
+    },
+    {
+      "name": "Appico Gmbh",
+      "location": "Hamburg, Germany",
+      "description": "Digital Product Design Studio",
+      "position": "React Native Developer",
+      "url": "https://appico.com/",
+      "startDate": "2019-01-01",
+      "endDate": "2019-02-28",
+      "summary": "",
+      "highlights": [
+        "Enable a new service offering to our customers by researching and studying mobile app development with React Native.",
+        "Organize the knowledge transfer to the rest of the team. Build several in house prototypes to illustrate commonalities and differences with regular web development.",
+        "Reduce the time needed to go from idea to prototype by developing a boilerplate project setup based on best practices and company requirements.",
+        "Tech: [ TypeScript, React Native, Redux, Storybook, Apollo, GraphQL, styled- components, Lottie, Jest ]."
       ]
     },
     {
@@ -60,32 +76,29 @@
       "position": "Full Stack Web Developer",
       "url": "https://appico.com/",
       "startDate": "2018-01-01",
-      "endDate": "2019-02-28",
-      "summary": "From Jan 2018 to Dec 2018 I worked on Carie™. A two-dimensional telemedicine platform that enables doctors to interact with patients and other doctors remotely by scheduling appointments, and allows messaging, video consultation, online medication prescription, and file sharing.",
+      "endDate": "2018-12-31",
+      "summary": "Design, build and maintain the MVP for CarieTM, a telemedicine platform for the US market.",
       "highlights": [
-        "Architected of the front-end as a Progressive Single Page App built with React, Redux, and Apollo (GraphQL client) to enable a resilient user experience.",
-        "Lead the front-end team (a small group of talents)",
-        "Managed project tasks and issues by delegating them to the most effective developer and thus increasing team efficiency.",
-        "Motivated my team to enforce type safety by teaching “Flow” and thus reducing the number of bug reports.",
-        "Introduced “component driven development” company-wide by coaching the designer team. The adoption of this practice and `Storybook` lead to a more streamlined development process.",
-        "Delivered and maintained the MVP since Oct 2018.",
-        "Studied React Native by implementing several in house app prototypes. By sharing this knowledge the company was able to offer a new service to its customers. (since Jan 2019)",
-        "Develop a boilerplate project setup based on company requirements and best practices which allowed to reduce the time needed to go from idea to prototype.",
-        "Tech: [ ESNext, TypeScript, Flow, React, React Native, Redux, Storybook, Apollo, GraphQL, styled-components, Lottie, Jest, Twilio, AWS IoT, Serverless, Node, AWS Lambda, Docker ]"
+        "CarieTM enables doctors to interact with patients and other doctors remotely by scheduling appointments and allowing messaging, video consultation, online medication prescriptions, and file sharing.",
+        "I lead the front-end teamby informing good software design and architecture decisions;by managing the project tasks and issues;by delegating the load to the most effective developer.",
+        "I reduced the number of bug reports by enabling the adoption of a strongly- typed superset of JavaScript. I tutored my teammates in the process of learning Flow with pair-programming and code reviews.",
+        "I enabled a resilient user experience by building a Progressive Single Page App (PWA) with React, Redux, and Apollo.",
+        "I streamlined the design to code the implementation process by fostering a “component-driven development” approach. To achieve so, I coached both designers and my peers.",
+        "Tech: [ TypeScript, Flow, React, SCSS, Redux, Storybook, Apollo, GraphQL, styled-components, Jest, Twilio, AWS IoT, Serverless, Node, AWS Lambda, Docker ]."
       ]
     },
     {
       "name": "MadeByEnka",
       "location": "Rijeka, Croatia",
-      "description": "Handmade Fashion ecommerce",
+      "description": "Handmade Fashion e-commerce",
       "position": "Front-end Web Developer",
       "url": "",
       "startDate": "2016-10-01",
       "endDate": "2017-06-30",
       "summary": "Co-founded and managed a Lifestyle brand with my wife.",
       "highlights": [
-        "Designed, developed and implemented the brand online presence by building the frontend on top of Shopify headless cms",
-        "Tech: [JS, HTML, CSS, JQuery, Shopify]"
+        "Designed, developed and implemented the brand online presence by building the frontend on top of Shopify service.",
+        "Tech: [JS, HTML, CSS, JQuery, Shopify]."
       ]
     },
     {
@@ -96,10 +109,10 @@
       "url": "",
       "startDate": "2015-10-01",
       "endDate": "2016-10-30",
-      "summary": "Helped the company in its modernization process and to pivot its business model from Brick and Mortar to an online first presence.",
+      "summary": "Helped the company in its modernization process by pivoting its business model from brick and mortar to an online-first presence.",
       "highlights": [
         "Architected, designed, and code multiple iterations of an in-house real estate CMS web app.",
-        "Tech: [WebComponents, Polymer, Firebase, Sails.js]"
+        "Tech: [ WebComponents, Polymer, Firebase, Sails.js ]."
       ]
     }
   ],
@@ -114,22 +127,23 @@
       "endDate": "2017-09-30",
       "gpa": "",
       "courses": [
-        "Graduated from the program in Sep. 2017 by logging 1100+ hours of coding time.",
-        "Developed various web application including ‘Petition,’ ‘Imageboard,’ ‘Social Network,’ ‘P2P Chat’ (Final Project - one-week coding challenge).",
-        "Tech: [JavaScript, Node, SQL, React, Redux, Express, Backbone]"
+        "Work with responsive design using HTML, CSS, and JavaScript.",
+        "Create exciting, interactive web apps and animations using native browser APIs as well as the jQuery library.",
+        "Build server-side JavaScript applications using Node.js and learned to use third-party APIs to create exciting dynamic web pages.",
+        "Create powerful single-page web applications with front-end frameworks such as React and Backbone.",
+        "Tech: [ Semantic HTML, CSS, JavaScript, Node, SQL, PostgreSQL, React, Redux, Express, Backbone, WebSockets ]."
       ],
       "location": "Berlin, Germany"
     },
     {
       "institution": "Innovation Factory, AREA Science Park",
       "url": "",
-      "area": "Entrepreneurship",
-      "studyType": "Business Boot Camp in Disciplined Entrepreneurship",
+      "area": "Disciplined Entrepreneurship",
+      "studyType": "Business Bootcamp",
       "startDate": "2015-04-01",
       "endDate": "2015-05-30",
       "gpa": "",
       "courses": [
-        "Graduated from the program in July 2015.",
         "Learned how to transform innovative business ideas into real products and services.",
         "Applied innovation-driven entrepreneurship process to develop a B2B startup in the real estate industry."
       ],
@@ -155,27 +169,45 @@
     {
       "name": "Programming languages",
       "level": "",
-      "keywords": ["TypeScript", "Flow", "JavaScript", "SQL", "GraphQL"]
+      "keywords": [
+        "TypeScript",
+        "Flow",
+        "JavaScript (ESNext)",
+        "SQL",
+        "GraphQL"
+      ]
     },
     {
-      "name": "Back-end",
+      "name": "Methodologies",
       "level": "",
       "keywords": [
-        "Node",
-        "Deno",
-        "Next.js",
-        "Express",
-        "Sails.js",
-        "Keystone.js",
-        "Handlebars"
+        "Agile",
+        "Kanban",
+        "Domain-driven design (DDD)",
+        "Cross-functional teams",
+        "Continuous Integration (CI)",
+        "Continuous Delivery (CD)",
+        "Test-driven development (TDD)",
+        "Pair programming",
+        "Timeboxing",
+        "Refactoring"
+      ]
+    },
+    {
+      "name": "Concepts",
+      "level": "",
+      "keywords": [
+        "Functional programming (FP)",
+        "Object-oriented programming (OOP)",
+        "Clean Code Principles"
       ]
     },
     {
       "name": "Front-end",
       "level": "",
       "keywords": [
-        "HTML",
-        "CSS",
+        "Semantic HTML",
+        "CSS (SCSS, CSS-in-Js)",
         "React",
         "React Native",
         "Redux",
@@ -188,27 +220,58 @@
       ]
     },
     {
+      "name": "Back-end",
+      "level": "",
+      "keywords": [
+        "Node",
+        "Deno",
+        "Next.js",
+        "Express",
+        "Koa.js",
+        "Sails.js",
+        "Keystone.js",
+        "Handlebars"
+      ]
+    },
+    {
+      "name": "Libraries",
+      "level": "",
+      "keywords": [
+        "Jest",
+        "Cypress",
+        "fp-ts",
+        "Underscore",
+        "Lodash",
+        "Lodash/fp",
+        "Ramda",
+        "Sanctuary.js",
+        "RxJS",
+        "XState",
+        "JQuery",
+        "webRTC",
+        "Socket.io"
+      ]
+    },
+    {
       "name": "Databases",
       "level": "",
       "keywords": [
         "PostgreSQL",
+        "MongoDB",
         "Waterline",
         "Redis",
         "Firebase Realtime Database"
       ]
     },
     {
-      "name": "Software Development Concepts",
+      "name": "APIs",
       "level": "",
-      "keywords": [
-        "Source Control",
-        "SC branching models",
-        "Functional programming (FP)",
-        "Object-oriented programming (OOP)",
-        "Test Driven Development (TDD)",
-        "Clean Code Principles",
-        "Domain-Driven Design"
-      ]
+      "keywords": ["GraphQL", "RESTful"]
+    },
+    {
+      "name": "Tools",
+      "level": "",
+      "keywords": ["Git", "Docker", "CircleCI", "GitHub Actions"]
     }
   ],
   "languages": [
@@ -231,7 +294,7 @@
   "projects": [],
   "meta": {
     "canonical": "",
-    "lastModified": "2020-07-27T18:21:47.286Z",
-    "version": "v1.0.0"
+    "lastModified": "2020-09-21T11:12:42.839Z",
+    "version": "v1.1.0"
   }
 }
