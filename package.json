@@ -75,7 +75,7 @@
     "gatsby-plugin-webpack-bundle-analyzer": "1.0.5",
     "identity-obj-proxy": "3.0.0",
     "jest": "26.4.2",
-    "prettier": "2.1.1",
+    "prettier": "2.1.2",
     "react-test-renderer": "16.13.1",
     "start-server-and-test": "1.11.3",
     "stylelint": "13.7.1",
