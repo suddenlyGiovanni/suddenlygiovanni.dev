@@ -16,11 +16,13 @@ import {
   Skills,
   Volunteer,
 } from '../components/resume-sections'
-import { useResume } from '../hooks'
+import { useResume, useResumePdfURL } from '../hooks'
 import { formatDateLocaleLong } from '../lib/helpers'
 
 const ResumePage: FC<PageProps> = () => {
   const resume = useResume()
+  const resumePdfURL = useResumePdfURL()
+
   const {
     awards,
     basics,
@@ -35,6 +37,7 @@ const ResumePage: FC<PageProps> = () => {
     volunteer,
     work,
   } = resume
+
   return (
     <Layout customSEO>
       <SEO description="Giovanni Ravalico's Résumé" titleTemplate="Résumé" />
@@ -75,6 +78,16 @@ const ResumePage: FC<PageProps> = () => {
             </em>
           </p>
           {basics && <Contacts basics={basics} />}
+
+          <p>
+            click on this link to download the pdf version of my resume{' '}
+            <span role="img" aria-label="pdf">
+              📜
+            </span>{' '}
+            <a href={resumePdfURL} download>
+              giovanni-ravalico-resume.pdf
+            </a>
+          </p>
         </header>
 
         {skills && <Skills skills={skills} />}

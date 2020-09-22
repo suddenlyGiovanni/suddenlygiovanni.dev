@@ -25,7 +25,7 @@ export function Experience({ works }: Props): JSX.Element {
           url,
         }) => (
           <Template
-            key={name}
+            key={`${String(name)} - ${String(position)}`}
             heading1={position || ''}
             heading1AriaLabel="job title"
             heading2={name || ''}

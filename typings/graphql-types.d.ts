@@ -3780,6 +3780,11 @@ export type GetProfilePictureQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetProfilePictureQuery = { file?: Maybe<{ image?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixed_WithWebpFragment> }> }> };
 
+export type GetResumePdfUrlQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetResumePdfUrlQuery = { file?: Maybe<Pick<File, 'id' | 'publicURL'>> };
+
 export type ResumeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
