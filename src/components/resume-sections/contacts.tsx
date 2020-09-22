@@ -78,8 +78,8 @@ export const Contacts = ({ basics }: Props): JSX.Element => {
           </a>
         </li>
 
-        {profiles?.map((profile) => (
-          <li>
+        {profiles?.map((profile, idx) => (
+          <li key={String(idx) + String(profile.network)}>
             <SocialIcon
               network={profile.network || ''}
               aria-label={`${profile?.network || ''} icon`}

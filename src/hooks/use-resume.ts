@@ -74,9 +74,9 @@ const resumeQuery = graphql`
   }
 `
 
-type QueryEducation = import('/Users/webdev/Projects/personal/suddenlygiovanni/typings/graphql-types').Maybe<
+type QueryEducation = import('../../typings/graphql-types').Maybe<
   Pick<
-    import('/Users/webdev/Projects/personal/suddenlygiovanni/typings/graphql-types').ResumeJsonEducation,
+    import('../../typings/graphql-types').ResumeJsonEducation,
     | 'url'
     | 'area'
     | 'courses'
@@ -94,9 +94,9 @@ const mapEducation = (ed: QueryEducation): Education =>
     startDate: new Date(ed?.startDate),
   } as Education) // TODO: remove type casting
 
-type QueryWork = import('/Users/webdev/Projects/personal/suddenlygiovanni/typings/graphql-types').Maybe<
+type QueryWork = import('../../typings/graphql-types').Maybe<
   Pick<
-    import('/Users/webdev/Projects/personal/suddenlygiovanni/typings/graphql-types').ResumeJsonWork,
+    import('../../typings/graphql-types').ResumeJsonWork,
     | 'name'
     | 'summary'
     | 'url'
