@@ -3,8 +3,12 @@ updates:
 - package-ecosystem: npm
   directory: "/"
   schedule:
-    interval: daily
+    interval: weekly
+    day: "monday"
     time: "04:00"
     timezone: Europe/Berlin
   target-branch: "dependencies"
+  # Labels on pull requests for security and version updates
+  labels:
+    - "npm dependencies"
   open-pull-requests-limit: 10
