@@ -1,0 +1,127 @@
+---
+title: First blog post!
+slug: first-blog-post
+author: Giovanni Ravalico
+image: ./images/pablo-gentile-hello.jpg
+date: '2020-07-25'
+description: 'Welcome to suddenlyGiovanni, the personal blog of Giovanni Ravalico.'
+categories: ['test']
+keywords: ['test']
+banner: ''
+bannerCredit: ''
+published: true
+unlisted: true
+redirects:
+  - ''
+---
+
+![Hello](./images/pablo-gentile-hello.jpg)
+
+Welcome to suddenlyGiovanni, the personal blog of Giovanni Ravalico.
+
+More to come soon…
+
+This is a test snippet of code to verify the code box highlighting capabilities:
+```ts
+function assert<T extends unknown>(
+  condition: T,
+  message?: string
+): T extends false ? never : void {
+  if (!condition) {
+    throw new Error(
+      message || `Assertion failed, condition was ${Boolean(condition)}`
+    )
+  }
+  return undefined
+}
+
+/**
+ * Prepend
+ * It adds a type E at the top of a tuple T
+ */
+type Prepend<E, T extends any[]> = ((head: E, ...args: T) => any) extends (
+  ...args: infer U
+) => any
+  ? U
+  : T
+
+/**  Tail conveniently removes the first entry that a tuple might contain. */
+type Tail<T extends any[]> = ((...t: T) => any) extends (
+  _: any,
+  ...tail: infer TT
+) => any
+  ? TT
+  : []
+
+/**
+ * Drop
+ * It takes a tuple T and drops the first N entries.
+ * The Drop type will recurse until Length<;I> matches the value of N that we passed.
+ * In other words, the type of index 0 is chosen by the conditional accessor until that condition
+ * is met.
+ * And we used Prepend<any, I> so that we can increase a counter like we would do in a loop.
+ * Thus, Length<I> is used as a recursion counter, and it is a way to freely iterate with TS.
+ */
+type Drop<N extends number, T extends any[], I extends any[] = []> = {
+  0: Drop<N, Tail<T>, Prepend<any, I>>
+  1: T
+}[Length<I> extends N ? 1 : 0]
+
+/**
+ * Cast
+ *  requires TS to re-check a type X against a type Y, and type Y will only be enforced if it fails
+ */
+type Cast<X, Y> = X extends Y ? X : Y
+
+/** Length */
+type Length<T extends any[]> = T['length']
+
+/**
+ * this interface and all the helper fns belong to `Pierre-Antoine Mills`
+ * @author @pirix-gh
+ */
+type Curry<P extends any[], R> = <T extends any[]>(
+  ...args: Cast<T, Partial<P>>
+) => Drop<Length<T>, P> extends [any, ...any[]] // @ts-ignore
+  ? Curry<Cast<Drop<Length<T>, P>, any[]>, R>
+  : R
+
+const _curry = (fn: Function) => {
+  const curried = function (...t: any[]) {
+    return t.length >= fn.length
+      ? fn.call(this, ...t)
+      : curried.bind(this, ...t)
+  }
+  return curried
+}
+
+export const curry = <P extends any[], R>(
+  f: (...args: P) => R
+): Curry<P, R> => {
+  return _curry(f)
+}
+
+// test
+const toCurry = (
+  name: string,
+  age: number,
+  single: boolean,
+  ...nicknames: string[]
+) => true
+const _curried = curry(toCurry) // Curry<[string, number, boolean, ...string[]], boolean>
+const test01 = _curried('jane', 26)(true, 'jj', 'jini') // boolean
+const test02 = _curried('jane')(26, true, 'jj', 'jini') // boolean
+// @ts-expect-error
+const test03 = _curried('jane')(26)(true, 'jj', 90000) // error: Argument of type '90000' is not assignable to parameter of type 'string'
+
+const add4 = (a: number, b: number, c: number, d: number): number =>
+  a + b + c + d
+const curriedAdd4 = curry(add4)
+assert(curriedAdd4(1, 2, 3, 4) === 10)
+assert(curriedAdd4(1, 2, 3)(4) === 10)
+assert(curriedAdd4(1, 2)(3)(4) === 10)
+assert(curriedAdd4(1)(2)(3)(4) === 10)
+assert(curriedAdd4(1)(2)(3, 4) === 10)
+assert(curriedAdd4(1)(2, 3, 4) === 10)
+assert(curriedAdd4(1, 2)(3, 4) === 10)
+```

@@ -1,0 +1,312 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Giovanni Ravalico",
+    "label": "Software Developer",
+    "image": "",
+    "email": "ravalico.giovanni@gmail.com",
+    "phone": "+49 (0) 162 455 6031",
+    "url": "https://suddenlyGiovanni.dev",
+    "summary": "I am a Software Developer, a geek and more generally a problem solver. I am also a young father of two and a devoted husband. My transition from the social sciences to software engineering has enhanced my innate curiosity, my pragmatic approach, and desire to find new ways to solve old problems. I’m looking to work in an environment where I can continuously grow as a developer, where experimentation is encouraged and where I can tackle the hardest problems.",
+    "location": {
+      "address": "Ferdinandstraße 11",
+      "postalCode": "12209",
+      "city": "Berlin",
+      "countryCode": "Germany",
+      "region": "Berlin"
+    },
+    "profiles": [
+      {
+        "network": "Twitter",
+        "username": "suddenlyGio",
+        "url": "https://twitter.com/suddenlyGio"
+      },
+      {
+        "network": "GitHub",
+        "username": "suddenlyGiovanni",
+        "url": "https://github.com/suddenlyGiovanni"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "giovanni-ravalico",
+        "url": "https://www.linkedin.com/in/giovanni-ravalico"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "ToolTime Gmbh",
+      "location": "Berlin, Germany",
+      "description": "B2B SAAS",
+      "position": "Senior Frontend Engineer",
+      "url": "https://www.tooltime.de/",
+      "startDate": "2019-09-01",
+      "endDate": "2020-02-29",
+      "summary": "ToolTime's mission is to help craftsmen tackle all their administrative tasks digitally with ease.",
+      "highlights": [
+        "Design, build, scale, and maintain ToolTime’s software solutions.",
+        "Help to shape the technical areas of the product.",
+        "Work closely with product managers, product designers, front-end, and backend engineers.",
+        "Help to grow and develop the front-end team, playing a role in hiring new team members.",
+        "Foster a culture of continuous delivery, pair programming, and test-driven development.",
+        "Solving challenging problems in the areas of communication & chat, scheduling & disposition, routing & navigation, order management, and documentation.",
+        "Tech: [ Typescript, React and React Native, CSS-in-JS, GraphQL, Redux, RxJs, Apollo, Jest, Cypress ]."
+      ]
+    },
+    {
+      "name": "Appico Gmbh",
+      "location": "Hamburg, Germany",
+      "description": "Digital Product Design Studio",
+      "position": "React Native Developer",
+      "url": "https://appico.com/",
+      "startDate": "2019-01-01",
+      "endDate": "2019-02-28",
+      "summary": "",
+      "highlights": [
+        "Enable a new service offering to our customers by researching and studying mobile app development with React Native.",
+        "Organize the knowledge transfer to the rest of the team. Build several in house prototypes to illustrate commonalities and differences with regular web development.",
+        "Reduce the time needed to go from idea to prototype by developing a boilerplate project setup based on best practices and company requirements.",
+        "Tech: [ TypeScript, React Native, Redux, Storybook, Apollo, GraphQL, styled- components, Lottie, Jest ]."
+      ]
+    },
+    {
+      "name": "Appico Gmbh",
+      "location": "Hamburg, Germany",
+      "description": "Digital Product Design Studio",
+      "position": "Full Stack Web Developer",
+      "url": "https://appico.com/",
+      "startDate": "2018-01-01",
+      "endDate": "2018-12-31",
+      "summary": "Design, build and maintain the MVP for CarieTM, a telemedicine platform for the US market.",
+      "highlights": [
+        "CarieTM enables doctors to interact with patients and other doctors remotely by scheduling appointments and allowing messaging, video consultation, online medication prescriptions, and file sharing.",
+        "I lead the front-end teamby informing good software design and architecture decisions;by managing the project tasks and issues;by delegating the load to the most effective developer.",
+        "I reduced the number of bug reports by enabling the adoption of a strongly- typed superset of JavaScript. I tutored my teammates in the process of learning Flow with pair-programming and code reviews.",
+        "I enabled a resilient user experience by building a Progressive Single Page App (PWA) with React, Redux, and Apollo.",
+        "I streamlined the design to code the implementation process by fostering a “component-driven development” approach. To achieve so, I coached both designers and my peers.",
+        "Tech: [ TypeScript, Flow, React, SCSS, Redux, Storybook, Apollo, GraphQL, styled-components, Jest, Twilio, AWS IoT, Serverless, Node, AWS Lambda, Docker ]."
+      ]
+    },
+    {
+      "name": "MadeByEnka",
+      "location": "Rijeka, Croatia",
+      "description": "Handmade Fashion e-commerce",
+      "position": "Front-end Web Developer",
+      "url": "",
+      "startDate": "2016-10-01",
+      "endDate": "2017-06-30",
+      "summary": "Co-founded and managed a Lifestyle brand with my wife.",
+      "highlights": [
+        "Designed, developed and implemented the brand online presence by building the frontend on top of Shopify service.",
+        "Tech: [JS, HTML, CSS, JQuery, Shopify]."
+      ]
+    },
+    {
+      "name": "Ravalico Real Estate s.a.s",
+      "location": "Trieste, Italy",
+      "description": "Real Estate Agency",
+      "position": "Front-end Web Developer",
+      "url": "",
+      "startDate": "2015-10-01",
+      "endDate": "2016-10-30",
+      "summary": "Helped the company in its modernization process by pivoting its business model from brick and mortar to an online-first presence.",
+      "highlights": [
+        "Architected, designed, and code multiple iterations of an in-house real estate CMS web app.",
+        "Tech: [ WebComponents, Polymer, Firebase, Sails.js ]."
+      ]
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "SPICED Academy",
+      "url": "https://www.spiced-academy.com/",
+      "area": "Web Development",
+      "studyType": "Coding Bootcamp",
+      "startDate": "2017-06-01",
+      "endDate": "2017-09-30",
+      "gpa": "",
+      "courses": [
+        "Work with responsive design using HTML, CSS, and JavaScript.",
+        "Create exciting, interactive web apps and animations using native browser APIs as well as the jQuery library.",
+        "Build server-side JavaScript applications using Node.js and learned to use third-party APIs to create exciting dynamic web pages.",
+        "Create powerful single-page web applications with front-end frameworks such as React and Backbone.",
+        "Tech: [ Semantic HTML, CSS, JavaScript, Node, SQL, PostgreSQL, React, Redux, Express, Backbone, WebSockets ]."
+      ],
+      "location": "Berlin, Germany"
+    },
+    {
+      "institution": "Innovation Factory, AREA Science Park",
+      "url": "",
+      "area": "Disciplined Entrepreneurship",
+      "studyType": "Business Bootcamp",
+      "startDate": "2015-04-01",
+      "endDate": "2015-05-30",
+      "gpa": "",
+      "courses": [
+        "Learned how to transform innovative business ideas into real products and services.",
+        "Applied innovation-driven entrepreneurship process to develop a B2B startup in the real estate industry."
+      ],
+      "location": "Trieste, Italy"
+    },
+    {
+      "institution": "Università degli studi di Trieste",
+      "url": "https://www.units.it/",
+      "area": "History",
+      "studyType": "Bachelor",
+      "startDate": "2011-09-01",
+      "endDate": "2014-09-01",
+      "gpa": "",
+      "courses": [
+        "Completed 90% of required credits toward Bachelor of Arts in Modern History"
+      ],
+      "location": "Trieste, Italy"
+    }
+  ],
+  "awards": [],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Programming languages",
+      "level": "",
+      "keywords": [
+        "TypeScript",
+        "Flow",
+        "JavaScript (ESNext)",
+        "SQL",
+        "GraphQL"
+      ]
+    },
+    {
+      "name": "Methodologies",
+      "level": "",
+      "keywords": [
+        "Agile",
+        "Kanban",
+        "Domain-driven design (DDD)",
+        "Cross-functional teams",
+        "Continuous Integration (CI)",
+        "Continuous Delivery (CD)",
+        "Test-driven development (TDD)",
+        "Pair programming",
+        "Timeboxing",
+        "Refactoring"
+      ]
+    },
+    {
+      "name": "Concepts",
+      "level": "",
+      "keywords": [
+        "Functional programming (FP)",
+        "Object-oriented programming (OOP)",
+        "Clean Code Principles"
+      ]
+    },
+    {
+      "name": "Front-end",
+      "level": "",
+      "keywords": [
+        "Semantic HTML",
+        "CSS (SCSS, CSS-in-Js)",
+        "React",
+        "React Native",
+        "Redux",
+        "XState",
+        "Apollo",
+        "Storybook",
+        "Polymer",
+        "Backbone",
+        "Gatsby"
+      ]
+    },
+    {
+      "name": "Back-end",
+      "level": "",
+      "keywords": [
+        "Node",
+        "Deno",
+        "Next.js",
+        "Express",
+        "Koa.js",
+        "Sails.js",
+        "Keystone.js",
+        "Handlebars"
+      ]
+    },
+    {
+      "name": "Libraries",
+      "level": "",
+      "keywords": [
+        "Jest",
+        "Cypress",
+        "fp-ts",
+        "Underscore",
+        "Lodash",
+        "Lodash/fp",
+        "Ramda",
+        "Sanctuary.js",
+        "RxJS",
+        "XState",
+        "JQuery",
+        "webRTC",
+        "Socket.io"
+      ]
+    },
+    {
+      "name": "Databases",
+      "level": "",
+      "keywords": [
+        "PostgreSQL",
+        "MongoDB",
+        "Waterline",
+        "Redis",
+        "Firebase Realtime Database"
+      ]
+    },
+    {
+      "name": "APIs",
+      "level": "",
+      "keywords": [
+        "GraphQL",
+        "RESTful"
+      ]
+    },
+    {
+      "name": "Tools",
+      "level": "",
+      "keywords": [
+        "Git",
+        "Docker",
+        "CircleCI",
+        "GitHub Actions"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": " Full professional proficiency"
+    },
+    {
+      "fluency": "Native speaker",
+      "language": "Italian"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Functional Programming",
+      "keywords": [
+        "ReasonML",
+        "Clojure",
+        "Haskell"
+      ]
+    }
+  ],
+  "references": [],
+  "projects": [],
+  "meta": {
+    "canonical": "",
+    "lastModified": "2020-09-21T11:12:42.839Z",
+    "version": "v1.1.0"
+  }
+}
