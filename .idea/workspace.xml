@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="revert(content): brought back content folder">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/header.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/seo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/gatsby-astronaut.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/gatsby-icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/404.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/page-2.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/using-typescript.tsx" beforeDir="false" />
-    </list>
+    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="fix(boilerplate): remove gatsby backed boilerplate code" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,12 +159,22 @@
       <workItem from="1634137775955" duration="253000" />
       <workItem from="1634141519801" duration="14715000" />
       <workItem from="1634156770153" duration="688000" />
-      <workItem from="1634157468471" duration="1633000" />
+      <workItem from="1634157468471" duration="1947000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -226,9 +223,9 @@
     <select />
   </component>
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
-    <type>revert</type>
-    <scope>content</scope>
-    <subject>brought back content folder</subject>
+    <type>fix</type>
+    <scope>boilerplate</scope>
+    <subject>remove gatsby backed boilerplate code</subject>
     <footers>
       <entry type="" value="" />
     </footers>
