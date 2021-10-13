@@ -1,29 +1,27 @@
-import { PageProps } from 'gatsby'
-import React, { FC } from 'react'
+import * as React from "react";
+import { StaticImage } from "gatsby-plugin-image";
 
-import { Layout, PostPreview } from '../components'
-import { usePostsPreview } from '../hooks'
+import Layout from "../components/layout";
+import Seo from "../components/seo";
 
-const IndexPage: FC<PageProps> = () => {
-  const posts = usePostsPreview()
-  return (
-    <Layout>
-      {posts.map(
-        ({ id, slug, author, title, description, date, timeToRead }) => (
-          <PostPreview
-            key={id}
-            id={id}
-            slug={slug}
-            author={author}
-            title={title}
-            description={description}
-            date={date}
-            timeToRead={timeToRead}
-          />
+const IndexPage = () => (
+  <Layout>
+    <Seo title="Home" />
+    <h1>Hi people</h1>
+    <p>Welcome to your new Gatsby site.</p>
+    <p>Now go build something great.</p>
+    <StaticImage
+      src="../images/gatsby-astronaut.png"
+      width={300}
+      quality={95}
+      formats={['auto"auto"bp"webp"if"avif"    alt="A Gatsby astronaut"
+        style = {{ marginBottom: `1.45rem` }}
+        />
+        <p>
+        <Link to="/page-2/">Go to page 2</Link> <br />
+        <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
+        </p>
+        </Layout>
         )
-      )}
-    </Layout>
-  )
-}
 
-export default IndexPage
+        export default IndexPage
