@@ -31,8 +31,8 @@
     "react-helmet": "6.1.0",
     "react-icons": "3.11.0",
     "react-live": "2.2.2",
-    "react-typography": "0.16.19",
-    "typography": "0.16.19",
+    "react-typography": "0.16.20",
+    "typography": "0.16.21",
     "typography-theme-github": "0.16.19"
   },
   "devDependencies": {
