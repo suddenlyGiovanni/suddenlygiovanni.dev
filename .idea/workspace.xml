@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/content/assets/giovanni_ravalico-profile_bw.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/assets/giovanni_ravalico-profile_color.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/assets/suddenly_giovanni-icon-black.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/assets/suddenly_giovanni-icon-white.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/00-frontmatter-placeholder/index.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/01-test-post-0/images/pablo-gentile-hello.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/blog/01-test-post-0/test-post-0.mdx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/resume/giovanni-ravalico-resume.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/content/resume/resume.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/suddenlygiovanni.dev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/suddenlygiovanni.dev.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="revert(content): brought back content folder">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/seo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/gatsby-astronaut.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/gatsby-icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/404.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/page-2.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/using-typescript.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +22,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -171,7 +172,7 @@
       <workItem from="1634137775955" duration="253000" />
       <workItem from="1634141519801" duration="14715000" />
       <workItem from="1634156770153" duration="688000" />
-      <workItem from="1634157468471" duration="301000" />
+      <workItem from="1634157468471" duration="1633000" />
     </task>
     <servers />
   </component>
