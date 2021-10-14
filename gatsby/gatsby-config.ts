@@ -1,11 +1,12 @@
 import type { GatsbyConfig } from 'gatsby'
 
-import { makeGatsbyStyleComponentsPluginConfig } from './gatsby-plugin-styled-components'
 import { config } from '../config/website'
+import { siteMetadata } from '../config/site-metadata'
+import { makeGatsbyStyleComponentsPluginConfig } from './gatsby-plugin-styled-components'
 import { makeGatsbySourceFilesystemPluginConfig } from './gatsby-source-filesystem'
 import { makeGatsbyManifestPluginConfig } from './gatsby-plugin-manifest'
+import { makeGatsbyTransformerJsonPluginConfig } from './gatsby-transformer-json'
 
-// #region 'gatsby-source-filesystem'
 const gatsbySourceFilesystemBlog = makeGatsbySourceFilesystemPluginConfig({
   path: 'content/blog',
   name: 'blog',
@@ -18,7 +19,6 @@ const gatsbySourceFilesystemResume = makeGatsbySourceFilesystemPluginConfig({
   path: 'content/resume',
   name: 'resume',
 })
-// #endregion 'gatsby-source-filesystem's
 
 const gatsbyPluginManifest = makeGatsbyManifestPluginConfig({
   background_color: config.backgroundColor,
@@ -34,20 +34,18 @@ const gatsbyPluginManifest = makeGatsbyManifestPluginConfig({
 
 const gatsbyPluginStyledComponents = makeGatsbyStyleComponentsPluginConfig()
 
+const gatsbyTransformerJson = makeGatsbyTransformerJsonPluginConfig()
+
 const gatsbyConfig = (): GatsbyConfig => {
   return {
-    siteMetadata: {
-      title: ``,
-      description: ``,
-      author: ``,
-      siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
-    },
+    siteMetadata,
     plugins: [
       `gatsby-plugin-ts-config`,
       `gatsby-plugin-react-helmet`,
       `gatsby-plugin-image`,
       `gatsby-transformer-sharp`,
       `gatsby-plugin-sharp`,
+      gatsbyTransformerJson,
       gatsbyPluginStyledComponents,
       gatsbySourceFilesystemBlog,
       gatsbySourceFilesystemAssets,

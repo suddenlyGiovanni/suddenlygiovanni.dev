@@ -5,17 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move plugin config factory fns to separate module">
-      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-manifest.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-styled-components.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-source-filesystem.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/suddenlygiovanni.dev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/suddenlygiovanni.dev.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-transformer-json.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/website.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/website.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby/cnf.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/cnf.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +64,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/node_modules/gatsby/index.d.ts" root0="SKIP_INSPECTION" />
   </component>
+  <component name="JsBowerSettings">
+    <bower-package value="" />
+    <bower.json value="" />
+  </component>
   <component name="JsbtTreeLayoutManager">
     <layout place="tools.popupnpm">
       <scroll-view-position x="0" y="0" />
@@ -109,7 +108,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.HTML" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -182,7 +181,7 @@
       <workItem from="1634156770153" duration="688000" />
       <workItem from="1634157468471" duration="2064000" />
       <workItem from="1634203850842" duration="1149000" />
-      <workItem from="1634206302660" duration="12893000" />
+      <workItem from="1634206302660" duration="14697000" />
     </task>
     <servers />
   </component>
@@ -244,5 +243,13 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.github.lppedd.cc.CommitBuilderDialog">
+    <type>refactor</type>
+    <scope>gatsby-config</scope>
+    <subject>move plugin config factory fns to separate module</subject>
+    <footers>
+      <entry type="" value="" />
+    </footers>
   </component>
 </project>
