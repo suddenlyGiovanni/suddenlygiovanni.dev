@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move plugin config factory fns to separate module">
-      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-transformer-json.ts" afterDir="false" />
+    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move 'gatsby-transformer-json' config factory fns to separate module">
+      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-sharp.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby/cnf.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/cnf.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +108,8 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.completion" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -181,7 +182,7 @@
       <workItem from="1634156770153" duration="688000" />
       <workItem from="1634157468471" duration="2064000" />
       <workItem from="1634203850842" duration="1149000" />
-      <workItem from="1634206302660" duration="14697000" />
+      <workItem from="1634206302660" duration="17128000" />
     </task>
     <servers />
   </component>
@@ -247,7 +248,7 @@
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
     <type>refactor</type>
     <scope>gatsby-config</scope>
-    <subject>move plugin config factory fns to separate module</subject>
+    <subject>move 'gatsby-transformer-json' config factory fns to separate module</subject>
     <footers>
       <entry type="" value="" />
     </footers>
