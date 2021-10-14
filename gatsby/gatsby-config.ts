@@ -10,6 +10,7 @@ import { makeGatsbySharpPluginConfig } from './gatsby-plugin-sharp'
 import { makeGatsbyTransformerSharpPluginConfig } from './gatsby-transformer-sharp'
 import { makeGatsbyPluginImageConfig } from './gatsby-plugin-image'
 import { makeGatsbyPluginReactHelmetConfig } from './gatsby-plugin-react-helmet'
+import { makeGatsbyPluginTsConfig } from './gatsby-plugin-ts-config'
 
 const gatsbySourceFilesystemBlog = makeGatsbySourceFilesystemPluginConfig({
   path: 'content/blog',
@@ -44,12 +45,13 @@ const gatsbyPluginSharp = makeGatsbySharpPluginConfig()
 const gatsbyTransformerSharp = makeGatsbyTransformerSharpPluginConfig()
 const gatsbyPluginImage = makeGatsbyPluginImageConfig()
 const gatsbyPluginReactHelmet = makeGatsbyPluginReactHelmetConfig()
+const gatsbyPluginTsConfig = makeGatsbyPluginTsConfig()
 
 const gatsbyConfig = (): GatsbyConfig => {
   return {
     siteMetadata,
     plugins: [
-      `gatsby-plugin-ts-config`,
+      gatsbyPluginTsConfig,
       gatsbyPluginReactHelmet,
       gatsbyPluginImage,
       gatsbyTransformerSharp,

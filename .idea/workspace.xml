@@ -7,8 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move 'gatsby-plugin-image' config factory fns to separate module">
-      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-react-helmet.ts" afterDir="false" />
+    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move 'gatsby-plugin-react-helmet' config factory fns to separate module">
+      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-ts-config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-config.ts" afterDir="false" />
     </list>
@@ -182,7 +182,7 @@
       <workItem from="1634156770153" duration="688000" />
       <workItem from="1634157468471" duration="2064000" />
       <workItem from="1634203850842" duration="1149000" />
-      <workItem from="1634206302660" duration="19887000" />
+      <workItem from="1634206302660" duration="20675000" />
     </task>
     <servers />
   </component>
@@ -248,7 +248,7 @@
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
     <type>refactor</type>
     <scope>gatsby-config</scope>
-    <subject>move 'gatsby-plugin-image' config factory fns to separate module</subject>
+    <subject>move 'gatsby-plugin-react-helmet' config factory fns to separate module</subject>
     <footers>
       <entry type="" value="" />
     </footers>
