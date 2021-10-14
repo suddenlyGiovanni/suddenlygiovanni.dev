@@ -11,6 +11,7 @@ import { makeGatsbyTransformerSharpPluginConfig } from './gatsby-transformer-sha
 import { makeGatsbyPluginImageConfig } from './gatsby-plugin-image'
 import { makeGatsbyPluginReactHelmetConfig } from './gatsby-plugin-react-helmet'
 import { makeGatsbyPluginTsConfig } from './gatsby-plugin-ts-config'
+import { makeGatsbyPluginMdxConfig } from './gatsby-plugin-mdx'
 
 const gatsbySourceFilesystemBlog = makeGatsbySourceFilesystemPluginConfig({
   path: 'content/blog',
@@ -46,6 +47,11 @@ const gatsbyTransformerSharp = makeGatsbyTransformerSharpPluginConfig()
 const gatsbyPluginImage = makeGatsbyPluginImageConfig()
 const gatsbyPluginReactHelmet = makeGatsbyPluginReactHelmetConfig()
 const gatsbyPluginTsConfig = makeGatsbyPluginTsConfig()
+const gatsbyPluginMdx = makeGatsbyPluginMdxConfig({
+  // defaultLayouts: { default: require.resolve('../src/components/layouts/layout.tsx')},
+  // gatsbyRemarkPlugins: [gatsbyRemarkImages],
+  plugins: [{ resolve: 'gatsby-remark-images' }],
+})
 
 const gatsbyConfig = (): GatsbyConfig => {
   return {
@@ -53,6 +59,7 @@ const gatsbyConfig = (): GatsbyConfig => {
     plugins: [
       gatsbyPluginTsConfig,
       gatsbyPluginReactHelmet,
+      gatsbyPluginMdx,
       gatsbyPluginImage,
       gatsbyTransformerSharp,
       gatsbyPluginSharp,

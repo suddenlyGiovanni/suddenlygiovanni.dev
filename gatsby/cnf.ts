@@ -1,5 +1,4 @@
 import { GatsbyPlugin } from 'gatsby-plugin-ts-config'
-import { FileSystemConfig as GatsbySourceFilesystemConfig } from 'gatsby-source-filesystem'
 
 import { config } from '../config/website'
 import { siteMetadata } from '../config/site-metadata'
@@ -167,31 +166,31 @@ const gatsbyPluginMdx: GatsbyPluginMdxConfig = {
 // #endregion "gatsby-plugin-mdx"
 
 // #region 'gatsby-plugin-sharp'
-type GatsbyPluginSharpConfig = GatsbyPlugin<'gatsby-plugin-sharp'>
-const gatsbyPluginSharp: GatsbyPluginSharpConfig = 'gatsby-plugin-sharp'
+// type GatsbyPluginSharpConfig = GatsbyPlugin<'gatsby-plugin-sharp'>
+// const gatsbyPluginSharp: GatsbyPluginSharpConfig = 'gatsby-plugin-sharp'
 // #endregion 'gatsby-plugin-sharp'
 
 // #region 'gatsby-transformer-sharp'
-type GatsbyTransformerSharpConfig = GatsbyPlugin<'gatsby-transformer-sharp'>
-const gatsbyTransformerSharp: GatsbyTransformerSharpConfig =
-  'gatsby-transformer-sharp'
+// type GatsbyTransformerSharpConfig = GatsbyPlugin<'gatsby-transformer-sharp'>
+// const gatsbyTransformerSharp: GatsbyTransformerSharpConfig =
+//   'gatsby-transformer-sharp'
 // #endregion 'gatsby-transformer-sharp'
 
 // #region 'gatsby-plugin-react-helmet'
-type GatsbyPluginReactHelmetConfig = GatsbyPlugin<'gatsby-plugin-react-helmet'>
-const gatsbyPluginReactHelmet: GatsbyPluginReactHelmetConfig =
-  'gatsby-plugin-react-helmet'
+// type GatsbyPluginReactHelmetConfig = GatsbyPlugin<'gatsby-plugin-react-helmet'>
+// const gatsbyPluginReactHelmet: GatsbyPluginReactHelmetConfig =
+//   'gatsby-plugin-react-helmet'
 // #endregion 'gatsby-plugin-react-helmet'
 
 // #region 'gatsby-plugin-emotion'
-type GatsbyPluginEmotionConfig = GatsbyPlugin<'gatsby-plugin-emotion'>
-const gatsbyPluginEmotion: GatsbyPluginEmotionConfig = 'gatsby-plugin-emotion'
-// #endregion 'gatsby-plugin-emotion
+// type GatsbyPluginEmotionConfig = GatsbyPlugin<'gatsby-plugin-emotion'>
+// const gatsbyPluginEmotion: GatsbyPluginEmotionConfig = 'gatsby-plugin-emotion'
+// // #endregion 'gatsby-plugin-emotion
 
 const gatsbyConfig = () => ({
   siteMetadata,
   plugins: [
-    gatsbyTransformerSharp,
+    // gatsbyTransformerSharp,
     // 'gatsby-transformer-json',
     // gatsbyPluginSharp,
     // gatsbyPluginEmotion,
