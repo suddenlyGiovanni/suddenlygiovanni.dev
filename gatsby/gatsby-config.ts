@@ -3,6 +3,7 @@ import type { GatsbyConfig } from 'gatsby'
 import { config } from '../config/website'
 import { siteMetadata } from '../config/site-metadata'
 import { makeGatsbyStyleComponentsPluginConfig } from './gatsby-plugin-styled-components'
+import { makeGatsbyPluginTypographyConfig } from './gatsby-plugin-typography'
 import { makeGatsbySourceFilesystemPluginConfig } from './gatsby-source-filesystem'
 import { makeGatsbyManifestPluginConfig } from './gatsby-plugin-manifest'
 import { makeGatsbyTransformerJsonPluginConfig } from './gatsby-transformer-json'
@@ -61,6 +62,10 @@ const gatsbyPluginMdx = makeGatsbyPluginMdxConfig({
   plugins: [{ resolve: 'gatsby-remark-images' }],
 })
 
+const gatsbyPluginTypography = makeGatsbyPluginTypographyConfig({
+  // pathToConfigModule: 'src/utils/typography',
+})
+
 const gatsbyConfig = (): GatsbyConfig => {
   return {
     siteMetadata,
@@ -77,6 +82,7 @@ const gatsbyConfig = (): GatsbyConfig => {
       gatsbySourceFilesystemAssets,
       gatsbySourceFilesystemResume,
       gatsbyPluginManifest,
+      gatsbyPluginTypography,
 
       // this (optional) plugin enables Progressive Web App + Offline functionality
       // To learn more, visit: https://gatsby.dev/offline
