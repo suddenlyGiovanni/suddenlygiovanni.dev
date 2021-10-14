@@ -1,6 +1,5 @@
 import type { IPluginRefObject, IPluginRefOptions } from 'gatsby'
 
-// pluginOptionsSchema
 interface PluginOptionsSchema extends IPluginRefOptions {
   /**
    * The width of the generated base64 preview image

@@ -7,10 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move 'gatsby-transformer-json' config factory fns to separate module">
-      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-sharp.ts" afterDir="false" />
+    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move 'gatsby-plugin-sharp' config factory fns to separate module">
+      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-image.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-transformer-sharp.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby/gatsby-plugin-sharp.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-sharp.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +184,7 @@
       <workItem from="1634156770153" duration="688000" />
       <workItem from="1634157468471" duration="2064000" />
       <workItem from="1634203850842" duration="1149000" />
-      <workItem from="1634206302660" duration="17128000" />
+      <workItem from="1634206302660" duration="18924000" />
     </task>
     <servers />
   </component>
@@ -248,7 +250,7 @@
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
     <type>refactor</type>
     <scope>gatsby-config</scope>
-    <subject>move 'gatsby-transformer-json' config factory fns to separate module</subject>
+    <subject>move 'gatsby-plugin-sharp' config factory fns to separate module</subject>
     <footers>
       <entry type="" value="" />
     </footers>

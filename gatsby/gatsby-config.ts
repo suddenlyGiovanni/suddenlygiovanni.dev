@@ -7,6 +7,8 @@ import { makeGatsbySourceFilesystemPluginConfig } from './gatsby-source-filesyst
 import { makeGatsbyManifestPluginConfig } from './gatsby-plugin-manifest'
 import { makeGatsbyTransformerJsonPluginConfig } from './gatsby-transformer-json'
 import { makeGatsbySharpPluginConfig } from './gatsby-plugin-sharp'
+import { makeGatsbyTransformerSharpPluginConfig } from './gatsby-transformer-sharp'
+import { makeGatsbyPluginImageConfig } from './gatsby-plugin-image'
 
 const gatsbySourceFilesystemBlog = makeGatsbySourceFilesystemPluginConfig({
   path: 'content/blog',
@@ -38,6 +40,8 @@ const gatsbyPluginStyledComponents = makeGatsbyStyleComponentsPluginConfig()
 const gatsbyTransformerJson = makeGatsbyTransformerJsonPluginConfig()
 
 const gatsbyPluginSharp = makeGatsbySharpPluginConfig()
+const gatsbyTransformerSharp = makeGatsbyTransformerSharpPluginConfig()
+const gatsbyPluginImage = makeGatsbyPluginImageConfig()
 
 const gatsbyConfig = (): GatsbyConfig => {
   return {
@@ -45,8 +49,8 @@ const gatsbyConfig = (): GatsbyConfig => {
     plugins: [
       `gatsby-plugin-ts-config`,
       `gatsby-plugin-react-helmet`,
-      `gatsby-plugin-image`,
-      `gatsby-transformer-sharp`,
+      gatsbyPluginImage,
+      gatsbyTransformerSharp,
       gatsbyPluginSharp,
       gatsbyTransformerJson,
       gatsbyPluginStyledComponents,
