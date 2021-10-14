@@ -1,5 +1,39 @@
 import type { GatsbyConfig } from 'gatsby'
 
+import { makeGatsbyStyleComponentsPluginConfig } from './gatsby-plugin-styled-components'
+import { config } from '../config/website'
+import { makeGatsbySourceFilesystemPluginConfig } from './gatsby-source-filesystem'
+import { makeGatsbyManifestPluginConfig } from './gatsby-plugin-manifest'
+
+// #region 'gatsby-source-filesystem'
+const gatsbySourceFilesystemBlog = makeGatsbySourceFilesystemPluginConfig({
+  path: 'content/blog',
+  name: 'blog',
+})
+const gatsbySourceFilesystemAssets = makeGatsbySourceFilesystemPluginConfig({
+  path: 'content/assets',
+  name: 'assets',
+})
+const gatsbySourceFilesystemResume = makeGatsbySourceFilesystemPluginConfig({
+  path: 'content/resume',
+  name: 'resume',
+})
+// #endregion 'gatsby-source-filesystem's
+
+const gatsbyPluginManifest = makeGatsbyManifestPluginConfig({
+  background_color: config.backgroundColor,
+  description: config.siteDescription,
+  display: 'minimal-ui',
+  icon: 'content/assets/suddenly_giovanni-icon-white.svg',
+  lang: config.siteLanguage,
+  name: config.siteTitle,
+  short_name: config.siteTitleShort,
+  start_url: config.pathPrefix,
+  theme_color: config.themeColor,
+})
+
+const gatsbyPluginStyledComponents = makeGatsbyStyleComponentsPluginConfig()
+
 const gatsbyConfig = (): GatsbyConfig => {
   return {
     siteMetadata: {
@@ -14,18 +48,12 @@ const gatsbyConfig = (): GatsbyConfig => {
       `gatsby-plugin-image`,
       `gatsby-transformer-sharp`,
       `gatsby-plugin-sharp`,
-      {
-        resolve: `gatsby-plugin-manifest`,
-        options: {
-          name: `gatsby-starter-default`,
-          short_name: `starter`,
-          start_url: `/`,
-          background_color: `#663399`,
-          theme_color: `#663399`,
-          display: `minimal-ui`,
-          icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-        },
-      },
+      gatsbyPluginStyledComponents,
+      gatsbySourceFilesystemBlog,
+      gatsbySourceFilesystemAssets,
+      gatsbySourceFilesystemResume,
+      gatsbyPluginManifest,
+
       // this (optional) plugin enables Progressive Web App + Offline functionality
       // To learn more, visit: https://gatsby.dev/offline
       // `gatsby-plugin-offline`,

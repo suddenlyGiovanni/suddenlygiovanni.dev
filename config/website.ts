@@ -27,4 +27,4 @@ export const config = {
   userTwitter: '@suddenlyGio', // Twitter Username
   github: 'https://github.com/suddenlyGiovanni/',
   linkedin: 'https://www.linkedin.com/in/giovanni-ravalico/',
-} as const
+}

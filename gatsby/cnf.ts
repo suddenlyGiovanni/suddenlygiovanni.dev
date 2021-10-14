@@ -5,27 +5,27 @@ import { config } from '../config/website'
 import { siteMetadata } from '../config/site-metadata'
 
 // #region 'gatsby-source-filesystem'
-const gatsbySourceFilesystemBlog: GatsbySourceFilesystemConfig = {
-  resolve: 'gatsby-source-filesystem',
-  options: {
-    path: 'content/blog',
-    name: 'blog',
-  },
-}
-const gatsbySourceFilesystemAssets: GatsbySourceFilesystemConfig = {
-  resolve: 'gatsby-source-filesystem',
-  options: {
-    path: 'content/assets',
-    name: 'assets',
-  },
-}
-const gatsbySourceFilesystemResume: GatsbySourceFilesystemConfig = {
-  resolve: `gatsby-source-filesystem`,
-  options: {
-    path: 'content/resume',
-    name: 'resume',
-  },
-}
+// const gatsbySourceFilesystemBlog: GatsbySourceFilesystemConfig = {
+//   resolve: 'gatsby-source-filesystem',
+//   options: {
+//     path: 'content/blog',
+//     name: 'blog',
+//   },
+// }
+// const gatsbySourceFilesystemAssets: GatsbySourceFilesystemConfig = {
+//   resolve: 'gatsby-source-filesystem',
+//   options: {
+//     path: 'content/assets',
+//     name: 'assets',
+//   },
+// }
+// const gatsbySourceFilesystemResume: GatsbySourceFilesystemConfig = {
+//   resolve: `gatsby-source-filesystem`,
+//   options: {
+//     path: 'content/resume',
+//     name: 'resume',
+//   },
+// }
 // #endregion 'gatsby-source-filesystem's
 
 // #region  'gatsby-plugin-graphql-codegen'
@@ -196,12 +196,12 @@ const gatsbyConfig = () => ({
     gatsbyPluginSharp,
     gatsbyPluginEmotion,
     gatsbyPluginReactHelmet,
-    gatsbySourceFilesystemBlog,
-    gatsbySourceFilesystemAssets,
-    gatsbySourceFilesystemResume,
+    // gatsbySourceFilesystemBlog,
+    // gatsbySourceFilesystemAssets,
+    // gatsbySourceFilesystemResume,
     gatsbyPluginGraphqlCodegen,
     gatsbyPluginTypography,
-    gatsbyPluginManifest,
+    // gatsbyPluginManifest,
     gatsbyPluginMdx,
   ],
 })
