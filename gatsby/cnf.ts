@@ -67,80 +67,80 @@ const gatsbyPluginTypography: GatsbyPluginTypographyConfig = {
 // #endregion "gatsby-plugin-typography"
 
 // #region 'gatsby-plugin-manifest'
-type GatsbyPluginManifestConfig = GatsbyPlugin<
-  'gatsby-plugin-manifest',
-  {
-    background_color: string
-    description: string
-    display: string
-    icon?: string
-    lang: string
-    name: string
-    short_name: string
-    start_url: string
-    theme_color: string
-    icons?: {
-      src: string
-      sizes: string
-      type: string
-    }[]
-    icon_options?: {
-      // For all the options available, please see:
-      // https://developer.mozilla.org/en-US/docs/Web/Manifest
-      // https://w3c.github.io/manifest/#purpose-member
-      purpose: string
-    }
-    cache_busting_mode?: 'query' | 'none' | 'name'
-    crossOrigin?: 'use-credentials' | 'anonymous'
-  }
->
-const gatsbyPluginManifest: GatsbyPluginManifestConfig = {
-  resolve: 'gatsby-plugin-manifest',
-  options: {
-    background_color: config.backgroundColor,
-    description: config.siteDescription,
-    display: 'minimal-ui',
-    icon: 'content/assets/suddenly_giovanni-icon-white.svg', // This path is relative to the root of the site.
-    lang: config.siteLanguage,
-    name: config.siteTitle,
-    short_name: config.siteTitleShort,
-    start_url: config.pathPrefix,
-    theme_color: config.themeColor,
-  },
-}
+// type GatsbyPluginManifestConfig = GatsbyPlugin<
+//   'gatsby-plugin-manifest',
+//   {
+//     background_color: string
+//     description: string
+//     display: string
+//     icon?: string
+//     lang: string
+//     name: string
+//     short_name: string
+//     start_url: string
+//     theme_color: string
+//     icons?: {
+//       src: string
+//       sizes: string
+//       type: string
+//     }[]
+//     icon_options?: {
+//       // For all the options available, please see:
+//       // https://developer.mozilla.org/en-US/docs/Web/Manifest
+//       // https://w3c.github.io/manifest/#purpose-member
+//       purpose: string
+//     }
+//     cache_busting_mode?: 'query' | 'none' | 'name'
+//     crossOrigin?: 'use-credentials' | 'anonymous'
+//   }
+// >
+// const gatsbyPluginManifest: GatsbyPluginManifestConfig = {
+//   resolve: 'gatsby-plugin-manifest',
+//   options: {
+//     background_color: config.backgroundColor,
+//     description: config.siteDescription,
+//     display: 'minimal-ui',
+//     icon: 'content/assets/suddenly_giovanni-icon-white.svg', // This path is relative to the root of the site.
+//     lang: config.siteLanguage,
+//     name: config.siteTitle,
+//     short_name: config.siteTitleShort,
+//     start_url: config.pathPrefix,
+//     theme_color: config.themeColor,
+//   },
+// }
 // #endregion 'gatsby-plugin-manifest'
 
 // #region  'gatsby-remark-images
-type GatsbyRemarkImagesConfig = GatsbyPlugin<
-  'gatsby-remark-images',
-  {
-    maxWidth: number // 650
-    linkImagesToOriginal?: boolean // true
-    showCaptions?: boolean // false
-    markdownCaptions?: boolean // false
-    sizeByPixelDensity?: boolean // false
-    wrapperStyle?: string | ((imageInfo: unknown) => string)
-    backgroundColor?: 'white' | 'transparent' | 'none' // 'white'
-    quality?: number // 50
-    withWebp?: boolean // false
-    withAvif?: boolean // false
-    tracedSVG?: boolean // false
-    loading?: 'lazy' | 'eager' | 'auto' // 'lazy'
-    decoding?: 'async' | 'sync' | 'auto' // 'async'
-    disableBgImageOnAlpha?: boolean // false
-    disableBgImage?: boolean // false
-    srcSetBreakpoints?: number[]
-  }
->
-const gatsbyRemarkImages: GatsbyRemarkImagesConfig = {
-  resolve: 'gatsby-remark-images',
-  options: {
-    maxWidth: 1200,
-    linkImagesToOriginal: false,
-    withWebp: true,
-    tracedSVG: true,
-  },
-}
+// type GatsbyRemarkImagesConfig = GatsbyPlugin<
+//   'gatsby-remark-images',
+//   {
+//     maxWidth: number // 650
+//     linkImagesToOriginal?: boolean // true
+//     showCaptions?: boolean // false
+//     markdownCaptions?: boolean // false
+//     sizeByPixelDensity?: boolean // false
+//     wrapperStyle?: string | ((imageInfo: unknown) => string)
+//     backgroundColor?: 'white' | 'transparent' | 'none' // 'white'
+//     quality?: number // 50
+//     withWebp?: boolean // false
+//     withAvif?: boolean // false
+//     tracedSVG?: boolean // false
+//     loading?: 'lazy' | 'eager' | 'auto' // 'lazy'
+//     decoding?: 'async' | 'sync' | 'auto' // 'async'
+//     disableBgImageOnAlpha?: boolean // false
+//     disableBgImage?: boolean // false
+//     srcSetBreakpoints?: number[]
+//   }
+// >
+// const gatsbyRemarkImages: GatsbyRemarkImagesConfig = {
+//   resolve: 'gatsby-remark-images',
+//   options: {
+//     maxWidth: 1200,
+//     linkImagesToOriginal: false,
+//     withWebp: true,
+//     tracedSVG: true,
+//   },
+// }
 // #endregion 'gatsby-remark-images'
 
 // #region 'gatsby-plugin-mdx'
@@ -153,16 +153,16 @@ type GatsbyPluginMdxConfig = GatsbyPlugin<
   }
 >
 
-const gatsbyPluginMdx: GatsbyPluginMdxConfig = {
-  resolve: 'gatsby-plugin-mdx',
-  options: {
-    defaultLayouts: {
-      default: require.resolve('../src/components/layouts/layout.tsx'),
-    },
-    gatsbyRemarkPlugins: [gatsbyRemarkImages],
-    plugins: [{ resolve: 'gatsby-remark-images' }],
-  },
-}
+// const gatsbyPluginMdx: GatsbyPluginMdxConfig = {
+//   resolve: 'gatsby-plugin-mdx',
+//   options: {
+//     defaultLayouts: {
+//       default: require.resolve('../src/components/layouts/layout.tsx'),
+//     },
+//     gatsbyRemarkPlugins: [gatsbyRemarkImages],
+//     plugins: [{ resolve: 'gatsby-remark-images' }],
+//   },
+// }
 // #endregion "gatsby-plugin-mdx"
 
 // #region 'gatsby-plugin-sharp'
@@ -201,7 +201,7 @@ const gatsbyConfig = () => ({
     gatsbyPluginGraphqlCodegen,
     gatsbyPluginTypography,
     // gatsbyPluginManifest,
-    gatsbyPluginMdx,
+    // gatsbyPluginMdx,
   ],
 })
 

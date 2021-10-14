@@ -7,14 +7,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move 'gatsby-plugin-ts-config' config factory fns to separate module">
-      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-mdx.ts" afterDir="false" />
+    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move 'gatsby-plugin-mdx' config factory fns to separate module">
+      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-remark-images.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby/cnf.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/cnf.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +111,7 @@
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.TypeScript" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -187,7 +185,7 @@
       <workItem from="1634157468471" duration="2064000" />
       <workItem from="1634203850842" duration="1149000" />
       <workItem from="1634206302660" duration="22190000" />
-      <workItem from="1634233384290" duration="3494000" />
+      <workItem from="1634233384290" duration="7386000" />
     </task>
     <servers />
   </component>
@@ -249,5 +247,13 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.github.lppedd.cc.CommitBuilderDialog">
+    <type>refactor</type>
+    <scope>gatsby-config</scope>
+    <subject>move 'gatsby-plugin-mdx' config factory fns to separate module</subject>
+    <footers>
+      <entry type="" value="" />
+    </footers>
   </component>
 </project>
