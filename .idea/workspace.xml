@@ -7,14 +7,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move 'gatsby-plugin-typography' config factory fns to separate module">
-      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-typescript.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/graphql.config.js" afterDir="false" />
+    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="refactor(gatsby-config): move 'gatsby-plugin-typescript' config factory fns to separate module">
+      <change afterPath="$PROJECT_DIR$/.graphqlrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gatsby/gatsby-plugin-typegen.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/__generated__/gatsby-introspection.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/__generated__/gatsby-schema.graphql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/typings/gatsby-types.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby/cnf.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/cnf.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gatsby/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graphql.config.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +117,7 @@
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.GraphQL" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -122,6 +126,7 @@
       <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/config" />
     </key>
@@ -157,10 +162,14 @@
         <script value="develop" />
       </scripts>
       <node-interpreter value="project" />
-      <package-manager value="npm" />
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.build" />
+      <item itemvalue="npm.clean" />
+      <item itemvalue="npm.develop" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.develop" />
@@ -188,7 +197,9 @@
       <workItem from="1634203850842" duration="1149000" />
       <workItem from="1634206302660" duration="22190000" />
       <workItem from="1634233384290" duration="10122000" />
-      <workItem from="1634291256751" duration="2870000" />
+      <workItem from="1634291256751" duration="3602000" />
+      <workItem from="1634298746376" duration="2509000" />
+      <workItem from="1634301269960" duration="6185000" />
     </task>
     <servers />
   </component>

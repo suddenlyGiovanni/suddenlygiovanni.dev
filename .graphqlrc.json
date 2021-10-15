@@ -1,0 +1,22 @@
+{
+  "$schema": "https://raw.githubusercontent.com/kamilkisiela/graphql-config/master/config-schema.json",
+  "schema": [
+    "src/__generated__/gatsby-schema.graphql",
+    "src/__generated__/gatsby-introspection.json"
+  ],
+  "documents": [
+    "src/__generated__/gatsby-plugin-documents.graphql",
+    "src/**/**.{ts,js,tsx,jsx,esm}"
+  ],
+  "extensions": {
+    "endpoints": {
+      "default": {
+        "url": "http://localhost:8000/___graphql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}
