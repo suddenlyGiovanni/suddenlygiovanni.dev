@@ -7,9 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="# Hey there o/!&#10;#&#10;# We just wanted to let you know that we care a great deal about&#10;# making our git history clean, maintainable and easy to access for&#10;# all our contributors. Commit messages are very important to us,&#10;# which is why we have a strict commit message policy in place.&#10;# Please use the following guidelines to format all your commit&#10;# messages:&#10;#&#10;#     &lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;&#10;#     &lt;BLANK LINE&gt;&#10;#     &lt;body&gt;&#10;#     &lt;BLANK LINE&gt;&#10;#     &lt;footer&gt;&#10;#&#10;# Please note that:&#10;#  - The HEADER is a single line of max. 50 characters that&#10;#    contains a succinct description of the change. It contains a&#10;#    type, an optional scope, and a subject&#10;#       + &lt;type&gt; describes the kind of change that this commit is&#10;#                providing. Allowed types are:&#10;#             * feat (feature)&#10;#             * fix (bug fix)&#10;#             * docs (documentation)&#10;#             * style (formatting, missing semicolons, …)&#10;#             * refactor&#10;#             * test (when adding missing tests)&#10;#             * chore (maintain)&#10;#       + &lt;scope&gt; can be anything specifying the place of the commit&#10;#                 change&#10;#       + &lt;subject&gt; is a very short description of the change, in&#10;#                   the following format:&#10;#             * imperative, present tense: “change” not&#10;#               “changed”/“changes”&#10;#             * no capitalized first letter&#10;#             * no dot (.) at the end&#10;#  - The BODY could be spread across multiple liners of max. 72 chrs.&#10;#    It should include the motivation for the change and&#10;#    contrast this with previous behavior and must be phrased in&#10;#    imperative present tense&#10;#  - The FOOTER should contain any information about Breaking&#10;#    Changes and is also the place to reference GitHub issues that&#10;#    this commit closes&#10;#&#10;# Thank you &lt;3">
-      <change afterPath="$PROJECT_DIR$/.graphqlconfig" afterDir="false" />
+    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="&#10;# Hey there o/!&#10;#&#10;# We just wanted to let you know that we care a great deal about&#10;# making our git history clean, maintainable and easy to access for&#10;# all our contributors. Commit messages are very important to us,&#10;# which is why we have a strict commit message policy in place.&#10;# Please use the following guidelines to format all your commit&#10;# messages:&#10;#&#10;#     &lt;type&gt;(&lt;scope&gt;): &lt;subject&gt;&#10;#     &lt;BLANK LINE&gt;&#10;#     &lt;body&gt;&#10;#     &lt;BLANK LINE&gt;&#10;#     &lt;footer&gt;&#10;#&#10;# Please note that:&#10;#  - The HEADER is a single line of max. 50 characters that&#10;#    contains a succinct description of the change. It contains a&#10;#    type, an optional scope, and a subject&#10;#       + &lt;type&gt; describes the kind of change that this commit is&#10;#                providing. Allowed types are:&#10;#             * feat (feature)&#10;#             * fix (bug fix)&#10;#             * docs (documentation)&#10;#             * style (formatting, missing semicolons, …)&#10;#             * refactor&#10;#             * test (when adding missing tests)&#10;#             * chore (maintain)&#10;#       + &lt;scope&gt; can be anything specifying the place of the commit&#10;#                 change&#10;#       + &lt;subject&gt; is a very short description of the change, in&#10;#                   the following format:&#10;#             * imperative, present tense: “change” not&#10;#               “changed”/“changes”&#10;#             * no capitalized first letter&#10;#             * no dot (.) at the end&#10;#  - The BODY could be spread across multiple liners of max. 72 chrs.&#10;#    It should include the motivation for the change and&#10;#    contrast this with previous behavior and must be phrased in&#10;#    imperative present tense&#10;#  - The FOOTER should contain any information about Breaking&#10;#    Changes and is also the place to reference GitHub issues that&#10;#    this commit closes&#10;#&#10;# Thank you &lt;3">
+      <change afterPath="$PROJECT_DIR$/gatsby/on-create-node.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby/create-blog-pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/create-blog-pages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby/create-pages.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/create-pages.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby/gatsby-node.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-node.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +109,7 @@
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.GraphQL" />
+    <property name="settings.editor.selected.configurable" value="editor.reader.mode" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -161,8 +165,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.clean" />
         <item itemvalue="npm.develop" />
+        <item itemvalue="npm.clean" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -254,7 +258,6 @@
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
     <type>refactor</type>
     <scope>gatsby-config</scope>
-    <subject>move 'gatsby-plugin-typegen' config factory fns to separate module</subject>
     <footers>
       <entry type="" value="" />
     </footers>
