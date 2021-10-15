@@ -52,18 +52,18 @@ const gatsbyPluginGraphqlCodegen: GatsbyPluginGraphqlCodegenConfig = {
 
 // #region "gatsby-plugin-typography"
 
-type GatsbyPluginTypographyConfig = GatsbyPlugin<
-  'gatsby-plugin-typography',
-  {
-    pathToConfigModule: string
-  }
->
-const gatsbyPluginTypography: GatsbyPluginTypographyConfig = {
-  resolve: `gatsby-plugin-typography`,
-  options: {
-    pathToConfigModule: `./src/lib/typography`,
-  },
-}
+// type GatsbyPluginTypographyConfig = GatsbyPlugin<
+//   'gatsby-plugin-typography',
+//   {
+//     pathToConfigModule: string
+//   }
+// >
+// const gatsbyPluginTypography: GatsbyPluginTypographyConfig = {
+//   resolve: `gatsby-plugin-typography`,
+//   options: {
+//     pathToConfigModule: `./src/lib/typography`,
+//   },
+// }
 // #endregion "gatsby-plugin-typography"
 
 // #region 'gatsby-plugin-manifest'
@@ -199,7 +199,7 @@ const gatsbyConfig = () => ({
     // gatsbySourceFilesystemAssets,
     // gatsbySourceFilesystemResume,
     gatsbyPluginGraphqlCodegen,
-    gatsbyPluginTypography,
+    // gatsbyPluginTypography,
     // gatsbyPluginManifest,
     // gatsbyPluginMdx,
   ],

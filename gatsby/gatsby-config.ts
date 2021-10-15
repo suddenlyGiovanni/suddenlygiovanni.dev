@@ -3,6 +3,7 @@ import type { GatsbyConfig } from 'gatsby'
 import { config } from '../config/website'
 import { siteMetadata } from '../config/site-metadata'
 import { makeGatsbyStyleComponentsPluginConfig } from './gatsby-plugin-styled-components'
+import { makeGatsbyPluginTypescriptConfig } from './gatsby-plugin-typescript'
 import { makeGatsbyPluginTypographyConfig } from './gatsby-plugin-typography'
 import { makeGatsbySourceFilesystemPluginConfig } from './gatsby-source-filesystem'
 import { makeGatsbyManifestPluginConfig } from './gatsby-plugin-manifest'
@@ -48,6 +49,7 @@ const gatsbyPluginSharp = makeGatsbySharpPluginConfig()
 const gatsbyTransformerSharp = makeGatsbyTransformerSharpPluginConfig()
 const gatsbyPluginImage = makeGatsbyPluginImageConfig()
 const gatsbyPluginReactHelmet = makeGatsbyPluginReactHelmetConfig()
+const gatsbyPluginTypescript = makeGatsbyPluginTypescriptConfig()
 const gatsbyPluginTsConfig = makeGatsbyPluginTsConfig()
 const gatsbyRemarkImages = makeGatsbyRemarkImagesConfig({
   maxWidth: 1200,
@@ -70,6 +72,8 @@ const gatsbyConfig = (): GatsbyConfig => {
   return {
     siteMetadata,
     plugins: [
+      'gatsby-plugin-graphql-config',
+      gatsbyPluginTypescript,
       gatsbyPluginTsConfig,
       gatsbyPluginReactHelmet,
       gatsbyPluginMdx,
