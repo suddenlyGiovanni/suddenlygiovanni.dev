@@ -1,21 +1,24 @@
 import type { GatsbyConfig } from 'gatsby'
+import type { TSConfigFn } from 'gatsby-plugin-ts-config'
 
 import { config } from '../config/website'
 import { siteMetadata } from '../config/site-metadata'
-import { makeGatsbyStyleComponentsPluginConfig } from './gatsby-plugin-styled-components'
-import { makeGatsbyPluginTypegenConfig } from './gatsby-plugin-typegen'
-import { makeGatsbyPluginTypescriptConfig } from './gatsby-plugin-typescript'
-import { makeGatsbyPluginTypographyConfig } from './gatsby-plugin-typography'
-import { makeGatsbySourceFilesystemPluginConfig } from './gatsby-source-filesystem'
-import { makeGatsbyManifestPluginConfig } from './gatsby-plugin-manifest'
-import { makeGatsbyTransformerJsonPluginConfig } from './gatsby-transformer-json'
-import { makeGatsbySharpPluginConfig } from './gatsby-plugin-sharp'
-import { makeGatsbyTransformerSharpPluginConfig } from './gatsby-transformer-sharp'
-import { makeGatsbyPluginImageConfig } from './gatsby-plugin-image'
-import { makeGatsbyPluginReactHelmetConfig } from './gatsby-plugin-react-helmet'
-import { makeGatsbyPluginTsConfig } from './gatsby-plugin-ts-config'
-import { makeGatsbyPluginMdxConfig } from './gatsby-plugin-mdx'
-import { makeGatsbyRemarkImagesConfig } from './gatsby-remark-images'
+import {
+  makeGatsbyManifestPluginConfig,
+  makeGatsbyPluginImageConfig,
+  makeGatsbyPluginMdxConfig,
+  makeGatsbyPluginReactHelmetConfig,
+  makeGatsbyPluginTsConfig,
+  makeGatsbyPluginTypegenConfig,
+  makeGatsbyPluginTypescriptConfig,
+  makeGatsbyPluginTypographyConfig,
+  makeGatsbyRemarkImagesConfig,
+  makeGatsbySharpPluginConfig,
+  makeGatsbySourceFilesystemPluginConfig,
+  makeGatsbyStyleComponentsPluginConfig,
+  makeGatsbyTransformerJsonPluginConfig,
+  makeGatsbyTransformerSharpPluginConfig,
+} from './plugins'
 
 const gatsbySourceFilesystemBlog = makeGatsbySourceFilesystemPluginConfig({
   path: 'content/blog',
@@ -81,7 +84,10 @@ const gatsbyPluginTypography = makeGatsbyPluginTypographyConfig({
   // pathToConfigModule: 'src/utils/typography',
 })
 
-const gatsbyConfig = (): GatsbyConfig => {
+const gatsbyConfig: TSConfigFn<'config'> = (
+  publicOpts,
+  props
+): GatsbyConfig => {
   return {
     siteMetadata,
     plugins: [
