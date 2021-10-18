@@ -81,7 +81,7 @@ const gatsbyPluginMdx = makeGatsbyPluginMdxConfig({
 })
 
 const gatsbyPluginTypography = makeGatsbyPluginTypographyConfig({
-  // pathToConfigModule: 'src/utils/typography',
+  pathToConfigModule: 'src/lib/typography',
 })
 
 const gatsbyConfig: TSConfigFn<'config'> = (
