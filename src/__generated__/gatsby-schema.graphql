@@ -476,6 +476,7 @@ type SitePluginPluginOptions {
   crossOrigin: String
   include_favicon: Boolean
   cacheDigest: String
+  pathToConfigModule: String
   pathCheck: Boolean
 }
 
@@ -577,8 +578,6 @@ type SiteBuildMetadata implements Node {
 type MdxFrontmatter {
   title: String!
   slug: String
-  author: String
-  image: File
   date(
     # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
     formatString: String
@@ -592,6 +591,7 @@ type MdxFrontmatter {
     # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
+  author: String
   description: String
   categories: [String]
   keywords: [String]
@@ -600,6 +600,7 @@ type MdxFrontmatter {
   published: Boolean
   unlisted: Boolean
   redirects: [String]
+  image: File
 }
 
 type MdxHeadingMdx {
@@ -635,6 +636,7 @@ type Mdx implements Node {
   tableOfContents(maxDepth: Int): JSON
   timeToRead: Int
   wordCount: MdxWordCount
+  fields: MdxFields
   id: ID!
   parent: Node
   children: [Node!]!
@@ -643,6 +645,32 @@ type Mdx implements Node {
 
 # The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
 scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+type MdxFields {
+  slug: String
+  id: String
+  published: Boolean
+  title: String
+  author: String
+  description: String
+  date(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+  categories: [String]
+  redirects: [String]
+  editLink: String
+  historyLink: String
+}
 
 enum GatsbyImageFormat {
   NO_CHANGE
@@ -1090,7 +1118,7 @@ type Query {
   allSitePlugin(filter: SitePluginFilterInput, sort: SitePluginSortInput, skip: Int, limit: Int): SitePluginConnection!
   siteBuildMetadata(buildTime: DateQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): SiteBuildMetadata
   allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, sort: SiteBuildMetadataSortInput, skip: Int, limit: Int): SiteBuildMetadataConnection!
-  mdx(rawBody: StringQueryOperatorInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MdxFrontmatterFilterInput, slug: StringQueryOperatorInput, body: StringQueryOperatorInput, excerpt: StringQueryOperatorInput, headings: MdxHeadingMdxFilterListInput, html: StringQueryOperatorInput, mdxAST: JSONQueryOperatorInput, tableOfContents: JSONQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MdxWordCountFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Mdx
+  mdx(rawBody: StringQueryOperatorInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MdxFrontmatterFilterInput, slug: StringQueryOperatorInput, body: StringQueryOperatorInput, excerpt: StringQueryOperatorInput, headings: MdxHeadingMdxFilterListInput, html: StringQueryOperatorInput, mdxAST: JSONQueryOperatorInput, tableOfContents: JSONQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MdxWordCountFilterInput, fields: MdxFieldsFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Mdx
   allMdx(filter: MdxFilterInput, sort: MdxSortInput, skip: Int, limit: Int): MdxConnection!
   imageSharp(fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, gatsbyImageData: JSONQueryOperatorInput, original: ImageSharpOriginalFilterInput, resize: ImageSharpResizeFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ImageSharp
   allImageSharp(filter: ImageSharpFilterInput, sort: ImageSharpSortInput, skip: Int, limit: Int): ImageSharpConnection!
@@ -1157,6 +1185,7 @@ input MdxFilterInput {
   tableOfContents: JSONQueryOperatorInput
   timeToRead: IntQueryOperatorInput
   wordCount: MdxWordCountFilterInput
+  fields: MdxFieldsFilterInput
   id: StringQueryOperatorInput
   parent: NodeFilterInput
   children: NodeFilterListInput
@@ -1166,9 +1195,8 @@ input MdxFilterInput {
 input MdxFrontmatterFilterInput {
   title: StringQueryOperatorInput
   slug: StringQueryOperatorInput
-  author: StringQueryOperatorInput
-  image: FileFilterInput
   date: DateQueryOperatorInput
+  author: StringQueryOperatorInput
   description: StringQueryOperatorInput
   categories: StringQueryOperatorInput
   keywords: StringQueryOperatorInput
@@ -1177,6 +1205,14 @@ input MdxFrontmatterFilterInput {
   published: BooleanQueryOperatorInput
   unlisted: BooleanQueryOperatorInput
   redirects: StringQueryOperatorInput
+  image: FileFilterInput
+}
+
+input BooleanQueryOperatorInput {
+  eq: Boolean
+  ne: Boolean
+  in: [Boolean]
+  nin: [Boolean]
 }
 
 input FileFilterInput {
@@ -1316,13 +1352,6 @@ input InternalFilterInput {
   type: StringQueryOperatorInput
 }
 
-input BooleanQueryOperatorInput {
-  eq: Boolean
-  ne: Boolean
-  in: [Boolean]
-  nin: [Boolean]
-}
-
 input ResumeJsonFilterListInput {
   elemMatch: ResumeJsonFilterInput
 }
@@ -1453,6 +1482,20 @@ input MdxWordCountFilterInput {
   words: IntQueryOperatorInput
 }
 
+input MdxFieldsFilterInput {
+  slug: StringQueryOperatorInput
+  id: StringQueryOperatorInput
+  published: BooleanQueryOperatorInput
+  title: StringQueryOperatorInput
+  author: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+  date: DateQueryOperatorInput
+  categories: StringQueryOperatorInput
+  redirects: StringQueryOperatorInput
+  editLink: StringQueryOperatorInput
+  historyLink: StringQueryOperatorInput
+}
+
 type FileConnection {
   totalCount: Int!
   edges: [FileEdge!]!
@@ -1521,7 +1564,16 @@ enum FileFieldsEnum {
   childrenMdx___fileAbsolutePath
   childrenMdx___frontmatter___title
   childrenMdx___frontmatter___slug
+  childrenMdx___frontmatter___date
   childrenMdx___frontmatter___author
+  childrenMdx___frontmatter___description
+  childrenMdx___frontmatter___categories
+  childrenMdx___frontmatter___keywords
+  childrenMdx___frontmatter___banner
+  childrenMdx___frontmatter___bannerCredit
+  childrenMdx___frontmatter___published
+  childrenMdx___frontmatter___unlisted
+  childrenMdx___frontmatter___redirects
   childrenMdx___frontmatter___image___sourceInstanceName
   childrenMdx___frontmatter___image___absolutePath
   childrenMdx___frontmatter___image___relativePath
@@ -1561,15 +1613,6 @@ enum FileFieldsEnum {
   childrenMdx___frontmatter___image___childrenResumeJson
   childrenMdx___frontmatter___image___id
   childrenMdx___frontmatter___image___children
-  childrenMdx___frontmatter___date
-  childrenMdx___frontmatter___description
-  childrenMdx___frontmatter___categories
-  childrenMdx___frontmatter___keywords
-  childrenMdx___frontmatter___banner
-  childrenMdx___frontmatter___bannerCredit
-  childrenMdx___frontmatter___published
-  childrenMdx___frontmatter___unlisted
-  childrenMdx___frontmatter___redirects
   childrenMdx___slug
   childrenMdx___body
   childrenMdx___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1583,6 +1626,17 @@ enum FileFieldsEnum {
   childrenMdx___wordCount___paragraphs @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMdx___wordCount___sentences @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMdx___wordCount___words @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___slug @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___published @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___title @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___author @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___date @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___categories @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___redirects @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___editLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childrenMdx___fields___historyLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMdx___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMdx___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMdx___parent___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1625,7 +1679,16 @@ enum FileFieldsEnum {
   childMdx___fileAbsolutePath
   childMdx___frontmatter___title
   childMdx___frontmatter___slug
+  childMdx___frontmatter___date
   childMdx___frontmatter___author
+  childMdx___frontmatter___description
+  childMdx___frontmatter___categories
+  childMdx___frontmatter___keywords
+  childMdx___frontmatter___banner
+  childMdx___frontmatter___bannerCredit
+  childMdx___frontmatter___published
+  childMdx___frontmatter___unlisted
+  childMdx___frontmatter___redirects
   childMdx___frontmatter___image___sourceInstanceName
   childMdx___frontmatter___image___absolutePath
   childMdx___frontmatter___image___relativePath
@@ -1665,15 +1728,6 @@ enum FileFieldsEnum {
   childMdx___frontmatter___image___childrenResumeJson
   childMdx___frontmatter___image___id
   childMdx___frontmatter___image___children
-  childMdx___frontmatter___date
-  childMdx___frontmatter___description
-  childMdx___frontmatter___categories
-  childMdx___frontmatter___keywords
-  childMdx___frontmatter___banner
-  childMdx___frontmatter___bannerCredit
-  childMdx___frontmatter___published
-  childMdx___frontmatter___unlisted
-  childMdx___frontmatter___redirects
   childMdx___slug
   childMdx___body
   childMdx___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1687,6 +1741,17 @@ enum FileFieldsEnum {
   childMdx___wordCount___paragraphs @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___wordCount___sentences @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___wordCount___words @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___slug @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___published @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___title @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___author @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___date @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___categories @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___redirects @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___editLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  childMdx___fields___historyLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___parent___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -2752,6 +2817,7 @@ input SitePluginPluginOptionsFilterInput {
   crossOrigin: StringQueryOperatorInput
   include_favicon: BooleanQueryOperatorInput
   cacheDigest: StringQueryOperatorInput
+  pathToConfigModule: StringQueryOperatorInput
   pathCheck: BooleanQueryOperatorInput
 }
 
@@ -3031,6 +3097,7 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___crossOrigin
   pluginCreator___pluginOptions___include_favicon
   pluginCreator___pluginOptions___cacheDigest
+  pluginCreator___pluginOptions___pathToConfigModule
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___packageJson___name
   pluginCreator___packageJson___description
@@ -3229,6 +3296,7 @@ enum SitePluginFieldsEnum {
   pluginOptions___crossOrigin
   pluginOptions___include_favicon
   pluginOptions___cacheDigest
+  pluginOptions___pathToConfigModule
   pluginOptions___pathCheck
   packageJson___name
   packageJson___description
@@ -3511,7 +3579,16 @@ enum MdxFieldsEnum {
   fileAbsolutePath
   frontmatter___title
   frontmatter___slug
+  frontmatter___date
   frontmatter___author
+  frontmatter___description
+  frontmatter___categories
+  frontmatter___keywords
+  frontmatter___banner
+  frontmatter___bannerCredit
+  frontmatter___published
+  frontmatter___unlisted
+  frontmatter___redirects
   frontmatter___image___sourceInstanceName
   frontmatter___image___absolutePath
   frontmatter___image___relativePath
@@ -3609,15 +3686,6 @@ enum MdxFieldsEnum {
   frontmatter___image___internal___mediaType
   frontmatter___image___internal___owner
   frontmatter___image___internal___type
-  frontmatter___date
-  frontmatter___description
-  frontmatter___categories
-  frontmatter___keywords
-  frontmatter___banner
-  frontmatter___bannerCredit
-  frontmatter___published
-  frontmatter___unlisted
-  frontmatter___redirects
   slug
   body
   excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -3631,6 +3699,17 @@ enum MdxFieldsEnum {
   wordCount___paragraphs @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   wordCount___sentences @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   wordCount___words @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___slug @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___published @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___title @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___author @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___description @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___date @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___categories @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___redirects @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___editLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
+  fields___historyLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   parent___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
