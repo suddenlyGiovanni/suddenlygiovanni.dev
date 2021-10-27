@@ -1,8 +1,12 @@
 import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
-import { Container, NavDesktop, NavMobile } from '../components'
-// import { SuddenlyGiovanni } from '../suddenly-giovanni'
+import {
+  Container,
+  NavDesktop,
+  NavMobile,
+  SuddenlyGiovanni,
+} from '../components'
 
 const HeaderStyled: StyledComponent<'header', any, {}, never> = styled.header`
   z-index: 10;
@@ -29,7 +33,7 @@ export const Header: React.VFC = () => (
   <HeaderStyled>
     <Container $maxWidth={720} $noVerticalPadding>
       <NavStyled>
-        {/*<SuddenlyGiovanni />*/}
+        <SuddenlyGiovanni />
         <NavMobile />
         <NavDesktop />
       </NavStyled>

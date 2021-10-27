@@ -4872,6 +4872,11 @@ type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 
 type PagesQueryQuery = { readonly allSiteFunction: { readonly nodes: ReadonlyArray<Pick<SiteFunction, 'functionRoute'>> }, readonly allSitePage: { readonly nodes: ReadonlyArray<Pick<SitePage, 'path'>> } };
 
+type GetProfilePictureBlackAndWhiteFixedQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type GetProfilePictureBlackAndWhiteFixedQuery = { readonly file: Maybe<{ readonly pictureProfileBlackAndWhiteFixed: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
+
 type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -4883,11 +4888,6 @@ type SiteMetadataQuery = { readonly site: Maybe<(
       & { readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitterHandle'>>, readonly author: Maybe<Pick<SiteSiteMetadataAuthor, 'name'>> }
     )> }
   )> };
-
-type GetProfilePictureBlackAndWhiteFixedQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type GetProfilePictureBlackAndWhiteFixedQuery = { readonly file: Maybe<{ readonly pictureProfileBlackAndWhiteFixed: Maybe<{ readonly fixed: Maybe<GatsbyImageSharpFixed_withWebpFragment> }> }> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
