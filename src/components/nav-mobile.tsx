@@ -4,7 +4,7 @@ import styled, { StyledComponent } from 'styled-components'
 import Breakpoints from '../lib/breakpoints'
 import { linksMap } from '../lib/links-map'
 import { scale } from '../lib/typography'
-import NavLink from './nav-link'
+import { NavLink } from './nav-link'
 
 /**
  * TODO: this needs to be renamed!

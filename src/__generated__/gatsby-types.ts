@@ -358,7 +358,6 @@ type SitePluginPluginOptions = {
   readonly jsxPragma: Maybe<Scalars['String']>;
   readonly allExtensions: Maybe<Scalars['Boolean']>;
   readonly language: Maybe<Scalars['String']>;
-  readonly outputPath: Maybe<Scalars['String']>;
   readonly autoFix: Maybe<Scalars['Boolean']>;
   readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchema>;
   readonly emitPluginDocuments: Maybe<SitePluginPluginOptionsEmitPluginDocuments>;
@@ -445,6 +444,8 @@ type SitePluginPluginOptionsEmitSchema = {
 
 type SitePluginPluginOptionsEmitPluginDocuments = {
   readonly src___generated___gatsby_plugin_documents_graphql: Maybe<Scalars['Boolean']>;
+  readonly src___generated___gatsby_plugin_documents_gql: Maybe<Scalars['Boolean']>;
+  readonly src___generated___gatsby_plugin_documents_json: Maybe<Scalars['Boolean']>;
 };
 
 type SitePluginPluginOptionsGatsbyRemarkPlugins = {
@@ -505,8 +506,9 @@ type SiteBuildMetadata_buildTimeArgs = {
 type MdxFrontmatter = {
   readonly title: Scalars['String'];
   readonly slug: Maybe<Scalars['String']>;
-  readonly date: Maybe<Scalars['Date']>;
   readonly author: Maybe<Scalars['String']>;
+  readonly image: Maybe<File>;
+  readonly date: Maybe<Scalars['Date']>;
   readonly description: Maybe<Scalars['String']>;
   readonly categories: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly keywords: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
@@ -515,7 +517,6 @@ type MdxFrontmatter = {
   readonly published: Maybe<Scalars['Boolean']>;
   readonly unlisted: Maybe<Scalars['Boolean']>;
   readonly redirects: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
-  readonly image: Maybe<File>;
 };
 
 
@@ -1382,8 +1383,9 @@ type MdxFilterInput = {
 type MdxFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly slug: Maybe<StringQueryOperatorInput>;
-  readonly date: Maybe<DateQueryOperatorInput>;
   readonly author: Maybe<StringQueryOperatorInput>;
+  readonly image: Maybe<FileFilterInput>;
+  readonly date: Maybe<DateQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
   readonly categories: Maybe<StringQueryOperatorInput>;
   readonly keywords: Maybe<StringQueryOperatorInput>;
@@ -1392,14 +1394,6 @@ type MdxFrontmatterFilterInput = {
   readonly published: Maybe<BooleanQueryOperatorInput>;
   readonly unlisted: Maybe<BooleanQueryOperatorInput>;
   readonly redirects: Maybe<StringQueryOperatorInput>;
-  readonly image: Maybe<FileFilterInput>;
-};
-
-type BooleanQueryOperatorInput = {
-  readonly eq: Maybe<Scalars['Boolean']>;
-  readonly ne: Maybe<Scalars['Boolean']>;
-  readonly in: Maybe<ReadonlyArray<Maybe<Scalars['Boolean']>>>;
-  readonly nin: Maybe<ReadonlyArray<Maybe<Scalars['Boolean']>>>;
 };
 
 type FileFilterInput = {
@@ -1537,6 +1531,13 @@ type InternalFilterInput = {
   readonly mediaType: Maybe<StringQueryOperatorInput>;
   readonly owner: Maybe<StringQueryOperatorInput>;
   readonly type: Maybe<StringQueryOperatorInput>;
+};
+
+type BooleanQueryOperatorInput = {
+  readonly eq: Maybe<Scalars['Boolean']>;
+  readonly ne: Maybe<Scalars['Boolean']>;
+  readonly in: Maybe<ReadonlyArray<Maybe<Scalars['Boolean']>>>;
+  readonly nin: Maybe<ReadonlyArray<Maybe<Scalars['Boolean']>>>;
 };
 
 type ResumeJsonFilterListInput = {
@@ -1778,16 +1779,7 @@ type FileFieldsEnum =
   | 'childrenMdx.fileAbsolutePath'
   | 'childrenMdx.frontmatter.title'
   | 'childrenMdx.frontmatter.slug'
-  | 'childrenMdx.frontmatter.date'
   | 'childrenMdx.frontmatter.author'
-  | 'childrenMdx.frontmatter.description'
-  | 'childrenMdx.frontmatter.categories'
-  | 'childrenMdx.frontmatter.keywords'
-  | 'childrenMdx.frontmatter.banner'
-  | 'childrenMdx.frontmatter.bannerCredit'
-  | 'childrenMdx.frontmatter.published'
-  | 'childrenMdx.frontmatter.unlisted'
-  | 'childrenMdx.frontmatter.redirects'
   | 'childrenMdx.frontmatter.image.sourceInstanceName'
   | 'childrenMdx.frontmatter.image.absolutePath'
   | 'childrenMdx.frontmatter.image.relativePath'
@@ -1827,6 +1819,15 @@ type FileFieldsEnum =
   | 'childrenMdx.frontmatter.image.childrenResumeJson'
   | 'childrenMdx.frontmatter.image.id'
   | 'childrenMdx.frontmatter.image.children'
+  | 'childrenMdx.frontmatter.date'
+  | 'childrenMdx.frontmatter.description'
+  | 'childrenMdx.frontmatter.categories'
+  | 'childrenMdx.frontmatter.keywords'
+  | 'childrenMdx.frontmatter.banner'
+  | 'childrenMdx.frontmatter.bannerCredit'
+  | 'childrenMdx.frontmatter.published'
+  | 'childrenMdx.frontmatter.unlisted'
+  | 'childrenMdx.frontmatter.redirects'
   | 'childrenMdx.slug'
   | 'childrenMdx.body'
   | 'childrenMdx.excerpt'
@@ -1893,16 +1894,7 @@ type FileFieldsEnum =
   | 'childMdx.fileAbsolutePath'
   | 'childMdx.frontmatter.title'
   | 'childMdx.frontmatter.slug'
-  | 'childMdx.frontmatter.date'
   | 'childMdx.frontmatter.author'
-  | 'childMdx.frontmatter.description'
-  | 'childMdx.frontmatter.categories'
-  | 'childMdx.frontmatter.keywords'
-  | 'childMdx.frontmatter.banner'
-  | 'childMdx.frontmatter.bannerCredit'
-  | 'childMdx.frontmatter.published'
-  | 'childMdx.frontmatter.unlisted'
-  | 'childMdx.frontmatter.redirects'
   | 'childMdx.frontmatter.image.sourceInstanceName'
   | 'childMdx.frontmatter.image.absolutePath'
   | 'childMdx.frontmatter.image.relativePath'
@@ -1942,6 +1934,15 @@ type FileFieldsEnum =
   | 'childMdx.frontmatter.image.childrenResumeJson'
   | 'childMdx.frontmatter.image.id'
   | 'childMdx.frontmatter.image.children'
+  | 'childMdx.frontmatter.date'
+  | 'childMdx.frontmatter.description'
+  | 'childMdx.frontmatter.categories'
+  | 'childMdx.frontmatter.keywords'
+  | 'childMdx.frontmatter.banner'
+  | 'childMdx.frontmatter.bannerCredit'
+  | 'childMdx.frontmatter.published'
+  | 'childMdx.frontmatter.unlisted'
+  | 'childMdx.frontmatter.redirects'
   | 'childMdx.slug'
   | 'childMdx.body'
   | 'childMdx.excerpt'
@@ -3166,7 +3167,6 @@ type SitePluginPluginOptionsFilterInput = {
   readonly jsxPragma: Maybe<StringQueryOperatorInput>;
   readonly allExtensions: Maybe<BooleanQueryOperatorInput>;
   readonly language: Maybe<StringQueryOperatorInput>;
-  readonly outputPath: Maybe<StringQueryOperatorInput>;
   readonly autoFix: Maybe<BooleanQueryOperatorInput>;
   readonly emitSchema: Maybe<SitePluginPluginOptionsEmitSchemaFilterInput>;
   readonly emitPluginDocuments: Maybe<SitePluginPluginOptionsEmitPluginDocumentsFilterInput>;
@@ -3257,6 +3257,8 @@ type SitePluginPluginOptionsEmitSchemaFilterInput = {
 
 type SitePluginPluginOptionsEmitPluginDocumentsFilterInput = {
   readonly src___generated___gatsby_plugin_documents_graphql: Maybe<BooleanQueryOperatorInput>;
+  readonly src___generated___gatsby_plugin_documents_gql: Maybe<BooleanQueryOperatorInput>;
+  readonly src___generated___gatsby_plugin_documents_json: Maybe<BooleanQueryOperatorInput>;
 };
 
 type SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput = {
@@ -3471,11 +3473,12 @@ type SitePageFieldsEnum =
   | 'pluginCreator.pluginOptions.jsxPragma'
   | 'pluginCreator.pluginOptions.allExtensions'
   | 'pluginCreator.pluginOptions.language'
-  | 'pluginCreator.pluginOptions.outputPath'
   | 'pluginCreator.pluginOptions.autoFix'
   | 'pluginCreator.pluginOptions.emitSchema.src___generated___gatsby_schema_graphql'
   | 'pluginCreator.pluginOptions.emitSchema.src___generated___gatsby_introspection_json'
   | 'pluginCreator.pluginOptions.emitPluginDocuments.src___generated___gatsby_plugin_documents_graphql'
+  | 'pluginCreator.pluginOptions.emitPluginDocuments.src___generated___gatsby_plugin_documents_gql'
+  | 'pluginCreator.pluginOptions.emitPluginDocuments.src___generated___gatsby_plugin_documents_json'
   | 'pluginCreator.pluginOptions.gatsbyRemarkPlugins'
   | 'pluginCreator.pluginOptions.gatsbyRemarkPlugins.resolve'
   | 'pluginCreator.pluginOptions.extensions'
@@ -3719,11 +3722,12 @@ type SitePluginFieldsEnum =
   | 'pluginOptions.jsxPragma'
   | 'pluginOptions.allExtensions'
   | 'pluginOptions.language'
-  | 'pluginOptions.outputPath'
   | 'pluginOptions.autoFix'
   | 'pluginOptions.emitSchema.src___generated___gatsby_schema_graphql'
   | 'pluginOptions.emitSchema.src___generated___gatsby_introspection_json'
   | 'pluginOptions.emitPluginDocuments.src___generated___gatsby_plugin_documents_graphql'
+  | 'pluginOptions.emitPluginDocuments.src___generated___gatsby_plugin_documents_gql'
+  | 'pluginOptions.emitPluginDocuments.src___generated___gatsby_plugin_documents_json'
   | 'pluginOptions.gatsbyRemarkPlugins'
   | 'pluginOptions.gatsbyRemarkPlugins.resolve'
   | 'pluginOptions.gatsbyRemarkPlugins.options.maxWidth'
@@ -4163,16 +4167,7 @@ type MdxFieldsEnum =
   | 'fileAbsolutePath'
   | 'frontmatter.title'
   | 'frontmatter.slug'
-  | 'frontmatter.date'
   | 'frontmatter.author'
-  | 'frontmatter.description'
-  | 'frontmatter.categories'
-  | 'frontmatter.keywords'
-  | 'frontmatter.banner'
-  | 'frontmatter.bannerCredit'
-  | 'frontmatter.published'
-  | 'frontmatter.unlisted'
-  | 'frontmatter.redirects'
   | 'frontmatter.image.sourceInstanceName'
   | 'frontmatter.image.absolutePath'
   | 'frontmatter.image.relativePath'
@@ -4270,6 +4265,15 @@ type MdxFieldsEnum =
   | 'frontmatter.image.internal.mediaType'
   | 'frontmatter.image.internal.owner'
   | 'frontmatter.image.internal.type'
+  | 'frontmatter.date'
+  | 'frontmatter.description'
+  | 'frontmatter.categories'
+  | 'frontmatter.keywords'
+  | 'frontmatter.banner'
+  | 'frontmatter.bannerCredit'
+  | 'frontmatter.published'
+  | 'frontmatter.unlisted'
+  | 'frontmatter.redirects'
   | 'slug'
   | 'body'
   | 'excerpt'

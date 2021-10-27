@@ -427,7 +427,6 @@ type SitePluginPluginOptions {
   jsxPragma: String
   allExtensions: Boolean
   language: String
-  outputPath: String
   autoFix: Boolean
   emitSchema: SitePluginPluginOptionsEmitSchema
   emitPluginDocuments: SitePluginPluginOptionsEmitPluginDocuments
@@ -514,6 +513,8 @@ type SitePluginPluginOptionsEmitSchema {
 
 type SitePluginPluginOptionsEmitPluginDocuments {
   src___generated___gatsby_plugin_documents_graphql: Boolean
+  src___generated___gatsby_plugin_documents_gql: Boolean
+  src___generated___gatsby_plugin_documents_json: Boolean
 }
 
 type SitePluginPluginOptionsGatsbyRemarkPlugins {
@@ -578,6 +579,8 @@ type SiteBuildMetadata implements Node {
 type MdxFrontmatter {
   title: String!
   slug: String
+  author: String
+  image: File
   date(
     # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
     formatString: String
@@ -591,7 +594,6 @@ type MdxFrontmatter {
     # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
-  author: String
   description: String
   categories: [String]
   keywords: [String]
@@ -600,7 +602,6 @@ type MdxFrontmatter {
   published: Boolean
   unlisted: Boolean
   redirects: [String]
-  image: File
 }
 
 type MdxHeadingMdx {
@@ -1195,8 +1196,9 @@ input MdxFilterInput {
 input MdxFrontmatterFilterInput {
   title: StringQueryOperatorInput
   slug: StringQueryOperatorInput
-  date: DateQueryOperatorInput
   author: StringQueryOperatorInput
+  image: FileFilterInput
+  date: DateQueryOperatorInput
   description: StringQueryOperatorInput
   categories: StringQueryOperatorInput
   keywords: StringQueryOperatorInput
@@ -1205,14 +1207,6 @@ input MdxFrontmatterFilterInput {
   published: BooleanQueryOperatorInput
   unlisted: BooleanQueryOperatorInput
   redirects: StringQueryOperatorInput
-  image: FileFilterInput
-}
-
-input BooleanQueryOperatorInput {
-  eq: Boolean
-  ne: Boolean
-  in: [Boolean]
-  nin: [Boolean]
 }
 
 input FileFilterInput {
@@ -1350,6 +1344,13 @@ input InternalFilterInput {
   mediaType: StringQueryOperatorInput
   owner: StringQueryOperatorInput
   type: StringQueryOperatorInput
+}
+
+input BooleanQueryOperatorInput {
+  eq: Boolean
+  ne: Boolean
+  in: [Boolean]
+  nin: [Boolean]
 }
 
 input ResumeJsonFilterListInput {
@@ -1564,16 +1565,7 @@ enum FileFieldsEnum {
   childrenMdx___fileAbsolutePath
   childrenMdx___frontmatter___title
   childrenMdx___frontmatter___slug
-  childrenMdx___frontmatter___date
   childrenMdx___frontmatter___author
-  childrenMdx___frontmatter___description
-  childrenMdx___frontmatter___categories
-  childrenMdx___frontmatter___keywords
-  childrenMdx___frontmatter___banner
-  childrenMdx___frontmatter___bannerCredit
-  childrenMdx___frontmatter___published
-  childrenMdx___frontmatter___unlisted
-  childrenMdx___frontmatter___redirects
   childrenMdx___frontmatter___image___sourceInstanceName
   childrenMdx___frontmatter___image___absolutePath
   childrenMdx___frontmatter___image___relativePath
@@ -1613,6 +1605,15 @@ enum FileFieldsEnum {
   childrenMdx___frontmatter___image___childrenResumeJson
   childrenMdx___frontmatter___image___id
   childrenMdx___frontmatter___image___children
+  childrenMdx___frontmatter___date
+  childrenMdx___frontmatter___description
+  childrenMdx___frontmatter___categories
+  childrenMdx___frontmatter___keywords
+  childrenMdx___frontmatter___banner
+  childrenMdx___frontmatter___bannerCredit
+  childrenMdx___frontmatter___published
+  childrenMdx___frontmatter___unlisted
+  childrenMdx___frontmatter___redirects
   childrenMdx___slug
   childrenMdx___body
   childrenMdx___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1679,16 +1680,7 @@ enum FileFieldsEnum {
   childMdx___fileAbsolutePath
   childMdx___frontmatter___title
   childMdx___frontmatter___slug
-  childMdx___frontmatter___date
   childMdx___frontmatter___author
-  childMdx___frontmatter___description
-  childMdx___frontmatter___categories
-  childMdx___frontmatter___keywords
-  childMdx___frontmatter___banner
-  childMdx___frontmatter___bannerCredit
-  childMdx___frontmatter___published
-  childMdx___frontmatter___unlisted
-  childMdx___frontmatter___redirects
   childMdx___frontmatter___image___sourceInstanceName
   childMdx___frontmatter___image___absolutePath
   childMdx___frontmatter___image___relativePath
@@ -1728,6 +1720,15 @@ enum FileFieldsEnum {
   childMdx___frontmatter___image___childrenResumeJson
   childMdx___frontmatter___image___id
   childMdx___frontmatter___image___children
+  childMdx___frontmatter___date
+  childMdx___frontmatter___description
+  childMdx___frontmatter___categories
+  childMdx___frontmatter___keywords
+  childMdx___frontmatter___banner
+  childMdx___frontmatter___bannerCredit
+  childMdx___frontmatter___published
+  childMdx___frontmatter___unlisted
+  childMdx___frontmatter___redirects
   childMdx___slug
   childMdx___body
   childMdx___excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -2768,7 +2769,6 @@ input SitePluginPluginOptionsFilterInput {
   jsxPragma: StringQueryOperatorInput
   allExtensions: BooleanQueryOperatorInput
   language: StringQueryOperatorInput
-  outputPath: StringQueryOperatorInput
   autoFix: BooleanQueryOperatorInput
   emitSchema: SitePluginPluginOptionsEmitSchemaFilterInput
   emitPluginDocuments: SitePluginPluginOptionsEmitPluginDocumentsFilterInput
@@ -2859,6 +2859,8 @@ input SitePluginPluginOptionsEmitSchemaFilterInput {
 
 input SitePluginPluginOptionsEmitPluginDocumentsFilterInput {
   src___generated___gatsby_plugin_documents_graphql: BooleanQueryOperatorInput
+  src___generated___gatsby_plugin_documents_gql: BooleanQueryOperatorInput
+  src___generated___gatsby_plugin_documents_json: BooleanQueryOperatorInput
 }
 
 input SitePluginPluginOptionsGatsbyRemarkPluginsFilterListInput {
@@ -3046,11 +3048,12 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___jsxPragma
   pluginCreator___pluginOptions___allExtensions
   pluginCreator___pluginOptions___language
-  pluginCreator___pluginOptions___outputPath
   pluginCreator___pluginOptions___autoFix
   pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
   pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_introspection_json
   pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_graphql
+  pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_gql
+  pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_json
   pluginCreator___pluginOptions___gatsbyRemarkPlugins
   pluginCreator___pluginOptions___gatsbyRemarkPlugins___resolve
   pluginCreator___pluginOptions___extensions
@@ -3241,11 +3244,12 @@ enum SitePluginFieldsEnum {
   pluginOptions___jsxPragma
   pluginOptions___allExtensions
   pluginOptions___language
-  pluginOptions___outputPath
   pluginOptions___autoFix
   pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
   pluginOptions___emitSchema___src___generated___gatsby_introspection_json
   pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_graphql
+  pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_gql
+  pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_json
   pluginOptions___gatsbyRemarkPlugins
   pluginOptions___gatsbyRemarkPlugins___resolve
   pluginOptions___gatsbyRemarkPlugins___options___maxWidth
@@ -3579,16 +3583,7 @@ enum MdxFieldsEnum {
   fileAbsolutePath
   frontmatter___title
   frontmatter___slug
-  frontmatter___date
   frontmatter___author
-  frontmatter___description
-  frontmatter___categories
-  frontmatter___keywords
-  frontmatter___banner
-  frontmatter___bannerCredit
-  frontmatter___published
-  frontmatter___unlisted
-  frontmatter___redirects
   frontmatter___image___sourceInstanceName
   frontmatter___image___absolutePath
   frontmatter___image___relativePath
@@ -3686,6 +3681,15 @@ enum MdxFieldsEnum {
   frontmatter___image___internal___mediaType
   frontmatter___image___internal___owner
   frontmatter___image___internal___type
+  frontmatter___date
+  frontmatter___description
+  frontmatter___categories
+  frontmatter___keywords
+  frontmatter___banner
+  frontmatter___bannerCredit
+  frontmatter___published
+  frontmatter___unlisted
+  frontmatter___redirects
   slug
   body
   excerpt @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")

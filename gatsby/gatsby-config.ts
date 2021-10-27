@@ -57,7 +57,6 @@ const gatsbyPluginTypescript = makeGatsbyPluginTypescriptConfig()
 const gatsbyPluginTsConfig = makeGatsbyPluginTsConfig()
 const gatsbyPluginTypegen = makeGatsbyPluginTypegenConfig({
   language: 'typescript',
-  outputPath: 'src/typings/gatsby-types.d.ts',
   autoFix: true,
   emitSchema: {
     'src/__generated__/gatsby-schema.graphql': true,
@@ -65,6 +64,8 @@ const gatsbyPluginTypegen = makeGatsbyPluginTypegenConfig({
   },
   emitPluginDocuments: {
     'src/__generated__/gatsby-plugin-documents.graphql': true,
+    'src/__generated__/gatsby-plugin-documents.gql': true,
+    'src/__generated__/gatsby-plugin-documents.json': true,
   },
 })
 const gatsbyRemarkImages = makeGatsbyRemarkImagesConfig({

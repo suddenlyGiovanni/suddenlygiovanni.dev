@@ -43,6 +43,7 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
     siteUrl,
     buildTime,
     defaultImage,
+    // @ts-ignore
     keywords,
     defaultLocale,
     defaultLanguage,

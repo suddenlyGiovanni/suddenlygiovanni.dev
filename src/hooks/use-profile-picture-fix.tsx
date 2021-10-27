@@ -1,8 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import type { FixedObject } from 'gatsby-image'
 
-import { GetProfilePictureBlackAndWhiteFixedQuery } from '../typings/gatsby-types'
-
 export const useProfilePictureFix = (): FixedObject | undefined => {
   const getProfilePicture = graphql`
     query GetProfilePictureBlackAndWhiteFixed {
@@ -17,7 +15,9 @@ export const useProfilePictureFix = (): FixedObject | undefined => {
   `
 
   const data =
-    useStaticQuery<GetProfilePictureBlackAndWhiteFixedQuery>(getProfilePicture)
+    useStaticQuery<GatsbyTypes.GetProfilePictureBlackAndWhiteFixedQuery>(
+      getProfilePicture
+    )
 
   if (data.file?.image?.fixed) {
     const { fixed } = data.file.pictureProfileBlackAndWhiteFixed
