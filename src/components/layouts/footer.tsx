@@ -45,12 +45,17 @@ const ContainerStyled = styled(Container)`
   }
 `
 
+function getCopyrightYear(date: Date): string {
+  // TODO: use the build year time
+  return String(date.getFullYear())
+}
+
 interface Props {
   maxWidth?: number
 }
 
 export const Footer = ({ maxWidth = 720 }: Props): JSX.Element => {
-  const copyrightYear = new Date().getFullYear() // TODO: use the build year time
+  const copyrightYear = getCopyrightYear(new Date())
   return (
     <FooterStyled>
       <ContainerStyled $maxWidth={maxWidth} $noVerticalPadding>
