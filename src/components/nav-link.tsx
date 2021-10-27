@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import styled, { StyledComponent } from 'styled-components'
 
-const NavLink: StyledComponent<
+export const NavLink: StyledComponent<
   typeof Link,
   any,
   { $disabled: boolean },
@@ -34,5 +34,3 @@ const NavLink: StyledComponent<
     border-bottom: 2px solid #222;
   }
 `
-
-export default NavLink

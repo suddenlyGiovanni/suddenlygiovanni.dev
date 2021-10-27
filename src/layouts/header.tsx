@@ -1,9 +1,7 @@
-import styled, { StyledComponent } from 'styled-components'
 import * as React from 'react'
+import styled, { StyledComponent } from 'styled-components'
 
-import { Container } from '../container'
-import { NavDesktop } from '../nav-desktop'
-import NavMobile from '../nav-mobile'
+import { Container, NavDesktop, NavMobile } from '../components'
 // import { SuddenlyGiovanni } from '../suddenly-giovanni'
 
 const HeaderStyled: StyledComponent<'header', any, {}, never> = styled.header`
@@ -27,7 +25,7 @@ const NavStyled: StyledComponent<'nav', any, {}, never> = styled.nav`
   width: 100%;
 `
 
-const Header: React.VFC = () => (
+export const Header: React.VFC = () => (
   <HeaderStyled>
     <Container $maxWidth={720} $noVerticalPadding>
       <NavStyled>
@@ -38,5 +36,3 @@ const Header: React.VFC = () => (
     </Container>
   </HeaderStyled>
 )
-
-export default Header

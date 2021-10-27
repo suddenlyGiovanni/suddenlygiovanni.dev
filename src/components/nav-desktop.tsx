@@ -3,8 +3,7 @@ import styled, { StyledComponent } from 'styled-components'
 
 import Breakpoints from '../lib/breakpoints'
 import { linksMap } from '../lib/links-map'
-
-import NavLink from './nav-link'
+import { NavLink } from './nav-link'
 
 const UnorderedListStyled: StyledComponent<'ul', any, {}, never> = styled.ul`
   display: flex;

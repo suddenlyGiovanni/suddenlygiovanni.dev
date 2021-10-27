@@ -1,3 +1,4 @@
+import * as React from 'react'
 import type { IconBaseProps, IconType } from 'react-icons'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
@@ -20,7 +21,6 @@ export const SocialIcon: React.VFC<Props> = ({ network, ...props }) => {
       "couldn't find the social icon associated to the required network key"
     )
   } else {
-    const Icon = IconMap.get(iconMapKey)
-    return Icon!(props)
+    return IconMap.get(iconMapKey)!(props)
   }
 }

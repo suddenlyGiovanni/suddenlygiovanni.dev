@@ -1,10 +1,8 @@
+import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import React from 'react'
 
-import Breakpoints from '../../lib/breakpoints'
-
-import { Container } from '../container'
-import { GitHub, LinkedIn, Twitter } from '../social'
+import { Container, GitHub, LinkedIn, Twitter } from '../components'
+import Breakpoints from '../lib/breakpoints'
 
 const FooterStyled = styled.footer`
   position: relative;
@@ -54,7 +52,7 @@ interface Props {
   maxWidth?: number
 }
 
-export const Footer = ({ maxWidth = 720 }: Props): JSX.Element => {
+export const Footer: React.VFC<Props> = ({ maxWidth = 720 }) => {
   const copyrightYear = getCopyrightYear(new Date())
   return (
     <FooterStyled>

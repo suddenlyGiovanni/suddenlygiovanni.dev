@@ -150,7 +150,7 @@ const UnorderedListStyled: StyledComponent<'ul', any, {}, never> = styled.ul`
 
 const linksEntries = [...linksMap.entries()]
 
-const NavMobile: React.VFC = () => {
+export const NavMobile: React.VFC = () => {
   const [isToggledOn, setToggle] = React.useState<boolean>(false)
   const toggle = (): void => setToggle(!isToggledOn)
   return (
@@ -183,5 +183,3 @@ const NavMobile: React.VFC = () => {
     </NavMobileContainerStyled>
   )
 }
-
-export default NavMobile

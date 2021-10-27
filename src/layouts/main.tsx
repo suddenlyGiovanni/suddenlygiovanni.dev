@@ -1,6 +1,6 @@
 import styled, { StyledComponent } from 'styled-components'
 
-import Breakpoints from '../../lib/breakpoints'
+import Breakpoints from '../lib/breakpoints'
 
 export const Main: StyledComponent<'main', any, {}, never> = styled.main`
   display: flex;
