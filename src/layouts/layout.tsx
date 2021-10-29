@@ -3,7 +3,6 @@ import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
 import { mdxComponents, SEO } from '../components'
-
 import GlobalStyles from '../lib/global-styles'
 import { Footer } from './footer'
 import { Header } from './header'
@@ -38,3 +37,5 @@ export const Layout: React.FC<Props> = ({ children, customSEO = false }) => (
     </DivStyled>
   </>
 )
+
+export default Layout
