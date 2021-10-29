@@ -1,8 +1,8 @@
 import type { GatsbyConfig } from 'gatsby'
 import type { TSConfigFn } from 'gatsby-plugin-ts-config'
+import { siteMetadata } from '../config/site-metadata'
 
 import { config } from '../config/website'
-import { siteMetadata } from '../config/site-metadata'
 import {
   makeGatsbyManifestPluginConfig,
   makeGatsbyPluginImageConfig,
@@ -77,7 +77,9 @@ const gatsbyRemarkImages = makeGatsbyRemarkImagesConfig({
 })
 
 const gatsbyPluginMdx = makeGatsbyPluginMdxConfig({
-  // defaultLayouts: { default: require.resolve('../src/components/layouts/layout.tsx')},
+  defaultLayouts: {
+    default: require.resolve('../src/layouts/layout.tsx'),
+  },
   gatsbyRemarkPlugins: [gatsbyRemarkImages],
   plugins: [{ resolve: 'gatsby-remark-images' }],
 })
@@ -86,28 +88,25 @@ const gatsbyPluginTypography = makeGatsbyPluginTypographyConfig({
   pathToConfigModule: 'src/lib/typography',
 })
 
-const gatsbyConfig: TSConfigFn<'config'> = (
-  publicOpts,
-  props
-): GatsbyConfig => {
+const gatsbyConfig: TSConfigFn<'config'> = (): GatsbyConfig => {
   return {
     siteMetadata,
     plugins: [
-      gatsbyPluginTypescript,
-      gatsbyPluginTsConfig,
-      gatsbyPluginTypegen,
-      gatsbyPluginReactHelmet,
-      gatsbyPluginMdx,
-      gatsbyPluginImage,
       gatsbyTransformerSharp,
-      gatsbyPluginSharp,
       gatsbyTransformerJson,
+      gatsbyPluginSharp,
       gatsbyPluginStyledComponents,
+      gatsbyPluginReactHelmet,
       gatsbySourceFilesystemBlog,
       gatsbySourceFilesystemAssets,
       gatsbySourceFilesystemResume,
-      gatsbyPluginManifest,
+      gatsbyPluginTypegen,
       gatsbyPluginTypography,
+      gatsbyPluginManifest,
+      gatsbyPluginMdx,
+      gatsbyPluginTypescript,
+      gatsbyPluginTsConfig,
+      gatsbyPluginImage,
 
       // this (optional) plugin enables Progressive Web App + Offline functionality
       // To learn more, visit: https://gatsby.dev/offline

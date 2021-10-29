@@ -7,17 +7,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/lib/breakpoints.ts" afterDir="false" />
+    <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
+      <change afterPath="$PROJECT_DIR$/src/templates/post-template.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/website.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/website.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__generated__/gatsby-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/__generated__/gatsby-types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/404.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/404.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SIGN_OFF_COMMIT" value="true" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -76,6 +92,7 @@
     </layout>
   </component>
   <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
@@ -89,6 +106,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="GitStage.ChangesTree.GroupingKeys" value="directory&#10;module&#10;repository" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -105,8 +123,9 @@
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.rename.search.for.dynamic.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -114,16 +133,18 @@
       <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/gatsby/node-lifecycle" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/gatsby/plugins" />
       <recent name="$PROJECT_DIR$/" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/lib/links-map.ts" />
       <recent name="$PROJECT_DIR$/gatsby/gatsby-plugin-style-components.ts" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.clean">
+  <component name="RunManager" selected="npm.develop">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -189,7 +210,17 @@
       <workItem from="1634291256751" duration="3602000" />
       <workItem from="1634298746376" duration="2509000" />
       <workItem from="1634301269960" duration="6868000" />
-      <workItem from="1634556292313" duration="2101000" />
+      <workItem from="1634556292313" duration="16303000" />
+      <workItem from="1634657937057" duration="6000" />
+      <workItem from="1635163226463" duration="83000" />
+      <workItem from="1635163319353" duration="3407000" />
+      <workItem from="1635188872408" duration="3362000" />
+      <workItem from="1635192432650" duration="3373000" />
+      <workItem from="1635265795787" duration="13554000" />
+      <workItem from="1635350708442" duration="14843000" />
+      <workItem from="1635428310716" duration="14955000" />
+      <workItem from="1635526788242" duration="1277000" />
+      <workItem from="1635530166555" duration="9448000" />
     </task>
     <servers />
   </component>
@@ -218,12 +249,13 @@
                 </map>
               </option>
               <option name="LONG_EDGES_VISIBLE" value="true" />
+              <option name="BEK_SORT_TYPE" value="1" />
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="migration/gatsby-v3" />
+                        <option value="HEAD" />
                       </list>
                     </value>
                   </entry>
@@ -244,7 +276,11 @@
     <MESSAGE value="tabula-rasa" />
     <MESSAGE value="revert(content): brought back content folder" />
     <MESSAGE value="feat(lib): add breakpoints lib" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(lib): add breakpoints lib" />
+    <MESSAGE value="feat(component): add social-icon and custom component wrapper" />
+    <MESSAGE value="refactor(components/mdx): add mdx code support" />
+    <MESSAGE value="refactor(components): add link and wave" />
+    <MESSAGE value="feat(hooks): add usePostPreviews" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(hooks): add usePostPreviews" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -255,8 +291,8 @@
   </component>
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
     <type>feat</type>
-    <scope>lib</scope>
-    <subject>add breakpoints lib</subject>
+    <scope>components</scope>
+    <subject>add PostPreview</subject>
     <footers>
       <entry type="" value="" />
     </footers>
