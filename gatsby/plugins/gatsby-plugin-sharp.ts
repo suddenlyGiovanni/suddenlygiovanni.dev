@@ -53,6 +53,17 @@ interface PluginOptionsSchema extends IPluginRefOptions {
   }
 }
 
+/**
+ * # Factory function to correctly configure `gatsby-plugin-sharp`
+ *
+ * Exposes several image processing functions built on the Sharp image processing library.
+ * This is a low-level helper plugin generally used by other Gatsby plugins.
+ * You generally shouldn’t be using this directly but might find it helpful if doing very custom image processing.
+ *
+ * It aims to provide excellent out-of-the box settings for processing common web image formats.
+ *
+ * @see https://www.gatsbyjs.com/plugins/gatsby-plugin-sharp/?=gatsby-plugin-sharp
+ */
 export const makeGatsbySharpPluginConfig = (
   options: PluginOptionsSchema = {}
 ): IPluginRefObject => ({

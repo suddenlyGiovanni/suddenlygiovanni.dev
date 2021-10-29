@@ -42,6 +42,16 @@ interface PluginOptionsSchema extends IPluginRefOptions {
   onlyRemoveTypeImports?: boolean
 }
 
+/**
+ * # Factory function to correctly configure `gatsby-plugin-typescript`
+ *
+ * Allows Gatsby to build TypeScript and TSX files.
+ * Does NOT run type checking during build (see Caveats).
+ * This plugin is automatically included in Gatsby.
+ * The only reason you would need to explicitly use this plugin is if you need
+ * to configure its options.
+ * @see https://www.gatsbyjs.com/plugins/gatsby-plugin-typescript/?=gatsby-plugin-typescript
+ */
 export const makeGatsbyPluginTypescriptConfig = (
   options: PluginOptionsSchema = {}
 ): IPluginRefObject => ({

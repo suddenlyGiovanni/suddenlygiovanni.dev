@@ -57,6 +57,13 @@ type GatsbyPluginStyleComponentsConfigOptions = {
   disableVendorPrefixes?: boolean
 }
 
+/**
+ * # Factory function to correctly configure `gatsby-plugin-styled-components`
+ *
+ * A Gatsby plugin for styled-components with built-in server-side rendering support.
+ *
+ * @see https://www.gatsbyjs.com/plugins/gatsby-plugin-styled-components/?=gatsby-plugin-styled-components
+ */
 export const makeGatsbyStyleComponentsPluginConfig = (
   options: GatsbyPluginStyleComponentsConfigOptions = {}
 ): IPluginRefObject => ({

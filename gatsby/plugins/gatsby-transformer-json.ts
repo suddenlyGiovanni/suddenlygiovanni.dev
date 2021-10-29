@@ -21,6 +21,14 @@ interface GatsbyTransformerJsonOptions extends IPluginRefOptions {
       }) => unknown)
 }
 
+/**
+ * # Factory function to correctly configure `gatsby-transformer-json`
+ *
+ * Parses raw JSON strings into JavaScript objects e.g. from JSON files.
+ * Supports arrays of objects and single objects.
+ *
+ * @see https://www.gatsbyjs.com/plugins/gatsby-transformer-json/?=gatsby-transformer-json
+ */
 export const makeGatsbyTransformerJsonPluginConfig = (
   options: GatsbyTransformerJsonOptions = {}
 ): IPluginRefObject => ({

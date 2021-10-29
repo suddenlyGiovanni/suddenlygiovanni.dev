@@ -78,6 +78,20 @@ interface PluginOptionsSchema extends IPluginRefOptions {
   commonmark?: boolean
 }
 
+/**
+ * # Factory function to correctly configure `gatsby-plugin-mdx`
+ *
+ * This is the official integration for using MDX with Gatsby.
+ *
+ * ## What’s MDX?
+ * MDX is markdown for the component era. It lets you write JSX embedded inside markdown. It’s a great combination because it allows you to use markdown’s often terse syntax (such as # heading) for the little things and JSX for more advanced components.
+ *
+ * ## Why MDX?
+ * Before MDX, some of the benefits of writing Markdown were lost when integrating with JSX. Implementations were often template string-based which required lots of escaping and cumbersome syntax.
+ * MDX seeks to make writing with Markdown and JSX simpler while being more expressive. Writing is fun again when you combine components, that can even be dynamic or load data, with the simplicity of Markdown for long-form content.
+ *
+ * @see https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/?=gatsby-plugin-mdx
+ */
 export const makeGatsbyPluginMdxConfig = (
   options: PluginOptionsSchema = {}
 ): IPluginRefObject => ({

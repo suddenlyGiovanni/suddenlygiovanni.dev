@@ -311,6 +311,21 @@ interface GatsbyPluginManifestConfigOptions
   extends WebAppManifest,
     GatsbyPluginOptions {}
 
+/**
+ * # Factory function to correctly configure `gatsby-plugin-manifest`
+ *
+ * The web app manifest (part of the PWA specification) enabled by this plugin allows users to add your site to their home screen on most mobile browsers — see here. The manifest provides configuration and icons to the phone.
+ * This plugin provides several features beyond manifest configuration to make your life easier, they are:
+ * - Auto icon generation - generates multiple icon sizes from a single source
+ * - Favicon support
+ * - Legacy icon support (iOS)
+ * - Cache busting
+ * - Localization - Provides unique manifests for path-based localization
+ *
+ * Each of these features has extensive configuration available so you are always in control.
+ *
+ * @see https://www.gatsbyjs.com/plugins/gatsby-plugin-manifest/?=gatsby-plugin-manifest
+ */
 export const makeGatsbyManifestPluginConfig = (
   options: GatsbyPluginManifestConfigOptions
 ): IPluginRefObject =>
