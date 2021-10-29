@@ -57,6 +57,7 @@ const gatsbyPluginTypescript = makeGatsbyPluginTypescriptConfig()
 const gatsbyPluginTsConfig = makeGatsbyPluginTsConfig()
 const gatsbyPluginTypegen = makeGatsbyPluginTypegenConfig({
   language: 'typescript',
+  outputPath: 'src/types/gatsby-types.ts',
   autoFix: true,
   emitSchema: {
     'src/__generated__/gatsby-schema.graphql': true,
