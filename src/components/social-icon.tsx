@@ -2,7 +2,7 @@ import * as React from 'react'
 import type { IconBaseProps, IconType } from 'react-icons'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
-type SocialNetworks = 'twitter' | 'github' | 'linkedin'
+export type SocialNetworks = 'twitter' | 'github' | 'linkedin'
 
 export const IconMap: ReadonlyMap<SocialNetworks, IconType> = new Map([
   ['twitter', FaTwitter],

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-const DivStyled = styled.div`
+const DumpContainerStyled = styled.div`
   padding: 10px;
 
   font-size: 20px;
@@ -10,29 +10,29 @@ const DivStyled = styled.div`
   border: 1px solid #efefef;
 `
 
-const KeyStyled = styled.strong`
+const DumpKeyStyled = styled.strong`
   color: white;
 
   background: red;
 `
 
 interface Props {
-  readonly children?: Readonly<Record<string, unknown>>
+  readonly children?: Readonly<Record<string, any>>
 }
 
 export const Dump: React.VFC<Props> = ({ children = {} }) => (
-  <DivStyled>
+  <DumpContainerStyled>
     {Object.entries(children).map(([key, val]) => (
       <pre key={key}>
-        <KeyStyled>
+        <DumpKeyStyled>
           {key}
 
           <span role="img" aria-label="poop">
             💩
           </span>
-        </KeyStyled>
+        </DumpKeyStyled>
         {JSON.stringify(val, null, 2)}
       </pre>
     ))}
-  </DivStyled>
+  </DumpContainerStyled>
 )

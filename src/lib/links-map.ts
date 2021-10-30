@@ -8,7 +8,12 @@ interface LinkTo<
   readonly title: Title
 }
 
-type MapKeys = 'blog' | 'reading-journal' | 'about-me' | 'resume'
+type MapKeys =
+  | 'blog'
+  | 'reading-journal'
+  | 'about-me'
+  | 'resume'
+  | 'motivations'
 
 interface Blog extends LinkTo<'/', 'blog', 'Go to blog page'> {}
 
@@ -20,7 +25,13 @@ interface AboutMe
 
 interface Resume extends LinkTo<'/resume', 'résumé', 'Go to resume page'> {}
 
-type LinksMap = ReadonlyMap<MapKeys, Blog | ReadingJournal | AboutMe | Resume>
+interface Motivations
+  extends LinkTo<'/motivations', 'motivations', 'Go to my motivations'> {}
+
+type LinksMap = ReadonlyMap<
+  MapKeys,
+  Blog | ReadingJournal | AboutMe | Resume | Motivations
+>
 export const linksMap: LinksMap = new Map([
   [
     'blog',
@@ -52,6 +63,14 @@ export const linksMap: LinksMap = new Map([
       title: 'résumé',
       urlPathFragment: '/resume',
       description: 'Go to resume page',
+    },
+  ],
+  [
+    'motivations',
+    {
+      title: 'motivations',
+      urlPathFragment: '/motivations',
+      description: 'Go to my motivations',
     },
   ],
 ])
