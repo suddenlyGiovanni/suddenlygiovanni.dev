@@ -10,6 +10,7 @@ const resumePdfURLQuery = graphql`
 `
 
 export const useResumePdfURL = (): string => {
-  const data = useStaticQuery<GatsbyTypes.GetResumePdfURL>(resumePdfURLQuery)
+  const data =
+    useStaticQuery<GatsbyTypes.GetResumePdfURLQuery>(resumePdfURLQuery)
   return data.file?.publicURL || ''
 }
