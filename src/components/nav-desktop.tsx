@@ -5,45 +5,45 @@ import * as Responsive from '../lib/responsive'
 import { linksEntries } from '../lib/links-map'
 import { NavLink } from './nav-link'
 
-const UnorderedListStyled: StyledComponent<'ul', any, {}, never> = styled.ul`
-  display: flex;
-  flex-direction: row;
-  margin: unset;
-  padding: unset;
+const NavListDesktop: StyledComponent<'ul', any, {}, never> = styled.ul`
+  display: none;
 
-  list-style: unset;
+  @media ${Responsive.Queries.tabletAndUp} {
+    display: flex;
+    flex-direction: row;
+    margin: unset;
+    padding: unset;
 
-  counter-reset: unset;
-  margin-block-start: unset;
-  margin-block-end: unset;
-  padding-inline-start: unset;
+    list-style: unset;
 
-  & > li {
-    display: block;
-    margin-right: 0.5rem;
-    margin-bottom: unset;
-    padding-left: unset;
-
-    text-align: unset;
-
-    &:last-of-type {
-      margin-right: 0;
-    }
+    margin-block-start: unset;
+    margin-block-end: unset;
+    padding-inline-start: unset;
   }
+`
 
-  @media ${Responsive.Queries.mobile} {
-    display: none;
+const NavListItemDesktop = styled.li`
+  display: block;
+  margin-right: 0.5rem;
+  margin-bottom: unset;
+  padding-left: unset;
+
+  text-align: unset;
+
+  &:last-of-type {
+    margin-right: 0;
   }
 `
 
 export const NavDesktop: React.VFC = () => {
   return (
-    <UnorderedListStyled>
+    <NavListDesktop>
       {linksEntries.map(([key, { description, title, urlPathFragment }]) => (
-        <li key={key}>
+        <NavListItemDesktop key={key} tabIndex={-1}>
           <NavLink
             to={urlPathFragment}
             aria-label={description}
+            // @ts-ignore
             activeClassName="current-page"
             {...(key === 'reading-journal'
               ? { $disabled: true, activeClassName: undefined }
@@ -51,8 +51,8 @@ export const NavDesktop: React.VFC = () => {
           >
             {title.toUpperCase()}
           </NavLink>
-        </li>
+        </NavListItemDesktop>
       ))}
-    </UnorderedListStyled>
+    </NavListDesktop>
   )
 }

@@ -1,34 +1,19 @@
 import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
-import { linksMap } from '../lib/links-map'
+import { linksEntries } from '../lib/links-map'
 import * as Responsive from '../lib/responsive'
 import { scale } from '../lib/typography'
 import { NavLink } from './nav-link'
 
-/**
- * TODO: this needs to be renamed!
- */
-const NavMobileContainerStyled: StyledComponent<
-  'div',
-  any,
-  {},
-  never
-> = styled.div`
-  display: none;
-
-  visibility: hidden;
-
-  ${Responsive.Queries.mediaQuerySmallDevices} {
-    display: block;
-    visibility: visible;
+const NavMobileContainer: StyledComponent<'div', any, {}, never> = styled.div`
+  @media ${Responsive.Queries.tabletAndUp} {
+    display: none;
+    visibility: hidden;
   }
 `
 
-/**
- * TODO: this needs to be renamed!
- */
-const ButtonStyled: StyledComponent<
+const NavMobileButton: StyledComponent<
   'button',
   any,
   { type: 'button' },
@@ -54,10 +39,7 @@ const ButtonStyled: StyledComponent<
   }
 `
 
-/**
- * TODO: this needs to be renamed!
- */
-const DivStyled = styled.div<{ $isToggledOn: boolean }>`
+const HamburgerIcon = styled.div<{ $isToggledOn: boolean }>`
   position: absolute;
   left: 0;
 
@@ -109,7 +91,7 @@ const DivStyled = styled.div<{ $isToggledOn: boolean }>`
   }
 `
 
-const UnorderedListStyled: StyledComponent<'ul', any, {}, never> = styled.ul`
+const NavListMobile: StyledComponent<'ul', any, {}, never> = styled.ul`
   position: absolute;
   top: 0;
   left: 0;
@@ -135,51 +117,52 @@ const UnorderedListStyled: StyledComponent<'ul', any, {}, never> = styled.ul`
   margin-block-start: unset;
   margin-block-end: unset;
   padding-inline-start: unset;
-
-  & > li {
-    display: block;
-
-    margin: 2rem auto;
-    padding-left: unset;
-
-    font-size: ${scale(0.7).fontSize};
-
-    text-align: unset;
-  }
 `
 
-const linksEntries = [...linksMap.entries()]
+const NavListItemMobile = styled.li`
+  display: block;
+
+  margin: 2rem auto;
+  padding-left: unset;
+
+  font-size: ${scale(0.7).fontSize};
+
+  text-align: unset;
+`
 
 export const NavMobile: React.VFC = () => {
   const [isToggledOn, setToggle] = React.useState<boolean>(false)
   const toggle = (): void => setToggle(!isToggledOn)
+
   return (
-    <NavMobileContainerStyled>
-      <ButtonStyled
+    <NavMobileContainer>
+      <NavMobileButton
         onClick={toggle}
         aria-label={`${isToggledOn ? 'close menu' : 'open menu'}`}
       >
-        <DivStyled $isToggledOn={isToggledOn} />
-      </ButtonStyled>
+        <HamburgerIcon $isToggledOn={isToggledOn} />
+      </NavMobileButton>
       {isToggledOn && (
-        <UnorderedListStyled>
+        <NavListMobile>
           {linksEntries.map(
             ([key, { description, title, urlPathFragment }]) => (
-              <li key={key}>
+              <NavListItemMobile key={key}>
                 <NavLink
                   to={urlPathFragment}
                   aria-label={description}
+                  // @ts-ignore
+                  activeClassName="current-page"
                   {...(key === 'reading-journal'
-                    ? { $disabled: true }
-                    : { activeClassName: 'current-page' })}
+                    ? { $disabled: true, activeClassName: undefined }
+                    : {})}
                 >
                   {title.toUpperCase()}
                 </NavLink>
-              </li>
+              </NavListItemMobile>
             )
           )}
-        </UnorderedListStyled>
+        </NavListMobile>
       )}
-    </NavMobileContainerStyled>
+    </NavMobileContainer>
   )
 }

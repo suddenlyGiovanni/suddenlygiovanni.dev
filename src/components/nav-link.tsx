@@ -7,30 +7,46 @@ export const NavLink: StyledComponent<
   { $disabled: boolean },
   '$disabled'
 > = styled(Link).attrs(({ $disabled }: { $disabled?: boolean }) => ({
-  $disabled: $disabled ?? false,
+  $disabled: Boolean($disabled),
 }))`
   padding: 0.25rem;
 
   color: inherit;
-  text-decoration: ${({ $disabled }) =>
-    $disabled ? ('line-through' as const) : ('none' as const)};
+  text-decoration: ${
+    ({ $disabled }) =>
+      $disabled
+        ? ('line-through' as const) //
+        : ('unset' as const) //
+  };
 
-  cursor: ${({ $disabled }) =>
-    $disabled ? ('default' as const) : ('not-allowed' as const)};
-
-  &:hover {
-    text-decoration: ${({ $disabled }) =>
-      $disabled ? ('line-through' as const) : ('none' as const)};
-
-    cursor: ${({ $disabled }) => ($disabled ? 'default' : 'not-allowed')};
-  }
-
-  &:hover,
-  &:active {
-    text-decoration: none;
-  }
+  cursor: ${
+    ({ $disabled }) =>
+      $disabled
+        ? ('not-allowed' as const) //
+        : ('revert' as const) //
+  };
 
   &.current-page {
     border-bottom: 2px solid #222;
+  }
+
+  &:hover.current-page {
+    text-decoration: none;
+  }
+
+  &:hover {
+    cursor: ${
+      ({ $disabled }) =>
+        $disabled
+          ? ('not-allowed' as const) //
+          : ('revert' as const) //
+    };
+
+    text-decoration: ${
+      ({ $disabled }) =>
+        $disabled
+          ? ('line-through' as const) //
+          : ('revert' as const) //
+    };
   }
 `
