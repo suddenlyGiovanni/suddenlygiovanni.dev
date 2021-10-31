@@ -1,6 +1,7 @@
 import type { GatsbyNode, Node } from 'gatsby'
 import { createFilePath } from 'gatsby-source-filesystem'
-import { config } from '../config/website'
+
+import { config } from '../../config/website'
 
 interface Frontmatter {
   slug: string
@@ -23,7 +24,7 @@ const onCreateMdxNode: GatsbyNode['onCreateNode'] = ({
   getNode,
 }): void => {
   const { frontmatter } = node as NodeWithFrontmatter
-  const parentNode = getNode(node.parent)
+  // const parentNode = getNode(node.parent!)
   const { createNodeField } = actions
 
   const slug =
@@ -86,8 +87,8 @@ const onCreateMdxNode: GatsbyNode['onCreateNode'] = ({
   })
 }
 
-export const onCreateNode: GatsbyNode['onCreateNode'] = (...args): void => {
-  const [createNodeArgs, ...rest] = args
+export const onCreateNode: GatsbyNode['onCreateNode'] = (...args) => {
+  const [createNodeArgs, ..._] = args
 
   if (createNodeArgs.node.internal.type === 'Mdx') {
     onCreateMdxNode(...args)

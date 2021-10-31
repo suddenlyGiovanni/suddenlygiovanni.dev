@@ -86,7 +86,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="develop" />
+          <id value="clean" />
         </path>
       </selected-paths>
     </layout>
@@ -124,7 +124,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
-    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="ts.rename.search.for.dynamic.occurrences" value="true" />
   </component>
   <component name="RecentsManager">
@@ -182,8 +182,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.develop" />
         <item itemvalue="npm.clean" />
+        <item itemvalue="npm.develop" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -291,8 +291,8 @@
   </component>
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
     <type>feat</type>
-    <scope>components</scope>
-    <subject>add PostPreview</subject>
+    <scope>gatsby-node</scope>
+    <subject>onCreateNode for MDX adds frontmatter fields</subject>
     <footers>
       <entry type="" value="" />
     </footers>

@@ -1,5 +1,5 @@
 import type { TSConfigFn } from 'gatsby-plugin-ts-config'
-import { onCreateNode } from './on-create-node'
+import { onCreateNode } from './node-lifecycle'
 
 /**
  * Implement Gatsby's Node APIs in this file.
@@ -7,10 +7,10 @@ import { onCreateNode } from './on-create-node'
  * See: https://www.gatsbyjs.com/docs/node-apis/
  */
 
-const gatsbyNode: TSConfigFn<'node'> = (publicOpts, props) => {
+const gatsbyNode: TSConfigFn<'node'> = (..._) => {
   return {
     // createPages,
-    onCreateNode: onCreateNode,
+    onCreateNode,
   }
 }
 
