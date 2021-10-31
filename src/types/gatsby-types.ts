@@ -791,9 +791,8 @@ type ImageSharpResize = {
 type MdxFrontmatter = {
   readonly title: Scalars['String'];
   readonly slug: Maybe<Scalars['String']>;
-  readonly author: Maybe<Scalars['String']>;
-  readonly image: Maybe<File>;
   readonly date: Maybe<Scalars['Date']>;
+  readonly author: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
   readonly categories: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly keywords: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
@@ -802,6 +801,7 @@ type MdxFrontmatter = {
   readonly published: Maybe<Scalars['Boolean']>;
   readonly unlisted: Maybe<Scalars['Boolean']>;
   readonly redirects: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
+  readonly image: Maybe<File>;
 };
 
 
@@ -1497,9 +1497,8 @@ type MdxFilterInput = {
 type MdxFrontmatterFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly slug: Maybe<StringQueryOperatorInput>;
-  readonly author: Maybe<StringQueryOperatorInput>;
-  readonly image: Maybe<FileFilterInput>;
   readonly date: Maybe<DateQueryOperatorInput>;
+  readonly author: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
   readonly categories: Maybe<StringQueryOperatorInput>;
   readonly keywords: Maybe<StringQueryOperatorInput>;
@@ -1508,6 +1507,7 @@ type MdxFrontmatterFilterInput = {
   readonly published: Maybe<BooleanQueryOperatorInput>;
   readonly unlisted: Maybe<BooleanQueryOperatorInput>;
   readonly redirects: Maybe<StringQueryOperatorInput>;
+  readonly image: Maybe<FileFilterInput>;
 };
 
 type FileFilterInput = {
@@ -1937,7 +1937,16 @@ type FileFieldsEnum =
   | 'childrenMdx.fileAbsolutePath'
   | 'childrenMdx.frontmatter.title'
   | 'childrenMdx.frontmatter.slug'
+  | 'childrenMdx.frontmatter.date'
   | 'childrenMdx.frontmatter.author'
+  | 'childrenMdx.frontmatter.description'
+  | 'childrenMdx.frontmatter.categories'
+  | 'childrenMdx.frontmatter.keywords'
+  | 'childrenMdx.frontmatter.banner'
+  | 'childrenMdx.frontmatter.bannerCredit'
+  | 'childrenMdx.frontmatter.published'
+  | 'childrenMdx.frontmatter.unlisted'
+  | 'childrenMdx.frontmatter.redirects'
   | 'childrenMdx.frontmatter.image.sourceInstanceName'
   | 'childrenMdx.frontmatter.image.absolutePath'
   | 'childrenMdx.frontmatter.image.relativePath'
@@ -1977,15 +1986,6 @@ type FileFieldsEnum =
   | 'childrenMdx.frontmatter.image.childrenResumeJson'
   | 'childrenMdx.frontmatter.image.id'
   | 'childrenMdx.frontmatter.image.children'
-  | 'childrenMdx.frontmatter.date'
-  | 'childrenMdx.frontmatter.description'
-  | 'childrenMdx.frontmatter.categories'
-  | 'childrenMdx.frontmatter.keywords'
-  | 'childrenMdx.frontmatter.banner'
-  | 'childrenMdx.frontmatter.bannerCredit'
-  | 'childrenMdx.frontmatter.published'
-  | 'childrenMdx.frontmatter.unlisted'
-  | 'childrenMdx.frontmatter.redirects'
   | 'childrenMdx.slug'
   | 'childrenMdx.body'
   | 'childrenMdx.excerpt'
@@ -2052,7 +2052,16 @@ type FileFieldsEnum =
   | 'childMdx.fileAbsolutePath'
   | 'childMdx.frontmatter.title'
   | 'childMdx.frontmatter.slug'
+  | 'childMdx.frontmatter.date'
   | 'childMdx.frontmatter.author'
+  | 'childMdx.frontmatter.description'
+  | 'childMdx.frontmatter.categories'
+  | 'childMdx.frontmatter.keywords'
+  | 'childMdx.frontmatter.banner'
+  | 'childMdx.frontmatter.bannerCredit'
+  | 'childMdx.frontmatter.published'
+  | 'childMdx.frontmatter.unlisted'
+  | 'childMdx.frontmatter.redirects'
   | 'childMdx.frontmatter.image.sourceInstanceName'
   | 'childMdx.frontmatter.image.absolutePath'
   | 'childMdx.frontmatter.image.relativePath'
@@ -2092,15 +2101,6 @@ type FileFieldsEnum =
   | 'childMdx.frontmatter.image.childrenResumeJson'
   | 'childMdx.frontmatter.image.id'
   | 'childMdx.frontmatter.image.children'
-  | 'childMdx.frontmatter.date'
-  | 'childMdx.frontmatter.description'
-  | 'childMdx.frontmatter.categories'
-  | 'childMdx.frontmatter.keywords'
-  | 'childMdx.frontmatter.banner'
-  | 'childMdx.frontmatter.bannerCredit'
-  | 'childMdx.frontmatter.published'
-  | 'childMdx.frontmatter.unlisted'
-  | 'childMdx.frontmatter.redirects'
   | 'childMdx.slug'
   | 'childMdx.body'
   | 'childMdx.excerpt'
@@ -4417,7 +4417,16 @@ type MdxFieldsEnum =
   | 'fileAbsolutePath'
   | 'frontmatter.title'
   | 'frontmatter.slug'
+  | 'frontmatter.date'
   | 'frontmatter.author'
+  | 'frontmatter.description'
+  | 'frontmatter.categories'
+  | 'frontmatter.keywords'
+  | 'frontmatter.banner'
+  | 'frontmatter.bannerCredit'
+  | 'frontmatter.published'
+  | 'frontmatter.unlisted'
+  | 'frontmatter.redirects'
   | 'frontmatter.image.sourceInstanceName'
   | 'frontmatter.image.absolutePath'
   | 'frontmatter.image.relativePath'
@@ -4515,15 +4524,6 @@ type MdxFieldsEnum =
   | 'frontmatter.image.internal.mediaType'
   | 'frontmatter.image.internal.owner'
   | 'frontmatter.image.internal.type'
-  | 'frontmatter.date'
-  | 'frontmatter.description'
-  | 'frontmatter.categories'
-  | 'frontmatter.keywords'
-  | 'frontmatter.banner'
-  | 'frontmatter.bannerCredit'
-  | 'frontmatter.published'
-  | 'frontmatter.unlisted'
-  | 'frontmatter.redirects'
   | 'slug'
   | 'body'
   | 'excerpt'
@@ -4910,16 +4910,6 @@ type ResumeJsonSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
-type PostByIdQueryVariables = Exact<{
-  id: Scalars['String'];
-}>;
-
-
-type PostByIdQuery = { readonly post: Maybe<(
-    Pick<Mdx, 'body'>
-    & { readonly fields: Maybe<Pick<MdxFields, 'id' | 'published' | 'title' | 'author' | 'description' | 'slug' | 'date' | 'categories' | 'redirects' | 'editLink' | 'historyLink'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'unlisted'>> }
-  )> };
-
 type PostPreviewDataFragment = (
   Pick<Mdx, 'id' | 'excerpt' | 'timeToRead'>
   & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'author' | 'title' | 'description' | 'date'>>, readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
@@ -4929,11 +4919,6 @@ type PostsPreviewsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PostsPreviewsQuery = { readonly allMdx: { readonly posts: ReadonlyArray<PostPreviewDataFragment> } };
-
-type GetResumePdfURLQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type GetResumePdfURLQuery = { readonly file: Maybe<Pick<File, 'id' | 'publicURL'>> };
 
 type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4946,14 +4931,6 @@ type SiteMetadataQuery = { readonly site: Maybe<(
       & { readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitterHandle'>>, readonly author: Maybe<Pick<SiteSiteMetadataAuthor, 'name'>> }
     )> }
   )> };
-
-type ResumeQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type ResumeQuery = { readonly resumeJson: Maybe<{ readonly basics: Maybe<(
-      Pick<ResumeJsonBasics, 'email' | 'image' | 'label' | 'name' | 'phone' | 'summary' | 'url'>
-      & { readonly profiles: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonBasicsProfiles, 'network' | 'url' | 'username'>>>>, readonly location: Maybe<Pick<ResumeJsonBasicsLocation, 'address' | 'city' | 'countryCode' | 'postalCode' | 'region'>> }
-    )>, readonly work: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonWork, 'description' | 'endDate' | 'highlights' | 'location' | 'name' | 'position' | 'startDate' | 'summary' | 'url'>>>>, readonly education: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonEducation, 'area' | 'courses' | 'endDate' | 'gpa' | 'institution' | 'location' | 'startDate' | 'studyType' | 'url'>>>>, readonly skills: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonSkills, 'keywords' | 'level' | 'name'>>>>, readonly languages: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonLanguages, 'fluency' | 'language'>>>>, readonly interests: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonInterests, 'keywords' | 'name'>>>>, readonly meta: Maybe<Pick<ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>> }> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -4980,6 +4957,29 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 't
 type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type GetResumePdfURLQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type GetResumePdfURLQuery = { readonly file: Maybe<Pick<File, 'id' | 'publicURL'>> };
+
+type ResumeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ResumeQuery = { readonly resumeJson: Maybe<{ readonly basics: Maybe<(
+      Pick<ResumeJsonBasics, 'email' | 'image' | 'label' | 'name' | 'phone' | 'summary' | 'url'>
+      & { readonly profiles: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonBasicsProfiles, 'network' | 'url' | 'username'>>>>, readonly location: Maybe<Pick<ResumeJsonBasicsLocation, 'address' | 'city' | 'countryCode' | 'postalCode' | 'region'>> }
+    )>, readonly work: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonWork, 'description' | 'endDate' | 'highlights' | 'location' | 'name' | 'position' | 'startDate' | 'summary' | 'url'>>>>, readonly education: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonEducation, 'area' | 'courses' | 'endDate' | 'gpa' | 'institution' | 'location' | 'startDate' | 'studyType' | 'url'>>>>, readonly skills: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonSkills, 'keywords' | 'level' | 'name'>>>>, readonly languages: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonLanguages, 'fluency' | 'language'>>>>, readonly interests: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonInterests, 'keywords' | 'name'>>>>, readonly meta: Maybe<Pick<ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>> }> };
+
+type PostByIdQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+type PostByIdQuery = { readonly post: Maybe<(
+    Pick<Mdx, 'body'>
+    & { readonly fields: Maybe<Pick<MdxFields, 'id' | 'published' | 'title' | 'author' | 'description' | 'slug' | 'date' | 'categories' | 'redirects' | 'editLink' | 'historyLink'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'unlisted'>> }
+  )> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

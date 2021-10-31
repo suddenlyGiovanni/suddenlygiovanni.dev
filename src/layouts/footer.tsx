@@ -38,7 +38,7 @@ const ContainerStyled = styled(Container)`
   align-content: space-between;
   padding-bottom: 1rem;
 
-  ${Responsive.Queries.mediaQuerySmallDevices} {
+  @query ${Responsive.Queries.mobile} {
     padding-bottom: 1rem;
   }
 `

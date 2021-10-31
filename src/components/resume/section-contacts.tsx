@@ -22,7 +22,7 @@ const ListStyled = styled.ul`
 
   list-style: none;
 
-  ${Responsive.Queries.mediaQuerySmallDevices} {
+  @query ${Responsive.Queries.mobile} {
     max-height: unset;
   }
 `

@@ -20,7 +20,7 @@ export const Main: StyledComponent<'main', any, {}, never> = styled.main`
     border-bottom: unset;
   }
 
-  ${Responsive.Queries.mediaQuerySmallDevices} {
+  @query ${Responsive.Queries.mobile} {
     padding: 0 20px;
   }
 `
