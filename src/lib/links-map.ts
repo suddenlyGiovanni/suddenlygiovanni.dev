@@ -74,3 +74,7 @@ export const linksMap: LinksMap = new Map([
     },
   ],
 ])
+
+export const linksEntries = [...linksMap.entries()].filter(
+  ([key, ..._]) => key !== 'motivations'
+)

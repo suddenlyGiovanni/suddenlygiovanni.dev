@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
-import Breakpoints from '../lib/breakpoints'
-import { linksMap } from '../lib/links-map'
+import * as Responsive from '../lib/responsive'
+import { linksEntries } from '../lib/links-map'
 import { NavLink } from './nav-link'
 
 const UnorderedListStyled: StyledComponent<'ul', any, {}, never> = styled.ul`
@@ -31,11 +31,10 @@ const UnorderedListStyled: StyledComponent<'ul', any, {}, never> = styled.ul`
     }
   }
 
-  @media (max-width: ${Breakpoints.maxSM}px) {
+  @media ${Responsive.Queries.mobile} {
     display: none;
   }
 `
-const linksEntries = [...linksMap.entries()]
 
 export const NavDesktop: React.VFC = () => {
   return (
@@ -47,8 +46,8 @@ export const NavDesktop: React.VFC = () => {
             aria-label={description}
             activeClassName="current-page"
             {...(key === 'reading-journal'
-              ? { $disabled: true }
-              : { activeClassName: 'current-page' })}
+              ? { $disabled: true, activeClassName: undefined }
+              : {})}
           >
             {title.toUpperCase()}
           </NavLink>

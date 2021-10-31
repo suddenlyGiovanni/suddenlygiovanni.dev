@@ -1,5 +1,5 @@
 import styled, { StyledComponent } from 'styled-components'
-import Breakpoints from '../lib/breakpoints'
+import * as Responsive from '../lib/responsive'
 
 interface ContainerProps {
   readonly $maxWidth: number
@@ -34,7 +34,7 @@ export const Container: StyledComponent<
   padding-left: ${({ $noHorizontalPadding }) =>
     $noHorizontalPadding ? 0 : 40}px;
 
-  ${Breakpoints.mediaQuerySmallDevices} {
+  ${Responsive.Queries.mediaQuerySmallDevices} {
     padding-top: ${({ $noVerticalPadding }) => ($noVerticalPadding ? 0 : 20)}px;
 
     padding-right: ${({ $noHorizontalPadding }) =>

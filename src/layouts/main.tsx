@@ -1,6 +1,6 @@
 import styled, { StyledComponent } from 'styled-components'
 
-import Breakpoints from '../lib/breakpoints'
+import * as Responsive from '../lib/responsive'
 
 export const Main: StyledComponent<'main', any, {}, never> = styled.main`
   display: flex;
@@ -20,7 +20,7 @@ export const Main: StyledComponent<'main', any, {}, never> = styled.main`
     border-bottom: unset;
   }
 
-  ${Breakpoints.mediaQuerySmallDevices} {
+  ${Responsive.Queries.mediaQuerySmallDevices} {
     padding: 0 20px;
   }
 `

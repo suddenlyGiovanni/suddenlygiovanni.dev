@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
-import Breakpoints from '../lib/breakpoints'
 import { linksMap } from '../lib/links-map'
+import * as Responsive from '../lib/responsive'
 import { scale } from '../lib/typography'
 import { NavLink } from './nav-link'
 
@@ -19,7 +19,7 @@ const NavMobileContainerStyled: StyledComponent<
 
   visibility: hidden;
 
-  @media (max-width: ${Breakpoints.maxSM}px) {
+  ${Responsive.Queries.mediaQuerySmallDevices} {
     display: block;
     visibility: visible;
   }

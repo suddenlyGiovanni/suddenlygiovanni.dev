@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
 import { Container, GitHub, LinkedIn, Twitter } from '../components'
-import Breakpoints from '../lib/breakpoints'
+import * as Responsive from '../lib/responsive'
 
 const FooterStyled = styled.footer`
   position: relative;
@@ -38,7 +38,7 @@ const ContainerStyled = styled(Container)`
   align-content: space-between;
   padding-bottom: 1rem;
 
-  ${Breakpoints.mediaQuerySmallDevices} {
+  ${Responsive.Queries.mediaQuerySmallDevices} {
     padding-bottom: 1rem;
   }
 `

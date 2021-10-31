@@ -2,7 +2,7 @@ import * as React from 'react'
 import { FaBlog, FaEnvelope, FaMapMarkerAlt, FaMobile } from 'react-icons/fa'
 import styled from 'styled-components'
 
-import Breakpoints from '../../lib/breakpoints'
+import * as Responsive from '../../lib/responsive'
 import type { Basics } from '../../types/resume'
 import * as Social from '../social-icon'
 
@@ -22,7 +22,7 @@ const ListStyled = styled.ul`
 
   list-style: none;
 
-  ${Breakpoints.mediaQuerySmallDevices} {
+  ${Responsive.Queries.mediaQuerySmallDevices} {
     max-height: unset;
   }
 `
