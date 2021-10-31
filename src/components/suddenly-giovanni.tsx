@@ -1,9 +1,8 @@
 import { Link } from 'gatsby'
-import Image from 'gatsby-image'
+import { StaticImage } from 'gatsby-plugin-image'
 import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
-import { useProfilePictureFix } from '../hooks'
 import { linksMap } from '../lib/links-map'
 import { scale } from '../lib/typography'
 
@@ -33,25 +32,7 @@ const HeadingStyled: StyledComponent<'h1', any, {}, never> = styled.h1`
   border: unset;
 `
 
-const ImageStyled: StyledComponent<typeof Image, any, {}, never> = styled(
-  Image
-)`
-  max-width: 50px;
-  overflow: hidden;
-
-  border-radius: 100%;
-
-  picture {
-    margin: 0;
-  }
-
-  picture > * {
-    margin: 0;
-  }
-`
-
 export const SuddenlyGiovanni: React.VFC = () => {
-  const profilePictureFix = useProfilePictureFix()
   const LinkToBlog = linksMap.get('blog')!
   return (
     <LinkStyled
@@ -59,10 +40,17 @@ export const SuddenlyGiovanni: React.VFC = () => {
       aria-label={LinkToBlog.description}
       activeStyle={undefined}
     >
-      <ImageStyled
+      <StaticImage
+        src={'../../content/assets/giovanni_ravalico-profile_bw.jpg'}
+        width={50}
+        height={50}
+        style={{
+          overflow: 'hidden',
+          borderRadius: '100%',
+        }}
         alt="Giovanni Ravalico's profile picture"
-        // @ts-ignore
-        fixed={profilePictureFix}
+        placeholder="tracedSVG"
+        layout="fixed"
         loading="eager"
       />
       <HeadingStyled>suddenlyGiovanni</HeadingStyled>

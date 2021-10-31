@@ -92,9 +92,10 @@ const gatsbyConfig: TSConfigFn<'config'> = (): GatsbyConfig => {
   return {
     siteMetadata,
     plugins: [
+      gatsbyPluginImage,
+      gatsbyPluginSharp,
       gatsbyTransformerSharp,
       gatsbyTransformerJson,
-      gatsbyPluginSharp,
       gatsbyPluginStyledComponents,
       gatsbyPluginReactHelmet,
       gatsbySourceFilesystemBlog,
@@ -106,7 +107,6 @@ const gatsbyConfig: TSConfigFn<'config'> = (): GatsbyConfig => {
       gatsbyPluginMdx,
       gatsbyPluginTypescript,
       gatsbyPluginTsConfig,
-      gatsbyPluginImage,
 
       // this (optional) plugin enables Progressive Web App + Offline functionality
       // To learn more, visit: https://gatsby.dev/offline
