@@ -1,12 +1,14 @@
 import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
-import { linksEntries } from '../lib/links-map'
+import * as L from '../lib/links-map'
 import * as Responsive from '../lib/responsive'
 import { scale } from '../lib/typography'
-import { NavLink } from './nav-link'
+import { NavItems } from './nav-items'
 
 const NavMobileContainer: StyledComponent<'div', any, {}, never> = styled.div`
+  overflow-y: hidden;
+
   @media ${Responsive.Queries.tabletAndUp} {
     display: none;
     visibility: hidden;
@@ -91,7 +93,7 @@ const HamburgerIcon = styled.div<{ $isToggledOn: boolean }>`
   }
 `
 
-const NavListMobile: StyledComponent<'ul', any, {}, never> = styled.ul`
+const NavListMobile = styled(NavItems)`
   position: absolute;
   top: 0;
   left: 0;
@@ -104,10 +106,7 @@ const NavListMobile: StyledComponent<'ul', any, {}, never> = styled.ul`
   width: 100vw;
   height: 100vh;
   margin: 0 auto;
-  padding-top: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
+  padding: 20px;
 
   list-style: unset;
 
@@ -117,20 +116,29 @@ const NavListMobile: StyledComponent<'ul', any, {}, never> = styled.ul`
   margin-block-start: unset;
   margin-block-end: unset;
   padding-inline-start: unset;
+
+  li {
+    display: block;
+
+    margin: 2rem auto;
+    padding-left: unset;
+
+    font-size: ${scale(0.7).fontSize};
+
+    text-align: unset;
+  }
 `
 
-const NavListItemMobile = styled.li`
-  display: block;
+interface Props {
+  linksEntries: ReadonlyArray<
+    [
+      L.MapKeys,
+      L.Blog | L.ReadingJournal | L.AboutMe | L.Resume | L.Motivations
+    ]
+  >
+}
 
-  margin: 2rem auto;
-  padding-left: unset;
-
-  font-size: ${scale(0.7).fontSize};
-
-  text-align: unset;
-`
-
-export const NavMobile: React.VFC = () => {
+export const NavMobile: React.VFC<Props> = ({ linksEntries }) => {
   const [isToggledOn, setToggle] = React.useState<boolean>(false)
   const toggle = (): void => setToggle(!isToggledOn)
 
@@ -142,27 +150,7 @@ export const NavMobile: React.VFC = () => {
       >
         <HamburgerIcon $isToggledOn={isToggledOn} />
       </NavMobileButton>
-      {isToggledOn && (
-        <NavListMobile>
-          {linksEntries.map(
-            ([key, { description, title, urlPathFragment }]) => (
-              <NavListItemMobile key={key}>
-                <NavLink
-                  to={urlPathFragment}
-                  aria-label={description}
-                  // @ts-ignore
-                  activeClassName="current-page"
-                  {...(key === 'reading-journal'
-                    ? { $disabled: true, activeClassName: undefined }
-                    : {})}
-                >
-                  {title.toUpperCase()}
-                </NavLink>
-              </NavListItemMobile>
-            )
-          )}
-        </NavListMobile>
-      )}
+      {isToggledOn && <NavListMobile linksEntries={linksEntries} />}
     </NavMobileContainer>
   )
 }

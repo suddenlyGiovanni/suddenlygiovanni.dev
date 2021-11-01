@@ -8,24 +8,29 @@ interface LinkTo<
   readonly title: Title
 }
 
-type MapKeys =
+export type MapKeys =
   | 'blog'
   | 'reading-journal'
   | 'about-me'
   | 'resume'
   | 'motivations'
 
-interface Blog extends LinkTo<'/', 'blog', 'Go to blog page'> {}
+export interface Blog extends LinkTo<'/blog', 'blog', 'Go to blog page'> {}
 
-interface ReadingJournal
-  extends LinkTo<'/', 'reading journal', 'Go to reading journal page'> {}
+export interface ReadingJournal
+  extends LinkTo<
+    '/reading-journal',
+    'reading journal',
+    'Go to reading journal page'
+  > {}
 
-interface AboutMe
+export interface AboutMe
   extends LinkTo<'/about-me', 'about me', 'Go to about me page'> {}
 
-interface Resume extends LinkTo<'/resume', 'résumé', 'Go to resume page'> {}
+export interface Resume
+  extends LinkTo<'/resume', 'résumé', 'Go to resume page'> {}
 
-interface Motivations
+export interface Motivations
   extends LinkTo<'/motivations', 'motivations', 'Go to my motivations'> {}
 
 type LinksMap = ReadonlyMap<
@@ -37,7 +42,7 @@ export const linksMap: LinksMap = new Map([
     'blog',
     {
       title: 'blog',
-      urlPathFragment: '/',
+      urlPathFragment: '/blog',
       description: 'Go to blog page',
     },
   ],
@@ -45,7 +50,7 @@ export const linksMap: LinksMap = new Map([
     'reading-journal',
     {
       title: 'reading journal',
-      urlPathFragment: '/',
+      urlPathFragment: '/reading-journal',
       description: 'Go to reading journal page',
     },
   ],
@@ -75,6 +80,6 @@ export const linksMap: LinksMap = new Map([
   ],
 ])
 
-export const linksEntries = [...linksMap.entries()].filter(
+export const linksEntries = ([...linksMap.entries()] as const).filter(
   ([key, ..._]) => key !== 'motivations'
 )

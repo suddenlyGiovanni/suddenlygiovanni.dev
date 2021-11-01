@@ -19,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -79,7 +79,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="clean" />
+          <id value="develop" />
         </path>
       </selected-paths>
     </layout>
@@ -175,8 +175,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.clean" />
         <item itemvalue="npm.develop" />
+        <item itemvalue="npm.clean" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>

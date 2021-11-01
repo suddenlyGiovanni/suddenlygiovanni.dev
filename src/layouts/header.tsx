@@ -7,6 +7,7 @@ import {
   NavMobile,
   SuddenlyGiovanni,
 } from '../components'
+import { linksEntries } from '../lib/links-map'
 
 const HeaderStyled: StyledComponent<'header', any, {}, never> = styled.header`
   z-index: 10;
@@ -34,8 +35,8 @@ export const Header: React.VFC = () => (
     <Container $maxWidth={720} $noVerticalPadding>
       <NavStyled>
         <SuddenlyGiovanni />
-        <NavMobile />
-        <NavDesktop />
+        <NavMobile linksEntries={linksEntries} />
+        <NavDesktop linksEntries={linksEntries} />
       </NavStyled>
     </Container>
   </HeaderStyled>
