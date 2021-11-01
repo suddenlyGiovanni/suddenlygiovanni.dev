@@ -313,4 +313,12 @@
     <expand />
     <select />
   </component>
+  <component name="com.github.lppedd.cc.CommitBuilderDialog">
+    <type>refactor</type>
+    <scope>layouts</scope>
+    <subject>centralize nav items behaviour to specialized component</subject>
+    <footers>
+      <entry type="" value="" />
+    </footers>
+  </component>
 </project>
