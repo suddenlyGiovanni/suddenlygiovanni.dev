@@ -25,7 +25,7 @@ export interface ReadingJournal
   > {}
 
 export interface AboutMe
-  extends LinkTo<'/about-me', 'about me', 'Go to about me page'> {}
+  extends LinkTo<'/', 'about me', 'Go to about me page'> {}
 
 export interface Resume
   extends LinkTo<'/resume', 'résumé', 'Go to resume page'> {}
@@ -38,6 +38,14 @@ type LinksMap = ReadonlyMap<
   Blog | ReadingJournal | AboutMe | Resume | Motivations
 >
 export const linksMap: LinksMap = new Map([
+  [
+    'about-me',
+    {
+      title: 'about me',
+      urlPathFragment: '/',
+      description: 'Go to about me page',
+    },
+  ],
   [
     'blog',
     {
@@ -54,14 +62,7 @@ export const linksMap: LinksMap = new Map([
       description: 'Go to reading journal page',
     },
   ],
-  [
-    'about-me',
-    {
-      title: 'about me',
-      urlPathFragment: '/about-me',
-      description: 'Go to about me page',
-    },
-  ],
+
   [
     'resume',
     {

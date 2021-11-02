@@ -3,8 +3,9 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { ReadLink, SEO } from '../../components'
-import { Layout } from '../../layouts'
+import { ReadLink, SEO } from '../components'
+import { Layout } from '../layouts'
+import { linksMap } from '../lib/links-map'
 
 /**
  * this graphql query will be called by gatsby-node at build time and its
@@ -72,8 +73,8 @@ const NextPost = styled.span`
 interface PageContextType {
   id: string
   slug: string
-  previous: GatsbyTypes.PostDetailsFragment
-  next: GatsbyTypes.PostDetailsFragment
+  previous: GatsbyTypes.BlogPostDetailsFragment
+  next: GatsbyTypes.BlogPostDetailsFragment
 }
 
 type Props = PageProps<GatsbyTypes.PostByIdQuery, PageContextType>
@@ -92,7 +93,7 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
       <SEO
         titleTemplate={title}
         description={post.fields?.description || 'nothing'}
-        datePublished={new Date(post.fields?.date).toISOString()}
+        datePublished={new Date(post.fields?.date!).toISOString()}
         dateModified={new Date(Date.now()).toISOString()}
         article
       />
@@ -118,13 +119,20 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
             </li>
           )}
           <li>
-            <ReadLink to="/">back to all posts</ReadLink>
+            <ReadLink to={linksMap.get('blog')!.urlPathFragment}>
+              back to all posts
+            </ReadLink>
           </li>
           {next && (
             <li>
               <NextPost>
                 next post &rarr;
-                <ReadLink to={`/${next.frontmatter?.slug || ''}`} rel="next">
+                <ReadLink
+                  to={`${linksMap.get('blog')!.urlPathFragment}/${
+                    next.frontmatter?.slug || ''
+                  }`}
+                  rel="next"
+                >
                   {next.frontmatter?.title || 'next'}
                 </ReadLink>
               </NextPost>

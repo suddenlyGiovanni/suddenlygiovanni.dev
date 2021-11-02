@@ -339,12 +339,7 @@ type SitePage = Node & {
 type SitePageContext = {
   readonly id: Maybe<Scalars['String']>;
   readonly slug: Maybe<Scalars['String']>;
-  readonly _xparams: Maybe<SitePageContext_xparams>;
   readonly frontmatter: Maybe<SitePageContextFrontmatter>;
-};
-
-type SitePageContext_xparams = {
-  readonly slug: Maybe<Scalars['String']>;
 };
 
 type SitePageContextFrontmatter = {
@@ -852,7 +847,6 @@ type Mdx = Node & {
   readonly timeToRead: Maybe<Scalars['Int']>;
   readonly wordCount: Maybe<MdxWordCount>;
   readonly fields: Maybe<MdxFields>;
-  readonly gatsbyPath: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly parent: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
@@ -873,11 +867,6 @@ type Mdx_headingsArgs = {
 
 type Mdx_tableOfContentsArgs = {
   maxDepth: Maybe<Scalars['Int']>;
-};
-
-
-type Mdx_gatsbyPathArgs = {
-  filePath: Maybe<Scalars['String']>;
 };
 
 type MdxFields = {
@@ -1306,7 +1295,6 @@ type Query_mdxArgs = {
   timeToRead: Maybe<IntQueryOperatorInput>;
   wordCount: Maybe<MdxWordCountFilterInput>;
   fields: Maybe<MdxFieldsFilterInput>;
-  gatsbyPath: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
@@ -1502,7 +1490,6 @@ type MdxFilterInput = {
   readonly timeToRead: Maybe<IntQueryOperatorInput>;
   readonly wordCount: Maybe<MdxWordCountFilterInput>;
   readonly fields: Maybe<MdxFieldsFilterInput>;
-  readonly gatsbyPath: Maybe<StringQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
   readonly parent: Maybe<NodeFilterInput>;
   readonly children: Maybe<NodeFilterListInput>;
@@ -2025,7 +2012,6 @@ type FileFieldsEnum =
   | 'childrenMdx.fields.redirects'
   | 'childrenMdx.fields.editLink'
   | 'childrenMdx.fields.historyLink'
-  | 'childrenMdx.gatsbyPath'
   | 'childrenMdx.id'
   | 'childrenMdx.parent.id'
   | 'childrenMdx.parent.parent.id'
@@ -2141,7 +2127,6 @@ type FileFieldsEnum =
   | 'childMdx.fields.redirects'
   | 'childMdx.fields.editLink'
   | 'childMdx.fields.historyLink'
-  | 'childMdx.gatsbyPath'
   | 'childMdx.id'
   | 'childMdx.parent.id'
   | 'childMdx.parent.parent.id'
@@ -3181,12 +3166,7 @@ type SiteFunctionSortInput = {
 type SitePageContextFilterInput = {
   readonly id: Maybe<StringQueryOperatorInput>;
   readonly slug: Maybe<StringQueryOperatorInput>;
-  readonly _xparams: Maybe<SitePageContext_xparamsFilterInput>;
   readonly frontmatter: Maybe<SitePageContextFrontmatterFilterInput>;
-};
-
-type SitePageContext_xparamsFilterInput = {
-  readonly slug: Maybe<StringQueryOperatorInput>;
 };
 
 type SitePageContextFrontmatterFilterInput = {
@@ -3512,7 +3492,6 @@ type SitePageFieldsEnum =
   | 'isCreatedByStatefulCreatePages'
   | 'context.id'
   | 'context.slug'
-  | 'context._xparams.slug'
   | 'context.frontmatter.title'
   | 'context.frontmatter.description'
   | 'pluginCreator.resolve'
@@ -4497,7 +4476,6 @@ type MdxFieldsEnum =
   | 'frontmatter.image.childrenMdx.mdxAST'
   | 'frontmatter.image.childrenMdx.tableOfContents'
   | 'frontmatter.image.childrenMdx.timeToRead'
-  | 'frontmatter.image.childrenMdx.gatsbyPath'
   | 'frontmatter.image.childrenMdx.id'
   | 'frontmatter.image.childrenMdx.children'
   | 'frontmatter.image.childMdx.rawBody'
@@ -4510,7 +4488,6 @@ type MdxFieldsEnum =
   | 'frontmatter.image.childMdx.mdxAST'
   | 'frontmatter.image.childMdx.tableOfContents'
   | 'frontmatter.image.childMdx.timeToRead'
-  | 'frontmatter.image.childMdx.gatsbyPath'
   | 'frontmatter.image.childMdx.id'
   | 'frontmatter.image.childMdx.children'
   | 'frontmatter.image.childrenResumeJson'
@@ -4577,7 +4554,6 @@ type MdxFieldsEnum =
   | 'fields.redirects'
   | 'fields.editLink'
   | 'fields.historyLink'
-  | 'gatsbyPath'
   | 'id'
   | 'parent.id'
   | 'parent.parent.id'
@@ -4940,6 +4916,11 @@ type ResumeJsonSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
+type GetResumePdfURLQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type GetResumePdfURLQuery = { readonly file: Maybe<Pick<File, 'id' | 'publicURL'>> };
+
 type ResumeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -4947,6 +4928,44 @@ type ResumeQuery = { readonly resumeJson: Maybe<{ readonly basics: Maybe<(
       Pick<ResumeJsonBasics, 'email' | 'image' | 'label' | 'name' | 'phone' | 'summary' | 'url'>
       & { readonly profiles: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonBasicsProfiles, 'network' | 'url' | 'username'>>>>, readonly location: Maybe<Pick<ResumeJsonBasicsLocation, 'address' | 'city' | 'countryCode' | 'postalCode' | 'region'>> }
     )>, readonly work: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonWork, 'description' | 'endDate' | 'highlights' | 'location' | 'name' | 'position' | 'startDate' | 'summary' | 'url'>>>>, readonly education: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonEducation, 'area' | 'courses' | 'endDate' | 'gpa' | 'institution' | 'location' | 'startDate' | 'studyType' | 'url'>>>>, readonly skills: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonSkills, 'keywords' | 'level' | 'name'>>>>, readonly languages: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonLanguages, 'fluency' | 'language'>>>>, readonly interests: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonInterests, 'keywords' | 'name'>>>>, readonly meta: Maybe<Pick<ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>> }> };
+
+type BlogPostDetailsFragment = (
+  Pick<Mdx, 'fileAbsolutePath' | 'id' | 'excerpt'>
+  & { readonly fields: Maybe<Pick<MdxFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'author' | 'date' | 'description' | 'banner' | 'bannerCredit' | 'published' | 'unlisted' | 'redirects'>>, readonly parent: Maybe<Pick<File, 'name' | 'sourceInstanceName'>> }
+);
+
+type CreatePagesDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type CreatePagesDataQuery = { readonly allMdx: { readonly blogPosts: ReadonlyArray<{ readonly blogPost: BlogPostDetailsFragment, readonly next: Maybe<(
+        Pick<Mdx, 'id' | 'fileAbsolutePath'>
+        & { readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
+      )>, readonly previous: Maybe<(
+        Pick<Mdx, 'id' | 'fileAbsolutePath'>
+        & { readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
+      )> }> } };
+
+type PostByIdQueryVariables = Exact<{
+  id: Scalars['String'];
+}>;
+
+
+type PostByIdQuery = { readonly post: Maybe<(
+    Pick<Mdx, 'body'>
+    & { readonly fields: Maybe<Pick<MdxFields, 'id' | 'published' | 'title' | 'author' | 'description' | 'slug' | 'date' | 'categories' | 'redirects' | 'editLink' | 'historyLink'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'unlisted'>> }
+  )> };
+
+type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SiteMetadataQuery = { readonly site: Maybe<(
+    Pick<Site, 'buildTime'>
+    & { readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'siteUrl' | 'keywords' | 'siteLocale' | 'siteLanguage'>
+      & { defaultTitle: SiteSiteMetadata['siteTitle'], titleTemplate: SiteSiteMetadata['siteTitleTemplate'], defaultDescription: SiteSiteMetadata['siteDescription'], defaultImage: SiteSiteMetadata['siteImage'] }
+      & { readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitterHandle'>>, readonly author: Maybe<Pick<SiteSiteMetadataAuthor, 'name'>> }
+    )> }
+  )> };
 
 type PostPreviewDataFragment = (
   Pick<Mdx, 'id' | 'excerpt' | 'timeToRead'>
@@ -4983,33 +5002,6 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 't
 type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
-
-type PostByIdQueryVariables = Exact<{
-  id: Scalars['String'];
-}>;
-
-
-type PostByIdQuery = { readonly post: Maybe<(
-    Pick<Mdx, 'body'>
-    & { readonly fields: Maybe<Pick<MdxFields, 'id' | 'published' | 'title' | 'author' | 'description' | 'slug' | 'date' | 'categories' | 'redirects' | 'editLink' | 'historyLink'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'unlisted'>> }
-  )> };
-
-type GetResumePdfURLQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type GetResumePdfURLQuery = { readonly file: Maybe<Pick<File, 'id' | 'publicURL'>> };
-
-type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SiteMetadataQuery = { readonly site: Maybe<(
-    Pick<Site, 'buildTime'>
-    & { readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'siteUrl' | 'keywords' | 'siteLocale' | 'siteLanguage'>
-      & { defaultTitle: SiteSiteMetadata['siteTitle'], titleTemplate: SiteSiteMetadata['siteTitleTemplate'], defaultDescription: SiteSiteMetadata['siteDescription'], defaultImage: SiteSiteMetadata['siteImage'] }
-      & { readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitterHandle'>>, readonly author: Maybe<Pick<SiteSiteMetadataAuthor, 'name'>> }
-    )> }
-  )> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

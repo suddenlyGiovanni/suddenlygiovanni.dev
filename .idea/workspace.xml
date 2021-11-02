@@ -9,7 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby/node-lifecycle/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/node-lifecycle/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +18,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="GraphQL File" />
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
       </list>
@@ -137,7 +137,7 @@
       <recent name="$PROJECT_DIR$/gatsby/gatsby-plugin-style-components.ts" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.develop">
+  <component name="RunManager" selected="npm.clean">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -215,6 +215,7 @@
       <workItem from="1635526788242" duration="1277000" />
       <workItem from="1635530166555" duration="9448000" />
       <workItem from="1635790763087" duration="1104000" />
+      <workItem from="1635859060084" duration="10275000" />
     </task>
     <servers />
   </component>
@@ -312,13 +313,5 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
-  </component>
-  <component name="com.github.lppedd.cc.CommitBuilderDialog">
-    <type>refactor</type>
-    <scope>layouts</scope>
-    <subject>centralize nav items behaviour to specialized component</subject>
-    <footers>
-      <entry type="" value="" />
-    </footers>
   </component>
 </project>

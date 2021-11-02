@@ -408,12 +408,7 @@ type SitePage implements Node {
 type SitePageContext {
   id: String
   slug: String
-  _xparams: SitePageContext_xparams
   frontmatter: SitePageContextFrontmatter
-}
-
-type SitePageContext_xparams {
-  slug: String
 }
 
 type SitePageContextFrontmatter {
@@ -948,7 +943,6 @@ type Mdx implements Node {
   timeToRead: Int
   wordCount: MdxWordCount
   fields: MdxFields
-  gatsbyPath(filePath: String): String
   id: ID!
   parent: Node
   children: [Node!]!
@@ -1145,7 +1139,7 @@ type Query {
   allSiteBuildMetadata(filter: SiteBuildMetadataFilterInput, sort: SiteBuildMetadataSortInput, skip: Int, limit: Int): SiteBuildMetadataConnection!
   imageSharp(fixed: ImageSharpFixedFilterInput, fluid: ImageSharpFluidFilterInput, gatsbyImageData: JSONQueryOperatorInput, original: ImageSharpOriginalFilterInput, resize: ImageSharpResizeFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): ImageSharp
   allImageSharp(filter: ImageSharpFilterInput, sort: ImageSharpSortInput, skip: Int, limit: Int): ImageSharpConnection!
-  mdx(rawBody: StringQueryOperatorInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MdxFrontmatterFilterInput, slug: StringQueryOperatorInput, body: StringQueryOperatorInput, excerpt: StringQueryOperatorInput, headings: MdxHeadingMdxFilterListInput, html: StringQueryOperatorInput, mdxAST: JSONQueryOperatorInput, tableOfContents: JSONQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MdxWordCountFilterInput, fields: MdxFieldsFilterInput, gatsbyPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Mdx
+  mdx(rawBody: StringQueryOperatorInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MdxFrontmatterFilterInput, slug: StringQueryOperatorInput, body: StringQueryOperatorInput, excerpt: StringQueryOperatorInput, headings: MdxHeadingMdxFilterListInput, html: StringQueryOperatorInput, mdxAST: JSONQueryOperatorInput, tableOfContents: JSONQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MdxWordCountFilterInput, fields: MdxFieldsFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Mdx
   allMdx(filter: MdxFilterInput, sort: MdxSortInput, skip: Int, limit: Int): MdxConnection!
   resumeJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, _schema: StringQueryOperatorInput, basics: ResumeJsonBasicsFilterInput, work: ResumeJsonWorkFilterListInput, education: ResumeJsonEducationFilterListInput, skills: ResumeJsonSkillsFilterListInput, languages: ResumeJsonLanguagesFilterListInput, interests: ResumeJsonInterestsFilterListInput, meta: ResumeJsonMetaFilterInput): ResumeJson
   allResumeJson(filter: ResumeJsonFilterInput, sort: ResumeJsonSortInput, skip: Int, limit: Int): ResumeJsonConnection!
@@ -1308,7 +1302,6 @@ input MdxFilterInput {
   timeToRead: IntQueryOperatorInput
   wordCount: MdxWordCountFilterInput
   fields: MdxFieldsFilterInput
-  gatsbyPath: StringQueryOperatorInput
   id: StringQueryOperatorInput
   parent: NodeFilterInput
   children: NodeFilterListInput
@@ -1804,7 +1797,6 @@ enum FileFieldsEnum {
   childrenMdx___fields___redirects @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMdx___fields___editLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMdx___fields___historyLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
-  childrenMdx___gatsbyPath @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMdx___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMdx___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childrenMdx___parent___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -1920,7 +1912,6 @@ enum FileFieldsEnum {
   childMdx___fields___redirects @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___fields___editLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___fields___historyLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
-  childMdx___gatsbyPath @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   childMdx___parent___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
@@ -2776,12 +2767,7 @@ input SiteFunctionSortInput {
 input SitePageContextFilterInput {
   id: StringQueryOperatorInput
   slug: StringQueryOperatorInput
-  _xparams: SitePageContext_xparamsFilterInput
   frontmatter: SitePageContextFrontmatterFilterInput
-}
-
-input SitePageContext_xparamsFilterInput {
-  slug: StringQueryOperatorInput
 }
 
 input SitePageContextFrontmatterFilterInput {
@@ -3080,7 +3066,6 @@ enum SitePageFieldsEnum {
   isCreatedByStatefulCreatePages
   context___id
   context___slug
-  context____xparams___slug
   context___frontmatter___title
   context___frontmatter___description
   pluginCreator___resolve
@@ -3853,7 +3838,6 @@ enum MdxFieldsEnum {
   frontmatter___image___childrenMdx___mdxAST @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___image___childrenMdx___tableOfContents @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___image___childrenMdx___timeToRead @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___image___childrenMdx___gatsbyPath @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___image___childrenMdx___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___image___childrenMdx___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___image___childMdx___rawBody
@@ -3866,7 +3850,6 @@ enum MdxFieldsEnum {
   frontmatter___image___childMdx___mdxAST @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___image___childMdx___tableOfContents @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___image___childMdx___timeToRead @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
-  frontmatter___image___childMdx___gatsbyPath @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___image___childMdx___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___image___childMdx___children @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   frontmatter___image___childrenResumeJson
@@ -3933,7 +3916,6 @@ enum MdxFieldsEnum {
   fields___redirects @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   fields___editLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   fields___historyLink @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
-  gatsbyPath @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
   parent___parent___id @deprecated(reason: "Sorting on fields that need arguments to resolve is deprecated.")
