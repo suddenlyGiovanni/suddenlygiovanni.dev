@@ -435,10 +435,8 @@ type SitePlugin implements Node {
 
 type SitePluginPluginOptions {
   plugins: [SitePluginPluginOptionsPlugins]
-  base64Width: Int
-  stripMetadata: Boolean
-  defaultQuality: Int
-  failOnError: Boolean
+  path: String
+  name: String
   displayName: Boolean
   fileName: Boolean
   minify: Boolean
@@ -446,14 +444,10 @@ type SitePluginPluginOptions {
   transpileTemplateLiterals: Boolean
   pure: Boolean
   disableVendorPrefixes: Boolean
-  path: String
-  name: String
-  language: String
-  outputPath: String
-  autoFix: Boolean
-  emitSchema: SitePluginPluginOptionsEmitSchema
-  emitPluginDocuments: SitePluginPluginOptionsEmitPluginDocuments
-  pathToConfigModule: String
+  base64Width: Int
+  stripMetadata: Boolean
+  defaultQuality: Int
+  failOnError: Boolean
   background_color: String
   description: String
   display: String
@@ -487,9 +481,15 @@ type SitePluginPluginOptions {
   decoding: String
   disableBgImageOnAlpha: Boolean
   disableBgImage: Boolean
+  pathToConfigModule: String
   isTSX: Boolean
   jsxPragma: String
   allExtensions: Boolean
+  language: String
+  outputPath: String
+  autoFix: Boolean
+  emitSchema: SitePluginPluginOptionsEmitSchema
+  emitPluginDocuments: SitePluginPluginOptionsEmitPluginDocuments
   pathCheck: Boolean
 }
 
@@ -520,17 +520,6 @@ type SitePluginPluginOptionsPluginsPluginOptions {
   disableBgImage: Boolean
 }
 
-type SitePluginPluginOptionsEmitSchema {
-  src___generated___gatsby_schema_graphql: Boolean
-  src___generated___gatsby_introspection_json: Boolean
-}
-
-type SitePluginPluginOptionsEmitPluginDocuments {
-  src___generated___gatsby_plugin_documents_graphql: Boolean
-  src___generated___gatsby_plugin_documents_gql: Boolean
-  src___generated___gatsby_plugin_documents_json: Boolean
-}
-
 type SitePluginPluginOptionsDefaultLayouts {
   default: String
 }
@@ -545,6 +534,17 @@ type SitePluginPluginOptionsGatsbyRemarkPluginsOptions {
   linkImagesToOriginal: Boolean
   withWebp: Boolean
   tracedSVG: Boolean
+}
+
+type SitePluginPluginOptionsEmitSchema {
+  src___generated___gatsby_schema_graphql: Boolean
+  src___generated___gatsby_introspection_json: Boolean
+}
+
+type SitePluginPluginOptionsEmitPluginDocuments {
+  src___generated___gatsby_plugin_documents_graphql: Boolean
+  src___generated___gatsby_plugin_documents_gql: Boolean
+  src___generated___gatsby_plugin_documents_json: Boolean
 }
 
 type SitePluginPackageJson {
@@ -592,28 +592,6 @@ type SiteBuildMetadata implements Node {
   parent: Node
   children: [Node!]!
   internal: Internal!
-}
-
-enum GatsbyImageFormat {
-  NO_CHANGE
-  AUTO
-  JPG
-  PNG
-  WEBP
-  AVIF
-}
-
-enum GatsbyImageLayout {
-  FIXED
-  FULL_WIDTH
-  CONSTRAINED
-}
-
-enum GatsbyImagePlaceholder {
-  DOMINANT_COLOR
-  TRACED_SVG
-  BLURRED
-  NONE
 }
 
 enum ImageFormat {
@@ -879,6 +857,28 @@ type ImageSharpResize {
   height: Int
   aspectRatio: Float
   originalName: String
+}
+
+enum GatsbyImageFormat {
+  NO_CHANGE
+  AUTO
+  JPG
+  PNG
+  WEBP
+  AVIF
+}
+
+enum GatsbyImageLayout {
+  FIXED
+  FULL_WIDTH
+  CONSTRAINED
+}
+
+enum GatsbyImagePlaceholder {
+  DOMINANT_COLOR
+  TRACED_SVG
+  BLURRED
+  NONE
 }
 
 type MdxFrontmatter {
@@ -2794,10 +2794,8 @@ input SitePluginFilterInput {
 
 input SitePluginPluginOptionsFilterInput {
   plugins: SitePluginPluginOptionsPluginsFilterListInput
-  base64Width: IntQueryOperatorInput
-  stripMetadata: BooleanQueryOperatorInput
-  defaultQuality: IntQueryOperatorInput
-  failOnError: BooleanQueryOperatorInput
+  path: StringQueryOperatorInput
+  name: StringQueryOperatorInput
   displayName: BooleanQueryOperatorInput
   fileName: BooleanQueryOperatorInput
   minify: BooleanQueryOperatorInput
@@ -2805,14 +2803,10 @@ input SitePluginPluginOptionsFilterInput {
   transpileTemplateLiterals: BooleanQueryOperatorInput
   pure: BooleanQueryOperatorInput
   disableVendorPrefixes: BooleanQueryOperatorInput
-  path: StringQueryOperatorInput
-  name: StringQueryOperatorInput
-  language: StringQueryOperatorInput
-  outputPath: StringQueryOperatorInput
-  autoFix: BooleanQueryOperatorInput
-  emitSchema: SitePluginPluginOptionsEmitSchemaFilterInput
-  emitPluginDocuments: SitePluginPluginOptionsEmitPluginDocumentsFilterInput
-  pathToConfigModule: StringQueryOperatorInput
+  base64Width: IntQueryOperatorInput
+  stripMetadata: BooleanQueryOperatorInput
+  defaultQuality: IntQueryOperatorInput
+  failOnError: BooleanQueryOperatorInput
   background_color: StringQueryOperatorInput
   description: StringQueryOperatorInput
   display: StringQueryOperatorInput
@@ -2846,9 +2840,15 @@ input SitePluginPluginOptionsFilterInput {
   decoding: StringQueryOperatorInput
   disableBgImageOnAlpha: BooleanQueryOperatorInput
   disableBgImage: BooleanQueryOperatorInput
+  pathToConfigModule: StringQueryOperatorInput
   isTSX: BooleanQueryOperatorInput
   jsxPragma: StringQueryOperatorInput
   allExtensions: BooleanQueryOperatorInput
+  language: StringQueryOperatorInput
+  outputPath: StringQueryOperatorInput
+  autoFix: BooleanQueryOperatorInput
+  emitSchema: SitePluginPluginOptionsEmitSchemaFilterInput
+  emitPluginDocuments: SitePluginPluginOptionsEmitPluginDocumentsFilterInput
   pathCheck: BooleanQueryOperatorInput
 }
 
@@ -2883,17 +2883,6 @@ input SitePluginPluginOptionsPluginsPluginOptionsFilterInput {
   disableBgImage: BooleanQueryOperatorInput
 }
 
-input SitePluginPluginOptionsEmitSchemaFilterInput {
-  src___generated___gatsby_schema_graphql: BooleanQueryOperatorInput
-  src___generated___gatsby_introspection_json: BooleanQueryOperatorInput
-}
-
-input SitePluginPluginOptionsEmitPluginDocumentsFilterInput {
-  src___generated___gatsby_plugin_documents_graphql: BooleanQueryOperatorInput
-  src___generated___gatsby_plugin_documents_gql: BooleanQueryOperatorInput
-  src___generated___gatsby_plugin_documents_json: BooleanQueryOperatorInput
-}
-
 input SitePluginPluginOptionsDefaultLayoutsFilterInput {
   default: StringQueryOperatorInput
 }
@@ -2912,6 +2901,17 @@ input SitePluginPluginOptionsGatsbyRemarkPluginsOptionsFilterInput {
   linkImagesToOriginal: BooleanQueryOperatorInput
   withWebp: BooleanQueryOperatorInput
   tracedSVG: BooleanQueryOperatorInput
+}
+
+input SitePluginPluginOptionsEmitSchemaFilterInput {
+  src___generated___gatsby_schema_graphql: BooleanQueryOperatorInput
+  src___generated___gatsby_introspection_json: BooleanQueryOperatorInput
+}
+
+input SitePluginPluginOptionsEmitPluginDocumentsFilterInput {
+  src___generated___gatsby_plugin_documents_graphql: BooleanQueryOperatorInput
+  src___generated___gatsby_plugin_documents_gql: BooleanQueryOperatorInput
+  src___generated___gatsby_plugin_documents_json: BooleanQueryOperatorInput
 }
 
 input SitePluginPackageJsonFilterInput {
@@ -3083,10 +3083,8 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___plugins___nodeAPIs
   pluginCreator___pluginOptions___plugins___browserAPIs
   pluginCreator___pluginOptions___plugins___pluginFilepath
-  pluginCreator___pluginOptions___base64Width
-  pluginCreator___pluginOptions___stripMetadata
-  pluginCreator___pluginOptions___defaultQuality
-  pluginCreator___pluginOptions___failOnError
+  pluginCreator___pluginOptions___path
+  pluginCreator___pluginOptions___name
   pluginCreator___pluginOptions___displayName
   pluginCreator___pluginOptions___fileName
   pluginCreator___pluginOptions___minify
@@ -3094,17 +3092,10 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___transpileTemplateLiterals
   pluginCreator___pluginOptions___pure
   pluginCreator___pluginOptions___disableVendorPrefixes
-  pluginCreator___pluginOptions___path
-  pluginCreator___pluginOptions___name
-  pluginCreator___pluginOptions___language
-  pluginCreator___pluginOptions___outputPath
-  pluginCreator___pluginOptions___autoFix
-  pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
-  pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_introspection_json
-  pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_graphql
-  pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_gql
-  pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_json
-  pluginCreator___pluginOptions___pathToConfigModule
+  pluginCreator___pluginOptions___base64Width
+  pluginCreator___pluginOptions___stripMetadata
+  pluginCreator___pluginOptions___defaultQuality
+  pluginCreator___pluginOptions___failOnError
   pluginCreator___pluginOptions___background_color
   pluginCreator___pluginOptions___description
   pluginCreator___pluginOptions___display
@@ -3139,9 +3130,18 @@ enum SitePageFieldsEnum {
   pluginCreator___pluginOptions___decoding
   pluginCreator___pluginOptions___disableBgImageOnAlpha
   pluginCreator___pluginOptions___disableBgImage
+  pluginCreator___pluginOptions___pathToConfigModule
   pluginCreator___pluginOptions___isTSX
   pluginCreator___pluginOptions___jsxPragma
   pluginCreator___pluginOptions___allExtensions
+  pluginCreator___pluginOptions___language
+  pluginCreator___pluginOptions___outputPath
+  pluginCreator___pluginOptions___autoFix
+  pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
+  pluginCreator___pluginOptions___emitSchema___src___generated___gatsby_introspection_json
+  pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_graphql
+  pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_gql
+  pluginCreator___pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_json
   pluginCreator___pluginOptions___pathCheck
   pluginCreator___packageJson___name
   pluginCreator___packageJson___description
@@ -3282,10 +3282,8 @@ enum SitePluginFieldsEnum {
   pluginOptions___plugins___nodeAPIs
   pluginOptions___plugins___browserAPIs
   pluginOptions___plugins___pluginFilepath
-  pluginOptions___base64Width
-  pluginOptions___stripMetadata
-  pluginOptions___defaultQuality
-  pluginOptions___failOnError
+  pluginOptions___path
+  pluginOptions___name
   pluginOptions___displayName
   pluginOptions___fileName
   pluginOptions___minify
@@ -3293,17 +3291,10 @@ enum SitePluginFieldsEnum {
   pluginOptions___transpileTemplateLiterals
   pluginOptions___pure
   pluginOptions___disableVendorPrefixes
-  pluginOptions___path
-  pluginOptions___name
-  pluginOptions___language
-  pluginOptions___outputPath
-  pluginOptions___autoFix
-  pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
-  pluginOptions___emitSchema___src___generated___gatsby_introspection_json
-  pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_graphql
-  pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_gql
-  pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_json
-  pluginOptions___pathToConfigModule
+  pluginOptions___base64Width
+  pluginOptions___stripMetadata
+  pluginOptions___defaultQuality
+  pluginOptions___failOnError
   pluginOptions___background_color
   pluginOptions___description
   pluginOptions___display
@@ -3342,9 +3333,18 @@ enum SitePluginFieldsEnum {
   pluginOptions___decoding
   pluginOptions___disableBgImageOnAlpha
   pluginOptions___disableBgImage
+  pluginOptions___pathToConfigModule
   pluginOptions___isTSX
   pluginOptions___jsxPragma
   pluginOptions___allExtensions
+  pluginOptions___language
+  pluginOptions___outputPath
+  pluginOptions___autoFix
+  pluginOptions___emitSchema___src___generated___gatsby_schema_graphql
+  pluginOptions___emitSchema___src___generated___gatsby_introspection_json
+  pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_graphql
+  pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_gql
+  pluginOptions___emitPluginDocuments___src___generated___gatsby_plugin_documents_json
   pluginOptions___pathCheck
   packageJson___name
   packageJson___description

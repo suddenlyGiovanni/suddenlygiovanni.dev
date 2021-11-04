@@ -92,25 +92,31 @@ const gatsbyConfig: TSConfigFn<'config'> = (): GatsbyConfig => {
   return {
     siteMetadata,
     plugins: [
-      gatsbyPluginTypescript,
-      gatsbyPluginTsConfig,
-      gatsbyPluginStyledComponents,
+      // 1. Transformers
+      gatsbyTransformerJson,
+      gatsbyTransformerSharp,
+
+      // 2. Plugins
+      gatsbyPluginReactHelmet,
+      gatsbyPluginImage,
       gatsbySourceFilesystemBlog,
       gatsbySourceFilesystemAssets,
       gatsbySourceFilesystemResume,
-      gatsbyPluginImage,
+      gatsbyPluginStyledComponents,
       gatsbyPluginSharp,
-      gatsbyTransformerSharp,
-      gatsbyTransformerJson,
-      gatsbyPluginReactHelmet,
-      gatsbyPluginTypography,
       gatsbyPluginManifest,
       gatsbyPluginMdx,
+      gatsbyPluginTypography,
+
+      gatsbyPluginTypescript,
+      gatsbyPluginTsConfig,
       gatsbyPluginTypegen,
 
       // this (optional) plugin enables Progressive Web App + Offline functionality
       // To learn more, visit: https://gatsby.dev/offline
       // `gatsby-plugin-offline`,
+
+      // 3. Local plugins
     ],
   }
 }
