@@ -8,7 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__generated__/gatsby-introspection.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/__generated__/gatsby-introspection.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__generated__/gatsby-schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/__generated__/gatsby-schema.graphql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/motivations.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/motivations.mdx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/gatsby-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/gatsby-types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +30,7 @@
         <option value="GraphQL File" />
         <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -107,6 +117,7 @@
     <property name="javascript.nodejs.core.library.configured.version" value="16.11.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="16.10.6" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -116,7 +127,7 @@
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.dynamic.occurrences" value="true" />
   </component>
@@ -215,7 +226,10 @@
       <workItem from="1635526788242" duration="1277000" />
       <workItem from="1635530166555" duration="9448000" />
       <workItem from="1635790763087" duration="1104000" />
-      <workItem from="1635859060084" duration="10275000" />
+      <workItem from="1635859060084" duration="10791000" />
+      <workItem from="1635955237200" duration="4308000" />
+      <workItem from="1636020272567" duration="1587000" />
+      <workItem from="1636021874747" duration="2638000" />
     </task>
     <servers />
   </component>
@@ -311,7 +325,17 @@
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
+    <expand>
+      <path>
+        <item name="suddenlygiovanni.dev" type="b2602c69:ProjectViewProjectNode" />
+        <item name="suddenlygiovanni.dev" type="462c0819:PsiDirectoryNode" />
+      </path>
+      <path>
+        <item name="suddenlygiovanni.dev" type="b2602c69:ProjectViewProjectNode" />
+        <item name="suddenlygiovanni.dev" type="462c0819:PsiDirectoryNode" />
+        <item name="src" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
     <select />
   </component>
 </project>

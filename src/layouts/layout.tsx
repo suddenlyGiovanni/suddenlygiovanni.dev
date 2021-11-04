@@ -8,10 +8,7 @@ import { Footer } from './footer'
 import { Header } from './header'
 import { Main } from './main'
 
-/**
- * FIXME: find a more descriptive name
- */
-const DivStyled: StyledComponent<'div', any, {}, never> = styled.div`
+const LayoutWrapper: StyledComponent<'div', any, {}, never> = styled.div`
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -28,13 +25,13 @@ export const Layout: React.FC<Props> = ({ children, customSEO = false }) => (
   <>
     <GlobalStyles />
     {!customSEO && <SEO />}
-    <DivStyled>
+    <LayoutWrapper>
       <Header />
       <MDXProvider components={mdxComponents}>
         <Main>{children}</Main>
       </MDXProvider>
       <Footer />
-    </DivStyled>
+    </LayoutWrapper>
   </>
 )
 
