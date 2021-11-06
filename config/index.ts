@@ -1,5 +1,6 @@
-/* eslint-disable sort-keys */
-export const config = {
+import type { GatsbyConfig } from 'gatsby'
+
+const config = {
   author: 'Giovanni Ravalico', // Author for schemaORGJSONLD
   siteLanguage: 'en-US',
   siteLocale: 'en_us',
@@ -28,3 +29,24 @@ export const config = {
   github: 'https://github.com/suddenlyGiovanni/',
   linkedin: 'https://www.linkedin.com/in/giovanni-ravalico/',
 } as const
+
+type SiteMetadata = GatsbyConfig['siteMetadata']
+
+export const siteMetadata: SiteMetadata = {
+  siteTitle: config.siteTitle,
+  siteTitleTemplate: config.siteTitleTemplate,
+  siteDescription: config.siteDescription,
+  siteUrl: config.siteUrl,
+  siteImage: config.image,
+  siteLanguage: config.siteLanguage,
+  siteLocale: config.siteLocale,
+  keywords: config.keywords,
+  author: {
+    name: config.author,
+  },
+  social: {
+    twitterHandle: config.twitterHandle,
+  },
+}
+
+export default config

@@ -266,20 +266,12 @@
     {
       "name": "APIs",
       "level": "",
-      "keywords": [
-        "GraphQL",
-        "RESTful"
-      ]
+      "keywords": ["GraphQL", "RESTful"]
     },
     {
       "name": "Tools",
       "level": "",
-      "keywords": [
-        "Git",
-        "Docker",
-        "CircleCI",
-        "GitHub Actions"
-      ]
+      "keywords": ["Git", "Docker", "CircleCI", "GitHub Actions"]
     }
   ],
   "languages": [
@@ -295,11 +287,7 @@
   "interests": [
     {
       "name": "Functional Programming",
-      "keywords": [
-        "ReasonML",
-        "Clojure",
-        "Haskell"
-      ]
+      "keywords": ["ReasonML", "Clojure", "Haskell"]
     }
   ],
   "references": [],

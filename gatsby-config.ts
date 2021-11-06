@@ -1,14 +1,10 @@
-import type { GatsbyConfig } from 'gatsby'
-import type { TSConfigFn } from 'gatsby-plugin-ts-config'
-import { siteMetadata } from '../config/site-metadata'
+import { withMetaConfig } from 'gatsby-ts'
 
-import { config } from '../config/website'
 import {
   makeGatsbyManifestPluginConfig,
   makeGatsbyPluginImageConfig,
   makeGatsbyPluginMdxConfig,
   makeGatsbyPluginReactHelmetConfig,
-  makeGatsbyPluginTsConfig,
   makeGatsbyPluginTypegenConfig,
   makeGatsbyPluginTypescriptConfig,
   makeGatsbyPluginTypographyConfig,
@@ -18,7 +14,8 @@ import {
   makeGatsbyStyleComponentsPluginConfig,
   makeGatsbyTransformerJsonPluginConfig,
   makeGatsbyTransformerSharpPluginConfig,
-} from './plugins'
+} from './gatsby/plugins'
+import config, { siteMetadata } from './config'
 
 const gatsbySourceFilesystemBlog = makeGatsbySourceFilesystemPluginConfig({
   path: 'content/blog',
@@ -46,15 +43,12 @@ const gatsbyPluginManifest = makeGatsbyManifestPluginConfig({
 })
 
 const gatsbyPluginStyledComponents = makeGatsbyStyleComponentsPluginConfig()
-
 const gatsbyTransformerJson = makeGatsbyTransformerJsonPluginConfig()
-
 const gatsbyPluginSharp = makeGatsbySharpPluginConfig()
 const gatsbyTransformerSharp = makeGatsbyTransformerSharpPluginConfig()
 const gatsbyPluginImage = makeGatsbyPluginImageConfig()
 const gatsbyPluginReactHelmet = makeGatsbyPluginReactHelmetConfig()
 const gatsbyPluginTypescript = makeGatsbyPluginTypescriptConfig()
-const gatsbyPluginTsConfig = makeGatsbyPluginTsConfig()
 const gatsbyPluginTypegen = makeGatsbyPluginTypegenConfig({
   language: 'typescript',
   outputPath: 'src/types/gatsby-types.ts',
@@ -78,7 +72,7 @@ const gatsbyRemarkImages = makeGatsbyRemarkImagesConfig({
 
 const gatsbyPluginMdx = makeGatsbyPluginMdxConfig({
   defaultLayouts: {
-    default: require.resolve('../src/layouts/layout.tsx'),
+    default: require.resolve('./src/layouts/layout.tsx'),
   },
   gatsbyRemarkPlugins: [gatsbyRemarkImages],
   plugins: [{ resolve: 'gatsby-remark-images' }],
@@ -88,37 +82,33 @@ const gatsbyPluginTypography = makeGatsbyPluginTypographyConfig({
   pathToConfigModule: 'src/lib/typography',
 })
 
-const gatsbyConfig: TSConfigFn<'config'> = (): GatsbyConfig => {
-  return {
-    siteMetadata,
-    plugins: [
-      // 1. Transformers
-      gatsbyTransformerJson,
-      gatsbyTransformerSharp,
+export default withMetaConfig(({ loadPlugins }) => {
+  const plugins = loadPlugins([
+    // 1. Transformers
+    gatsbyTransformerJson,
+    gatsbyTransformerSharp,
 
-      // 2. Plugins
-      gatsbyPluginReactHelmet,
-      gatsbyPluginImage,
-      gatsbySourceFilesystemBlog,
-      gatsbySourceFilesystemAssets,
-      gatsbySourceFilesystemResume,
-      gatsbyPluginStyledComponents,
-      gatsbyPluginSharp,
-      gatsbyPluginManifest,
-      gatsbyPluginMdx,
-      gatsbyPluginTypography,
+    // 2. Plugins
+    gatsbyPluginReactHelmet,
+    gatsbyPluginImage,
+    gatsbySourceFilesystemBlog,
+    gatsbySourceFilesystemAssets,
+    gatsbySourceFilesystemResume,
+    gatsbyPluginStyledComponents,
+    gatsbyPluginSharp,
+    gatsbyPluginManifest,
+    gatsbyPluginMdx,
+    gatsbyPluginTypography,
 
-      gatsbyPluginTypescript,
-      gatsbyPluginTsConfig,
-      gatsbyPluginTypegen,
+    gatsbyPluginTypescript,
+    gatsbyPluginTypegen,
 
-      // this (optional) plugin enables Progressive Web App + Offline functionality
-      // To learn more, visit: https://gatsby.dev/offline
-      // `gatsby-plugin-offline`,
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
 
-      // 3. Local plugins
-    ],
-  }
-}
+    // 3. Local plugins
+  ])
 
-export default gatsbyConfig
+  return { siteMetadata, plugins }
+})

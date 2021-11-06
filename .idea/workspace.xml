@@ -93,6 +93,9 @@
         </path>
       </selected-paths>
     </layout>
+    <layout place="tools.popupGrunt">
+      <scroll-view-position x="0" y="0" />
+    </layout>
   </component>
   <component name="ProblemsViewState">
     <option name="selectedIndex" value="1" />
@@ -127,7 +130,7 @@
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="zielu.gittoolbox.prj.config.v2" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.dynamic.occurrences" value="true" />
   </component>
@@ -137,18 +140,18 @@
       <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/pages/blog" />
       <recent name="$PROJECT_DIR$/gatsby/node-lifecycle" />
-      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/gatsby/plugins" />
-      <recent name="$PROJECT_DIR$/" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/lib/links-map.ts" />
       <recent name="$PROJECT_DIR$/gatsby/gatsby-plugin-style-components.ts" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.clean">
+  <component name="RunManager" selected="npm.develop">
     <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -179,13 +182,25 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="format" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="npm.build" />
       <item itemvalue="npm.clean" />
       <item itemvalue="npm.develop" />
+      <item itemvalue="npm.format" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.format" />
         <item itemvalue="npm.develop" />
         <item itemvalue="npm.clean" />
         <item itemvalue="npm.build" />
@@ -337,5 +352,13 @@
       </path>
     </expand>
     <select />
+  </component>
+  <component name="com.github.lppedd.cc.CommitBuilderDialog">
+    <type>refactor</type>
+    <scope>gatsby-config</scope>
+    <subject>move from 'gatsby-plugin-ts-config' to 'gatsby-ts'</subject>
+    <footers>
+      <entry type="" value="" />
+    </footers>
   </component>
 </project>
