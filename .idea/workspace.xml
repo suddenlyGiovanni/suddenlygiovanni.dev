@@ -8,15 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gatsby/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby/gatsby-config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__generated__/gatsby-introspection.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/__generated__/gatsby-introspection.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__generated__/gatsby-schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/__generated__/gatsby-schema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/motivations.mdx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/motivations.mdx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/types/gatsby-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/gatsby-types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +84,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="develop" />
+          <id value="clean" />
         </path>
       </selected-paths>
     </layout>
@@ -130,7 +125,7 @@
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="zielu.gittoolbox.prj.config.v2" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.dynamic.occurrences" value="true" />
   </component>
@@ -200,9 +195,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.format" />
         <item itemvalue="npm.develop" />
         <item itemvalue="npm.clean" />
+        <item itemvalue="npm.format" />
         <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
@@ -245,6 +240,8 @@
       <workItem from="1635955237200" duration="4308000" />
       <workItem from="1636020272567" duration="1587000" />
       <workItem from="1636021874747" duration="2638000" />
+      <workItem from="1636991426013" duration="967000" />
+      <workItem from="1636993715801" duration="1214000" />
     </task>
     <servers />
   </component>
@@ -352,13 +349,5 @@
       </path>
     </expand>
     <select />
-  </component>
-  <component name="com.github.lppedd.cc.CommitBuilderDialog">
-    <type>refactor</type>
-    <scope>gatsby-config</scope>
-    <subject>move from 'gatsby-plugin-ts-config' to 'gatsby-ts'</subject>
-    <footers>
-      <entry type="" value="" />
-    </footers>
   </component>
 </project>

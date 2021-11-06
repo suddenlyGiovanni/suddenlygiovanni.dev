@@ -2386,6 +2386,18 @@
             "deprecationReason": null
           },
           {
+            "name": "jsxRuntime",
+            "description": null,
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "polyfill",
             "description": null,
             "args": [],
@@ -2399,18 +2411,6 @@
           },
           {
             "name": "pathPrefix",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "jsxRuntime",
             "description": null,
             "args": [],
             "type": {
@@ -9000,6 +9000,18 @@
                 "deprecationReason": null
               },
               {
+                "name": "jsxRuntime",
+                "description": null,
+                "type": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "StringQueryOperatorInput",
+                  "ofType": null
+                },
+                "defaultValue": null,
+                "isDeprecated": false,
+                "deprecationReason": null
+              },
+              {
                 "name": "polyfill",
                 "description": null,
                 "type": {
@@ -9013,18 +9025,6 @@
               },
               {
                 "name": "pathPrefix",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "StringQueryOperatorInput",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "jsxRuntime",
                 "description": null,
                 "type": {
                   "kind": "INPUT_OBJECT",
@@ -21518,6 +21518,12 @@
             "deprecationReason": null
           },
           {
+            "name": "jsxRuntime",
+            "description": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "polyfill",
             "description": null,
             "isDeprecated": false,
@@ -21525,12 +21531,6 @@
           },
           {
             "name": "pathPrefix",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "jsxRuntime",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -22423,6 +22423,18 @@
             "deprecationReason": null
           },
           {
+            "name": "jsxRuntime",
+            "description": null,
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "StringQueryOperatorInput",
+              "ofType": null
+            },
+            "defaultValue": null,
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
             "name": "polyfill",
             "description": null,
             "type": {
@@ -22436,18 +22448,6 @@
           },
           {
             "name": "pathPrefix",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "jsxRuntime",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",

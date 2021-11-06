@@ -1,4 +1,5 @@
 import { withMetaConfig } from 'gatsby-ts'
+import config, { siteMetadata } from './config'
 
 import {
   makeGatsbyManifestPluginConfig,
@@ -15,7 +16,6 @@ import {
   makeGatsbyTransformerJsonPluginConfig,
   makeGatsbyTransformerSharpPluginConfig,
 } from './gatsby/plugins'
-import config, { siteMetadata } from './config'
 
 const gatsbySourceFilesystemBlog = makeGatsbySourceFilesystemPluginConfig({
   path: 'content/blog',
@@ -42,7 +42,13 @@ const gatsbyPluginManifest = makeGatsbyManifestPluginConfig({
   theme_color: config.themeColor,
 })
 
-const gatsbyPluginStyledComponents = makeGatsbyStyleComponentsPluginConfig()
+const gatsbyPluginStyledComponents = makeGatsbyStyleComponentsPluginConfig({
+  minify: false,
+  fileName: false,
+  displayName: true,
+  // disableVendorPrefixes: true,
+  transpileTemplateLiterals: false,
+})
 const gatsbyTransformerJson = makeGatsbyTransformerJsonPluginConfig()
 const gatsbyPluginSharp = makeGatsbySharpPluginConfig()
 const gatsbyTransformerSharp = makeGatsbyTransformerSharpPluginConfig()
@@ -110,5 +116,9 @@ export default withMetaConfig(({ loadPlugins }) => {
     // 3. Local plugins
   ])
 
-  return { siteMetadata, plugins }
+  return {
+    jsxRuntime: 'automatic',
+    siteMetadata,
+    plugins,
+  }
 })
