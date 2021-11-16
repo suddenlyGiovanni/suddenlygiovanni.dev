@@ -4,7 +4,6 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import { ReadLink, SEO } from '../components'
-import { Layout } from '../layouts'
 import { linksMap } from '../lib/links-map'
 
 /**
@@ -89,7 +88,7 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
   const body = post?.body || ''
 
   return (
-    <Layout customSEO>
+    <>
       <SEO
         titleTemplate={title}
         description={post.fields?.description || 'nothing'}
@@ -140,7 +139,7 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
           )}
         </UlStyled>
       </nav>
-    </Layout>
+    </>
   )
 }
 

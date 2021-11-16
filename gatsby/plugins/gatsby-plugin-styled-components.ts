@@ -55,6 +55,8 @@ type GatsbyPluginStyleComponentsConfigOptions = {
    */
 
   disableVendorPrefixes?: boolean
+
+  cssProp?: boolean
 }
 
 /**

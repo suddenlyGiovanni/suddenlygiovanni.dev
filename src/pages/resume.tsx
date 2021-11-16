@@ -3,7 +3,6 @@ import * as React from 'react'
 
 import { Resume, SEO } from '../components'
 import * as hooks from '../hooks'
-import { Layout } from '../layouts'
 
 const ResumePage: React.VFC<PageProps> = (_) => {
   const resume = hooks.useResume()
@@ -25,7 +24,7 @@ const ResumePage: React.VFC<PageProps> = (_) => {
   } = resume
 
   return (
-    <Layout customSEO>
+    <>
       <SEO description="Giovanni Ravalico's Résumé" titleTemplate="Résumé" />
       <article>
         <Resume.SectionHeader
@@ -64,7 +63,7 @@ const ResumePage: React.VFC<PageProps> = (_) => {
           resumeVersion={meta?.version}
         />
       </article>
-    </Layout>
+    </>
   )
 }
 

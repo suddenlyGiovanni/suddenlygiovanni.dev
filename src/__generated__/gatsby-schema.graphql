@@ -340,8 +340,6 @@ type Site implements Node {
     locale: String
   ): Date
   siteMetadata: SiteSiteMetadata
-  port: Int
-  host: String
   jsxRuntime: String
   polyfill: Boolean
   pathPrefix: String
@@ -537,10 +535,12 @@ type ImageSharp implements Node {
     # FIXED: A static image sized, that does not resize according to the screen width
     # FULL_WIDTH: The image resizes to fit its container. Pass a "sizes" option if it isn't going to be the full width of the screen.
     # CONSTRAINED: Resizes to fit its container, up to a maximum width, at which point it will remain fixed in size.
+    #
     layout: ImageLayout = CONSTRAINED
 
     # The display width of the generated image for layout = FIXED, and the maximum display width of the largest image for layout = CONSTRAINED.
     # Ignored if layout = FLUID.
+    #
     width: Int
 
     # The display height of the generated image for layout = FIXED, and the maximum display height of the largest image for layout = CONSTRAINED.
@@ -550,6 +550,7 @@ type ImageSharp implements Node {
 
     # If set along with width or height, this will set the value of the other dimension to match the provided aspect ratio, cropping the image if needed.
     # If neither width or height is provided, height will be set based on the intrinsic width of the source image.
+    #
     aspectRatio: Float
 
     # Format of generated placeholder image, displayed while the main image loads.
@@ -569,6 +570,7 @@ type ImageSharp implements Node {
     # The default value is [AUTO, WEBP], and you should rarely need to change this. Take care if you specify JPG or PNG when you do
     # not know the formats of the source images, as this could lead to unwanted results such as converting JPEGs to PNGs. Specifying
     # both PNG and JPG is not supported and will be ignored.
+    #
     formats: [ImageFormat]
 
     # A list of image pixel densities to generate. It will never generate images larger than the source, and will always include a 1x image.
@@ -579,12 +581,14 @@ type ImageSharp implements Node {
     # Specifies the image widths to generate. For FIXED and CONSTRAINED images it is better to allow these to be determined automatically,
     # based on the image size. For FULL_WIDTH images this can be used to override the default, which is [750, 1080, 1366, 1920].
     # It will never generate any images larger than the source.
+    #
     breakpoints: [Int]
 
     # The "sizes" property, passed to the img tag. This describes the display size of the image.
     # This does not affect the generated images, but is used by the browser to decide which images to download.
     # You should usually leave this blank, and a suitable value will be calculated. The exception is if a FULL_WIDTH image
     # does not actually span the full width of the screen, in which case you should pass the correct size here.
+    #
     sizes: String
 
     # The default quality. This is overridden by any format-specific options
@@ -971,7 +975,7 @@ type Query {
   allFile(filter: FileFilterInput, sort: FileSortInput, skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
   allDirectory(filter: DirectoryFilterInput, sort: DirectorySortInput, skip: Int, limit: Int): DirectoryConnection!
-  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, port: IntQueryOperatorInput, host: StringQueryOperatorInput, jsxRuntime: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, jsxRuntime: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
   allSite(filter: SiteFilterInput, sort: SiteSortInput, skip: Int, limit: Int): SiteConnection!
   siteFunction(functionRoute: StringQueryOperatorInput, pluginName: StringQueryOperatorInput, originalAbsoluteFilePath: StringQueryOperatorInput, originalRelativeFilePath: StringQueryOperatorInput, relativeCompiledFilePath: StringQueryOperatorInput, absoluteCompiledFilePath: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): SiteFunction
   allSiteFunction(filter: SiteFunctionFilterInput, sort: SiteFunctionSortInput, skip: Int, limit: Int): SiteFunctionConnection!
@@ -2333,8 +2337,6 @@ enum SiteFieldsEnum {
   siteMetadata___keywords
   siteMetadata___author___name
   siteMetadata___social___twitterHandle
-  port
-  host
   jsxRuntime
   polyfill
   pathPrefix
@@ -2443,8 +2445,6 @@ type SiteGroupConnection {
 input SiteFilterInput {
   buildTime: DateQueryOperatorInput
   siteMetadata: SiteSiteMetadataFilterInput
-  port: IntQueryOperatorInput
-  host: StringQueryOperatorInput
   jsxRuntime: StringQueryOperatorInput
   polyfill: BooleanQueryOperatorInput
   pathPrefix: StringQueryOperatorInput

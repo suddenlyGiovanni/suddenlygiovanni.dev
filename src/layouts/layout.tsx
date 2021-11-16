@@ -1,38 +1,19 @@
 import { MDXProvider } from '@mdx-js/react'
 import * as React from 'react'
-import styled, { StyledComponent } from 'styled-components'
 
-import { mdxComponents, SEO } from '../components'
-import GlobalStyles from '../lib/global-styles'
-import { Footer } from './footer'
-import { Header } from './header'
-import { Main } from './main'
+import { Header, Main, mdxComponents } from '../components'
+import { Footer } from '../components/footer'
+import * as layoutStyles from './layout.module.css'
 
-const LayoutWrapper: StyledComponent<'div', any, {}, never> = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  width: 100%;
-  min-width: 320px;
-  min-height: 100vh;
-`
-
-interface Props {
-  customSEO?: boolean
-}
-
-export const Layout: React.FC<Props> = ({ children, customSEO = false }) => (
-  <>
-    <GlobalStyles />
-    {!customSEO && <SEO />}
-    <LayoutWrapper>
-      <Header />
-      <MDXProvider components={mdxComponents}>
-        <Main>{children}</Main>
-      </MDXProvider>
-      <Footer />
-    </LayoutWrapper>
-  </>
+export const Layout: React.FC<React.ComponentPropsWithoutRef<'div'>> = ({
+  children,
+  ...layoutWrapperProps
+}) => (
+  <div {...layoutWrapperProps} className={layoutStyles.container}>
+    <Header />
+    <MDXProvider components={mdxComponents}>
+      <Main>{children}</Main>
+    </MDXProvider>
+    <Footer />
+  </div>
 )
-
-export default Layout

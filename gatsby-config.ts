@@ -1,36 +1,25 @@
 import { withMetaConfig } from 'gatsby-ts'
+
 import config, { siteMetadata } from './config'
+import * as Plugins from './gatsby/plugins'
 
-import {
-  makeGatsbyManifestPluginConfig,
-  makeGatsbyPluginImageConfig,
-  makeGatsbyPluginMdxConfig,
-  makeGatsbyPluginReactHelmetConfig,
-  makeGatsbyPluginTypegenConfig,
-  makeGatsbyPluginTypescriptConfig,
-  makeGatsbyPluginTypographyConfig,
-  makeGatsbyRemarkImagesConfig,
-  makeGatsbySharpPluginConfig,
-  makeGatsbySourceFilesystemPluginConfig,
-  makeGatsbyStyleComponentsPluginConfig,
-  makeGatsbyTransformerJsonPluginConfig,
-  makeGatsbyTransformerSharpPluginConfig,
-} from './gatsby/plugins'
+const gatsbySourceFilesystemBlog =
+  Plugins.makeGatsbySourceFilesystemPluginConfig({
+    path: 'content/blog',
+    name: 'blog',
+  })
+const gatsbySourceFilesystemAssets =
+  Plugins.makeGatsbySourceFilesystemPluginConfig({
+    path: 'content/assets',
+    name: 'assets',
+  })
+const gatsbySourceFilesystemResume =
+  Plugins.makeGatsbySourceFilesystemPluginConfig({
+    path: 'content/resume',
+    name: 'resume',
+  })
 
-const gatsbySourceFilesystemBlog = makeGatsbySourceFilesystemPluginConfig({
-  path: 'content/blog',
-  name: 'blog',
-})
-const gatsbySourceFilesystemAssets = makeGatsbySourceFilesystemPluginConfig({
-  path: 'content/assets',
-  name: 'assets',
-})
-const gatsbySourceFilesystemResume = makeGatsbySourceFilesystemPluginConfig({
-  path: 'content/resume',
-  name: 'resume',
-})
-
-const gatsbyPluginManifest = makeGatsbyManifestPluginConfig({
+const gatsbyPluginManifest = Plugins.makeGatsbyManifestPluginConfig({
   background_color: config.backgroundColor,
   description: config.siteDescription,
   display: 'minimal-ui',
@@ -42,20 +31,22 @@ const gatsbyPluginManifest = makeGatsbyManifestPluginConfig({
   theme_color: config.themeColor,
 })
 
-const gatsbyPluginStyledComponents = makeGatsbyStyleComponentsPluginConfig({
-  minify: false,
-  fileName: false,
-  displayName: true,
-  // disableVendorPrefixes: true,
-  transpileTemplateLiterals: false,
-})
-const gatsbyTransformerJson = makeGatsbyTransformerJsonPluginConfig()
-const gatsbyPluginSharp = makeGatsbySharpPluginConfig()
-const gatsbyTransformerSharp = makeGatsbyTransformerSharpPluginConfig()
-const gatsbyPluginImage = makeGatsbyPluginImageConfig()
-const gatsbyPluginReactHelmet = makeGatsbyPluginReactHelmetConfig()
-const gatsbyPluginTypescript = makeGatsbyPluginTypescriptConfig()
-const gatsbyPluginTypegen = makeGatsbyPluginTypegenConfig({
+const gatsbyPluginStyledComponents =
+  Plugins.makeGatsbyStyleComponentsPluginConfig({
+    fileName: true,
+    displayName: true,
+    disableVendorPrefixes: true,
+    minify: false,
+    transpileTemplateLiterals: false,
+  })
+
+const gatsbyTransformerJson = Plugins.makeGatsbyTransformerJsonPluginConfig()
+const gatsbyPluginSharp = Plugins.makeGatsbySharpPluginConfig()
+const gatsbyTransformerSharp = Plugins.makeGatsbyTransformerSharpPluginConfig()
+const gatsbyPluginImage = Plugins.makeGatsbyPluginImageConfig()
+const gatsbyPluginReactHelmet = Plugins.makeGatsbyPluginReactHelmetConfig()
+const gatsbyPluginTypescript = Plugins.makeGatsbyPluginTypescriptConfig()
+const gatsbyPluginTypegen = Plugins.makeGatsbyPluginTypegenConfig({
   language: 'typescript',
   outputPath: 'src/types/gatsby-types.ts',
   autoFix: true,
@@ -69,22 +60,22 @@ const gatsbyPluginTypegen = makeGatsbyPluginTypegenConfig({
     'src/__generated__/gatsby-plugin-documents.json': true,
   },
 })
-const gatsbyRemarkImages = makeGatsbyRemarkImagesConfig({
+const gatsbyRemarkImages = Plugins.makeGatsbyRemarkImagesConfig({
   maxWidth: 1200,
   linkImagesToOriginal: false,
   withWebp: true,
   tracedSVG: true,
 })
 
-const gatsbyPluginMdx = makeGatsbyPluginMdxConfig({
-  defaultLayouts: {
-    default: require.resolve('./src/layouts/layout.tsx'),
-  },
+const gatsbyPluginMdx = Plugins.makeGatsbyPluginMdxConfig({
+  // defaultLayouts: {
+  //   default: require.resolve('./src/layouts/layout.tsx'),
+  // },
   gatsbyRemarkPlugins: [gatsbyRemarkImages],
   plugins: [{ resolve: 'gatsby-remark-images' }],
 })
 
-const gatsbyPluginTypography = makeGatsbyPluginTypographyConfig({
+const gatsbyPluginTypography = Plugins.makeGatsbyPluginTypographyConfig({
   pathToConfigModule: 'src/lib/typography',
 })
 
@@ -95,12 +86,12 @@ export default withMetaConfig(({ loadPlugins }) => {
     gatsbyTransformerSharp,
 
     // 2. Plugins
+    gatsbyPluginStyledComponents,
     gatsbyPluginReactHelmet,
     gatsbyPluginImage,
     gatsbySourceFilesystemBlog,
     gatsbySourceFilesystemAssets,
     gatsbySourceFilesystemResume,
-    gatsbyPluginStyledComponents,
     gatsbyPluginSharp,
     gatsbyPluginManifest,
     gatsbyPluginMdx,

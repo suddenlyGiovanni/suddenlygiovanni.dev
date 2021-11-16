@@ -3,12 +3,11 @@ import * as React from 'react'
 
 import { PostPreview } from '../../components'
 import { usePostsPreview } from '../../hooks'
-import { Layout } from '../../layouts'
 
 const IndexPage: React.FC<PageProps> = () => {
   const posts = usePostsPreview()
   return (
-    <Layout>
+    <>
       {posts.map(
         ({ id, slug, author, title, description, date, timeToRead }) => (
           <PostPreview
@@ -23,7 +22,7 @@ const IndexPage: React.FC<PageProps> = () => {
           />
         )
       )}
-    </Layout>
+    </>
   )
 }
 

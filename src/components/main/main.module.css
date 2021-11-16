@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto 2rem;
+  padding: 0 40px;
+}
+
+
+.container > h1 {
+  margin-top: unset;
+  padding-bottom: unset;
+  border-bottom: unset;
+}
+
+
+@media (max-width: 34.375rem) {
+  .container {
+    padding: 0 20px;
+  }
+}

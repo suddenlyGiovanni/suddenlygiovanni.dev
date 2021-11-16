@@ -2362,30 +2362,6 @@
             "deprecationReason": null
           },
           {
-            "name": "port",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "Int",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "host",
-            "description": null,
-            "args": [],
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "jsxRuntime",
             "description": null,
             "args": [],
@@ -4397,7 +4373,7 @@
             "args": [
               {
                 "name": "layout",
-                "description": "The layout for the image.\nFIXED: A static image sized, that does not resize according to the screen width\nFULL_WIDTH: The image resizes to fit its container. Pass a \"sizes\" option if it isn't going to be the full width of the screen.\nCONSTRAINED: Resizes to fit its container, up to a maximum width, at which point it will remain fixed in size.",
+                "description": "The layout for the image.\nFIXED: A static image sized, that does not resize according to the screen width\nFULL_WIDTH: The image resizes to fit its container. Pass a \"sizes\" option if it isn't going to be the full width of the screen.\nCONSTRAINED: Resizes to fit its container, up to a maximum width, at which point it will remain fixed in size.\n",
                 "type": {
                   "kind": "ENUM",
                   "name": "ImageLayout",
@@ -4409,7 +4385,7 @@
               },
               {
                 "name": "width",
-                "description": "The display width of the generated image for layout = FIXED, and the maximum display width of the largest image for layout = CONSTRAINED.\nIgnored if layout = FLUID.",
+                "description": "The display width of the generated image for layout = FIXED, and the maximum display width of the largest image for layout = CONSTRAINED.\nIgnored if layout = FLUID.\n",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Int",
@@ -4433,7 +4409,7 @@
               },
               {
                 "name": "aspectRatio",
-                "description": "If set along with width or height, this will set the value of the other dimension to match the provided aspect ratio, cropping the image if needed.\nIf neither width or height is provided, height will be set based on the intrinsic width of the source image.",
+                "description": "If set along with width or height, this will set the value of the other dimension to match the provided aspect ratio, cropping the image if needed.\nIf neither width or height is provided, height will be set based on the intrinsic width of the source image.\n",
                 "type": {
                   "kind": "SCALAR",
                   "name": "Float",
@@ -4481,7 +4457,7 @@
               },
               {
                 "name": "formats",
-                "description": "The image formats to generate. Valid values are \"AUTO\" (meaning the same format as the source image), \"JPG\", \"PNG\", \"WEBP\" and \"AVIF\".\nThe default value is [AUTO, WEBP], and you should rarely need to change this. Take care if you specify JPG or PNG when you do\nnot know the formats of the source images, as this could lead to unwanted results such as converting JPEGs to PNGs. Specifying\nboth PNG and JPG is not supported and will be ignored.",
+                "description": "The image formats to generate. Valid values are \"AUTO\" (meaning the same format as the source image), \"JPG\", \"PNG\", \"WEBP\" and \"AVIF\".\nThe default value is [AUTO, WEBP], and you should rarely need to change this. Take care if you specify JPG or PNG when you do\nnot know the formats of the source images, as this could lead to unwanted results such as converting JPEGs to PNGs. Specifying\nboth PNG and JPG is not supported and will be ignored.\n",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -4513,7 +4489,7 @@
               },
               {
                 "name": "breakpoints",
-                "description": "Specifies the image widths to generate. For FIXED and CONSTRAINED images it is better to allow these to be determined automatically,\nbased on the image size. For FULL_WIDTH images this can be used to override the default, which is [750, 1080, 1366, 1920].\nIt will never generate any images larger than the source.",
+                "description": "Specifies the image widths to generate. For FIXED and CONSTRAINED images it is better to allow these to be determined automatically,\nbased on the image size. For FULL_WIDTH images this can be used to override the default, which is [750, 1080, 1366, 1920].\nIt will never generate any images larger than the source.\n",
                 "type": {
                   "kind": "LIST",
                   "name": null,
@@ -4529,7 +4505,7 @@
               },
               {
                 "name": "sizes",
-                "description": "The \"sizes\" property, passed to the img tag. This describes the display size of the image.\nThis does not affect the generated images, but is used by the browser to decide which images to download.\nYou should usually leave this blank, and a suitable value will be calculated. The exception is if a FULL_WIDTH image\ndoes not actually span the full width of the screen, in which case you should pass the correct size here.",
+                "description": "The \"sizes\" property, passed to the img tag. This describes the display size of the image.\nThis does not affect the generated images, but is used by the browser to decide which images to download.\nYou should usually leave this blank, and a suitable value will be calculated. The exception is if a FULL_WIDTH image\ndoes not actually span the full width of the screen, in which case you should pass the correct size here.\n",
                 "type": {
                   "kind": "SCALAR",
                   "name": "String",
@@ -8969,30 +8945,6 @@
                 "type": {
                   "kind": "INPUT_OBJECT",
                   "name": "SiteSiteMetadataFilterInput",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "port",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "IntQueryOperatorInput",
-                  "ofType": null
-                },
-                "defaultValue": null,
-                "isDeprecated": false,
-                "deprecationReason": null
-              },
-              {
-                "name": "host",
-                "description": null,
-                "type": {
-                  "kind": "INPUT_OBJECT",
-                  "name": "StringQueryOperatorInput",
                   "ofType": null
                 },
                 "defaultValue": null,
@@ -21506,18 +21458,6 @@
             "deprecationReason": null
           },
           {
-            "name": "port",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "host",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
             "name": "jsxRuntime",
             "description": null,
             "isDeprecated": false,
@@ -22392,30 +22332,6 @@
             "type": {
               "kind": "INPUT_OBJECT",
               "name": "SiteSiteMetadataFilterInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "port",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "IntQueryOperatorInput",
-              "ofType": null
-            },
-            "defaultValue": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "host",
-            "description": null,
-            "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "StringQueryOperatorInput",
               "ofType": null
             },
             "defaultValue": null,
