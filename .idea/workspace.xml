@@ -87,7 +87,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="develop" />
+          <id value="clean" />
         </path>
       </selected-paths>
     </layout>
@@ -134,7 +134,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="rearrange.code.on.save" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.dynamic.occurrences" value="true" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
@@ -159,11 +159,11 @@
     </key>
   </component>
   <component name="RunManager" selected="npm.develop">
-    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="clean" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="build" />
+        <script value="clean" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -210,19 +210,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.build" />
       <item itemvalue="npm.develop" />
       <item itemvalue="npm.serve" />
       <item itemvalue="npm.type-check" />
       <item itemvalue="npm.format" />
+      <item itemvalue="npm.clean" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.clean" />
         <item itemvalue="npm.develop" />
         <item itemvalue="npm.format" />
         <item itemvalue="npm.type-check" />
         <item itemvalue="npm.serve" />
-        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -269,7 +269,7 @@
       <workItem from="1637063923910" duration="2146000" />
       <workItem from="1637066087922" duration="20817000" />
       <workItem from="1637147105699" duration="2454000" />
-      <workItem from="1637149776026" duration="5935000" />
+      <workItem from="1637149776026" duration="7327000" />
     </task>
     <servers />
   </component>
@@ -383,13 +383,5 @@
       </path>
     </expand>
     <select />
-  </component>
-  <component name="com.github.lppedd.cc.CommitBuilderDialog">
-    <type>fix</type>
-    <scope>styles</scope>
-    <subject>css-in-js syntax typo broke style build process</subject>
-    <footers>
-      <entry type="" value="" />
-    </footers>
   </component>
 </project>
