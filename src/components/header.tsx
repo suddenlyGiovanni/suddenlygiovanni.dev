@@ -1,6 +1,6 @@
 import styled from 'styled-components'
+import { navItems } from '../../config/nav-items'
 
-import { linksEntries } from '../lib/links-map'
 import { Container } from './container'
 import { NavDesktop } from './nav-desktop'
 import { NavMobile } from './nav-mobile'
@@ -32,8 +32,8 @@ export const Header: React.VFC = () => (
     <Container $maxWidth={720} $noVerticalPadding>
       <Nav>
         <SuddenlyGiovanni />
-        <NavMobile linksEntries={linksEntries} />
-        <NavDesktop linksEntries={linksEntries} />
+        <NavMobile linksEntries={navItems} />
+        <NavDesktop linksEntries={navItems} />
       </Nav>
     </Container>
   </HeaderStyled>

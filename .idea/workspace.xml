@@ -87,7 +87,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="clean" />
+          <id value="develop" />
         </path>
       </selected-paths>
     </layout>
@@ -134,7 +134,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="rearrange.code.on.save" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
+    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.dynamic.occurrences" value="true" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
@@ -147,11 +147,11 @@
       <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/main" />
       <recent name="$PROJECT_DIR$/src/components/header" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/lib/links-map.ts" />
@@ -218,8 +218,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.clean" />
         <item itemvalue="npm.develop" />
+        <item itemvalue="npm.clean" />
         <item itemvalue="npm.format" />
         <item itemvalue="npm.type-check" />
         <item itemvalue="npm.serve" />
@@ -270,6 +270,7 @@
       <workItem from="1637066087922" duration="20817000" />
       <workItem from="1637147105699" duration="2454000" />
       <workItem from="1637149776026" duration="7327000" />
+      <workItem from="1637162173504" duration="4035000" />
     </task>
     <servers />
   </component>
@@ -383,5 +384,13 @@
       </path>
     </expand>
     <select />
+  </component>
+  <component name="com.github.lppedd.cc.CommitBuilderDialog">
+    <type>chore</type>
+    <scope>dependancies</scope>
+    <subject>upgrade to gatsby v4.2</subject>
+    <footers>
+      <entry type="" value="" />
+    </footers>
   </component>
 </project>

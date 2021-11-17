@@ -1,4 +1,5 @@
-import * as L from '../lib/links-map'
+import * as L from '../../config/nav-items'
+
 import { NavLink } from './nav-link'
 
 interface Props

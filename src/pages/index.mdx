@@ -3,8 +3,10 @@ title: About Giovanni Ravalico
 description: All about Giovanni Ravalico
 ---
 
-import { ReadLink, DateAndReadingTime } from '../components'
-import { linksMap } from '../lib/links-map'
+
+
+import { navItemsMap } from '../../config/nav-items'
+import { DateAndReadingTime, ReadLink } from '../components'
 
 # Hi! I'm Giovanni 👋
 
@@ -24,7 +26,7 @@ Soon after college, we **got 💍 married and started** our own 👩‍❤️‍
 
 Thanks to this new perspective, in **2014**, I decided to **switch career** and transition toward 💻 software engineering.
 That was the beginning of my unconventional journey toward becoming a software developer.
-For any further information, please **refer to my <ReadLink to={linksMap.get("resume").urlPathFragment}>📑 résumé</ReadLink>**.
+For any further information, please **refer to my <ReadLink to={navItemsMap.get("resume").urlPathFragment}>📑 résumé</ReadLink>**.
 
 I am an **incredibly 👀 curious** person by nature and a **life long learner**. **Reading**, **thinking**, and **testing** what I have learned **is one of my life's joy**. Programming has managed to scratch this itch for me ever since I picked it up.
 
@@ -44,4 +46,4 @@ You can **find me on** [🐦 Twitter](https://twitter.com/suddenlyGio/), [🐙 G
 
 The best way to **reach me** is **by** dropping me an [✉️ **email**](mailto:ravalico.giovanni+suddenlygiovanni@gmail.com)
 
-<ReadLink to={linksMap.get('blog').urlPathFragment}>&larr; back to my Blog</ReadLink>
+<ReadLink to={navItemsMap.get('blog').urlPathFragment}>&larr; back to my Blog</ReadLink>

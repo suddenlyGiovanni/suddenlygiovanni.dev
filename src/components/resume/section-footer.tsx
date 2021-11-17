@@ -1,7 +1,7 @@
 import styled from 'styled-components'
+import { navItemsMap } from '../../../config/nav-items'
 
 import { formatDateLocaleLong } from '../../lib/dates'
-import { linksMap } from '../../lib/links-map'
 import { ReadLink } from '../read-link'
 
 const Version = styled.span`
@@ -33,7 +33,7 @@ export const SectionFooter: React.VFC<Props> = ({
   resumeVersion,
 }) => (
   <Footer>
-    <ReadLink to={linksMap.get('about-me')!.urlPathFragment}>
+    <ReadLink to={navItemsMap.get('about-me')!.urlPathFragment}>
       &larr; back to my About Me
     </ReadLink>
     <small>

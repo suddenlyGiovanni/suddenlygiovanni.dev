@@ -2,7 +2,7 @@ import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import styled, { StyledComponent } from 'styled-components'
 
-import { linksMap } from '../lib/links-map'
+import { navItemsMap } from '../../config/nav-items'
 import { scale } from '../lib/typography'
 
 const LinkStyled: StyledComponent<typeof Link, any, {}, never> = styled(Link)`
@@ -32,7 +32,7 @@ const Heading: StyledComponent<'h1', any, {}, never> = styled.h1`
 `
 
 export const SuddenlyGiovanni: React.VFC = () => {
-  const LinkToBlog = linksMap.get('blog')!
+  const LinkToBlog = navItemsMap.get('blog')!
   return (
     <LinkStyled
       to={LinkToBlog.urlPathFragment}

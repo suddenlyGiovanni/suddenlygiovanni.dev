@@ -3,8 +3,8 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import * as React from 'react'
 import styled from 'styled-components'
 
+import { navItemsMap } from '../../config/nav-items'
 import { ReadLink, SEO } from '../components'
-import { linksMap } from '../lib/links-map'
 
 /**
  * this graphql query will be called by gatsby-node at build time and its
@@ -118,7 +118,7 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
             </li>
           )}
           <li>
-            <ReadLink to={linksMap.get('blog')!.urlPathFragment}>
+            <ReadLink to={navItemsMap.get('blog')!.urlPathFragment}>
               back to all posts
             </ReadLink>
           </li>
@@ -127,7 +127,7 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
               <NextPost>
                 next post &rarr;
                 <ReadLink
-                  to={`${linksMap.get('blog')!.urlPathFragment}/${
+                  to={`${navItemsMap.get('blog')!.urlPathFragment}/${
                     next.frontmatter?.slug || ''
                   }`}
                   rel="next"

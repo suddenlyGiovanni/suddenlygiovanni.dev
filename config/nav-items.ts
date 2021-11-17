@@ -33,11 +33,11 @@ export interface Resume
 export interface Motivations
   extends LinkTo<'/motivations', 'motivations', 'Go to my motivations'> {}
 
-type LinksMap = ReadonlyMap<
+type NavItemsMap = ReadonlyMap<
   MapKeys,
   Blog | ReadingJournal | AboutMe | Resume | Motivations
 >
-export const linksMap: LinksMap = new Map([
+export const navItemsMap: NavItemsMap = new Map([
   [
     'about-me',
     {
@@ -81,6 +81,6 @@ export const linksMap: LinksMap = new Map([
   ],
 ])
 
-export const linksEntries = ([...linksMap.entries()] as const).filter(
+export const navItems = ([...navItemsMap.entries()] as const).filter(
   ([key, ..._]) => key !== 'motivations'
 )

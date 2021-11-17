@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
-import * as L from '../lib/links-map'
+import * as L from '../../config/nav-items'
 import * as Responsive from '../lib/responsive'
 import { scale } from '../lib/typography'
 import { NavItems } from './nav-items'

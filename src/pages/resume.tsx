@@ -1,12 +1,11 @@
 import { PageProps } from 'gatsby'
-import * as React from 'react'
 
 import { Resume, SEO } from '../components'
-import * as hooks from '../hooks'
+import * as customHooks from '../hooks'
 
 const ResumePage: React.VFC<PageProps> = (_) => {
-  const resume = hooks.useResume()
-  const resumePdfURL = hooks.useResumePdfURL()
+  const resume = customHooks.useResume()
+  const resumePdfURL = customHooks.useResumePdfURL()
 
   const {
     awards,

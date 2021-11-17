@@ -1,5 +1,7 @@
 import type { GatsbyConfig } from 'gatsby'
 
+import { navItems } from './nav-items'
+
 const config = {
   author: 'Giovanni Ravalico', // Author for schemaORGJSONLD
   siteLanguage: 'en-US',
@@ -30,9 +32,8 @@ const config = {
   linkedin: 'https://www.linkedin.com/in/giovanni-ravalico/',
 } as const
 
-type SiteMetadata = GatsbyConfig['siteMetadata']
-
-export const siteMetadata: SiteMetadata = {
+export const siteMetadata: GatsbyConfig['siteMetadata'] = {
+  navItems, // TODO: move navItems in this module
   siteTitle: config.siteTitle,
   siteTitleTemplate: config.siteTitleTemplate,
   siteDescription: config.siteDescription,
