@@ -33,7 +33,7 @@ export const Container: StyledComponent<
   padding-left: ${({ $noHorizontalPadding }) =>
     $noHorizontalPadding ? 0 : 40}px;
 
-  @query ${Responsive.Queries.mobile} {
+  @media ${Responsive.Queries.mobile} {
     padding-top: ${({ $noVerticalPadding }) => ($noVerticalPadding ? 0 : 20)}px;
 
     padding-right: ${({ $noHorizontalPadding }) =>

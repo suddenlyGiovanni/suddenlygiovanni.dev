@@ -1,11 +1,10 @@
-import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
 import * as Responsive from '../lib/responsive'
 import { Container } from './container'
 import { GitHub, LinkedIn, Twitter } from './social'
 
-const FooterStyled = styled.footer`
+const Footer_ = styled.footer`
   position: relative;
 
   flex-shrink: 0;
@@ -14,12 +13,7 @@ const FooterStyled = styled.footer`
   border-top: thin solid black;
 `
 
-const AddressStyled: StyledComponent<
-  'address',
-  any,
-  {},
-  never
-> = styled.address`
+const Address: StyledComponent<'address', any, {}, never> = styled.address`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,19 +21,19 @@ const AddressStyled: StyledComponent<
   margin-top: 1rem;
 `
 
-const CopyrightStyled = styled.p`
+const Copyright = styled.p`
   flex: 1 auto;
   margin-top: 1rem;
   margin-bottom: 0;
 `
 
-const ContainerStyled = styled(Container)`
+const ContainerFoo = styled(Container)`
   display: flex;
   flex-flow: row wrap;
   align-content: space-between;
   padding-bottom: 1rem;
 
-  @query ${Responsive.Queries.mobile} {
+  @media ${Responsive.Queries.mobile} {
     padding-bottom: 1rem;
   }
 `
@@ -56,15 +50,15 @@ interface Props {
 export const Footer: React.VFC<Props> = ({ maxWidth = 720 }) => {
   const copyrightYear = getCopyrightYear(new Date())
   return (
-    <FooterStyled>
-      <ContainerStyled $maxWidth={maxWidth} $noVerticalPadding>
-        <CopyrightStyled>© {copyrightYear} Giovanni Ravalico</CopyrightStyled>
-        <AddressStyled>
+    <Footer_>
+      <ContainerFoo $maxWidth={maxWidth} $noVerticalPadding>
+        <Copyright>© {copyrightYear} Giovanni Ravalico</Copyright>
+        <Address>
           <Twitter color="black" />
           <GitHub color="black" />
           <LinkedIn color="black" />
-        </AddressStyled>
-      </ContainerStyled>
-    </FooterStyled>
+        </Address>
+      </ContainerFoo>
+    </Footer_>
   )
 }

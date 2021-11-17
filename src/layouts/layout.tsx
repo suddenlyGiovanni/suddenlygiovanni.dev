@@ -1,19 +1,23 @@
 import { MDXProvider } from '@mdx-js/react'
-import * as React from 'react'
+import styled from 'styled-components'
 
-import { Header, Main, mdxComponents } from '../components'
-import { Footer } from '../components/footer'
-import * as layoutStyles from './layout.module.css'
+import { Footer, Header, Main, mdxComponents } from '../components'
 
-export const Layout: React.FC<React.ComponentPropsWithoutRef<'div'>> = ({
-  children,
-  ...layoutWrapperProps
-}) => (
-  <div {...layoutWrapperProps} className={layoutStyles.container}>
+const LayoutContainer = styled.div`
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+`
+
+export const Layout: React.FC = ({ children }) => (
+  <LayoutContainer>
     <Header />
     <MDXProvider components={mdxComponents}>
       <Main>{children}</Main>
     </MDXProvider>
     <Footer />
-  </div>
+  </LayoutContainer>
 )
