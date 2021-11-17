@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { navItemsMap } from '../../../config/nav-items'
 
+import { routesMap } from '../../../config'
 import { formatDateLocaleLong } from '../../lib/dates'
 import { ReadLink } from '../read-link'
 
@@ -33,7 +33,7 @@ export const SectionFooter: React.VFC<Props> = ({
   resumeVersion,
 }) => (
   <Footer>
-    <ReadLink to={navItemsMap.get('about-me')!.urlPathFragment}>
+    <ReadLink to={routesMap.getRoute('about-me').url}>
       &larr; back to my About Me
     </ReadLink>
     <small>

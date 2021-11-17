@@ -8,14 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__generated__/gatsby-introspection.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/__generated__/gatsby-introspection.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__generated__/gatsby-schema.graphql" beforeDir="false" afterPath="$PROJECT_DIR$/src/__generated__/gatsby-schema.graphql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/main/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/main/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/resume/section-contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/resume/section-contacts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/gatsby-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/gatsby-types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +19,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="GraphQL File" />
-        <option value="TypeScript File" />
         <option value="CSS File" />
         <option value="TypeScript JSX File" />
+        <option value="GraphQL File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -117,8 +111,8 @@
     <property name="code.cleanup.on.save" value="true" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="JavaScript&#10;PLAIN_TEXT" />
     <property name="format.on.save" value="true" />
-    <property name="javascript.nodejs.core.library.configured.version" value="16.11.1" />
-    <property name="javascript.nodejs.core.library.typings.version" value="16.10.6" />
+    <property name="javascript.nodejs.core.library.configured.version" value="17.0.1" />
+    <property name="javascript.nodejs.core.library.typings.version" value="16.11.9" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/main" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -134,9 +128,9 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="rearrange.code.on.save" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
-    <property name="ts.rename.search.for.dynamic.occurrences" value="true" />
+    <property name="ts.rename.search.for.js.occurrences" value="false" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="RecentsManager">
@@ -154,6 +148,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/config/config.ts" />
       <recent name="$PROJECT_DIR$/src/lib/links-map.ts" />
       <recent name="$PROJECT_DIR$/gatsby/gatsby-plugin-style-components.ts" />
     </key>
@@ -189,11 +184,11 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+    <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
-        <script value="serve" />
+        <script value="test" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -211,18 +206,18 @@
     </configuration>
     <list>
       <item itemvalue="npm.develop" />
-      <item itemvalue="npm.serve" />
       <item itemvalue="npm.type-check" />
       <item itemvalue="npm.format" />
       <item itemvalue="npm.clean" />
+      <item itemvalue="npm.test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.develop" />
         <item itemvalue="npm.clean" />
+        <item itemvalue="npm.test" />
         <item itemvalue="npm.format" />
         <item itemvalue="npm.type-check" />
-        <item itemvalue="npm.serve" />
       </list>
     </recent_temporary>
   </component>
@@ -270,7 +265,15 @@
       <workItem from="1637066087922" duration="20817000" />
       <workItem from="1637147105699" duration="2454000" />
       <workItem from="1637149776026" duration="7327000" />
-      <workItem from="1637162173504" duration="4035000" />
+      <workItem from="1637162173504" duration="4126000" />
+      <workItem from="1637179805389" duration="7296000" />
+      <workItem from="1637323242544" duration="31000" />
+      <workItem from="1637323280539" duration="839000" />
+      <workItem from="1637329628155" duration="10783000" />
+      <workItem from="1637355524838" duration="7634000" />
+      <workItem from="1637510834314" duration="159000" />
+      <workItem from="1637511817570" duration="134000" />
+      <workItem from="1637512034581" duration="7529000" />
     </task>
     <servers />
   </component>
@@ -384,13 +387,5 @@
       </path>
     </expand>
     <select />
-  </component>
-  <component name="com.github.lppedd.cc.CommitBuilderDialog">
-    <type>chore</type>
-    <scope>dependancies</scope>
-    <subject>upgrade to gatsby v4.2</subject>
-    <footers>
-      <entry type="" value="" />
-    </footers>
   </component>
 </project>

@@ -1,5 +1,6 @@
-import * as L from '../../config/nav-items'
+import React from 'react'
 
+import type { Route } from '../../config'
 import { NavLink } from './nav-link'
 
 interface Props
@@ -7,32 +8,30 @@ interface Props
     React.HTMLAttributes<HTMLUListElement>,
     HTMLUListElement
   > {
-  linksEntries: ReadonlyArray<
-    [
-      L.MapKeys,
-      L.Blog | L.ReadingJournal | L.AboutMe | L.Resume | L.Motivations
-    ]
-  >
+  routeEntries: ReadonlyArray<Route>
+  onNavItemClick?: React.MouseEventHandler<HTMLAnchorElement>
 }
 
-export const NavItems: React.VFC<Props> = ({ linksEntries, ...props }) => (
+export const NavItems: React.VFC<Props> = ({
+  routeEntries,
+  onNavItemClick,
+  ...props
+}) => (
   <ul {...props}>
-    {linksEntries.map(([key, { description, title, urlPathFragment }]) => (
-      <li key={key}>
+    {routeEntries.map(({ uri, description, title, url, disabled }) => (
+      <li key={uri}>
         <NavLink
-          to={urlPathFragment}
+          to={url}
           aria-label={description}
           // @ts-ignore
           activeClassName="current-page"
-          {...(key === 'reading-journal'
+          onClick={onNavItemClick}
+          {...(disabled
             ? {
                 $disabled: true,
                 activeClassName: undefined,
                 style: { pointerEvents: 'none' },
                 'aria-disabled': true,
-                onClick: (e) => {
-                  e.preventDefault()
-                },
               }
             : {})}
         >

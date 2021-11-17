@@ -1,6 +1,6 @@
 import { withMetaNode } from 'gatsby-ts'
 
-import { createPages, onCreateNode } from './gatsby/node-lifecycle'
+import { createPages, createSchemaCustomization, onCreateNode } from './gatsby/node-lifecycle'
 
 /**
  * Implement Gatsby's Node APIs in this file.
@@ -9,5 +9,5 @@ import { createPages, onCreateNode } from './gatsby/node-lifecycle'
  */
 
 export default withMetaNode((..._) => {
-  return { createPages, onCreateNode }
+  return { createPages, onCreateNode, createSchemaCustomization }
 })

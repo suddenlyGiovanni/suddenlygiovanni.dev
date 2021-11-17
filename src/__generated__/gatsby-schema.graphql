@@ -354,6 +354,7 @@ type Site implements Node {
 type SiteSiteMetadata {
   title: String
   description: String
+  routes: [Route!]!
   siteTitle: String
   siteTitleTemplate: String
   siteDescription: String
@@ -817,6 +818,15 @@ type MdxFields {
   redirects: [String]
   editLink: String
   historyLink: String
+}
+
+type Route {
+  uri: String!
+  url: String!
+  title: String!
+  description: String!
+  disabled: Boolean!
+  hidden: Boolean!
 }
 
 type ResumeJson implements Node {
@@ -2281,6 +2291,7 @@ input DirectorySortInput {
 input SiteSiteMetadataFilterInput {
   title: StringQueryOperatorInput
   description: StringQueryOperatorInput
+  routes: RouteFilterListInput
   siteTitle: StringQueryOperatorInput
   siteTitleTemplate: StringQueryOperatorInput
   siteDescription: StringQueryOperatorInput
@@ -2291,6 +2302,19 @@ input SiteSiteMetadataFilterInput {
   keywords: StringQueryOperatorInput
   author: SiteSiteMetadataAuthorFilterInput
   social: SiteSiteMetadataSocialFilterInput
+}
+
+input RouteFilterListInput {
+  elemMatch: RouteFilterInput
+}
+
+input RouteFilterInput {
+  uri: StringQueryOperatorInput
+  url: StringQueryOperatorInput
+  title: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+  disabled: BooleanQueryOperatorInput
+  hidden: BooleanQueryOperatorInput
 }
 
 input SiteSiteMetadataAuthorFilterInput {
@@ -2323,6 +2347,13 @@ enum SiteFieldsEnum {
   buildTime
   siteMetadata___title
   siteMetadata___description
+  siteMetadata___routes
+  siteMetadata___routes___uri
+  siteMetadata___routes___url
+  siteMetadata___routes___title
+  siteMetadata___routes___description
+  siteMetadata___routes___disabled
+  siteMetadata___routes___hidden
   siteMetadata___siteTitle
   siteMetadata___siteTitleTemplate
   siteMetadata___siteDescription

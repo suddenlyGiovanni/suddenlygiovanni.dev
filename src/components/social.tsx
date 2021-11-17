@@ -1,6 +1,6 @@
 import styled from 'styled-components'
+import config from '../../config/config'
 
-import config from '../../config'
 import { SocialIcon } from './social-icon'
 
 const SocialLink = styled.a<{ $color: string }>`

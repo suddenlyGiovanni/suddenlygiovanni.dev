@@ -1,6 +1,7 @@
+import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
-import { navItems } from '../../config/nav-items'
 
+import type { Route } from '../../config'
 import { Container } from './container'
 import { NavDesktop } from './nav-desktop'
 import { NavMobile } from './nav-mobile'
@@ -27,14 +28,41 @@ const Nav = styled.nav`
   width: 100%;
 `
 
-export const Header: React.VFC = () => (
-  <HeaderStyled>
-    <Container $maxWidth={720} $noVerticalPadding>
-      <Nav>
-        <SuddenlyGiovanni />
-        <NavMobile linksEntries={navItems} />
-        <NavDesktop linksEntries={navItems} />
-      </Nav>
-    </Container>
-  </HeaderStyled>
-)
+export const Header: React.VFC = () => {
+  const { site } = useStaticQuery<GatsbyTypes.RoutesQuery>(graphql`
+    fragment RouteFragment on Route {
+      uri
+      url
+      title
+      description
+      disabled
+      hidden
+    }
+
+    query Routes {
+      site {
+        siteMetadata {
+          routes {
+            ...RouteFragment
+          }
+        }
+      }
+    }
+  `)
+
+  const routeEntries = site!.siteMetadata!.routes.filter(
+    ({ hidden }) => !hidden
+  ) as ReadonlyArray<Route>
+
+  return (
+    <HeaderStyled>
+      <Container $maxWidth={720} $noVerticalPadding>
+        <Nav>
+          <SuddenlyGiovanni />
+          <NavMobile routeEntries={routeEntries} />
+          <NavDesktop routeEntries={routeEntries} />
+        </Nav>
+      </Container>
+    </HeaderStyled>
+  )
+}

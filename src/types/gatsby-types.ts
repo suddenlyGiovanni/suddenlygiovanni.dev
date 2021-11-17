@@ -285,6 +285,7 @@ type Site_buildTimeArgs = {
 type SiteSiteMetadata = {
   readonly title: Maybe<Scalars['String']>;
   readonly description: Maybe<Scalars['String']>;
+  readonly routes: ReadonlyArray<Route>;
   readonly siteTitle: Maybe<Scalars['String']>;
   readonly siteTitleTemplate: Maybe<Scalars['String']>;
   readonly siteDescription: Maybe<Scalars['String']>;
@@ -733,6 +734,15 @@ type MdxFields_dateArgs = {
   fromNow: Maybe<Scalars['Boolean']>;
   difference: Maybe<Scalars['String']>;
   locale: Maybe<Scalars['String']>;
+};
+
+type Route = {
+  readonly uri: Scalars['String'];
+  readonly url: Scalars['String'];
+  readonly title: Scalars['String'];
+  readonly description: Scalars['String'];
+  readonly disabled: Scalars['Boolean'];
+  readonly hidden: Scalars['Boolean'];
 };
 
 type ResumeJson = Node & {
@@ -2570,6 +2580,7 @@ type DirectorySortInput = {
 type SiteSiteMetadataFilterInput = {
   readonly title: Maybe<StringQueryOperatorInput>;
   readonly description: Maybe<StringQueryOperatorInput>;
+  readonly routes: Maybe<RouteFilterListInput>;
   readonly siteTitle: Maybe<StringQueryOperatorInput>;
   readonly siteTitleTemplate: Maybe<StringQueryOperatorInput>;
   readonly siteDescription: Maybe<StringQueryOperatorInput>;
@@ -2580,6 +2591,19 @@ type SiteSiteMetadataFilterInput = {
   readonly keywords: Maybe<StringQueryOperatorInput>;
   readonly author: Maybe<SiteSiteMetadataAuthorFilterInput>;
   readonly social: Maybe<SiteSiteMetadataSocialFilterInput>;
+};
+
+type RouteFilterListInput = {
+  readonly elemMatch: Maybe<RouteFilterInput>;
+};
+
+type RouteFilterInput = {
+  readonly uri: Maybe<StringQueryOperatorInput>;
+  readonly url: Maybe<StringQueryOperatorInput>;
+  readonly title: Maybe<StringQueryOperatorInput>;
+  readonly description: Maybe<StringQueryOperatorInput>;
+  readonly disabled: Maybe<BooleanQueryOperatorInput>;
+  readonly hidden: Maybe<BooleanQueryOperatorInput>;
 };
 
 type SiteSiteMetadataAuthorFilterInput = {
@@ -2639,6 +2663,13 @@ type SiteFieldsEnum =
   | 'buildTime'
   | 'siteMetadata.title'
   | 'siteMetadata.description'
+  | 'siteMetadata.routes'
+  | 'siteMetadata.routes.uri'
+  | 'siteMetadata.routes.url'
+  | 'siteMetadata.routes.title'
+  | 'siteMetadata.routes.description'
+  | 'siteMetadata.routes.disabled'
+  | 'siteMetadata.routes.hidden'
   | 'siteMetadata.siteTitle'
   | 'siteMetadata.siteTitleTemplate'
   | 'siteMetadata.siteDescription'
@@ -4393,6 +4424,18 @@ type ResumeJsonSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
+type RouteFragmentFragment = Pick<Route, 'uri' | 'url' | 'title' | 'description' | 'disabled' | 'hidden'>;
+
+type RoutesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type RoutesQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly routes: ReadonlyArray<RouteFragmentFragment> }> }> };
+
+type GetResumePdfURLQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type GetResumePdfURLQuery = { readonly file: Maybe<Pick<File, 'id' | 'publicURL'>> };
+
 type PostPreviewDataFragment = (
   Pick<Mdx, 'id' | 'excerpt' | 'timeToRead'>
   & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'author' | 'title' | 'description' | 'date'>>, readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
@@ -4402,23 +4445,6 @@ type PostsPreviewsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PostsPreviewsQuery = { readonly allMdx: { readonly posts: ReadonlyArray<PostPreviewDataFragment> } };
-
-type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SiteMetadataQuery = { readonly site: Maybe<(
-    Pick<Site, 'buildTime'>
-    & { readonly siteMetadata: Maybe<(
-      Pick<SiteSiteMetadata, 'siteUrl' | 'keywords' | 'siteLocale' | 'siteLanguage'>
-      & { defaultTitle: SiteSiteMetadata['siteTitle'], titleTemplate: SiteSiteMetadata['siteTitleTemplate'], defaultDescription: SiteSiteMetadata['siteDescription'], defaultImage: SiteSiteMetadata['siteImage'] }
-      & { readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitterHandle'>>, readonly author: Maybe<Pick<SiteSiteMetadataAuthor, 'name'>> }
-    )> }
-  )> };
-
-type GetResumePdfURLQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type GetResumePdfURLQuery = { readonly file: Maybe<Pick<File, 'id' | 'publicURL'>> };
 
 type BlogPostDetailsFragment = (
   Pick<Mdx, 'fileAbsolutePath' | 'id' | 'excerpt'>
@@ -4479,6 +4505,18 @@ type GatsbyImageSharpFluid_withWebp_tracedSVGFragment = Pick<ImageSharpFluid, 't
 type GatsbyImageSharpFluid_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
 
 type GatsbyImageSharpFluid_withWebp_noBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>;
+
+type SiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SiteMetadataQuery = { readonly site: Maybe<(
+    Pick<Site, 'buildTime'>
+    & { readonly siteMetadata: Maybe<(
+      Pick<SiteSiteMetadata, 'siteUrl' | 'keywords' | 'siteLocale' | 'siteLanguage'>
+      & { defaultTitle: SiteSiteMetadata['siteTitle'], titleTemplate: SiteSiteMetadata['siteTitleTemplate'], defaultDescription: SiteSiteMetadata['siteDescription'], defaultImage: SiteSiteMetadata['siteImage'] }
+      & { readonly social: Maybe<Pick<SiteSiteMetadataSocial, 'twitterHandle'>>, readonly author: Maybe<Pick<SiteSiteMetadataAuthor, 'name'>> }
+    )> }
+  )> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

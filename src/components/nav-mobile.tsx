@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styled, { StyledComponent } from 'styled-components'
+import { Route } from '../../config'
 
-import * as L from '../../config/nav-items'
 import * as Responsive from '../lib/responsive'
 import { scale } from '../lib/typography'
 import { NavItems } from './nav-items'
@@ -130,15 +130,10 @@ const NavListMobile = styled(NavItems)`
 `
 
 interface Props {
-  linksEntries: ReadonlyArray<
-    [
-      L.MapKeys,
-      L.Blog | L.ReadingJournal | L.AboutMe | L.Resume | L.Motivations
-    ]
-  >
+  routeEntries: ReadonlyArray<Route>
 }
 
-export const NavMobile: React.VFC<Props> = ({ linksEntries }) => {
+export const NavMobile: React.VFC<Props> = ({ routeEntries }) => {
   const [isToggledOn, setToggle] = useState<boolean>(false)
   const toggle = (): void => setToggle(!isToggledOn)
 
@@ -150,7 +145,9 @@ export const NavMobile: React.VFC<Props> = ({ linksEntries }) => {
       >
         <HamburgerIcon $isToggledOn={isToggledOn} />
       </NavMobileButton>
-      {isToggledOn && <NavListMobile linksEntries={linksEntries} />}
+      {isToggledOn && (
+        <NavListMobile routeEntries={routeEntries} onNavItemClick={toggle} />
+      )}
     </NavMobileContainer>
   )
 }

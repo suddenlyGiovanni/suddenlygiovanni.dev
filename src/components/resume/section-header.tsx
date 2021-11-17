@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 
-import { navItemsMap } from '../../../config/nav-items'
+import { routesMap } from '../../../config'
 
 const Header = styled.header``
 const NameHeading = styled.h1``
@@ -52,7 +52,7 @@ export const SectionHeader: React.VFC<Props> = ({
       <p>
         <em>
           If you consider me for a role, read through{' '}
-          <Link to={navItemsMap.get('motivations')!.urlPathFragment}>
+          <Link to={routesMap.getRoute('motivations').url}>
             {' '}
             my motivations
           </Link>{' '}

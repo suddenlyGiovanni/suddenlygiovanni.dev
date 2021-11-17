@@ -3,7 +3,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { navItemsMap } from '../../config/nav-items'
+import { routesMap } from '../../config'
 import { ReadLink, SEO } from '../components'
 
 /**
@@ -118,7 +118,7 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
             </li>
           )}
           <li>
-            <ReadLink to={navItemsMap.get('blog')!.urlPathFragment}>
+            <ReadLink to={routesMap.getRoute('blog').url}>
               back to all posts
             </ReadLink>
           </li>
@@ -127,7 +127,7 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
               <NextPost>
                 next post &rarr;
                 <ReadLink
-                  to={`${navItemsMap.get('blog')!.urlPathFragment}/${
+                  to={`${routesMap.getRoute('blog').url}/${
                     next.frontmatter?.slug || ''
                   }`}
                   rel="next"
