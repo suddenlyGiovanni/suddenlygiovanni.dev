@@ -1,7 +1,6 @@
 import type { Language } from 'prism-react-renderer'
 import Highlight, { Prism } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwl'
-import * as React from 'react'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 import styled from 'styled-components'
 

@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import type { Publication } from '../../types/resume'
 import { Dump } from '../dump'
 import { Section } from './section'

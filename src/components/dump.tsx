@@ -1,7 +1,6 @@
-import * as React from 'react'
 import styled from 'styled-components'
 
-const DumpContainerStyled = styled.div`
+const Container = styled.div`
   padding: 10px;
 
   font-size: 20px;
@@ -21,7 +20,7 @@ interface Props {
 }
 
 export const Dump: React.VFC<Props> = ({ children = {} }) => (
-  <DumpContainerStyled>
+  <Container>
     {Object.entries(children).map(([key, val]) => (
       <pre key={key}>
         <DumpKeyStyled>
@@ -34,5 +33,5 @@ export const Dump: React.VFC<Props> = ({ children = {} }) => (
         {JSON.stringify(val, null, 2)}
       </pre>
     ))}
-  </DumpContainerStyled>
+  </Container>
 )

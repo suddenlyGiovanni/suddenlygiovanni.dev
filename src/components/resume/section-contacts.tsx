@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { FaBlog, FaEnvelope, FaMapMarkerAlt, FaMobile } from 'react-icons/fa'
 import styled from 'styled-components'
 
@@ -6,11 +5,11 @@ import * as Responsive from '../../lib/responsive'
 import type { Basics } from '../../types/resume'
 import * as Social from '../social-icon'
 
-const AddressStyled = styled.address`
+const Address = styled.address`
   background: hsla(0, 0%, 0%, 0.04);
 `
 
-const ListStyled = styled.ul`
+const Ul = styled.ul`
   display: flex;
   flex-flow: column wrap;
   align-content: space-evenly;
@@ -27,16 +26,14 @@ const ListStyled = styled.ul`
   }
 `
 
-const ListItemStyled = styled.li`
-  li {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
+const Li = styled.li`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
 
-    svg {
-      margin-right: 0.75rem;
-    }
+  svg {
+    margin-right: 0.75rem;
   }
 `
 
@@ -47,14 +44,14 @@ interface Props {
 export const SectionContacts: React.VFC<Props> = ({ basics }) => {
   const { email, location, phone, profiles, url } = basics
   return (
-    <AddressStyled>
-      <ListStyled>
-        <ListItemStyled>
+    <Address>
+      <Ul>
+        <Li>
           <FaMapMarkerAlt aria-label="location icon" />
           {`${location?.city || 'city'}, ${location?.countryCode || 'country'}`}
-        </ListItemStyled>
+        </Li>
 
-        <ListItemStyled>
+        <Li>
           <FaEnvelope aria-label="mail icon" />
           <a
             href={`mailto:${email || ''}`}
@@ -64,9 +61,9 @@ export const SectionContacts: React.VFC<Props> = ({ basics }) => {
           >
             {email}
           </a>
-        </ListItemStyled>
+        </Li>
 
-        <ListItemStyled>
+        <Li>
           <FaBlog aria-label="mail icon" />
           <a
             href={url}
@@ -76,17 +73,17 @@ export const SectionContacts: React.VFC<Props> = ({ basics }) => {
           >
             {url}
           </a>
-        </ListItemStyled>
+        </Li>
 
-        <ListItemStyled>
+        <Li>
           <FaMobile aria-label="phone icon" />
           <a href={`tel:${phone || ''}`} aria-label="phone number">
             {phone}
           </a>
-        </ListItemStyled>
+        </Li>
 
         {profiles?.map((profile, idx) => (
-          <ListItemStyled key={String(idx) + String(profile.network)}>
+          <Li key={String(idx) + String(profile.network)}>
             {Social.IconMap.has(profile.network as Social.SocialNetworks) && (
               <Social.SocialIcon
                 network={profile.network!}
@@ -99,9 +96,9 @@ export const SectionContacts: React.VFC<Props> = ({ basics }) => {
             >
               {profile.url?.replace(/(https:\/\/www\.)|(https:\/\/)/i, '')}
             </a>
-          </ListItemStyled>
+          </Li>
         ))}
-      </ListStyled>
-    </AddressStyled>
+      </Ul>
+    </Address>
   )
 }

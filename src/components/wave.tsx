@@ -1,7 +1,7 @@
-import * as React from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 
-const WaveButtonStyled = styled.button.attrs(() => ({
+const Button = styled.button.attrs(() => ({
   type: 'button',
 }))`
   color: white;
@@ -12,8 +12,8 @@ const WaveButtonStyled = styled.button.attrs(() => ({
 `
 
 export const Wave: React.VFC = () => {
-  const [waves, setWave] = React.useState<number>(0)
+  const [waves, setWave] = useState<number>(0)
   const label = `👋${waves} ${waves === 1 ? 'wave' : 'waves'}`
   const increment = (): void => setWave((w) => 1 + w)
-  return <WaveButtonStyled onClick={increment}>{label}</WaveButtonStyled>
+  return <Button onClick={increment}>{label}</Button>
 }

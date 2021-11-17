@@ -1,10 +1,9 @@
 import styled from 'styled-components'
-import * as React from 'react'
 
-import type { Language } from '../../types/resume'
+import type { Language as ILanguage } from '../../types/resume'
 import { Section } from './section'
 
-const LanguageStyled = styled.div`
+const Language = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -20,17 +19,17 @@ const LanguageStyled = styled.div`
 `
 
 interface Props {
-  readonly languages: ReadonlyArray<Language>
+  readonly languages: ReadonlyArray<ILanguage>
 }
 
 export const SectionLanguages: React.VFC<Props> = ({ languages }) => (
   <Section title={'Languages'}>
     <dl>
       {languages.map(({ fluency, language }) => (
-        <LanguageStyled key={language}>
+        <Language key={language}>
           <dt>{language}</dt>
           <dd>{fluency}</dd>
-        </LanguageStyled>
+        </Language>
       ))}
     </dl>
   </Section>

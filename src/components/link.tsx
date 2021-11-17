@@ -1,5 +1,4 @@
 import { GatsbyLinkProps, Link as GatsbyLink } from 'gatsby'
-import * as React from 'react'
 
 export const Link: React.FC<GatsbyLinkProps<unknown>> = ({
   children,

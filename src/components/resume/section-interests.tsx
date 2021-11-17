@@ -1,9 +1,7 @@
-import * as React from 'react'
-
 import type { Interest } from '../../types/resume'
+import { Section } from './section'
 
 import { SubSection } from './sub-section'
-import { Section } from './section'
 
 interface Props {
   readonly interests: ReadonlyArray<Interest>

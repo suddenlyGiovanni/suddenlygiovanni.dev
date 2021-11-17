@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import type { Work } from '../../types/resume'
 import { Section } from './section'
 import { SectionItem } from './section-item'

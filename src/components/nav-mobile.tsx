@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState } from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
 import * as L from '../lib/links-map'
@@ -139,7 +139,7 @@ interface Props {
 }
 
 export const NavMobile: React.VFC<Props> = ({ linksEntries }) => {
-  const [isToggledOn, setToggle] = React.useState<boolean>(false)
+  const [isToggledOn, setToggle] = useState<boolean>(false)
   const toggle = (): void => setToggle(!isToggledOn)
 
   return (

@@ -1,4 +1,3 @@
-import * as React from 'react'
 import type { IconBaseProps, IconType } from 'react-icons'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 

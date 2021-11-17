@@ -218,9 +218,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.develop" />
         <item itemvalue="npm.format" />
         <item itemvalue="npm.type-check" />
-        <item itemvalue="npm.develop" />
         <item itemvalue="npm.serve" />
         <item itemvalue="npm.build" />
       </list>
@@ -269,7 +269,7 @@
       <workItem from="1637063923910" duration="2146000" />
       <workItem from="1637066087922" duration="20817000" />
       <workItem from="1637147105699" duration="2454000" />
-      <workItem from="1637149776026" duration="2201000" />
+      <workItem from="1637149776026" duration="5935000" />
     </task>
     <servers />
   </component>

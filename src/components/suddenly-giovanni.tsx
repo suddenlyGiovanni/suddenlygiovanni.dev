@@ -1,6 +1,5 @@
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
-import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
 import { linksMap } from '../lib/links-map'
@@ -21,7 +20,7 @@ const LinkStyled: StyledComponent<typeof Link, any, {}, never> = styled(Link)`
   }
 `
 
-const HeadingStyled: StyledComponent<'h1', any, {}, never> = styled.h1`
+const Heading: StyledComponent<'h1', any, {}, never> = styled.h1`
   margin-top: unset;
   margin-bottom: unset;
   margin-left: 1rem;
@@ -53,7 +52,7 @@ export const SuddenlyGiovanni: React.VFC = () => {
         layout="fixed"
         loading="eager"
       />
-      <HeadingStyled>suddenlyGiovanni</HeadingStyled>
+      <Heading>suddenlyGiovanni</Heading>
     </LinkStyled>
   )
 }

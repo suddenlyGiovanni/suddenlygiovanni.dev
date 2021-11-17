@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import * as L from '../lib/links-map'
 import { NavLink } from './nav-link'
 

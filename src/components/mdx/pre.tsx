@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 type Props = React.DetailedHTMLProps<
   React.HTMLAttributes<HTMLPreElement>,
   HTMLPreElement

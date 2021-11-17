@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { formatDateLocaleLong } from '../lib/dates'
 import { formatReadingTime } from '../lib/helpers'
 import { Int } from '../lib/integer'

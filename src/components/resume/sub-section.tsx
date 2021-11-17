@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import * as React from 'react'
 
-const ListStyled = styled.ul`
+const Ul = styled.ul`
   display: flex;
   flex-flow: row wrap;
   align-items: flex-start;
@@ -12,7 +11,7 @@ const ListStyled = styled.ul`
   list-style: none;
 `
 
-const ListItemStyled = styled.li`
+const Li = styled.li`
   margin-right: 1em;
   margin-bottom: unset;
 `
@@ -26,11 +25,11 @@ export const SubSection: React.VFC<Props> = ({ heading, keywords }) => (
   <dl>
     <dt>{heading}</dt>
     <dd>
-      <ListStyled>
+      <Ul>
         {keywords?.map((keyword) => (
-          <ListItemStyled key={keyword}>{keyword}</ListItemStyled>
+          <Li key={keyword}>{keyword}</Li>
         ))}
-      </ListStyled>
+      </Ul>
     </dd>
   </dl>
 )

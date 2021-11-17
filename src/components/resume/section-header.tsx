@@ -1,16 +1,15 @@
 import { Link } from 'gatsby'
-import * as React from 'react'
 import styled from 'styled-components'
 
 import { linksMap } from '../../lib/links-map'
 
-const ResumePageHeader = styled.header``
-const NameHeadingStyled = styled.h1``
-const RoleHeadingStyled = styled.h2`
+const Header = styled.header``
+const NameHeading = styled.h1``
+const RoleHeading = styled.h2`
   color: var();
 `
 
-const ResumePageHeaderGroupStyled = styled.hgroup`
+const HeaderGroup = styled.hgroup`
   text-align: center;
 
   h1,
@@ -38,14 +37,14 @@ export const SectionHeader: React.VFC<Props> = ({
   resumePdfURL,
 }) => {
   return (
-    <ResumePageHeader>
-      <ResumePageHeaderGroupStyled>
+    <Header>
+      <HeaderGroup>
         {/* NAME */}
-        <NameHeadingStyled>{name}</NameHeadingStyled>
+        <NameHeading>{name}</NameHeading>
 
         {/* ROLE */}
-        <RoleHeadingStyled>{roleTitle}</RoleHeadingStyled>
-      </ResumePageHeaderGroupStyled>
+        <RoleHeading>{roleTitle}</RoleHeading>
+      </HeaderGroup>
 
       {/* SUMMARY */}
       <p>{summary}</p>
@@ -71,6 +70,6 @@ export const SectionHeader: React.VFC<Props> = ({
           giovanni-ravalico-resume.pdf
         </a>
       </p>
-    </ResumePageHeader>
+    </Header>
   )
 }

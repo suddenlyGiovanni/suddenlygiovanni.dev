@@ -1,13 +1,14 @@
-import * as React from 'react'
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import styled from 'styled-components'
 
 import { formatDateLocaleShort } from '../../lib/dates'
 
-const DescriptionDetailsHighlights: React.VFC<{
-  highlights: ReadonlyArray<string>
-}> = ({ highlights }) => (
-  <dd>
+const DescriptionDetailsHighlights: React.VFC<
+  React.ComponentProps<'dd'> & {
+    highlights: ReadonlyArray<string>
+  }
+> = ({ highlights, ...ddProps }) => (
+  <dd {...ddProps}>
     <ul aria-label="highlights">
       {highlights?.map((highlight, i) => (
         <li key={`${i}${highlight[0]}`}>{highlight}</li>
@@ -16,22 +17,20 @@ const DescriptionDetailsHighlights: React.VFC<{
   </dd>
 )
 const DescriptionDetailsHighlightsStyled = styled(DescriptionDetailsHighlights)`
-  dd {
-    ul {
-      margin-bottom: unset;
-      margin-left: unset;
-      list-style-type: none;
+  ul {
+    margin-bottom: unset;
+    margin-left: unset;
+    list-style-type: none;
 
-      li {
-        padding-left: unset;
-      }
+    li {
+      padding-left: unset;
     }
   }
 `
 
-const DescriptionDetailsSummary: React.VFC<{ readonly summary: string }> = ({
-  summary,
-}) => <dd>{summary}</dd>
+const DescriptionDetailsSummary: React.VFC<
+  { readonly summary: string } & React.ComponentProps<'dd'>
+> = ({ summary, ...props }) => <dd {...props}>{summary}</dd>
 
 const Heading1 = styled.h3`
   margin-top: unset;
@@ -68,7 +67,7 @@ const DateAndLocationWrapperSpan = styled.span`
 const LocationSpan = styled.span``
 const DescriptionSpan = styled.span``
 
-const DescriptionTermStyled = styled.dt`
+const Dt = styled.dt`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -107,7 +106,7 @@ const DescriptionTerm: React.VFC<{
   location,
   description,
 }) => (
-  <DescriptionTermStyled>
+  <Dt>
     <Heading1 aria-label={heading1AriaLabel}>{heading1}</Heading1>
 
     <Heading2 aria-label={heading2AriaLabel}>
@@ -150,7 +149,7 @@ const DescriptionTerm: React.VFC<{
     {description && (
       <DescriptionSpan aria-label="description">{description}</DescriptionSpan>
     )}
-  </DescriptionTermStyled>
+  </Dt>
 )
 
 interface Props {
@@ -167,7 +166,7 @@ interface Props {
   readonly highlights: ReadonlyArray<string>
 }
 
-export const SectionItem: React.VFC<Props> = ({
+export const SectionItem: React.VFC<Props & React.ComponentProps<'dl'>> = ({
   heading1,
   heading1AriaLabel,
   heading2,
@@ -179,8 +178,9 @@ export const SectionItem: React.VFC<Props> = ({
   description,
   summary,
   highlights,
+  ...dlProps
 }) => (
-  <dl>
+  <dl {...dlProps}>
     <DescriptionTerm
       heading1={heading1}
       heading1AriaLabel={heading1AriaLabel}

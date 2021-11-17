@@ -1,9 +1,7 @@
 import { Link } from 'gatsby'
-import * as React from 'react'
 import styled from 'styled-components'
 
 import * as Integers from '../lib/integer'
-
 import { DateAndReadingTime } from './date-and-reading-time'
 
 const PostPreviewHeadingStyled = styled.h2`

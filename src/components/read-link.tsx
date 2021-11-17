@@ -1,6 +1,6 @@
 import type { GatsbyLinkProps } from 'gatsby'
-import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
+
 import { Link } from './link'
 
 export const ReadLink: StyledComponent<

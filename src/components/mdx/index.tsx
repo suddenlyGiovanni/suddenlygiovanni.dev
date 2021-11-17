@@ -1,5 +1,4 @@
 import type { MDXProviderComponents } from '@mdx-js/react'
-import * as React from 'react'
 import { Code } from './code'
 import { List } from './list'
 import { ListItem } from './list-item'
