@@ -9,8 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/gatsby-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/gatsby-types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +80,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="build" />
+          <id value="serve" />
         </path>
       </selected-paths>
     </layout>
@@ -262,7 +260,8 @@
       <workItem from="1636991426013" duration="967000" />
       <workItem from="1636993715801" duration="6529000" />
       <workItem from="1637063923910" duration="2146000" />
-      <workItem from="1637066087922" duration="20655000" />
+      <workItem from="1637066087922" duration="20817000" />
+      <workItem from="1637147105699" duration="1157000" />
     </task>
     <servers />
   </component>
