@@ -20,9 +20,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="TypeScript JSX File" />
         <option value="GraphQL File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -273,7 +273,7 @@
       <workItem from="1637355524838" duration="7634000" />
       <workItem from="1637510834314" duration="159000" />
       <workItem from="1637511817570" duration="134000" />
-      <workItem from="1637512034581" duration="7529000" />
+      <workItem from="1637512034581" duration="9369000" />
     </task>
     <servers />
   </component>
@@ -387,5 +387,13 @@
       </path>
     </expand>
     <select />
+  </component>
+  <component name="com.github.lppedd.cc.CommitBuilderDialog">
+    <type>chore</type>
+    <scope>dependencies</scope>
+    <subject>upgrade to typescript v 4.5.2</subject>
+    <footers>
+      <entry type="" value="" />
+    </footers>
   </component>
 </project>

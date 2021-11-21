@@ -1,6 +1,7 @@
 import { withMetaConfig } from 'gatsby-ts'
 
-import { config, siteMetadata } from './config'
+import { siteMetadata } from './config'
+import config from './config/config'
 import * as Plugins from './gatsby/plugins'
 
 const gatsbySourceFilesystemBlog =
