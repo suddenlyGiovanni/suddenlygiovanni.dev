@@ -1,9 +1,15 @@
 import { useLocation } from '@reach/router'
 import { Helmet } from 'react-helmet'
+import type { Article, BreadcrumbList, ListItem, WebPage } from 'schema-dts'
 
 import { useSiteMetadata } from '../../hooks'
 import { Facebook } from './facebook'
 import { Twitter } from './twitter'
+
+const maxLength = (length: number) => (string: string) =>
+  string.slice(0, length)
+const maxLength70 = maxLength(70)
+const maxLength160 = maxLength(160)
 
 interface Props {
   title: string
@@ -50,10 +56,6 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
     author: { name: defaultAuthor },
   } = siteMetadata
 
-  const maxLength = (length: number) => (str: string) => str.slice(0, length)
-  const maxLength70 = maxLength(70)
-  const maxLength160 = maxLength(160)
-
   const seo = {
     title: title ? maxLength70(title) : maxLength70(defaultTitle),
     description: description
@@ -77,7 +79,7 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
   // Structured Data Testing Tool >>
   // https://search.google.com/structured-data/testing-tool
 
-  const schemaOrgWebPage = {
+  const schemaOrgWebPage: WebPage = {
     '@context': 'http://schema.org',
     '@type': 'WebPage',
     url: siteUrl,
@@ -113,7 +115,7 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
 
   // Initial breadcrumb list
 
-  const itemListElement = [
+  const itemListElement: ListItem[] = [
     {
       '@type': 'ListItem',
       item: {
@@ -124,7 +126,7 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
     },
   ]
 
-  let schemaArticle = null
+  let schemaArticle: Article | null = null
 
   if (article) {
     schemaArticle = {
@@ -175,8 +177,7 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
     })
   }
 
-  const breadcrumb = {
-    '@context': 'http://schema.org',
+  const breadcrumb: BreadcrumbList = {
     '@type': 'BreadcrumbList',
     description: 'Breadcrumbs list',
     name: 'Breadcrumbs',
