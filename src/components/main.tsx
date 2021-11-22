@@ -1,8 +1,17 @@
 import styled, { StyledComponent } from 'styled-components'
+
 import * as Responsive from '../lib/responsive'
 
-export const Main: StyledComponent<'main', any, {}, never> = styled.main`
-  display: flex;
+export const Main: StyledComponent<
+  'main',
+  any,
+  { $disabled: boolean },
+  '$disabled'
+> = styled.main.attrs(({ $disabled = false }: { $disabled: boolean }) => ({
+  $disabled: Boolean($disabled),
+}))`
+  display: ${({ $disabled }) =>
+    $disabled ? ('none' as const) : ('flex' as const)};
   flex-direction: column;
   flex-grow: 1;
   flex-shrink: 0;

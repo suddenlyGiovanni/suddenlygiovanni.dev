@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
-import { Route } from '../../config'
 
+import type { Route } from '../../config'
+import { navMobileCtx } from '../context'
 import * as Responsive from '../lib/responsive'
 import { scale } from '../lib/typography'
 import { NavItems } from './nav-items'
@@ -134,19 +135,21 @@ interface Props {
 }
 
 export const NavMobile: React.VFC<Props> = ({ routeEntries }) => {
-  const [isToggledOn, setToggle] = useState<boolean>(false)
-  const toggle = (): void => setToggle(!isToggledOn)
+  const { state: isMainVisible, update } = React.useContext(navMobileCtx)
 
   return (
     <NavMobileContainer>
       <NavMobileButton
-        onClick={toggle}
-        aria-label={`${isToggledOn ? 'close menu' : 'open menu'}`}
+        onClick={() => update((prevState) => !prevState)}
+        aria-label={`${isMainVisible ? 'close menu' : 'open menu'}`}
       >
-        <HamburgerIcon $isToggledOn={isToggledOn} />
+        <HamburgerIcon $isToggledOn={isMainVisible} />
       </NavMobileButton>
-      {isToggledOn && (
-        <NavListMobile routeEntries={routeEntries} onNavItemClick={toggle} />
+      {isMainVisible && (
+        <NavListMobile
+          routeEntries={routeEntries}
+          onNavItemClick={() => update(false)}
+        />
       )}
     </NavMobileContainer>
   )

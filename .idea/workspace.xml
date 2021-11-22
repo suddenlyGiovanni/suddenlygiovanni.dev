@@ -184,6 +184,16 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="test" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -194,30 +204,20 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="type-check" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="type-check" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="npm.develop" />
-      <item itemvalue="npm.type-check" />
       <item itemvalue="npm.format" />
       <item itemvalue="npm.clean" />
       <item itemvalue="npm.test" />
+      <item itemvalue="npm.serve" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="npm.develop" />
         <item itemvalue="npm.clean" />
+        <item itemvalue="npm.serve" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.format" />
-        <item itemvalue="npm.type-check" />
       </list>
     </recent_temporary>
   </component>
@@ -273,7 +273,7 @@
       <workItem from="1637355524838" duration="7634000" />
       <workItem from="1637510834314" duration="159000" />
       <workItem from="1637511817570" duration="134000" />
-      <workItem from="1637512034581" duration="9369000" />
+      <workItem from="1637512034581" duration="13553000" />
     </task>
     <servers />
   </component>
@@ -389,9 +389,9 @@
     <select />
   </component>
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
-    <type>chore</type>
-    <scope>dependencies</scope>
-    <subject>upgrade to typescript v 4.5.2</subject>
+    <type>refactor</type>
+    <scope>gatsby</scope>
+    <subject>move to short-hand exports methods for config</subject>
     <footers>
       <entry type="" value="" />
     </footers>
