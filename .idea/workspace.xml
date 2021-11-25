@@ -8,13 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
-      <change afterPath="$PROJECT_DIR$/src/components/seo/structured-data.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lib/assert.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/seo/seo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/seo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/gatsby-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/gatsby-types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,14 +126,14 @@
     <property name="node.js.detected.package.stylelint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
-    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="node.js.selected.package.stylelint" value="/opt/homebrew/lib/node_modules/stylelint" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="rearrange.code.on.save" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="advanced.settings" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.js.occurrences" value="false" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
@@ -291,6 +287,16 @@
       <workItem from="1637602247429" duration="5874000" />
       <workItem from="1637608519673" duration="5323000" />
       <workItem from="1637613865566" duration="9000" />
+      <workItem from="1637613886469" duration="201000" />
+      <workItem from="1637667179505" duration="5000" />
+      <workItem from="1637763297251" duration="892000" />
+      <workItem from="1637764202339" duration="1285000" />
+      <workItem from="1637840333773" duration="182000" />
+      <workItem from="1637840526012" duration="204000" />
+      <workItem from="1637840885514" duration="931000" />
+      <workItem from="1637842284252" duration="8000" />
+      <workItem from="1637845827573" duration="463000" />
+      <workItem from="1637846305910" duration="3305000" />
     </task>
     <servers />
   </component>
@@ -366,7 +372,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
