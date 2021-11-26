@@ -1,47 +1,47 @@
-import * as S from 'schema-dts'
+import type {
+  BlogPosting,
+  BreadcrumbList,
+  Role,
+  WebPage,
+  WithContext,
+} from 'schema-dts'
 
-export interface MakeSchemaWebPage {
-  (
-    schemaObj: {
-      title: Pick<S.WebPage, 'name'>['name']
-      author: Omit<
-        Extract<
-          Pick<S.WebPage, 'author'>['author'],
-          Exclude<S.Person, string | S.Patient>
-        >,
-        '@type'
-      >
-    } & Pick<
-      S.WebPage,
-      'url' | 'headline' | 'inLanguage' | 'mainEntityOfPage' | 'description'
-    >
-  ): S.WithContext<S.WebPage>
+type RemoveRoleFromSchemaValue<T, TProperty extends string> = Exclude<
+  T,
+  Role<T, TProperty> | readonly Role<T, TProperty>[]
+>
+
+export function makeSchemaWebPage<SchemaWebPage extends Omit<WebPage, '@type'>>(
+  schemaWebPage: SchemaWebPage
+): Readonly<WithContext<WebPage>> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    ...schemaWebPage,
+  } as const
 }
 
-/**
- * FIXME: TS rule: be generic in the accepted inputs
- * FIXME: TS rule: be very precise with the outputs
- */
-export const schemaOrgWebPage: MakeSchemaWebPage = ({
-  url,
-  headline,
-  inLanguage,
-  mainEntityOfPage,
-  description,
-  title,
-  author,
-}) => ({
-  '@context': 'https://schema.org',
-  '@type': 'WebPage',
-  url,
-  headline,
-  inLanguage,
-  mainEntityOfPage,
-  description,
-  name: title,
-  author: {
-    '@type': 'Person',
-    ...author,
-  },
-  // TODO: continue!!!
-})
+export function makeSchemaBlogPosting<
+  SchemaBlogPosting extends Omit<BlogPosting, '@type'>
+>(schemaBlogPosting: SchemaBlogPosting): Readonly<WithContext<BlogPosting>> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    ...schemaBlogPosting,
+  } as const
+}
+
+export function makeSchemaBreadcrumbList(
+  itemListElement: RemoveRoleFromSchemaValue<
+    BreadcrumbList['itemListElement'],
+    'itemListElement'
+  >
+): Readonly<WithContext<BreadcrumbList>> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    description: 'Breadcrumbs list',
+    name: 'Breadcrumbs',
+    itemListElement,
+  }
+}

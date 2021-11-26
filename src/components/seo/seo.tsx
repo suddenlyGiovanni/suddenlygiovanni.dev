@@ -1,13 +1,21 @@
 import { useLocation } from '@reach/router'
 import { Helmet } from 'react-helmet'
-import type { Article, BreadcrumbList, ListItem, WebPage } from 'schema-dts'
 
 import { useSiteMetadata } from '../../hooks'
 import { Facebook } from './facebook'
+import { ScriptLdJSON } from './script-ld-json'
+import {
+  makeSchemaBlogPosting,
+  makeSchemaBreadcrumbList,
+  makeSchemaWebPage,
+} from './structured-data'
 import { Twitter } from './twitter'
 
-const maxLength = (length: number) => (string: string) =>
-  string.slice(0, length)
+const maxLength =
+  <Length extends number>(length: Length) =>
+  <S extends string>(string: S) =>
+    string.slice(0, length)
+
 const maxLength70 = maxLength(70)
 const maxLength160 = maxLength(160)
 
@@ -48,8 +56,8 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
     siteUrl,
     buildTime,
     defaultImage,
-    // @ts-ignore
-    keywords,
+    
+    // keywords,
     defaultLocale,
     defaultLanguage,
     social: { twitterHandle },
@@ -65,7 +73,9 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
     url: `${siteUrl}${pathname || localPathname}`,
     siteLanguage: siteLanguage || defaultLanguage,
     siteLocale: siteLocale || defaultLocale,
-    datePublished: datePublished ? null : new Date(Date.now()).toISOString(),
+    datePublished: datePublished
+      ? undefined
+      : new Date(Date.now()).toISOString(),
     dateModified: dateModified || new Date(buildTime).toISOString(),
     author: author || defaultAuthor,
     image: image || defaultImage,
@@ -79,111 +89,6 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
   // Structured Data Testing Tool >>
   // https://search.google.com/structured-data/testing-tool
 
-  const schemaOrgWebPage: WebPage = {
-    '@context': 'http://schema.org',
-    '@type': 'WebPage',
-    url: siteUrl,
-    headline: seo.description,
-    inLanguage: siteLanguage,
-    mainEntityOfPage: siteUrl,
-    description: seo.description,
-    name: seo.title,
-    author: {
-      '@type': 'Person',
-      name: seo.author,
-    },
-    copyrightHolder: {
-      '@type': 'Person',
-      name: seo.author,
-    },
-    copyrightYear,
-    creator: {
-      '@type': 'Person',
-      name: seo.author,
-    },
-    publisher: {
-      '@type': 'Person',
-      name: seo.author,
-    },
-    datePublished: seo.datePublished,
-    dateModified: seo.dateModified,
-    image: {
-      '@type': 'ImageObject',
-      url: seo.image,
-    },
-  }
-
-  // Initial breadcrumb list
-
-  const itemListElement: ListItem[] = [
-    {
-      '@type': 'ListItem',
-      item: {
-        '@id': siteUrl,
-        name: 'Homepage',
-      },
-      position: 1,
-    },
-  ]
-
-  let schemaArticle: Article | null = null
-
-  if (article) {
-    schemaArticle = {
-      '@context': 'http://schema.org',
-      '@type': 'Article',
-      author: {
-        '@type': 'Person',
-        name: seo.author,
-      },
-      copyrightHolder: {
-        '@type': 'Person',
-        name: seo.author,
-      },
-      copyrightYear,
-      creator: {
-        '@type': 'Person',
-        name: seo.author,
-      },
-      publisher: {
-        '@type': 'Organization',
-        name: seo.author,
-        logo: {
-          '@type': 'ImageObject',
-          url: `${siteUrl}${defaultImage}`,
-        },
-      },
-      datePublished: seo.datePublished,
-      dateModified: seo.dateModified,
-      description: seo.description,
-      headline: seo.title,
-      inLanguage: siteLanguage,
-      url: seo.url,
-      name: seo.title,
-      image: {
-        '@type': 'ImageObject',
-        url: seo.image,
-      },
-      mainEntityOfPage: seo.url,
-    }
-    // Push current blog post into breadcrumb list
-    itemListElement.push({
-      '@type': 'ListItem',
-      item: {
-        '@id': seo.url,
-        name: seo.title,
-      },
-      position: 2,
-    })
-  }
-
-  const breadcrumb: BreadcrumbList = {
-    '@type': 'BreadcrumbList',
-    description: 'Breadcrumbs list',
-    name: 'Breadcrumbs',
-    itemListElement,
-  }
-
   return (
     <>
       <Helmet title={seo.title} titleTemplate={seo.titleTemplate}>
@@ -192,17 +97,117 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
 
-        {!article && (
-          <script type="application/ld+json">
-            {JSON.stringify(schemaOrgWebPage)}
-          </script>
+        {article ? (
+          // it is a blog article
+          <>
+            <ScriptLdJSON
+              schema={makeSchemaBlogPosting({
+                author: {
+                  '@type': 'Person',
+                  name: seo.author,
+                },
+                copyrightHolder: {
+                  '@type': 'Person',
+                  name: seo.author,
+                },
+                copyrightYear,
+                creator: {
+                  '@type': 'Person',
+                  name: seo.author,
+                },
+                publisher: {
+                  '@type': 'Organization',
+                  name: seo.author,
+                  logo: {
+                    '@type': 'ImageObject',
+                    url: `${siteUrl}${defaultImage}`,
+                  },
+                },
+                datePublished: seo.datePublished,
+                dateModified: seo.dateModified,
+                description: seo.description,
+                headline: seo.title,
+                inLanguage: siteLanguage,
+                url: seo.url,
+                name: seo.title,
+                image: {
+                  '@type': 'ImageObject',
+                  url: seo.image,
+                },
+                mainEntityOfPage: seo.url,
+              })}
+            />
+            <ScriptLdJSON
+              schema={makeSchemaBreadcrumbList([
+                {
+                  '@type': 'ListItem',
+                  item: {
+                    '@id': siteUrl,
+                    name: 'Homepage',
+                  },
+                  position: 1,
+                },
+                {
+                  '@type': 'ListItem',
+                  item: {
+                    '@id': seo.url,
+                    name: seo.title,
+                  },
+                  position: 2,
+                },
+              ])}
+            />
+          </>
+        ) : (
+          // it is a regular webpage
+          <>
+            <ScriptLdJSON
+              schema={makeSchemaWebPage({
+                url: siteUrl,
+                headline: seo.description,
+                inLanguage: siteLanguage,
+                mainEntityOfPage: siteUrl,
+                description: seo.description,
+                name: seo.title,
+                author: {
+                  '@type': 'Person',
+                  name: seo.author,
+                },
+                copyrightHolder: {
+                  '@type': 'Person',
+                  name: seo.author,
+                },
+                copyrightYear,
+                creator: {
+                  '@type': 'Person',
+                  name: seo.author,
+                },
+                publisher: {
+                  '@type': 'Person',
+                  name: seo.author,
+                },
+                datePublished: seo.datePublished || undefined,
+                dateModified: seo.dateModified,
+                image: {
+                  '@type': 'ImageObject',
+                  url: seo.image,
+                },
+              })}
+            />
+            <ScriptLdJSON
+              schema={makeSchemaBreadcrumbList([
+                {
+                  '@type': 'ListItem',
+                  item: {
+                    '@id': siteUrl,
+                    name: 'Homepage',
+                  },
+                  position: 1,
+                },
+              ])}
+            />
+          </>
         )}
-        {article && (
-          <script type="application/ld+json">
-            {JSON.stringify(schemaArticle)}
-          </script>
-        )}
-        <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
       </Helmet>
 
       <>
