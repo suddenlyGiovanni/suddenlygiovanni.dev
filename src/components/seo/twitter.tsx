@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet'
+import { MetaOpenGraph } from './meta.open-graph'
 
 interface Props {
   username: string
@@ -16,11 +17,13 @@ export const Twitter: React.VFC<Props> = ({
   image,
 }) => (
   <Helmet>
-    {username && <meta name="twitter:creator" content={username} />}
-    <meta name="twitter:card" content={type} />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={desc} />
-    <meta name="twitter:image" content={image} />
-    <meta name="twitter:image:alt" content={desc} />
+    {username && (
+      <MetaOpenGraph property="twitter:creator" content={username} />
+    )}
+    <MetaOpenGraph property="twitter:card" content={type} />
+    <MetaOpenGraph property="twitter:title" content={title} />
+    <MetaOpenGraph property="twitter:description" content={desc} />
+    <MetaOpenGraph property="twitter:image" content={image} />
+    <MetaOpenGraph property="twitter:image:alt" content={desc} />
   </Helmet>
 )
