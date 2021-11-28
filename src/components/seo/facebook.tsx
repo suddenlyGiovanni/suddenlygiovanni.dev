@@ -1,8 +1,10 @@
 import { Helmet } from 'react-helmet'
 
+import { MetaOpenGraph } from './meta.open-graph'
+
 interface Props {
   url: string
-  type: string
+  type: 'article' | 'website'
   title: string
   desc: string
   image: string
@@ -18,12 +20,12 @@ export const Facebook: React.VFC<Props> = ({
   locale,
 }) => (
   <Helmet>
-    <meta property="og:locale" content={locale} />
-    <meta property="og:url" content={url} />
-    <meta property="og:type" content={type} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={desc} />
-    <meta property="og:image" content={image} />
-    <meta property="og:image:alt" content={desc} />
+    <MetaOpenGraph property="og:type" content={type} />
+    <MetaOpenGraph property="og:locale" content={locale} />
+    <MetaOpenGraph property="og:url" content={url} />
+    <MetaOpenGraph property="og:title" content={title} />
+    <MetaOpenGraph property="og:description" content={desc} />
+    <MetaOpenGraph property="og:image" content={image} />
+    <MetaOpenGraph property="og:image:alt" content={desc} />
   </Helmet>
 )
