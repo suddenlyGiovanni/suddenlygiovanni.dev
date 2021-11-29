@@ -1,6 +1,7 @@
+import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import { MetaOpenGraph } from './meta.open-graph'
+import MetaOpenGraphProtocol, { Types } from './meta.open-graph-protocol'
 
 interface Props {
   url: string
@@ -20,12 +21,21 @@ export const Facebook: React.VFC<Props> = ({
   locale,
 }) => (
   <Helmet>
-    <MetaOpenGraph property="og:type" content={type} />
-    <MetaOpenGraph property="og:locale" content={locale} />
-    <MetaOpenGraph property="og:url" content={url} />
-    <MetaOpenGraph property="og:title" content={title} />
-    <MetaOpenGraph property="og:description" content={desc} />
-    <MetaOpenGraph property="og:image" content={image} />
-    <MetaOpenGraph property="og:image:alt" content={desc} />
+    <MetaOpenGraphProtocol property="og:type" content={Types.String(type)} />
+    <MetaOpenGraphProtocol
+      property="og:locale"
+      content={Types.String(locale)}
+    />
+    <MetaOpenGraphProtocol property="og:url" content={Types.URL(url)} />
+    <MetaOpenGraphProtocol property="og:title" content={Types.String(title)} />
+    <MetaOpenGraphProtocol
+      property="og:description"
+      content={Types.String(desc)}
+    />
+    <MetaOpenGraphProtocol property="og:image" content={Types.URL(image)} />
+    <MetaOpenGraphProtocol
+      property="og:image:alt"
+      content={Types.String(desc)}
+    />
   </Helmet>
 )
