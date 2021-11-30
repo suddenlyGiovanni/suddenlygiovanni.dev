@@ -9,10 +9,12 @@
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/seo/meta.open-graph-protocol.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/meta.open-graph-protocol.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/seo/script-ld-json.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/script-ld-json.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/seo/seo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/seo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/seo/structured-data.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/structured-data.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/templates/blog-post-template.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/blog-post-template.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/gatsby-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/gatsby-types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +90,12 @@
   <component name="JsbtTreeLayoutManager">
     <layout place="tools.popupnpm">
       <scroll-view-position x="0" y="0" />
+      <selected-paths>
+        <path>
+          <id value="$PROJECT_DIR$/package.json" />
+          <id value="develop" />
+        </path>
+      </selected-paths>
     </layout>
     <layout place="tools.popupGrunt">
       <scroll-view-position x="0" y="0" />
@@ -100,6 +108,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
@@ -120,7 +129,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="code.cleanup.on.save" value="true" />
-    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="JavaScript&#10;PLAIN_TEXT" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="HTML&#10;TEXT&#10;TypeScript&#10;JavaScript" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="17.0.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="16.11.9" />
@@ -138,7 +147,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="rearrange.code.on.save" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.js.occurrences" value="false" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
@@ -161,6 +170,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/lib/array.ts" />
       <recent name="$PROJECT_DIR$/config/config.ts" />
       <recent name="$PROJECT_DIR$/src/lib/links-map.ts" />
       <recent name="$PROJECT_DIR$/gatsby/gatsby-plugin-style-components.ts" />
@@ -187,21 +197,21 @@
       <envs />
       <method v="2" />
     </configuration>
-    <configuration name="format" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
-      <package-json value="$PROJECT_DIR$/package.json" />
-      <command value="run" />
-      <scripts>
-        <script value="format" />
-      </scripts>
-      <node-interpreter value="project" />
-      <envs />
-      <method v="2" />
-    </configuration>
     <configuration name="serve" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="serve" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
       </scripts>
       <node-interpreter value="project" />
       <envs />
@@ -220,17 +230,17 @@
     <list>
       <item itemvalue="npm.clean" />
       <item itemvalue="npm.develop" />
-      <item itemvalue="npm.format" />
       <item itemvalue="npm.serve" />
       <item itemvalue="npm.test" />
+      <item itemvalue="npm.start" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.test" />
-        <item itemvalue="npm.serve" />
-        <item itemvalue="npm.format" />
         <item itemvalue="npm.develop" />
         <item itemvalue="npm.clean" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.test" />
+        <item itemvalue="npm.serve" />
       </list>
     </recent_temporary>
   </component>
@@ -302,7 +312,21 @@
       <workItem from="1637842284252" duration="8000" />
       <workItem from="1637845827573" duration="463000" />
       <workItem from="1637846305910" duration="3305000" />
-      <workItem from="1637943344335" duration="80000" />
+      <workItem from="1637943344335" duration="1827000" />
+      <workItem from="1638033674173" duration="44000" />
+      <workItem from="1638100337101" duration="20945000" />
+      <workItem from="1638179287487" duration="2814000" />
+      <workItem from="1638182550162" duration="399000" />
+      <workItem from="1638182992419" duration="4007000" />
+      <workItem from="1638187062147" duration="134000" />
+      <workItem from="1638188745108" duration="378000" />
+      <workItem from="1638189205404" duration="568000" />
+      <workItem from="1638189911699" duration="8508000" />
+      <workItem from="1638210674682" duration="14367000" />
+      <workItem from="1638267851272" duration="6386000" />
+      <workItem from="1638275138228" duration="1638000" />
+      <workItem from="1638278903601" duration="19434000" />
+      <workItem from="1638300542590" duration="2808000" />
     </task>
     <servers />
   </component>
@@ -327,11 +351,106 @@
             <State>
               <option name="CUSTOM_BOOLEAN_PROPERTIES">
                 <map>
-                  <entry key="Show.Git.Branches" value="true" />
+                  <entry key="Show.Git.Branches" value="false" />
                 </map>
               </option>
-              <option name="LONG_EDGES_VISIBLE" value="true" />
               <option name="BEK_SORT_TYPE" value="1" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="date">
+                    <value>
+                      <list>
+                        <option value="1635624547047" />
+                        <option value="" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="a2814b64-6d79-463a-b646-ff5cff8f34e5">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="date">
+                    <value>
+                      <list>
+                        <option value="1635624547047" />
+                        <option value="" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="ab56a6b9-b0f2-44a1-b5b8-3da4ed4829d1">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="date">
+                    <value>
+                      <list>
+                        <option value="1635624547047" />
+                        <option value="" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="e9d7acd2-994a-4f48-87b3-1c4a3d898b3e">
+          <value>
+            <State>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">

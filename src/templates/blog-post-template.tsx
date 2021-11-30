@@ -4,7 +4,8 @@ import * as React from 'react'
 import styled from 'styled-components'
 
 import { routesMap } from '../../config'
-import { ReadLink, SEO } from '../components'
+import config from '../../config/config'
+import { ReadLink, SEOBase } from '../components'
 
 /**
  * this graphql query will be called by gatsby-node at build time and its
@@ -89,12 +90,14 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
 
   return (
     <>
-      <SEO
+      <SEOBase
+        title={config.siteTitle}
+        url={config.siteUrl}
         titleTemplate={title}
         description={post.fields?.description || 'nothing'}
-        datePublished={new Date(post.fields?.date!).toISOString()}
-        dateModified={new Date(Date.now()).toISOString()}
-        article
+        // datePublished={new Date(post.fields?.date!).toISOString()}
+        // dateModified={new Date(Date.now()).toISOString()}
+        // isBlogPost={true}
       />
       <h1>{title}</h1>
       <PostedBy>

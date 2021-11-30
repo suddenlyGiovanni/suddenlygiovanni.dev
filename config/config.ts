@@ -1,5 +1,7 @@
 const config = {
   author: 'Giovanni Ravalico', // Author for schemaORGJSONLD
+  publisher: 'suddenlyGiovanni',
+  generator: 'GatsbyJS',
   siteLanguage: 'en-US',
   siteLocale: 'en_us',
   siteTitleTemplate: 'Engineering Blog',

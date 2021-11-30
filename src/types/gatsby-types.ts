@@ -4443,30 +4443,6 @@ type SiteMetadataQuery = { readonly site: Maybe<(
     )> }
   )> };
 
-type ResumeQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type ResumeQuery = { readonly resumeJson: Maybe<{ readonly basics: Maybe<(
-      Pick<ResumeJsonBasics, 'email' | 'image' | 'label' | 'name' | 'phone' | 'summary' | 'url'>
-      & { readonly profiles: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonBasicsProfiles, 'network' | 'url' | 'username'>>>>, readonly location: Maybe<Pick<ResumeJsonBasicsLocation, 'address' | 'city' | 'countryCode' | 'postalCode' | 'region'>> }
-    )>, readonly work: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonWork, 'description' | 'endDate' | 'highlights' | 'location' | 'name' | 'position' | 'startDate' | 'summary' | 'url'>>>>, readonly education: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonEducation, 'area' | 'courses' | 'endDate' | 'gpa' | 'institution' | 'location' | 'startDate' | 'studyType' | 'url'>>>>, readonly skills: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonSkills, 'keywords' | 'level' | 'name'>>>>, readonly languages: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonLanguages, 'fluency' | 'language'>>>>, readonly interests: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonInterests, 'keywords' | 'name'>>>>, readonly meta: Maybe<Pick<ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>> }> };
-
-type BlogPostDetailsFragment = (
-  Pick<Mdx, 'fileAbsolutePath' | 'id' | 'excerpt'>
-  & { readonly fields: Maybe<Pick<MdxFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'author' | 'date' | 'description' | 'banner' | 'bannerCredit' | 'published' | 'unlisted' | 'redirects'>>, readonly parent: Maybe<Pick<File, 'name' | 'sourceInstanceName'>> }
-);
-
-type CreatePagesDataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type CreatePagesDataQuery = { readonly allMdx: { readonly blogPosts: ReadonlyArray<{ readonly blogPost: BlogPostDetailsFragment, readonly next: Maybe<(
-        Pick<Mdx, 'id' | 'fileAbsolutePath'>
-        & { readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
-      )>, readonly previous: Maybe<(
-        Pick<Mdx, 'id' | 'fileAbsolutePath'>
-        & { readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
-      )> }> } };
-
 type PostByIdQueryVariables = Exact<{
   id: Scalars['String'];
 }>;
@@ -4476,11 +4452,6 @@ type PostByIdQuery = { readonly post: Maybe<(
     Pick<Mdx, 'body'>
     & { readonly fields: Maybe<Pick<MdxFields, 'id' | 'published' | 'title' | 'author' | 'description' | 'slug' | 'date' | 'categories' | 'redirects' | 'editLink' | 'historyLink'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'unlisted'>> }
   )> };
-
-type GetResumePdfURLQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type GetResumePdfURLQuery = { readonly file: Maybe<Pick<File, 'id' | 'publicURL'>> };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
@@ -4517,6 +4488,35 @@ type PostsPreviewsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type PostsPreviewsQuery = { readonly allMdx: { readonly posts: ReadonlyArray<PostPreviewDataFragment> } };
+
+type BlogPostDetailsFragment = (
+  Pick<Mdx, 'fileAbsolutePath' | 'id' | 'excerpt'>
+  & { readonly fields: Maybe<Pick<MdxFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'author' | 'date' | 'description' | 'banner' | 'bannerCredit' | 'published' | 'unlisted' | 'redirects'>>, readonly parent: Maybe<Pick<File, 'name' | 'sourceInstanceName'>> }
+);
+
+type CreatePagesDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type CreatePagesDataQuery = { readonly allMdx: { readonly blogPosts: ReadonlyArray<{ readonly blogPost: BlogPostDetailsFragment, readonly next: Maybe<(
+        Pick<Mdx, 'id' | 'fileAbsolutePath'>
+        & { readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
+      )>, readonly previous: Maybe<(
+        Pick<Mdx, 'id' | 'fileAbsolutePath'>
+        & { readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
+      )> }> } };
+
+type GetResumePdfURLQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type GetResumePdfURLQuery = { readonly file: Maybe<Pick<File, 'id' | 'publicURL'>> };
+
+type ResumeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type ResumeQuery = { readonly resumeJson: Maybe<{ readonly basics: Maybe<(
+      Pick<ResumeJsonBasics, 'email' | 'image' | 'label' | 'name' | 'phone' | 'summary' | 'url'>
+      & { readonly profiles: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonBasicsProfiles, 'network' | 'url' | 'username'>>>>, readonly location: Maybe<Pick<ResumeJsonBasicsLocation, 'address' | 'city' | 'countryCode' | 'postalCode' | 'region'>> }
+    )>, readonly work: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonWork, 'description' | 'endDate' | 'highlights' | 'location' | 'name' | 'position' | 'startDate' | 'summary' | 'url'>>>>, readonly education: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonEducation, 'area' | 'courses' | 'endDate' | 'gpa' | 'institution' | 'location' | 'startDate' | 'studyType' | 'url'>>>>, readonly skills: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonSkills, 'keywords' | 'level' | 'name'>>>>, readonly languages: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonLanguages, 'fluency' | 'language'>>>>, readonly interests: Maybe<ReadonlyArray<Maybe<Pick<ResumeJsonInterests, 'keywords' | 'name'>>>>, readonly meta: Maybe<Pick<ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>> }> };
 
 type PagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

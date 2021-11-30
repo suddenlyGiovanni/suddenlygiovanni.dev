@@ -2,6 +2,7 @@ import { useLocation } from '@reach/router'
 import { Helmet } from 'react-helmet'
 
 import { useSiteMetadata } from '../../hooks'
+import * as Strings from '../../lib/string'
 import { Facebook } from './facebook'
 import { ScriptLdJSON } from './script-ld-json'
 import {
@@ -11,13 +12,8 @@ import {
 } from './structured-data'
 import { Twitter } from './twitter'
 
-const maxLength =
-  <Length extends number>(length: Length) =>
-  <S extends string>(string: S) =>
-    string.slice(0, length)
-
-const maxLength70 = maxLength(70)
-const maxLength160 = maxLength(160)
+const maxLength70 = Strings.maxLength(70)
+const maxLength160 = Strings.maxLength(160)
 
 interface Props {
   title: string
@@ -56,7 +52,7 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
     siteUrl,
     buildTime,
     defaultImage,
-    
+
     // keywords,
     defaultLocale,
     defaultLanguage,
