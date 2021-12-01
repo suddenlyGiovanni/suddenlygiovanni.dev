@@ -6,11 +6,11 @@ interface Props {
   title: string
   desc: string
   image: string
-  type?: string
+  type?: 'summary_large_image' | 'summary' | 'app'
 }
 
 export const Twitter: React.VFC<Props> = ({
-  type = 'summary_large_image',
+  type = 'summary_large_image' as const,
   username,
   title,
   desc,
@@ -25,7 +25,7 @@ export const Twitter: React.VFC<Props> = ({
     )}
     <MetaOpenGraphProtocol
       property="twitter:card"
-      content={Types.String(type)}
+      content={Types.Enum('summary_large_image', 'summary', 'app')(type)}
     />
     <MetaOpenGraphProtocol
       property="twitter:title"

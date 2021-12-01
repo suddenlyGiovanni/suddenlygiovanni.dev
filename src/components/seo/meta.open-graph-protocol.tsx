@@ -105,9 +105,10 @@ export namespace Types {
   /**
    * converts a union of string to a OpenGraph `Enum`
    * @example
-   * const instanceOfEnum:Types.Enum<'foo' | 'bar'> = Types.Enum('foo')
+   * const instanceOfEnum:Types.Enum<'foo' | 'bar'> = Types.Enum('foo', 'bar')('foo')
    */
-  export const Enum = make<Enum>()
+  export const Enum = <T extends string = string>(..._enums: T[]) =>
+    make<Enum<T>>()
 
   /**
    * The Disjoint union type of all the possible Open Graph Protocol types
@@ -1033,7 +1034,9 @@ interface TwitterMetadataBase<
  * Used with all cards
  */
 interface TwitterCard
-  extends TwitterMetadataBase<twitter<'card'>, Types.String> {}
+  extends TwitterMetadataBase<twitter<'card'>,
+    Types.Enum<'summary_large_image' | 'summary' | 'app'>> {
+}
 
 /**
  * @username of website. Either twitter:site or twitter:site:id is required.

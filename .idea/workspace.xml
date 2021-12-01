@@ -9,12 +9,8 @@
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/seo/meta.open-graph-protocol.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/meta.open-graph-protocol.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/seo/script-ld-json.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/script-ld-json.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/seo/seo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/seo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layouts/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/templates/blog-post-template.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/templates/blog-post-template.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/gatsby-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/gatsby-types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +104,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
@@ -326,7 +322,8 @@
       <workItem from="1638267851272" duration="6386000" />
       <workItem from="1638275138228" duration="1638000" />
       <workItem from="1638278903601" duration="19434000" />
-      <workItem from="1638300542590" duration="2808000" />
+      <workItem from="1638300542590" duration="4106000" />
+      <workItem from="1638359980753" duration="2689000" />
     </task>
     <servers />
   </component>
