@@ -2,10 +2,12 @@ import { graphql, useStaticQuery } from 'gatsby'
 import styled from 'styled-components'
 
 import type { Route } from '../../config'
-import { Container } from './container'
-import { NavDesktop } from './nav-desktop'
-import { NavMobile } from './nav-mobile'
-import { SuddenlyGiovanni } from './suddenly-giovanni'
+import {
+  Container,
+  NavDesktop,
+  NavMobile,
+  SuddenlyGiovanni,
+} from '../components'
 
 const HeaderStyled = styled.header`
   z-index: 10;
