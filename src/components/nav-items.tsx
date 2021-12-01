@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { Route } from '../../config'
+import type { Route } from '../lib/routes-map'
 import { NavLink } from './nav-link'
 
 interface Props

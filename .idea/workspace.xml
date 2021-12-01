@@ -101,7 +101,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
@@ -155,11 +155,11 @@
       <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/lib/" />
       <recent name="$PROJECT_DIR$/src/layouts/" />
       <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/src/components" />
       <recent name="$PROJECT_DIR$/src/components/main" />
-      <recent name="$PROJECT_DIR$/src/components/header" />
     </key>
     <key name="es6.move.members.recent.items">
       <recent name="$PROJECT_DIR$/src/lib/array.ts" />
@@ -319,7 +319,7 @@
       <workItem from="1638275138228" duration="1638000" />
       <workItem from="1638278903601" duration="19434000" />
       <workItem from="1638300542590" duration="4106000" />
-      <workItem from="1638359980753" duration="7247000" />
+      <workItem from="1638359980753" duration="7753000" />
     </task>
     <servers />
   </component>
@@ -530,9 +530,9 @@
     <select />
   </component>
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
-    <type>refactor</type>
-    <scope>layouts</scope>
-    <subject>centralized</subject>
+    <type>chore</type>
+    <scope>dependencies</scope>
+    <subject>upgrade to gatsby 4.3</subject>
     <footers>
       <entry type="" value="" />
     </footers>

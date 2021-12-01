@@ -12,7 +12,7 @@ export interface Route<
   /** Route Url */
   readonly url: URL
 
-  /** The human readable route name */
+  /** The human-readable route name */
   readonly title: Title
 
   /** Route description */

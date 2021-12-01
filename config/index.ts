@@ -1,7 +1,7 @@
 import type { GatsbyConfig } from 'gatsby'
 
+import { Route, RoutesMap } from '../src/lib/routes-map'
 import conf from './config'
-import { Route, RoutesMap } from './routes-map'
 
 export interface BlogRoute
   extends Route<'blog', '/blog', 'blog', 'Go to blog page', false, false> {}
@@ -117,5 +117,4 @@ export const siteMetadata: GatsbyConfig['siteMetadata'] = {
   },
 }
 
-export * from './routes-map'
 export * as config from './config'
