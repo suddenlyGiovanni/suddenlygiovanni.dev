@@ -86,7 +86,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="clean" />
+          <id value="develop" />
         </path>
       </selected-paths>
     </layout>
@@ -101,7 +101,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
@@ -228,8 +228,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.clean" />
         <item itemvalue="npm.develop" />
+        <item itemvalue="npm.clean" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.serve" />
@@ -319,7 +319,7 @@
       <workItem from="1638275138228" duration="1638000" />
       <workItem from="1638278903601" duration="19434000" />
       <workItem from="1638300542590" duration="4106000" />
-      <workItem from="1638359980753" duration="6894000" />
+      <workItem from="1638359980753" duration="7247000" />
     </task>
     <servers />
   </component>
@@ -531,8 +531,8 @@
   </component>
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
     <type>refactor</type>
-    <scope>components/seo</scope>
-    <subject>replace SEO usage for SEOBase</subject>
+    <scope>layouts</scope>
+    <subject>centralized</subject>
     <footers>
       <entry type="" value="" />
     </footers>
