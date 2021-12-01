@@ -1,11 +1,11 @@
 import type { Thing } from 'schema-dts'
 
-export function ScriptLdJSON<Schema extends Thing>(props: {
+export function scriptLdJSON<Schema extends Thing>(
   schema: Schema
-}): JSX.Element {
+): JSX.IntrinsicElements['script'] {
   return (
     <script type="application/ld+json">
-      {JSON.stringify(props.schema, null, 2)}
+      {JSON.stringify(schema, null, 2)}
     </script>
   )
 }

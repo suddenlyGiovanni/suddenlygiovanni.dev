@@ -4,9 +4,16 @@ description: What I value in a working environment
 ---
 
 
-
 import { routesMap } from '../../config'
-import { ReadLink } from '../components'
+import config from '../../config/config'
+import { ReadLink, SEOBase } from '../components'
+
+<SEOBase
+  title={config.siteTitle}
+  titleTemplate="Motivations"
+  description={'What I value in a working environment'}
+  url={config.siteUrl + routesMap.getRoute('motivations').url}
+/>
 
 # My Motivations
 Over the years, I have learned how and under which conditions I like to work, what drives me, and which criteria enhance my productivity and happiness.

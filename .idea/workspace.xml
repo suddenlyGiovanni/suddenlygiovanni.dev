@@ -122,7 +122,6 @@
     <property name="GitStage.ChangesTree.GroupingKeys" value="directory&#10;module&#10;repository" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="code.cleanup.on.save" value="true" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="HTML&#10;TEXT&#10;TypeScript&#10;JavaScript" />
@@ -323,7 +322,7 @@
       <workItem from="1638275138228" duration="1638000" />
       <workItem from="1638278903601" duration="19434000" />
       <workItem from="1638300542590" duration="4106000" />
-      <workItem from="1638359980753" duration="2689000" />
+      <workItem from="1638359980753" duration="5672000" />
     </task>
     <servers />
   </component>
@@ -507,7 +506,8 @@
     <MESSAGE value="refactor(components/mdx): add mdx code support" />
     <MESSAGE value="refactor(components): add link and wave" />
     <MESSAGE value="feat(hooks): add usePostPreviews" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(hooks): add usePostPreviews" />
+    <MESSAGE value="fix(components/seo/twitter): twitter card requires enum in place of naked string&#10;&#10;```&#10;&lt;MetaOpenGraphProtocol&#10;   property=&quot;twitter:card&quot;&#10;   content={Types.String(type)}&#10;/&gt;&#10;&#10;//&#10;&lt;MetaOpenGraphProtocol&#10;    property=&quot;twitter:card&quot;&#10;    content={&#10;        Types.Enum('summary_large_image', 'summary', 'app')(type)&#10;    }&#10;/&gt;    &#10;```" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix(components/seo/twitter): twitter card requires enum in place of naked string&#10;&#10;```&#10;&lt;MetaOpenGraphProtocol&#10;   property=&quot;twitter:card&quot;&#10;   content={Types.String(type)}&#10;/&gt;&#10;&#10;//&#10;&lt;MetaOpenGraphProtocol&#10;    property=&quot;twitter:card&quot;&#10;    content={&#10;        Types.Enum('summary_large_image', 'summary', 'app')(type)&#10;    }&#10;/&gt;    &#10;```" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -531,5 +531,13 @@
       </path>
     </expand>
     <select />
+  </component>
+  <component name="com.github.lppedd.cc.CommitBuilderDialog">
+    <type>fix</type>
+    <scope>components/seo/twitter</scope>
+    <subject>twitter card requires enum in place of naked string</subject>
+    <footers>
+      <entry type="" value="" />
+    </footers>
   </component>
 </project>

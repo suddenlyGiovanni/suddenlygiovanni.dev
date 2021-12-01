@@ -1034,9 +1034,10 @@ interface TwitterMetadataBase<
  * Used with all cards
  */
 interface TwitterCard
-  extends TwitterMetadataBase<twitter<'card'>,
-    Types.Enum<'summary_large_image' | 'summary' | 'app'>> {
-}
+  extends TwitterMetadataBase<
+    twitter<'card'>,
+    Types.Enum<'summary_large_image' | 'summary' | 'app'>
+  > {}
 
 /**
  * @username of website. Either twitter:site or twitter:site:id is required.

@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 import { useSiteMetadata } from '../../hooks'
 import * as Strings from '../../lib/string'
 import { Facebook } from './facebook'
-import { ScriptLdJSON } from './script-ld-json'
+import { scriptLdJSON } from './script-ld-json'
 import {
   makeSchemaBlogPosting,
   makeSchemaBreadcrumbList,
@@ -20,7 +20,7 @@ interface Props {
   titleTemplate: string
   description: string
   pathname: string
-  article: boolean
+  isBlogPost: boolean
   image: string
   siteLanguage: string
   siteLocale: string
@@ -34,7 +34,7 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
   titleTemplate,
   description,
   pathname,
-  article = false,
+  isBlogPost = false,
   image,
   siteLanguage,
   siteLocale,
@@ -85,6 +85,116 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
   // Structured Data Testing Tool >>
   // https://search.google.com/structured-data/testing-tool
 
+  const Schema = isBlogPost
+    ? [
+        // it is a blog article
+        scriptLdJSON(
+          makeSchemaBlogPosting({
+            author: {
+              '@type': 'Person',
+              name: seo.author,
+            },
+            copyrightHolder: {
+              '@type': 'Person',
+              name: seo.author,
+            },
+            copyrightYear,
+            creator: {
+              '@type': 'Person',
+              name: seo.author,
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: seo.author,
+              logo: {
+                '@type': 'ImageObject',
+                url: `${siteUrl}${defaultImage}`,
+              },
+            },
+            datePublished: seo.datePublished,
+            dateModified: seo.dateModified,
+            description: seo.description,
+            headline: seo.title,
+            inLanguage: siteLanguage,
+            url: seo.url,
+            name: seo.title,
+            image: {
+              '@type': 'ImageObject',
+              url: seo.image,
+            },
+            mainEntityOfPage: seo.url,
+          })
+        ),
+        scriptLdJSON(
+          makeSchemaBreadcrumbList([
+            {
+              '@type': 'ListItem',
+              item: {
+                '@id': siteUrl,
+                name: 'Homepage',
+              },
+              position: 1,
+            },
+            {
+              '@type': 'ListItem',
+              item: {
+                '@id': seo.url,
+                name: seo.title,
+              },
+              position: 2,
+            },
+          ])
+        ),
+      ]
+    : [
+        // it is a regular webpage
+        scriptLdJSON(
+          makeSchemaWebPage({
+            url: siteUrl,
+            headline: seo.description,
+            inLanguage: siteLanguage,
+            mainEntityOfPage: siteUrl,
+            description: seo.description,
+            name: seo.title,
+            author: {
+              '@type': 'Person',
+              name: seo.author,
+            },
+            copyrightHolder: {
+              '@type': 'Person',
+              name: seo.author,
+            },
+            copyrightYear,
+            creator: {
+              '@type': 'Person',
+              name: seo.author,
+            },
+            publisher: {
+              '@type': 'Person',
+              name: seo.author,
+            },
+            datePublished: seo.datePublished || undefined,
+            dateModified: seo.dateModified,
+            image: {
+              '@type': 'ImageObject',
+              url: seo.image,
+            },
+          })
+        ),
+        scriptLdJSON(
+          makeSchemaBreadcrumbList([
+            {
+              '@type': 'ListItem',
+              item: {
+                '@id': siteUrl,
+                name: 'Homepage',
+              },
+              position: 1,
+            },
+          ])
+        ),
+      ]
+
   return (
     <>
       <Helmet title={seo.title} titleTemplate={seo.titleTemplate}>
@@ -92,118 +202,7 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
         <link rel="canonical" href={seo.url} />
         <meta name="description" content={seo.description} />
         <meta name="image" content={seo.image} />
-
-        {article ? (
-          // it is a blog article
-          <>
-            <ScriptLdJSON
-              schema={makeSchemaBlogPosting({
-                author: {
-                  '@type': 'Person',
-                  name: seo.author,
-                },
-                copyrightHolder: {
-                  '@type': 'Person',
-                  name: seo.author,
-                },
-                copyrightYear,
-                creator: {
-                  '@type': 'Person',
-                  name: seo.author,
-                },
-                publisher: {
-                  '@type': 'Organization',
-                  name: seo.author,
-                  logo: {
-                    '@type': 'ImageObject',
-                    url: `${siteUrl}${defaultImage}`,
-                  },
-                },
-                datePublished: seo.datePublished,
-                dateModified: seo.dateModified,
-                description: seo.description,
-                headline: seo.title,
-                inLanguage: siteLanguage,
-                url: seo.url,
-                name: seo.title,
-                image: {
-                  '@type': 'ImageObject',
-                  url: seo.image,
-                },
-                mainEntityOfPage: seo.url,
-              })}
-            />
-            <ScriptLdJSON
-              schema={makeSchemaBreadcrumbList([
-                {
-                  '@type': 'ListItem',
-                  item: {
-                    '@id': siteUrl,
-                    name: 'Homepage',
-                  },
-                  position: 1,
-                },
-                {
-                  '@type': 'ListItem',
-                  item: {
-                    '@id': seo.url,
-                    name: seo.title,
-                  },
-                  position: 2,
-                },
-              ])}
-            />
-          </>
-        ) : (
-          // it is a regular webpage
-          <>
-            <ScriptLdJSON
-              schema={makeSchemaWebPage({
-                url: siteUrl,
-                headline: seo.description,
-                inLanguage: siteLanguage,
-                mainEntityOfPage: siteUrl,
-                description: seo.description,
-                name: seo.title,
-                author: {
-                  '@type': 'Person',
-                  name: seo.author,
-                },
-                copyrightHolder: {
-                  '@type': 'Person',
-                  name: seo.author,
-                },
-                copyrightYear,
-                creator: {
-                  '@type': 'Person',
-                  name: seo.author,
-                },
-                publisher: {
-                  '@type': 'Person',
-                  name: seo.author,
-                },
-                datePublished: seo.datePublished || undefined,
-                dateModified: seo.dateModified,
-                image: {
-                  '@type': 'ImageObject',
-                  url: seo.image,
-                },
-              })}
-            />
-            <ScriptLdJSON
-              schema={makeSchemaBreadcrumbList([
-                {
-                  '@type': 'ListItem',
-                  item: {
-                    '@id': siteUrl,
-                    name: 'Homepage',
-                  },
-                  position: 1,
-                },
-              ])}
-            />
-          </>
-        )}
+        {Schema}
       </Helmet>
 
       <>
@@ -211,7 +210,7 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
           desc={seo.description}
           image={seo.image}
           title={seo.title}
-          type={article ? 'article' : 'website'}
+          type={isBlogPost ? 'article' : 'website'}
           url={seo.url}
           locale={seo.siteLocale}
         />

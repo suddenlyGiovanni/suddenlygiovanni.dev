@@ -18,7 +18,7 @@ const LayoutContainer = styled.div`
 export const Layout: React.FC = ({ children }) => {
   const { state: isMainDisabled } = React.useContext(navMobileCtx)
   return (
-    <LayoutContainer>
+    <>
       <SEOBase
         title={config.siteTitle}
         titleTemplate={config.siteTitleTemplate}
@@ -34,11 +34,13 @@ export const Layout: React.FC = ({ children }) => {
         googlebot={['index']}
         generator={config.generator}
       />
-      <Header />
-      <MDXProvider components={mdxComponents}>
-        <Main $disabled={isMainDisabled}>{children}</Main>
-      </MDXProvider>
-      <Footer />
-    </LayoutContainer>
+      <LayoutContainer>
+        <Header />
+        <MDXProvider components={mdxComponents}>
+          <Main $disabled={isMainDisabled}>{children}</Main>
+        </MDXProvider>
+        <Footer />
+      </LayoutContainer>
+    </>
   )
 }

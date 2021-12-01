@@ -6,7 +6,15 @@ description: All about Giovanni Ravalico
 
 
 import { routesMap } from '../../config'
-import { DateAndReadingTime, ReadLink } from '../components'
+import config from '../../config/config'
+import { DateAndReadingTime, ReadLink, SEOBase } from '../components'
+
+<SEOBase
+  title={config.siteTitle}
+  titleTemplate="About Me"
+  description={'All about Giovanni Ravalico'}
+  url={config.siteUrl + routesMap.getRoute('about-me').url}
+/>
 
 # Hi! I'm Giovanni 👋
 
