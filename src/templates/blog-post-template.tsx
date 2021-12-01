@@ -3,8 +3,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { routesMap } from '../../config'
-import config from '../../config/config'
+import config, { routesMap } from '../../config'
 import { ReadLink, SEOBase } from '../components'
 
 /**

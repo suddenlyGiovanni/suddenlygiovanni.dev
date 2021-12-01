@@ -139,6 +139,10 @@
   },
   "include": [
     "./src/**/*",
-    "./gatsby/**/*"
+    "./gatsby/**/*",
+    "./gatsby-config.ts",
+    "./gatsby-node.ts",
+    "./gatsby-browser.ts",
+    "./gatsby-ssr.ts"
   ]
 }

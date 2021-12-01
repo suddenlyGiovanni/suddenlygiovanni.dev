@@ -1,5 +1,5 @@
 import { PageProps } from 'gatsby'
-import config from '../../config/config'
+import config from '../../config'
 
 import { SEOBase } from '../components'
 

@@ -21,9 +21,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="GraphQL File" />
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="GraphQL File" />
       </list>
     </option>
   </component>
@@ -101,7 +101,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
@@ -139,7 +139,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="rearrange.code.on.save" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript" />
+    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.js.occurrences" value="false" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
@@ -162,10 +162,11 @@
       <recent name="$PROJECT_DIR$/src/components/main" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/config/index.ts" />
+      <recent name="$PROJECT_DIR$/gatsby-config.ts" />
       <recent name="$PROJECT_DIR$/src/lib/array.ts" />
       <recent name="$PROJECT_DIR$/config/config.ts" />
       <recent name="$PROJECT_DIR$/src/lib/links-map.ts" />
-      <recent name="$PROJECT_DIR$/gatsby/gatsby-plugin-style-components.ts" />
     </key>
   </component>
   <component name="RunManager" selected="npm.develop">
@@ -319,7 +320,7 @@
       <workItem from="1638275138228" duration="1638000" />
       <workItem from="1638278903601" duration="19434000" />
       <workItem from="1638300542590" duration="4106000" />
-      <workItem from="1638359980753" duration="7753000" />
+      <workItem from="1638359980753" duration="17744000" />
     </task>
     <servers />
   </component>
@@ -530,9 +531,9 @@
     <select />
   </component>
   <component name="com.github.lppedd.cc.CommitBuilderDialog">
-    <type>chore</type>
-    <scope>dependencies</scope>
-    <subject>upgrade to gatsby 4.3</subject>
+    <type>refactor</type>
+    <scope>configs/site-map</scope>
+    <subject>move to gatsby-ts</subject>
     <footers>
       <entry type="" value="" />
     </footers>

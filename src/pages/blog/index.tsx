@@ -1,8 +1,7 @@
 import { PageProps } from 'gatsby'
 import * as React from 'react'
 
-import { routesMap } from '../../../config'
-import config from '../../../config/config'
+import config, { routesMap } from '../../../config'
 import { PostPreview, SEOBase } from '../../components'
 import { usePostsPreview } from '../../hooks'
 

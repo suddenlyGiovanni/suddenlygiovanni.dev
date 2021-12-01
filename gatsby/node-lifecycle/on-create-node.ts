@@ -1,7 +1,7 @@
 import type { GatsbyNode, Node } from 'gatsby'
 import { createFilePath } from 'gatsby-source-filesystem'
 
-import config from '../../config/config'
+import config from '../../config'
 
 interface Frontmatter {
   slug: string

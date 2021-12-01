@@ -1,12 +1,9 @@
-import type { GatsbyConfig } from 'gatsby'
-
 import { Route, RoutesMap } from '../src/lib/routes-map'
-import conf from './config'
 
-export interface BlogRoute
+interface BlogRoute
   extends Route<'blog', '/blog', 'blog', 'Go to blog page', false, false> {}
 
-export interface ReadingJournalRoute
+interface ReadingJournalRoute
   extends Route<
     'reading-journal',
     '/reading-journal',
@@ -16,7 +13,7 @@ export interface ReadingJournalRoute
     false
   > {}
 
-export interface AboutMeRoute
+interface AboutMeRoute
   extends Route<
     'about-me',
     '/',
@@ -26,7 +23,7 @@ export interface AboutMeRoute
     false
   > {}
 
-export interface ResumeRoute
+interface ResumeRoute
   extends Route<
     'resume',
     '/resume',
@@ -36,7 +33,7 @@ export interface ResumeRoute
     false
   > {}
 
-export interface MotivationsRoute
+interface MotivationsRoute
   extends Route<
     'motivations',
     '/motivations',
@@ -99,22 +96,42 @@ export const routesMap = RoutesMap.int<Routes>([
   },
 ])
 
-export const siteMetadata: GatsbyConfig['siteMetadata'] = {
-  routes: routesMap.getRoutes(),
-  siteTitle: conf.siteTitle,
-  siteTitleTemplate: conf.siteTitleTemplate,
-  siteDescription: conf.siteDescription,
-  siteUrl: conf.siteUrl,
-  siteImage: conf.image,
-  siteLanguage: conf.siteLanguage,
-  siteLocale: conf.siteLocale,
-  keywords: conf.keywords,
-  author: {
-    name: conf.author,
+export default {
+  author: 'Giovanni Ravalico', // Author for schemaORGJSONLD
+  publisher: 'suddenlyGiovanni',
+  generator: 'GatsbyJS',
+  siteLanguage: 'en-US',
+  siteLocale: 'en_us',
+  siteTitleTemplate: 'Engineering Blog',
+  minibio: `bio`,
+  manifestPathPrefix: '/',
+  siteDescription:
+    "suddenlyGiovanni's personal engineering blog. A Place where I experiment with software and write about my coding journey",
+  siteImage: 'content/assets/giovanni_ravalico-profile_bw.jpg', // Used for SEO and manifest, path to your image you placed in the 'static' folder
+  siteTitle: 'suddenlyGiovanni', // Navigation and Site Title
+  siteTitleAlt: 'The personal website of Giovanni Ravalico', // Alternative Site title for SEO
+  siteTitleShort: 'suddenlyGiovanni', // short_name for manifest
+  siteUrl: process.env.ROOT_URL || 'https://suddenlyGiovanni.dev', // Domain of your site. No trailing slash!
+  manifestThemeColor: '#fff', // Manifest and Progress color
+  manifestBackgroundColor: '#fff',
+  siteKeywords: [
+    'Software Engineer',
+    'Blog',
+    'Strongly Typed',
+    'Functional Programming',
+    'FP',
+  ],
+  twitter: {
+    url: 'https://twitter.com/',
+    handle: '@suddenlyGio',
+    user: '@suddenlyGio',
   },
-  social: {
-    twitterHandle: conf.twitterHandle,
+  github: {
+    url: 'https://github.com/',
+    user: 'suddenlyGiovanni',
   },
-}
-
-export * as config from './config'
+  linkedin: {
+    url: 'https://www.linkedin.com/in/',
+    user: 'giovanni-ravalico/',
+  },
+} as const

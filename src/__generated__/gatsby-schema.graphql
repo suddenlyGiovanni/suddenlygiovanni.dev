@@ -352,27 +352,18 @@ type Site implements Node {
 }
 
 type SiteSiteMetadata {
-  title: String
-  description: String
+  title: String!
+  description: String!
+  author: Author!
+  titleAlt: String!
+  titleTemplate: String!
+  url: String!
+  image: String!
+  language: String!
+  locale: String!
   routes: [Route!]!
-  siteTitle: String
-  siteTitleTemplate: String
-  siteDescription: String
-  siteUrl: String
-  siteImage: String
-  siteLanguage: String
-  siteLocale: String
-  keywords: [String]
-  author: SiteSiteMetadataAuthor
-  social: SiteSiteMetadataSocial
-}
-
-type SiteSiteMetadataAuthor {
-  name: String
-}
-
-type SiteSiteMetadataSocial {
-  twitterHandle: String
+  keywords: [String!]!
+  social: Social!
 }
 
 type SiteFunction implements Node {
@@ -827,6 +818,17 @@ type Route {
   description: String!
   disabled: Boolean!
   hidden: Boolean!
+}
+
+type Author {
+  name: String!
+  summary: String!
+}
+
+type Social {
+  twitter: String!
+  github: String!
+  linkedin: String!
 }
 
 type ResumeJson implements Node {
@@ -2291,17 +2293,21 @@ input DirectorySortInput {
 input SiteSiteMetadataFilterInput {
   title: StringQueryOperatorInput
   description: StringQueryOperatorInput
+  author: AuthorFilterInput
+  titleAlt: StringQueryOperatorInput
+  titleTemplate: StringQueryOperatorInput
+  url: StringQueryOperatorInput
+  image: StringQueryOperatorInput
+  language: StringQueryOperatorInput
+  locale: StringQueryOperatorInput
   routes: RouteFilterListInput
-  siteTitle: StringQueryOperatorInput
-  siteTitleTemplate: StringQueryOperatorInput
-  siteDescription: StringQueryOperatorInput
-  siteUrl: StringQueryOperatorInput
-  siteImage: StringQueryOperatorInput
-  siteLanguage: StringQueryOperatorInput
-  siteLocale: StringQueryOperatorInput
   keywords: StringQueryOperatorInput
-  author: SiteSiteMetadataAuthorFilterInput
-  social: SiteSiteMetadataSocialFilterInput
+  social: SocialFilterInput
+}
+
+input AuthorFilterInput {
+  name: StringQueryOperatorInput
+  summary: StringQueryOperatorInput
 }
 
 input RouteFilterListInput {
@@ -2317,12 +2323,10 @@ input RouteFilterInput {
   hidden: BooleanQueryOperatorInput
 }
 
-input SiteSiteMetadataAuthorFilterInput {
-  name: StringQueryOperatorInput
-}
-
-input SiteSiteMetadataSocialFilterInput {
-  twitterHandle: StringQueryOperatorInput
+input SocialFilterInput {
+  twitter: StringQueryOperatorInput
+  github: StringQueryOperatorInput
+  linkedin: StringQueryOperatorInput
 }
 
 type SiteConnection {
@@ -2347,6 +2351,14 @@ enum SiteFieldsEnum {
   buildTime
   siteMetadata___title
   siteMetadata___description
+  siteMetadata___author___name
+  siteMetadata___author___summary
+  siteMetadata___titleAlt
+  siteMetadata___titleTemplate
+  siteMetadata___url
+  siteMetadata___image
+  siteMetadata___language
+  siteMetadata___locale
   siteMetadata___routes
   siteMetadata___routes___uri
   siteMetadata___routes___url
@@ -2354,16 +2366,10 @@ enum SiteFieldsEnum {
   siteMetadata___routes___description
   siteMetadata___routes___disabled
   siteMetadata___routes___hidden
-  siteMetadata___siteTitle
-  siteMetadata___siteTitleTemplate
-  siteMetadata___siteDescription
-  siteMetadata___siteUrl
-  siteMetadata___siteImage
-  siteMetadata___siteLanguage
-  siteMetadata___siteLocale
   siteMetadata___keywords
-  siteMetadata___author___name
-  siteMetadata___social___twitterHandle
+  siteMetadata___social___twitter
+  siteMetadata___social___github
+  siteMetadata___social___linkedin
   port
   host
   jsxRuntime

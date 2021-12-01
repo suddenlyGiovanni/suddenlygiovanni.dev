@@ -1,7 +1,6 @@
 import { withMetaConfig } from 'gatsby-ts'
 
-import { siteMetadata } from './config'
-import config from './config/config'
+import config, { routesMap } from './config'
 import * as Plugins from './gatsby/plugins'
 
 const gatsbySourceFilesystemBlog =
@@ -21,15 +20,15 @@ const gatsbySourceFilesystemResume =
   })
 
 const gatsbyPluginManifest = Plugins.makeGatsbyManifestPluginConfig({
-  background_color: config.backgroundColor,
+  background_color: config.manifestBackgroundColor,
   description: config.siteDescription,
   display: 'minimal-ui',
   icon: 'content/assets/suddenly_giovanni-icon-white.svg',
   lang: config.siteLanguage,
   name: config.siteTitle,
   short_name: config.siteTitleShort,
-  start_url: config.pathPrefix,
-  theme_color: config.themeColor,
+  start_url: config.manifestPathPrefix,
+  theme_color: config.manifestThemeColor,
 })
 
 const gatsbyPluginStyledComponents =
@@ -79,6 +78,72 @@ const gatsbyPluginMdx = Plugins.makeGatsbyPluginMdxConfig({
 const gatsbyPluginTypography = Plugins.makeGatsbyPluginTypographyConfig({
   pathToConfigModule: 'src/lib/typography',
 })
+
+const siteMetadata: Readonly<GatsbyTypes.SiteSiteMetadata> = {
+  /**
+   * The site Author
+   */
+  author: {
+    /**
+     * Name of the Author
+     */
+    name: config.author,
+    /**
+     * A short summary of the Author
+     */
+    summary: config.minibio,
+  },
+
+  /**
+   * Navigation and Site Title
+   */
+  title: config.siteTitle,
+
+  /**
+   * Alternative Site title for SEO
+   */
+  titleAlt: config.siteTitleAlt,
+
+  /**
+   * Additional Tile parts for base case
+   */
+  titleTemplate: config.siteTitleTemplate,
+
+  /**
+   * Domain of your site. No trailing slash!
+   */
+  url: config.siteUrl,
+
+  /**
+   * Description of the content of the Site
+   */
+  description: config.siteDescription,
+
+  /**
+   * Used for SEO and manifest, path to your image you placed in the 'static' folder
+   */
+  image: config.siteImage,
+
+  language: config.siteLanguage,
+
+  locale: config.siteLocale,
+
+  /**
+   * The list of all static defined routes
+   */
+  routes: routesMap.getRoutes(),
+
+  /**
+   * A list of meaningful keywords capturing the essence of the site content
+   */
+  keywords: config.siteKeywords,
+
+  social: {
+    twitter: config.twitter.handle,
+    github: config.github.url,
+    linkedin: config.linkedin.url,
+  },
+} as const
 
 export default withMetaConfig(({ loadPlugins }) => {
   const plugins = loadPlugins([

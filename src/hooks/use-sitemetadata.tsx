@@ -4,22 +4,22 @@ const siteMetadataQuery = graphql`
   query SiteMetadata {
     site {
       buildTime(formatString: "YYYY-MM-DD")
-      siteMetadata {
-        defaultTitle: siteTitle
-        titleTemplate: siteTitleTemplate
-        defaultDescription: siteDescription
-        siteUrl
-        defaultImage: siteImage
-        keywords
-        siteLocale
-        siteLanguage
-        social {
-          twitterHandle
-        }
-        author {
-          name
-        }
-      }
+      #      siteMetadata {
+      #        defaultTitle: siteTitle
+      #        titleTemplate: siteTitleTemplate
+      #        defaultDescription: siteDescription
+      #        siteUrl
+      #        defaultImage: siteImage
+      #        keywords
+      #        siteLocale
+      #        siteLanguage
+      #        social {
+      #          twitter
+      #        }
+      #        author {
+      #          name
+      #        }
+      #      }
     }
   }
 `

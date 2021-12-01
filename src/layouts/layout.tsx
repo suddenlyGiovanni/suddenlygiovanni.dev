@@ -2,7 +2,7 @@ import { MDXProvider } from '@mdx-js/react'
 import * as React from 'react'
 import styled from 'styled-components'
 
-import config from '../../config/config'
+import config from '../../config'
 import { mdxComponents, SEOBase } from '../components'
 import { navMobileCtx } from '../context'
 import { Footer } from './footer'
@@ -30,7 +30,7 @@ export const Layout: React.FC = ({ children }) => {
         author={config.author}
         creator={[config.author]}
         siteLanguage={config.siteLocale}
-        keywords={config.keywords}
+        keywords={config.siteKeywords}
         colorScheme={'only light'}
         publisher={config.publisher}
         robots={['index']}

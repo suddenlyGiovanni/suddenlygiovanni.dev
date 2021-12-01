@@ -1,6 +1,6 @@
 import { PageProps } from 'gatsby'
 
-import config from '../../config/config'
+import config from '../../config'
 import { Resume, SEOBase } from '../components'
 import * as customHooks from '../hooks'
 

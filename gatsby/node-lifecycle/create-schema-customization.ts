@@ -24,25 +24,92 @@ function createMarkdownRemark(_createTypes: Actions['createTypes']): void {
   return void 0
 }
 
-function createNavItemTypes(createTypes: Actions['createTypes']): void {
+function createSiteSiteMetadata(createTypes: Actions['createTypes']): void {
   /*
-    TODO: Explicitly define the siteMetadata {} object;
+    Explicitly define the siteMetadata {} object;
     This way those will always be defined even if removed from gatsby-config.js
   */
   const typeDefs = `
-      type SiteSiteMetadata {
-        routes: [Route!]!
-      }
+    type Route @dontInfer {
 
-      type Route @dontInfer {
-        uri: String!
-        url: String!
-        title: String!
-        description: String!
-        disabled: Boolean!
-        hidden: Boolean!
-      }
-    `
+      # The unique identifier for the route
+      uri: String!
+
+      # Just the URL Path segment eg. \`/todos\` \`/blog\`
+      url: String!
+
+      # The human readable name to display
+      title: String!
+
+      # A description for the route
+      description: String!
+
+      # Defines if the route should be not reachable
+      disabled: Boolean!
+
+      # Defines if the Route should be hidden
+      hidden: Boolean!
+    }
+
+    #type SiteSiteMetadata @dontInfer {
+    #  routes: [Route!]!
+    #}
+
+    type Author @dontInfer {
+
+      # Name of the Author
+      name: String!
+
+      # A short summary of the Author
+      summary: String!
+    }
+
+    type Social @dontInfer {
+      # Twitter handle
+      twitter: String!
+
+      # GitHub handle
+      github: String!
+
+      # LinkedIn handle
+      linkedin: String!
+    }
+
+    type SiteSiteMetadata @dontInfer {
+      # The site Author
+      author: Author!
+
+      # Navigation and Site Title
+      title: String!
+
+      # Alternative Site title for SEO
+      titleAlt: String!
+
+      # Additional Tile parts for base case
+      titleTemplate: String!
+
+      # Domain of your site. No trailing slash!
+      url: String!
+
+      # Description of the content of the Site
+      description: String!
+
+      # Used for SEO and manifest, path to your image you placed in the 'static' folder
+      image: String!
+
+      language: String!
+
+      locale: String!
+
+      # The list of all static defined routes
+      routes: [Route!]!
+
+      # A list of meaningful keywords capturing the essence of the site content
+      keywords: [String!]!
+
+      social: Social!
+    }
+  `
 
   createTypes(typeDefs)
 }
@@ -50,6 +117,6 @@ function createNavItemTypes(createTypes: Actions['createTypes']): void {
 export const createSchemaCustomization: GatsbyNode['createSchemaCustomization'] =
   ({ actions }) => {
     const { createTypes } = actions
-    createNavItemTypes(createTypes)
+    createSiteSiteMetadata(createTypes)
     createMarkdownRemark(createTypes)
   }
