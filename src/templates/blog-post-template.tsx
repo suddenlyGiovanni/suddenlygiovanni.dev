@@ -3,7 +3,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import * as React from 'react'
 import styled from 'styled-components'
 
-import config, { routesMap } from '../../config'
+import { routesMap } from '../../config'
 import { ReadLink, SEOBase } from '../components'
 
 /**
@@ -90,8 +90,6 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
   return (
     <>
       <SEOBase
-        title={config.siteTitle}
-        url={config.siteUrl}
         titleTemplate={title}
         description={post.fields?.description || 'nothing'}
         // datePublished={new Date(post.fields?.date!).toISOString()}

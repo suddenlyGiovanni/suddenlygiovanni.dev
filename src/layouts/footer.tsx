@@ -54,9 +54,9 @@ export const Footer: React.VFC<Props> = ({ maxWidth = 720 }) => {
       <ContainerFoo $maxWidth={maxWidth} $noVerticalPadding>
         <Copyright>© {copyrightYear} Giovanni Ravalico</Copyright>
         <Address>
-          <Twitter color="black" />
-          <GitHub color="black" />
-          <LinkedIn color="black" />
+          <Twitter />
+          <GitHub />
+          <LinkedIn />
         </Address>
       </ContainerFoo>
     </Footer_>

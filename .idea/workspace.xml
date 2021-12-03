@@ -9,7 +9,13 @@
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gatsby-config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/gatsby-config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/seo/meta.open-graph-protocol.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/meta.open-graph-protocol.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/seo/seo-base.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/seo-base.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/seo/seo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/seo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/social.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/social.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/layouts/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/layouts/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/gatsby-types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/gatsby-types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +145,7 @@
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="rearrange.code.on.save" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.intentionPowerPack" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.js.occurrences" value="false" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
@@ -321,7 +327,9 @@
       <workItem from="1638278903601" duration="19434000" />
       <workItem from="1638300542590" duration="4106000" />
       <workItem from="1638359980753" duration="18727000" />
-      <workItem from="1638453544004" duration="11509000" />
+      <workItem from="1638453544004" duration="21769000" />
+      <workItem from="1638563690172" duration="1303000" />
+      <workItem from="1638565076033" duration="6846000" />
     </task>
     <servers />
   </component>
@@ -530,5 +538,13 @@
       </path>
     </expand>
     <select />
+  </component>
+  <component name="com.github.lppedd.cc.CommitBuilderDialog">
+    <type>refactor</type>
+    <scope>components/seo-base</scope>
+    <subject>[WIP] adding static data from useSiteMetadata</subject>
+    <footers>
+      <entry type="" value="" />
+    </footers>
   </component>
 </project>

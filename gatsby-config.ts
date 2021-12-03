@@ -140,8 +140,8 @@ const siteMetadata: Readonly<GatsbyTypes.SiteSiteMetadata> = {
 
   social: {
     twitter: config.twitter.handle,
-    github: config.github.url,
-    linkedin: config.linkedin.url,
+    github: config.github.user,
+    linkedin: config.linkedin.user,
   },
 } as const
 

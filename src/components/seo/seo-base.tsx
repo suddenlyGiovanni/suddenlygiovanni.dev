@@ -1,6 +1,7 @@
 import { useLocation } from '@reach/router'
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import { useSiteMetadata } from '../../hooks'
 
 import { insertIf, insertLazilyIf } from '../../lib/array'
 
@@ -21,7 +22,7 @@ interface Props {
   /**
    * Defines the document's title that is shown in a browser's title bar or a page's tab.
    */
-  readonly title: string
+  readonly title?: string
 
   /**
    * Useful when you want titles to inherit from a template:
@@ -39,7 +40,7 @@ interface Props {
   /**
    * the language for the site
    */
-  readonly siteLanguage?: string
+  readonly language?: string
 
   readonly charSet?: string | 'utf8'
 
@@ -49,7 +50,7 @@ interface Props {
   /**
    * helps webmasters prevent duplicate content issues by specifying the "canonical" or "preferred" version of a web page as part of search engine optimization.
    */
-  readonly url: string
+  readonly url?: string
 
   /** the name of the document's author */
   readonly author?: string
@@ -98,17 +99,40 @@ interface Props {
    * additional metadata to attach to the head
    */
   readonly meta?: JSX.IntrinsicElements['meta'][]
+
+  /**
+   * Is a USVString containing an initial '/' followed by the path of the URL, not including the query string or fragment.
+   */
+  readonly locationPathname?: string
+
+  readonly image?: string
 }
 
 export const SEOBase: React.VFC<Props> = (props) => {
+  const siteMetadata = useSiteMetadata()
   const location = useLocation()
+
+  const seoTitle = props.title || siteMetadata.title
+  const seoTitleTemplate = props.titleTemplate || siteMetadata.titleTemplate
+  const seoCanonical = props.locationPathname || location.pathname
+  const seoDescription = props.description || siteMetadata.description
+  const seoKeywords = props.keywords || siteMetadata.keywords
+  const seoLang = props.language || siteMetadata.language
+  const seoImgSrc = props.image || siteMetadata.image
+  const seoGenerator = props.generator || 'GatsbyJS'
+  const seoAuthor = props.author || siteMetadata.author.name
+  const seoPublisher = props.publisher || siteMetadata.social.github
+  const seoCreator = props.creator || [seoAuthor, siteMetadata.social.github]
+  const seoColorScheme = props.colorScheme || ('only light' as const)
+  const seoRobots = props.robots || (['index'] as const)
+  const seoGooglebot = props.googlebot || seoRobots
 
   return (
     <Helmet
-      title={props.title}
-      titleTemplate={props.titleTemplate && `%s · ${props.titleTemplate}`}
-      htmlAttributes={{ lang: props.siteLanguage || 'en_US' }}
-      link={[{ href: props.url, rel: 'canonical' }]}
+      title={seoTitle}
+      titleTemplate={`%s · ${seoTitleTemplate}`}
+      htmlAttributes={{ lang: seoLang, prefix: 'og: http://ogp.me/ns#' }}
+      link={[{ href: `${siteMetadata.url}${seoCanonical}`, rel: 'canonical' }]}
       meta={[
         { charSet: props.charSet || 'utf8' },
 
@@ -119,7 +143,7 @@ export const SEOBase: React.VFC<Props> = (props) => {
         })),
 
         /** the name of the document's author */
-        ...insertLazilyIf(props.author, (author) => ({
+        ...insertLazilyIf(seoAuthor, (author) => ({
           name: 'author',
           content: author,
         })),
@@ -128,61 +152,60 @@ export const SEOBase: React.VFC<Props> = (props) => {
          * a short and accurate summary of the content of the page.
          * Several browsers, like Firefox and Opera, use this as the default description of bookmarked pages.
          */
-        ...insertLazilyIf(props.description, (description) => ({
+        ...insertLazilyIf(seoDescription, (description) => ({
           name: 'description',
           content: description,
         })),
 
         /** the identifier of the software that generated the page. */
-        ...insertLazilyIf(props.generator, (generator) => ({
+        ...insertLazilyIf(seoGenerator, (generator) => ({
           name: 'generator',
           content: generator,
         })),
 
         /** words relevant to the page's content separated by commas. */
-        ...insertLazilyIf(props.keywords, (keywords) => ({
+        ...insertLazilyIf(seoKeywords, (keywords) => ({
           name: 'keywords',
           content: toCommaSeparatedStringList(keywords),
         })),
 
         /** the color schemes with which the document is compatible. */
-        ...insertLazilyIf(props.colorScheme, (colorScheme) => ({
+        ...insertLazilyIf(seoColorScheme, (colorScheme) => ({
           name: 'color-scheme',
           content: colorScheme,
         })),
 
         /** the name of the document's publisher. */
-        ...insertLazilyIf(props.publisher, (publisher) => ({
+        ...insertLazilyIf(seoPublisher, (publisher) => ({
           name: 'publisher',
           content: publisher,
         })),
 
         /** the behavior that cooperative crawlers, or "robots", should use with the page. It is a comma-separated list. */
-        ...insertLazilyIf(props.robots, (robots) => ({
+        ...insertLazilyIf(seoRobots, (robots) => ({
           name: 'robots',
           content: toCommaSeparatedStringList(robots),
+        })),
+
+        /**
+         * a synonym of robots, is only followed by Googlebot (the indexing crawler for Google)
+         */
+        ...insertLazilyIf(seoGooglebot, (googlebot) => ({
+          name: 'googlebot',
+          content: toCommaSeparatedStringList(googlebot),
         })),
 
         /**
          * the name of the creator of the document, such as an organization or institution.
          * If there are more than one, several <meta> elements should be used.
          */
-        ...(props.creator
-          ? props.creator.map((creator) => ({
+        ...(seoCreator
+          ? seoCreator.map((creator) => ({
               name: 'creator',
               content: creator,
             }))
           : []),
 
-        /**
-         * a synonym of robots, is only followed by Googlebot (the indexing crawler for Google)
-         */
-        ...insertLazilyIf(props.googlebot, (googlebot) => {
-          return {
-            name: 'googlebot',
-            content: toCommaSeparatedStringList(googlebot),
-          }
-        }),
         // TODO: insert open graph data
 
         ...insertIf(props.meta, ...(props.meta || [])),

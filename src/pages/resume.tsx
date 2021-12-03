@@ -1,6 +1,4 @@
 import { PageProps } from 'gatsby'
-
-import config from '../../config'
 import { Resume, SEOBase } from '../components'
 import * as customHooks from '../hooks'
 
@@ -26,10 +24,8 @@ const ResumePage: React.VFC<PageProps> = (_) => {
   return (
     <>
       <SEOBase
-        title={config.siteTitle}
         description="Giovanni Ravalico's Résumé"
         titleTemplate="Résumé"
-        url={config.siteUrl}
       />
       <article>
         <Resume.SectionHeader

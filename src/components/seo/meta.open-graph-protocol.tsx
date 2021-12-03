@@ -223,7 +223,24 @@ interface Title extends MetadataBase<og<'title'>, Types.String> {}
  * The type of your object, e.g., "video.movie".
  * Depending on the type you specify, other properties may also be required.
  */
-interface Type extends MetadataBase<og<'type'>, Types.String> {}
+interface Type
+  extends MetadataBase<
+    og<'type'>,
+    Types.String<
+      | 'website'
+      | 'music.song'
+      | 'music.album'
+      | 'music.playlist'
+      | 'music.radio_station'
+      | 'video.movie'
+      | 'video.episode'
+      | 'video.tv_show'
+      | 'video.other'
+      | 'article'
+      | 'book'
+      | 'profile'
+    >
+  > {}
 
 /**
  * The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "https://www.imdb.com/title/tt0117500/".
@@ -234,7 +251,7 @@ interface Url extends MetadataBase<og<'url'>, Types.URL> {}
  * As an example, the following is the Open Graph protocol markup for The Rock on IMDB:
  * @example
  * ```html
- * <html prefix="og: https://ogp.me/ns#">
+ * <html prefix="og: https://ogp.me/">
  * <head>
  * <title>The Rock (1996)</title>
  * <meta property="og:title" content="The Rock" />
@@ -1036,13 +1053,14 @@ interface TwitterMetadataBase<
 interface TwitterCard
   extends TwitterMetadataBase<
     twitter<'card'>,
-    Types.Enum<'summary_large_image' | 'summary' | 'app'>
+    Types.Enum<'summary_large_image' | 'summary' | 'app' | 'player'>
   > {}
 
 /**
  * @username of website. Either twitter:site or twitter:site:id is required.
  *
  * Used with summary, summary_large_image, app, player cards
+ * @link TwitterSiteID
  */
 interface TwitterSite
   extends TwitterMetadataBase<twitter<'site'>, Types.String> {}
@@ -1051,6 +1069,7 @@ interface TwitterSite
  * Same as twitter:site, but the user’s Twitter ID. Either twitter:site or twitter:site:id is required.
  *
  * Used with summary, summary_large_image, player cards
+ * @link TwitterSite
  */
 interface TwitterSiteID
   extends TwitterMetadataBase<twitter<'site:id'>, Types.String> {}
@@ -1204,9 +1223,9 @@ interface TwitterAppIDGooglePlay
  * Used with app card
  */
 interface TwitterAppURLGooglePlay
-  extends TwitterMetadataBase<twitter<'app:url:googleplay'>, Types.String> {}
+  extends TwitterMetadataBase<twitter<'app:url:googleplay'>, Types.URL> {}
 
-type TwitterMetadata =
+export type TwitterMetadata =
   | TwitterCard
   | TwitterSite
   | TwitterSiteID

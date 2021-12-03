@@ -11,7 +11,7 @@ const SocialLink = styled.a<{ $color: string }>`
   color: ${({ $color }) => $color};
 
   :hover {
-    color: rgba(255, 255, 255, 1);
+    color: hsla(0, 0%, 0%, 0.7);
   }
 `
 
@@ -22,29 +22,46 @@ interface Props {
   url: string
 }
 
+const defaultColor = `hsl(0, 0%, 0%)` as const
+
 export const Twitter: React.VFC<Partial<Props>> = ({
-  color = `rgba(255, 255, 255, 0.7)`,
-  url = twitter,
+  color = defaultColor,
+  url = twitter.url + twitter.handle,
 }) => (
-  <SocialLink href={url} $color={color} aria-label="Visit my Twitter">
+  <SocialLink
+    href={url}
+    target={'_blank'}
+    $color={color}
+    aria-label="Visit my Twitter"
+  >
     <SocialIcon network="twitter" size={24} aria-label="Twitter icon" />
   </SocialLink>
 )
 
 export const LinkedIn: React.VFC<Partial<Props>> = ({
-  color = `rgba(255, 255, 255, 0.7)`,
-  url = linkedin,
+  color = defaultColor,
+  url = linkedin.url + linkedin.user,
 }) => (
-  <SocialLink href={url} $color={color} aria-label="Visit my LinkedIn">
+  <SocialLink
+    href={url}
+    target={'_blank'}
+    $color={color}
+    aria-label="Visit my LinkedIn"
+  >
     <SocialIcon network="linkedin" size={24} aria-label="LinkedIn icon" />
   </SocialLink>
 )
 
 export const GitHub: React.VFC<Partial<Props>> = ({
-  color = `rgba(255, 255, 255, 0.7)`,
-  url = github,
+  color = defaultColor,
+  url = github.url + github.user,
 }) => (
-  <SocialLink href={url} $color={color} aria-label="Visit my GitHub">
+  <SocialLink
+    href={url}
+    target={'_blank'}
+    $color={color}
+    aria-label="Visit my GitHub"
+  >
     <SocialIcon network="github" size={24} aria-label="GitHub icon" />
   </SocialLink>
 )

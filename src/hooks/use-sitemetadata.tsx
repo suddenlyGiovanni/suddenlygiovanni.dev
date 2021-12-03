@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-
+// TODO: add image as an output of Sharp plugin to reduce size
 const siteMetadataQuery = graphql`
   fragment RouteFragment on Route {
     uri

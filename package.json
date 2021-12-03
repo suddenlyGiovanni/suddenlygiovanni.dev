@@ -72,6 +72,6 @@
     "url": "https://github.com/suddenlyGiovanni/suddenlygiovanni.dev/issues"
   },
   "engines": {
-    "node": ">=14.15.0"
+    "node": ">=17.2.0"
   }
 }
