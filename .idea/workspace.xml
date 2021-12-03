@@ -9,7 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/seo/script-ld-json.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/script-ld-json.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/seo/seo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/seo.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +44,7 @@
     </file-type-list>
   </component>
   <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="4" />
     <option name="recentBranches">
       <RecentBranches>
         <option name="branchesForRepo">
@@ -101,7 +101,7 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
@@ -162,11 +162,11 @@
       <recent name="$PROJECT_DIR$/src/components/main" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/lib/assert.ts" />
       <recent name="$PROJECT_DIR$/config/index.ts" />
       <recent name="$PROJECT_DIR$/gatsby-config.ts" />
       <recent name="$PROJECT_DIR$/src/lib/array.ts" />
       <recent name="$PROJECT_DIR$/config/config.ts" />
-      <recent name="$PROJECT_DIR$/src/lib/links-map.ts" />
     </key>
   </component>
   <component name="RunManager" selected="npm.develop">
@@ -320,7 +320,8 @@
       <workItem from="1638275138228" duration="1638000" />
       <workItem from="1638278903601" duration="19434000" />
       <workItem from="1638300542590" duration="4106000" />
-      <workItem from="1638359980753" duration="17744000" />
+      <workItem from="1638359980753" duration="18727000" />
+      <workItem from="1638453544004" duration="11509000" />
     </task>
     <servers />
   </component>
@@ -529,13 +530,5 @@
       </path>
     </expand>
     <select />
-  </component>
-  <component name="com.github.lppedd.cc.CommitBuilderDialog">
-    <type>refactor</type>
-    <scope>configs/site-map</scope>
-    <subject>move to gatsby-ts</subject>
-    <footers>
-      <entry type="" value="" />
-    </footers>
   </component>
 </project>

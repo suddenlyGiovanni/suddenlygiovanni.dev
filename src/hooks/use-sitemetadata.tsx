@@ -1,52 +1,54 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
 const siteMetadataQuery = graphql`
-  query SiteMetadata {
+  fragment RouteFragment on Route {
+    uri
+    url
+    title
+    description
+    disabled
+    hidden
+  }
+
+  fragment SiteMetadataFragment on SiteSiteMetadata {
+    title
+    description
+    author {
+      name
+      summary
+    }
+    titleAlt
+    titleTemplate
+    url
+    image
+    language
+    locale
+    keywords
+    social {
+      github
+      linkedin
+      linkedin
+    }
+    routes {
+      ...RouteFragment
+    }
+  }
+
+  query SiteSiteMetadata {
     site {
       buildTime(formatString: "YYYY-MM-DD")
-      #      siteMetadata {
-      #        defaultTitle: siteTitle
-      #        titleTemplate: siteTitleTemplate
-      #        defaultDescription: siteDescription
-      #        siteUrl
-      #        defaultImage: siteImage
-      #        keywords
-      #        siteLocale
-      #        siteLanguage
-      #        social {
-      #          twitter
-      #        }
-      #        author {
-      #          name
-      #        }
-      #      }
+      siteMetadata {
+        ...SiteMetadataFragment
+      }
     }
   }
 `
 
-interface SEO {
-  buildTime: string
-  defaultTitle: string
-  titleTemplate: string
-  defaultDescription: string
-  siteUrl: string
-  defaultImage: string
-  keywords: string[]
-  defaultLocale: string
-  defaultLanguage: string
-  social: {
-    twitterHandle: string
-  }
-  author: {
-    name: string
-  }
-}
-
-export const useSiteMetadata = (): SEO => {
+export const useSiteMetadata = () => {
   const { site } =
-    useStaticQuery<GatsbyTypes.SiteMetadataQuery>(siteMetadataQuery)
+    useStaticQuery<GatsbyTypes.SiteSiteMetadataQuery>(siteMetadataQuery)
   return {
     buildTime: site?.buildTime,
-    ...site?.siteMetadata,
-  } as unknown as SEO
+    ...(site?.siteMetadata as NonNullable<GatsbyTypes.SiteSiteMetadata>),
+  } as const
 }
