@@ -1,3 +1,28 @@
+export type NotFalsy<T> = Exclude<T, null | undefined | false | 0 | -0 | ''>
+
+export function isNotNullish<T extends unknown>(
+  value: T
+): value is NonNullable<T> {
+  return value !== undefined && value !== null
+}
+
+export function isNotFalsy<T extends unknown>(value: T): value is NotFalsy<T> {
+  switch (typeof value) {
+    case 'boolean': {
+      return value !== false
+    }
+    case 'number': {
+      return !isNaN(value) && value !== 0
+    }
+    case 'string': {
+      return value !== ''
+    }
+    default: {
+      return isNotNullish(value)
+    }
+  }
+}
+
 const isProduction: boolean = process.env.NODE_ENV === 'production'
 const prefix: string = 'Assertion failed'
 

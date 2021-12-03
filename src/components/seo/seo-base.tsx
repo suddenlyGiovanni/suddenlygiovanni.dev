@@ -1,7 +1,8 @@
+import { useLocation } from '@reach/router'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import { insertIf } from '../../lib/array'
+import { insertIf, insertLazilyIf } from '../../lib/array'
 
 type Robots = readonly (
   | 'index'
@@ -92,9 +93,16 @@ interface Props {
 
   /** the behavior that cooperative crawlers, or "robots", should use with the page */
   readonly robots?: Robots
+
+  /**
+   * additional metadata to attach to the head
+   */
+  readonly meta?: JSX.IntrinsicElements['meta'][]
 }
 
 export const SEOBase: React.VFC<Props> = (props) => {
+  const location = useLocation()
+
   return (
     <Helmet
       title={props.title}
@@ -105,64 +113,55 @@ export const SEOBase: React.VFC<Props> = (props) => {
         { charSet: props.charSet || 'utf8' },
 
         /** the name of the application running in the web page. */
-        ...insertIf(props.applicationName, {
+        ...insertLazilyIf(props.applicationName, (applicationName) => ({
           name: 'application-name',
-          content: props.applicationName,
-        }),
+          content: applicationName,
+        })),
 
         /** the name of the document's author */
-        ...insertIf(props.author, { name: 'author', content: props.author }),
+        ...insertLazilyIf(props.author, (author) => ({
+          name: 'author',
+          content: author,
+        })),
 
         /**
          * a short and accurate summary of the content of the page.
          * Several browsers, like Firefox and Opera, use this as the default description of bookmarked pages.
          */
-        ...insertIf(props.description, {
+        ...insertLazilyIf(props.description, (description) => ({
           name: 'description',
-          content: props.description,
-        }),
+          content: description,
+        })),
 
         /** the identifier of the software that generated the page. */
-        ...insertIf(props.generator, {
+        ...insertLazilyIf(props.generator, (generator) => ({
           name: 'generator',
-          content: props.generator,
-        }),
+          content: generator,
+        })),
 
         /** words relevant to the page's content separated by commas. */
-        ...insertIf(props.keywords, {
+        ...insertLazilyIf(props.keywords, (keywords) => ({
           name: 'keywords',
-          content: props.keywords?.reduce(
-            (keywords, keyword, idx) =>
-              idx === 0 ? keyword : `${keywords}, ${keyword}`,
-            ''
-          ),
-        }),
+          content: toCommaSeparatedStringList(keywords),
+        })),
 
         /** the color schemes with which the document is compatible. */
-        ...insertIf(props.colorScheme, {
+        ...insertLazilyIf(props.colorScheme, (colorScheme) => ({
           name: 'color-scheme',
-          content: props.colorScheme,
-        }),
+          content: colorScheme,
+        })),
 
         /** the name of the document's publisher. */
-        ...insertIf(props.publisher, {
+        ...insertLazilyIf(props.publisher, (publisher) => ({
           name: 'publisher',
-          content: props.publisher,
-        }),
+          content: publisher,
+        })),
 
         /** the behavior that cooperative crawlers, or "robots", should use with the page. It is a comma-separated list. */
-        ...insertIf(
-          props.robots,
-
-          {
-            name: 'robots',
-            content: props.robots?.reduce(
-              (robots, robot, idx) =>
-                idx === 0 ? robot : `${robots}, ${robot}`,
-              ''
-            ),
-          }
-        ),
+        ...insertLazilyIf(props.robots, (robots) => ({
+          name: 'robots',
+          content: toCommaSeparatedStringList(robots),
+        })),
 
         /**
          * the name of the creator of the document, such as an organization or institution.
@@ -178,15 +177,26 @@ export const SEOBase: React.VFC<Props> = (props) => {
         /**
          * a synonym of robots, is only followed by Googlebot (the indexing crawler for Google)
          */
-        ...insertIf(props.googlebot, {
-          name: 'googlebot',
-          content: props.googlebot?.reduce(
-            (googlebot, robot, idx) =>
-              idx === 0 ? robot : `${googlebot}, ${robot}`,
-            ''
-          ),
+        ...insertLazilyIf(props.googlebot, (googlebot) => {
+          return {
+            name: 'googlebot',
+            content: toCommaSeparatedStringList(googlebot),
+          }
         }),
+        // TODO: insert open graph data
+
+        ...insertIf(props.meta, ...(props.meta || [])),
       ]}
     />
+  )
+}
+
+function toCommaSeparatedStringList<T extends string>(
+  elements: readonly T[]
+): string {
+  return elements.reduce(
+    (stringAcc, element, idx) =>
+      idx === 0 ? element : `${stringAcc}, ${element}`,
+    ''
   )
 }
