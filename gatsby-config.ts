@@ -124,6 +124,11 @@ const siteMetadata: Readonly<GatsbyTypes.SiteSiteMetadata> = {
    */
   image: config.siteImage,
 
+  /**
+   * A text description of the image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters.
+   */
+  imageAlt: config.siteImageAlt,
+
   language: config.siteLanguage,
 
   locale: config.siteLocale,

@@ -1,9 +1,11 @@
 import { useLocation } from '@reach/router'
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { useSiteMetadata } from '../../hooks'
 
+import { useSiteMetadata } from '../../hooks'
 import { insertIf, insertLazilyIf } from '../../lib/array'
+import { Types } from './meta.open-graph-protocol'
+import { makeTwitterCard } from './twitter-card'
 
 type Robots = readonly (
   | 'index'
@@ -105,7 +107,21 @@ interface Props {
    */
   readonly locationPathname?: string
 
+  /**
+   * URL of image to use in the card. Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported.
+   */
   readonly image?: string
+
+  /**
+   * A text description of the image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters
+   */
+  readonly imageAlt?: string
+
+  readonly social?: {
+    readonly github: string
+    readonly twitter: string
+    readonly linkedin: string
+  }
 }
 
 export const SEOBase: React.VFC<Props> = (props) => {
@@ -118,7 +134,8 @@ export const SEOBase: React.VFC<Props> = (props) => {
   const seoDescription = props.description || siteMetadata.description
   const seoKeywords = props.keywords || siteMetadata.keywords
   const seoLang = props.language || siteMetadata.language
-  const seoImgSrc = props.image || siteMetadata.image
+  const seoImageSrc = props.image || siteMetadata.image
+  const seoImageAlt = props.imageAlt || siteMetadata.imageAlt
   const seoGenerator = props.generator || 'GatsbyJS'
   const seoAuthor = props.author || siteMetadata.author.name
   const seoPublisher = props.publisher || siteMetadata.social.github
@@ -126,6 +143,8 @@ export const SEOBase: React.VFC<Props> = (props) => {
   const seoColorScheme = props.colorScheme || ('only light' as const)
   const seoRobots = props.robots || (['index'] as const)
   const seoGooglebot = props.googlebot || seoRobots
+  const seoTwitter =
+    (props.social && props.social.twitter) || siteMetadata.social.twitter
 
   return (
     <Helmet
@@ -208,6 +227,20 @@ export const SEOBase: React.VFC<Props> = (props) => {
 
         // TODO: insert open graph data
 
+        // TODO: insert Twitter card open graph data
+        ...makeTwitterCard({
+          card: Types.Enum('summary_large_image'),
+          title: Types.String(seoTitle),
+          site: Types.String(seoTwitter),
+          siteID: Types.String(seoTwitter),
+          creatorID: Types.String(seoTwitter),
+          creator: Types.String(toCommaSeparatedStringList(seoCreator)),
+          description: Types.String(seoDescription),
+          image: Types.URL(seoImageSrc),
+          imageAlt: Types.String(seoImageAlt),
+          // TODO: finish inserting all the relevant properties
+        }),
+
         ...insertIf(props.meta, ...(props.meta || [])),
       ]}
     />
@@ -217,9 +250,5 @@ export const SEOBase: React.VFC<Props> = (props) => {
 function toCommaSeparatedStringList<T extends string>(
   elements: readonly T[]
 ): string {
-  return elements.reduce(
-    (stringAcc, element, idx) =>
-      idx === 0 ? element : `${stringAcc}, ${element}`,
-    ''
-  )
+  return elements.join(', ')
 }

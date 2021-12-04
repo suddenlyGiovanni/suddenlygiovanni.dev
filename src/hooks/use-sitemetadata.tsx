@@ -21,6 +21,7 @@ const siteMetadataQuery = graphql`
     titleTemplate
     url
     image
+    imageAlt
     language
     locale
     keywords

@@ -1,4 +1,4 @@
-import { Brand, make } from '../../types/brand'
+import { BaseOf, Brand, make } from '../../types/brand'
 
 /**
  * The
@@ -81,7 +81,9 @@ export namespace Types {
    * @example
    * const instanceOfString:Types.String = Types.String('this is definitely a string')
    */
-  export const String = make<String>()
+  export const String = <T extends string = string>(underlying: T) => {
+    return make<String<T>>()(underlying as BaseOf<String<T>>)
+  }
 
   /**
    * A sequence of Unicode characters that identify an Internet resource.
@@ -105,10 +107,10 @@ export namespace Types {
   /**
    * converts a union of string to a OpenGraph `Enum`
    * @example
-   * const instanceOfEnum:Types.Enum<'foo' | 'bar'> = Types.Enum('foo', 'bar')('foo')
+   * const instanceOfEnum:Types.Enum<'foo' | 'bar'> = Types.Enum<'foo', 'bar'>('foo')
    */
-  export const Enum = <T extends string = string>(..._enums: T[]) =>
-    make<Enum<T>>()
+  export const Enum = <T extends string = string>(underlying: T) =>
+    make<Enum<T>>()(underlying as BaseOf<Enum<T>>)
 
   /**
    * The Disjoint union type of all the possible Open Graph Protocol types
@@ -1281,7 +1283,7 @@ type OpenGraphMetaAttributes = Readonly<
  * @param IntrinsicMetaAttributes
  * @link https://ogp.me/#types
  */
-export function makeOpenGraphMetaAttributesObject({
+export function makeOpenGraphMetaAttributesRecord({
   property,
   content,
   ...IntrinsicMetaAttributes
@@ -1289,24 +1291,28 @@ export function makeOpenGraphMetaAttributesObject({
   Partial<
     Omit<JSX.IntrinsicElements['meta'], 'property' | 'content'>
   >): OpenGraphMetaAttributes {
-  function isTwitterMetadataKeys(key: string): key is TwitterMetadataKeys {
-    return key.includes('twitter')
+  function isTwitterMetadata(
+    openGraphMetadata: OpenGraphMetadata
+  ): openGraphMetadata is TwitterMetadata {
+    return openGraphMetadata.property.includes('twitter', 0)
   }
 
-  return isTwitterMetadataKeys(property)
+  const openGraphMetadata = { property, content } as OpenGraphMetadata
+
+  return isTwitterMetadata(openGraphMetadata)
     ? /**
        * this branch returns a Twitter Card Tags
        * @link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
        */
       ({
         ...IntrinsicMetaAttributes,
-        name: property,
-        content: String(content),
+        name: openGraphMetadata.property,
+        content: String(openGraphMetadata.content),
       } as const)
     : ({
         ...IntrinsicMetaAttributes,
-        property: property,
-        content: String(content),
+        property: openGraphMetadata.property,
+        content: String(openGraphMetadata.content),
       } as const)
 }
 
@@ -1319,5 +1325,5 @@ export default function MetaOpenGraphProtocol(
   props: Partial<Omit<JSX.IntrinsicElements['meta'], 'property' | 'content'>> &
     OpenGraphMetadata
 ): JSX.Element {
-  return <meta {...makeOpenGraphMetaAttributesObject(props)} />
+  return <meta {...makeOpenGraphMetaAttributesRecord(props)} />
 }

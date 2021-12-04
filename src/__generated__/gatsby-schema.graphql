@@ -359,6 +359,7 @@ type SiteSiteMetadata {
   titleTemplate: String!
   url: String!
   image: String!
+  imageAlt: String!
   language: String!
   locale: String!
   routes: [Route!]!
@@ -2298,6 +2299,7 @@ input SiteSiteMetadataFilterInput {
   titleTemplate: StringQueryOperatorInput
   url: StringQueryOperatorInput
   image: StringQueryOperatorInput
+  imageAlt: StringQueryOperatorInput
   language: StringQueryOperatorInput
   locale: StringQueryOperatorInput
   routes: RouteFilterListInput
@@ -2357,6 +2359,7 @@ enum SiteFieldsEnum {
   siteMetadata___titleTemplate
   siteMetadata___url
   siteMetadata___image
+  siteMetadata___imageAlt
   siteMetadata___language
   siteMetadata___locale
   siteMetadata___routes

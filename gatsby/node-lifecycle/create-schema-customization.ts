@@ -97,6 +97,9 @@ function createSiteSiteMetadata(createTypes: Actions['createTypes']): void {
       # Used for SEO and manifest, path to your image you placed in the 'static' folder
       image: String!
 
+      # A text description of the image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters.
+      imageAlt: String!
+
       language: String!
 
       locale: String!

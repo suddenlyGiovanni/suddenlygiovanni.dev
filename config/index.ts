@@ -108,6 +108,8 @@ export default {
   siteDescription:
     "suddenlyGiovanni's personal engineering blog. A Place where I experiment with software and write about my coding journey",
   siteImage: 'content/assets/giovanni_ravalico-profile_bw.jpg', // Used for SEO and manifest, path to your image you placed in the 'static' folder
+  siteImageAlt:
+    "suddenlyGiovanni's hero profile picture. An attractive young man: he is tall, has branded eyes, dark hair and wears glasses",
   siteTitle: 'suddenlyGiovanni', // Navigation and Site Title
   siteTitleAlt: 'The personal website of Giovanni Ravalico', // Alternative Site title for SEO
   siteTitleShort: 'suddenlyGiovanni', // short_name for manifest
@@ -132,6 +134,6 @@ export default {
   },
   linkedin: {
     url: 'https://www.linkedin.com/in/',
-    user: 'giovanni-ravalico/',
+    user: 'giovanni-ravalico',
   },
 } as const
