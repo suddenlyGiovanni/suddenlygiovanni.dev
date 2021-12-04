@@ -20,11 +20,20 @@ export namespace Types {
 
   /**
    * A DateTime represents a temporal value composed of a date (year, month, day) and an optional time component (hours, minutes)
+   * We support absolute ISO 8061 timestamps with the timezone defaulting to UTC.
+   * The format we are expecting is YYYY-MM-DDThh:mm:ssZ. Z is used to express different time zones, and represents an offset from UTC. Examples:
+   *
    * @example
-   * ISO 8601
+   * January 26th, 2011 = 2011-01-26
+   * January 26th, 2011 at 7:15pm = 2011-01-26T19:15
+   * January 26th, 2001 at 7:15pm Pacific Standard Time = 2011-01-26T19:15-8:00
    */
   export type DateTime = Brand<
-    `${Year}-${Month}-${Day}` | `${Year}-${Month}-${Day}T${Hours}:${Minutes}`,
+    | `${Year}-${Month}-${Day}`
+    | `${Year}-${Month}-${Day}T${Hours}:${Minutes}`
+    | `${Year}-${Month}-${Day}T${Hours}:${Minutes}${
+        | '+'
+        | '-'}${Hours}:${Minutes}`,
     'DateTime'
   >
   /**
@@ -126,7 +135,7 @@ type AudioKeys = 'secure_url' | 'type'
 /**
  * a small subset of all the common MIME types
  */
-type MIME =
+export type MIME =
   | 'application/x-executable'
   | 'application/graphql'
   | 'application/javascript'
@@ -137,9 +146,9 @@ type MIME =
   | 'application/pdf'
   | 'application/sql'
   | 'application/vnd.api+json'
-  | 'application/vnd.ms-excel (.xls)'
-  | 'application/vnd.ms-powerpoint (.ppt)'
-  | 'application/vnd.oasis.opendocument.text (.odt)'
+  | 'application/vnd.ms-excel'
+  | 'application/vnd.ms-powerpoint'
+  | 'application/vnd.oasis.opendocument.text'
   | 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
   | 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
   | 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
@@ -167,6 +176,8 @@ type MIME =
   | 'text/php'
   | 'text/plain'
   | 'text/xml'
+
+export type MIMEContent = Types.Enum<MIME>
 
 type og<T extends string> = `og:${T}`
 
@@ -221,28 +232,26 @@ interface MetadataBase<
  */
 interface Title extends MetadataBase<og<'title'>, Types.String> {}
 
+export type TypeContent = Types.Enum<
+  | 'website'
+  | 'music.song'
+  | 'music.album'
+  | 'music.playlist'
+  | 'music.radio_station'
+  | 'video.movie'
+  | 'video.episode'
+  | 'video.tv_show'
+  | 'video.other'
+  | 'article'
+  | 'book'
+  | 'profile'
+>
+
 /**
  * The type of your object, e.g., "video.movie".
  * Depending on the type you specify, other properties may also be required.
  */
-interface Type
-  extends MetadataBase<
-    og<'type'>,
-    Types.String<
-      | 'website'
-      | 'music.song'
-      | 'music.album'
-      | 'music.playlist'
-      | 'music.radio_station'
-      | 'video.movie'
-      | 'video.episode'
-      | 'video.tv_show'
-      | 'video.other'
-      | 'article'
-      | 'book'
-      | 'profile'
-    >
-  > {}
+interface Type extends MetadataBase<og<'type'>, TypeContent> {}
 
 /**
  * The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "https://www.imdb.com/title/tt0117500/".
@@ -273,17 +282,15 @@ type BasicMetadata = Title | Type | Image | Url
  */
 interface Description extends MetadataBase<og<'description'>, Types.String> {}
 
+export type DelimiterContent = Types.Enum<'' | 'a' | 'an' | 'the' | 'auto'>
+
 /**
  * The word that appears before this object's title in a sentence.
  * An enum of (a, an, the, "", auto).
  * If auto is chosen, the consumer of your data should chose between "a" or "an".
  * Default is "" (blank).
  */
-interface Determiner
-  extends MetadataBase<
-    og<'determiner'>,
-    Types.Enum<'' | 'a' | 'an' | 'the' | 'auto'>
-  > {}
+interface Determiner extends MetadataBase<og<'determiner'>, DelimiterContent> {}
 
 /**
  * The locale these tags are marked up in. Of the format language_TERRITORY.
@@ -334,6 +341,9 @@ interface ImageMetadataBase<
   Content extends Types.Type
 > extends MetadataBase<Property, Content> {}
 
+/**
+ * An image URL which should represent your object within the graph.
+ */
 interface Image extends ImageMetadataBase<og<image>, Types.URL> {}
 
 /**
@@ -351,8 +361,7 @@ interface ImageSecureURL
 /**
  * A MIME type for this image.
  */
-interface ImageType
-  extends ImageMetadataBase<og<image<'type'>>, Types.Enum<MIME>> {}
+interface ImageType extends ImageMetadataBase<og<image<'type'>>, MIMEContent> {}
 
 /**
  * The number of pixels wide.
@@ -416,8 +425,7 @@ interface VideoSecureURL
 /**
  * A MIME type for this video.
  */
-interface VideoType
-  extends VideoMetadataBase<og<video<'type'>>, Types.Enum<MIME>> {}
+interface VideoType extends VideoMetadataBase<og<video<'type'>>, MIMEContent> {}
 
 /**
  * The number of pixels wide.
@@ -450,8 +458,7 @@ interface Audio extends AudioMetadataBase<og<audio>, Types.URL> {}
 interface AudioSecureURL
   extends AudioMetadataBase<og<audio<'secure_url'>>, Types.URL> {}
 
-interface AudioType
-  extends AudioMetadataBase<og<audio<'type'>>, Types.Enum<MIME>> {}
+interface AudioType extends AudioMetadataBase<og<audio<'type'>>, MIMEContent> {}
 
 /**
  * The og:audio tag only has the first 3 properties available (since size doesn't make sense for sound):
@@ -464,13 +471,12 @@ interface AudioType
  */
 type AudioMetadata = Audio | AudioSecureURL | AudioType
 
-interface WebsiteType
-  extends MetadataBase<og<'type'>, Types.String<'website'>> {}
+interface WebsiteType extends MetadataBase<og<'type'>, Types.Enum<'website'>> {}
 
 /**
  * This object represents an article on a website. It is the preferred type for blog posts and news stories.
  */
-interface ArticleType extends MetadataBase<og<'type'>, Types.String<article>> {}
+interface ArticleType extends MetadataBase<og<'type'>, Types.Enum<article>> {}
 
 type ArticleMetadataKeys =
   | article<'published_time'>
@@ -508,7 +514,7 @@ interface ArticleExpirationTime
  * array of profile
  */
 interface ArticleAuthor
-  extends ArticleMetadataBase<og<article<'author'>>, Types.String> {}
+  extends ArticleMetadataBase<og<article<'author'>>, Types.URL> {}
 
 /**
  * A high-level section name. E.g. Technology
@@ -535,7 +541,7 @@ type ArticleMetadata =
 /**
  * This object type represents a book or publication. This is an appropriate type for ebooks, as well as traditional paperback or hardback books. Do not use this type to represent magazines
  */
-interface BookType extends MetadataBase<og<'type'>, Types.String<book>> {}
+interface BookType extends MetadataBase<og<'type'>, Types.Enum<book>> {}
 
 type BookMetadataKeys =
   | book<'author'>
@@ -553,8 +559,7 @@ interface BookMetadataBase<
  * profile array
  * @link ProfileMetadata
  */
-interface BookAuthor
-  extends BookMetadataBase<og<book<'author'>>, Types.String> {}
+interface BookAuthor extends BookMetadataBase<og<book<'author'>>, Types.URL> {}
 
 /**
  * The [ISBN](https://en.wikipedia.org/wiki/International_Standard_Book_Number)
@@ -577,7 +582,7 @@ interface BookTag extends BookMetadataBase<og<book<'tag'>>, Types.String> {}
 type BookMetadata = BookType | BookAuthor | BookIsbn | BookReleaseDate | BookTag
 
 interface MusicSongType
-  extends MetadataBase<og<'type'>, Types.String<music<'song'>>> {}
+  extends MetadataBase<og<'type'>, Types.Enum<music<'song'>>> {}
 
 interface MusicSongMetadataBase<
   Property extends og<MusicSongMetadataKeys>,
@@ -596,7 +601,7 @@ interface MusicSongDuration
  * music.album array
  */
 interface MusicSongAlbum
-  extends MusicSongMetadataBase<og<music<'album'>>, Types.String> {}
+  extends MusicSongMetadataBase<og<music<'album'>>, Types.URL> {}
 
 /**
  * Which disc of the album this song is on.
@@ -629,7 +634,7 @@ type MusicSongRecord =
   | MusicSongMusician
 
 interface MusicAlbumType
-  extends MetadataBase<og<'type'>, Types.String<music<'album'>>> {}
+  extends MetadataBase<og<'type'>, Types.Enum<music<'album'>>> {}
 
 interface MusicAlbumMetadataBase<
   Property extends og<MusicAlbumMetadataKeys>,
@@ -642,7 +647,7 @@ interface MusicAlbumMetadataBase<
  * @link MusicSongRecord
  */
 interface MusicAlbumSong
-  extends MusicAlbumMetadataBase<og<music<'song'>>, Types.String> {}
+  extends MusicAlbumMetadataBase<og<music<'song'>>, Types.URL> {}
 
 /**
  * The same as music:album:disc but in reverse.
@@ -666,7 +671,7 @@ interface MusicAlbumSongTrack
  * @link ProfileMetadata
  */
 interface MusicAlbumMusician
-  extends MusicAlbumMetadataBase<og<music<'musician'>>, Types.String> {}
+  extends MusicAlbumMetadataBase<og<music<'musician'>>, Types.URL> {}
 
 /**
  * The date the album was released.
@@ -684,7 +689,7 @@ type MusicAlbumRecord =
   | MusicAlbumReleaseDate
 
 interface MusicPlaylistType
-  extends MetadataBase<og<'type'>, Types.String<music<'playlist'>>> {}
+  extends MetadataBase<og<'type'>, Types.Enum<music<'playlist'>>> {}
 
 interface MusicPlaylistMetadataBase<
   Property extends og<MusicPlaylistMetadataKeys>,
@@ -697,7 +702,7 @@ interface MusicPlaylistMetadataBase<
  * @link MusicSongRecord
  */
 interface MusicPlaylistSong
-  extends MusicPlaylistMetadataBase<og<music<'song'>>, Types.String> {}
+  extends MusicPlaylistMetadataBase<og<music<'song'>>, Types.URL> {}
 
 /**
  * The same as music:album:disc but in reverse.
@@ -721,7 +726,7 @@ interface MusicPlaylistSongTrack
  * @link ProfileMetadata
  */
 interface MusicPlaylistCreator
-  extends MusicPlaylistMetadataBase<og<music<'creator'>>, Types.String> {}
+  extends MusicPlaylistMetadataBase<og<music<'creator'>>, Types.URL> {}
 
 type MusicPlaylistRecord =
   | MusicPlaylistType
@@ -731,7 +736,7 @@ type MusicPlaylistRecord =
   | MusicPlaylistCreator
 
 interface MusicRadioStationType
-  extends MetadataBase<og<'type'>, Types.String<music<'radio_station'>>> {}
+  extends MetadataBase<og<'type'>, Types.Enum<music<'radio_station'>>> {}
 
 interface MusicRadioStationMetadataBase<
   Property extends og<MusicRadioStationMetadataKeys>,
@@ -783,7 +788,7 @@ type MusicMetadata =
   | RadioStationRecord
 
 interface VideoMovieType
-  extends MetadataBase<og<'type'>, Types.String<video<'movie'>>> {}
+  extends MetadataBase<og<'type'>, Types.Enum<video<'movie'>>> {}
 
 interface VideoMovieMetadataBase<
   Property extends og<VideoMovieMetadataKeys>,
@@ -796,7 +801,7 @@ interface VideoMovieMetadataBase<
  * @link ProfileMetadata
  */
 interface VideoMovieActor
-  extends VideoMovieMetadataBase<og<video<'actor'>>, Types.String> {}
+  extends VideoMovieMetadataBase<og<video<'actor'>>, Types.URL> {}
 
 /**
  * The role they played.
@@ -811,7 +816,7 @@ interface VideoMovieActorRole
  * @link ProfileMetadata
  */
 interface VideoMovieDirector
-  extends VideoMovieMetadataBase<og<video<'director'>>, Types.String> {}
+  extends VideoMovieMetadataBase<og<video<'director'>>, Types.URL> {}
 
 /**
  * Writers of the movie.
@@ -819,7 +824,7 @@ interface VideoMovieDirector
  * @link ProfileMetadata
  */
 interface VideoMovieWriter
-  extends VideoMovieMetadataBase<og<video<'writer'>>, Types.String> {}
+  extends VideoMovieMetadataBase<og<video<'writer'>>, Types.URL> {}
 
 /**
  * The movie's length in seconds.
@@ -853,7 +858,7 @@ type VideoMovieRecord =
   | VideoMovieTag
 
 interface VideoEpisodeType
-  extends MetadataBase<og<'type'>, Types.String<video<'episode'>>> {}
+  extends MetadataBase<og<'type'>, Types.Enum<video<'episode'>>> {}
 
 interface VideoEpisodeMetadataBase<
   Property extends og<VideoEpisodeMetadataKeys>,
@@ -917,7 +922,7 @@ interface VideoEpisodeTag
  * video.tv_show
  */
 interface VideoEpisodeSeries
-  extends VideoEpisodeMetadataBase<og<video<'series'>>, Types.String> {}
+  extends VideoEpisodeMetadataBase<og<video<'series'>>, Types.URL> {}
 
 type VideoEpisodeRecord =
   | VideoEpisodeType
@@ -931,10 +936,10 @@ type VideoEpisodeRecord =
   | VideoEpisodeSeries
 
 interface VideoTvShowType
-  extends MetadataBase<og<'type'>, Types.String<video<'tv_show'>>> {}
+  extends MetadataBase<og<'type'>, Types.Enum<video<'tv_show'>>> {}
 
 interface VideoOtherType
-  extends MetadataBase<og<'type'>, Types.String<video<'other'>>> {}
+  extends MetadataBase<og<'type'>, Types.Enum<video<'other'>>> {}
 
 type VideoMovieMetadataKeys =
   | video<'actor'>
@@ -970,8 +975,7 @@ type VideoMetadata =
   | VideoTvShowType
   | VideoOtherType
 
-interface ProfileType
-  extends MetadataBase<og<'type'>, Types.String<'profile'>> {}
+interface ProfileType extends MetadataBase<og<'type'>, Types.Enum<'profile'>> {}
 
 type ProfileMetadataKeys =
   | profile<'first_name'>
@@ -1005,6 +1009,9 @@ interface ProfileLastName
 interface ProfileUsername
   extends ProfileMetadataBase<og<profile<'username'>>, Types.String> {}
 
+/**
+ * Gender
+ */
 interface ProfileGender
   extends ProfileMetadataBase<
     og<profile<'gender'>>,
@@ -1314,6 +1321,20 @@ export function makeOpenGraphMetaAttributesRecord({
         property: openGraphMetadata.property,
         content: String(openGraphMetadata.content),
       } as const)
+}
+
+/**
+ * an internal curried version of makeOpenGraphMetaAttributesRecord applying
+ * only `property` an `content`
+ * @see makeOpenGraphMetaAttributesRecord
+ */
+export function makeRecordCurried<
+  Metadata extends OpenGraphMetadata,
+  Property extends Metadata['property'],
+  Content extends Metadata['content']
+>(property: Property) {
+  return (content: Content) =>
+    makeOpenGraphMetaAttributesRecord({ property, content } as Metadata)
 }
 
 /**

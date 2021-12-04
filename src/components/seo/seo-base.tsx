@@ -238,7 +238,6 @@ export const SEOBase: React.VFC<Props> = (props) => {
           description: Types.String(seoDescription),
           image: Types.URL(seoImageSrc),
           imageAlt: Types.String(seoImageAlt),
-          // TODO: finish inserting all the relevant properties
         }),
 
         ...insertIf(props.meta, ...(props.meta || [])),

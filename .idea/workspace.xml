@@ -9,6 +9,8 @@
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/seo/meta.open-graph-protocol.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/meta.open-graph-protocol.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/seo/open-graph.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/open-graph.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/seo/seo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/seo/seo.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,13 +23,10 @@
       <list>
         <option value="CSS File" />
         <option value="TypeScript JSX File" />
-        <option value="TypeScript File" />
         <option value="GraphQL File" />
+        <option value="TypeScript File" />
       </list>
     </option>
-  </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -97,11 +96,8 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="OptimizeOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-  </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
@@ -120,7 +116,6 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="code.cleanup.on.save" value="true" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="TypeScript&#10;HTML&#10;TEXT&#10;JavaScript" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="17.0.1" />
@@ -137,15 +132,15 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
-    <property name="rearrange.code.on.save" value="true" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.js.occurrences" value="false" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
   </component>
   <component name="ReaderModeSettings">
     <option name="enabled" value="false" />
+    <option name="showRenderedDocs" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -224,16 +219,16 @@
       <item itemvalue="npm.clean" />
       <item itemvalue="npm.develop" />
       <item itemvalue="npm.serve" />
-      <item itemvalue="npm.test" />
       <item itemvalue="npm.start" />
+      <item itemvalue="npm.test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.test" />
+        <item itemvalue="npm.start" />
+        <item itemvalue="npm.serve" />
         <item itemvalue="npm.develop" />
         <item itemvalue="npm.clean" />
-        <item itemvalue="npm.start" />
-        <item itemvalue="npm.test" />
-        <item itemvalue="npm.serve" />
       </list>
     </recent_temporary>
   </component>
@@ -330,7 +325,23 @@
       <workItem from="1638629978267" duration="1168000" />
       <workItem from="1638631264072" duration="11588000" />
       <workItem from="1638646840722" duration="2048000" />
-      <workItem from="1638648904215" duration="4626000" />
+      <workItem from="1638648904215" duration="9795000" />
+      <workItem from="1638726601263" duration="4072000" />
+      <workItem from="1638736225808" duration="1563000" />
+      <workItem from="1638740752167" duration="2866000" />
+      <workItem from="1638743832496" duration="3733000" />
+      <workItem from="1638781889661" duration="4773000" />
+      <workItem from="1638789900125" duration="3042000" />
+      <workItem from="1638793540654" duration="1319000" />
+      <workItem from="1638795305129" duration="1099000" />
+      <workItem from="1638796446755" duration="1747000" />
+      <workItem from="1638802471188" duration="3003000" />
+      <workItem from="1638874642133" duration="363000" />
+      <workItem from="1638875143704" duration="111000" />
+      <workItem from="1638875557626" duration="832000" />
+      <workItem from="1638876515866" duration="146000" />
+      <workItem from="1638876787155" duration="3148000" />
+      <workItem from="1638880995034" duration="16623000" />
     </task>
     <servers />
   </component>

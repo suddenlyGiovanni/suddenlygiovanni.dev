@@ -21,7 +21,7 @@ export const Facebook: React.VFC<Props> = ({
   locale,
 }) => (
   <Helmet>
-    <MetaOpenGraphProtocol property="og:type" content={Types.String(type)} />
+    <MetaOpenGraphProtocol property="og:type" content={Types.Enum(type)} />
     <MetaOpenGraphProtocol
       property="og:locale"
       content={Types.String(locale)}
