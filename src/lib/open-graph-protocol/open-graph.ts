@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray } from '../../lib/array'
+import { insertLazilyIf, isArray } from '../array'
 import {
   DelimiterContent,
   makeOpenGraphMetaAttributesRecord as makeRecord,
@@ -6,7 +6,7 @@ import {
   MIMEContent,
   TypeContent,
   Types,
-} from './meta.open-graph-protocol'
+} from './open-graph-protocol'
 
 interface OpenGraphImage {
   /**
@@ -33,7 +33,7 @@ interface OpenGraphImage {
   ogImageAlt?: Types.String
 }
 
-export function makeOpenGraphImage(
+function makeOpenGraphImage(
   openGraphImage: Types.URL | OpenGraphImage | readonly OpenGraphImage[]
 ) {
   function _makeOpenGraphImage(ogImage: OpenGraphImage) {
@@ -105,7 +105,7 @@ interface OpenGraphVideo {
   ogVideoAlt?: Types.String
 }
 
-export function makeOpenGraphVideo(
+function makeOpenGraphVideo(
   openGraphVideo: Types.URL | OpenGraphVideo | readonly OpenGraphVideo[]
 ) {
   function _makeOpenGraphVideo(_openGraphVideo: OpenGraphVideo) {
@@ -171,7 +171,7 @@ interface OpenGraphAudio {
   ogAudioType?: MIMEContent
 }
 
-export function makeOpenGraphAudio(
+function makeOpenGraphAudio(
   openGraphAudio: Types.URL | OpenGraphAudio | readonly OpenGraphAudio[]
 ) {
   function _makeOpenGraphAudio(ogAudio: OpenGraphAudio) {

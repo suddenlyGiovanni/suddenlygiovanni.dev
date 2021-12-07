@@ -1,3 +1,5 @@
+// @ts-nocheck
+// TODO: this code has not been deleted yet to serve as a reminder
 import { useLocation } from '@reach/router'
 import { Helmet } from 'react-helmet'
 
@@ -9,8 +11,7 @@ import {
   makeSchemaBlogPosting,
   makeSchemaBreadcrumbList,
   makeSchemaWebPage,
-} from './structured-data'
-import { Twitter } from './twitter'
+} from '../../lib/structure-data/structured-data'
 
 const maxLength70 = Strings.maxLength(70)
 const maxLength160 = Strings.maxLength(160)
@@ -74,7 +75,7 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
       : new Date(Date.now()).toISOString(),
     dateModified: dateModified || new Date(buildTime).toISOString(),
     author: author || defaultAuthor,
-    image: image || defaultImage,
+    siteImage: image || defaultImage,
   }
 
   const copyrightYear = new Date().getFullYear()
@@ -118,9 +119,9 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
             inLanguage: siteLanguage,
             url: seo.url,
             name: seo.title,
-            image: {
+            siteImage: {
               '@type': 'ImageObject',
-              url: seo.image,
+              url: seo.siteImage,
             },
             mainEntityOfPage: seo.url,
           })
@@ -175,9 +176,9 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
             },
             datePublished: seo.datePublished || undefined,
             dateModified: seo.dateModified,
-            image: {
+            siteImage: {
               '@type': 'ImageObject',
-              url: seo.image,
+              url: seo.siteImage,
             },
           })
         ),
@@ -201,24 +202,18 @@ export const SEO: React.VFC<Partial<Readonly<Props>>> = ({
         <html lang={seo.siteLanguage} />
         <link rel="canonical" href={seo.url} />
         <meta name="description" content={seo.description} />
-        <meta name="image" content={seo.image} />
+        <meta name="image" content={seo.siteImage} />
         {Schema}
       </Helmet>
 
       <>
         <Facebook
           desc={seo.description}
-          image={seo.image}
+          image={seo.siteImage}
           title={seo.title}
           type={isBlogPost ? 'article' : 'website'}
           url={seo.url}
           locale={seo.siteLocale}
-        />
-        <Twitter
-          title={seo.title}
-          image={seo.image}
-          desc={seo.description}
-          username={twitterHandle}
         />
       </>
     </>

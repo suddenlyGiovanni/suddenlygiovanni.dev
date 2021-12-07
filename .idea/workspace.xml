@@ -97,7 +97,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
     <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
@@ -150,18 +150,18 @@
       <recent name="$PROJECT_DIR$/config" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/lib/structure-data" />
+      <recent name="$PROJECT_DIR$/src/lib/open-graph-protocol/" />
+      <recent name="$PROJECT_DIR$/src/lib/open-graph-protocol" />
+      <recent name="$PROJECT_DIR$/src/lib" />
       <recent name="$PROJECT_DIR$/src/lib/" />
-      <recent name="$PROJECT_DIR$/src/layouts/" />
-      <recent name="$PROJECT_DIR$/config" />
-      <recent name="$PROJECT_DIR$/src/components" />
-      <recent name="$PROJECT_DIR$/src/components/main" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/lib/open-graph-protocol/open-graph.component.tsx" />
+      <recent name="$PROJECT_DIR$/src/lib/open-graph-protocol/twitter-card.tsx" />
       <recent name="$PROJECT_DIR$/src/lib/assert.ts" />
       <recent name="$PROJECT_DIR$/config/index.ts" />
       <recent name="$PROJECT_DIR$/gatsby-config.ts" />
-      <recent name="$PROJECT_DIR$/src/lib/array.ts" />
-      <recent name="$PROJECT_DIR$/config/config.ts" />
     </key>
   </component>
   <component name="RunManager" selected="npm.develop">
@@ -341,7 +341,7 @@
       <workItem from="1638875557626" duration="832000" />
       <workItem from="1638876515866" duration="146000" />
       <workItem from="1638876787155" duration="3148000" />
-      <workItem from="1638880995034" duration="16623000" />
+      <workItem from="1638880995034" duration="23166000" />
     </task>
     <servers />
   </component>

@@ -4,8 +4,7 @@ import { Helmet } from 'react-helmet'
 
 import { useSiteMetadata } from '../../hooks'
 import { insertIf, insertLazilyIf } from '../../lib/array'
-import { Types } from './meta.open-graph-protocol'
-import { makeTwitterCard } from './twitter-card'
+import { makeTwitterCard, Types } from '../../lib/open-graph-protocol'
 
 type Robots = readonly (
   | 'index'
@@ -19,6 +18,26 @@ type Robots = readonly (
   | 'noimageindex'
   | 'nocache'
 )[]
+
+function toCommaSeparatedString<T extends string>(
+  elements: readonly T[]
+): string {
+  return elements.join(', ')
+}
+
+interface MetaAttributes<
+  Name extends string = string,
+  Content extends string = string
+> {
+  readonly name: Name
+  readonly content: Content
+}
+
+function makeMeta<Name extends string, Content extends string>(
+  name: Name
+): (content: Content) => MetaAttributes<Name, Content> {
+  return (content) => ({ name, content })
+}
 
 interface Props {
   /**
@@ -156,74 +175,48 @@ export const SEOBase: React.VFC<Props> = (props) => {
         { charSet: props.charSet || 'utf8' },
 
         /** the name of the application running in the web page. */
-        ...insertLazilyIf(props.applicationName, (applicationName) => ({
-          name: 'application-name',
-          content: applicationName,
-        })),
+        ...insertLazilyIf(props.applicationName, makeMeta('application-name')),
 
         /** the name of the document's author */
-        ...insertLazilyIf(seoAuthor, (author) => ({
-          name: 'author',
-          content: author,
-        })),
+        ...insertLazilyIf(seoAuthor, makeMeta('author')),
 
         /**
          * a short and accurate summary of the content of the page.
          * Several browsers, like Firefox and Opera, use this as the default description of bookmarked pages.
          */
-        ...insertLazilyIf(seoDescription, (description) => ({
-          name: 'description',
-          content: description,
-        })),
+        ...insertLazilyIf(seoDescription, makeMeta('description')),
 
         /** the identifier of the software that generated the page. */
-        ...insertLazilyIf(seoGenerator, (generator) => ({
-          name: 'generator',
-          content: generator,
-        })),
+        ...insertLazilyIf(seoGenerator, makeMeta('generator')),
 
         /** words relevant to the page's content separated by commas. */
-        ...insertLazilyIf(seoKeywords, (keywords) => ({
-          name: 'keywords',
-          content: toCommaSeparatedStringList(keywords),
-        })),
+        ...insertLazilyIf(seoKeywords, (keywords) =>
+          makeMeta('keywords')(toCommaSeparatedString(keywords))
+        ),
 
         /** the color schemes with which the document is compatible. */
-        ...insertLazilyIf(seoColorScheme, (colorScheme) => ({
-          name: 'color-scheme',
-          content: colorScheme,
-        })),
+        ...insertLazilyIf(seoColorScheme, makeMeta('color-scheme')),
 
         /** the name of the document's publisher. */
-        ...insertLazilyIf(seoPublisher, (publisher) => ({
-          name: 'publisher',
-          content: publisher,
-        })),
+        ...insertLazilyIf(seoPublisher, makeMeta('publisher')),
 
         /** the behavior that cooperative crawlers, or "robots", should use with the page. It is a comma-separated list. */
-        ...insertLazilyIf(seoRobots, (robots) => ({
-          name: 'robots',
-          content: toCommaSeparatedStringList(robots),
-        })),
+        ...insertLazilyIf(seoRobots, (robots) =>
+          makeMeta('robots')(toCommaSeparatedString(robots))
+        ),
 
         /**
          * a synonym of robots, is only followed by Googlebot (the indexing crawler for Google)
          */
-        ...insertLazilyIf(seoGooglebot, (googlebot) => ({
-          name: 'googlebot',
-          content: toCommaSeparatedStringList(googlebot),
-        })),
+        ...insertLazilyIf(seoGooglebot, (googlebot) =>
+          makeMeta('googlebot')(toCommaSeparatedString(googlebot))
+        ),
 
         /**
          * the name of the creator of the document, such as an organization or institution.
          * If there are more than one, several <meta> elements should be used.
          */
-        ...(seoCreator
-          ? seoCreator.map((creator) => ({
-              name: 'creator',
-              content: creator,
-            }))
-          : []),
+        ...(seoCreator ? seoCreator.map(makeMeta('creator')) : []),
 
         // TODO: insert open graph data
 
@@ -234,7 +227,7 @@ export const SEOBase: React.VFC<Props> = (props) => {
           site: Types.String(seoTwitter),
           siteID: Types.String(seoTwitter),
           creatorID: Types.String(seoTwitter),
-          creator: Types.String(toCommaSeparatedStringList(seoCreator)),
+          creator: Types.String(toCommaSeparatedString(seoCreator)),
           description: Types.String(seoDescription),
           image: Types.URL(seoImageSrc),
           imageAlt: Types.String(seoImageAlt),
@@ -244,10 +237,4 @@ export const SEOBase: React.VFC<Props> = (props) => {
       ]}
     />
   )
-}
-
-function toCommaSeparatedStringList<T extends string>(
-  elements: readonly T[]
-): string {
-  return elements.join(', ')
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
-import MetaOpenGraphProtocol, { Types } from './meta.open-graph-protocol'
+import { MetaOpenGraphProtocol, Types } from '../../lib/open-graph-protocol'
 
 interface Props {
   url: string

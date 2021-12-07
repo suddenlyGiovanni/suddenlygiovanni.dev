@@ -1258,7 +1258,7 @@ export type TwitterMetadata =
   | TwitterAppIDGooglePlay
   | TwitterAppURLGooglePlay
 
-type OpenGraphMetadata =
+export type OpenGraphMetadata =
   | BasicMetadata
   | OptionalMetadata
   | ImageMetadata
@@ -1335,16 +1335,4 @@ export function makeRecordCurried<
 >(property: Property) {
   return (content: Content) =>
     makeOpenGraphMetaAttributesRecord({ property, content } as Metadata)
-}
-
-/**
- * React wrapper around the open graph specification
- * it supports the `The Open Graph protocol` and Twitter's custom implementation
- * @link https://ogp.me/#types
- */
-export default function MetaOpenGraphProtocol(
-  props: Partial<Omit<JSX.IntrinsicElements['meta'], 'property' | 'content'>> &
-    OpenGraphMetadata
-): JSX.Element {
-  return <meta {...makeOpenGraphMetaAttributesRecord(props)} />
 }

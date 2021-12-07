@@ -1,12 +1,6 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
-
-import { insertLazilyIf } from '../../lib/array'
-import { maxLength } from '../../lib/string'
-import {
-  makeOpenGraphMetaAttributesRecord,
-  Types,
-} from './meta.open-graph-protocol'
+import { insertLazilyIf } from '../array'
+import { maxLength } from '../string'
+import { makeOpenGraphMetaAttributesRecord, Types } from './open-graph-protocol'
 
 const cutAt420Characters = maxLength(420)
 const cutAt200Characters = maxLength(200)
@@ -144,7 +138,10 @@ interface TwitterAppCard extends TwitterCardBase {
   appURLGooglePlay?: Types.URL
 }
 
-type TwitterCard = TwitterSummaryCard | TwitterAppCard | TwitterPlayerCard
+export type TwitterCard =
+  | TwitterSummaryCard
+  | TwitterAppCard
+  | TwitterPlayerCard
 
 function isTwitterSummaryCard(
   twitterCard: TwitterCard
@@ -407,8 +404,4 @@ export function makeTwitterCard(twitterCard: TwitterCard) {
     ]
   }
   return []
-}
-
-export const TwitterCard: React.VFC<TwitterCard> = (twitterCard) => {
-  return <Helmet meta={makeTwitterCard(twitterCard)} />
 }
