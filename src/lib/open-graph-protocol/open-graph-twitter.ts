@@ -1,15 +1,285 @@
 import { insertLazilyIf } from '@lib/array'
 import { maxLength } from '@lib/string'
 
-import {
-  makeOpenGraphMetaAttributesRecord as makeRecord,
-  makeRecordCurried,
-  Types,
-} from './open-graph-protocol'
+import { BaseOrExtended, MetadataBase, Types } from './open-graph-protocol'
 
-const cutAt420Characters = maxLength(420)
-const cutAt200Characters = maxLength(200)
-const cutAt70Characters = maxLength(70)
+type twitter<T extends string = ''> = BaseOrExtended<'twitter', T>
+export type TwitterMetadataKeys =
+  | twitter<'card'>
+  | twitter<'site'>
+  | twitter<'site:id'>
+  | twitter<'creator'>
+  | twitter<'creator:id'>
+  | twitter<'description'>
+  | twitter<'title'>
+  | twitter<'image'>
+  | twitter<'image:alt'>
+  | twitter<'player'>
+  | twitter<'player:width'>
+  | twitter<'player:height'>
+  | twitter<'player:stream'>
+  | twitter<'app:name:iphone'>
+  | twitter<'app:id:iphone'>
+  | twitter<'app:url:iphone'>
+  | twitter<'app:name:ipad'>
+  | twitter<'app:id:ipad'>
+  | twitter<'app:url:ipad'>
+  | twitter<'app:name:googleplay'>
+  | twitter<'app:id:googleplay'>
+  | twitter<'app:url:googleplay'>
+
+interface TwitterMetadataBase<
+  Property extends TwitterMetadataKeys,
+  Content extends Types.Type
+> extends MetadataBase<Property, Content> {}
+
+/**
+ * The card type
+ *
+ * Used with all cards
+ */
+interface TwitterCard
+  extends TwitterMetadataBase<
+    twitter<'card'>,
+    Types.Enum<'summary_large_image' | 'summary' | 'app' | 'player'>
+  > {}
+
+/**
+ * @username of website. Either twitter:site or twitter:site:id is required.
+ *
+ * Used with summary, summary_large_image, app, player cards
+ * @link TwitterSiteID
+ */
+interface TwitterSite
+  extends TwitterMetadataBase<twitter<'site'>, Types.String> {}
+
+/**
+ * Same as twitter:site, but the user’s Twitter ID. Either twitter:site or twitter:site:id is required.
+ *
+ * Used with summary, summary_large_image, player cards
+ * @link TwitterSite
+ */
+interface TwitterSiteID
+  extends TwitterMetadataBase<twitter<'site:id'>, Types.String> {}
+
+/**
+ * @username of content creator
+ *
+ * Used with summary_large_image cards
+ */
+interface TwitterCreator
+  extends TwitterMetadataBase<twitter<'creator'>, Types.String> {}
+
+/**
+ * Twitter user ID of content creator
+ *
+ * Used with summary, summary_large_image card
+ */
+interface TwitterCreatorID
+  extends TwitterMetadataBase<twitter<'creator:id'>, Types.String> {}
+
+/**
+ * Description of content (maximum 200 characters)
+ *
+ * Used with summary, summary_large_image, player cards
+ */
+interface TwitterDescription
+  extends TwitterMetadataBase<twitter<'description'>, Types.String> {}
+
+/**
+ * Title of content (max 70 characters)
+ *
+ * Used with summary, summary_large_image, player cards
+ */
+interface TwitterTitle
+  extends TwitterMetadataBase<twitter<'title'>, Types.String> {}
+
+/**
+ * URL of image to use in the card. Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported.
+ *
+ * Used with summary, summary_large_image, player cards
+ */
+interface TwitterImage
+  extends TwitterMetadataBase<twitter<'image'>, Types.URL> {}
+
+/**
+ * A text description of the image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters.
+ *
+ * Used with summary, summary_large_image, player cards
+ */
+interface TwitterImageAlt
+  extends TwitterMetadataBase<twitter<'image:alt'>, Types.String> {}
+
+/**
+ * HTTPS URL of player iframe
+ *
+ * Used with player card
+ */
+interface TwitterPlayer
+  extends TwitterMetadataBase<twitter<'player'>, Types.URL> {}
+
+/**
+ * Width of iframe in pixels
+ *
+ * Used with player card
+ */
+interface TwitterPlayerWidth
+  extends TwitterMetadataBase<twitter<'player:width'>, Types.Integer> {}
+
+/**
+ * Height of iframe in pixels
+ *
+ * Used with player card
+ */
+interface TwitterPlayerHeight
+  extends TwitterMetadataBase<twitter<'player:height'>, Types.Integer> {}
+
+/**
+ * URL to raw video or audio stream
+ *
+ * Used with player card
+ */
+interface TwitterPlayerStream
+  extends TwitterMetadataBase<twitter<'player:stream'>, Types.URL> {}
+
+/**
+ * Name of your iPhone app
+ *
+ * Used with app card
+ */
+interface TwitterAppNameIphone
+  extends TwitterMetadataBase<twitter<'app:name:iphone'>, Types.String> {}
+
+/**
+ * Your app ID in the iTunes App Store (Note: NOT your bundle ID)
+ *
+ * Used with app card
+ */
+interface TwitterAppIDIphone
+  extends TwitterMetadataBase<twitter<'app:id:iphone'>, Types.String> {}
+
+/**
+ * Your app’s custom URL scheme (you must include ”://” after your scheme name)
+ *
+ * Used with app card
+ */
+interface TwitterAppURLIphone
+  extends TwitterMetadataBase<twitter<'app:url:iphone'>, Types.URL> {}
+
+/**
+ * Name of your iPad optimized app.
+ * Used with app card
+ */
+interface TwitterAppNameIpad
+  extends TwitterMetadataBase<twitter<'app:name:ipad'>, Types.String> {}
+
+/**
+ * Your app ID in the iTunes App Store
+ *
+ * Used with app card
+ */
+interface TwitterAppIDIpad
+  extends TwitterMetadataBase<twitter<'app:id:ipad'>, Types.String> {}
+
+/**
+ * Your app’s custom URL scheme
+ *
+ * Used with app card
+ */
+interface TwitterAppURLIpad
+  extends TwitterMetadataBase<twitter<'app:url:ipad'>, Types.URL> {}
+
+/**
+ * Name of your Android app
+ *
+ * Used with app card
+ */
+interface TwitterAppNameGooglePlay
+  extends TwitterMetadataBase<twitter<'app:name:googleplay'>, Types.String> {}
+
+/**
+ * Your app ID in the Google Play Store
+ *
+ * Used with app card
+ */
+interface TwitterAppIDGooglePlay
+  extends TwitterMetadataBase<twitter<'app:id:googleplay'>, Types.String> {}
+
+/**
+ * Your app’s custom URL scheme
+ *
+ * Used with app card
+ */
+interface TwitterAppURLGooglePlay
+  extends TwitterMetadataBase<twitter<'app:url:googleplay'>, Types.URL> {}
+
+export type TwitterMetadata =
+  | TwitterCard
+  | TwitterSite
+  | TwitterSiteID
+  | TwitterCreator
+  | TwitterCreatorID
+  | TwitterDescription
+  | TwitterTitle
+  | TwitterImage
+  | TwitterImageAlt
+  | TwitterPlayer
+  | TwitterPlayerWidth
+  | TwitterPlayerHeight
+  | TwitterPlayerStream
+  | TwitterAppNameIphone
+  | TwitterAppIDIphone
+  | TwitterAppURLIphone
+  | TwitterAppNameIpad
+  | TwitterAppIDIpad
+  | TwitterAppURLIpad
+  | TwitterAppNameGooglePlay
+  | TwitterAppIDGooglePlay
+  | TwitterAppURLGooglePlay
+
+export interface TwitterCardMeta {
+  readonly name: TwitterMetadata['property']
+  readonly content: string
+}
+
+/**
+ * A polymorphic factory function to produce an OpenGraph TwitterCard record
+ * with correct attribute.  Normalize the arguments to the Open Graph standard
+ * `property` `content`
+ * Can be used by providing a TwitterMetadata object or by partially applying
+ * the `property` first and the `content` last
+ * returns a Twitter Card Tags
+ * @link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
+ */
+export function makeTwitterCardMeta<
+  Metadata extends TwitterMetadata,
+  Property extends Metadata['property'],
+  Content extends Metadata['content']
+>(property: Property): (content: Content) => TwitterCardMeta
+
+export function makeTwitterCardMeta<Metadata extends TwitterMetadata>(
+  twitterMetadata: Metadata
+): TwitterCardMeta
+
+export function makeTwitterCardMeta<
+  Metadata extends TwitterMetadata,
+  Property extends Metadata['property'],
+  Content extends Metadata['content']
+>(
+  metadataOrProperty: Metadata | Property
+): ((content: Content) => TwitterCardMeta) | TwitterCardMeta {
+  /**
+   * returns a Twitter Card Tags
+   * @link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
+   */
+  return typeof metadataOrProperty === 'object'
+    ? ({
+        name: metadataOrProperty.property,
+        content: String(metadataOrProperty.content),
+      } as const)
+    : (content: Content): TwitterCardMeta =>
+        ({ name: metadataOrProperty, content: String(content) } as const)
+}
 
 interface TwitterCardBase {
   /** The card type */
@@ -26,7 +296,7 @@ interface TwitterCardBase {
  * # [Summary Card with Large Image](https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image):
  * Similar to the Summary Card, but with a prominently-featured image.
  */
-interface TwitterSummaryCard extends TwitterCardBase {
+interface OpenGraphTwitterSummaryCard extends TwitterCardBase {
   /** The card type */
   card: Types.Enum<'summary_large_image' | 'summary'>
 
@@ -61,7 +331,7 @@ interface TwitterSummaryCard extends TwitterCardBase {
  * # [Player Card](https://developer.twitter.com/content/developer-twitter/en/docs/tweets/optimize-with-cards/overview/player-card):
  * A Card that can display video/audio/media.
  */
-interface TwitterPlayerCard extends TwitterCardBase {
+interface OpenGraphTwitterPlayerCard extends TwitterCardBase {
   /** The card type */
   card: Types.Enum<'player'>
 
@@ -105,7 +375,7 @@ interface TwitterPlayerCard extends TwitterCardBase {
  * # [App Card](https://developer.twitter.com/content/developer-twitter/en/docs/tweets/optimize-with-cards/overview/app-card):
  * A Card with a direct download to a mobile app.
  */
-interface TwitterAppCard extends TwitterCardBase {
+interface OpenGraphTwitterAppCard extends TwitterCardBase {
   /** The card type */
   card: Types.Enum<'app'>
 
@@ -143,179 +413,190 @@ interface TwitterAppCard extends TwitterCardBase {
   appURLGooglePlay?: Types.URL
 }
 
-export type TwitterCard =
-  | TwitterSummaryCard
-  | TwitterAppCard
-  | TwitterPlayerCard
+export type OpenGraphTwitterCard =
+  | OpenGraphTwitterSummaryCard
+  | OpenGraphTwitterAppCard
+  | OpenGraphTwitterPlayerCard
 
-function isTwitterSummaryCard(
-  twitterCard: TwitterCard
-): twitterCard is TwitterSummaryCard {
+function isOpenGraphTwitterSummaryCard(
+  openGraphTwitterCard: OpenGraphTwitterCard
+): openGraphTwitterCard is OpenGraphTwitterSummaryCard {
   return (
-    twitterCard.card === 'summary' || twitterCard.card === 'summary_large_image'
+    openGraphTwitterCard.card === 'summary' ||
+    openGraphTwitterCard.card === 'summary_large_image'
   )
 }
 
-function isTwitterAppCard(
-  twitterCard: TwitterCard
-): twitterCard is TwitterAppCard {
-  return twitterCard.card === 'app'
+function isOpenGraphTwitterAppCard(
+  openGraphTwitterCard: OpenGraphTwitterCard
+): openGraphTwitterCard is OpenGraphTwitterAppCard {
+  return openGraphTwitterCard.card === 'app'
 }
 
-function isTwitterPlayerCard(
-  twitterCard: TwitterCard
-): twitterCard is TwitterPlayerCard {
-  return twitterCard.card === 'player'
+function isOpenGraphTwitterPlayerCard(
+  openGraphTwitterCard: OpenGraphTwitterCard
+): openGraphTwitterCard is OpenGraphTwitterPlayerCard {
+  return openGraphTwitterCard.card === 'player'
 }
 
-export function makeTwitterCard(twitterCard: TwitterCard) {
-  // TODO: finish this implementation
+export function makeOpenGraphTwitterCard(
+  openGraphTwitterCard: OpenGraphTwitterCard
+) {
+  const cutAt420Characters = maxLength(420)
+  const cutAt200Characters = maxLength(200)
+  const cutAt70Characters = maxLength(70)
 
-  if (isTwitterSummaryCard(twitterCard)) {
+  if (isOpenGraphTwitterSummaryCard(openGraphTwitterCard)) {
     return [
       // CARD!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:card',
-        content: twitterCard.card, // 'summary_large_image' | 'summary'
+        content: openGraphTwitterCard.card, // 'summary_large_image' | 'summary'
       }),
 
       // SITE?
-      ...insertLazilyIf(twitterCard.site, makeRecordCurried('twitter:site')),
+      ...insertLazilyIf(
+        openGraphTwitterCard.site,
+        makeTwitterCardMeta('twitter:site')
+      ),
 
       // SITE_ID?
       ...insertLazilyIf(
-        twitterCard.siteID,
-        makeRecordCurried('twitter:site:id')
+        openGraphTwitterCard.siteID,
+        makeTwitterCardMeta('twitter:site:id')
       ),
 
       // TITLE!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:title',
-        content: Types.String(cutAt70Characters(twitterCard.title)),
+        content: Types.String(cutAt70Characters(openGraphTwitterCard.title)),
       }),
 
       // CREATOR?
       ...insertLazilyIf(
-        twitterCard.creator,
-        makeRecordCurried('twitter:creator')
+        openGraphTwitterCard.creator,
+        makeTwitterCardMeta('twitter:creator')
       ),
       // CREATOR_ID?
       ...insertLazilyIf(
-        twitterCard.creatorID,
-        makeRecordCurried('twitter:creator:id')
+        openGraphTwitterCard.creatorID,
+        makeTwitterCardMeta('twitter:creator:id')
       ),
 
       // DESCRIPTION?
-      ...insertLazilyIf(twitterCard.description, (description) =>
-        makeRecord({
+      ...insertLazilyIf(openGraphTwitterCard.description, (description) =>
+        makeTwitterCardMeta({
           property: 'twitter:description',
           content: Types.String(cutAt200Characters(description)),
         })
       ),
 
       // IMAGE?
-      ...insertLazilyIf(twitterCard.image, makeRecordCurried('twitter:image')),
+      ...insertLazilyIf(
+        openGraphTwitterCard.image,
+        makeTwitterCardMeta('twitter:image')
+      ),
 
       // IMAGE_ALT?
-      ...insertLazilyIf(twitterCard.imageAlt, (imageAlt) =>
-        makeRecord({
+      ...insertLazilyIf(openGraphTwitterCard.imageAlt, (imageAlt) =>
+        makeTwitterCardMeta({
           property: 'twitter:image:alt',
           content: Types.String(cutAt420Characters(imageAlt)),
         })
       ),
     ]
   }
-  if (isTwitterPlayerCard(twitterCard)) {
+  if (isOpenGraphTwitterPlayerCard(openGraphTwitterCard)) {
     return [
       // CARD!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:card',
-        content: twitterCard.card, // player
+        content: openGraphTwitterCard.card, // player
       }),
 
       // TITLE!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:title',
-        content: Types.String(cutAt70Characters(twitterCard.title)),
+        content: Types.String(cutAt70Characters(openGraphTwitterCard.title)),
       }),
 
       // SITE!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:site',
-        content: twitterCard.site,
+        content: openGraphTwitterCard.site,
       }),
 
       // SITE_ID?
       ...insertLazilyIf(
-        twitterCard.siteID,
-        makeRecordCurried('twitter:site:id')
+        openGraphTwitterCard.siteID,
+        makeTwitterCardMeta('twitter:site:id')
       ),
 
       // DESCRIPTION?
-      ...insertLazilyIf(twitterCard.description, (description) =>
-        makeRecord({
+      ...insertLazilyIf(openGraphTwitterCard.description, (description) =>
+        makeTwitterCardMeta({
           property: 'twitter:description',
           content: Types.String(cutAt200Characters(description)),
         })
       ),
 
       // IMAGE!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:image',
-        content: twitterCard.image,
+        content: openGraphTwitterCard.image,
       }),
 
       // IMAGE_ALT?
-      ...insertLazilyIf(twitterCard.imageAlt, (imageAlt) =>
-        makeRecord({
+      ...insertLazilyIf(openGraphTwitterCard.imageAlt, (imageAlt) =>
+        makeTwitterCardMeta({
           property: 'twitter:image:alt',
           content: Types.String(cutAt420Characters(imageAlt)),
         })
       ),
 
       // PLAYER!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:player',
-        content: twitterCard.player,
+        content: openGraphTwitterCard.player,
       }),
 
       // PLAYER_WIDTH!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:player:width',
-        content: twitterCard.playerWidth,
+        content: openGraphTwitterCard.playerWidth,
       }),
 
       // PLAYER_HEIGHT!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:player:height',
-        content: twitterCard.playerHeight,
+        content: openGraphTwitterCard.playerHeight,
       }),
 
       // PLAYER_STREAM?
       ...insertLazilyIf(
-        twitterCard.playerStream,
-        makeRecordCurried('twitter:player:stream')
+        openGraphTwitterCard.playerStream,
+        makeTwitterCardMeta('twitter:player:stream')
       ),
     ]
   }
 
-  if (isTwitterAppCard(twitterCard)) {
+  if (isOpenGraphTwitterAppCard(openGraphTwitterCard)) {
     return [
       // CARD!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:card',
-        content: twitterCard.card, // 'app'
+        content: openGraphTwitterCard.card, // 'app'
       }),
 
       // SITE!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:site',
-        content: twitterCard.site,
+        content: openGraphTwitterCard.site,
       }),
 
       // DESCRIPTION?
-      ...insertLazilyIf(twitterCard.description, (description) =>
-        makeRecord({
+      ...insertLazilyIf(openGraphTwitterCard.description, (description) =>
+        makeTwitterCardMeta({
           property: 'twitter:description',
           content: Types.String(cutAt200Characters(description)),
         })
@@ -323,56 +604,56 @@ export function makeTwitterCard(twitterCard: TwitterCard) {
 
       // APP_NAME_IPHONE?
       ...insertLazilyIf(
-        twitterCard.appNameIphone,
-        makeRecordCurried('twitter:app:name:iphone')
+        openGraphTwitterCard.appNameIphone,
+        makeTwitterCardMeta('twitter:app:name:iphone')
       ),
 
       // APP_ID_IPHONE!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:app:id:iphone',
-        content: twitterCard.appIDIphone,
+        content: openGraphTwitterCard.appIDIphone,
       }),
 
       // APP_URL_IPHONE?
       ...insertLazilyIf(
-        twitterCard.appURLIphone,
-        makeRecordCurried('twitter:app:url:iphone')
+        openGraphTwitterCard.appURLIphone,
+        makeTwitterCardMeta('twitter:app:url:iphone')
       ),
 
       // APP_NAME_IPAD?
       ...insertLazilyIf(
-        twitterCard.appNameIpad,
-        makeRecordCurried('twitter:app:name:ipad')
+        openGraphTwitterCard.appNameIpad,
+        makeTwitterCardMeta('twitter:app:name:ipad')
       ),
 
       // APP_ID_IPAD!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:app:id:ipad',
-        content: twitterCard.appIDIpad,
+        content: openGraphTwitterCard.appIDIpad,
       }),
 
       // APP_URL_IPAD?
       ...insertLazilyIf(
-        twitterCard.appURLIpad,
-        makeRecordCurried('twitter:app:url:ipad')
+        openGraphTwitterCard.appURLIpad,
+        makeTwitterCardMeta('twitter:app:url:ipad')
       ),
 
       // APP_NAME_GOOGLEPLAY?
       ...insertLazilyIf(
-        twitterCard.appNameGooglePlay,
-        makeRecordCurried('twitter:app:name:googleplay')
+        openGraphTwitterCard.appNameGooglePlay,
+        makeTwitterCardMeta('twitter:app:name:googleplay')
       ),
 
       // APP_ID_APP_NAME_GOOGLEPLAY!
-      makeRecord({
+      makeTwitterCardMeta({
         property: 'twitter:app:id:googleplay',
-        content: twitterCard.appIDGooglePlay,
+        content: openGraphTwitterCard.appIDGooglePlay,
       }),
 
       // APP_URL_GOOGLEPLAY?
       ...insertLazilyIf(
-        twitterCard.appURLGooglePlay,
-        makeRecordCurried('twitter:app:url:googleplay')
+        openGraphTwitterCard.appURLGooglePlay,
+        makeTwitterCardMeta('twitter:app:url:googleplay')
       ),
     ]
   }

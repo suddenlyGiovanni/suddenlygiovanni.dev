@@ -1,6 +1,6 @@
 import { useSiteMetadata } from '@hooks/index'
 import { insertIf, insertLazilyIf } from '@lib/array'
-import { makeTwitterCard, Types } from '@lib/open-graph-protocol'
+import { makeOpenGraphTwitterCard, Types } from '@lib/open-graph-protocol'
 
 import { useLocation } from '@reach/router'
 import React from 'react'
@@ -221,7 +221,7 @@ export const SEOBase: React.VFC<Props> = (props) => {
         // TODO: insert open graph data
 
         // TODO: insert Twitter card open graph data
-        ...makeTwitterCard({
+        ...makeOpenGraphTwitterCard({
           card: Types.Enum('summary_large_image'),
           title: Types.String(seoTitle),
           site: Types.String(seoTwitter),

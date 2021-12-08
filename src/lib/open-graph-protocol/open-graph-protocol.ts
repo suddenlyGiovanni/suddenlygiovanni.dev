@@ -1,4 +1,10 @@
-import { BaseOf, Brand, make } from '@typings/brand'
+import {
+  makeTwitterCardMeta,
+  TwitterCardMeta,
+  TwitterMetadata,
+  TwitterMetadataKeys,
+} from '@lib/open-graph-protocol/open-graph-twitter'
+import { type BaseOf, type Brand, make } from '@typings/brand'
 
 /**
  * The
@@ -181,7 +187,7 @@ export type MIMEContent = Types.Enum<MIME>
 
 type og<T extends string> = `og:${T}`
 
-type BaseOrExtended<
+export type BaseOrExtended<
   Base extends string,
   Extended extends string = ''
 > = Extended extends '' ? Base : `${Base}:${Extended}`
@@ -194,7 +200,6 @@ type video<T extends string = ''> = BaseOrExtended<'video', T>
 type article<T extends string = ''> = BaseOrExtended<'article', T>
 type music<T extends string = ''> = BaseOrExtended<'music', T>
 type book<T extends string = ''> = BaseOrExtended<'book', T>
-type twitter<T extends string = ''> = BaseOrExtended<'twitter', T>
 
 type BasicMetadataKeys =
   | 'title'
@@ -219,7 +224,7 @@ type PropertyAttribute =
     >
   | TwitterMetadataKeys
 
-interface MetadataBase<
+export interface MetadataBase<
   Property extends PropertyAttribute = PropertyAttribute,
   Content extends Types.Type = Types.Type
 > {
@@ -1025,239 +1030,6 @@ type ProfileMetadata =
   | ProfileUsername
   | ProfileGender
 
-type TwitterMetadataKeys =
-  | twitter<'card'>
-  | twitter<'site'>
-  | twitter<'site:id'>
-  | twitter<'creator'>
-  | twitter<'creator:id'>
-  | twitter<'description'>
-  | twitter<'title'>
-  | twitter<'image'>
-  | twitter<'image:alt'>
-  | twitter<'player'>
-  | twitter<'player:width'>
-  | twitter<'player:height'>
-  | twitter<'player:stream'>
-  | twitter<'app:name:iphone'>
-  | twitter<'app:id:iphone'>
-  | twitter<'app:url:iphone'>
-  | twitter<'app:name:ipad'>
-  | twitter<'app:id:ipad'>
-  | twitter<'app:url:ipad'>
-  | twitter<'app:name:googleplay'>
-  | twitter<'app:id:googleplay'>
-  | twitter<'app:url:googleplay'>
-
-interface TwitterMetadataBase<
-  Property extends TwitterMetadataKeys,
-  Content extends Types.Type
-> extends MetadataBase<Property, Content> {}
-
-/**
- * The card type
- *
- * Used with all cards
- */
-interface TwitterCard
-  extends TwitterMetadataBase<
-    twitter<'card'>,
-    Types.Enum<'summary_large_image' | 'summary' | 'app' | 'player'>
-  > {}
-
-/**
- * @username of website. Either twitter:site or twitter:site:id is required.
- *
- * Used with summary, summary_large_image, app, player cards
- * @link TwitterSiteID
- */
-interface TwitterSite
-  extends TwitterMetadataBase<twitter<'site'>, Types.String> {}
-
-/**
- * Same as twitter:site, but the user’s Twitter ID. Either twitter:site or twitter:site:id is required.
- *
- * Used with summary, summary_large_image, player cards
- * @link TwitterSite
- */
-interface TwitterSiteID
-  extends TwitterMetadataBase<twitter<'site:id'>, Types.String> {}
-
-/**
- * @username of content creator
- *
- * Used with summary_large_image cards
- */
-interface TwitterCreator
-  extends TwitterMetadataBase<twitter<'creator'>, Types.String> {}
-
-/**
- * Twitter user ID of content creator
- *
- * Used with summary, summary_large_image card
- */
-interface TwitterCreatorID
-  extends TwitterMetadataBase<twitter<'creator:id'>, Types.String> {}
-
-/**
- * Description of content (maximum 200 characters)
- *
- * Used with summary, summary_large_image, player cards
- */
-interface TwitterDescription
-  extends TwitterMetadataBase<twitter<'description'>, Types.String> {}
-
-/**
- * Title of content (max 70 characters)
- *
- * Used with summary, summary_large_image, player cards
- */
-interface TwitterTitle
-  extends TwitterMetadataBase<twitter<'title'>, Types.String> {}
-
-/**
- * URL of image to use in the card. Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported.
- *
- * Used with summary, summary_large_image, player cards
- */
-interface TwitterImage
-  extends TwitterMetadataBase<twitter<'image'>, Types.URL> {}
-
-/**
- * A text description of the image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters.
- *
- * Used with summary, summary_large_image, player cards
- */
-interface TwitterImageAlt
-  extends TwitterMetadataBase<twitter<'image:alt'>, Types.String> {}
-
-/**
- * HTTPS URL of player iframe
- *
- * Used with player card
- */
-interface TwitterPlayer
-  extends TwitterMetadataBase<twitter<'player'>, Types.URL> {}
-
-/**
- * Width of iframe in pixels
- *
- * Used with player card
- */
-interface TwitterPlayerWidth
-  extends TwitterMetadataBase<twitter<'player:width'>, Types.Integer> {}
-
-/**
- * Height of iframe in pixels
- *
- * Used with player card
- */
-interface TwitterPlayerHeight
-  extends TwitterMetadataBase<twitter<'player:height'>, Types.Integer> {}
-
-/**
- * URL to raw video or audio stream
- *
- * Used with player card
- */
-interface TwitterPlayerStream
-  extends TwitterMetadataBase<twitter<'player:stream'>, Types.URL> {}
-
-/**
- * Name of your iPhone app
- *
- * Used with app card
- */
-interface TwitterAppNameIphone
-  extends TwitterMetadataBase<twitter<'app:name:iphone'>, Types.String> {}
-
-/**
- * Your app ID in the iTunes App Store (Note: NOT your bundle ID)
- *
- * Used with app card
- */
-interface TwitterAppIDIphone
-  extends TwitterMetadataBase<twitter<'app:id:iphone'>, Types.String> {}
-
-/**
- * Your app’s custom URL scheme (you must include ”://” after your scheme name)
- *
- * Used with app card
- */
-interface TwitterAppURLIphone
-  extends TwitterMetadataBase<twitter<'app:url:iphone'>, Types.URL> {}
-
-/**
- * Name of your iPad optimized app.
- * Used with app card
- */
-interface TwitterAppNameIpad
-  extends TwitterMetadataBase<twitter<'app:name:ipad'>, Types.String> {}
-
-/**
- * Your app ID in the iTunes App Store
- *
- * Used with app card
- */
-interface TwitterAppIDIpad
-  extends TwitterMetadataBase<twitter<'app:id:ipad'>, Types.String> {}
-
-/**
- * Your app’s custom URL scheme
- *
- * Used with app card
- */
-interface TwitterAppURLIpad
-  extends TwitterMetadataBase<twitter<'app:url:ipad'>, Types.URL> {}
-
-/**
- * Name of your Android app
- *
- * Used with app card
- */
-interface TwitterAppNameGooglePlay
-  extends TwitterMetadataBase<twitter<'app:name:googleplay'>, Types.String> {}
-
-/**
- * Your app ID in the Google Play Store
- *
- * Used with app card
- */
-interface TwitterAppIDGooglePlay
-  extends TwitterMetadataBase<twitter<'app:id:googleplay'>, Types.String> {}
-
-/**
- * Your app’s custom URL scheme
- *
- * Used with app card
- */
-interface TwitterAppURLGooglePlay
-  extends TwitterMetadataBase<twitter<'app:url:googleplay'>, Types.URL> {}
-
-export type TwitterMetadata =
-  | TwitterCard
-  | TwitterSite
-  | TwitterSiteID
-  | TwitterCreator
-  | TwitterCreatorID
-  | TwitterDescription
-  | TwitterTitle
-  | TwitterImage
-  | TwitterImageAlt
-  | TwitterPlayer
-  | TwitterPlayerWidth
-  | TwitterPlayerHeight
-  | TwitterPlayerStream
-  | TwitterAppNameIphone
-  | TwitterAppIDIphone
-  | TwitterAppURLIphone
-  | TwitterAppNameIpad
-  | TwitterAppIDIpad
-  | TwitterAppURLIpad
-  | TwitterAppNameGooglePlay
-  | TwitterAppIDGooglePlay
-  | TwitterAppURLGooglePlay
-
 export type OpenGraphMetadata =
   | BasicMetadata
   | OptionalMetadata
@@ -1269,11 +1041,6 @@ export type OpenGraphMetadata =
   | VideoMetadata
   | MusicMetadata
   | TwitterMetadata
-
-interface TwitterCardMeta {
-  readonly name: TwitterMetadata['property']
-  readonly content: string
-}
 
 interface OpenGraphMeta {
   readonly property: Exclude<OpenGraphMetadata, TwitterMetadata>['property']
@@ -1299,14 +1066,7 @@ export function makeOpenGraphMetaAttributesRecord(
   }
 
   return isTwitterMetadata(openGraphMetadata)
-    ? ({
-        /**
-         * this branch returns a Twitter Card Tags
-         * @link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
-         */
-        name: openGraphMetadata.property,
-        content: String(openGraphMetadata.content),
-      } as const)
+    ? makeTwitterCardMeta(openGraphMetadata)
     : ({
         property: openGraphMetadata.property,
         content: String(openGraphMetadata.content),
