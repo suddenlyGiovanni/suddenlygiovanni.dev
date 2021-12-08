@@ -1,10 +1,10 @@
 import {
   makeOpenGraphMetaAttributesRecord,
-  OpenGraphMetadata,
-} from './open-graph-protocol'
+  type OpenGraphRecord,
+} from './open-graph'
 
 interface Props {
-  openGraph: OpenGraphMetadata
+  openGraph: OpenGraphRecord
 }
 
 /**
@@ -12,7 +12,7 @@ interface Props {
  * it supports the `The Open Graph protocol` and Twitter's custom implementation
  * @link https://ogp.me/#types
  */
-export function MetaOpenGraphProtocol({
+export function MetaOpenGraph({
   openGraph,
   ...intrinsicMetaAttributes
 }: Props & JSX.IntrinsicElements['meta']): JSX.Element {

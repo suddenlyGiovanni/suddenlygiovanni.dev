@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 
 import {
   makeOpenGraphTwitterCard,
-  OpenGraphTwitterCard as TwitterCardProps,
+  type OpenGraphTwitterCard as TwitterCardProps,
 } from './open-graph-twitter'
 
 export const TwitterCard: React.VFC<TwitterCardProps> = (twitterCard) => {

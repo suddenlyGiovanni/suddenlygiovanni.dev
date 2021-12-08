@@ -1,10 +1,12 @@
 import { insertLazilyIf } from '@lib/array'
 import { maxLength } from '@lib/string'
 
-import { BaseOrExtended, MetadataBase, Types } from './open-graph-protocol'
+import { type BaseOrExtended, Types } from './open-graph'
+import type { MetaBase } from './open-graph-base'
 
 type twitter<T extends string = ''> = BaseOrExtended<'twitter', T>
-export type TwitterMetadataKeys =
+
+export type PropertyTwitter =
   | twitter<'card'>
   | twitter<'site'>
   | twitter<'site:id'>
@@ -29,9 +31,9 @@ export type TwitterMetadataKeys =
   | twitter<'app:url:googleplay'>
 
 interface TwitterMetadataBase<
-  Property extends TwitterMetadataKeys,
+  Property extends PropertyTwitter,
   Content extends Types.Type
-> extends MetadataBase<Property, Content> {}
+> extends MetaBase<Property, Content> {}
 
 /**
  * The card type
@@ -213,7 +215,7 @@ interface TwitterAppIDGooglePlay
 interface TwitterAppURLGooglePlay
   extends TwitterMetadataBase<twitter<'app:url:googleplay'>, Types.URL> {}
 
-export type TwitterMetadata =
+export type TwitterRecord =
   | TwitterCard
   | TwitterSite
   | TwitterSiteID
@@ -238,7 +240,7 @@ export type TwitterMetadata =
   | TwitterAppURLGooglePlay
 
 export interface TwitterCardMeta {
-  readonly name: TwitterMetadata['property']
+  readonly name: TwitterRecord['property']
   readonly content: string
 }
 
@@ -252,17 +254,17 @@ export interface TwitterCardMeta {
  * @link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
  */
 export function makeTwitterCardMeta<
-  Metadata extends TwitterMetadata,
+  Metadata extends TwitterRecord,
   Property extends Metadata['property'],
   Content extends Metadata['content']
 >(property: Property): (content: Content) => TwitterCardMeta
 
-export function makeTwitterCardMeta<Metadata extends TwitterMetadata>(
+export function makeTwitterCardMeta<Metadata extends TwitterRecord>(
   twitterMetadata: Metadata
 ): TwitterCardMeta
 
 export function makeTwitterCardMeta<
-  Metadata extends TwitterMetadata,
+  Metadata extends TwitterRecord,
   Property extends Metadata['property'],
   Content extends Metadata['content']
 >(

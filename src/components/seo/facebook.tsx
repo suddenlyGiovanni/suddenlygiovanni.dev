@@ -1,4 +1,4 @@
-import { MetaOpenGraphProtocol, Types } from '@lib/open-graph-protocol'
+import { MetaOpenGraph, Types } from '@lib/open-graph-protocol'
 
 import React from 'react'
 import { Helmet } from 'react-helmet'
@@ -21,43 +21,43 @@ export const Facebook: React.VFC<Props> = ({
   locale,
 }) => (
   <Helmet>
-    <MetaOpenGraphProtocol
+    <MetaOpenGraph
       openGraph={{
         property: 'og:type',
         content: Types.Enum(type),
       }}
     />
-    <MetaOpenGraphProtocol
+    <MetaOpenGraph
       openGraph={{
         property: 'og:locale',
         content: Types.String(locale),
       }}
     />
-    <MetaOpenGraphProtocol
+    <MetaOpenGraph
       openGraph={{
         property: 'og:url',
         content: Types.URL(url),
       }}
     />
-    <MetaOpenGraphProtocol
+    <MetaOpenGraph
       openGraph={{
         property: 'og:title',
         content: Types.String(title),
       }}
     />
-    <MetaOpenGraphProtocol
+    <MetaOpenGraph
       openGraph={{
         property: 'og:description',
         content: Types.String(desc),
       }}
     />
-    <MetaOpenGraphProtocol
+    <MetaOpenGraph
       openGraph={{
         property: 'og:image',
         content: Types.URL(image),
       }}
     />
-    <MetaOpenGraphProtocol
+    <MetaOpenGraph
       openGraph={{
         property: 'og:image:alt',
         content: Types.String(desc),

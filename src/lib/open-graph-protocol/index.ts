@@ -1,9 +1,7 @@
+export * from './open-graph-base'
+export * from './open-graph.component'
 export * from './twitter-card.component'
-export * from './meta-open-graph.component'
+export { Types } from './open-graph'
 export { makeOpenGraphTwitterCard } from './open-graph-twitter'
-export {
-  makeRecordCurried,
-  makeOpenGraphMetaAttributesRecord,
-  Types,
-} from './open-graph-protocol'
-export * from './open-graph'
+export { makeOpenGraphMeta } from '@lib/open-graph-protocol/open-graph'
+export { OpenGraphMeta } from '@lib/open-graph-protocol/open-graph'
