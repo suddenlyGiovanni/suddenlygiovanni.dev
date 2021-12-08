@@ -1,8 +1,8 @@
+import * as Responsive from '@lib/responsive'
+import type { Basics } from '@typings/resume'
+
 import { FaBlog, FaEnvelope, FaMapMarkerAlt, FaMobile } from 'react-icons/fa'
 import styled from 'styled-components'
-
-import * as Responsive from '../../lib/responsive'
-import type { Basics } from '../../types/resume'
 import * as Social from '../social-icon'
 
 const Address = styled.address`

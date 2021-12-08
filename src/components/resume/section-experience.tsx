@@ -1,4 +1,5 @@
-import type { Work } from '../../types/resume'
+import type { Work } from '@typings/resume'
+
 import { Section } from './section'
 import { SectionItem } from './section-item'
 

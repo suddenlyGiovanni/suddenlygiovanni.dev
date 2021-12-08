@@ -1,10 +1,10 @@
+import { ReadLink, SEOBase } from '@components/index'
+import { routesMap } from '@config/index'
+
 import { graphql, PageProps } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import * as React from 'react'
 import styled from 'styled-components'
-
-import { routesMap } from '../../config'
-import { ReadLink, SEOBase } from '../components'
 
 /**
  * this graphql query will be called by gatsby-node at build time and its

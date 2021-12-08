@@ -1,4 +1,5 @@
-import type { Project } from '../../types/resume'
+import type { Project } from '@typings/resume'
+
 import { Dump } from '../dump'
 import { Section } from './section'
 

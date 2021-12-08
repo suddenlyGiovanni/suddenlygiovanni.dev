@@ -1,6 +1,6 @@
-import { formatDateLocaleLong } from '../lib/dates'
-import { formatReadingTime } from '../lib/helpers'
-import { Int } from '../lib/integer'
+import { formatDateLocaleLong } from '@lib/dates'
+import { formatReadingTime } from '@lib/helpers'
+import { Int } from '@lib/integer'
 
 interface Props {
   /** minutes in integer */

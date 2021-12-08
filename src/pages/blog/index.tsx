@@ -1,9 +1,9 @@
+import { PostPreview, SEOBase } from '@components/index'
+import config from '@config/index'
+import { usePostsPreview } from '@hooks/index'
+
 import { PageProps } from 'gatsby'
 import * as React from 'react'
-
-import config from '../../../config'
-import { PostPreview, SEOBase } from '../../components'
-import { usePostsPreview } from '../../hooks'
 
 const IndexPage: React.FC<PageProps> = () => {
   const posts = usePostsPreview()

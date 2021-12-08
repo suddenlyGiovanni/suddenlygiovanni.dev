@@ -1,6 +1,7 @@
+import { Resume, SEOBase } from '@components/index'
+import * as customHooks from '@hooks/index'
+
 import { PageProps } from 'gatsby'
-import { Resume, SEOBase } from '../components'
-import * as customHooks from '../hooks'
 
 const ResumePage: React.VFC<PageProps> = (_) => {
   const resume = customHooks.useResume()

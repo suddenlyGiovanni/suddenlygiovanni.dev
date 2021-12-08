@@ -1,10 +1,11 @@
+import { navMobileCtx } from '@context/index'
+import * as Responsive from '@lib/responsive'
+import type { Route } from '@lib/routes-map'
+import { scale } from '@lib/typography'
+
 import * as React from 'react'
 import styled, { StyledComponent } from 'styled-components'
 
-import { navMobileCtx } from '../context'
-import * as Responsive from '../lib/responsive'
-import type { Route } from '../lib/routes-map'
-import { scale } from '../lib/typography'
 import { NavItems } from './nav-items'
 
 const NavMobileContainer: StyledComponent<'div', any, {}, never> = styled.div`

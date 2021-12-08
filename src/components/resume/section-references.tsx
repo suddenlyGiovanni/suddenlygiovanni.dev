@@ -1,4 +1,5 @@
-import type { Reference } from '../../types/resume'
+import type { Reference } from '@typings/resume'
+
 import { Dump } from '../dump'
 import { Section } from './section'
 

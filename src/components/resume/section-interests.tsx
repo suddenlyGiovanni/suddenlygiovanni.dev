@@ -1,6 +1,6 @@
-import type { Interest } from '../../types/resume'
-import { Section } from './section'
+import type { Interest } from '@typings/resume'
 
+import { Section } from './section'
 import { SubSection } from './sub-section'
 
 interface Props {

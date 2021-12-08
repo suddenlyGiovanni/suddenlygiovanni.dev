@@ -4,7 +4,7 @@ import theme from 'prism-react-renderer/themes/nightOwl'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
 import styled from 'styled-components'
 
-import { copyToClipboard } from '../../lib/copy-to-clipboard'
+import { copyToClipboard } from '@lib/copy-to-clipboard'
 
 const DivWrapperStyled = styled.div`
   position: relative;

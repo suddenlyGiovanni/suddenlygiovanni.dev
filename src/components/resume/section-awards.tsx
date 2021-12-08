@@ -1,4 +1,5 @@
-import type { Award } from '../../types/resume'
+import type { Award } from '@typings/resume'
+
 import { Dump } from '../dump'
 import { Section } from './section'
 

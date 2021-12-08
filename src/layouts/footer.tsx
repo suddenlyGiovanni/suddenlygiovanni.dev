@@ -1,8 +1,8 @@
+import { Container, GitHub, LinkedIn, Twitter } from '@components/index'
+import * as Responsive from '@lib/responsive'
+
 import React from 'react'
 import styled, { StyledComponent } from 'styled-components'
-
-import { Container, GitHub, LinkedIn, Twitter } from '../components'
-import * as Responsive from '../lib/responsive'
 
 const Footer_ = styled.footer`
   position: relative;

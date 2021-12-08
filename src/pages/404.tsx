@@ -1,5 +1,6 @@
-import { PageProps } from 'gatsby'
-import { SEOBase } from '../components'
+import { SEOBase } from '@components/index'
+
+import type { PageProps } from 'gatsby'
 
 const NotFoundPage: React.VFC<PageProps> = () => (
   <>

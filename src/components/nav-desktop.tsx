@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import * as Responsive from '../lib/responsive'
+import * as Responsive from '@lib/responsive'
 import { NavItems } from './nav-items'
 
 export const NavDesktop = styled(NavItems)`

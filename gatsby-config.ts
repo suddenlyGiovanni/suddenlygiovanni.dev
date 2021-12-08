@@ -1,6 +1,7 @@
 import { withMetaConfig } from 'gatsby-ts'
 
 import config, { routesMap } from './config'
+
 import * as Plugins from './gatsby/plugins'
 
 const gatsbySourceFilesystemBlog =
@@ -150,6 +151,8 @@ const siteMetadata: Readonly<GatsbyTypes.SiteSiteMetadata> = {
   },
 } as const
 
+const gatsbyPluginTsconfigPaths = Plugins.makeGatsbyPluginTsconfigPaths()
+
 export default withMetaConfig(({ loadPlugins }) => {
   const plugins = loadPlugins([
     // 1. Transformers
@@ -157,6 +160,7 @@ export default withMetaConfig(({ loadPlugins }) => {
     gatsbyTransformerSharp,
 
     // 2. Plugins
+    gatsbyPluginTsconfigPaths,
     gatsbyPluginStyledComponents,
     gatsbyPluginReactHelmet,
     gatsbyPluginImage,

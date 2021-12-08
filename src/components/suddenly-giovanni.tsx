@@ -1,9 +1,9 @@
 import { Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import styled, { StyledComponent } from 'styled-components'
-import { routesMap } from '../../config'
 
-import { scale } from '../lib/typography'
+import { routesMap } from '@config/index'
+import { scale } from '@lib/typography'
 
 const LinkStyled: StyledComponent<typeof Link, any, {}, never> = styled(Link)`
   position: relative;

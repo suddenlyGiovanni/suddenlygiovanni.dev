@@ -1,10 +1,10 @@
+import { useSiteMetadata } from '@hooks/index'
+import { insertIf, insertLazilyIf } from '@lib/array'
+import { makeTwitterCard, Types } from '@lib/open-graph-protocol'
+
 import { useLocation } from '@reach/router'
 import React from 'react'
 import { Helmet } from 'react-helmet'
-
-import { useSiteMetadata } from '../../hooks'
-import { insertIf, insertLazilyIf } from '../../lib/array'
-import { makeTwitterCard, Types } from '../../lib/open-graph-protocol'
 
 type Robots = readonly (
   | 'index'
