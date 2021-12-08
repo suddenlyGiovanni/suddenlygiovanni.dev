@@ -1,4 +1,4 @@
-import { BaseOf, Brand, make } from '../../types/brand'
+import { BaseOf, Brand, make } from '@typings/brand'
 
 /**
  * The
@@ -1270,54 +1270,44 @@ export type OpenGraphMetadata =
   | MusicMetadata
   | TwitterMetadata
 
-type OpenGraphMetaAttributes = Readonly<
-  Partial<Omit<JSX.IntrinsicElements['meta'], 'property' | 'content'>> &
-    (
-      | { name: TwitterMetadata['property']; content: string }
-      | {
-          property: Exclude<OpenGraphMetadata, TwitterMetadata>['property']
-          content: string
-        }
-    )
->
+interface TwitterCardMeta {
+  readonly name: TwitterMetadata['property']
+  readonly content: string
+}
+
+interface OpenGraphMeta {
+  readonly property: Exclude<OpenGraphMetadata, TwitterMetadata>['property']
+  readonly content: string
+}
+
+type OpenGraphMetaAttributes = TwitterCardMeta | OpenGraphMeta
 
 /**
  * A utility fn to produce the correct attributes for the open graph protocol meta tags
  * It also supports Twitter's custom schema
  *
- * @param property
- * @param content
- * @param IntrinsicMetaAttributes
  * @link https://ogp.me/#types
+ * @param openGraphMetadata
  */
-export function makeOpenGraphMetaAttributesRecord({
-  property,
-  content,
-  ...IntrinsicMetaAttributes
-}: OpenGraphMetadata &
-  Partial<
-    Omit<JSX.IntrinsicElements['meta'], 'property' | 'content'>
-  >): OpenGraphMetaAttributes {
+export function makeOpenGraphMetaAttributesRecord(
+  openGraphMetadata: OpenGraphMetadata
+): OpenGraphMetaAttributes {
   function isTwitterMetadata(
     openGraphMetadata: OpenGraphMetadata
   ): openGraphMetadata is TwitterMetadata {
     return openGraphMetadata.property.includes('twitter', 0)
   }
 
-  const openGraphMetadata = { property, content } as OpenGraphMetadata
-
   return isTwitterMetadata(openGraphMetadata)
-    ? /**
-       * this branch returns a Twitter Card Tags
-       * @link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
-       */
-      ({
-        ...IntrinsicMetaAttributes,
+    ? ({
+        /**
+         * this branch returns a Twitter Card Tags
+         * @link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
+         */
         name: openGraphMetadata.property,
         content: String(openGraphMetadata.content),
       } as const)
     : ({
-        ...IntrinsicMetaAttributes,
         property: openGraphMetadata.property,
         content: String(openGraphMetadata.content),
       } as const)

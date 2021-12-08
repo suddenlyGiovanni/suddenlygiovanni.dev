@@ -21,21 +21,47 @@ export const Facebook: React.VFC<Props> = ({
   locale,
 }) => (
   <Helmet>
-    <MetaOpenGraphProtocol property="og:type" content={Types.Enum(type)} />
     <MetaOpenGraphProtocol
-      property="og:locale"
-      content={Types.String(locale)}
+      openGraph={{
+        property: 'og:type',
+        content: Types.Enum(type),
+      }}
     />
-    <MetaOpenGraphProtocol property="og:url" content={Types.URL(url)} />
-    <MetaOpenGraphProtocol property="og:title" content={Types.String(title)} />
     <MetaOpenGraphProtocol
-      property="og:description"
-      content={Types.String(desc)}
+      openGraph={{
+        property: 'og:locale',
+        content: Types.String(locale),
+      }}
     />
-    <MetaOpenGraphProtocol property="og:image" content={Types.URL(image)} />
     <MetaOpenGraphProtocol
-      property="og:image:alt"
-      content={Types.String(desc)}
+      openGraph={{
+        property: 'og:url',
+        content: Types.URL(url),
+      }}
+    />
+    <MetaOpenGraphProtocol
+      openGraph={{
+        property: 'og:title',
+        content: Types.String(title),
+      }}
+    />
+    <MetaOpenGraphProtocol
+      openGraph={{
+        property: 'og:description',
+        content: Types.String(desc),
+      }}
+    />
+    <MetaOpenGraphProtocol
+      openGraph={{
+        property: 'og:image',
+        content: Types.URL(image),
+      }}
+    />
+    <MetaOpenGraphProtocol
+      openGraph={{
+        property: 'og:image:alt',
+        content: Types.String(desc),
+      }}
     />
   </Helmet>
 )

@@ -1,6 +1,11 @@
-import { insertLazilyIf } from '../array'
-import { maxLength } from '../string'
-import { makeOpenGraphMetaAttributesRecord, Types } from './open-graph-protocol'
+import { insertLazilyIf } from '@lib/array'
+import { maxLength } from '@lib/string'
+
+import {
+  makeOpenGraphMetaAttributesRecord as makeRecord,
+  makeRecordCurried,
+  Types,
+} from './open-graph-protocol'
 
 const cutAt420Characters = maxLength(420)
 const cutAt200Characters = maxLength(200)
@@ -169,67 +174,51 @@ export function makeTwitterCard(twitterCard: TwitterCard) {
   if (isTwitterSummaryCard(twitterCard)) {
     return [
       // CARD!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:card',
         content: twitterCard.card, // 'summary_large_image' | 'summary'
       }),
 
       // SITE?
-      ...insertLazilyIf(twitterCard.site, (site) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:site',
-          content: site,
-        })
-      ),
+      ...insertLazilyIf(twitterCard.site, makeRecordCurried('twitter:site')),
 
       // SITE_ID?
-      ...insertLazilyIf(twitterCard.siteID, (siteID) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:site:id',
-          content: siteID,
-        })
+      ...insertLazilyIf(
+        twitterCard.siteID,
+        makeRecordCurried('twitter:site:id')
       ),
 
       // TITLE!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:title',
         content: Types.String(cutAt70Characters(twitterCard.title)),
       }),
 
       // CREATOR?
-      ...insertLazilyIf(twitterCard.creator, (creator) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:creator',
-          content: creator,
-        })
+      ...insertLazilyIf(
+        twitterCard.creator,
+        makeRecordCurried('twitter:creator')
       ),
       // CREATOR_ID?
-      ...insertLazilyIf(twitterCard.creatorID, (creatorID) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:creator:id',
-          content: creatorID,
-        })
+      ...insertLazilyIf(
+        twitterCard.creatorID,
+        makeRecordCurried('twitter:creator:id')
       ),
 
       // DESCRIPTION?
       ...insertLazilyIf(twitterCard.description, (description) =>
-        makeOpenGraphMetaAttributesRecord({
+        makeRecord({
           property: 'twitter:description',
           content: Types.String(cutAt200Characters(description)),
         })
       ),
 
       // IMAGE?
-      ...insertLazilyIf(twitterCard.image, (image) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:image',
-          content: image,
-        })
-      ),
+      ...insertLazilyIf(twitterCard.image, makeRecordCurried('twitter:image')),
 
       // IMAGE_ALT?
       ...insertLazilyIf(twitterCard.imageAlt, (imageAlt) =>
-        makeOpenGraphMetaAttributesRecord({
+        makeRecord({
           property: 'twitter:image:alt',
           content: Types.String(cutAt420Characters(imageAlt)),
         })
@@ -239,77 +228,73 @@ export function makeTwitterCard(twitterCard: TwitterCard) {
   if (isTwitterPlayerCard(twitterCard)) {
     return [
       // CARD!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:card',
         content: twitterCard.card, // player
       }),
 
       // TITLE!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:title',
         content: Types.String(cutAt70Characters(twitterCard.title)),
       }),
 
       // SITE!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:site',
         content: twitterCard.site,
       }),
 
       // SITE_ID?
-      ...insertLazilyIf(twitterCard.siteID, (siteID) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:site:id',
-          content: siteID,
-        })
+      ...insertLazilyIf(
+        twitterCard.siteID,
+        makeRecordCurried('twitter:site:id')
       ),
 
       // DESCRIPTION?
       ...insertLazilyIf(twitterCard.description, (description) =>
-        makeOpenGraphMetaAttributesRecord({
+        makeRecord({
           property: 'twitter:description',
           content: Types.String(cutAt200Characters(description)),
         })
       ),
 
       // IMAGE!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:image',
         content: twitterCard.image,
       }),
 
       // IMAGE_ALT?
       ...insertLazilyIf(twitterCard.imageAlt, (imageAlt) =>
-        makeOpenGraphMetaAttributesRecord({
+        makeRecord({
           property: 'twitter:image:alt',
           content: Types.String(cutAt420Characters(imageAlt)),
         })
       ),
 
       // PLAYER!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:player',
         content: twitterCard.player,
       }),
 
       // PLAYER_WIDTH!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:player:width',
         content: twitterCard.playerWidth,
       }),
 
       // PLAYER_HEIGHT!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:player:height',
         content: twitterCard.playerHeight,
       }),
 
       // PLAYER_STREAM?
-      ...insertLazilyIf(twitterCard.playerStream, (playerStream) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:player:stream',
-          content: playerStream,
-        })
+      ...insertLazilyIf(
+        twitterCard.playerStream,
+        makeRecordCurried('twitter:player:stream')
       ),
     ]
   }
@@ -317,89 +302,77 @@ export function makeTwitterCard(twitterCard: TwitterCard) {
   if (isTwitterAppCard(twitterCard)) {
     return [
       // CARD!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:card',
         content: twitterCard.card, // 'app'
       }),
 
       // SITE!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:site',
         content: twitterCard.site,
       }),
 
       // DESCRIPTION?
       ...insertLazilyIf(twitterCard.description, (description) =>
-        makeOpenGraphMetaAttributesRecord({
+        makeRecord({
           property: 'twitter:description',
           content: Types.String(cutAt200Characters(description)),
         })
       ),
 
       // APP_NAME_IPHONE?
-      ...insertLazilyIf(twitterCard.appNameIphone, (appNameIphone) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:app:name:iphone',
-          content: appNameIphone,
-        })
+      ...insertLazilyIf(
+        twitterCard.appNameIphone,
+        makeRecordCurried('twitter:app:name:iphone')
       ),
 
       // APP_ID_IPHONE!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:app:id:iphone',
         content: twitterCard.appIDIphone,
       }),
 
       // APP_URL_IPHONE?
-      ...insertLazilyIf(twitterCard.appURLIphone, (appURLIphone) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:app:url:iphone',
-          content: appURLIphone,
-        })
+      ...insertLazilyIf(
+        twitterCard.appURLIphone,
+        makeRecordCurried('twitter:app:url:iphone')
       ),
 
       // APP_NAME_IPAD?
-      ...insertLazilyIf(twitterCard.appNameIpad, (appNameIpad) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:app:name:ipad',
-          content: appNameIpad,
-        })
+      ...insertLazilyIf(
+        twitterCard.appNameIpad,
+        makeRecordCurried('twitter:app:name:ipad')
       ),
 
       // APP_ID_IPAD!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:app:id:ipad',
         content: twitterCard.appIDIpad,
       }),
 
       // APP_URL_IPAD?
-      ...insertLazilyIf(twitterCard.appURLIpad, (appURLIpad) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:app:url:ipad',
-          content: appURLIpad,
-        })
+      ...insertLazilyIf(
+        twitterCard.appURLIpad,
+        makeRecordCurried('twitter:app:url:ipad')
       ),
 
       // APP_NAME_GOOGLEPLAY?
-      ...insertLazilyIf(twitterCard.appNameGooglePlay, (appNameGooglePlay) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:app:name:googleplay',
-          content: appNameGooglePlay,
-        })
+      ...insertLazilyIf(
+        twitterCard.appNameGooglePlay,
+        makeRecordCurried('twitter:app:name:googleplay')
       ),
 
       // APP_ID_APP_NAME_GOOGLEPLAY!
-      makeOpenGraphMetaAttributesRecord({
+      makeRecord({
         property: 'twitter:app:id:googleplay',
         content: twitterCard.appIDGooglePlay,
       }),
 
       // APP_URL_GOOGLEPLAY?
-      ...insertLazilyIf(twitterCard.appURLGooglePlay, (appURLGooglePlay) =>
-        makeOpenGraphMetaAttributesRecord({
-          property: 'twitter:app:url:googleplay',
-          content: appURLGooglePlay,
-        })
+      ...insertLazilyIf(
+        twitterCard.appURLGooglePlay,
+        makeRecordCurried('twitter:app:url:googleplay')
       ),
     ]
   }
