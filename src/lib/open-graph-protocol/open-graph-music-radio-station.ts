@@ -1,17 +1,32 @@
 import { insertLazilyIf, isArray } from '@lib/array'
+import type { ValueOf } from '@lib/types'
 
 import { makeOpenGraphMeta, type og, Types } from './open-graph'
 import {
+  type BasicRecord,
   makeOpenGraphBase,
   type MetaBase,
   type OpenGraphBaseWithOptional,
+  type OptionalRecord,
+  type Type,
 } from './open-graph-base'
 import type { music } from './open-graph-music'
 
-export type PropertyMusicRadioStation = music<'creator'>
+export const PropertyMusicRadioStation = {
+  OG_MUSIC_CREATOR: 'og:music:creator',
+} as const
+export type PropertyMusicRadioStation = ValueOf<
+  typeof PropertyMusicRadioStation
+>
+
+export type RadioStationRecord =
+  | Exclude<BasicRecord, Type>
+  | TypeMusicRadioStation
+  | OptionalRecord
+  | MusicRadioStationCreator
 
 interface MusicRadioStationMetaBase<
-  Property extends og<PropertyMusicRadioStation>,
+  Property extends PropertyMusicRadioStation,
   Content extends Types.Type
 > extends MetaBase<Property, Content> {}
 
@@ -21,14 +36,9 @@ interface TypeMusicRadioStation
 /**
  * The creator of this station.
  * profile
- * @link ProfileMetadata
  */
 interface MusicRadioStationCreator
   extends MusicRadioStationMetaBase<og<music<'creator'>>, Types.String> {}
-
-export type RadioStationRecord =
-  | TypeMusicRadioStation
-  | MusicRadioStationCreator
 
 interface OpenGraphMusicRadioStation extends OpenGraphBaseWithOptional {
   /** 'music.radio_station */
@@ -59,9 +69,11 @@ export function makeOpenGraphMusicRadioStation(
       openGraphMusicRadioStation.ogMusicCreator,
       (ogMusicCreator) =>
         isArray(ogMusicCreator)
-          ? ogMusicCreator.map(makeOpenGraphMeta('og:music:creator'))
+          ? ogMusicCreator.map(
+              makeOpenGraphMeta(PropertyMusicRadioStation.OG_MUSIC_CREATOR)
+            )
           : makeOpenGraphMeta({
-              property: 'og:music:creator',
+              property: PropertyMusicRadioStation.OG_MUSIC_CREATOR,
               content: ogMusicCreator,
             })
     ).flat(),

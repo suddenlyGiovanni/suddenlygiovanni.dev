@@ -1,11 +1,38 @@
 import { insertLazilyIf, isArray } from '@lib/array'
-import { makeOpenGraphMeta } from './open-graph'
+import type { ValueOf } from '@lib/types'
 
-import type { BaseOrExtended, MIMEContent, og, Types } from './open-graph'
-import { type MetaBase } from './open-graph-base'
+import {
+  type BaseOrExtended,
+  makeOpenGraphMeta,
+  type MIMEContent,
+  type og,
+  type Types,
+} from './open-graph'
+import type { MetaBase } from './open-graph-base'
 
-export type audio<T extends string = ''> = BaseOrExtended<'audio', T>
-export type AudioKeys = 'secure_url' | 'type'
+type audio<T extends string = ''> = BaseOrExtended<'audio', T>
+
+export type PropertyAudio = ValueOf<typeof PropertyAudio>
+export const PropertyAudio = {
+  OG_AUDIO: 'og:audio',
+  OG_AUDIO_SECURE_URL: 'og:audio:secure_url',
+  OG_AUDIO_TYPE: 'og:audio:type',
+} as const
+
+interface AudioMetaBase<
+  Property extends PropertyAudio,
+  Content extends Types.Type
+> extends MetaBase<Property, Content> {}
+
+/** A URL to an audio file to accompany this object. */
+export interface Audio extends AudioMetaBase<og<audio>, Types.URL> {}
+
+/** An alternate url to use if the webpage requires HTTPS. */
+interface AudioSecureURL
+  extends AudioMetaBase<og<audio<'secure_url'>>, Types.URL> {}
+
+/** A MIME type for this audio. */
+interface AudioType extends AudioMetaBase<og<audio<'type'>>, MIMEContent> {}
 
 /**
  * The og:audio tag only has the first 3 properties available (since size doesn't make sense for sound):
@@ -17,21 +44,6 @@ export type AudioKeys = 'secure_url' | 'type'
  * ```
  */
 export type AudioRecord = Audio | AudioSecureURL | AudioType
-
-interface AudioMetadataBase<
-  Property extends og<audio | audio<AudioKeys>>,
-  Content extends Types.Type
-> extends MetaBase<Property, Content> {}
-
-interface AudioSecureURL
-  extends AudioMetadataBase<og<audio<'secure_url'>>, Types.URL> {}
-
-interface AudioType extends AudioMetadataBase<og<audio<'type'>>, MIMEContent> {}
-
-/**
- *  A URL to an audio file to accompany this object.
- */
-export interface Audio extends AudioMetadataBase<og<audio>, Types.URL> {}
 
 export interface OpenGraphAudio {
   /** An audio URL which should represent your object within the graph */
@@ -47,27 +59,37 @@ export interface OpenGraphAudio {
 export function makeOpenGraphAudio(
   openGraphAudio: Types.URL | OpenGraphAudio | readonly OpenGraphAudio[]
 ) {
-  function _makeOpenGraphAudio(ogAudio: OpenGraphAudio) {
+  function _makeOpenGraphAudio({
+    ogAudio,
+    ogAudioSecureUrl,
+    ogAudioType,
+  }: OpenGraphAudio) {
     return [
       // AUDIO!
-      makeOpenGraphMeta({ property: 'og:audio', content: ogAudio.ogAudio }),
+      makeOpenGraphMeta({
+        property: PropertyAudio.OG_AUDIO,
+        content: ogAudio,
+      }),
 
       // AUDIO_SECURE_URL?
       ...insertLazilyIf(
-        ogAudio.ogAudioSecureUrl,
-        makeOpenGraphMeta('og:audio:secure_url')
+        ogAudioSecureUrl,
+        makeOpenGraphMeta(PropertyAudio.OG_AUDIO_SECURE_URL)
       ),
 
       ...insertLazilyIf(
-        ogAudio.ogAudioType,
-        makeOpenGraphMeta('og:audio:type')
+        ogAudioType,
+        makeOpenGraphMeta(PropertyAudio.OG_AUDIO_TYPE)
       ),
     ]
   }
 
   if (typeof openGraphAudio === 'string') {
     return [
-      makeOpenGraphMeta({ property: 'og:audio', content: openGraphAudio }),
+      makeOpenGraphMeta({
+        property: PropertyAudio.OG_AUDIO,
+        content: openGraphAudio,
+      }),
     ]
   } else if (isArray(openGraphAudio)) {
     return openGraphAudio.map(_makeOpenGraphAudio).flat()

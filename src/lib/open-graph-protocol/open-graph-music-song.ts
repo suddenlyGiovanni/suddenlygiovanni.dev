@@ -1,22 +1,38 @@
 import { insertLazilyIf, isArray } from '@lib/array'
+import type { ValueOf } from '@lib/types'
 
 import { makeOpenGraphMeta, type og, Types } from './open-graph'
 import {
+  type BasicRecord,
   makeOpenGraphBase,
   type MetaBase,
   type OpenGraphBaseWithOptional,
+  type OptionalRecord,
+  type Type,
 } from './open-graph-base'
 import type { music } from './open-graph-music'
 
-export type PropertyMusicSong =
-  | music<'duration'>
-  | music<'album'>
-  | music<'album:disc'>
-  | music<'album:track'>
-  | music<'musician'>
+export type PropertyMusicSong = ValueOf<typeof PropertyMusicSong>
+export const PropertyMusicSong = {
+  OG_MUSIC_DURATION: 'og:music:duration',
+  OG_MUSIC_ALBUM: 'og:music:album',
+  OG_MUSIC_ALBUM_DISC: 'og:music:album:disc',
+  OG_MUSIC_ALBUM_TRACK: 'og:music:album:track',
+  OG_MUSIC_MUSICIAN: 'og:music:musician',
+} as const
+
+export type MusicSongRecord =
+  | Exclude<BasicRecord, Type>
+  | TypeMusicSong
+  | OptionalRecord
+  | MusicSongDuration
+  | MusicSongAlbum
+  | MusicSongAlbumDisc
+  | MusicSongAlbumTrack
+  | MusicSongMusician
 
 interface MusicSongMetaBase<
-  Property extends og<PropertyMusicSong>,
+  Property extends PropertyMusicSong,
   Content extends Types.Type
 > extends MetaBase<Property, Content> {}
 
@@ -54,18 +70,9 @@ export interface MusicSongAlbumTrack
 /**
  * The musician that made this song.
  * profile array
- * @link ProfileMetadata
  */
 interface MusicSongMusician
   extends MusicSongMetaBase<og<music<'musician'>>, Types.String> {}
-
-export type MusicSongRecord =
-  | TypeMusicSong
-  | MusicSongDuration
-  | MusicSongAlbum
-  | MusicSongAlbumDisc
-  | MusicSongAlbumTrack
-  | MusicSongMusician
 
 interface OpenGraphMusicSong extends OpenGraphBaseWithOptional {
   /**
@@ -98,7 +105,7 @@ export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong) {
     // DURATION?
     ...insertLazilyIf(openGraphMusicSong.ogMusicDuration, (ogMusicDuration) =>
       makeOpenGraphMeta({
-        property: 'og:music:duration',
+        property: PropertyMusicSong.OG_MUSIC_DURATION,
         content: Types.Integer(Math.round(ogMusicDuration)),
       })
     ),
@@ -106,9 +113,9 @@ export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong) {
     // ALBUM?
     ...insertLazilyIf(openGraphMusicSong.ogMusicAlbum, (ogMusicAlbum) =>
       isArray(ogMusicAlbum)
-        ? ogMusicAlbum.map(makeOpenGraphMeta('og:music:album'))
+        ? ogMusicAlbum.map(makeOpenGraphMeta(PropertyMusicSong.OG_MUSIC_ALBUM))
         : makeOpenGraphMeta({
-            property: 'og:music:album',
+            property: PropertyMusicSong.OG_MUSIC_ALBUM,
             content: ogMusicAlbum,
           })
     ).flat(),
@@ -116,7 +123,7 @@ export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong) {
     // DISC?
     ...insertLazilyIf(openGraphMusicSong.ogMusicAlbumDisc, (ogMusicAlbumDisc) =>
       makeOpenGraphMeta({
-        property: 'og:music:album:disc',
+        property: PropertyMusicSong.OG_MUSIC_ALBUM_DISC,
         content: Types.Integer(Math.round(ogMusicAlbumDisc)),
       })
     ),
@@ -126,7 +133,7 @@ export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong) {
       openGraphMusicSong.ogMusicAlbumTrack,
       (ogMusicAlbumTrack) =>
         makeOpenGraphMeta({
-          property: 'og:music:album:track',
+          property: PropertyMusicSong.OG_MUSIC_ALBUM_TRACK,
           content: Types.Integer(Math.round(ogMusicAlbumTrack)),
         })
     ),
@@ -134,9 +141,11 @@ export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong) {
     // MUSICIAN?
     ...insertLazilyIf(openGraphMusicSong.ogMusicMusician, (ogMusicMusician) =>
       isArray(ogMusicMusician)
-        ? ogMusicMusician.map(makeOpenGraphMeta('og:music:musician'))
+        ? ogMusicMusician.map(
+            makeOpenGraphMeta(PropertyMusicSong.OG_MUSIC_MUSICIAN)
+          )
         : makeOpenGraphMeta({
-            property: 'og:music:musician',
+            property: PropertyMusicSong.OG_MUSIC_MUSICIAN,
             content: ogMusicMusician,
           })
     ).flat(),

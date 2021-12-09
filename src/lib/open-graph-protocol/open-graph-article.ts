@@ -1,4 +1,5 @@
 import { insertLazilyIf, isArray } from '@lib/array'
+import type { ValueOf } from '@lib/types'
 
 import {
   type BaseOrExtended,
@@ -7,23 +8,39 @@ import {
   Types,
 } from './open-graph'
 import {
+  type BasicRecord,
   makeOpenGraphBase,
   type MetaBase,
   type OpenGraphBaseWithOptional,
+  type OptionalRecord,
+  type Type,
 } from './open-graph-base'
 
-export type article<T extends string = ''> = BaseOrExtended<'article', T>
+type article<T extends string = ''> = BaseOrExtended<'article', T>
 
-export type PropertyArticle =
-  | article<'published_time'>
-  | article<'modified_time'>
-  | article<'expiration_time'>
-  | article<'author'>
-  | article<'section'>
-  | article<'tag'>
+export type PropertyArticle = ValueOf<typeof PropertyArticle>
+export const PropertyArticle = {
+  OG_ARTICLE_PUBLISHED_TIME: 'og:article:published_time',
+  OG_ARTICLE_MODIFIED_TIME: 'og:article:modified_time',
+  OG_ARTICLE_EXPIRATION_TIME: 'og:article:expiration_time',
+  OG_ARTICLE_AUTHOR: 'og:article:author',
+  OG_ARTICLE_SECTION: 'og:article:section',
+  OG_ARTICLE_TAG: 'og:article:tag',
+} as const
+
+export type ArticleRecord =
+  | Exclude<BasicRecord, Type>
+  | TypeArticle
+  | OptionalRecord
+  | ArticlePublishedTime
+  | ArticleModifiedTime
+  | ArticleExpirationTime
+  | ArticleAuthor
+  | ArticleSection
+  | ArticleTag
 
 interface ArticleMetaBase<
-  Property extends og<PropertyArticle>,
+  Property extends PropertyArticle,
   Content extends Types.Type
 > extends MetaBase<Property, Content> {}
 
@@ -70,15 +87,6 @@ interface ArticleSection
 interface ArticleTag
   extends ArticleMetaBase<og<article<'tag'>>, Types.String> {}
 
-export type ArticleRecord =
-  | TypeArticle
-  | ArticlePublishedTime
-  | ArticleModifiedTime
-  | ArticleExpirationTime
-  | ArticleAuthor
-  | ArticleSection
-  | ArticleTag
-
 interface OpenGraphArticle extends OpenGraphBaseWithOptional {
   ogType: Types.Enum<'article'>
 
@@ -118,27 +126,29 @@ export function makeOpenGraphArticle(openGraphArticle: OpenGraphArticle) {
     // PUBLISHED_TIME?
     ...insertLazilyIf(
       openGraphArticle.ogArticlePublishedTime,
-      makeOpenGraphMeta('og:article:published_time')
+      makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_PUBLISHED_TIME)
     ),
 
     // MODIFIED_TIME?
     ...insertLazilyIf(
       openGraphArticle.ogArticleModifiedTime,
-      makeOpenGraphMeta('og:article:modified_time')
+      makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_MODIFIED_TIME)
     ),
 
     // EXPIRATION_TIME?
     ...insertLazilyIf(
       openGraphArticle.ogArticleExpirationTime,
-      makeOpenGraphMeta('og:article:expiration_time')
+      makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_EXPIRATION_TIME)
     ),
 
     // AUTHOR?
     ...insertLazilyIf(openGraphArticle.ogArticleAuthor, (ogArticleAuthor) =>
       isArray(ogArticleAuthor)
-        ? ogArticleAuthor.map(makeOpenGraphMeta('og:article:author'))
+        ? ogArticleAuthor.map(
+            makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_AUTHOR)
+          )
         : makeOpenGraphMeta({
-            property: 'og:article:author',
+            property: PropertyArticle.OG_ARTICLE_AUTHOR,
             content: ogArticleAuthor,
           })
     ).flat(),
@@ -146,15 +156,15 @@ export function makeOpenGraphArticle(openGraphArticle: OpenGraphArticle) {
     // SECTION?
     ...insertLazilyIf(
       openGraphArticle.ogArticleSection,
-      makeOpenGraphMeta('og:article:section')
+      makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_SECTION)
     ),
 
     // TAG?
     ...insertLazilyIf(openGraphArticle.ogArticleTag, (ogArticleTag) =>
       isArray(ogArticleTag)
-        ? ogArticleTag.map(makeOpenGraphMeta('og:article:tag'))
+        ? ogArticleTag.map(makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_TAG))
         : makeOpenGraphMeta({
-            property: 'og:article:tag',
+            property: PropertyArticle.OG_ARTICLE_TAG,
             content: ogArticleTag,
           })
     ).flat(),

@@ -1,21 +1,36 @@
 import { insertLazilyIf, isArray } from '@lib/array'
+import type { ValueOf } from '@lib/types'
 
-import { makeOpenGraphMeta, type og, Types } from './open-graph'
+import { makeOpenGraphMeta, type og, type Types } from './open-graph'
 import {
+  type BasicRecord,
   makeOpenGraphBase,
   type MetaBase,
   type OpenGraphBaseWithOptional,
+  type OptionalRecord,
+  type Type,
 } from './open-graph-base'
 import type { music } from './open-graph-music'
 
-export type PropertyMusicPlaylist =
-  | music<'song'>
-  | music<'song:disc'>
-  | music<'song:track'>
-  | music<'creator'>
+export type PropertyMusicPlaylist = ValueOf<typeof PropertyMusicPlaylist>
+export const PropertyMusicPlaylist = {
+  OG_MUSIC_SONG: 'og:music:song',
+  OG_MUSIC_SONG_DISC: 'og:music:song:disc',
+  OG_MUSIC_SONG_TRACK: 'og:music:song:track',
+  OG_MUSIC_CREATOR: 'og:music:creator',
+} as const
+
+export type MusicPlaylistRecord =
+  | Exclude<BasicRecord, Type>
+  | TypeMusicPlaylist
+  | OptionalRecord
+  | MusicPlaylistSong
+  | MusicPlaylistSongDisc
+  | MusicPlaylistSongTrack
+  | MusicPlaylistCreator
 
 interface MusicPlaylistMetaBase<
-  Property extends og<PropertyMusicPlaylist>,
+  Property extends PropertyMusicPlaylist,
   Content extends Types.Type
 > extends MetaBase<Property, Content> {}
 
@@ -49,17 +64,9 @@ interface MusicPlaylistSongTrack
 /**
  * The creator of this playlist.
  * profile
- * @link ProfileMetadata
  */
 interface MusicPlaylistCreator
   extends MusicPlaylistMetaBase<og<music<'creator'>>, Types.URL> {}
-
-export type MusicPlaylistRecord =
-  | TypeMusicPlaylist
-  | MusicPlaylistSong
-  | MusicPlaylistSongDisc
-  | MusicPlaylistSongTrack
-  | MusicPlaylistCreator
 
 interface OpenGraphMusicPlaylist extends OpenGraphBaseWithOptional {
   /** 'music.playlist' */

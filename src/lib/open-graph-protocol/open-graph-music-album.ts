@@ -1,22 +1,38 @@
 import { insertLazilyIf, isArray } from '@lib/array'
+import type { ValueOf } from '@lib/types'
 
 import { makeOpenGraphMeta, type og, Types } from './open-graph'
 import {
+  type BasicRecord,
   makeOpenGraphBase,
   type MetaBase,
   type OpenGraphBaseWithOptional,
+  type OptionalRecord,
+  type Type,
 } from './open-graph-base'
 import type { music } from './open-graph-music'
 
-export type PropertyMusicAlbum =
-  | music<'song'>
-  | music<'song:disc'>
-  | music<'song:track'>
-  | music<'musician'>
-  | music<'release_date'>
+export type PropertyMusicAlbum = ValueOf<typeof PropertyMusicAlbum>
+export const PropertyMusicAlbum = {
+  OG_MUSIC_SONG: 'og:music:song',
+  OG_MUSIC_SONG_DISC: 'og:music:song:disc',
+  OG_MUSIC_SONG_TRACK: 'og:music:song:track',
+  OG_MUSIC_RELEASE_DATE: 'og:music:release_date',
+  OG_MUSIC_MUSICIAN: 'og:music:musician',
+} as const
+
+export type MusicAlbumRecord =
+  | Exclude<BasicRecord, Type>
+  | TypeMusicAlbum
+  | OptionalRecord
+  | MusicAlbumSong
+  | MusicAlbumSongDisc
+  | MusicAlbumSongTrack
+  | MusicAlbumMusician
+  | MusicAlbumReleaseDate
 
 interface MusicAlbumMetaBase<
-  Property extends og<PropertyMusicAlbum>,
+  Property extends PropertyMusicAlbum,
   Content extends Types.Type
 > extends MetaBase<Property, Content> {}
 
@@ -50,7 +66,6 @@ interface MusicAlbumSongTrack
 /**
  * The musician that made this song.
  * profile
- * @link ProfileMetadata
  */
 interface MusicAlbumMusician
   extends MusicAlbumMetaBase<og<music<'musician'>>, Types.URL> {}
@@ -61,14 +76,6 @@ interface MusicAlbumMusician
  */
 interface MusicAlbumReleaseDate
   extends MusicAlbumMetaBase<og<music<'release_date'>>, Types.DateTime> {}
-
-export type MusicAlbumRecord =
-  | TypeMusicAlbum
-  | MusicAlbumSong
-  | MusicAlbumSongDisc
-  | MusicAlbumSongTrack
-  | MusicAlbumMusician
-  | MusicAlbumReleaseDate
 
 interface OpenGraphMusicAlbum extends OpenGraphBaseWithOptional {
   /**
@@ -116,9 +123,9 @@ export function makeOpenGraphMusicAlbum(
     // SONG?
     ...insertLazilyIf(openGraphMusicAlbum.ogMusicSong, (ogMusicSong) => {
       return isArray(ogMusicSong)
-        ? ogMusicSong.map(makeOpenGraphMeta('og:music:song'))
+        ? ogMusicSong.map(makeOpenGraphMeta(PropertyMusicAlbum.OG_MUSIC_SONG))
         : makeOpenGraphMeta({
-            property: 'og:music:song',
+            property: PropertyMusicAlbum.OG_MUSIC_SONG,
             content: ogMusicSong,
           })
     }).flat(),
@@ -126,7 +133,7 @@ export function makeOpenGraphMusicAlbum(
     // DISC?
     ...insertLazilyIf(openGraphMusicAlbum.ogMusicSongDisc, (ogMusicSongDisc) =>
       makeOpenGraphMeta({
-        property: 'og:music:song:disc',
+        property: PropertyMusicAlbum.OG_MUSIC_SONG_DISC,
         content: Types.Integer(Math.round(ogMusicSongDisc)),
       })
     ),
@@ -136,7 +143,7 @@ export function makeOpenGraphMusicAlbum(
       openGraphMusicAlbum.ogMusicSongTrack,
       (ogMusicSongTrack) =>
         makeOpenGraphMeta({
-          property: 'og:music:song:track',
+          property: PropertyMusicAlbum.OG_MUSIC_SONG_TRACK,
           content: Types.Integer(Math.round(ogMusicSongTrack)),
         })
     ),
@@ -144,9 +151,11 @@ export function makeOpenGraphMusicAlbum(
     // MUSICIAN?
     ...insertLazilyIf(openGraphMusicAlbum.ogMusicMusician, (ogMusicMusician) =>
       isArray(ogMusicMusician)
-        ? ogMusicMusician.map(makeOpenGraphMeta('og:music:musician'))
+        ? ogMusicMusician.map(
+            makeOpenGraphMeta(PropertyMusicAlbum.OG_MUSIC_MUSICIAN)
+          )
         : makeOpenGraphMeta({
-            property: 'og:music:musician',
+            property: PropertyMusicAlbum.OG_MUSIC_MUSICIAN,
             content: ogMusicMusician,
           })
     ).flat(),
@@ -154,7 +163,7 @@ export function makeOpenGraphMusicAlbum(
     // RELEASE_DATE?
     ...insertLazilyIf(
       openGraphMusicAlbum.ogMusicReleaseData,
-      makeOpenGraphMeta('og:music:release_date')
+      makeOpenGraphMeta(PropertyMusicAlbum.OG_MUSIC_RELEASE_DATE)
     ),
   ]
 }

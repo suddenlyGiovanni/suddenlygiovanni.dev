@@ -1,43 +1,90 @@
 import { insertLazilyIf, isArray } from '@lib/array'
-import { ImageKeys } from '@lib/open-graph-protocol/open-graph-image'
+import type { ValueOf } from '@lib/types'
 
 import {
-  BaseOrExtended,
+  type BaseOrExtended,
   makeOpenGraphMeta,
-  MIMEContent,
-  og,
+  type MIMEContent,
+  type og,
   Types,
 } from './open-graph'
 import {
   makeOpenGraphBase,
-  MetaBase,
-  OpenGraphBaseWithOptional,
+  type MetaBase,
+  type OpenGraphBaseWithOptional,
 } from './open-graph-base'
-import {
-  PropertyVideoEpisode,
-  VideoEpisodeRecord,
-} from './open-graph-video-episode'
-import { PropertyVideoMovie, VideoMovieRecord } from './open-graph-video-movie'
-import { VideoOtherType } from './open-graph-video-other'
-import { VideoTvShowType } from './open-graph-video-tvshow'
 
-export type PropertyVideo = PropertyVideoMovie | PropertyVideoEpisode
+export type video<T extends string = ''> = BaseOrExtended<'video', T>
+
+export type PropertyVideo = ValueOf<typeof PropertyVideo>
+export const PropertyVideo = {
+  OG_VIDEO: 'og:video',
+  OG_VIDEO_ALT: 'og:video:alt',
+  OG_VIDEO_HEIGHT: 'og:video:height',
+  OG_VIDEO_TYPE: 'og:video:type',
+  OG_VIDEO_URL: 'og:video:url',
+  OG_VIDEO_WIDTH: 'og:video:width',
+  OG_VIDEO_SECURE_URL: 'og:video:secure_url',
+} as const
 
 export type VideoRecord =
-  | VideoMovieRecord
-  | VideoEpisodeRecord
-  | VideoTvShowType
-  | VideoOtherType
+  | Video
+  | VideoURL
+  | VideoSecureURL
+  | VideoType
+  | VideoWidth
+  | VideoHeight
+  | VideoAlt
+
+export interface VideoMetaBase<
+  Property extends PropertyVideo,
+  Content extends Types.Type
+> extends MetaBase<Property, Content> {}
+
+/**
+ * Identical to og:video.
+ */
+interface VideoURL extends VideoMetaBase<og<video<'url'>>, Types.URL> {}
+
+/**
+ * An alternate url to use if the webpage requires HTTPS.
+ */
+interface VideoSecureURL
+  extends VideoMetaBase<og<video<'secure_url'>>, Types.URL> {}
+
+/**
+ * A MIME type for this video.
+ */
+interface VideoType extends VideoMetaBase<og<video<'type'>>, MIMEContent> {}
+
+/**
+ * The number of pixels wide.
+ */
+interface VideoWidth extends VideoMetaBase<og<video<'width'>>, Types.Integer> {}
+
+/**
+ * The number of pixels high.
+ */
+interface VideoHeight
+  extends VideoMetaBase<og<video<'height'>>, Types.Integer> {}
+
+/**
+ * A description of what is in the image (not a caption).
+ * If the page specifies an og:video it should specify og:video:alt.
+ */
+interface VideoAlt extends VideoMetaBase<og<video<'alt'>>, Types.String> {}
+
+/**
+ * A URL to a video file that complements this object.
+ */
+export interface Video extends VideoMetaBase<og<video>, Types.URL> {}
 
 export interface OpenGraphVideoBase extends OpenGraphBaseWithOptional {
   ogType: Types.Enum<
     'video.movie' | 'video.episode' | 'video.tv_show' | 'video.other'
   >
 
-  /**
-   * Actors in the movie/episode/tv-show/other and the role they played.
-   * @link ProfileMetadata
-   */
+  /** Actors in the movie/episode/tv-show/other and the role they played. */
   ogVideoActorAndRole?:
     | { actor: Types.URL; role?: Types.String }
     | readonly { actor: Types.URL; role?: Types.String }[]
@@ -45,14 +92,12 @@ export interface OpenGraphVideoBase extends OpenGraphBaseWithOptional {
   /**
    * Directors of the movie/episode/tv-show/other.
    * profile array
-   * @link ProfileMetadata
    */
   ogVideoDirector?: Types.URL | readonly Types.URL[]
 
   /**
    * Writers of the movie/episode/tv-show/other.
    * profile array
-   * @link ProfileMetadata
    */
   ogVideoWriter?: Types.URL | readonly Types.URL[]
 
@@ -177,55 +222,66 @@ export interface OpenGraphVideo {
 export function makeOpenGraphVideo(
   openGraphVideo: Types.URL | OpenGraphVideo | readonly OpenGraphVideo[]
 ) {
-  function _makeOpenGraphVideo(_openGraphVideo: OpenGraphVideo) {
+  function _makeOpenGraphVideo({
+    ogVideo,
+    ogVideoAlt,
+    ogVideoHeight,
+    ogVideoSecureUrl,
+    ogVideoType,
+    ogVideoURL,
+    ogVideoWidth,
+  }: OpenGraphVideo) {
     return [
       // VIDEO!
       makeOpenGraphMeta({
-        property: 'og:video',
-        content: _openGraphVideo.ogVideo,
+        property: PropertyVideo.OG_VIDEO,
+        content: ogVideo,
       }),
 
       // VIDEO_URL?
       ...insertLazilyIf(
-        _openGraphVideo.ogVideoURL,
-        makeOpenGraphMeta('og:video:url')
+        ogVideoURL,
+        makeOpenGraphMeta(PropertyVideo.OG_VIDEO_URL)
       ),
 
       // VIDEO_SECURE_URL?
       ...insertLazilyIf(
-        _openGraphVideo.ogVideoSecureUrl,
-        makeOpenGraphMeta('og:video:secure_url')
+        ogVideoSecureUrl,
+        makeOpenGraphMeta(PropertyVideo.OG_VIDEO_SECURE_URL)
       ),
 
       // VIDEO_TYPE?
       ...insertLazilyIf(
-        _openGraphVideo.ogVideoType,
-        makeOpenGraphMeta('og:video:type')
+        ogVideoType,
+        makeOpenGraphMeta(PropertyVideo.OG_VIDEO_TYPE)
       ),
 
       // VIDEO_WIDTH?
       ...insertLazilyIf(
-        _openGraphVideo.ogVideoWidth,
-        makeOpenGraphMeta('og:video:width')
+        ogVideoWidth,
+        makeOpenGraphMeta(PropertyVideo.OG_VIDEO_WIDTH)
       ),
 
       // VIDEO_HEIGHT?
       ...insertLazilyIf(
-        _openGraphVideo.ogVideoHeight,
-        makeOpenGraphMeta('og:video:height')
+        ogVideoHeight,
+        makeOpenGraphMeta(PropertyVideo.OG_VIDEO_HEIGHT)
       ),
 
       // VIDEO_ALT?
       ...insertLazilyIf(
-        _openGraphVideo.ogVideoAlt,
-        makeOpenGraphMeta('og:video:alt')
+        ogVideoAlt,
+        makeOpenGraphMeta(PropertyVideo.OG_VIDEO_ALT)
       ),
     ]
   }
 
   if (typeof openGraphVideo === 'string') {
     return [
-      makeOpenGraphMeta({ property: 'og:video', content: openGraphVideo }),
+      makeOpenGraphMeta({
+        property: PropertyVideo.OG_VIDEO,
+        content: openGraphVideo,
+      }),
     ]
   } else if (isArray(openGraphVideo)) {
     return openGraphVideo.map(_makeOpenGraphVideo).flat()
@@ -233,58 +289,3 @@ export function makeOpenGraphVideo(
     return _makeOpenGraphVideo(openGraphVideo)
   }
 }
-
-export type VideoKeys = ImageKeys
-export type OptionalVideoMetadata =
-  | Video
-  | VideoURL
-  | VideoSecureURL
-  | VideoType
-  | VideoWidth
-  | VideoHeight
-  | VideoAlt
-export type video<T extends string = ''> = BaseOrExtended<'video', T>
-
-export interface VideoMetadataBase<
-  Property extends og<video | video<VideoKeys>>,
-  Content extends Types.Type
-> extends MetaBase<Property, Content> {}
-
-/**
- * Identical to og:video.
- */
-interface VideoURL extends VideoMetadataBase<og<video<'url'>>, Types.URL> {}
-
-/**
- * An alternate url to use if the webpage requires HTTPS.
- */
-interface VideoSecureURL
-  extends VideoMetadataBase<og<video<'secure_url'>>, Types.URL> {}
-
-/**
- * A MIME type for this video.
- */
-interface VideoType extends VideoMetadataBase<og<video<'type'>>, MIMEContent> {}
-
-/**
- * The number of pixels wide.
- */
-interface VideoWidth
-  extends VideoMetadataBase<og<video<'width'>>, Types.Integer> {}
-
-/**
- * The number of pixels high.
- */
-interface VideoHeight
-  extends VideoMetadataBase<og<video<'height'>>, Types.Integer> {}
-
-/**
- * A description of what is in the image (not a caption).
- * If the page specifies an og:video it should specify og:video:alt.
- */
-interface VideoAlt extends VideoMetadataBase<og<video<'alt'>>, Types.String> {}
-
-/**
- * A URL to a video file that complements this object.
- */
-export interface Video extends VideoMetadataBase<og<video>, Types.URL> {}

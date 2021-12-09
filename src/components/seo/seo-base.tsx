@@ -1,6 +1,10 @@
 import { useSiteMetadata } from '@hooks/index'
 import { insertIf, insertLazilyIf } from '@lib/array'
-import { makeOpenGraphTwitterCard, Types } from '@lib/open-graph-protocol'
+import {
+  makeOpenGraphTwitterCard,
+  makeOpenGraphWebsite,
+  Types,
+} from '@lib/open-graph-protocol'
 
 import { useLocation } from '@reach/router'
 import React from 'react'
@@ -164,13 +168,14 @@ export const SEOBase: React.VFC<Props> = (props) => {
   const seoGooglebot = props.googlebot || seoRobots
   const seoTwitter =
     (props.social && props.social.twitter) || siteMetadata.social.twitter
+  const seoUrl = `${siteMetadata.url}${seoCanonical}` as const
 
   return (
     <Helmet
       title={seoTitle}
       titleTemplate={`%s · ${seoTitleTemplate}`}
       htmlAttributes={{ lang: seoLang, prefix: 'og: http://ogp.me/ns#' }}
-      link={[{ href: `${siteMetadata.url}${seoCanonical}`, rel: 'canonical' }]}
+      link={[{ href: seoUrl, rel: 'canonical' }]}
       meta={[
         { charSet: props.charSet || 'utf8' },
 
@@ -219,6 +224,12 @@ export const SEOBase: React.VFC<Props> = (props) => {
         ...(seoCreator ? seoCreator.map(makeMeta('creator')) : []),
 
         // TODO: insert open graph data
+        ...makeOpenGraphWebsite({
+          ogType: Types.Enum('website'),
+          ogTitle: Types.String(seoTitle),
+          ogUrl: Types.URL(seoUrl),
+          ogImage: Types.URL(seoImageSrc),
+        }),
 
         // TODO: insert Twitter card open graph data
         ...makeOpenGraphTwitterCard({

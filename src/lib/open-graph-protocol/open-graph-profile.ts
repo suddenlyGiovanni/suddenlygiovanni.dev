@@ -1,64 +1,76 @@
 import { insertLazilyIf } from '@lib/array'
-import { makeOpenGraphMeta } from './open-graph'
+import type { ValueOf } from '@lib/types'
 
-import type { BaseOrExtended, og, Types } from './open-graph'
 import {
+  type BaseOrExtended,
+  makeOpenGraphMeta,
+  type og,
+  type Types,
+} from './open-graph'
+import {
+  type BasicRecord,
   makeOpenGraphBase,
   type MetaBase,
   type OpenGraphBaseWithOptional,
+  type OptionalRecord,
+  type Type,
 } from './open-graph-base'
 
-export type profile<T extends string = ''> = BaseOrExtended<'profile', T>
+type profile<T extends string = ''> = BaseOrExtended<'profile', T>
 
-interface ProfileType extends MetaBase<og<'type'>, Types.Enum<'profile'>> {}
+export type PropertyProfile = ValueOf<typeof PropertyProfile>
+export const PropertyProfile = {
+  OG_PROFILE_FIRST_NAME: 'og:profile:first_name',
+  OG_PROFILE_LAST_NAME: 'og:profile:last_name',
+  OG_PROFILE_USERNAME: 'og:profile:username',
+  OG_PROFILE_GENDER: 'og:profile:gender',
+} as const
 
-export type PropertyProfile =
-  | profile<'first_name'>
-  | profile<'last_name'>
-  | profile<'username'>
-  | profile<'gender'>
+export type ProfileRecord =
+  | Exclude<BasicRecord, Type>
+  | TypeProfile
+  | OptionalRecord
+  | ProfileFirstName
+  | ProfileLastName
+  | ProfileUsername
+  | ProfileGender
 
-interface ProfileMetadataBase<
-  Property extends og<PropertyProfile>,
+interface ProfileMetaBase<
+  Property extends PropertyProfile,
   Content extends Types.Type
 > extends MetaBase<Property, Content> {}
+
+interface TypeProfile extends MetaBase<og<'type'>, Types.Enum<'profile'>> {}
 
 /**
  * A name normally given to an individual by a parent or self-chosen.
  * string
  */
 interface ProfileFirstName
-  extends ProfileMetadataBase<og<profile<'first_name'>>, Types.String> {}
+  extends ProfileMetaBase<og<profile<'first_name'>>, Types.String> {}
 
 /**
  * A name inherited from a family or marriage and by which the individual is commonly known.
  * string
  */
 interface ProfileLastName
-  extends ProfileMetadataBase<og<profile<'last_name'>>, Types.String> {}
+  extends ProfileMetaBase<og<profile<'last_name'>>, Types.String> {}
 
 /**
  * A short unique string to identify them.
  * string
  */
 interface ProfileUsername
-  extends ProfileMetadataBase<og<profile<'username'>>, Types.String> {}
+  extends ProfileMetaBase<og<profile<'username'>>, Types.String> {}
 
 /**
  * Gender
  */
 interface ProfileGender
-  extends ProfileMetadataBase<
+  extends ProfileMetaBase<
     og<profile<'gender'>>,
     Types.Enum<'male' | 'female'>
   > {}
-
-export type ProfileRecord =
-  | ProfileType
-  | ProfileFirstName
-  | ProfileLastName
-  | ProfileUsername
-  | ProfileGender
 
 interface OpenGraphProfile extends OpenGraphBaseWithOptional {
   ogType: Types.Enum<'profile'>
@@ -93,25 +105,25 @@ export function makeOpenGraphProfile(openGraphProfile: OpenGraphProfile) {
     // FIRST_NAME?
     ...insertLazilyIf(
       openGraphProfile.ogProfileFirstName,
-      makeOpenGraphMeta('og:profile:first_name')
+      makeOpenGraphMeta(PropertyProfile.OG_PROFILE_FIRST_NAME)
     ),
 
     // LAST_NAME?
     ...insertLazilyIf(
       openGraphProfile.ogProfileLastName,
-      makeOpenGraphMeta('og:profile:last_name')
+      makeOpenGraphMeta(PropertyProfile.OG_PROFILE_LAST_NAME)
     ),
 
     // USER_NAME?
     ...insertLazilyIf(
       openGraphProfile.ogProfileUsername,
-      makeOpenGraphMeta('og:profile:username')
+      makeOpenGraphMeta(PropertyProfile.OG_PROFILE_USERNAME)
     ),
 
     // GENDER?
     ...insertLazilyIf(
       openGraphProfile.ogProfileGender,
-      makeOpenGraphMeta('og:profile:gender')
+      makeOpenGraphMeta(PropertyProfile.OG_PROFILE_GENDER)
     ),
   ]
 }

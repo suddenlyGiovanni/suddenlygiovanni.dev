@@ -1,4 +1,5 @@
 import { insertLazilyIf, isArray } from '@lib/array'
+import type { ValueOf } from '@lib/types'
 
 import {
   type BaseOrExtended,
@@ -10,16 +11,40 @@ import {
 import type { MetaBase } from './open-graph-base'
 
 export type image<T extends string = ''> = BaseOrExtended<'image', T>
-export type ImageKeys =
-  | 'url'
-  | 'secure_url'
-  | 'type'
-  | 'width'
-  | 'height'
-  | 'alt'
+
+export type PropertyImage = ValueOf<typeof PropertyImage>
+export const PropertyImage = {
+  OG_IMAGE: 'og:image',
+  OG_IMAGE_URL: 'og:image:url',
+  OG_IMAGE_SECURE_URL: 'og:image:secure_url',
+  OG_IMAGE_TYPE: 'og:image:type',
+  OG_IMAGE_WIDTH: 'og:image:width',
+  OG_IMAGE_HEIGHT: 'og:image:height',
+  OG_IMAGE_ALT: 'og:image:alt',
+} as const
+
+/**
+ * @example
+ * ```html
+ *  <meta property="og:image" content="https://example.com/ogp.jpg" />
+ *  <meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" />
+ *  <meta property="og:image:type" content="image/jpeg" />
+ *  <meta property="og:image:width" content="400" />
+ *  <meta property="og:image:height" content="300" />
+ *  <meta property="og:image:alt" content="A shiny red apple with a bite taken out" />
+ * ```
+ */
+export type ImageRecord =
+  | Image
+  | ImageURL
+  | ImageSecureURL
+  | ImageType
+  | ImageWidth
+  | ImageHeight
+  | ImageAlt
 
 export interface ImageMetaBase<
-  Property extends og<image | image<ImageKeys>>,
+  Property extends PropertyImage,
   Content extends Types.Type
 > extends MetaBase<Property, Content> {}
 
@@ -62,26 +87,6 @@ interface ImageHeight
  */
 interface ImageAlt extends ImageMetaBase<og<image<'alt'>>, Types.String> {}
 
-/**
- * @example
- * ```html
- *  <meta property="og:image" content="https://example.com/ogp.jpg" />
- *  <meta property="og:image:secure_url" content="https://secure.example.com/ogp.jpg" />
- *  <meta property="og:image:type" content="image/jpeg" />
- *  <meta property="og:image:width" content="400" />
- *  <meta property="og:image:height" content="300" />
- *  <meta property="og:image:alt" content="A shiny red apple with a bite taken out" />
- * ```
- */
-export type ImageRecord =
-  | Image
-  | ImageURL
-  | ImageSecureURL
-  | ImageType
-  | ImageWidth
-  | ImageHeight
-  | ImageAlt
-
 export interface OpenGraphImage {
   /**
    * An image URL which should represent your object within the graph.
@@ -110,40 +115,57 @@ export interface OpenGraphImage {
 export function makeOpenGraphImage(
   openGraphImage: Types.URL | OpenGraphImage | readonly OpenGraphImage[]
 ) {
-  function _makeOpenGraphImage(ogImage: OpenGraphImage) {
+  function _makeOpenGraphImage({
+    ogImage,
+    ogImageAlt,
+    ogImageHeight,
+    ogImageSecureUrl,
+    ogImageType,
+    ogImageURL,
+    ogImageWidth,
+  }: OpenGraphImage) {
     return [
       // IMAGE!
-      makeOpenGraphMeta({ property: 'og:image', content: ogImage.ogImage }),
+      makeOpenGraphMeta({
+        property: PropertyImage.OG_IMAGE,
+        content: ogImage,
+      }),
 
       // IMAGE_URL?
-      ...insertLazilyIf(ogImage.ogImageURL, makeOpenGraphMeta('og:image:url')),
+      ...insertLazilyIf(
+        ogImageURL,
+        makeOpenGraphMeta(PropertyImage.OG_IMAGE_URL)
+      ),
 
       // IMAGE_SECURE_URL?
       ...insertLazilyIf(
-        ogImage.ogImageSecureUrl,
-        makeOpenGraphMeta('og:image:secure_url')
+        ogImageSecureUrl,
+        makeOpenGraphMeta(PropertyImage.OG_IMAGE_SECURE_URL)
       ),
 
       // IMAGE_TYPE?
       ...insertLazilyIf(
-        ogImage.ogImageType,
-        makeOpenGraphMeta('og:image:type')
+        ogImageType,
+        makeOpenGraphMeta(PropertyImage.OG_IMAGE_TYPE)
       ),
 
       // IMAGE_WIDTH?
       ...insertLazilyIf(
-        ogImage.ogImageWidth,
-        makeOpenGraphMeta('og:image:width')
+        ogImageWidth,
+        makeOpenGraphMeta(PropertyImage.OG_IMAGE_WIDTH)
       ),
 
       // IMAGE_HEIGHT?
       ...insertLazilyIf(
-        ogImage.ogImageHeight,
-        makeOpenGraphMeta('og:image:height')
+        ogImageHeight,
+        makeOpenGraphMeta(PropertyImage.OG_IMAGE_HEIGHT)
       ),
 
       // IMAGE_ALT?
-      ...insertLazilyIf(ogImage.ogImageAlt, makeOpenGraphMeta('og:image:alt')),
+      ...insertLazilyIf(
+        ogImageAlt,
+        makeOpenGraphMeta(PropertyImage.OG_IMAGE_ALT)
+      ),
     ]
   }
 

@@ -8,7 +8,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
-      <change afterPath="$PROJECT_DIR$/gatsby/node-lifecycle/on-create-webpack-config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +96,6 @@
   <component name="ProblemsViewState">
     <option name="proportion" value="0.33638585" />
     <option name="selectedTabId" value="ProjectErrors" />
-    <option name="showPreview" value="true" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
   <component name="ProjectLevelVcsManager">
@@ -156,11 +154,11 @@
       <recent name="$PROJECT_DIR$/src/lib/" />
     </key>
     <key name="es6.move.members.recent.items">
+      <recent name="$PROJECT_DIR$/src/lib/open-graph-protocol/open-graph.ts" />
       <recent name="$PROJECT_DIR$/src/lib/open-graph-protocol/open-graph-music-radio-station.ts" />
       <recent name="$PROJECT_DIR$/src/lib/open-graph-protocol/open-graph-music-playlist.ts" />
       <recent name="$PROJECT_DIR$/src/lib/open-graph-protocol/open-graph-music-album.ts" />
       <recent name="$PROJECT_DIR$/src/lib/open-graph-protocol/open-graph-music-song.ts" />
-      <recent name="$PROJECT_DIR$/src/lib/open-graph-protocol/open-graph.ts" />
     </key>
   </component>
   <component name="RunManager" selected="npm.develop">
@@ -342,7 +340,8 @@
       <workItem from="1638876787155" duration="3148000" />
       <workItem from="1638880995034" duration="23765000" />
       <workItem from="1638912038752" duration="40974000" />
-      <workItem from="1639046364342" duration="7639000" />
+      <workItem from="1639046364342" duration="20918000" />
+      <workItem from="1639081716453" duration="12020000" />
     </task>
     <servers />
   </component>

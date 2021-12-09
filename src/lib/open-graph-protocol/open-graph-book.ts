@@ -1,34 +1,49 @@
 import { insertLazilyIf, isArray } from '@lib/array'
+import { ValueOf } from '@lib/types'
 
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,
   type og,
-  Types,
+  type Types,
 } from './open-graph'
 import {
+  type BasicRecord,
   makeOpenGraphBase,
   type MetaBase,
   type OpenGraphBaseWithOptional,
+  type OptionalRecord,
+  type Type,
 } from './open-graph-base'
 
 export type book<T extends string = ''> = BaseOrExtended<'book', T>
 
+export type PropertyBook = ValueOf<typeof PropertyBook>
+export const PropertyBook = {
+  OG_BOOK_AUTHOR: 'og:book:author',
+  OG_BOOK_ISBN: 'og:book:isbn',
+  OG_BOOK_RELEASE_DATE: 'og:book:release_date',
+  OG_BOOK_TAG: 'og:book:tag',
+} as const
+
+export type BookRecord =
+  | Exclude<BasicRecord, Type>
+  | OptionalRecord
+  | TypeBook
+  | BookAuthor
+  | BookIsbn
+  | BookReleaseDate
+  | BookTag
+
+interface BookMetaBase<
+  Property extends PropertyBook,
+  Content extends Types.Type
+> extends MetaBase<Property, Content> {}
+
 /**`
  * This object type represents a book or publication. This is an appropriate type for ebooks, as well as traditional paperback or hardback books. Do not use this type to represent magazines
  */
-interface BookType extends MetaBase<og<'type'>, Types.Enum<book>> {}
-
-export type PropertyBook =
-  | book<'author'>
-  | book<'isbn'>
-  | book<'release_date'>
-  | book<'tag'>
-
-interface BookMetaBase<
-  Property extends og<PropertyBook>,
-  Content extends Types.Type
-> extends MetaBase<Property, Content> {}
+interface TypeBook extends MetaBase<og<'type'>, Types.Enum<book>> {}
 
 /**
  * Who wrote this book.
@@ -53,13 +68,6 @@ interface BookReleaseDate
  * string array
  */
 interface BookTag extends BookMetaBase<og<book<'tag'>>, Types.String> {}
-
-export type BookRecord =
-  | BookType
-  | BookAuthor
-  | BookIsbn
-  | BookReleaseDate
-  | BookTag
 
 interface OpenGraphBook extends OpenGraphBaseWithOptional {
   ogType: Types.Enum<'book'>
@@ -96,9 +104,9 @@ export function makeOpenGraphBook(openGraphBook: OpenGraphBook) {
     // BOOK_AUTHOR?
     ...insertLazilyIf(openGraphBook.ogBookAuthor, (ogBookAuthor) =>
       isArray(ogBookAuthor)
-        ? ogBookAuthor.map(makeOpenGraphMeta('og:book:author'))
+        ? ogBookAuthor.map(makeOpenGraphMeta(PropertyBook.OG_BOOK_AUTHOR))
         : makeOpenGraphMeta({
-            property: 'og:book:author',
+            property: PropertyBook.OG_BOOK_AUTHOR,
             content: ogBookAuthor,
           })
     ).flat(),
@@ -106,20 +114,23 @@ export function makeOpenGraphBook(openGraphBook: OpenGraphBook) {
     // BOOK_ISBN?
     ...insertLazilyIf(
       openGraphBook.ogBookIsbn,
-      makeOpenGraphMeta('og:book:isbn')
+      makeOpenGraphMeta(PropertyBook.OG_BOOK_ISBN)
     ),
 
     // BOOK_RELEASE_DATE?
     ...insertLazilyIf(
       openGraphBook.ogBookReleaseDate,
-      makeOpenGraphMeta('og:book:release_date')
+      makeOpenGraphMeta(PropertyBook.OG_BOOK_RELEASE_DATE)
     ),
 
     // BOOK_TAG?
     ...insertLazilyIf(openGraphBook.ogBookTag, (ogBookTag) =>
       isArray(ogBookTag)
-        ? ogBookTag.map(makeOpenGraphMeta('og:book:tag'))
-        : makeOpenGraphMeta({ property: 'og:book:tag', content: ogBookTag })
+        ? ogBookTag.map(makeOpenGraphMeta(PropertyBook.OG_BOOK_TAG))
+        : makeOpenGraphMeta({
+            property: PropertyBook.OG_BOOK_TAG,
+            content: ogBookTag,
+          })
     ).flat(),
   ]
 }

@@ -1,22 +1,55 @@
+import type { ValueOf } from '@lib/types'
 import { type BaseOf, type Brand, make } from '@typings/brand'
-import type { ArticleRecord, PropertyArticle } from './open-graph-article'
-import type { AudioRecord } from './open-graph-audio'
 
-import type {
-  BasicRecord,
-  OptionalRecord,
+import { type ArticleRecord, PropertyArticle } from './open-graph-article'
+import { PropertyAudio } from './open-graph-audio'
+import {
+  type BasicRecord,
+  type OptionalRecord,
   PropertyBasic,
 } from './open-graph-base'
-import type { BookRecord, PropertyBook } from './open-graph-book'
-import type { ImageRecord } from './open-graph-image'
-import type { MusicRecord, PropertyMusic } from './open-graph-music'
-import type { ProfileRecord, PropertyProfile } from './open-graph-profile'
+import { type BookRecord, PropertyBook } from './open-graph-book'
+import { PropertyImage } from './open-graph-image'
+import {
+  type MusicAlbumRecord,
+  PropertyMusicAlbum,
+} from './open-graph-music-album'
+import {
+  type MusicPlaylistRecord,
+  PropertyMusicPlaylist,
+} from './open-graph-music-playlist'
+import {
+  PropertyMusicRadioStation,
+  type RadioStationRecord,
+} from './open-graph-music-radio-station'
+import {
+  type MusicSongRecord,
+  PropertyMusicSong,
+} from './open-graph-music-song'
+import { type ProfileRecord, PropertyProfile } from './open-graph-profile'
 import {
   makeTwitterCardMeta,
   type TwitterCardMeta,
   type TwitterRecord,
 } from './open-graph-twitter'
-import type { PropertyVideo, VideoRecord } from './open-graph-video'
+import { PropertyVideo } from './open-graph-video'
+import {
+  PropertyVideoEpisode,
+  type VideoEpisodeRecord,
+} from './open-graph-video-episode'
+import {
+  PropertyVideoMovie,
+  type VideoMovieRecord,
+} from './open-graph-video-movie'
+import {
+  PropertyVideoOther,
+  type VideoOtherRecord,
+} from './open-graph-video-other'
+import {
+  PropertyVideoTvShow,
+  type VideoTvShowRecord,
+} from './open-graph-video-tvshow'
+import type { WebsiteRecord } from './open-graph-website'
 
 /**
  * The
@@ -146,6 +179,22 @@ export namespace Types {
   export type Type = Boolean | DateTime | Float | Integer | String | URL | Enum
 }
 
+export const OGType = {
+  WEBSITE: 'website',
+  MUSIC_SONG: 'music.song',
+  MUSIC_ALBUM: 'music.album',
+  MUSIC_PLAYLIST: 'music.playlist',
+  MUSIC_RADIO_STATION: 'music.radio_station',
+  VIDEO_MOVIE: 'video.movie',
+  VIDEO_EPISODE: 'video.episode',
+  VIDEO_TV_SHOW: 'video.tv_show',
+  VIDEO_OTHER: 'video.other',
+  ARTICLE: 'article',
+  BOOK: 'book',
+  PROFILE: 'profile',
+} as const
+export type OGType = ValueOf<typeof OGType>
+
 /**
  * a small subset of all the common MIME types
  */
@@ -200,25 +249,54 @@ export type BaseOrExtended<
   Extended extends string = ''
 > = Extended extends '' ? Base : `${Base}:${Extended}`
 
-export type PropertyOpenGraph = og<
-  | PropertyBasic
-  | PropertyMusic
-  | PropertyVideo
+export type PropertyOpenGraph =
   | PropertyArticle
+  | PropertyBasic
   | PropertyBook
+  | PropertyMusicAlbum
+  | PropertyMusicPlaylist
+  | PropertyMusicRadioStation
+  | PropertyMusicSong
   | PropertyProfile
->
+  | PropertyVideo
+  | PropertyVideoEpisode
+  | PropertyVideoMovie
+  | PropertyVideoOther
+  | PropertyVideoTvShow
+
+export const PropertyOpenGraph = {
+  ...PropertyArticle,
+  ...PropertyAudio,
+  ...PropertyBasic,
+  ...PropertyBook,
+  ...PropertyImage,
+  ...PropertyMusicAlbum,
+  ...PropertyMusicPlaylist,
+  ...PropertyMusicRadioStation,
+  ...PropertyMusicSong,
+  ...PropertyProfile,
+  ...PropertyVideo,
+  ...PropertyVideoEpisode,
+  ...PropertyVideoMovie,
+  ...PropertyVideoOther,
+  ...PropertyVideoTvShow,
+} as const
 
 export type OpenGraphRecord =
-  | BasicRecord
-  | OptionalRecord
-  | ImageRecord
   | ArticleRecord
+  | BasicRecord
   | BookRecord
+  | MusicAlbumRecord
+  | MusicPlaylistRecord
+  | MusicSongRecord
+  | OptionalRecord
   | ProfileRecord
-  | AudioRecord
-  | VideoRecord
-  | MusicRecord
+  | RadioStationRecord
+  | VideoEpisodeRecord
+  | VideoMovieRecord
+  | VideoOtherRecord
+  | VideoTvShowRecord
+  | WebsiteRecord
 
 export interface OpenGraphMeta {
   readonly property: OpenGraphRecord['property']
@@ -234,27 +312,27 @@ export interface OpenGraphMeta {
  * @link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
  */
 export function makeOpenGraphMeta<
-  Metadata extends OpenGraphRecord,
-  Property extends Metadata['property'],
-  Content extends Metadata['content']
+  OGRecord extends OpenGraphRecord,
+  Property extends OGRecord['property'],
+  Content extends OGRecord['content']
 >(property: Property): (content: Content) => OpenGraphMeta
-export function makeOpenGraphMeta<Metadata extends OpenGraphRecord>(
-  twitterMetadata: Metadata
+export function makeOpenGraphMeta<OGRecord extends OpenGraphRecord>(
+  openGraphRecord: OGRecord
 ): OpenGraphMeta
 export function makeOpenGraphMeta<
-  Metadata extends OpenGraphRecord,
-  Property extends Metadata['property'],
-  Content extends Metadata['content']
+  OGRecord extends OpenGraphRecord,
+  Property extends OGRecord['property'],
+  Content extends OGRecord['content']
 >(
-  metadataOrProperty: Metadata | Property
+  openGraphRecordOrProperty: OGRecord | Property
 ): ((content: Content) => OpenGraphMeta) | OpenGraphMeta {
-  return typeof metadataOrProperty === 'object'
+  return typeof openGraphRecordOrProperty === 'object'
     ? {
-        property: metadataOrProperty.property,
-        content: String(metadataOrProperty.content),
+        property: openGraphRecordOrProperty.property,
+        content: String(openGraphRecordOrProperty.content),
       }
     : (content: Content): OpenGraphMeta => ({
-        property: metadataOrProperty,
+        property: openGraphRecordOrProperty,
         content: String(content),
       })
 }
@@ -264,18 +342,19 @@ export function makeOpenGraphMeta<
  * It also supports Twitter's custom schema
  *
  * @link https://ogp.me/#types
- * @param openGraphMetadata
+ * @param openGraph
  */
 export function makeOpenGraphMetaAttributesRecord(
-  openGraphMetadata: OpenGraphRecord | TwitterRecord
+  openGraph: OpenGraphRecord | TwitterRecord
 ): TwitterCardMeta | OpenGraphMeta {
-  function isTwitterMetadata(
-    openGraphMetadata: OpenGraphRecord | TwitterRecord
-  ): openGraphMetadata is TwitterRecord {
-    return openGraphMetadata.property.includes('twitter', 0)
+  /** TwitterRecord type guard */
+  function isTwitterRecord(
+    openGraph: OpenGraphRecord | TwitterRecord
+  ): openGraph is TwitterRecord {
+    return openGraph.property.includes('twitter', 0)
   }
 
-  return isTwitterMetadata(openGraphMetadata)
-    ? makeTwitterCardMeta(openGraphMetadata)
-    : makeOpenGraphMeta(openGraphMetadata)
+  return isTwitterRecord(openGraph)
+    ? makeTwitterCardMeta(openGraph)
+    : makeOpenGraphMeta(openGraph)
 }

@@ -1,118 +1,52 @@
 import { insertLazilyIf, isArray } from '@lib/array'
+import type { ValueOf } from '@lib/types'
 
 import {
-  type BaseOrExtended,
   makeOpenGraphMeta,
   type og,
+  type OGType,
   type PropertyOpenGraph,
   Types,
 } from './open-graph'
 import {
-  type audio,
-  type Audio,
-  type AudioKeys,
+  type AudioRecord,
   makeOpenGraphAudio,
   type OpenGraphAudio,
+  PropertyAudio,
 } from './open-graph-audio'
 import {
-  type image,
   type Image,
-  type ImageKeys,
+  type ImageRecord,
   makeOpenGraphImage,
   type OpenGraphImage,
+  PropertyImage,
 } from './open-graph-image'
 
 import type { PropertyTwitter } from './open-graph-twitter'
 import {
   makeOpenGraphVideo,
   type OpenGraphVideo,
-  type OptionalVideoMetadata,
-  type video,
-  type VideoKeys,
+  PropertyVideo,
+  type VideoRecord,
 } from './open-graph-video'
-import type { TypeWebsite } from './open-graph-website'
 
-export type PropertyBasic =
-  | 'title'
-  | 'type'
-  | (image | image<ImageKeys>)
-  | 'url'
-  | (audio | audio<AudioKeys>)
-  | 'description'
-  | 'determiner'
-  | (locale | locale<'alternate'>)
-  | 'site_name'
-  | (video | video<VideoKeys>)
+export type DelimiterContent = Types.Enum<'' | 'a' | 'an' | 'the' | 'auto'>
 
-export type TypeContent = Types.Enum<
-  | 'website'
-  | 'music.song'
-  | 'music.album'
-  | 'music.playlist'
-  | 'music.radio_station'
-  | 'video.movie'
-  | 'video.episode'
-  | 'video.tv_show'
-  | 'video.other'
-  | 'article'
-  | 'book'
-  | 'profile'
->
+export type PropertyBasic = ValueOf<typeof PropertyBasic>
 
-export interface MetaBase<
-  Property extends PropertyOpenGraph | PropertyTwitter = PropertyOpenGraph,
-  Content extends Types.Type = Types.Type
-> {
-  property: Property
-  content: Content
-}
-
-/**
- * To turn your web pages into graph objects, you need to add basic metadata to your page.
- * We've based the initial version of the protocol on RDFa which means that you'll place additional `<meta>` tags in the `<head>` of your web page.
- * The four required properties for every page are:
- */
-interface OpenGraphBase {
-  /**
-   * The title of your object as it should appear within the graph,
-   * e.g., “The Rock”.
-   */
-  ogTitle: Types.String
-
-  /**
-   * The type of your object, e.g., "video.movie".
-   * Depending on the type you specify, other properties may also be required.
-   */
-  ogType: TypeContent
-
-  /**
-   * An image URL which should represent your object within the graph.
-   */
-  ogImage: Types.URL | OpenGraphImage | readonly OpenGraphImage[]
-
-  /**
-   * The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "https://www.imdb.com/title/tt0117500/".
-   */
-  ogUrl: Types.URL
-}
-
-type DelimiterContent = Types.Enum<'' | 'a' | 'an' | 'the' | 'auto'>
-
-/**
- * The title of your object as it should appear within the graph, e.g., "The Rock".
- */
-interface Title extends MetaBase<og<'title'>, Types.String> {}
-
-/**
- * The type of your object, e.g., "video.movie".
- * Depending on the type you specify, other properties may also be required.
- */
-interface Type extends MetaBase<og<'type'>, TypeContent> {}
-
-/**
- * The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "https://www.imdb.com/title/tt0117500/".
- */
-interface Url extends MetaBase<og<'url'>, Types.URL> {}
+export const PropertyBasic = {
+  OG_TITLE: 'og:title',
+  OG_TYPE: 'og:type',
+  OG_URL: 'og:url',
+  OG_DESCRIPTION: 'og:description',
+  OG_DETERMINER: 'og:determiner',
+  OG_LOCALE: 'og:locale',
+  OG_LOCALE_ALTERNATE: 'og:locale:alternate',
+  OG_SITE_NAME: 'og:site_name',
+  ...PropertyVideo,
+  ...PropertyAudio,
+  ...PropertyImage,
+} as const
 
 /**
  * As an example, the following is the Open Graph protocol markup for The Rock on IMDB:
@@ -134,38 +68,6 @@ interface Url extends MetaBase<og<'url'>, Types.URL> {}
 export type BasicRecord = Title | Type | Image | Url
 
 /**
- * A one to two sentence description of your object.
- */
-interface Description extends MetaBase<og<'description'>, Types.String> {}
-
-/**
- * The word that appears before this object's title in a sentence.
- * An enum of (a, an, the, "", auto).
- * If auto is chosen, the consumer of your data should chose between "a" or "an".
- * Default is "" (blank).
- */
-interface Determiner extends MetaBase<og<'determiner'>, DelimiterContent> {}
-
-export type locale<T extends string = ''> = BaseOrExtended<'locale', T>
-
-/**
- * The locale these tags are marked up in. Of the format language_TERRITORY.
- * Default is en_US.
- */
-interface Locale extends MetaBase<og<'locale'>, Types.String> {}
-
-/**
- * An array of other locales this page is available in.
- */
-interface LocaleAlternate
-  extends MetaBase<og<'locale:alternate'>, Types.String> {}
-
-/**
- * If your object is part of a larger website, the name which should be displayed for the overall site. e.g., "IMDb".
- */
-interface SiteName extends MetaBase<og<'site_name'>, Types.String> {}
-
-/**
  * The following properties are optional for any object and are generally recommended
  * For example (line-break solely for display purposes)
  * @example
@@ -183,14 +85,98 @@ interface SiteName extends MetaBase<og<'site_name'>, Types.String> {}
  * ```
  */
 export type OptionalRecord =
-  | Audio
+  | AudioRecord
   | Description
   | Determiner
   | Locale
   | LocaleAlternate
   | SiteName
-  | OptionalVideoMetadata
-  | TypeWebsite
+  | VideoRecord
+  | ImageRecord
+
+export interface MetaBase<
+  Property extends PropertyOpenGraph | PropertyTwitter = PropertyOpenGraph,
+  Content extends Types.Type = Types.Type
+> {
+  property: Property
+  content: Content
+}
+
+/**
+ * The title of your object as it should appear within the graph, e.g., "The Rock".
+ */
+interface Title extends MetaBase<og<'title'>, Types.String> {}
+
+/**
+ * The type of your object, e.g., "video.movie".
+ * Depending on the type you specify, other properties may also be required.
+ */
+export interface Type extends MetaBase<og<'type'>, Types.Enum<OGType>> {}
+
+/**
+ * The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "https://www.imdb.com/title/tt0117500/".
+ */
+interface Url extends MetaBase<og<'url'>, Types.URL> {}
+
+/**
+ * A one to two sentence description of your object.
+ */
+interface Description extends MetaBase<og<'description'>, Types.String> {}
+
+/**
+ * The word that appears before this object's title in a sentence.
+ * An enum of (a, an, the, "", auto).
+ * If auto is chosen, the consumer of your data should chose between "a" or "an".
+ * Default is "" (blank).
+ */
+interface Determiner extends MetaBase<og<'determiner'>, DelimiterContent> {}
+
+/**
+ * The locale these tags are marked up in. Of the format language_TERRITORY.
+ * Default is en_US.
+ */
+interface Locale extends MetaBase<og<'locale'>, Types.String> {}
+
+/**
+ * An array of other locales this page is available in.
+ */
+interface LocaleAlternate
+  extends MetaBase<og<'locale:alternate'>, Types.String> {}
+
+/**
+ * If your object is part of a larger website, the name which should be displayed for the overall site.
+ * e.g., "IMDb".
+ */
+interface SiteName extends MetaBase<og<'site_name'>, Types.String> {}
+
+/**
+ * To turn your web pages into graph objects, you need to add basic metadata to your page.
+ * We've based the initial version of the protocol on RDFa which means that you'll place additional `<meta>` tags in the `<head>` of your web page.
+ * The four required properties for every page are:
+ */
+interface OpenGraphBase {
+  /**
+   * The title of your object as it should appear within the graph,
+   * e.g., “The Rock”.
+   */
+  ogTitle: Types.String
+
+  /**
+   * The type of your object, e.g., "video.movie".
+   * Depending on the type you specify, other properties may also be required.
+   */
+  ogType: Types.Enum<OGType>
+
+  /**
+   * An image URL which should represent your object within the graph.
+   */
+  ogImage: Types.URL | OpenGraphImage | readonly OpenGraphImage[]
+
+  /**
+   * The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "https://www.imdb.com/title/tt0117500/".
+   */
+  ogUrl: Types.URL
+}
 
 /**
  * The following properties are optional for any object and are generally recommended:
@@ -240,16 +226,16 @@ export function makeOpenGraphBase({
 }: OpenGraphBaseWithOptional) {
   return [
     // TITLE!
-    makeOpenGraphMeta({ property: 'og:title', content: ogTitle }),
+    makeOpenGraphMeta({ property: PropertyBasic.OG_TITLE, content: ogTitle }),
 
     // TYPE!
-    makeOpenGraphMeta({ property: 'og:type', content: ogType }),
+    makeOpenGraphMeta({ property: PropertyBasic.OG_TYPE, content: ogType }),
 
     // IMAGE!
     ...makeOpenGraphImage(ogImage),
 
     // URL!
-    makeOpenGraphMeta({ property: 'og:url', content: ogUrl }),
+    makeOpenGraphMeta({ property: PropertyBasic.OG_URL, content: ogUrl }),
 
     // AUDIO?
     ...insertLazilyIf(optionalMetadata.ogAudio, makeOpenGraphAudio).flat(),
@@ -257,27 +243,29 @@ export function makeOpenGraphBase({
     // DESCRIPTION?
     ...insertLazilyIf(
       optionalMetadata.ogDescription,
-      makeOpenGraphMeta('og:description')
+      makeOpenGraphMeta(PropertyBasic.OG_DESCRIPTION)
     ),
 
     // DETERMINER?
     ...insertLazilyIf(
       optionalMetadata.ogDeterminer,
-      makeOpenGraphMeta('og:determiner')
+      makeOpenGraphMeta(PropertyBasic.OG_DETERMINER)
     ),
 
     // LOCALE?
     ...insertLazilyIf(
       optionalMetadata.ogLocale,
-      makeOpenGraphMeta('og:locale')
+      makeOpenGraphMeta(PropertyBasic.OG_LOCALE)
     ),
 
     // LOCALE_ALTERNATE?
     ...insertLazilyIf(optionalMetadata.ogLocaleAlternate, (ogLocaleAlternate) =>
       isArray(ogLocaleAlternate)
-        ? ogLocaleAlternate.map(makeOpenGraphMeta('og:locale:alternate'))
+        ? ogLocaleAlternate.map(
+            makeOpenGraphMeta(PropertyBasic.OG_LOCALE_ALTERNATE)
+          )
         : makeOpenGraphMeta({
-            property: 'og:locale:alternate',
+            property: PropertyBasic.OG_LOCALE_ALTERNATE,
             content: ogLocaleAlternate,
           })
     ).flat(),
@@ -285,7 +273,7 @@ export function makeOpenGraphBase({
     // SITE_NAME?
     ...insertLazilyIf(
       optionalMetadata.ogSiteName,
-      makeOpenGraphMeta('og:site_name')
+      makeOpenGraphMeta(PropertyBasic.OG_SITE_NAME)
     ),
 
     // VIDEO?
