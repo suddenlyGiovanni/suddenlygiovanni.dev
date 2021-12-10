@@ -355,6 +355,6 @@ export function makeOpenGraphMetaAttributesRecord(
   }
 
   return isTwitterRecord(openGraph)
-    ? makeTwitterCardMeta(openGraph)
+    ? makeTwitterCardMeta(openGraph.property, openGraph.content)
     : makeOpenGraphMeta(openGraph)
 }

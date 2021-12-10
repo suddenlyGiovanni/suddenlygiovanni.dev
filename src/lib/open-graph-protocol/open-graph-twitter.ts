@@ -8,7 +8,6 @@ import type { MetaBase } from './open-graph-base'
 type twitter<T extends string = ''> = BaseOrExtended<'twitter', T>
 
 export type PropertyTwitter = ValueOf<typeof PropertyTwitter>
-
 export const PropertyTwitter = {
   TWITTER_CARD: 'twitter:card',
   TWITTER_SITE: 'twitter:site',
@@ -260,28 +259,34 @@ export function makeTwitterCardMeta<
   Content extends Metadata['content']
 >(property: Property): (content: Content) => TwitterCardMeta
 
-export function makeTwitterCardMeta<Metadata extends TwitterRecord>(
-  twitterMetadata: Metadata
-): TwitterCardMeta
+export function makeTwitterCardMeta<
+  Metadata extends TwitterRecord,
+  Property extends Metadata['property'],
+  Content extends Metadata['content']
+>(property: Property, content: Content): TwitterCardMeta
 
 export function makeTwitterCardMeta<
   Metadata extends TwitterRecord,
   Property extends Metadata['property'],
   Content extends Metadata['content']
 >(
-  metadataOrProperty: Metadata | Property
+  ...args: [property: Property, content: Content] | [property: Property]
 ): ((content: Content) => TwitterCardMeta) | TwitterCardMeta {
   /**
    * returns a Twitter Card Tags
    * @link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
    */
-  return typeof metadataOrProperty === 'object'
-    ? ({
-        name: metadataOrProperty.property,
-        content: String(metadataOrProperty.content),
-      } as const)
-    : (content: Content): TwitterCardMeta =>
-        ({ name: metadataOrProperty, content: String(content) } as const)
+  if (args.length === 2) {
+    const [property, content] = args
+    return {
+      name: property,
+      content: String(content),
+    } as const
+  } else {
+    const [property] = args
+    return (content: Content): TwitterCardMeta =>
+      ({ name: property, content: String(content) } as const)
+  }
 }
 
 interface TwitterCardBase {
@@ -452,10 +457,10 @@ export function makeOpenGraphTwitterCard(
   if (isOpenGraphTwitterSummaryCard(openGraphTwitterCard)) {
     return [
       // CARD!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_CARD,
-        content: openGraphTwitterCard.card, // 'summary_large_image' | 'summary'
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_CARD,
+        openGraphTwitterCard.card // 'summary_large_image' | 'summary'
+      ),
 
       // SITE?
       ...insertLazilyIf(
@@ -470,10 +475,10 @@ export function makeOpenGraphTwitterCard(
       ),
 
       // TITLE!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_TITLE,
-        content: Types.String(cutAt70Characters(openGraphTwitterCard.title)),
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_TITLE,
+        Types.String(cutAt70Characters(openGraphTwitterCard.title))
+      ),
 
       // CREATOR?
       ...insertLazilyIf(
@@ -488,10 +493,10 @@ export function makeOpenGraphTwitterCard(
 
       // DESCRIPTION?
       ...insertLazilyIf(openGraphTwitterCard.description, (description) =>
-        makeTwitterCardMeta({
-          property: PropertyTwitter.TWITTER_DESCRIPTION,
-          content: Types.String(cutAt200Characters(description)),
-        })
+        makeTwitterCardMeta(
+          PropertyTwitter.TWITTER_DESCRIPTION,
+          Types.String(cutAt200Characters(description))
+        )
       ),
 
       // IMAGE?
@@ -502,32 +507,32 @@ export function makeOpenGraphTwitterCard(
 
       // IMAGE_ALT?
       ...insertLazilyIf(openGraphTwitterCard.imageAlt, (imageAlt) =>
-        makeTwitterCardMeta({
-          property: PropertyTwitter.TWITTER_IMAGE_ALT,
-          content: Types.String(cutAt420Characters(imageAlt)),
-        })
+        makeTwitterCardMeta(
+          PropertyTwitter.TWITTER_IMAGE_ALT,
+          Types.String(cutAt420Characters(imageAlt))
+        )
       ),
     ]
   }
   if (isOpenGraphTwitterPlayerCard(openGraphTwitterCard)) {
     return [
       // CARD!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_CARD,
-        content: openGraphTwitterCard.card, // player
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_CARD,
+        openGraphTwitterCard.card // player
+      ),
 
       // TITLE!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_TITLE,
-        content: Types.String(cutAt70Characters(openGraphTwitterCard.title)),
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_TITLE,
+        Types.String(cutAt70Characters(openGraphTwitterCard.title))
+      ),
 
       // SITE!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_SITE,
-        content: openGraphTwitterCard.site,
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_SITE,
+        openGraphTwitterCard.site
+      ),
 
       // SITE_ID?
       ...insertLazilyIf(
@@ -537,43 +542,43 @@ export function makeOpenGraphTwitterCard(
 
       // DESCRIPTION?
       ...insertLazilyIf(openGraphTwitterCard.description, (description) =>
-        makeTwitterCardMeta({
-          property: PropertyTwitter.TWITTER_DESCRIPTION,
-          content: Types.String(cutAt200Characters(description)),
-        })
+        makeTwitterCardMeta(
+          PropertyTwitter.TWITTER_DESCRIPTION,
+          Types.String(cutAt200Characters(description))
+        )
       ),
 
       // IMAGE!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_IMAGE,
-        content: openGraphTwitterCard.image,
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_IMAGE,
+        openGraphTwitterCard.image
+      ),
 
       // IMAGE_ALT?
       ...insertLazilyIf(openGraphTwitterCard.imageAlt, (imageAlt) =>
-        makeTwitterCardMeta({
-          property: PropertyTwitter.TWITTER_IMAGE_ALT,
-          content: Types.String(cutAt420Characters(imageAlt)),
-        })
+        makeTwitterCardMeta(
+          PropertyTwitter.TWITTER_IMAGE_ALT,
+          Types.String(cutAt420Characters(imageAlt))
+        )
       ),
 
       // PLAYER!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_PLAYER,
-        content: openGraphTwitterCard.player,
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_PLAYER,
+        openGraphTwitterCard.player
+      ),
 
       // PLAYER_WIDTH!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_PLAYER_WIDTH,
-        content: openGraphTwitterCard.playerWidth,
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_PLAYER_WIDTH,
+        openGraphTwitterCard.playerWidth
+      ),
 
       // PLAYER_HEIGHT!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_PLAYER_HEIGHT,
-        content: openGraphTwitterCard.playerHeight,
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_PLAYER_HEIGHT,
+        openGraphTwitterCard.playerHeight
+      ),
 
       // PLAYER_STREAM?
       ...insertLazilyIf(
@@ -586,23 +591,23 @@ export function makeOpenGraphTwitterCard(
   if (isOpenGraphTwitterAppCard(openGraphTwitterCard)) {
     return [
       // CARD!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_CARD,
-        content: openGraphTwitterCard.card, // 'app'
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_CARD,
+        openGraphTwitterCard.card // 'app'
+      ),
 
       // SITE!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_SITE,
-        content: openGraphTwitterCard.site,
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_SITE,
+        openGraphTwitterCard.site
+      ),
 
       // DESCRIPTION?
       ...insertLazilyIf(openGraphTwitterCard.description, (description) =>
-        makeTwitterCardMeta({
-          property: PropertyTwitter.TWITTER_DESCRIPTION,
-          content: Types.String(cutAt200Characters(description)),
-        })
+        makeTwitterCardMeta(
+          PropertyTwitter.TWITTER_DESCRIPTION,
+          Types.String(cutAt200Characters(description))
+        )
       ),
 
       // APP_NAME_IPHONE?
@@ -612,10 +617,10 @@ export function makeOpenGraphTwitterCard(
       ),
 
       // APP_ID_IPHONE!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_APP_ID_IPHONE,
-        content: openGraphTwitterCard.appIDIphone,
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_APP_ID_IPHONE,
+        openGraphTwitterCard.appIDIphone
+      ),
 
       // APP_URL_IPHONE?
       ...insertLazilyIf(
@@ -630,10 +635,10 @@ export function makeOpenGraphTwitterCard(
       ),
 
       // APP_ID_IPAD!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_APP_ID_IPAD,
-        content: openGraphTwitterCard.appIDIpad,
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_APP_ID_IPAD,
+        openGraphTwitterCard.appIDIpad
+      ),
 
       // APP_URL_IPAD?
       ...insertLazilyIf(
@@ -648,10 +653,10 @@ export function makeOpenGraphTwitterCard(
       ),
 
       // APP_ID_APP_GOOGLEPLAY!
-      makeTwitterCardMeta({
-        property: PropertyTwitter.TWITTER_APP_ID_GOOGLEPLAY,
-        content: openGraphTwitterCard.appIDGooglePlay,
-      }),
+      makeTwitterCardMeta(
+        PropertyTwitter.TWITTER_APP_ID_GOOGLEPLAY,
+        openGraphTwitterCard.appIDGooglePlay
+      ),
 
       // APP_URL_GOOGLEPLAY?
       ...insertLazilyIf(
