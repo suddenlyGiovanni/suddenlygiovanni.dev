@@ -1,0 +1,41 @@
+{
+  "type": "module",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suddenlyGiovanni/seo-utilities.git"
+  },
+  "author": "Giovanni Ravalico <15946771+suddenlyGiovanni@users.noreply.github.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/suddenlyGiovanni/seo-utilities/issues"
+  },
+  "homepage": "https://github.com/suddenlyGiovanni/seo-utilities#readme",
+  "engines": {
+    "node": ">=17",
+    "pnpm": ">=6"
+  },
+  "scripts": {
+    "build": "scripty",
+    "clean": "scripty",
+    "dev": "scripty",
+    "lint": "scripty",
+    "postinstall": "husky install",
+    "preinstall": "npx only-allow pnpm",
+    "prepare": "husky install",
+    "test": "scripty"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.18.1",
+    "@commitlint/cli": "~15.0.0",
+    "@commitlint/config-conventional": "~15.0.0",
+    "husky": "^7.0.0",
+    "prettier": "2.5.1",
+    "scripty": "2.0.0",
+    "typescript": "4.5.3",
+    "verdaccio": "~5.3.1"
+  },
+  "scripty": {
+    "path": "./scripts/workspace"
+  }
+}

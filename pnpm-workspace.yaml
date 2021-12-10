@@ -1,0 +1,7 @@
+link-workspace-packages: true
+prefer-workspace-packages: true
+shared-workspace-lockfile: true
+packages:
+  # all packages in subdirs of packages/ and components/
+  - 'packages/**'
+

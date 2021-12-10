@@ -1,0 +1,27 @@
+{
+  "name": "@seo-utilities/utils",
+  "version": "0.0.0",
+  "private": true,
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
+  "author": "Giovanni Ravalico <15946771+suddenlyGiovanni@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "scripty",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "lint": "scripty",
+    "test": "scripty"
+  },
+  "devDependencies": {
+    "typescript": "4.5.3"
+  },
+  "scripty": {
+    "path": "../../scripts/packages"
+  }
+}
