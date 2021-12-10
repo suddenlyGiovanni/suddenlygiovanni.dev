@@ -1,5 +1,5 @@
 import type { ValueOf } from '@lib/types'
-import { type BaseOf, type Brand, make } from '@typings/brand'
+import { type BaseOf, type Brand, make } from '@lib/brand'
 
 import { type ArticleRecord, PropertyArticle } from './open-graph-article'
 import { PropertyAudio } from './open-graph-audio'
@@ -29,6 +29,7 @@ import {
 import { type ProfileRecord, PropertyProfile } from './open-graph-profile'
 import {
   makeTwitterCardMeta,
+  PropertyTwitter,
   type TwitterCardMeta,
   type TwitterRecord,
 } from './open-graph-twitter'
@@ -249,7 +250,7 @@ export type BaseOrExtended<
   Extended extends string = ''
 > = Extended extends '' ? Base : `${Base}:${Extended}`
 
-export type PropertyOpenGraph =
+type PropertyOpenGraph =
   | PropertyArticle
   | PropertyBasic
   | PropertyBook
@@ -298,6 +299,14 @@ export type OpenGraphRecord =
   | VideoTvShowRecord
   | WebsiteRecord
 
+export interface MetaBase<
+  Property extends PropertyOpenGraph | PropertyTwitter = PropertyOpenGraph,
+  Content extends Types.Type = Types.Type
+> {
+  property: Property
+  content: Content
+}
+
 export interface OpenGraphMeta {
   readonly property: OpenGraphRecord['property']
   readonly content: string
@@ -316,25 +325,33 @@ export function makeOpenGraphMeta<
   Property extends OGRecord['property'],
   Content extends OGRecord['content']
 >(property: Property): (content: Content) => OpenGraphMeta
-export function makeOpenGraphMeta<OGRecord extends OpenGraphRecord>(
-  openGraphRecord: OGRecord
-): OpenGraphMeta
+
+export function makeOpenGraphMeta<
+  OGRecord extends OpenGraphRecord,
+  Property extends OGRecord['property'],
+  Content extends OGRecord['content']
+>(property: Property, content: Content): OpenGraphMeta
+
 export function makeOpenGraphMeta<
   OGRecord extends OpenGraphRecord,
   Property extends OGRecord['property'],
   Content extends OGRecord['content']
 >(
-  openGraphRecordOrProperty: OGRecord | Property
+  ...args: [property: Property, content: Content] | [property: Property]
 ): ((content: Content) => OpenGraphMeta) | OpenGraphMeta {
-  return typeof openGraphRecordOrProperty === 'object'
-    ? {
-        property: openGraphRecordOrProperty.property,
-        content: String(openGraphRecordOrProperty.content),
-      }
-    : (content: Content): OpenGraphMeta => ({
-        property: openGraphRecordOrProperty,
-        content: String(content),
-      })
+  if (args.length === 2) {
+    const [property, content] = args
+    return {
+      property,
+      content: String(content),
+    }
+  } else {
+    const [property] = args
+    return (content: Content): OpenGraphMeta => ({
+      property,
+      content: String(content),
+    })
+  }
 }
 
 /**
@@ -356,5 +373,5 @@ export function makeOpenGraphMetaAttributesRecord(
 
   return isTwitterRecord(openGraph)
     ? makeTwitterCardMeta(openGraph.property, openGraph.content)
-    : makeOpenGraphMeta(openGraph)
+    : makeOpenGraphMeta(openGraph.property, openGraph.content)
 }

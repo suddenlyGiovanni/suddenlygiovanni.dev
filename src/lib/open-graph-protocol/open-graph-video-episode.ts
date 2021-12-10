@@ -1,18 +1,13 @@
 import { insertLazilyIf } from '@lib/array'
-import type { ValueOf } from '@lib/types'
-
-import { makeOpenGraphMeta, type og, type Types } from './open-graph'
-import type {
-  BasicRecord,
-  MetaBase,
-  OptionalRecord,
-  Type,
-} from './open-graph-base'
 import {
   _makeOpenGraphVideoBase,
-  type OpenGraphVideoBase,
-  type video,
-} from './open-graph-video'
+  OpenGraphVideoBase,
+} from '@lib/open-graph-protocol/open-graph-video-base'
+import type { ValueOf } from '@lib/types'
+
+import { makeOpenGraphMeta, MetaBase, type og, type Types } from './open-graph'
+import type { BasicRecord, OptionalRecord, Type } from './open-graph-base'
+import { type video } from './open-graph-video'
 
 export type PropertyVideoEpisode = ValueOf<typeof PropertyVideoEpisode>
 export const PropertyVideoEpisode = {

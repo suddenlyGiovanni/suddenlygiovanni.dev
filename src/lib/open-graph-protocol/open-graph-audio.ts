@@ -4,11 +4,11 @@ import type { ValueOf } from '@lib/types'
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,
+  type MetaBase,
   type MIMEContent,
   type og,
   type Types,
 } from './open-graph'
-import type { MetaBase } from './open-graph-base'
 
 type audio<T extends string = ''> = BaseOrExtended<'audio', T>
 
@@ -66,10 +66,7 @@ export function makeOpenGraphAudio(
   }: OpenGraphAudio) {
     return [
       // AUDIO!
-      makeOpenGraphMeta({
-        property: PropertyAudio.OG_AUDIO,
-        content: ogAudio,
-      }),
+      makeOpenGraphMeta(PropertyAudio.OG_AUDIO, ogAudio),
 
       // AUDIO_SECURE_URL?
       ...insertLazilyIf(
@@ -85,12 +82,7 @@ export function makeOpenGraphAudio(
   }
 
   if (typeof openGraphAudio === 'string') {
-    return [
-      makeOpenGraphMeta({
-        property: PropertyAudio.OG_AUDIO,
-        content: openGraphAudio,
-      }),
-    ]
+    return [makeOpenGraphMeta(PropertyAudio.OG_AUDIO, openGraphAudio)]
   } else if (isArray(openGraphAudio)) {
     return openGraphAudio.map(_makeOpenGraphAudio).flat()
   } else {

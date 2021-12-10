@@ -1,11 +1,10 @@
 import { insertLazilyIf, isArray } from '@lib/array'
 import type { ValueOf } from '@lib/types'
 
-import { makeOpenGraphMeta, type og, Types } from './open-graph'
+import { makeOpenGraphMeta, MetaBase, type og, Types } from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
-  type MetaBase,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
   type Type,
@@ -124,28 +123,25 @@ export function makeOpenGraphMusicAlbum(
     ...insertLazilyIf(openGraphMusicAlbum.ogMusicSong, (ogMusicSong) => {
       return isArray(ogMusicSong)
         ? ogMusicSong.map(makeOpenGraphMeta(PropertyMusicAlbum.OG_MUSIC_SONG))
-        : makeOpenGraphMeta({
-            property: PropertyMusicAlbum.OG_MUSIC_SONG,
-            content: ogMusicSong,
-          })
+        : makeOpenGraphMeta(PropertyMusicAlbum.OG_MUSIC_SONG, ogMusicSong)
     }).flat(),
 
     // DISC?
     ...insertLazilyIf(openGraphMusicAlbum.ogMusicSongDisc, (ogMusicSongDisc) =>
-      makeOpenGraphMeta({
-        property: PropertyMusicAlbum.OG_MUSIC_SONG_DISC,
-        content: Types.Integer(Math.round(ogMusicSongDisc)),
-      })
+      makeOpenGraphMeta(
+        PropertyMusicAlbum.OG_MUSIC_SONG_DISC,
+        Types.Integer(Math.round(ogMusicSongDisc))
+      )
     ),
 
     // TRACK?
     ...insertLazilyIf(
       openGraphMusicAlbum.ogMusicSongTrack,
       (ogMusicSongTrack) =>
-        makeOpenGraphMeta({
-          property: PropertyMusicAlbum.OG_MUSIC_SONG_TRACK,
-          content: Types.Integer(Math.round(ogMusicSongTrack)),
-        })
+        makeOpenGraphMeta(
+          PropertyMusicAlbum.OG_MUSIC_SONG_TRACK,
+          Types.Integer(Math.round(ogMusicSongTrack))
+        )
     ),
 
     // MUSICIAN?
@@ -154,10 +150,10 @@ export function makeOpenGraphMusicAlbum(
         ? ogMusicMusician.map(
             makeOpenGraphMeta(PropertyMusicAlbum.OG_MUSIC_MUSICIAN)
           )
-        : makeOpenGraphMeta({
-            property: PropertyMusicAlbum.OG_MUSIC_MUSICIAN,
-            content: ogMusicMusician,
-          })
+        : makeOpenGraphMeta(
+            PropertyMusicAlbum.OG_MUSIC_MUSICIAN,
+            ogMusicMusician
+          )
     ).flat(),
 
     // RELEASE_DATE?

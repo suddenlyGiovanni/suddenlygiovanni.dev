@@ -1,16 +1,11 @@
-import { ValueOf } from '@lib/types'
-import type { og, Types } from './open-graph'
-import type {
-  BasicRecord,
-  MetaBase,
-  OptionalRecord,
-  Type,
-} from './open-graph-base'
 import {
   _makeOpenGraphVideoBase,
-  type OpenGraphVideoBase,
-  type video,
-} from './open-graph-video'
+  OpenGraphVideoBase,
+} from '@lib/open-graph-protocol/open-graph-video-base'
+import { ValueOf } from '@lib/types'
+import type { MetaBase, og, Types } from './open-graph'
+import type { BasicRecord, OptionalRecord, Type } from './open-graph-base'
+import { type video } from './open-graph-video'
 
 export type PropertyVideoMovie = ValueOf<typeof PropertyVideoMovie>
 export const PropertyVideoMovie = {

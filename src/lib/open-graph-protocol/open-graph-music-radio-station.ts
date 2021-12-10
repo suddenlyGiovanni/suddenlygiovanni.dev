@@ -1,11 +1,10 @@
 import { insertLazilyIf, isArray } from '@lib/array'
 import type { ValueOf } from '@lib/types'
 
-import { makeOpenGraphMeta, type og, Types } from './open-graph'
+import { makeOpenGraphMeta, MetaBase, type og, Types } from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
-  type MetaBase,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
   type Type,
@@ -72,10 +71,10 @@ export function makeOpenGraphMusicRadioStation(
           ? ogMusicCreator.map(
               makeOpenGraphMeta(PropertyMusicRadioStation.OG_MUSIC_CREATOR)
             )
-          : makeOpenGraphMeta({
-              property: PropertyMusicRadioStation.OG_MUSIC_CREATOR,
-              content: ogMusicCreator,
-            })
+          : makeOpenGraphMeta(
+              PropertyMusicRadioStation.OG_MUSIC_CREATOR,
+              ogMusicCreator
+            )
     ).flat(),
   ]
 }

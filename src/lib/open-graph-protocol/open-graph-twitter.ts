@@ -2,8 +2,7 @@ import { insertLazilyIf } from '@lib/array'
 import { maxLength } from '@lib/string'
 import type { ValueOf } from '@lib/types'
 
-import { type BaseOrExtended, Types } from './open-graph'
-import type { MetaBase } from './open-graph-base'
+import { type BaseOrExtended, MetaBase, Types } from './open-graph'
 
 type twitter<T extends string = ''> = BaseOrExtended<'twitter', T>
 

@@ -1,10 +1,9 @@
-import type { og, Types } from './open-graph'
-import type { MetaBase } from './open-graph-base'
 import {
   _makeOpenGraphVideoBase,
-  type OpenGraphVideoBase,
-  type video,
-} from './open-graph-video'
+  OpenGraphVideoBase,
+} from '@lib/open-graph-protocol/open-graph-video-base'
+import type { MetaBase, og, Types } from './open-graph'
+import { type video } from './open-graph-video'
 import type {
   PropertyVideoMovie,
   TypeVideoMovie,

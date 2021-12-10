@@ -4,13 +4,13 @@ import { ValueOf } from '@lib/types'
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,
+  MetaBase,
   type og,
   type Types,
 } from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
-  type MetaBase,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
   type Type,
@@ -105,10 +105,7 @@ export function makeOpenGraphBook(openGraphBook: OpenGraphBook) {
     ...insertLazilyIf(openGraphBook.ogBookAuthor, (ogBookAuthor) =>
       isArray(ogBookAuthor)
         ? ogBookAuthor.map(makeOpenGraphMeta(PropertyBook.OG_BOOK_AUTHOR))
-        : makeOpenGraphMeta({
-            property: PropertyBook.OG_BOOK_AUTHOR,
-            content: ogBookAuthor,
-          })
+        : makeOpenGraphMeta(PropertyBook.OG_BOOK_AUTHOR, ogBookAuthor)
     ).flat(),
 
     // BOOK_ISBN?
@@ -127,10 +124,7 @@ export function makeOpenGraphBook(openGraphBook: OpenGraphBook) {
     ...insertLazilyIf(openGraphBook.ogBookTag, (ogBookTag) =>
       isArray(ogBookTag)
         ? ogBookTag.map(makeOpenGraphMeta(PropertyBook.OG_BOOK_TAG))
-        : makeOpenGraphMeta({
-            property: PropertyBook.OG_BOOK_TAG,
-            content: ogBookTag,
-          })
+        : makeOpenGraphMeta(PropertyBook.OG_BOOK_TAG, ogBookTag)
     ).flat(),
   ]
 }

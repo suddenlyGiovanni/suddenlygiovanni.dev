@@ -4,13 +4,13 @@ import type { ValueOf } from '@lib/types'
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,
+  type MetaBase,
   type og,
   Types,
 } from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
-  type MetaBase,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
   type Type,
@@ -147,10 +147,7 @@ export function makeOpenGraphArticle(openGraphArticle: OpenGraphArticle) {
         ? ogArticleAuthor.map(
             makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_AUTHOR)
           )
-        : makeOpenGraphMeta({
-            property: PropertyArticle.OG_ARTICLE_AUTHOR,
-            content: ogArticleAuthor,
-          })
+        : makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_AUTHOR, ogArticleAuthor)
     ).flat(),
 
     // SECTION?
@@ -163,10 +160,7 @@ export function makeOpenGraphArticle(openGraphArticle: OpenGraphArticle) {
     ...insertLazilyIf(openGraphArticle.ogArticleTag, (ogArticleTag) =>
       isArray(ogArticleTag)
         ? ogArticleTag.map(makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_TAG))
-        : makeOpenGraphMeta({
-            property: PropertyArticle.OG_ARTICLE_TAG,
-            content: ogArticleTag,
-          })
+        : makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_TAG, ogArticleTag)
     ).flat(),
   ]
 }

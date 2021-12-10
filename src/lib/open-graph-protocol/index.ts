@@ -1,4 +1,9 @@
-export { Types, makeOpenGraphMetaAttributesRecord, OGType } from './open-graph'
+export {
+  Types,
+  makeOpenGraphMetaAttributesRecord,
+  OGType,
+  PropertyOpenGraph,
+} from './open-graph'
 export { makeOpenGraphArticle } from './open-graph-article'
 export { makeOpenGraphBase } from './open-graph-base'
 export { makeOpenGraphBook } from './open-graph-book'

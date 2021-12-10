@@ -4,15 +4,11 @@ import type { ValueOf } from '@lib/types'
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,
+  MetaBase,
   type MIMEContent,
   type og,
   Types,
 } from './open-graph'
-import {
-  makeOpenGraphBase,
-  type MetaBase,
-  type OpenGraphBaseWithOptional,
-} from './open-graph-base'
 
 export type video<T extends string = ''> = BaseOrExtended<'video', T>
 
@@ -79,123 +75,6 @@ interface VideoAlt extends VideoMetaBase<og<video<'alt'>>, Types.String> {}
  */
 export interface Video extends VideoMetaBase<og<video>, Types.URL> {}
 
-export interface OpenGraphVideoBase extends OpenGraphBaseWithOptional {
-  ogType: Types.Enum<
-    'video.movie' | 'video.episode' | 'video.tv_show' | 'video.other'
-  >
-
-  /** Actors in the movie/episode/tv-show/other and the role they played. */
-  ogVideoActorAndRole?:
-    | { actor: Types.URL; role?: Types.String }
-    | readonly { actor: Types.URL; role?: Types.String }[]
-
-  /**
-   * Directors of the movie/episode/tv-show/other.
-   * profile array
-   */
-  ogVideoDirector?: Types.URL | readonly Types.URL[]
-
-  /**
-   * Writers of the movie/episode/tv-show/other.
-   * profile array
-   */
-  ogVideoWriter?: Types.URL | readonly Types.URL[]
-
-  /**
-   * The movie/episode/tv-show/other's length in seconds.
-   * integer >=1
-   */
-  ogVideoDuration?: Types.Integer
-
-  /**
-   * The date the movie/episode/tv-show/other was released.
-   * datetime
-   */
-  ogVideoReleaseDate?: Types.DateTime
-
-  /**
-   * Tag words associated with this movie/episode/tv-show/other.
-   * string array
-   */
-  ogVideoTag?: Types.String | readonly Types.String[]
-}
-
-export function _makeOpenGraphVideoBase(
-  openGraphVideoBase: OpenGraphVideoBase
-) {
-  return [
-    // BASIC_METADATA!
-    ...makeOpenGraphBase(openGraphVideoBase),
-
-    ...insertLazilyIf(
-      openGraphVideoBase.ogVideoActorAndRole,
-      (ogVideoActorAndRole) =>
-        isArray(ogVideoActorAndRole)
-          ? ogVideoActorAndRole.map(({ actor, role }) => [
-              makeOpenGraphMeta({
-                property: 'og:video:actor',
-                content: actor,
-              }),
-              ...insertLazilyIf(role, makeOpenGraphMeta('og:video:actor:role')),
-            ])
-          : [
-              makeOpenGraphMeta({
-                property: 'og:video:actor',
-                content: ogVideoActorAndRole.actor,
-              }),
-              ...insertLazilyIf(
-                ogVideoActorAndRole.role,
-                makeOpenGraphMeta('og:video:actor:role')
-              ),
-            ]
-    ).flat(2),
-
-    // DIRECTORS?
-    ...insertLazilyIf(openGraphVideoBase.ogVideoDirector, (ogVideoDirector) =>
-      isArray(ogVideoDirector)
-        ? ogVideoDirector.map(makeOpenGraphMeta('og:video:director'))
-        : makeOpenGraphMeta({
-            property: 'og:video:director',
-            content: ogVideoDirector,
-          })
-    ).flat(),
-
-    // WRITER?
-    ...insertLazilyIf(openGraphVideoBase.ogVideoWriter, (ogVideoWriter) =>
-      isArray(ogVideoWriter)
-        ? ogVideoWriter.map(makeOpenGraphMeta('og:video:writer'))
-        : makeOpenGraphMeta({
-            property: 'og:video:writer',
-            content: ogVideoWriter,
-          })
-    ).flat(),
-
-    // DURATION?
-    ...insertLazilyIf(openGraphVideoBase.ogVideoDuration, (ogVideoDuration) =>
-      makeOpenGraphMeta({
-        property: 'og:video:duration',
-        content: Types.Integer(Math.round(ogVideoDuration)),
-      })
-    ),
-
-    // RELEASE_DATE?
-    ...insertLazilyIf(
-      openGraphVideoBase.ogVideoReleaseDate,
-      makeOpenGraphMeta('og:video:release_date')
-    ),
-
-    // TAGS?
-    ...insertLazilyIf(openGraphVideoBase.ogVideoTag, (ogVideoTag) =>
-      isArray(ogVideoTag)
-        ? ogVideoTag.map(makeOpenGraphMeta('og:video:tag'))
-        : makeOpenGraphMeta({
-            property: 'og:video:tag',
-            content: ogVideoTag,
-          })
-    ).flat(),
-  ]
-}
-
 export interface OpenGraphVideo {
   /** An video URL which should represent your object within the graph */
   ogVideo: Types.URL
@@ -233,10 +112,7 @@ export function makeOpenGraphVideo(
   }: OpenGraphVideo) {
     return [
       // VIDEO!
-      makeOpenGraphMeta({
-        property: PropertyVideo.OG_VIDEO,
-        content: ogVideo,
-      }),
+      makeOpenGraphMeta(PropertyVideo.OG_VIDEO, ogVideo),
 
       // VIDEO_URL?
       ...insertLazilyIf(
@@ -277,12 +153,7 @@ export function makeOpenGraphVideo(
   }
 
   if (typeof openGraphVideo === 'string') {
-    return [
-      makeOpenGraphMeta({
-        property: PropertyVideo.OG_VIDEO,
-        content: openGraphVideo,
-      }),
-    ]
+    return [makeOpenGraphMeta(PropertyVideo.OG_VIDEO, openGraphVideo)]
   } else if (isArray(openGraphVideo)) {
     return openGraphVideo.map(_makeOpenGraphVideo).flat()
   } else {

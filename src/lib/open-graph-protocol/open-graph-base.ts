@@ -3,9 +3,9 @@ import type { ValueOf } from '@lib/types'
 
 import {
   makeOpenGraphMeta,
+  type MetaBase,
   type og,
   type OGType,
-  type PropertyOpenGraph,
   Types,
 } from './open-graph'
 import {
@@ -21,8 +21,6 @@ import {
   type OpenGraphImage,
   PropertyImage,
 } from './open-graph-image'
-
-import type { PropertyTwitter } from './open-graph-twitter'
 import {
   makeOpenGraphVideo,
   type OpenGraphVideo,
@@ -93,14 +91,6 @@ export type OptionalRecord =
   | SiteName
   | VideoRecord
   | ImageRecord
-
-export interface MetaBase<
-  Property extends PropertyOpenGraph | PropertyTwitter = PropertyOpenGraph,
-  Content extends Types.Type = Types.Type
-> {
-  property: Property
-  content: Content
-}
 
 /**
  * The title of your object as it should appear within the graph, e.g., "The Rock".
@@ -226,16 +216,16 @@ export function makeOpenGraphBase({
 }: OpenGraphBaseWithOptional) {
   return [
     // TITLE!
-    makeOpenGraphMeta({ property: PropertyBasic.OG_TITLE, content: ogTitle }),
+    makeOpenGraphMeta(PropertyBasic.OG_TITLE, ogTitle),
 
     // TYPE!
-    makeOpenGraphMeta({ property: PropertyBasic.OG_TYPE, content: ogType }),
+    makeOpenGraphMeta(PropertyBasic.OG_TYPE, ogType),
 
     // IMAGE!
     ...makeOpenGraphImage(ogImage),
 
     // URL!
-    makeOpenGraphMeta({ property: PropertyBasic.OG_URL, content: ogUrl }),
+    makeOpenGraphMeta(PropertyBasic.OG_URL, ogUrl),
 
     // AUDIO?
     ...insertLazilyIf(optionalMetadata.ogAudio, makeOpenGraphAudio).flat(),
@@ -264,10 +254,10 @@ export function makeOpenGraphBase({
         ? ogLocaleAlternate.map(
             makeOpenGraphMeta(PropertyBasic.OG_LOCALE_ALTERNATE)
           )
-        : makeOpenGraphMeta({
-            property: PropertyBasic.OG_LOCALE_ALTERNATE,
-            content: ogLocaleAlternate,
-          })
+        : makeOpenGraphMeta(
+            PropertyBasic.OG_LOCALE_ALTERNATE,
+            ogLocaleAlternate
+          )
     ).flat(),
 
     // SITE_NAME?

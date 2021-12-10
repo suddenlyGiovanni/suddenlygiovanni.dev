@@ -1,11 +1,10 @@
 import { insertLazilyIf, isArray } from '@lib/array'
 import type { ValueOf } from '@lib/types'
 
-import { makeOpenGraphMeta, type og, type Types } from './open-graph'
+import { makeOpenGraphMeta, MetaBase, type og, type Types } from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
-  type MetaBase,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
   type Type,
@@ -101,10 +100,7 @@ export function makeOpenGraphMusicPlaylist(
     ...insertLazilyIf(openGraphMusicPlaylist.ogMusicSong, (ogMusicSong) =>
       isArray(ogMusicSong)
         ? ogMusicSong.map(makeOpenGraphMeta('og:music:song'))
-        : makeOpenGraphMeta({
-            property: 'og:music:song',
-            content: ogMusicSong,
-          })
+        : makeOpenGraphMeta('og:music:song', ogMusicSong)
     ).flat(),
 
     // MUSIC_SONG_TRACK?
@@ -117,10 +113,7 @@ export function makeOpenGraphMusicPlaylist(
     ...insertLazilyIf(openGraphMusicPlaylist.ogMusicCreator, (ogMusicCreator) =>
       isArray(ogMusicCreator)
         ? ogMusicCreator.map(makeOpenGraphMeta('og:music:creator'))
-        : makeOpenGraphMeta({
-            property: 'og:music:creator',
-            content: ogMusicCreator,
-          })
+        : makeOpenGraphMeta('og:music:creator', ogMusicCreator)
     ).flat(),
   ]
 }

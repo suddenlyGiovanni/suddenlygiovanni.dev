@@ -4,13 +4,13 @@ import type { ValueOf } from '@lib/types'
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,
+  MetaBase,
   type og,
   type Types,
 } from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
-  type MetaBase,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
   type Type,

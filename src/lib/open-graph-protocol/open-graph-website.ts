@@ -1,8 +1,7 @@
-import type { og, Types } from './open-graph'
+import type { MetaBase, og, Types } from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
-  type MetaBase,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
   type Type,

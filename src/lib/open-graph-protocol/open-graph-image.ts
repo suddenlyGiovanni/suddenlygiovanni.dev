@@ -4,11 +4,11 @@ import type { ValueOf } from '@lib/types'
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,
+  MetaBase,
   type MIMEContent,
   type og,
   type Types,
 } from './open-graph'
-import type { MetaBase } from './open-graph-base'
 
 export type image<T extends string = ''> = BaseOrExtended<'image', T>
 
@@ -126,10 +126,7 @@ export function makeOpenGraphImage(
   }: OpenGraphImage) {
     return [
       // IMAGE!
-      makeOpenGraphMeta({
-        property: PropertyImage.OG_IMAGE,
-        content: ogImage,
-      }),
+      makeOpenGraphMeta(PropertyImage.OG_IMAGE, ogImage),
 
       // IMAGE_URL?
       ...insertLazilyIf(
@@ -170,9 +167,7 @@ export function makeOpenGraphImage(
   }
 
   if (typeof openGraphImage === 'string') {
-    return [
-      makeOpenGraphMeta({ property: 'og:image', content: openGraphImage }),
-    ]
+    return [makeOpenGraphMeta('og:image', openGraphImage)]
   } else if (isArray(openGraphImage)) {
     return openGraphImage.map((image) => _makeOpenGraphImage(image)).flat()
   } else {
