@@ -4,12 +4,15 @@
   "private": true,
   "description": "",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
   "files": [
     "dist/**/*",
     "README.md"
   ],
+  "publishConfig": {
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts"
+  },
   "author": "Giovanni Ravalico <15946771+suddenlyGiovanni@users.noreply.github.com>",
   "license": "MIT",
   "scripts": {

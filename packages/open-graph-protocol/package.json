@@ -1,16 +1,27 @@
 {
   "name": "@seo-utilities/open-graph-protocol",
   "version": "0.0.1",
-  "description": "",
-  "private": true,
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "description": "A high-level utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner.",
+  "main": "src/index.ts",
   "files": [
     "dist/**/*",
     "README.md"
   ],
+  "publishConfig": {
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts"
+  },
   "author": "Giovanni Ravalico <15946771+suddenlyGiovanni@users.noreply.github.com>",
   "license": "MIT",
+  "keywords": [
+    "Open Graph Protocol",
+    "graph object",
+    "social graph",
+    "Twitter Card",
+    "Twitter Summary Card",
+    "Twitter App Card",
+    "Twitter Player Card"
+  ],
   "scripts": {
     "build": "scripty",
     "clean": "rm -rf dist *.tsbuildinfo",

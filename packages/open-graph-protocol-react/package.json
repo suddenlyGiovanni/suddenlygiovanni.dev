@@ -1,17 +1,33 @@
 {
   "name": "@seo-utilities/open-graph-protocol-react",
   "version": "0.0.1",
-  "description": "",
-  "private": true,
+  "description": "A high-level React utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner. It leverages the work of `@seo-utilities/open-graph-protocol` package.",
   "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.ts",
   "files": [
     "dist/**/*",
     "README.md"
   ],
+  "publishConfig": {
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts"
+  },
   "author": "Giovanni Ravalico <15946771+suddenlyGiovanni@users.noreply.github.com>",
   "license": "MIT",
+  "keywords": [
+    "Open Graph Protocol",
+    "OpenGraphProtocol",
+    "graph object",
+    "social graph",
+    "Twitter Card",
+    "TwitterCard",
+    "Twitter Summary Card",
+    "TwitterSummaryCard",
+    "Twitter App Card",
+    "TwitterAppCard",
+    "Twitter Player Card",
+    "TwitterPlayerCard"
+  ],
   "scripts": {
     "build": "scripty",
     "clean": "rm -rf dist *.tsbuildinfo",
