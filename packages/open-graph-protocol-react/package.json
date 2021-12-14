@@ -1,19 +1,33 @@
 {
-  "name": "@seo-utilities/open-graph-protocol-react",
-  "version": "0.0.1",
+  "author": {
+    "name": "Giovanni Ravalico",
+    "email": "15946771+suddenlyGiovanni@users.noreply.github.com",
+    "url": "https://suddenlyGiovanni.dev"
+  },
+  "dependencies": {
+    "@seo-utilities/open-graph-protocol": "workspace:*",
+    "react-helmet": "6.1.0"
+  },
   "description": "A high-level React utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner. It leverages the work of `@seo-utilities/open-graph-protocol` package.",
-  "type": "module",
-  "main": "src/index.ts",
+  "devDependencies": {
+    "@types/react": "17.0.37",
+    "@types/react-helmet": "6.1.4",
+    "@typescript/lib-dom": "npm:@types/web",
+    "react": "17.0.2",
+    "typescript": "4.5.3"
+  },
+  "engines": {
+    "node": ">=17",
+    "pnpm": ">=6"
+  },
+  "exports": "./src/index.ts",
   "files": [
     "dist/**/*",
+    "package.json",
+    "LICENSE",
     "README.md"
   ],
-  "publishConfig": {
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts"
-  },
-  "author": "Giovanni Ravalico <15946771+suddenlyGiovanni@users.noreply.github.com>",
-  "license": "MIT",
+  "imports": "./src/**.ts",
   "keywords": [
     "Open Graph Protocol",
     "OpenGraphProtocol",
@@ -28,27 +42,28 @@
     "Twitter Player Card",
     "TwitterPlayerCard"
   ],
+  "license": "MIT",
+  "main": "./src/**.ts",
+  "name": "@seo-utilities/open-graph-protocol-react",
+  "packageManager": "pnpm@6",
+  "peerDependencies": {
+    "react": "^17.0.0"
+  },
+  "publishConfig": {
+    "exports": "./dist/index.js",
+    "imports": "./dist/**.js",
+    "main": "./dist/**.js",
+    "types": "./dist/index.d.ts"
+  },
   "scripts": {
     "build": "scripty",
     "clean": "rm -rf dist *.tsbuildinfo",
     "lint": "scripty",
     "test": "scripty"
   },
-  "dependencies": {
-    "@seo-utilities/open-graph-protocol": "workspace:*",
-    "react-helmet": "6.1.0"
-  },
-  "devDependencies": {
-    "@types/react": "17.0.37",
-    "@types/react-helmet": "6.1.4",
-    "@typescript/lib-dom": "npm:@types/web",
-    "react": "17.0.2",
-    "typescript": "4.5.3"
-  },
-  "peerDependencies": {
-    "react": "^17.0.0"
-  },
   "scripty": {
     "path": "../../scripts/packages"
-  }
+  },
+  "type": "module",
+  "version": "0.0.2"
 }

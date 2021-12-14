@@ -1,7 +1,7 @@
 import {
   makeOpenGraphMetaAttributesRecord,
   type OpenGraphRecord,
-} from '@seo-utilities/open-graph-protocol/src/index'
+} from '@seo-utilities/open-graph-protocol'
 
 interface Props {
   openGraph: OpenGraphRecord
