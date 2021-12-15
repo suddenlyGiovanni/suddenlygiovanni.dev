@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/suddenlyGiovanni/seo-utilities#readme",
   "license": "MIT",
-  "packageManager": "pnpm@6.24.0",
+  "packageManager": "pnpm@6.24.1",
   "private": true,
   "repository": {
     "type": "git",
