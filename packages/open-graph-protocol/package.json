@@ -41,6 +41,7 @@
     "exports": "./dist/index.js",
     "imports": "./dist/**.js",
     "main": "./dist/index.js",
+    "registry": "https://npm.pkg.github.com",
     "types": "./dist/index.d.ts"
   },
   "scripts": {
