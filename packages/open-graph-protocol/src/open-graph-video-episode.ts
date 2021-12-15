@@ -1,4 +1,4 @@
-import { insertLazilyIf, type ValueOf } from '@seo-utilities/utils'
+import { insertLazilyIf, type ValueOf } from '@suddenlyGiovanni/open-graph-protocol-utils'
 
 import { _makeOpenGraphVideoBase, OpenGraphVideoBase } from './open-graph-video-base'
 import { makeOpenGraphMeta, MetaBase, type og, type Types } from './open-graph'

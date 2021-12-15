@@ -4,7 +4,7 @@ importers:
 
   .:
     specifiers:
-      '@changesets/changelog-github': ~0.4.2
+      '@changesets/changelog-github': 0.4.2
       '@changesets/cli': 2.18.1
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
@@ -26,18 +26,18 @@ importers:
 
   packages/open-graph-protocol:
     specifiers:
-      '@seo-utilities/utils': workspace:*
+      '@suddenlyGiovanni/open-graph-protocol-utils': workspace:*
       ts-brand: 0.0.2
       typescript: 4.5.4
     dependencies:
-      '@seo-utilities/utils': link:../utils
+      '@suddenlyGiovanni/open-graph-protocol-utils': link:../open-graph-protocol-utils
       ts-brand: 0.0.2
     devDependencies:
       typescript: 4.5.4
 
   packages/open-graph-protocol-react:
     specifiers:
-      '@seo-utilities/open-graph-protocol': workspace:*
+      '@suddenlyGiovanni/open-graph-protocol': workspace:*
       '@types/react': 17.0.37
       '@types/react-helmet': 6.1.4
       '@typescript/lib-dom': npm:@types/web
@@ -45,7 +45,7 @@ importers:
       react-helmet: 6.1.0
       typescript: 4.5.4
     dependencies:
-      '@seo-utilities/open-graph-protocol': link:../open-graph-protocol
+      '@suddenlyGiovanni/open-graph-protocol': link:../open-graph-protocol
       react-helmet: 6.1.0_react@17.0.2
     devDependencies:
       '@types/react': 17.0.37
@@ -54,7 +54,7 @@ importers:
       react: 17.0.2
       typescript: 4.5.4
 
-  packages/utils:
+  packages/open-graph-protocol-utils:
     specifiers:
       typescript: 4.5.4
     devDependencies:

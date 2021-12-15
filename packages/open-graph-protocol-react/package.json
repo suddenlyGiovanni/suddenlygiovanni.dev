@@ -5,7 +5,7 @@
     "url": "https://suddenlyGiovanni.dev"
   },
   "dependencies": {
-    "@seo-utilities/open-graph-protocol": "workspace:*",
+    "@suddenlyGiovanni/open-graph-protocol": "workspace:*",
     "react-helmet": "6.1.0"
   },
   "description": "A high-level React utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner. It leverages the work of `@seo-utilities/open-graph-protocol` package.",
@@ -44,7 +44,7 @@
   ],
   "license": "MIT",
   "main": "./src/**.ts",
-  "name": "@seo-utilities/open-graph-protocol-react",
+  "name": "@suddenlyGiovanni/open-graph-protocol-react",
   "packageManager": "pnpm@6.24.0",
   "peerDependencies": {
     "react": "^17.0.0"
@@ -56,16 +56,16 @@
     "registry": "https://npm.pkg.github.com",
     "types": "./dist/index.d.ts"
   },
+  "repository": {
+    "directory": "packages/open-graph-protocol-react",
+    "type": "git",
+    "url": "https://github.com/suddenlyGiovanni/seo-utilities"
+  },
   "scripts": {
     "build": "scripty",
     "clean": "rm -rf dist *.tsbuildinfo",
     "lint": "scripty",
     "test": "scripty"
-  },
-  "repository": {
-    "directory": "packages/open-graph-protocol-react",
-    "type": "git",
-    "url": "https://github.com/suddenlyGiovanni/seo-utilities"
   },
   "scripty": {
     "path": "../../scripts/packages"

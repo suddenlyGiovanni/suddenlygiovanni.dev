@@ -22,7 +22,7 @@
   "imports": "./src/**.ts",
   "license": "MIT",
   "main": "./src/index.ts",
-  "name": "@seo-utilities/utils",
+  "name": "@suddenlyGiovanni/open-graph-protocol-utils",
   "packageManager": "pnpm@6.24.0",
   "private": false,
   "publishConfig": {
@@ -32,16 +32,16 @@
     "registry": "https://npm.pkg.github.com",
     "types": "./dist/index.d.ts"
   },
+  "repository": {
+    "directory": "packages/utils",
+    "type": "git",
+    "url": "https://github.com/suddenlyGiovanni/seo-utilities"
+  },
   "scripts": {
     "build": "scripty",
     "clean": "rm -rf dist *.tsbuildinfo",
     "lint": "scripty",
     "test": "scripty"
-  },
-  "repository": {
-    "directory": "packages/utils",
-    "type": "git",
-    "url": "https://github.com/suddenlyGiovanni/seo-utilities"
   },
   "scripty": {
     "path": "../../scripts/packages"

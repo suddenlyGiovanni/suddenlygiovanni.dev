@@ -4,9 +4,9 @@
   "commit": false,
   "linked": [
     [
-      "@seo-utilities/open-graph-protocol",
-      "@seo-utilities/open-graph-protocol-react",
-      "@seo-utilities/utils"
+      "@suddenlyGiovanni/open-graph-protocol",
+      "@suddenlyGiovanni/open-graph-protocol-react",
+      "@suddenlyGiovanni/open-graph-protocol-utils"
     ]
   ],
   "access": "public",

@@ -1,4 +1,4 @@
-import { insertLazilyIf, maxLength, type ValueOf } from '@seo-utilities/utils'
+import { insertLazilyIf, maxLength, type ValueOf } from '@suddenlyGiovanni/open-graph-protocol-utils'
 
 import { type BaseOrExtended, MetaBase, Types } from './open-graph'
 

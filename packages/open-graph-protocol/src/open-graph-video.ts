@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray, type ValueOf } from '@seo-utilities/utils'
+import { insertLazilyIf, isArray, type ValueOf } from '@suddenlyGiovanni/open-graph-protocol-utils'
 
 import {
   type BaseOrExtended,
