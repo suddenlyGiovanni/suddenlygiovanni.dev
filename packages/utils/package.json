@@ -38,6 +38,11 @@
     "lint": "scripty",
     "test": "scripty"
   },
+  "repository": {
+    "directory": "packages/utils",
+    "type": "git",
+    "url": "https://github.com/suddenlyGiovanni/seo-utilities"
+  },
   "scripty": {
     "path": "../../scripts/packages"
   },

@@ -44,6 +44,11 @@
     "registry": "https://npm.pkg.github.com",
     "types": "./dist/index.d.ts"
   },
+  "repository": {
+    "directory": "packages/open-graph-protocol",
+    "type": "git",
+    "url": "https://github.com/suddenlyGiovanni/seo-utilities"
+  },
   "scripts": {
     "build": "scripty",
     "clean": "rm -rf dist *.tsbuildinfo",
