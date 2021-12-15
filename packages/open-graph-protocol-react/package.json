@@ -5,13 +5,11 @@
     "url": "https://suddenlyGiovanni.dev"
   },
   "dependencies": {
-    "@suddenlyGiovanni/open-graph-protocol": "workspace:*",
-    "react-helmet": "6.1.0"
+    "@suddenlyGiovanni/open-graph-protocol": "workspace:*"
   },
   "description": "A high-level React utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner. It leverages the work of `@seo-utilities/open-graph-protocol` package.",
   "devDependencies": {
     "@types/react": "17.0.37",
-    "@types/react-helmet": "6.1.4",
     "@typescript/lib-dom": "npm:@types/web",
     "react": "17.0.2",
     "typescript": "4.5.4"

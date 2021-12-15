@@ -1,11 +1,16 @@
-import * as React from 'react'
-import { Helmet } from 'react-helmet'
+import type { VFC } from 'react'
 
 import {
   makeOpenGraphTwitterCard,
   type OpenGraphTwitterCard as TwitterCardProps,
 } from '@suddenlyGiovanni/open-graph-protocol'
 
-export const TwitterCard: React.VFC<TwitterCardProps> = (twitterCard) => {
-  return <Helmet meta={makeOpenGraphTwitterCard(twitterCard)} />
+export const TwitterCard: VFC<TwitterCardProps> = (twitterCard) => {
+  return (
+    <>
+      {makeOpenGraphTwitterCard(twitterCard).map((tag, idx) => (
+        <meta key={idx} {...tag} />
+      ))}
+    </>
+  )
 }
