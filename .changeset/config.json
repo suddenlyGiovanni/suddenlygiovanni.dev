@@ -1,9 +1,15 @@
 {
   "$schema": "https://unpkg.com/@changesets/config@1.6.3/schema.json",
-  "changelog": "@changesets/cli/changelog",
+  "changelog": "@changesets/changelog-github",
   "commit": false,
-  "linked": [],
-  "access": "restricted",
+  "linked": [
+    [
+      "@seo-utilities/open-graph-protocol",
+      "@seo-utilities/open-graph-protocol-react",
+      "@seo-utilities/utils"
+    ]
+  ],
+  "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
   "ignore": []

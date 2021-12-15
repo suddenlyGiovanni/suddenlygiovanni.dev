@@ -4,34 +4,36 @@ importers:
 
   .:
     specifiers:
+      '@changesets/changelog-github': ~0.4.2
       '@changesets/cli': 2.18.1
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
       husky: 7.0.4
       prettier: 2.5.1
       scripty: 2.0.0
-      typescript: 4.5.3
+      typescript: 4.5.4
       verdaccio: 5.3.1
     devDependencies:
+      '@changesets/changelog-github': 0.4.2
       '@changesets/cli': 2.18.1
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
       husky: 7.0.4
       prettier: 2.5.1
       scripty: 2.0.0
-      typescript: 4.5.3
+      typescript: 4.5.4
       verdaccio: 5.3.1
 
   packages/open-graph-protocol:
     specifiers:
       '@seo-utilities/utils': workspace:*
       ts-brand: 0.0.2
-      typescript: 4.5.3
+      typescript: 4.5.4
     dependencies:
       '@seo-utilities/utils': link:../utils
       ts-brand: 0.0.2
     devDependencies:
-      typescript: 4.5.3
+      typescript: 4.5.4
 
   packages/open-graph-protocol-react:
     specifiers:
@@ -41,7 +43,7 @@ importers:
       '@typescript/lib-dom': npm:@types/web
       react: 17.0.2
       react-helmet: 6.1.0
-      typescript: 4.5.3
+      typescript: 4.5.4
     dependencies:
       '@seo-utilities/open-graph-protocol': link:../open-graph-protocol
       react-helmet: 6.1.0_react@17.0.2
@@ -50,13 +52,13 @@ importers:
       '@types/react-helmet': 6.1.4
       '@typescript/lib-dom': /@types/web/0.0.48
       react: 17.0.2
-      typescript: 4.5.3
+      typescript: 4.5.4
 
   packages/utils:
     specifiers:
-      typescript: 4.5.3
+      typescript: 4.5.4
     devDependencies:
-      typescript: 4.5.3
+      typescript: 4.5.4
 
 packages:
 
@@ -115,6 +117,14 @@ packages:
       '@changesets/types': 4.0.2
       '@manypkg/get-packages': 1.1.3
       semver: 5.7.1
+    dev: true
+
+  /@changesets/changelog-github/0.4.2:
+    resolution: {integrity: sha512-qq8lJcq91ki7UT0fIfIcn5Yy7GJj19TmkLmGZ24/wEfxcD/nHHoTNRoi6nPt+Htf7qEudKxXLzQLi41B7Mt2vg==}
+    dependencies:
+      '@changesets/get-github-info': 0.5.0
+      '@changesets/types': 4.0.2
+      dotenv: 8.6.0
     dev: true
 
   /@changesets/cli/2.18.1:
@@ -179,6 +189,13 @@ packages:
       chalk: 2.4.2
       fs-extra: 7.0.1
       semver: 5.7.1
+    dev: true
+
+  /@changesets/get-github-info/0.5.0:
+    resolution: {integrity: sha512-vm5VgHwrxkMkUjFyn3UVNKLbDp9YMHd3vMf1IyJoa/7B+6VpqmtAaXyDS0zBLfN5bhzVCHrRnj4GcZXXcqrFTw==}
+    dependencies:
+      dataloader: 1.4.0
+      node-fetch: 2.6.6
     dev: true
 
   /@changesets/get-release-plan/3.0.3:
@@ -327,12 +344,12 @@ packages:
       '@commitlint/execute-rule': 15.0.0
       '@commitlint/resolve-extends': 15.0.0
       '@commitlint/types': 15.0.0
-      '@endemolshinegroup/cosmiconfig-typescript-loader': 3.0.2_f1e39502f5444cf4e1bb49a6f24fb32b
+      '@endemolshinegroup/cosmiconfig-typescript-loader': 3.0.2_71a2f61964e37a4d68dab6dadd2a99a0
       chalk: 4.1.2
       cosmiconfig: 7.0.1
       lodash: 4.17.21
       resolve-from: 5.0.0
-      typescript: 4.5.3
+      typescript: 4.5.4
     dev: true
 
   /@commitlint/message/15.0.0:
@@ -399,7 +416,7 @@ packages:
       chalk: 4.1.2
     dev: true
 
-  /@endemolshinegroup/cosmiconfig-typescript-loader/3.0.2_f1e39502f5444cf4e1bb49a6f24fb32b:
+  /@endemolshinegroup/cosmiconfig-typescript-loader/3.0.2_71a2f61964e37a4d68dab6dadd2a99a0:
     resolution: {integrity: sha512-QRVtqJuS1mcT56oHpVegkKBlgtWjXw/gHNWO3eL9oyB5Sc7HBoc2OLG/nYpVfT/Jejvo3NUrD0Udk7XgoyDKkA==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -408,7 +425,7 @@ packages:
       cosmiconfig: 7.0.1
       lodash.get: 4.4.2
       make-error: 1.3.6
-      ts-node: 9.1.1_typescript@4.5.3
+      ts-node: 9.1.1_typescript@4.5.4
       tslib: 2.3.1
     transitivePeerDependencies:
       - typescript
@@ -1152,6 +1169,10 @@ packages:
       whatwg-url: 7.1.0
     dev: true
 
+  /dataloader/1.4.0:
+    resolution: {integrity: sha512-68s5jYdlvasItOJnCuI2Q9s4q98g0pCyL3HrcKJu8KNugUl8ahgmZYg38ysLTgQjjXX3H8CJLkAvWrclWfcalw==}
+    dev: true
+
   /dayjs/1.10.7:
     resolution: {integrity: sha512-P6twpd70BcPK34K26uJ1KT3wlhpuOAPoMwJzpsIWUxHZ7wpmbdZL/hQqBDfz7hGurYSa5PhzdhDHtt319hL3ig==}
     dev: true
@@ -1248,6 +1269,11 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       is-obj: 2.0.0
+    dev: true
+
+  /dotenv/8.6.0:
+    resolution: {integrity: sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g==}
+    engines: {node: '>=10'}
     dev: true
 
   /ecc-jsbn/0.1.2:
@@ -3479,7 +3505,7 @@ packages:
     resolution: {integrity: sha512-UhSzWY4On9ZHIj6DKkRYVN/8OaprbLAZ3b/Y2AJwdl6oozSABsQ0PvwDh4vOVdkvOtWQOkIrjctZ1kj8YfF3jA==}
     dev: false
 
-  /ts-node/9.1.1_typescript@4.5.3:
+  /ts-node/9.1.1_typescript@4.5.4:
     resolution: {integrity: sha512-hPlt7ZACERQGf03M253ytLY3dHbGNGrAq9qIHWUY9XHYl1z7wYngSr3OQ5xmui8o2AaxsONxIzjafLUiWBo1Fg==}
     engines: {node: '>=10.0.0'}
     hasBin: true
@@ -3491,7 +3517,7 @@ packages:
       diff: 4.0.2
       make-error: 1.3.6
       source-map-support: 0.5.21
-      typescript: 4.5.3
+      typescript: 4.5.4
       yn: 3.1.1
     dev: true
 
@@ -3574,8 +3600,8 @@ packages:
     resolution: {integrity: sha512-180WMDQaIMm3+7hGXWf12GtdniDEy7nYcyFMKJn/eZz/6tSLXrUN9V0wKSbMjej0I1WHWbpREDEKHtqPQa9NNw==}
     dev: true
 
-  /typescript/4.5.3:
-    resolution: {integrity: sha512-eVYaEHALSt+s9LbvgEv4Ef+Tdq7hBiIZgii12xXJnukryt3pMgJf6aKhoCZ3FWQsu6sydEnkg11fYXLzhLBjeQ==}
+  /typescript/4.5.4:
+    resolution: {integrity: sha512-VgYs2A2QIRuGphtzFV7aQJduJ2gyfTljngLzjpfW9FoYZF6xuw1W0vW9ghCKLfcWrCFxK81CSGRAvS1pn4fIUg==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true

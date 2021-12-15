@@ -8,6 +8,7 @@
     "url": "https://github.com/suddenlyGiovanni/seo-utilities/issues"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "0.4.2",
     "@changesets/cli": "2.18.1",
     "@commitlint/cli": "15.0.0",
     "@commitlint/config-conventional": "15.0.0",
@@ -23,7 +24,7 @@
   },
   "homepage": "https://github.com/suddenlyGiovanni/seo-utilities#readme",
   "license": "MIT",
-  "packageManager": "pnpm@6",
+  "packageManager": "pnpm@6.24.0",
   "private": true,
   "repository": {
     "type": "git",

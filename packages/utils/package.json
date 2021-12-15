@@ -4,7 +4,7 @@
     "name": "Giovanni Ravalico",
     "url": "https://suddenlyGiovanni.dev"
   },
-  "description": "",
+  "description": "Internal private utils module of @seo-utilities packages.",
   "devDependencies": {
     "typescript": "4.5.4"
   },
@@ -23,8 +23,8 @@
   "license": "MIT",
   "main": "./src/index.ts",
   "name": "@seo-utilities/utils",
-  "packageManager": "pnpm@6",
-  "private": true,
+  "packageManager": "pnpm@6.24.0",
+  "private": false,
   "publishConfig": {
     "exports": "./dist/index.js",
     "imports": "./dist/**.js",
