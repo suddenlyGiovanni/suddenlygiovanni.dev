@@ -33,16 +33,16 @@
   "scripts": {
     "build": "scripty",
     "build:ci": "scripty",
+    "changeset": "scripty",
     "clean": "scripty",
     "dev": "scripty",
     "lint": "scripty",
     "postinstall": "husky install",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky install",
+    "release": "scripty",
     "test": "scripty",
-    "changeset": "pnpm exec changeset",
-    "version-packages": "pnpm exec changeset version",
-    "release": "pnpm run build:ci && pnpm exec publish"
+    "version-packages": "scripty"
   },
   "scripty": {
     "path": "./scripts/workspace"
