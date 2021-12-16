@@ -1,0 +1,51 @@
+name: Changesets
+
+on:
+  push:
+    branches: 
+      - main
+
+env:
+  CI: true
+  PNPM_CACHE_FOLDER: .pnpm-store
+
+jobs:
+  build:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code repository
+        uses: actions/checkout@v2
+        with:
+          # This makes Actions fetch all Git history so that Changesets can generate changelogs with the correct commits
+          fetch-depth: 0
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      
+      - name: Install pnpm package manager
+        uses: pnpm/action-setup@v2.0.1
+        with:
+          version: 6.24.0
+      
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 17
+          
+      - name: Install dependencies
+        run: pnpm install
+        
+      - name: Create Release Pull Request
+        uses: changesets/action@v1
+        with:
+          version: pnpm run version-packages
+          commit: "chore(workspace): update `package.json` versions"
+          title: "chore(workspace): update `package.json` versions"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
