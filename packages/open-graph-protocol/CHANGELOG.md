@@ -1,4 +1,19 @@
-# @seo-utilities/open-graph-protocol
+# @suddenlyGiovanni/open-graph-protocol
+
+## 0.1.0
+
+### Minor Changes
+
+- ## WHAT the change is?
+  - change the package scope from `@seo-utilities/...` to `@suddenlyGiovanni/...` to match the repository OWNER on GitHub.
+    This was done in order to correctly been abel to publish to GitHub's package registry.
+  - for `@suddenlyGiovanni/open-graph-protocol-react` drop `helmet` as a dependency, pushing the responsibility on how to consume the package to the caller.
+  - [internal] add publication only configs
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @suddenlyGiovanni/open-graph-protocol-utils@0.1.0
 
 ## 0.0.2
 
