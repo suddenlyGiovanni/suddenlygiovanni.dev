@@ -1,5 +1,13 @@
 # @suddenlygiovanni/open-graph-protocol-utils
 
+## 0.3.0
+
+### Minor Changes
+
+- ##### WHAT the change is?
+
+  Fix to `@suddenlygiovanni/open-graph-protocol` build task.
+
 ## 0.2.0
 
 ### Minor Changes

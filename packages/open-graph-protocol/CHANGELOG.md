@@ -1,5 +1,18 @@
 # @suddenlygiovanni/open-graph-protocol
 
+## 0.3.0
+
+### Minor Changes
+
+- ##### WHAT the change is?
+
+  Fix to `@suddenlygiovanni/open-graph-protocol` build task.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @suddenlygiovanni/open-graph-protocol-utils@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
@@ -64,32 +77,32 @@
 
 - [dcb0864]:
 
- #### WHAT the change is?
+#### WHAT the change is?
 
-  First iteration on the public package API
-  providing top level factory fns to more easily produce tags fulfilling Open Graph Protocol contract
+First iteration on the public package API
+providing top level factory fns to more easily produce tags fulfilling Open Graph Protocol contract
 
-  - `makeOpenGraphBase`
-  - `makeOpenGraphBook`
-  - `makeOpenGraphMusicAlbum`
-  - `makeOpenGraphMusicPlaylist`
-  - `makeOpenGraphMusicRadioStation`
-  - `makeOpenGraphMusicSong`
-  - `makeOpenGraphProfile`
-  - `makeOpenGraphVideoEpisode`
-  - `makeOpenGraphVideoMovie`
-  - `makeOpenGraphVideoOther`
-  - `makeOpenGraphVideoTvShow`
-  - `makeOpenGraphVideoTvShow`
-  - `makeOpenGraphTwitterCard`
+- `makeOpenGraphBase`
+- `makeOpenGraphBook`
+- `makeOpenGraphMusicAlbum`
+- `makeOpenGraphMusicPlaylist`
+- `makeOpenGraphMusicRadioStation`
+- `makeOpenGraphMusicSong`
+- `makeOpenGraphProfile`
+- `makeOpenGraphVideoEpisode`
+- `makeOpenGraphVideoMovie`
+- `makeOpenGraphVideoOther`
+- `makeOpenGraphVideoTvShow`
+- `makeOpenGraphVideoTvShow`
+- `makeOpenGraphTwitterCard`
 
-  And a more general and low level helper fn to compose each tag individually
+And a more general and low level helper fn to compose each tag individually
 
-  - `makeOpenGraphMetaAttributesRecord`
+- `makeOpenGraphMetaAttributesRecord`
 
-  #### WHY the change was made?
+#### WHY the change was made?
 
-  please refer to the [README.md](https://github.com/suddenlyGiovanni/seo-utilities/blob/main/README.md).
+please refer to the [README.md](https://github.com/suddenlyGiovanni/seo-utilities/blob/main/README.md).
 
 - Updated dependencies [dcb0864]
   - @seo-utilities/utils@0.0.1

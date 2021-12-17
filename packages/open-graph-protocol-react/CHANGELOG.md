@@ -1,5 +1,18 @@
 # @suddenlygiovanni/open-graph-protocol-react
 
+## 0.3.0
+
+### Minor Changes
+
+- ##### WHAT the change is?
+
+  Fix to `@suddenlygiovanni/open-graph-protocol` build task.
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @suddenlygiovanni/open-graph-protocol@0.3.0
+
 ## 0.2.0
 
 ### Minor Changes
