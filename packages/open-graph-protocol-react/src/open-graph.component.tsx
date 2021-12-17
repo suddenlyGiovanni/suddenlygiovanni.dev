@@ -1,7 +1,7 @@
 import {
   makeOpenGraphMetaAttributesRecord,
   type OpenGraphRecord,
-} from '@suddenlyGiovanni/open-graph-protocol'
+} from '@suddenlygiovanni/open-graph-protocol'
 
 interface Props {
   openGraph: OpenGraphRecord

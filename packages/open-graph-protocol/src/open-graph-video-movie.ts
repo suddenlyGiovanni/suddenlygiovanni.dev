@@ -1,4 +1,4 @@
-import type { ValueOf } from '@suddenlyGiovanni/open-graph-protocol-utils'
+import type { ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import { _makeOpenGraphVideoBase, OpenGraphVideoBase } from './open-graph-video-base'
 import type { MetaBase, og, Types } from './open-graph'

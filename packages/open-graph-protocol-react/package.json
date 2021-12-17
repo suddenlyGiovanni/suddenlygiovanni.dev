@@ -5,7 +5,7 @@
     "url": "https://suddenlyGiovanni.dev"
   },
   "dependencies": {
-    "@suddenlyGiovanni/open-graph-protocol": "workspace:*"
+    "@suddenlygiovanni/open-graph-protocol": "workspace:*"
   },
   "description": "A high-level React utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner. It leverages the work of `@seo-utilities/open-graph-protocol` package.",
   "devDependencies": {
@@ -42,7 +42,7 @@
   ],
   "license": "MIT",
   "main": "./src/**.ts",
-  "name": "@suddenlyGiovanni/open-graph-protocol-react",
+  "name": "@suddenlygiovanni/open-graph-protocol-react",
   "packageManager": "pnpm@6.24.1",
   "peerDependencies": {
     "react": "^17.0.0"

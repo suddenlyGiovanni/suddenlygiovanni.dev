@@ -3,7 +3,7 @@ import type { VFC } from 'react'
 import {
   makeOpenGraphTwitterCard,
   type OpenGraphTwitterCard as TwitterCardProps,
-} from '@suddenlyGiovanni/open-graph-protocol'
+} from '@suddenlygiovanni/open-graph-protocol'
 
 export const TwitterCard: VFC<TwitterCardProps> = (twitterCard) => {
   return (

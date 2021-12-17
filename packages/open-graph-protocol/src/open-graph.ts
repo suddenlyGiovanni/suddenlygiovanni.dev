@@ -1,5 +1,5 @@
 import { type BaseOf, type Brand, make } from 'ts-brand'
-import type { ValueOf } from '@suddenlyGiovanni/open-graph-protocol-utils'
+import type { ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import { type ArticleRecord, PropertyArticle } from './open-graph-article'
 import { PropertyAudio } from './open-graph-audio'

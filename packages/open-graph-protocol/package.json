@@ -6,7 +6,7 @@
   },
   "dependencies": {
     "ts-brand": "0.0.2",
-    "@suddenlyGiovanni/open-graph-protocol-utils": "workspace:*"
+    "@suddenlygiovanni/open-graph-protocol-utils": "workspace:*"
   },
   "description": "A high-level utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner.",
   "devDependencies": {
@@ -35,7 +35,7 @@
   ],
   "license": "MIT",
   "main": "./src/index.ts",
-  "name": "@suddenlyGiovanni/open-graph-protocol",
+  "name": "@suddenlygiovanni/open-graph-protocol",
   "packageManager": "pnpm@6.24.1",
   "publishConfig": {
     "exports": "./dist/index.js",

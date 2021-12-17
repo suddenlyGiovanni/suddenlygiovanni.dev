@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray } from '@suddenlyGiovanni/open-graph-protocol-utils'
+import { insertLazilyIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import { makeOpenGraphMeta, Types } from './open-graph'
 import { makeOpenGraphBase, OpenGraphBaseWithOptional } from './open-graph-base'
