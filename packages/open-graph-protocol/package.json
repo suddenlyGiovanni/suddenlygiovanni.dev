@@ -50,6 +50,7 @@
     "url": "https://github.com/suddenlyGiovanni/seo-utilities"
   },
   "scripts": {
+    "api-report": "scripty",
     "build": "scripty",
     "clean": "rm -rf dist *.tsbuildinfo",
     "lint": "scripty",

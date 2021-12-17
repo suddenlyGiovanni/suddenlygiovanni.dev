@@ -8,10 +8,19 @@ interface Props {
 }
 
 /**
- * React wrapper around the open graph specification
- * it supports the `The Open Graph protocol` and Twitter's custom implementation
- * @link https://ogp.me/#types
+ * React wrapper around the `Open Graph Protocol` specification.
+ *
+ * @remarks
+ * supports the `The Open Graph protocol` and Twitter's custom implementation.
+ * Provides an amazing DX by suggesting and auto-completing allowed user input.
+ * Returns a single HTMLMetaElement with the allowed set of Open Graph property.
+ * Leverage the work of `@suddenlygiovanni/open-graph-protocol`
+ *
+ * @link { https://ogp.me/#types }
+ *
+ * @public
  */
+
 export function MetaOpenGraph({
   openGraph,
   ...intrinsicMetaAttributes

@@ -1,9 +1,18 @@
+/**
+ * @public
+ */
 export type NotFalsy<T> = Exclude<T, null | undefined | false | 0 | -0 | ''>
 
+/**
+ * @public
+ */
 export function isNotNullish<T extends unknown>(value: T): value is NonNullable<T> {
   return value !== undefined && value !== null
 }
 
+/**
+ * @public
+ */
 export function isNotFalsy<T extends unknown>(value: T): value is NotFalsy<T> {
   switch (typeof value) {
     case 'boolean': {
@@ -22,11 +31,15 @@ export function isNotFalsy<T extends unknown>(value: T): value is NotFalsy<T> {
 }
 
 /**
- * Patch for Array.isArray `isArray(arg: any): arg is any[];` since it loses
- * the type information of the array type
+ * Patch for Array.isArray `isArray(arg: any): arg is any[];`
+ *
+ * @remarks
+ * since it loses the type information of the array type
  * solution by `laughinghan`
- * @mentions https://github.com/laughinghan
- * @see https://github.com/microsoft/TypeScript/pull/28916
+ *
+ * @mentions { https://github.com/laughinghan }
+ *
+ * @see { https://github.com/microsoft/TypeScript/pull/28916 }
  */
 export function isArray<T>(
   arg: T
@@ -49,16 +62,16 @@ export function isArray<T>(
 
 /**
  * Throw an error if the condition fails
- * Strip out error messages for production
+ *
  * @param message Can provide a string, or a function that returns a string for cases where the message takes a fair amount of effort to compute
+ *
+ * @public
  */
 export function assert(condition: boolean, message?: string | (() => string)): asserts condition
-
 export function assert<T>(
   condition: T | null | undefined,
   message?: string | (() => string)
 ): asserts condition is T
-
 export function assert(condition: any, message?: string | (() => string)) {
   if (
     typeof condition === undefined ||
