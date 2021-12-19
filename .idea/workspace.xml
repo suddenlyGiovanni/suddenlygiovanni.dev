@@ -82,7 +82,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="develop" />
+          <id value="clean" />
         </path>
       </selected-paths>
     </layout>
@@ -95,7 +95,7 @@
   </component>
   <component name="ProblemsViewState">
     <option name="proportion" value="0.33638585" />
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
   <component name="ProjectLevelVcsManager">
@@ -130,7 +130,7 @@
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.js.occurrences" value="false" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
@@ -221,8 +221,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.develop" />
         <item itemvalue="npm.clean" />
+        <item itemvalue="npm.develop" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.serve" />
