@@ -12,6 +12,7 @@
     "@changesets/cli": "2.18.1",
     "@commitlint/cli": "15.0.0",
     "@commitlint/config-conventional": "15.0.0",
+    "@microsoft/api-documenter": "7.13.77",
     "@microsoft/api-extractor": "7.19.2",
     "husky": "7.0.4",
     "prettier": "2.5.1",

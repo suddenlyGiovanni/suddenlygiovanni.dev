@@ -8,6 +8,7 @@ importers:
       '@changesets/cli': 2.18.1
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
+      '@microsoft/api-documenter': 7.13.77
       '@microsoft/api-extractor': 7.19.2
       husky: 7.0.4
       prettier: 2.5.1
@@ -19,6 +20,7 @@ importers:
       '@changesets/cli': 2.18.1
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
+      '@microsoft/api-documenter': 7.13.77
       '@microsoft/api-extractor': 7.19.2
       husky: 7.0.4
       prettier: 2.5.1
@@ -447,6 +449,19 @@ packages:
       fs-extra: 8.1.0
       globby: 11.0.4
       read-yaml-file: 1.1.0
+    dev: true
+
+  /@microsoft/api-documenter/7.13.77:
+    resolution: {integrity: sha512-kot4VJlQUd7i0mFSM7IjyOhF0WWyVrmN9x3sXmd72imgCg9w795QHSkphJ7Qc6ZjhHcolaJvBByEPTKG4exZmA==}
+    hasBin: true
+    dependencies:
+      '@microsoft/api-extractor-model': 7.15.1
+      '@microsoft/tsdoc': 0.13.2
+      '@rushstack/node-core-library': 3.44.2
+      '@rushstack/ts-command-line': 4.10.5
+      colors: 1.2.5
+      js-yaml: 3.13.1
+      resolve: 1.17.0
     dev: true
 
   /@microsoft/api-extractor-model/7.15.1:
@@ -2112,6 +2127,14 @@ packages:
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
+    dev: true
+
+  /js-yaml/3.13.1:
+    resolution: {integrity: sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==}
+    hasBin: true
+    dependencies:
+      argparse: 1.0.10
+      esprima: 4.0.1
     dev: true
 
   /js-yaml/3.14.1:
