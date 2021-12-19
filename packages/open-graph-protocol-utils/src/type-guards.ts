@@ -1,9 +1,11 @@
 /**
+ * Removes from a given T all possible instance value JavaScript deems Falsy
  * @public
  */
 export type NotFalsy<T> = Exclude<T, null | undefined | false | 0 | -0 | ''>
 
 /**
+ * A not nullish type-guard, where nullish is either `null` or `undefined`
  * @public
  */
 export function isNotNullish<T extends unknown>(value: T): value is NonNullable<T> {
@@ -11,6 +13,8 @@ export function isNotNullish<T extends unknown>(value: T): value is NonNullable<
 }
 
 /**
+ * A not falsy type-guard.
+ * @returns A boolean value defining if the provided argument is falsy or not
  * @public
  */
 export function isNotFalsy<T extends unknown>(value: T): value is NotFalsy<T> {
@@ -37,9 +41,9 @@ export function isNotFalsy<T extends unknown>(value: T): value is NotFalsy<T> {
  * since it loses the type information of the array type
  * solution by `laughinghan`
  *
- * @mentions { https://github.com/laughinghan }
- *
- * @see { https://github.com/microsoft/TypeScript/pull/28916 }
+ * @mentions https://github.com/laughinghan
+ * @see  https://github.com/microsoft/TypeScript/pull/28916
+ * @public
  */
 export function isArray<T>(
   arg: T
@@ -50,7 +54,7 @@ export function isArray<T>(
   /*
    the first two clauses, `Extract<any[], T>` and `Extract<[any], T>`,
    ensure that the type predicate will extract `B[]` out of `A | B[]`
-   and `[B]` out of `A | [B]`, just like a the naive predicate `arg is any[]`
+   and `[B]` out of `A | [B]`, just like a naive predicate `arg is any[]`
    would. The final clause is a special case if T is known to include
    a readonly array, to extract `readonly B[]` out of `A | readonly B[]`,
    and `readonly [B]` out of `A | readonly [B]`, but as a special exception
@@ -61,17 +65,56 @@ export function isArray<T>(
 }
 
 /**
- * Throw an error if the condition fails
+ * Throw an error if the condition fails.
+ * Also known as `invariant`.
  *
- * @param message Can provide a string, or a function that returns a string for cases where the message takes a fair amount of effort to compute
+ * @param condition - A boolean value to assert
+ * @param message - An optional message to customize the assertion failure message.
+ *                  It could be a simple string or a lazy string for cases where
+ *                  the message takes a fair amount of effort to compute.
+ * @returns void
+ * @throws
+ * Throws if the condition is not `true`, with either a default message or a customized one if provided
  *
  * @public
  */
 export function assert(condition: boolean, message?: string | (() => string)): asserts condition
+
+/**
+ * Asserts that the condition is of a specific type.
+ * Throw an error if the condition fails.
+ * Also known as `invariant`.
+ *
+ * @param condition - A value of any type to assert by mean of truthy coercion.
+ * @param message - An optional message to customize the assertion failure message.
+ *                  It could be a simple string or a lazy string for cases where
+ *                  the message takes a fair amount of effort to compute.
+ * @returns void
+ * @throws
+ * Throws if the condition is not truthy, with either a default message or a customized one if provided
+ *
+ * @public
+ */
 export function assert<T>(
   condition: T | null | undefined,
   message?: string | (() => string)
 ): asserts condition is T
+
+/**
+ * Asserts that the condition is of a specific type.
+ * Throw an error if the condition fails.
+ * Also known as `invariant`.
+ *
+ * @param condition - A value of any type to assert by mean of truthy coercion.
+ * @param message - An optional message to customize the assertion failure message.
+ *                  It could be a simple string or a lazy string for cases where
+ *                  the message takes a fair amount of effort to compute.
+ * @returns void
+ * @throws
+ * Throws if the condition is not truthy, with either a default message or a customized one if provided
+ *
+ * @public
+ */
 export function assert(condition: any, message?: string | (() => string)) {
   if (
     typeof condition === undefined ||
