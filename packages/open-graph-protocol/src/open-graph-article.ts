@@ -1,25 +1,24 @@
-import { type ValueOf, insertLazilyIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
-import { type BaseOrExtended, makeOpenGraphMeta, type MetaBase, type og, Types } from './open-graph'
+import {
+  type BaseOrExtended,
+  makeOpenGraphMeta,
+  type MetaBase,
+  type og,
+  PropertyArticle,
+  Types,
+} from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
+  type OgType,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
-  type OgType,
 } from './open-graph-base'
 
 type article<T extends string = ''> = BaseOrExtended<'article', T>
 
-export type PropertyArticle = ValueOf<typeof PropertyArticle>
-export const PropertyArticle = {
-  OG_ARTICLE_PUBLISHED_TIME: 'og:article:published_time',
-  OG_ARTICLE_MODIFIED_TIME: 'og:article:modified_time',
-  OG_ARTICLE_EXPIRATION_TIME: 'og:article:expiration_time',
-  OG_ARTICLE_AUTHOR: 'og:article:author',
-  OG_ARTICLE_SECTION: 'og:article:section',
-  OG_ARTICLE_TAG: 'og:article:tag',
-} as const
+export type IPropertyArticle = ValueOf<typeof PropertyArticle>
 
 export type ArticleRecord =
   | Exclude<BasicRecord, OgType>
@@ -32,7 +31,7 @@ export type ArticleRecord =
   | OgArticleSection
   | OgArticleTag
 
-interface ArticleMetaBase<Property extends PropertyArticle, Content extends Types.Type>
+interface ArticleMetaBase<Property extends IPropertyArticle, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
 
 /**

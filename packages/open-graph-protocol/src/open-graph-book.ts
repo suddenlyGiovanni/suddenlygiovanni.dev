@@ -1,23 +1,24 @@
-import { type ValueOf, insertLazilyIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
-import { type BaseOrExtended, makeOpenGraphMeta, MetaBase, type og, type Types } from './open-graph'
+import {
+  type BaseOrExtended,
+  makeOpenGraphMeta,
+  type MetaBase,
+  type og,
+  PropertyBook,
+  type Types,
+} from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
+  type OgType,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
-  type OgType,
 } from './open-graph-base'
 
 export type book<T extends string = ''> = BaseOrExtended<'book', T>
 
-export type PropertyBook = ValueOf<typeof PropertyBook>
-export const PropertyBook = {
-  OG_BOOK_AUTHOR: 'og:book:author',
-  OG_BOOK_ISBN: 'og:book:isbn',
-  OG_BOOK_RELEASE_DATE: 'og:book:release_date',
-  OG_BOOK_TAG: 'og:book:tag',
-} as const
+export type IPropertyBook = ValueOf<typeof PropertyBook>
 
 export type BookRecord =
   | Exclude<BasicRecord, OgType>
@@ -28,10 +29,10 @@ export type BookRecord =
   | OgBookReleaseDate
   | OgBookTag
 
-interface BookMetaBase<Property extends PropertyBook, Content extends Types.Type>
+interface BookMetaBase<Property extends IPropertyBook, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
 
-/**`
+/**
  * This object type represents a book or publication. This is an appropriate type for ebooks, as well as traditional paperback or hardback books. Do not use this type to represent magazines
  */
 interface OgTypeBook extends MetaBase<og<'type'>, Types.Enum<book>> {}

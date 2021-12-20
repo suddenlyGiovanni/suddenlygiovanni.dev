@@ -1,20 +1,11 @@
 import type { ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
-import { _makeOpenGraphVideoBase, OpenGraphVideoBase } from './open-graph-video-base'
-import type { MetaBase, og, Types } from './open-graph'
-import type { BasicRecord, OptionalRecord, OgType } from './open-graph-base'
-import { type video } from './open-graph-video'
+import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base'
+import { type MetaBase, type og, PropertyVideoMovie, type Types } from './open-graph'
+import type { BasicRecord, OgType, OptionalRecord } from './open-graph-base'
+import type { video } from './open-graph-video'
 
-export type PropertyVideoMovie = ValueOf<typeof PropertyVideoMovie>
-export const PropertyVideoMovie = {
-  OG_VIDEO_ACTOR: 'og:video:actor',
-  OG_VIDEO_ACTOR_ROLE: 'og:video:actor:role',
-  OG_VIDEO_DIRECTOR: 'og:video:director',
-  OG_VIDEO_WRITER: 'og:video:writer',
-  OG_VIDEO_DURATION: 'og:video:duration',
-  OG_VIDEO_RELEASE_DATE: 'og:video:release_date',
-  OG_VIDEO_TAG: 'og:video:tag',
-} as const
+export type IPropertyVideoMovie = ValueOf<typeof PropertyVideoMovie>
 
 export type VideoMovieRecord =
   | Exclude<BasicRecord, OgType>
@@ -28,7 +19,7 @@ export type VideoMovieRecord =
   | OgVideoMovieReleaseDate
   | OgVideoMovieTag
 
-interface VideoMovieMetaBase<Property extends PropertyVideoMovie, Content extends Types.Type>
+interface VideoMovieMetaBase<Property extends IPropertyVideoMovie, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
 
 export interface OgTypeVideoMovie extends MetaBase<og<'type'>, Types.Enum<video<'movie'>>> {}

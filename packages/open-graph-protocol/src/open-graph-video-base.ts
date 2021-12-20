@@ -1,18 +1,7 @@
 import { insertLazilyIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
 
-import { makeOpenGraphMeta, Types } from './open-graph'
-import { makeOpenGraphBase, OpenGraphBaseWithOptional } from './open-graph-base'
-import { PropertyVideoEpisode } from './open-graph-video-episode'
-import { PropertyVideoMovie } from './open-graph-video-movie'
-import { PropertyVideoOther } from './open-graph-video-other'
-import { PropertyVideoTvShow } from './open-graph-video-tvshow'
-
-const PropertyVideoBase = {
-  ...PropertyVideoEpisode,
-  ...PropertyVideoMovie,
-  ...PropertyVideoOther,
-  ...PropertyVideoTvShow,
-} as const
+import { makeOpenGraphMeta, PropertyVideoBase, Types } from './open-graph'
+import { makeOpenGraphBase, type OpenGraphBaseWithOptional } from './open-graph-base'
 
 export interface OpenGraphVideoBase extends OpenGraphBaseWithOptional {
   ogType: Types.Enum<'video.movie' | 'video.episode' | 'video.tv_show' | 'video.other'>

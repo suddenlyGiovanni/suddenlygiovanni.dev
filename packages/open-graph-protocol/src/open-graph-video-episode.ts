@@ -1,21 +1,17 @@
 import { insertLazilyIf, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
-import { _makeOpenGraphVideoBase, OpenGraphVideoBase } from './open-graph-video-base'
-import { makeOpenGraphMeta, MetaBase, type og, type Types } from './open-graph'
-import type { BasicRecord, OptionalRecord, OgType } from './open-graph-base'
+import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base'
+import {
+  makeOpenGraphMeta,
+  type MetaBase,
+  type og,
+  PropertyVideoEpisode,
+  type Types,
+} from './open-graph'
+import type { BasicRecord, OgType, OptionalRecord } from './open-graph-base'
 import { type video } from './open-graph-video'
 
-export type PropertyVideoEpisode = ValueOf<typeof PropertyVideoEpisode>
-export const PropertyVideoEpisode = {
-  OG_VIDEO_ACTOR: 'og:video:actor',
-  OG_VIDEO_ACTOR_ROLE: 'og:video:actor:role',
-  OG_VIDEO_DIRECTOR: 'og:video:director',
-  OG_VIDEO_WRITER: 'og:video:writer',
-  OG_VIDEO_DURATION: 'og:video:duration',
-  OG_VIDEO_RELEASE_DATE: 'og:video:release_date',
-  OG_VIDEO_TAG: 'og:video:tag',
-  OG_VIDEO_SERIES: 'og:video:series',
-} as const
+export type IPropertyVideoEpisode = ValueOf<typeof PropertyVideoEpisode>
 
 export type VideoEpisodeRecord =
   | Exclude<BasicRecord, OgType>
@@ -30,7 +26,7 @@ export type VideoEpisodeRecord =
   | OgVideoEpisodeTag
   | OgVideoEpisodeSeries
 
-interface VideoEpisodeMetaBase<Property extends PropertyVideoEpisode, Content extends Types.Type>
+interface VideoEpisodeMetaBase<Property extends IPropertyVideoEpisode, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
 
 interface OgTypeVideoEpisode extends MetaBase<og<'type'>, Types.Enum<video<'episode'>>> {}

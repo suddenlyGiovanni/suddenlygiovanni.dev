@@ -1,43 +1,25 @@
-import { type ValueOf, insertLazilyIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
-import { makeOpenGraphMeta, type MetaBase, type og, type OGType, Types } from './open-graph'
 import {
-  type AudioRecord,
-  makeOpenGraphAudio,
-  type OpenGraphAudio,
-  PropertyAudio,
-} from './open-graph-audio'
+  makeOpenGraphMeta,
+  type MetaBase,
+  type og,
+  type IOGType,
+  PropertyBasic,
+  Types,
+} from './open-graph'
+import { type AudioRecord, makeOpenGraphAudio, type OpenGraphAudio } from './open-graph-audio'
 import {
-  type OgImage,
   type ImageRecord,
   makeOpenGraphImage,
+  type OgImage,
   type OpenGraphImage,
-  PropertyImage,
 } from './open-graph-image'
-import {
-  makeOpenGraphVideo,
-  type OpenGraphVideo,
-  PropertyVideo,
-  type VideoRecord,
-} from './open-graph-video'
+import { makeOpenGraphVideo, type OpenGraphVideo, type VideoRecord } from './open-graph-video'
 
 export type DelimiterContent = Types.Enum<'' | 'a' | 'an' | 'the' | 'auto'>
 
-export type PropertyBasic = ValueOf<typeof PropertyBasic>
-
-export const PropertyBasic = {
-  OG_TITLE: 'og:title',
-  OG_TYPE: 'og:type',
-  OG_URL: 'og:url',
-  OG_DESCRIPTION: 'og:description',
-  OG_DETERMINER: 'og:determiner',
-  OG_LOCALE: 'og:locale',
-  OG_LOCALE_ALTERNATE: 'og:locale:alternate',
-  OG_SITE_NAME: 'og:site_name',
-  ...PropertyVideo,
-  ...PropertyAudio,
-  ...PropertyImage,
-} as const
+export type IPropertyBasic = ValueOf<typeof PropertyBasic>
 
 /**
  * As an example, the following is the Open Graph protocol markup for The Rock on IMDB:
@@ -94,7 +76,7 @@ interface OgTitle extends MetaBase<og<'title'>, Types.String> {}
  * The type of your object, e.g., "video.movie".
  * Depending on the type you specify, other properties may also be required.
  */
-export interface OgType extends MetaBase<og<'type'>, Types.Enum<OGType>> {}
+export interface OgType extends MetaBase<og<'type'>, Types.Enum<IOGType>> {}
 
 /**
  * The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "https://www.imdb.com/title/tt0117500/".
@@ -147,7 +129,7 @@ interface OpenGraphBase {
    * The type of your object, e.g., "video.movie".
    * Depending on the type you specify, other properties may also be required.
    */
-  ogType: Types.Enum<OGType>
+  ogType: Types.Enum<IOGType>
 
   /**
    * An image URL which should represent your object within the graph.

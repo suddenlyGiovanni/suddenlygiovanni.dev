@@ -3,24 +3,16 @@ import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-gr
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,
-  MetaBase,
+  type MetaBase,
   type MIMEContent,
   type og,
+  PropertyVideo,
   Types,
 } from './open-graph'
 
 export type video<T extends string = ''> = BaseOrExtended<'video', T>
 
-export type PropertyVideo = ValueOf<typeof PropertyVideo>
-export const PropertyVideo = {
-  OG_VIDEO: 'og:video',
-  OG_VIDEO_ALT: 'og:video:alt',
-  OG_VIDEO_HEIGHT: 'og:video:height',
-  OG_VIDEO_TYPE: 'og:video:type',
-  OG_VIDEO_URL: 'og:video:url',
-  OG_VIDEO_WIDTH: 'og:video:width',
-  OG_VIDEO_SECURE_URL: 'og:video:secure_url',
-} as const
+export type IPropertyVideo = ValueOf<typeof PropertyVideo>
 
 export type VideoRecord =
   | OgVideo
@@ -31,7 +23,7 @@ export type VideoRecord =
   | OgVideoHeight
   | OgVideoAlt
 
-export interface VideoMetaBase<Property extends PropertyVideo, Content extends Types.Type>
+export interface VideoMetaBase<Property extends IPropertyVideo, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
 
 /**

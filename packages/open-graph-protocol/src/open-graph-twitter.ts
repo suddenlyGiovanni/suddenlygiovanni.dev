@@ -4,11 +4,11 @@ import {
   type ValueOf,
 } from '@suddenlygiovanni/open-graph-protocol-utils'
 
-import { type BaseOrExtended, MetaBase, Types } from './open-graph'
+import { type BaseOrExtended, type MetaBase, Types } from './open-graph'
 
 type twitter<T extends string = ''> = BaseOrExtended<'twitter', T>
 export type TwitterCardType = 'summary_large_image' | 'summary' | 'app' | 'player'
-export type PropertyTwitter = ValueOf<typeof PropertyTwitter>
+export type IPropertyTwitter = ValueOf<typeof PropertyTwitter>
 export const PropertyTwitter = {
   TWITTER_CARD: 'twitter:card',
   TWITTER_SITE: 'twitter:site',
@@ -58,7 +58,7 @@ export type TwitterRecord =
   | TwitterAppIDGooglePlay
   | TwitterAppURLGooglePlay
 
-interface TwitterMetaBase<Property extends PropertyTwitter, Content extends Types.Type>
+interface TwitterMetaBase<Property extends IPropertyTwitter, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
 
 /**

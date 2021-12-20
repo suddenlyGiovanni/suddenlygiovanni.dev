@@ -1,7 +1,7 @@
 export {
   Types,
   makeOpenGraphMetaAttributesRecord,
-  OGType,
+  type IOGType,
   PropertyOpenGraph,
   type OpenGraphRecord,
 } from './open-graph'
@@ -15,7 +15,7 @@ export { makeOpenGraphMusicSong } from './open-graph-music-song'
 export { makeOpenGraphProfile } from './open-graph-profile'
 export {
   makeOpenGraphTwitterCard,
-  PropertyTwitter,
+  type IPropertyTwitter,
   type OpenGraphTwitterCard,
 } from './open-graph-twitter'
 export { makeOpenGraphVideoEpisode } from './open-graph-video-episode'

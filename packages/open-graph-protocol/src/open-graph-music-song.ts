@@ -1,23 +1,16 @@
-import { type ValueOf, insertLazilyIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
-import { makeOpenGraphMeta, MetaBase, type og, Types } from './open-graph'
+import { makeOpenGraphMeta, type MetaBase, type og, PropertyMusicSong, Types } from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
+  type OgType,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
-  type OgType,
 } from './open-graph-base'
 import type { music } from './open-graph-music'
 
-export type PropertyMusicSong = ValueOf<typeof PropertyMusicSong>
-export const PropertyMusicSong = {
-  OG_MUSIC_DURATION: 'og:music:duration',
-  OG_MUSIC_ALBUM: 'og:music:album',
-  OG_MUSIC_ALBUM_DISC: 'og:music:album:disc',
-  OG_MUSIC_ALBUM_TRACK: 'og:music:album:track',
-  OG_MUSIC_MUSICIAN: 'og:music:musician',
-} as const
+export type IPropertyMusicSong = ValueOf<typeof PropertyMusicSong>
 
 export type MusicSongRecord =
   | Exclude<BasicRecord, OgType>
@@ -29,7 +22,7 @@ export type MusicSongRecord =
   | OgMusicSongAlbumTrack
   | OgMusicSongMusician
 
-interface MusicSongMetaBase<Property extends PropertyMusicSong, Content extends Types.Type>
+interface MusicSongMetaBase<Property extends IPropertyMusicSong, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
 
 interface OgTypeMusicSong extends MetaBase<og<'type'>, Types.Enum<music<'song'>>> {}

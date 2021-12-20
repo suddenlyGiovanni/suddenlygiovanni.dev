@@ -2,9 +2,9 @@ import type { MetaBase, og, Types } from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
+  type OgType,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
-  type OgType,
 } from './open-graph-base'
 
 interface OgTypeWebsite extends MetaBase<og<'type'>, Types.Enum<'website'>> {}

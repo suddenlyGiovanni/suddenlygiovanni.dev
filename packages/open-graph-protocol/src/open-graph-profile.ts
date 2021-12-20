@@ -1,23 +1,24 @@
-import { type ValueOf, insertLazilyIf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertLazilyIf, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
-import { type BaseOrExtended, makeOpenGraphMeta, MetaBase, type og, type Types } from './open-graph'
+import {
+  type BaseOrExtended,
+  makeOpenGraphMeta,
+  type MetaBase,
+  type og,
+  PropertyProfile,
+  type Types,
+} from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
+  type OgType,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
-  type OgType,
 } from './open-graph-base'
 
 type profile<T extends string = ''> = BaseOrExtended<'profile', T>
 
-export type PropertyProfile = ValueOf<typeof PropertyProfile>
-export const PropertyProfile = {
-  OG_PROFILE_FIRST_NAME: 'og:profile:first_name',
-  OG_PROFILE_LAST_NAME: 'og:profile:last_name',
-  OG_PROFILE_USERNAME: 'og:profile:username',
-  OG_PROFILE_GENDER: 'og:profile:gender',
-} as const
+export type IPropertyProfile = ValueOf<typeof PropertyProfile>
 
 export type ProfileRecord =
   | Exclude<BasicRecord, OgType>
@@ -28,7 +29,7 @@ export type ProfileRecord =
   | OgProfileUsername
   | OgProfileGender
 
-interface ProfileMetaBase<Property extends PropertyProfile, Content extends Types.Type>
+interface ProfileMetaBase<Property extends IPropertyProfile, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
 
 interface OgTypeProfile extends MetaBase<og<'type'>, Types.Enum<'profile'>> {}

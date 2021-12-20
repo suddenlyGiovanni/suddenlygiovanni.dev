@@ -1,19 +1,22 @@
-import { type ValueOf, insertLazilyIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
-import { makeOpenGraphMeta, MetaBase, type og, Types } from './open-graph'
+import {
+  makeOpenGraphMeta,
+  type MetaBase,
+  type og,
+  PropertyMusicRadioStation,
+  Types,
+} from './open-graph'
 import {
   type BasicRecord,
   makeOpenGraphBase,
+  type OgType,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
-  type OgType,
 } from './open-graph-base'
 import type { music } from './open-graph-music'
 
-export const PropertyMusicRadioStation = {
-  OG_MUSIC_CREATOR: 'og:music:creator',
-} as const
-export type PropertyMusicRadioStation = ValueOf<typeof PropertyMusicRadioStation>
+export type IPropertyMusicRadioStation = ValueOf<typeof PropertyMusicRadioStation>
 
 export type RadioStationRecord =
   | Exclude<BasicRecord, OgType>
@@ -22,7 +25,7 @@ export type RadioStationRecord =
   | OgMusicRadioStationCreator
 
 interface MusicRadioStationMetaBase<
-  Property extends PropertyMusicRadioStation,
+  Property extends IPropertyMusicRadioStation,
   Content extends Types.Type
 > extends MetaBase<Property, Content> {}
 

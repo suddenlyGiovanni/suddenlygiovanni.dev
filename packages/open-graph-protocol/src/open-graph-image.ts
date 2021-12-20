@@ -1,26 +1,18 @@
-import { type ValueOf, insertLazilyIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,
-  MetaBase,
+  type MetaBase,
   type MIMEContent,
   type og,
+  PropertyImage,
   type Types,
 } from './open-graph'
 
 export type image<T extends string = ''> = BaseOrExtended<'image', T>
 
-export type PropertyImage = ValueOf<typeof PropertyImage>
-export const PropertyImage = {
-  OG_IMAGE: 'og:image',
-  OG_IMAGE_URL: 'og:image:url',
-  OG_IMAGE_SECURE_URL: 'og:image:secure_url',
-  OG_IMAGE_TYPE: 'og:image:type',
-  OG_IMAGE_WIDTH: 'og:image:width',
-  OG_IMAGE_HEIGHT: 'og:image:height',
-  OG_IMAGE_ALT: 'og:image:alt',
-} as const
+export type IPropertyImage = ValueOf<typeof PropertyImage>
 
 /**
  * @example
@@ -42,7 +34,7 @@ export type ImageRecord =
   | OgImageHeight
   | OgImageAlt
 
-export interface ImageMetaBase<Property extends PropertyImage, Content extends Types.Type>
+export interface ImageMetaBase<Property extends IPropertyImage, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
 
 /**

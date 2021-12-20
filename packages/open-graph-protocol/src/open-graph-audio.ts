@@ -6,19 +6,15 @@ import {
   type MetaBase,
   type MIMEContent,
   type og,
+  PropertyAudio,
   type Types,
 } from './open-graph'
 
 type audio<T extends string = ''> = BaseOrExtended<'audio', T>
 
-export type PropertyAudio = ValueOf<typeof PropertyAudio>
-export const PropertyAudio = {
-  OG_AUDIO: 'og:audio',
-  OG_AUDIO_SECURE_URL: 'og:audio:secure_url',
-  OG_AUDIO_TYPE: 'og:audio:type',
-} as const
+export type IPropertyAudio = ValueOf<typeof PropertyAudio>
 
-interface AudioMetaBase<Property extends PropertyAudio, Content extends Types.Type>
+interface AudioMetaBase<Property extends IPropertyAudio, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
 
 /** A URL to an audio file to accompany this object. */
