@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import {
   makeOpenGraphMeta,
@@ -89,20 +89,17 @@ export function makeOpenGraphMusicPlaylist(openGraphMusicPlaylist: OpenGraphMusi
     ...makeOpenGraphBase(openGraphMusicPlaylist),
 
     // MUSIC_SONG?
-    ...insertLazilyIf(openGraphMusicPlaylist.ogMusicSong, (ogMusicSong) =>
+    ...insertIf(openGraphMusicPlaylist.ogMusicSong, (ogMusicSong) =>
       isArray(ogMusicSong)
         ? ogMusicSong.map(makeOpenGraphMeta('og:music:song'))
         : makeOpenGraphMeta('og:music:song', ogMusicSong)
     ).flat(),
 
     // MUSIC_SONG_TRACK?
-    ...insertLazilyIf(
-      openGraphMusicPlaylist.ogMusicSongTrack,
-      makeOpenGraphMeta('og:music:song:track')
-    ),
+    ...insertIf(openGraphMusicPlaylist.ogMusicSongTrack, makeOpenGraphMeta('og:music:song:track')),
 
     // MUSIC_CREATOR?
-    ...insertLazilyIf(openGraphMusicPlaylist.ogMusicCreator, (ogMusicCreator) =>
+    ...insertIf(openGraphMusicPlaylist.ogMusicCreator, (ogMusicCreator) =>
       isArray(ogMusicCreator)
         ? ogMusicCreator.map(makeOpenGraphMeta('og:music:creator'))
         : makeOpenGraphMeta('og:music:creator', ogMusicCreator)

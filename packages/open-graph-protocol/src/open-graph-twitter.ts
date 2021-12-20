@@ -1,8 +1,4 @@
-import {
-  insertLazilyIf,
-  maxLength,
-  type ValueOf,
-} from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, maxLength, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import { type BaseOrExtended, type MetaBase, Types } from './open-graph'
 
@@ -441,13 +437,13 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       ),
 
       // SITE?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterSite,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE)
       ),
 
       // SITE_ID?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterSiteID,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE_ID)
       ),
@@ -459,18 +455,18 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       ),
 
       // CREATOR?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterCreator,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_CREATOR)
       ),
       // CREATOR_ID?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterCreatorID,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_CREATOR_ID)
       ),
 
       // DESCRIPTION?
-      ...insertLazilyIf(openGraphTwitterCard.twitterDescription, (description) =>
+      ...insertIf(openGraphTwitterCard.twitterDescription, (description) =>
         makeTwitterCardMeta(
           PropertyTwitter.TWITTER_DESCRIPTION,
           Types.String(cutAt200Characters(description))
@@ -478,13 +474,13 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       ),
 
       // IMAGE?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterImage,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_IMAGE)
       ),
 
       // IMAGE_ALT?
-      ...insertLazilyIf(openGraphTwitterCard.twitterImageAlt, (imageAlt) =>
+      ...insertIf(openGraphTwitterCard.twitterImageAlt, (imageAlt) =>
         makeTwitterCardMeta(
           PropertyTwitter.TWITTER_IMAGE_ALT,
           Types.String(cutAt420Characters(imageAlt))
@@ -510,13 +506,13 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE, openGraphTwitterCard.twitterSite),
 
       // SITE_ID?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterSiteID,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE_ID)
       ),
 
       // DESCRIPTION?
-      ...insertLazilyIf(openGraphTwitterCard.twitterDescription, (description) =>
+      ...insertIf(openGraphTwitterCard.twitterDescription, (description) =>
         makeTwitterCardMeta(
           PropertyTwitter.TWITTER_DESCRIPTION,
           Types.String(cutAt200Characters(description))
@@ -527,7 +523,7 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       makeTwitterCardMeta(PropertyTwitter.TWITTER_IMAGE, openGraphTwitterCard.twitterImage),
 
       // IMAGE_ALT?
-      ...insertLazilyIf(openGraphTwitterCard.twitterImageAlt, (imageAlt) =>
+      ...insertIf(openGraphTwitterCard.twitterImageAlt, (imageAlt) =>
         makeTwitterCardMeta(
           PropertyTwitter.TWITTER_IMAGE_ALT,
           Types.String(cutAt420Characters(imageAlt))
@@ -550,7 +546,7 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       ),
 
       // PLAYER_STREAM?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterPlayerStream,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_PLAYER_STREAM)
       ),
@@ -569,7 +565,7 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE, openGraphTwitterCard.twitterSite),
 
       // DESCRIPTION?
-      ...insertLazilyIf(openGraphTwitterCard.twitterDescription, (description) =>
+      ...insertIf(openGraphTwitterCard.twitterDescription, (description) =>
         makeTwitterCardMeta(
           PropertyTwitter.TWITTER_DESCRIPTION,
           Types.String(cutAt200Characters(description))
@@ -577,7 +573,7 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       ),
 
       // APP_NAME_IPHONE?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterAppNameIphone,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_NAME_IPHONE)
       ),
@@ -589,13 +585,13 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       ),
 
       // APP_URL_IPHONE?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterAppURLIphone,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_URL_IPHONE)
       ),
 
       // APP_NAME_IPAD?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterAppNameIpad,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_NAME_IPAD)
       ),
@@ -607,13 +603,13 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       ),
 
       // APP_URL_IPAD?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterAppURLIpad,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_URL_IPAD)
       ),
 
       // APP_NAME_GOOGLEPLAY?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterAppNameGooglePlay,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_NAME_GOOGLEPLAY)
       ),
@@ -625,7 +621,7 @@ export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterC
       ),
 
       // APP_URL_GOOGLEPLAY?
-      ...insertLazilyIf(
+      ...insertIf(
         openGraphTwitterCard.twitterAppURLGooglePlay,
         makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_URL_GOOGLEPLAY)
       ),

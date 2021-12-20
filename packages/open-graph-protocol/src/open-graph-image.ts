@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import {
   type BaseOrExtended,
@@ -116,22 +116,22 @@ export function makeOpenGraphImage(
       makeOpenGraphMeta(PropertyImage.OG_IMAGE, ogImage),
 
       // IMAGE_URL?
-      ...insertLazilyIf(ogImageURL, makeOpenGraphMeta(PropertyImage.OG_IMAGE_URL)),
+      ...insertIf(ogImageURL, makeOpenGraphMeta(PropertyImage.OG_IMAGE_URL)),
 
       // IMAGE_SECURE_URL?
-      ...insertLazilyIf(ogImageSecureUrl, makeOpenGraphMeta(PropertyImage.OG_IMAGE_SECURE_URL)),
+      ...insertIf(ogImageSecureUrl, makeOpenGraphMeta(PropertyImage.OG_IMAGE_SECURE_URL)),
 
       // IMAGE_TYPE?
-      ...insertLazilyIf(ogImageType, makeOpenGraphMeta(PropertyImage.OG_IMAGE_TYPE)),
+      ...insertIf(ogImageType, makeOpenGraphMeta(PropertyImage.OG_IMAGE_TYPE)),
 
       // IMAGE_WIDTH?
-      ...insertLazilyIf(ogImageWidth, makeOpenGraphMeta(PropertyImage.OG_IMAGE_WIDTH)),
+      ...insertIf(ogImageWidth, makeOpenGraphMeta(PropertyImage.OG_IMAGE_WIDTH)),
 
       // IMAGE_HEIGHT?
-      ...insertLazilyIf(ogImageHeight, makeOpenGraphMeta(PropertyImage.OG_IMAGE_HEIGHT)),
+      ...insertIf(ogImageHeight, makeOpenGraphMeta(PropertyImage.OG_IMAGE_HEIGHT)),
 
       // IMAGE_ALT?
-      ...insertLazilyIf(ogImageAlt, makeOpenGraphMeta(PropertyImage.OG_IMAGE_ALT)),
+      ...insertIf(ogImageAlt, makeOpenGraphMeta(PropertyImage.OG_IMAGE_ALT)),
     ]
   }
 

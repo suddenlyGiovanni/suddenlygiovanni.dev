@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import {
   type BaseOrExtended,
@@ -102,22 +102,22 @@ export function makeOpenGraphVideo(
       makeOpenGraphMeta(PropertyVideo.OG_VIDEO, ogVideo),
 
       // VIDEO_URL?
-      ...insertLazilyIf(ogVideoURL, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_URL)),
+      ...insertIf(ogVideoURL, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_URL)),
 
       // VIDEO_SECURE_URL?
-      ...insertLazilyIf(ogVideoSecureUrl, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_SECURE_URL)),
+      ...insertIf(ogVideoSecureUrl, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_SECURE_URL)),
 
       // VIDEO_TYPE?
-      ...insertLazilyIf(ogVideoType, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_TYPE)),
+      ...insertIf(ogVideoType, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_TYPE)),
 
       // VIDEO_WIDTH?
-      ...insertLazilyIf(ogVideoWidth, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_WIDTH)),
+      ...insertIf(ogVideoWidth, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_WIDTH)),
 
       // VIDEO_HEIGHT?
-      ...insertLazilyIf(ogVideoHeight, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_HEIGHT)),
+      ...insertIf(ogVideoHeight, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_HEIGHT)),
 
       // VIDEO_ALT?
-      ...insertLazilyIf(ogVideoAlt, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_ALT)),
+      ...insertIf(ogVideoAlt, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_ALT)),
     ]
   }
 

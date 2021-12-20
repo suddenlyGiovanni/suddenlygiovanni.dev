@@ -1,4 +1,4 @@
-import { insertLazilyIf, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import {
   type BaseOrExtended,
@@ -89,25 +89,25 @@ export function makeOpenGraphProfile(openGraphProfile: OpenGraphProfile) {
     ...makeOpenGraphBase(openGraphProfile),
 
     // FIRST_NAME?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphProfile.ogProfileFirstName,
       makeOpenGraphMeta(PropertyProfile.OG_PROFILE_FIRST_NAME)
     ),
 
     // LAST_NAME?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphProfile.ogProfileLastName,
       makeOpenGraphMeta(PropertyProfile.OG_PROFILE_LAST_NAME)
     ),
 
     // USER_NAME?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphProfile.ogProfileUsername,
       makeOpenGraphMeta(PropertyProfile.OG_PROFILE_USERNAME)
     ),
 
     // GENDER?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphProfile.ogProfileGender,
       makeOpenGraphMeta(PropertyProfile.OG_PROFILE_GENDER)
     ),

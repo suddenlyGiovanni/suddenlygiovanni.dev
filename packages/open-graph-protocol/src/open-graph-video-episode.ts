@@ -1,4 +1,4 @@
-import { insertLazilyIf, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base'
 import {
@@ -99,7 +99,7 @@ export function makeOpenGraphVideoEpisode(openGraphVideoEpisode: OpenGraphVideoE
     ..._makeOpenGraphVideoBase(openGraphVideoEpisode),
 
     // VIDEO_SERIES?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphVideoEpisode.ogVideoSeries,
       makeOpenGraphMeta(PropertyVideoEpisode.OG_VIDEO_SERIES)
     ),

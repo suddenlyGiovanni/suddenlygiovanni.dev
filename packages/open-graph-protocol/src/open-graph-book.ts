@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import {
   type BaseOrExtended,
@@ -93,23 +93,23 @@ export function makeOpenGraphBook(openGraphBook: OpenGraphBook) {
     ...makeOpenGraphBase(openGraphBook),
 
     // BOOK_AUTHOR?
-    ...insertLazilyIf(openGraphBook.ogBookAuthor, (ogBookAuthor) =>
+    ...insertIf(openGraphBook.ogBookAuthor, (ogBookAuthor) =>
       isArray(ogBookAuthor)
         ? ogBookAuthor.map(makeOpenGraphMeta(PropertyBook.OG_BOOK_AUTHOR))
         : makeOpenGraphMeta(PropertyBook.OG_BOOK_AUTHOR, ogBookAuthor)
     ).flat(),
 
     // BOOK_ISBN?
-    ...insertLazilyIf(openGraphBook.ogBookIsbn, makeOpenGraphMeta(PropertyBook.OG_BOOK_ISBN)),
+    ...insertIf(openGraphBook.ogBookIsbn, makeOpenGraphMeta(PropertyBook.OG_BOOK_ISBN)),
 
     // BOOK_RELEASE_DATE?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphBook.ogBookReleaseDate,
       makeOpenGraphMeta(PropertyBook.OG_BOOK_RELEASE_DATE)
     ),
 
     // BOOK_TAG?
-    ...insertLazilyIf(openGraphBook.ogBookTag, (ogBookTag) =>
+    ...insertIf(openGraphBook.ogBookTag, (ogBookTag) =>
       isArray(ogBookTag)
         ? ogBookTag.map(makeOpenGraphMeta(PropertyBook.OG_BOOK_TAG))
         : makeOpenGraphMeta(PropertyBook.OG_BOOK_TAG, ogBookTag)

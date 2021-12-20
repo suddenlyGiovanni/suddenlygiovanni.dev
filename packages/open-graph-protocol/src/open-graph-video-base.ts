@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import { makeOpenGraphMeta, PropertyVideoBase, Types } from './open-graph'
 import { makeOpenGraphBase, type OpenGraphBaseWithOptional } from './open-graph-base'
@@ -47,15 +47,15 @@ export function _makeOpenGraphVideoBase(openGraphVideoBase: OpenGraphVideoBase) 
     // BASIC_METADATA!
     ...makeOpenGraphBase(openGraphVideoBase),
 
-    ...insertLazilyIf(openGraphVideoBase.ogVideoActorAndRole, (ogVideoActorAndRole) =>
+    ...insertIf(openGraphVideoBase.ogVideoActorAndRole, (ogVideoActorAndRole) =>
       isArray(ogVideoActorAndRole)
         ? ogVideoActorAndRole.map(({ actor, role }) => [
             makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_ACTOR, actor),
-            ...insertLazilyIf(role, makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_ACTOR_ROLE)),
+            ...insertIf(role, makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_ACTOR_ROLE)),
           ])
         : [
             makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_ACTOR, ogVideoActorAndRole.actor),
-            ...insertLazilyIf(
+            ...insertIf(
               ogVideoActorAndRole.role,
               makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_ACTOR_ROLE)
             ),
@@ -63,21 +63,21 @@ export function _makeOpenGraphVideoBase(openGraphVideoBase: OpenGraphVideoBase) 
     ).flat(2),
 
     // DIRECTORS?
-    ...insertLazilyIf(openGraphVideoBase.ogVideoDirector, (ogVideoDirector) =>
+    ...insertIf(openGraphVideoBase.ogVideoDirector, (ogVideoDirector) =>
       isArray(ogVideoDirector)
         ? ogVideoDirector.map(makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_DIRECTOR))
         : makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_DIRECTOR, ogVideoDirector)
     ).flat(),
 
     // WRITER?
-    ...insertLazilyIf(openGraphVideoBase.ogVideoWriter, (ogVideoWriter) =>
+    ...insertIf(openGraphVideoBase.ogVideoWriter, (ogVideoWriter) =>
       isArray(ogVideoWriter)
         ? ogVideoWriter.map(makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_WRITER))
         : makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_WRITER, ogVideoWriter)
     ).flat(),
 
     // DURATION?
-    ...insertLazilyIf(openGraphVideoBase.ogVideoDuration, (ogVideoDuration) =>
+    ...insertIf(openGraphVideoBase.ogVideoDuration, (ogVideoDuration) =>
       makeOpenGraphMeta(
         PropertyVideoBase.OG_VIDEO_DURATION,
         Types.Integer(Math.round(ogVideoDuration))
@@ -85,13 +85,13 @@ export function _makeOpenGraphVideoBase(openGraphVideoBase: OpenGraphVideoBase) 
     ),
 
     // RELEASE_DATE?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphVideoBase.ogVideoReleaseDate,
       makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_RELEASE_DATE)
     ),
 
     // TAGS?
-    ...insertLazilyIf(openGraphVideoBase.ogVideoTag, (ogVideoTag) =>
+    ...insertIf(openGraphVideoBase.ogVideoTag, (ogVideoTag) =>
       isArray(ogVideoTag)
         ? ogVideoTag.map(makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_TAG))
         : makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_TAG, ogVideoTag)

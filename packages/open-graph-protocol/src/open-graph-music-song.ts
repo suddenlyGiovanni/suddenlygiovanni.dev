@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import { makeOpenGraphMeta, type MetaBase, type og, PropertyMusicSong, Types } from './open-graph'
 import {
@@ -88,7 +88,7 @@ export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong) {
     ...makeOpenGraphBase(openGraphMusicSong),
 
     // DURATION?
-    ...insertLazilyIf(openGraphMusicSong.ogMusicDuration, (ogMusicDuration) =>
+    ...insertIf(openGraphMusicSong.ogMusicDuration, (ogMusicDuration) =>
       makeOpenGraphMeta(
         PropertyMusicSong.OG_MUSIC_DURATION,
         Types.Integer(Math.round(ogMusicDuration))
@@ -96,14 +96,14 @@ export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong) {
     ),
 
     // ALBUM?
-    ...insertLazilyIf(openGraphMusicSong.ogMusicAlbum, (ogMusicAlbum) =>
+    ...insertIf(openGraphMusicSong.ogMusicAlbum, (ogMusicAlbum) =>
       isArray(ogMusicAlbum)
         ? ogMusicAlbum.map(makeOpenGraphMeta(PropertyMusicSong.OG_MUSIC_ALBUM))
         : makeOpenGraphMeta(PropertyMusicSong.OG_MUSIC_ALBUM, ogMusicAlbum)
     ).flat(),
 
     // DISC?
-    ...insertLazilyIf(openGraphMusicSong.ogMusicAlbumDisc, (ogMusicAlbumDisc) =>
+    ...insertIf(openGraphMusicSong.ogMusicAlbumDisc, (ogMusicAlbumDisc) =>
       makeOpenGraphMeta(
         PropertyMusicSong.OG_MUSIC_ALBUM_DISC,
         Types.Integer(Math.round(ogMusicAlbumDisc))
@@ -111,7 +111,7 @@ export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong) {
     ),
 
     // TRACK?
-    ...insertLazilyIf(openGraphMusicSong.ogMusicAlbumTrack, (ogMusicAlbumTrack) =>
+    ...insertIf(openGraphMusicSong.ogMusicAlbumTrack, (ogMusicAlbumTrack) =>
       makeOpenGraphMeta(
         PropertyMusicSong.OG_MUSIC_ALBUM_TRACK,
         Types.Integer(Math.round(ogMusicAlbumTrack))
@@ -119,7 +119,7 @@ export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong) {
     ),
 
     // MUSICIAN?
-    ...insertLazilyIf(openGraphMusicSong.ogMusicMusician, (ogMusicMusician) =>
+    ...insertIf(openGraphMusicSong.ogMusicMusician, (ogMusicMusician) =>
       isArray(ogMusicMusician)
         ? ogMusicMusician.map(makeOpenGraphMeta(PropertyMusicSong.OG_MUSIC_MUSICIAN))
         : makeOpenGraphMeta(PropertyMusicSong.OG_MUSIC_MUSICIAN, ogMusicMusician)

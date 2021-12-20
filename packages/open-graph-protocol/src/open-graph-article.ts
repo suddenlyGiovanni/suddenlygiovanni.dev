@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import {
   type BaseOrExtended,
@@ -111,38 +111,38 @@ export function makeOpenGraphArticle(openGraphArticle: OpenGraphArticle) {
     ...makeOpenGraphBase(openGraphArticle),
 
     // PUBLISHED_TIME?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphArticle.ogArticlePublishedTime,
       makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_PUBLISHED_TIME)
     ),
 
     // MODIFIED_TIME?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphArticle.ogArticleModifiedTime,
       makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_MODIFIED_TIME)
     ),
 
     // EXPIRATION_TIME?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphArticle.ogArticleExpirationTime,
       makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_EXPIRATION_TIME)
     ),
 
     // AUTHOR?
-    ...insertLazilyIf(openGraphArticle.ogArticleAuthor, (ogArticleAuthor) =>
+    ...insertIf(openGraphArticle.ogArticleAuthor, (ogArticleAuthor) =>
       isArray(ogArticleAuthor)
         ? ogArticleAuthor.map(makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_AUTHOR))
         : makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_AUTHOR, ogArticleAuthor)
     ).flat(),
 
     // SECTION?
-    ...insertLazilyIf(
+    ...insertIf(
       openGraphArticle.ogArticleSection,
       makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_SECTION)
     ),
 
     // TAG?
-    ...insertLazilyIf(openGraphArticle.ogArticleTag, (ogArticleTag) =>
+    ...insertIf(openGraphArticle.ogArticleTag, (ogArticleTag) =>
       isArray(ogArticleTag)
         ? ogArticleTag.map(makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_TAG))
         : makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_TAG, ogArticleTag)

@@ -1,4 +1,4 @@
-import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import {
   type BaseOrExtended,
@@ -57,9 +57,9 @@ export function makeOpenGraphAudio(
       makeOpenGraphMeta(PropertyAudio.OG_AUDIO, ogAudio),
 
       // AUDIO_SECURE_URL?
-      ...insertLazilyIf(ogAudioSecureUrl, makeOpenGraphMeta(PropertyAudio.OG_AUDIO_SECURE_URL)),
+      ...insertIf(ogAudioSecureUrl, makeOpenGraphMeta(PropertyAudio.OG_AUDIO_SECURE_URL)),
 
-      ...insertLazilyIf(ogAudioType, makeOpenGraphMeta(PropertyAudio.OG_AUDIO_TYPE)),
+      ...insertIf(ogAudioType, makeOpenGraphMeta(PropertyAudio.OG_AUDIO_TYPE)),
     ]
   }
 

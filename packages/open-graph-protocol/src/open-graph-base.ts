@@ -1,10 +1,10 @@
-import { insertLazilyIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
+import { insertIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
 import {
+  type IOGType,
   makeOpenGraphMeta,
   type MetaBase,
   type og,
-  type IOGType,
   PropertyBasic,
   Types,
 } from './open-graph'
@@ -202,34 +202,28 @@ export function makeOpenGraphBase({
     makeOpenGraphMeta(PropertyBasic.OG_URL, ogUrl),
 
     // AUDIO?
-    ...insertLazilyIf(optionalMetadata.ogAudio, makeOpenGraphAudio).flat(),
+    ...insertIf(optionalMetadata.ogAudio, makeOpenGraphAudio).flat(),
 
     // DESCRIPTION?
-    ...insertLazilyIf(
-      optionalMetadata.ogDescription,
-      makeOpenGraphMeta(PropertyBasic.OG_DESCRIPTION)
-    ),
+    ...insertIf(optionalMetadata.ogDescription, makeOpenGraphMeta(PropertyBasic.OG_DESCRIPTION)),
 
     // DETERMINER?
-    ...insertLazilyIf(
-      optionalMetadata.ogDeterminer,
-      makeOpenGraphMeta(PropertyBasic.OG_DETERMINER)
-    ),
+    ...insertIf(optionalMetadata.ogDeterminer, makeOpenGraphMeta(PropertyBasic.OG_DETERMINER)),
 
     // LOCALE?
-    ...insertLazilyIf(optionalMetadata.ogLocale, makeOpenGraphMeta(PropertyBasic.OG_LOCALE)),
+    ...insertIf(optionalMetadata.ogLocale, makeOpenGraphMeta(PropertyBasic.OG_LOCALE)),
 
     // LOCALE_ALTERNATE?
-    ...insertLazilyIf(optionalMetadata.ogLocaleAlternate, (ogLocaleAlternate) =>
+    ...insertIf(optionalMetadata.ogLocaleAlternate, (ogLocaleAlternate) =>
       isArray(ogLocaleAlternate)
         ? ogLocaleAlternate.map(makeOpenGraphMeta(PropertyBasic.OG_LOCALE_ALTERNATE))
         : makeOpenGraphMeta(PropertyBasic.OG_LOCALE_ALTERNATE, ogLocaleAlternate)
     ).flat(),
 
     // SITE_NAME?
-    ...insertLazilyIf(optionalMetadata.ogSiteName, makeOpenGraphMeta(PropertyBasic.OG_SITE_NAME)),
+    ...insertIf(optionalMetadata.ogSiteName, makeOpenGraphMeta(PropertyBasic.OG_SITE_NAME)),
 
     // VIDEO?
-    ...insertLazilyIf(optionalMetadata.ogVideo, makeOpenGraphVideo).flat(),
+    ...insertIf(optionalMetadata.ogVideo, makeOpenGraphVideo).flat(),
   ]
 }
