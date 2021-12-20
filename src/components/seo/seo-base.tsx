@@ -1,12 +1,12 @@
 import { useSiteMetadata } from '@hooks/index'
 import { insertIf, insertLazilyIf } from '@lib/array'
+
+import { useLocation } from '@reach/router'
 import {
   makeOpenGraphTwitterCard,
   makeOpenGraphWebsite,
   Types,
-} from '@lib/open-graph-protocol'
-
-import { useLocation } from '@reach/router'
+} from '@suddenlygiovanni/open-graph-protocol'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
@@ -233,15 +233,15 @@ export const SEOBase: React.VFC<Props> = (props) => {
 
         // TODO: insert Twitter card open graph data
         ...makeOpenGraphTwitterCard({
-          card: Types.Enum('summary_large_image'),
-          title: Types.String(seoTitle),
-          site: Types.String(seoTwitter),
-          siteID: Types.String(seoTwitter),
-          creatorID: Types.String(seoTwitter),
-          creator: Types.String(toCommaSeparatedString(seoCreator)),
-          description: Types.String(seoDescription),
-          image: Types.URL(seoImageSrc),
-          imageAlt: Types.String(seoImageAlt),
+          twitterCard: Types.Enum('summary_large_image'),
+          twitterTitle: Types.String(seoTitle),
+          twitterSite: Types.String(seoTwitter),
+          twitterSiteID: Types.String(seoTwitter),
+          twitterCreatorID: Types.String(seoTwitter),
+          twitterCreator: Types.String(toCommaSeparatedString(seoCreator)),
+          twitterDescription: Types.String(seoDescription),
+          twitterImage: Types.URL(seoImageSrc),
+          twitterImageAlt: Types.String(seoImageAlt),
         }),
 
         ...insertIf(props.meta, ...(props.meta || [])),

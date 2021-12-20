@@ -82,7 +82,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="clean" />
+          <id value="develop" />
         </path>
       </selected-paths>
     </layout>
@@ -95,7 +95,7 @@
   </component>
   <component name="ProblemsViewState">
     <option name="proportion" value="0.33638585" />
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
   <component name="ProjectLevelVcsManager">
@@ -221,8 +221,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.clean" />
         <item itemvalue="npm.develop" />
+        <item itemvalue="npm.clean" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.serve" />

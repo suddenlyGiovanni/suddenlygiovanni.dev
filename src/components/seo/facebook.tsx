@@ -1,4 +1,7 @@
-import { MetaOpenGraph, Types } from '@lib/open-graph-protocol'
+import {
+  MetaOpenGraph,
+  Types,
+} from '@suddenlygiovanni/open-graph-protocol-react'
 
 import React from 'react'
 import { Helmet } from 'react-helmet'
