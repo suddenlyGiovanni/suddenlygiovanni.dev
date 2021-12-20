@@ -1,5 +1,24 @@
 # @suddenlygiovanni/open-graph-protocol-utils
 
+## 0.4.0
+
+### Minor Changes
+
+- #### WHAT the change is?
+
+  Internal change:
+
+  - hoist Property enum form own module to `open-graph.ts`
+  - remove type and value shadowing for Property enum
+
+  #### WHY the change was made?
+
+  To resolve issue with circular type dependency.
+
+  #### HOW a consumer should update their code?
+
+  The consumers should not be affected by this change.
+
 ## 0.3.0
 
 ### Minor Changes
