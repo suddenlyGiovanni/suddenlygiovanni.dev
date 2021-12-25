@@ -1,4 +1,4 @@
-import { Resume, SEOBase } from '@components/index'
+import { Resume, SEO } from '@components/index'
 import * as customHooks from '@hooks/index'
 
 import { PageProps } from 'gatsby'
@@ -24,10 +24,7 @@ const ResumePage: React.VFC<PageProps> = (_) => {
 
   return (
     <>
-      <SEOBase
-        description="Giovanni Ravalico's Résumé"
-        titleTemplate="Résumé"
-      />
+      <SEO description="Giovanni Ravalico's Résumé" titleTemplate="Résumé" />
       <article>
         <Resume.SectionHeader
           name={basics?.name}

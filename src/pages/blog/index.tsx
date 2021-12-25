@@ -1,4 +1,4 @@
-import { PostPreview, SEOBase } from '@components/index'
+import { PostPreview, SEO } from '@components/index'
 import config from '@config/index'
 import { usePostsPreview } from '@hooks/index'
 
@@ -9,7 +9,7 @@ const IndexPage: React.FC<PageProps> = () => {
   const posts = usePostsPreview()
   return (
     <>
-      <SEOBase titleTemplate="Blog" description={config.siteDescription} />
+      <SEO titleTemplate="Blog" description={config.siteDescription} />
 
       {posts.map(
         ({ id, slug, author, title, description, date, timeToRead }) => (

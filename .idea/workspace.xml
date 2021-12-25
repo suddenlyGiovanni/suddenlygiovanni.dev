@@ -130,7 +130,7 @@
     <property name="prettier.import.notification.dismissed" value="true" />
     <property name="prettierjs.PrettierConfiguration.Package" value="$PROJECT_DIR$/node_modules/prettier" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.selected.configurable" value="settings.typescriptcompiler" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="ts.rename.search.for.js.occurrences" value="false" />
     <property name="typescript.add.unambiguous.imports.on.the.fly" value="true" />
@@ -344,6 +344,13 @@
       <workItem from="1639081716453" duration="16016000" />
       <workItem from="1639134172095" duration="52000" />
       <workItem from="1639137508225" duration="266000" />
+      <workItem from="1640023656735" duration="1231000" />
+      <workItem from="1640086119723" duration="898000" />
+      <workItem from="1640087539225" duration="28000" />
+      <workItem from="1640175248334" duration="805000" />
+      <workItem from="1640463067185" duration="54000" />
+      <workItem from="1640463790030" duration="58000" />
+      <workItem from="1640463864035" duration="9516000" />
     </task>
     <servers />
   </component>

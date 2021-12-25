@@ -1,5 +1,11 @@
-import { ReadLink, SEOBase } from '@components/index'
-import { routesMap } from '@config/index'
+import { ReadLink, SEO } from '@components/index'
+import config, { routesMap } from '@config/index'
+import { useSiteMetadata } from '@hooks/use-sitemetadata'
+
+import {
+  makeOpenGraphArticle,
+  Types,
+} from '@suddenlygiovanni/open-graph-protocol'
 
 import { graphql, PageProps } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
@@ -78,6 +84,7 @@ interface PageContextType {
 
 type Props = PageProps<GatsbyTypes.PostByIdQuery, PageContextType>
 const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
+  const siteMetadata = useSiteMetadata()
   const { post } = data
   const { previous, next } = pageContext
   if (!post) {
@@ -86,15 +93,32 @@ const PostTemplate: React.VFC<Props> = ({ data, pageContext }) => {
   const title = post.fields?.title || ''
   const author = post.fields?.author || ''
   const body = post?.body || ''
+  const description = post?.fields?.description || 'nothing'
+  const datePublished = new Date(
+    post.fields?.date!
+  ).toISOString() as Types.DateTime
+  const slug = post?.fields?.slug || ''
 
   return (
     <>
-      <SEOBase
+      <SEO
         titleTemplate={title}
-        description={post.fields?.description || 'nothing'}
-        // datePublished={new Date(post.fields?.date!).toISOString()}
-        // dateModified={new Date(Date.now()).toISOString()}
-        // isBlogPost={true}
+        meta={makeOpenGraphArticle({
+          ogType: Types.Enum('article'),
+          ogTitle: Types.String(title),
+          ogUrl: Types.URL(
+            siteMetadata.url + routesMap.getRoute('blog').url + '/' + slug
+          ), // FIXME: the url of the article,
+          ogImage: Types.URL(siteMetadata.url + siteMetadata.image), // FIXME: article url or OpenGraphImage
+          ogDescription: Types.String(description),
+          ogDeterminer: Types.Enum('auto'),
+          ogLocale: Types.String(config.siteUrl),
+          ogSiteName: Types.String(siteMetadata.url),
+          ogArticlePublishedTime: Types.DateTime(datePublished),
+          // ogArticleAuthor: Types.URL('') // FIXME: og... the api for this field should enable to provide a profile obj.
+          // ogArticleSection
+          // ogArticleTag
+        })}
       />
       <h1>{title}</h1>
       <PostedBy>
