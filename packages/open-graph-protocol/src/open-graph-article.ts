@@ -5,6 +5,7 @@ import {
   makeOpenGraphMeta,
   type MetaBase,
   type og,
+  type OpenGraphMeta,
   PropertyArticle,
   Types,
 } from './open-graph'
@@ -15,11 +16,15 @@ import {
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
 } from './open-graph-base'
+import { makeOpenGraphProfile, type OpenGraphProfile } from './open-graph-profile'
 
 type article<T extends string = ''> = BaseOrExtended<'article', T>
 
 export type IPropertyArticle = ValueOf<typeof PropertyArticle>
 
+/**
+ * @public
+ */
 export type ArticleRecord =
   | Exclude<BasicRecord, OgType>
   | OgTypeArticle
@@ -88,9 +93,9 @@ interface OpenGraphArticle extends OpenGraphBaseWithOptional {
 
   /**
    * Writers of the article.
-   * array of profile
+   * either a profile url or a OpenGraphProfile object or an array of OpenGraphProfile
    */
-  ogArticleAuthor?: Types.URL | readonly Types.URL[]
+  ogArticleAuthor?: Types.URL | OpenGraphProfile | readonly OpenGraphProfile[]
 
   /**
    * A high-level section name.
@@ -105,7 +110,13 @@ interface OpenGraphArticle extends OpenGraphBaseWithOptional {
   ogArticleTag?: Types.String | readonly Types.String[]
 }
 
-export function makeOpenGraphArticle(openGraphArticle: OpenGraphArticle) {
+/**
+ * factory function to construct `Open Graph Protocol Article` {@see https://ogp.me/#type_article}
+ * @param openGraphArticle - an object fulfilling the contract defined by {@link OpenGraphArticle} interface.
+ * @returns a correctly form array of {@link OpenGraphMeta} objects.
+ * @public
+ */
+export function makeOpenGraphArticle(openGraphArticle: OpenGraphArticle): readonly OpenGraphMeta[] {
   return [
     // BASIC_METADATA!
     ...makeOpenGraphBase(openGraphArticle),
@@ -129,11 +140,15 @@ export function makeOpenGraphArticle(openGraphArticle: OpenGraphArticle) {
     ),
 
     // AUTHOR?
-    ...insertIf(openGraphArticle.ogArticleAuthor, (ogArticleAuthor) =>
-      isArray(ogArticleAuthor)
-        ? ogArticleAuthor.map(makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_AUTHOR))
-        : makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_AUTHOR, ogArticleAuthor)
-    ).flat(),
+    ...insertIf(openGraphArticle.ogArticleAuthor, (ogArticleAuthor) => {
+      if (typeof ogArticleAuthor === 'string') {
+        return makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_AUTHOR, ogArticleAuthor)
+      }
+      if (isArray(ogArticleAuthor)) {
+        return ogArticleAuthor.map(makeOpenGraphProfile)
+      }
+      return makeOpenGraphProfile(ogArticleAuthor)
+    }).flat(2),
 
     // SECTION?
     ...insertIf(

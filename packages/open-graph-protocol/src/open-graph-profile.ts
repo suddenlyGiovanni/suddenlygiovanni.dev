@@ -58,7 +58,7 @@ interface OgProfileUsername extends ProfileMetaBase<og<profile<'username'>>, Typ
 interface OgProfileGender
   extends ProfileMetaBase<og<profile<'gender'>>, Types.Enum<'male' | 'female'>> {}
 
-interface OpenGraphProfile extends OpenGraphBaseWithOptional {
+export interface OpenGraphProfile extends OpenGraphBaseWithOptional {
   ogType: Types.Enum<'profile'>
 
   /**

@@ -391,7 +391,7 @@ export interface OpenGraphMeta {
  * Can be used by providing a OpenGraphMetadata object or by partially applying
  * the `property` first and the `content` last
  * returns a OpenGraphMeta
- * @link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup
+ * @see {@link https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/markup}
  */
 export function makeOpenGraphMeta<
   OGRecord extends OpenGraphRecord,
