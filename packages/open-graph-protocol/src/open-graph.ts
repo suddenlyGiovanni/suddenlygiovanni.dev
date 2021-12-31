@@ -21,6 +21,11 @@ import type { VideoOtherRecord } from './open-graph-video-other'
 import type { VideoTvShowRecord } from './open-graph-video-tvshow'
 import type { WebsiteRecord } from './open-graph-website'
 
+/**
+ * A namespace holding the type definitions and the type constructors used by the Open Graph protocol.
+ * @see {@link https://ogp.me/#data_types}
+ * @public
+ */
 export namespace Types {
   /**
    * A Boolean represents a true or false value
@@ -28,6 +33,14 @@ export namespace Types {
    * 'true', 'false', '1', '0'
    */
   export type Boolean = Brand<true | false | 1 | 0, 'Boolean'>
+  /**
+   * a `Open Graph protocol` Boolean type constructor.
+   * @example
+   * Boolean(true)
+   * Boolean(false)
+   * Boolean(0)
+   * Boolean(1)
+   */
   export const Boolean = make<Boolean>()
 
   type Year = number
@@ -41,7 +54,7 @@ export namespace Types {
    * We support absolute ISO 8061 timestamps with the timezone defaulting to UTC.
    * The format we are expecting is YYYY-MM-DDThh:mm:ssZ. Z is used to express different time zones, and represents an offset from UTC. Examples:
    *
-   * @example
+   * @remarks
    * January 26th, 2011 = 2011-01-26
    * January 26th, 2011 at 7:15pm = 2011-01-26T19:15
    * January 26th, 2001 at 7:15pm Pacific Standard Time = 2011-01-26T19:15-8:00
@@ -53,9 +66,12 @@ export namespace Types {
     'DateTime'
   >
   /**
-   * converts a `${Year}-${Month}-${Day}` | `${Year}-${Month}-${Day}T${Hours}:${Minutes}` to a OpenGraph `DateTime`
+   a `Open Graph protocol` DateTime type constructor.
+   * converts a `${Year}-${Month}-${Day}` | `${Year}-${Month}-${Day}T${Hours}:${Minutes}` string to a OpenGraph `DateTime`
    * @example
+   * ```ts
    * const instanceOfDateTime:Types.DateTime = Types.DateTime(`${2001}-${09}-${11}`)
+   * ```
    */
   export const DateTime = make<DateTime>()
 
@@ -73,9 +89,12 @@ export namespace Types {
   export type Float = Brand<number, 'Float'>
 
   /**
-   * converts a number to a OpenGraph `Float`
+   a `Open Graph protocol` Float type constructor.
+   * Converts a number to a OpenGraph `Float`.
    * @example
+   * ```ts
    * const instanceOfFloat:Types.Float = Types.Float(0.001)
+   * ```
    */
   export const Float = make<Float>()
 
@@ -89,9 +108,12 @@ export namespace Types {
   export type Integer = Brand<number, 'Integer'>
 
   /**
-   * converts a number to a OpenGraph `Integer`
+   * A `Open Graph protocol` Integer type constructor.
+   * Converts a number to a OpenGraph `Integer`
    * @example
+   * ```ts
    * const instanceOfInteger:Types.Integer = Types.Integer(49)
+   * ```
    */
   export const Integer = make<Integer>()
 
@@ -102,9 +124,12 @@ export namespace Types {
   export type String<T extends string = string> = Brand<T, 'String'>
 
   /**
+   * A `Open Graph protocol` String type constructor.
    * converts a string to a OpenGraph `String`
    * @example
+   * ```ts
    * const instanceOfString:Types.String = Types.String('this is definitely a string')
+   * ```
    */
   export const String = <T extends string = string>(underlying: T) => {
     return make<String<T>>()(underlying as BaseOf<String<T>>)
@@ -117,9 +142,12 @@ export namespace Types {
   export type URL = Brand<string, 'URL'>
 
   /**
-   * converts a string to a OpenGraph `URL`
+   * A `Open Graph protocol` URL type constructor.
+   * Converts a string to a OpenGraph `URL`.
    * @example
+   * ```ts
    * const instanceOfURL:Types.URL = Types.URL('https://duckduckgo.com')
+   * ```
    */
   export const URL = make<URL>()
 
@@ -130,9 +158,12 @@ export namespace Types {
   export type Enum<T extends string = string> = Brand<T, 'Enum'>
 
   /**
-   * converts a union of string to a OpenGraph `Enum`
+   * A `Open Graph protocol` Enum type constructor.
+   * Converts a union of string to a OpenGraph `Enum`
    * @example
+   * ```ts
    * const instanceOfEnum:Types.Enum<'foo' | 'bar'> = Types.Enum<'foo', 'bar'>('foo')
+   * ```
    */
   export const Enum = <T extends string = string>(underlying: T) =>
     make<Enum<T>>()(underlying as BaseOf<Enum<T>>)
