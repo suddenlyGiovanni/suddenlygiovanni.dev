@@ -1,77 +1,67 @@
-import { css } from '@emotion/core'
-import React from 'react'
+import styled from 'styled-components'
 
-import { config } from '../../config/website'
-
+import config from '@config/index'
 import { SocialIcon } from './social-icon'
 
-type Props = {
-  color?: string
-  url?: string
+const SocialLink = styled.a<{ $color: string }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: ${({ $color }) => $color};
+
+  :hover {
+    color: hsla(0, 0%, 0%, 0.7);
+  }
+`
+
+const { twitter, linkedin, github } = config
+
+interface Props {
+  color: string
+  url: string
 }
 
-export const Twitter = ({
-  color = `rgba(255,255,255,0.7)`,
-  url = `${config.twitter}`,
-}: Props): JSX.Element => (
-  <a
-    href={url}
-    css={css`
-      display: flex;
-      align-items: center;
-      justify-content: center;
+const defaultColor = `hsl(0, 0%, 0%)` as const
 
-      color: ${color};
-      :hover {
-        color: rgba(255, 255, 255, 1);
-      }
-    `}
+export const Twitter: React.VFC<Partial<Props>> = ({
+  color = defaultColor,
+  url = twitter.url + twitter.handle,
+}) => (
+  <SocialLink
+    href={url}
+    target={'_blank'}
+    $color={color}
     aria-label="Visit my Twitter"
   >
     <SocialIcon network="twitter" size={24} aria-label="Twitter icon" />
-  </a>
+  </SocialLink>
 )
 
-export const LinkedIn = ({
-  color = `rgba(255,255,255,0.7)`,
-  url = `${config.linkedin}`,
-}: Props): JSX.Element => (
-  <a
+export const LinkedIn: React.VFC<Partial<Props>> = ({
+  color = defaultColor,
+  url = linkedin.url + linkedin.user,
+}) => (
+  <SocialLink
     href={url}
-    css={css`
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: ${color};
-      :hover {
-        color: rgba(255, 255, 255, 1);
-      }
-    `}
+    target={'_blank'}
+    $color={color}
     aria-label="Visit my LinkedIn"
   >
     <SocialIcon network="linkedin" size={24} aria-label="LinkedIn icon" />
-  </a>
+  </SocialLink>
 )
 
-export const GitHub = ({
-  color = `rgba(255,255,255,0.7)`,
-  url = `${config.github}`,
-}: Props): JSX.Element => (
-  <a
+export const GitHub: React.VFC<Partial<Props>> = ({
+  color = defaultColor,
+  url = github.url + github.user,
+}) => (
+  <SocialLink
     href={url}
-    css={css`
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      color: ${color};
-      :hover {
-        color: rgba(255, 255, 255, 1);
-      }
-    `}
+    target={'_blank'}
+    $color={color}
     aria-label="Visit my GitHub"
   >
     <SocialIcon network="github" size={24} aria-label="GitHub icon" />
-  </a>
+  </SocialLink>
 )

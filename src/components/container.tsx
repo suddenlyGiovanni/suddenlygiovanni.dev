@@ -1,46 +1,48 @@
-/* eslint-disable no-magic-numbers */
-import { css } from '@emotion/core'
-import React, { FC } from 'react'
+import * as Responsive from '@lib/responsive'
 
-import { bpMaxSM } from '../lib/breakpoints'
+import styled, { StyledComponent } from 'styled-components'
 
-type Props = {
-  maxWidth?: number
-  noHorizontalPadding?: boolean
-  noVerticalPadding?: boolean
-} & React.DetailedHTMLProps<
-  React.HTMLAttributes<HTMLDivElement>,
-  HTMLDivElement
->
-export const Container: FC<Props> = ({
-  maxWidth = 720,
-  noHorizontalPadding = false,
-  noVerticalPadding = false,
-  children,
-  ...restProps
-}) => {
-  return (
-    <div
-      css={css`
-        width: 100%;
-        max-width: ${maxWidth + (noHorizontalPadding ? 0 : 80)}px;
-        margin: 0 auto;
-        padding-top: ${noVerticalPadding ? 0 : '40'}px;
-        padding-right: ${noHorizontalPadding ? 0 : '40'}px;
-        padding-bottom: ${noVerticalPadding ? 0 : '40'}px;
-        padding-left: ${noHorizontalPadding ? 0 : '40'}px;
-
-        ${bpMaxSM} {
-          padding-top: ${noVerticalPadding ? 0 : '20'}px;
-          padding-right: ${noHorizontalPadding ? 0 : '20'}px;
-          padding-bottom: ${noVerticalPadding ? 0 : '20'}px;
-          padding-left: ${noHorizontalPadding ? 0 : '20'}px;
-        }
-      `}
-      // eslint-disable-next-line react/jsx-props-no-spreading
-      {...restProps}
-    >
-      {children}
-    </div>
-  )
+interface ContainerProps {
+  readonly $maxWidth: number
+  readonly $noHorizontalPadding: boolean
+  readonly $noVerticalPadding: boolean
 }
+
+export const Container: StyledComponent<
+  'div',
+  any,
+  Partial<ContainerProps>,
+  '$maxWidth' | '$noHorizontalPadding' | '$noVerticalPadding'
+> = styled.div.attrs((props: ContainerProps) => ({
+  $maxWidth: props.$maxWidth ?? 720,
+  $noHorizontalPadding: props.$noHorizontalPadding ?? false,
+  $noVerticalPadding: props.$noVerticalPadding ?? false,
+}))`
+  width: 100%;
+
+  max-width: ${({ $maxWidth, $noHorizontalPadding }) =>
+    $maxWidth + ($noHorizontalPadding ? 0 : 80)}px;
+
+  margin: 0 auto;
+
+  padding-top: ${({ $noVerticalPadding }) => ($noVerticalPadding ? 0 : 40)}px;
+  padding-right: ${({ $noHorizontalPadding }) =>
+    $noHorizontalPadding ? 0 : 40}px;
+  padding-bottom: ${({ $noVerticalPadding }) =>
+    $noVerticalPadding ? 0 : 40}px;
+  padding-left: ${({ $noHorizontalPadding }) =>
+    $noHorizontalPadding ? 0 : 40}px;
+
+  @media ${Responsive.Queries.mobile} {
+    padding-top: ${({ $noVerticalPadding }) => ($noVerticalPadding ? 0 : 20)}px;
+
+    padding-right: ${({ $noHorizontalPadding }) =>
+      $noHorizontalPadding ? 0 : 20}px;
+
+    padding-bottom: ${({ $noVerticalPadding }) =>
+      $noVerticalPadding ? 0 : 20}px;
+
+    padding-left: ${({ $noHorizontalPadding }) =>
+      $noHorizontalPadding ? 0 : 20}px;
+  }
+`

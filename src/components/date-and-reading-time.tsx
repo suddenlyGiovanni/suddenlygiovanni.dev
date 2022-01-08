@@ -1,16 +1,14 @@
-import React from 'react'
+import { formatDateLocaleLong } from '@lib/dates'
+import { formatReadingTime } from '@lib/helpers'
+import { Int } from '@lib/integer'
 
-import { formatDateLocaleLong, formatReadingTime } from '../lib/helpers'
-
-type Props = {
+interface Props {
   /** minutes in integer */
-  timeToRead: number
+  timeToRead: Int
   date: Date
 }
-export const DateAndReadingTime = ({
-  timeToRead,
-  date,
-}: Props): JSX.Element => {
+
+export const DateAndReadingTime: React.VFC<Props> = ({ timeToRead, date }) => {
   const dateISO = date.toISOString()
   const dateLocalized = formatDateLocaleLong(date)
   const readingTime = formatReadingTime(timeToRead)

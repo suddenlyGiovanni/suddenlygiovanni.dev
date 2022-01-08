@@ -1,10 +1,26 @@
-import { css } from '@emotion/core'
+import * as Integers from '@lib/integer'
+
 import { Link } from 'gatsby'
-import React, { FC } from 'react'
+import styled from 'styled-components'
 
 import { DateAndReadingTime } from './date-and-reading-time'
 
-type Props = {
+const PostPreviewHeadingStyled = styled.h2`
+  margin-top: unset;
+`
+
+const LinkStyled = styled(Link)`
+  color: unset;
+  text-decoration: none;
+
+  box-shadow: none;
+
+  &:visited {
+    color: unset;
+  }
+`
+
+interface Props {
   id: string
   slug: string
   author: string
@@ -14,42 +30,26 @@ type Props = {
   timeToRead: number
 }
 
-export const PostPreview: FC<Props> = ({
-  id,
+export const PostPreview: React.VFC<Props> = ({
   slug,
-  author,
   title,
   description,
   date,
-  timeToRead,
-}) => (
-  <article>
-    <header>
-      <h2
-        css={css`
-          margin-top: unset;
-        `}
-      >
-        <Link
-          css={css`
-            color: unset;
-            text-decoration: none;
+  ...props
+}) => {
+  const timeToRead = Integers.fromNumber(props.timeToRead)
+  return (
+    <article>
+      <header>
+        <PostPreviewHeadingStyled>
+          <LinkStyled to={slug}>{title}</LinkStyled>
+        </PostPreviewHeadingStyled>
+        <DateAndReadingTime date={date} timeToRead={timeToRead} />
+      </header>
 
-            box-shadow: none;
-            &:visited {
-              color: unset;
-            }
-          `}
-          to={slug}
-        >
-          {title}
-        </Link>
-      </h2>
-      <DateAndReadingTime date={date} timeToRead={timeToRead} />
-    </header>
-
-    <section>
-      <p>{description}</p>
-    </section>
-  </article>
-)
+      <section>
+        <p>{description}</p>
+      </section>
+    </article>
+  )
+}

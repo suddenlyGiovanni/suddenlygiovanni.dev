@@ -1,23 +1,19 @@
-import { css } from '@emotion/core'
-import React, { useState } from 'react'
+import { useState } from 'react'
+import styled from 'styled-components'
 
-export const Wave = (): JSX.Element => {
+const Button = styled.button.attrs(() => ({
+  type: 'button',
+}))`
+  color: white;
+  font-size: 1.25rem;
+
+  background-color: rebeccapurple;
+  border: none;
+`
+
+export const Wave: React.VFC = () => {
   const [waves, setWave] = useState<number>(0)
   const label = `👋${waves} ${waves === 1 ? 'wave' : 'waves'}`
   const increment = (): void => setWave((w) => 1 + w)
-  return (
-    <button
-      type="button"
-      onClick={increment}
-      css={css`
-        color: white;
-        font-size: 1.25rem;
-
-        background-color: rebeccapurple;
-        border: none;
-      `}
-    >
-      {label}
-    </button>
-  )
+  return <Button onClick={increment}>{label}</Button>
 }

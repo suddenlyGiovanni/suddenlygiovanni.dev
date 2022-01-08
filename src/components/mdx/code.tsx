@@ -1,23 +1,18 @@
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/jsx-props-no-spreading */
-import styled from '@emotion/styled'
-import Highlight, { Prism } from 'prism-react-renderer'
 import type { Language } from 'prism-react-renderer'
+import Highlight, { Prism } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/nightOwl'
-import React from 'react'
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from 'react-live'
+import styled from 'styled-components'
 
-import { copyToClipboard } from '../../utils/copy-to-clipboard'
+import { copyToClipboard } from '@lib/copy-to-clipboard'
 
-
-const Wrapper = styled.div`
+const DivWrapperStyled = styled.div`
   position: relative;
 
   overflow: auto;
 `
 
-const Pre = styled.pre`
+const PreStyled = styled.pre`
   position: relative;
 
   margin: 1em 0;
@@ -54,7 +49,7 @@ const LineContent = styled.span`
   display: table-cell;
 `
 
-const CopyCode = styled.button`
+const CopyCodeButton = styled.button`
   position: absolute;
   top: 1.25rem;
   right: 0.25rem;
@@ -65,20 +60,19 @@ const CopyCode = styled.button`
   border: 0;
   border-radius: 3px;
   opacity: 0.3;
+
   &:hover {
     opacity: 1;
   }
 `
-type Props = {
+
+interface Props {
   codeString: string
   language: Language
-  'react-live': boolean
+  'react-live'?: boolean
 }
-export const Code = ({
-  codeString,
-  language,
-  ...props
-}: Props): JSX.Element => {
+
+export const Code: React.VFC<Props> = ({ codeString, language, ...props }) => {
   const handleClick = (
     _event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
@@ -90,6 +84,7 @@ export const Code = ({
       )
     })
   }
+
   if (props['react-live']) {
     return (
       <LiveProvider code={codeString} theme={theme}>
@@ -107,9 +102,9 @@ export const Code = ({
       theme={theme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <Wrapper>
-          <CopyCode onClick={handleClick}>Copy</CopyCode>
-          <Pre className={className} style={style}>
+        <DivWrapperStyled>
+          <CopyCodeButton onClick={handleClick}>Copy</CopyCodeButton>
+          <PreStyled className={className} style={style}>
             <code className={`language-${language}`}>
               {tokens.map((line, i) => (
                 <Line key={i} {...getLineProps({ line, key: i })}>
@@ -122,8 +117,8 @@ export const Code = ({
                 </Line>
               ))}
             </code>
-          </Pre>
-        </Wrapper>
+          </PreStyled>
+        </DivWrapperStyled>
       )}
     </Highlight>
   )

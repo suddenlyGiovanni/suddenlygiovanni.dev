@@ -1,5 +1,13 @@
-import styled from '@emotion/styled'
-import { Link } from 'gatsby'
-export const ReadLink = styled(Link)`
+import type { GatsbyLinkProps } from 'gatsby'
+import styled, { StyledComponent } from 'styled-components'
+
+import { Link } from './link'
+
+export const ReadLink: StyledComponent<
+  React.FC<GatsbyLinkProps<unknown>>,
+  any,
+  {},
+  never
+> = styled(Link)`
   display: inline-block;
 `

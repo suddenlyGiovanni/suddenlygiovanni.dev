@@ -1,7 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import type { MDXProviderComponents } from '@mdx-js/react'
-import React from 'react'
-
 import { Code } from './code'
 import { List } from './list'
 import { ListItem } from './list-item'
@@ -21,7 +18,9 @@ export const mdxComponents: MDXProviderComponents = {
   p: Paragraph,
   ul: List,
   li: ListItem,
-  pre: (preProps) => {
+  pre: (
+    preProps: React.ComponentProps<React.FunctionComponent<any>>
+  ): JSX.Element => {
     const props = preToCodeBlock(preProps)
     // if there's a codeString and some props, we passed the test
     if (props) {

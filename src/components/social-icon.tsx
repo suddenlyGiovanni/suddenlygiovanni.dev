@@ -1,24 +1,25 @@
-import { IconBaseProps } from 'react-icons'
+import type { IconBaseProps, IconType } from 'react-icons'
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
-export const IconMap = new Map([
+export type SocialNetworks = 'twitter' | 'github' | 'linkedin'
+
+export const IconMap: ReadonlyMap<SocialNetworks, IconType> = new Map([
   ['twitter', FaTwitter],
   ['github', FaGithub],
   ['linkedin', FaLinkedin],
-])
+] as const)
 
-type Props = {
-  network: string
-} & IconBaseProps
+interface Props extends IconBaseProps {
+  network: SocialNetworks
+}
 
-export const SocialIcon = ({ network, ...props }: Props): JSX.Element => {
-  const iconMapKey = network.toLowerCase()
+export const SocialIcon: React.VFC<Props> = ({ network, ...props }) => {
+  const iconMapKey = network.toLowerCase() as SocialNetworks
   if (!IconMap.has(iconMapKey)) {
     throw new Error(
       "couldn't find the social icon associated to the required network key"
     )
   } else {
-    const Icon = IconMap.get(iconMapKey)
-    return Icon!(props)
+    return IconMap.get(iconMapKey)!(props)
   }
 }

@@ -1,36 +1,37 @@
-import { css } from '@emotion/core'
-import React from 'react'
+import styled from 'styled-components'
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-type Props = { [key: string]: unknown }
-export const Dump = (props: Props): JSX.Element => (
-  <div
-    css={css`
-      padding: 10px;
+const Container = styled.div`
+  padding: 10px;
 
-      font-size: 20px;
+  font-size: 20px;
 
-      background: white;
-      border: 1px solid #efefef;
-    `}
-  >
-    {Object.entries(props).map(([key, val]) => (
+  background: white;
+  border: 1px solid #efefef;
+`
+
+const DumpKeyStyled = styled.strong`
+  color: white;
+
+  background: red;
+`
+
+interface Props {
+  readonly children?: Readonly<Record<string, any>>
+}
+
+export const Dump: React.VFC<Props> = ({ children = {} }) => (
+  <Container>
+    {Object.entries(children).map(([key, val]) => (
       <pre key={key}>
-        <strong
-          css={css`
-            color: white;
-
-            background: red;
-          `}
-        >
+        <DumpKeyStyled>
           {key}
 
           <span role="img" aria-label="poop">
             💩
           </span>
-        </strong>
+        </DumpKeyStyled>
         {JSON.stringify(val, null, 2)}
       </pre>
     ))}
-  </div>
+  </Container>
 )

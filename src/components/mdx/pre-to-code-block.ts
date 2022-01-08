@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Language } from 'prism-react-renderer'
 
-type PreProps = {
+interface PreProps {
   children?: {
     props: {
       /** "pre" */
@@ -16,26 +14,28 @@ type PreProps = {
       children: string
     }
   }
+
   [prop: string]: any
 }
 
-type Props = {
+interface Props {
   codeString: string
   language: Language
   className: string
+
   [prop: string]: any
 }
 
 export function preToCodeBlock(preProps: PreProps): Props | void {
   if (
-    // children is MDXTag
+    /** children is MDXTag */
     preProps.children &&
-    // MDXTag props
+    /** MDXTag props */
     preProps.children.props &&
-    // if MDXTag is going to render a <code>
+    /** if MDXTag is going to render a <code> */
     preProps.children.props.mdxType === 'code'
   ) {
-    // we have a <pre><code> situation
+    /** we have a <pre><code> situation */
     const {
       children: codeString,
       className = '',

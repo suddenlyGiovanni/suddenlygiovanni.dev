@@ -3,7 +3,14 @@ title: Motivations
 description: What I value in a working environment
 ---
 
-import { ReadLink } from '../components/index'
+import config, { routesMap } from '@config/index'
+import { ReadLink, SEO } from '@components/index'
+
+<SEO
+  titleTemplate="Motivations"
+  description={'What I value in a working environment'}
+  url={config.siteUrl + routesMap.getRoute('motivations').url}
+/>
 
 # My Motivations
 Over the years, I have learned how and under which conditions I like to work, what drives me, and which criteria enhance my productivity and happiness.
@@ -24,7 +31,7 @@ I thrive working in cross-functional teams, where autonomous people help each ot
 I work more effectively when the company shares as much of the long-term intentions as possible. It prevents misunderstandings, leads to better technical decisions, and encourages a trusting work environment.
 
 ## Work-life balance
-I am a workaholic. It easy for me to end up putting work before everything else, my wife, and kids included. This is not a OK behavior. I'm consciously trying to cope with it every day.
+I am a workaholic. It is easy for me to end up putting work before everything else, my wife, and kids included. This is not a OK behavior. I'm consciously trying to cope with it every day.
 
 While I am OK with putting in a few extra hours on rare occasions or getting paged when a critical system is failing, **regular over-time is NOT something that I am willing to do**, and that if recurring must be addressed.
 
@@ -67,4 +74,5 @@ Different contexts where the same clean code principles and good architecture de
 
 **I think of myself as a software engineer who can learn and use this or that API as needed**.
 
-My previous work experience and contact informations are available in my <ReadLink to="/resume">resume</ReadLink>.
+My previous work experience and contact informations are available in my
+<ReadLink to={routesMap.getRoute('resume').url}>resume</ReadLink>.

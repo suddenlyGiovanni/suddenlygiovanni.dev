@@ -1,18 +1,3 @@
 {
-  "eslint.enable": true,
-  "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
-    "**/node_modules": true,
-    "**.tsbuildinfo": true,
-    "lib": true
-  },
-  "cSpell.words": ["frontmatter"],
-  "editor.codeActionsOnSave": {
-    "source.fixAll.stylelint": true
-    // "source.fixAll.eslint": true
-  }
+  "cSpell.language": "en"
 }
