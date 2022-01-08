@@ -8,7 +8,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="def6843a-5510-4598-8c4d-3fb22cee7e55" name="Changes" comment="feat(lib): add typography">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +85,7 @@
       <selected-paths>
         <path>
           <id value="$PROJECT_DIR$/package.json" />
-          <id value="develop" />
+          <id value="clean" />
         </path>
       </selected-paths>
     </layout>
@@ -95,7 +98,7 @@
   </component>
   <component name="ProblemsViewState">
     <option name="proportion" value="0.33638585" />
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="1zSIjp4e6Z7zF5P5B1tRbQdZ3il" />
   <component name="ProjectLevelVcsManager">
@@ -221,8 +224,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.develop" />
         <item itemvalue="npm.clean" />
+        <item itemvalue="npm.develop" />
         <item itemvalue="npm.test" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.serve" />
@@ -350,7 +353,9 @@
       <workItem from="1640175248334" duration="805000" />
       <workItem from="1640463067185" duration="54000" />
       <workItem from="1640463790030" duration="58000" />
-      <workItem from="1640463864035" duration="9516000" />
+      <workItem from="1640463864035" duration="10450000" />
+      <workItem from="1640533555034" duration="89000" />
+      <workItem from="1641640218887" duration="5204000" />
     </task>
     <servers />
   </component>
@@ -549,5 +554,13 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.github.lppedd.cc.CommitBuilderDialog">
+    <type>chore</type>
+    <scope>build</scope>
+    <subject>add netlify config file</subject>
+    <footers>
+      <entry type="" value="" />
+    </footers>
   </component>
 </project>
