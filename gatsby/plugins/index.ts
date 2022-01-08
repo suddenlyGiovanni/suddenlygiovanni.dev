@@ -1,6 +1,7 @@
 export * from './gatsby-plugin-image'
 export * from './gatsby-plugin-manifest'
 export * from './gatsby-plugin-mdx'
+export * from './gatsby-plugin-netlify'
 export * from './gatsby-plugin-react-helmet'
 export * from './gatsby-plugin-sharp'
 export * from './gatsby-plugin-styled-components'

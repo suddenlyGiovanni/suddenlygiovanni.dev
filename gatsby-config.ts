@@ -4,6 +4,8 @@ import config, { routesMap } from './config'
 
 import * as Plugins from './gatsby/plugins'
 
+const gatsbyPluginNetlify = Plugins.makeGatsbyPluginNetlify()
+
 const gatsbySourceFilesystemBlog =
   Plugins.makeGatsbySourceFilesystemPluginConfig({
     path: 'content/blog',
@@ -155,6 +157,8 @@ const gatsbyPluginTsconfigPaths = Plugins.makeGatsbyPluginTsconfigPaths()
 
 export default withMetaConfig(({ loadPlugins }) => {
   const plugins = loadPlugins([
+    gatsbyPluginNetlify,
+
     // 1. Transformers
     gatsbyTransformerJson,
     gatsbyTransformerSharp,

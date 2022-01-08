@@ -52,12 +52,8 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="migration/gatsby-v4" />
-                    <option name="lastUsedInstant" value="1634146996" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="migration-gatsby-v4" />
-                    <option name="lastUsedInstant" value="1634146995" />
+                    <option name="branchName" value="gatsby-plugin-netlify" />
+                    <option name="lastUsedInstant" value="1641665483" />
                   </RecentBranch>
                 </list>
               </option>
@@ -116,6 +112,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.ScratchImplUtil$2/Change Language" value="JSON5" />
     <property name="com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File" value="TypeScript&#10;HTML&#10;TEXT&#10;JavaScript" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="17.0.1" />

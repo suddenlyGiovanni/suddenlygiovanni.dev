@@ -19,3 +19,5 @@
   NODE_VERSION = "17.2.0"
 
 
+[[plugins]]
+  package = "@netlify/plugin-gatsby"
