@@ -2,7 +2,10 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 const resumePdfURLQuery = graphql`
   query GetResumePdfURL {
-    file(name: { eq: "giovanni-ravalico-resume" }, extension: { eq: "pdf" }) {
+    file(
+      name: { eq: "giovanni-ravalico-resume-2021" }
+      extension: { eq: "pdf" }
+    ) {
       id
       publicURL
     }

@@ -166,7 +166,7 @@ interface Props {
   readonly highlights: ReadonlyArray<string>
 }
 
-export const SectionItem: React.VFC<Props & React.ComponentProps<'dl'>> = ({
+export const SectionItem: React.FC<Props & React.ComponentProps<'dl'>> = ({
   heading1,
   heading1AriaLabel,
   heading2,
@@ -178,6 +178,7 @@ export const SectionItem: React.VFC<Props & React.ComponentProps<'dl'>> = ({
   description,
   summary,
   highlights,
+  children,
   ...dlProps
 }) => (
   <dl {...dlProps}>
@@ -194,5 +195,6 @@ export const SectionItem: React.VFC<Props & React.ComponentProps<'dl'>> = ({
     />
     <DescriptionDetailsSummary summary={summary} />
     <DescriptionDetailsHighlightsStyled highlights={highlights} />
+    {children}
   </dl>
 )
