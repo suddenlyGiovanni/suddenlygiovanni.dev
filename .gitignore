@@ -71,4 +71,11 @@ yarn-error.log
 netlify/functions/gatsby
 # @netlify/plugin-gatsby ignores end
 
-.idea/
+/.idea/workspace.xml
+/.idea/usage.statistics.xml
+/.idea/shelf
+/.idea/**.iml
+/.idea/modules.xml
+/.idea/gradle.xml
+/.idea/libraries
+
