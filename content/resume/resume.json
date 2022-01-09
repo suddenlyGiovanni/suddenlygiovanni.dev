@@ -7,7 +7,7 @@
     "email": "ravalico.giovanni@gmail.com",
     "phone": "+49 (0) 162 455 6031",
     "url": "https://suddenlyGiovanni.dev",
-    "summary": "I am a Software Developer, a geek and more generally a problem solver. I am also a young father of two and a devoted husband. My transition from the social sciences to software engineering has enhanced my innate curiosity, my pragmatic approach, and desire to find new ways to solve old problems. I’m looking to work in an environment where I can continuously grow as a developer, where experimentation is encouraged and where I can tackle the hardest problems.",
+    "summary": "I am a Software Developer, a geek, and, more generally, a problem solver in the continuous pursuit of meaning. I am also a young father of three and a devoted husband. My transition from the social sciences to software engineering has enhanced my innate curiosity, pragmatic approach, and desire to find new ways to solve old problems. I’m looking to work in an environment where I can continuously grow as a developer, where experimentation is encouraged, failure is the tool to shape a better understanding of the given domain, and my efforts add up to something truly useful.",
     "location": {
       "address": "Ferdinandstraße 11",
       "postalCode": "12209",
@@ -35,6 +35,34 @@
   },
   "work": [
     {
+      "name": "Bettermarks Gmbh",
+      "location": "Berlin, Germany",
+      "description": "EdTech",
+      "url": "https://bettermarks.com",
+      "startDate": "2021-04-01",
+      "endDate": "2021-10-31",
+      "position": "Software Developer",
+      "summary": "Bettermarks is a software company that has developed an adaptive learning platform for highly interactive math books to be used in schools, enabling students to learn from their mistakes through AHA moments.",
+      "highlights": [
+        "The 30 thousand feet view of the systems architecture is of an event-driven modular monolithic Python backend, currently migrating to an event-driven microservices architecture. Content Developers author the content in the internal DSL, this is then compiled by the Compiler/Generator that outputs an intermediary XML representation. The students can explore the interactive content and solve exercises with the Exercise App, a SPA web app that sources the appropriate XLM content, parses, renders, execute, validates while emitting the proper events to the backend. I was the code owner of the Exercise App.",
+        "Pragmatically tackle the technical debt while working within legacy systems.",
+        "Tackle the constant influx of bugs.",
+        "Maintain and improve code quality.",
+        "I assist with the translation of the ActionScript Generator unit tests to Kotlin.",
+        "Pushed for a clear Big Picture view of the systems that make up Bettermarks => settled for ARC42 approach and contributed to documentation.",
+        "Drive the conversation on the necessity and benefits of the Domain-Driven-Design (DDD) approach in light of the new architectural non-functional requirements. => Obtain budget and time for a series of DDD workshops to understand the 'Problem Space' better and identify an appropriate 'Solution Space'.",
+        "Drove the discussion around a formalization of a Technical Roadmap => identifying the 'Problem Space' and proposed a matching 'Solution Space'.",
+        "Pushed for a better runtime error tracking/management solution => commit to integrating Sentry as a solution.",
+        "Refactor issue tracking system (Jira) from a 'big ball of mud' to a multi-project-centric approach.",
+        "Introduced and implemented Dual-Track Agile as a process (discovery track -> delivery track) => previously, there was no distinction.",
+        "Tech: [ Typescript, Kotlin, React, Redux, Jest, Cypress, MongoDb ]."
+      ],
+      "contact": {
+        "name": "York Zalander (CTO)",
+        "email": "york.xylander@bettermarks.com"
+      }
+    },
+    {
       "name": "ToolTime Gmbh",
       "location": "Berlin, Germany",
       "description": "B2B SAAS",
@@ -51,7 +79,11 @@
         "Foster a culture of continuous delivery, pair programming, and test-driven development.",
         "Solving challenging problems in the areas of communication & chat, scheduling & disposition, routing & navigation, order management, and documentation.",
         "Tech: [ Typescript, React and React Native, CSS-in-JS, GraphQL, Redux, RxJs, Apollo, Jest, Cypress ]."
-      ]
+      ],
+      "contact": {
+        "name": "Slawomir Smiechura (VP of Engineering)",
+        "email": "slawomir.smiechura@tooltime.de"
+      }
     },
     {
       "name": "Appico Gmbh",
@@ -66,8 +98,12 @@
         "Enable a new service offering to our customers by researching and studying mobile app development with React Native.",
         "Organize the knowledge transfer to the rest of the team. Build several in house prototypes to illustrate commonalities and differences with regular web development.",
         "Reduce the time needed to go from idea to prototype by developing a boilerplate project setup based on best practices and company requirements.",
-        "Tech: [ TypeScript, React Native, Redux, Storybook, Apollo, GraphQL, styled- components, Lottie, Jest ]."
-      ]
+        "Tech: [ TypeScript, React Native, Redux, Storybook, Apollo, GraphQL, styled-components, Lottie, Jest ]."
+      ],
+      "contact": {
+        "name": "Arvid Gerstmann (CTO)",
+        "email": "arvid.gerstmann@appico.com"
+      }
     },
     {
       "name": "Appico Gmbh",
@@ -85,7 +121,11 @@
         "I enabled a resilient user experience by building a Progressive Single Page App (PWA) with React, Redux, and Apollo.",
         "I streamlined the design to code the implementation process by fostering a “component-driven development” approach. To achieve so, I coached both designers and my peers.",
         "Tech: [ TypeScript, Flow, React, SCSS, Redux, Storybook, Apollo, GraphQL, styled-components, Jest, Twilio, AWS IoT, Serverless, Node, AWS Lambda, Docker ]."
-      ]
+      ],
+      "contact": {
+        "name": "Arvid Gerstmann (CTO)",
+        "email": "arvid.gerstmann@appico.com"
+      }
     },
     {
       "name": "MadeByEnka",
@@ -98,7 +138,7 @@
       "summary": "Co-founded and managed a Lifestyle brand with my wife.",
       "highlights": [
         "Designed, developed and implemented the brand online presence by building the frontend on top of Shopify service.",
-        "Tech: [JS, HTML, CSS, JQuery, Shopify]."
+        "Tech: [ JS, HTML, CSS, JQuery, Shopify ]."
       ]
     },
     {
@@ -172,9 +212,12 @@
       "keywords": [
         "TypeScript",
         "Flow",
-        "JavaScript (ESNext)",
+        "JavaScript",
         "SQL",
-        "GraphQL"
+        "GraphQL",
+        "Kotlin (beginner)",
+        "Scala (beginner)",
+        "Java (beginner)"
       ]
     },
     {
@@ -188,9 +231,7 @@
         "Continuous Integration (CI)",
         "Continuous Delivery (CD)",
         "Test-driven development (TDD)",
-        "Pair programming",
-        "Timeboxing",
-        "Refactoring"
+        "Pair programming"
       ]
     },
     {
@@ -199,7 +240,8 @@
       "keywords": [
         "Functional programming (FP)",
         "Object-oriented programming (OOP)",
-        "Clean Code Principles"
+        "Clean Code Principles",
+        "Clean Code Architecture"
       ]
     },
     {
@@ -266,12 +308,20 @@
     {
       "name": "APIs",
       "level": "",
-      "keywords": ["GraphQL", "RESTful"]
+      "keywords": [
+        "GraphQL",
+        "RESTful"
+      ]
     },
     {
       "name": "Tools",
       "level": "",
-      "keywords": ["Git", "Docker", "CircleCI", "GitHub Actions"]
+      "keywords": [
+        "Git",
+        "Docker",
+        "CircleCI",
+        "GitHub Actions"
+      ]
     }
   ],
   "languages": [
@@ -287,14 +337,25 @@
   "interests": [
     {
       "name": "Functional Programming",
-      "keywords": ["ReasonML", "Clojure", "Haskell"]
+      "keywords": [
+        "Scala",
+        "Rust",
+        "Haskell"
+      ]
+    },
+    {
+      "name": "Object Oriented Programming",
+      "keywords": [
+        "Kotlin",
+        "Java"
+      ]
     }
   ],
   "references": [],
   "projects": [],
   "meta": {
     "canonical": "",
-    "lastModified": "2020-09-21T11:12:42.839Z",
-    "version": "v1.1.0"
+    "lastModified": "2022-01-09T18:44:13.077Z",
+    "version": "v1.2.0"
   }
 }

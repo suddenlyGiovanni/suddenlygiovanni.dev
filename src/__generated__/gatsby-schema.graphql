@@ -877,7 +877,6 @@ type ResumeJsonWork {
   name: String
   location: String
   description: String
-  position: String
   url: String
   startDate(
     # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
@@ -905,8 +904,15 @@ type ResumeJsonWork {
     # Configures the locale Moment.js will use to format the date.
     locale: String
   ): Date
+  position: String
   summary: String
   highlights: [String]
+  contact: ResumeJsonWorkContact
+}
+
+type ResumeJsonWorkContact {
+  name: String
+  email: String
 }
 
 type ResumeJsonEducation {
@@ -1285,12 +1291,18 @@ input ResumeJsonWorkFilterInput {
   name: StringQueryOperatorInput
   location: StringQueryOperatorInput
   description: StringQueryOperatorInput
-  position: StringQueryOperatorInput
   url: StringQueryOperatorInput
   startDate: DateQueryOperatorInput
   endDate: DateQueryOperatorInput
+  position: StringQueryOperatorInput
   summary: StringQueryOperatorInput
   highlights: StringQueryOperatorInput
+  contact: ResumeJsonWorkContactFilterInput
+}
+
+input ResumeJsonWorkContactFilterInput {
+  name: StringQueryOperatorInput
+  email: StringQueryOperatorInput
 }
 
 input ResumeJsonEducationFilterListInput {
@@ -1867,12 +1879,14 @@ enum FileFieldsEnum {
   childrenResumeJson___work___name
   childrenResumeJson___work___location
   childrenResumeJson___work___description
-  childrenResumeJson___work___position
   childrenResumeJson___work___url
   childrenResumeJson___work___startDate
   childrenResumeJson___work___endDate
+  childrenResumeJson___work___position
   childrenResumeJson___work___summary
   childrenResumeJson___work___highlights
+  childrenResumeJson___work___contact___name
+  childrenResumeJson___work___contact___email
   childrenResumeJson___education
   childrenResumeJson___education___institution
   childrenResumeJson___education___url
@@ -1955,12 +1969,14 @@ enum FileFieldsEnum {
   childResumeJson___work___name
   childResumeJson___work___location
   childResumeJson___work___description
-  childResumeJson___work___position
   childResumeJson___work___url
   childResumeJson___work___startDate
   childResumeJson___work___endDate
+  childResumeJson___work___position
   childResumeJson___work___summary
   childResumeJson___work___highlights
+  childResumeJson___work___contact___name
+  childResumeJson___work___contact___email
   childResumeJson___education
   childResumeJson___education___institution
   childResumeJson___education___url
@@ -3670,12 +3686,14 @@ enum ResumeJsonFieldsEnum {
   work___name
   work___location
   work___description
-  work___position
   work___url
   work___startDate
   work___endDate
+  work___position
   work___summary
   work___highlights
+  work___contact___name
+  work___contact___email
   education
   education___institution
   education___url
