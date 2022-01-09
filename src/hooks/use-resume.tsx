@@ -98,6 +98,7 @@ function mapToWork(
         | 'startDate'
         | 'summary'
         | 'url'
+        | 'contact'
       >
     | undefined
 ): Readonly<R.Work> {
@@ -132,6 +133,8 @@ function mapToWork(
      * e.g. http://facebook.example.com
      */
     url: work?.url,
+
+    contact: work?.contact as undefined | R.Work['contact'],
   }
 }
 
@@ -347,6 +350,10 @@ const resumeQuery = graphql`
         startDate
         summary
         url
+        contact {
+          name
+          email
+        }
       }
       education {
         area
