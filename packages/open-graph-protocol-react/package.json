@@ -43,7 +43,7 @@
   "license": "MIT",
   "main": "./src/**.ts",
   "name": "@suddenlygiovanni/open-graph-protocol-react",
-  "packageManager": "pnpm@6.24.1",
+  "packageManager": "pnpm@6.32.2",
   "peerDependencies": {
     "react": "^17.0.0"
   },

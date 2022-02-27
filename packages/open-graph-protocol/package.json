@@ -36,7 +36,7 @@
   "license": "MIT",
   "main": "./src/index.ts",
   "name": "@suddenlygiovanni/open-graph-protocol",
-  "packageManager": "pnpm@6.24.1",
+  "packageManager": "pnpm@6.32.2",
   "publishConfig": {
     "exports": "./dist/index.js",
     "imports": "./dist/**.js",
