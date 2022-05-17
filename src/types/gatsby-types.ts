@@ -268,6 +268,7 @@ type Site = Node & {
   readonly jsxRuntime: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly pathPrefix: Maybe<Scalars['String']>;
+  readonly trailingSlash: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly parent: Maybe<Node>;
   readonly children: ReadonlyArray<Node>;
@@ -1016,6 +1017,7 @@ type Query_siteArgs = {
   jsxRuntime: Maybe<StringQueryOperatorInput>;
   polyfill: Maybe<BooleanQueryOperatorInput>;
   pathPrefix: Maybe<StringQueryOperatorInput>;
+  trailingSlash: Maybe<StringQueryOperatorInput>;
   id: Maybe<StringQueryOperatorInput>;
   parent: Maybe<NodeFilterInput>;
   children: Maybe<NodeFilterListInput>;
@@ -2710,6 +2712,7 @@ type SiteFieldsEnum =
   | 'jsxRuntime'
   | 'polyfill'
   | 'pathPrefix'
+  | 'trailingSlash'
   | 'id'
   | 'parent.id'
   | 'parent.parent.id'
@@ -2846,6 +2849,7 @@ type SiteFilterInput = {
   readonly jsxRuntime: Maybe<StringQueryOperatorInput>;
   readonly polyfill: Maybe<BooleanQueryOperatorInput>;
   readonly pathPrefix: Maybe<StringQueryOperatorInput>;
+  readonly trailingSlash: Maybe<StringQueryOperatorInput>;
   readonly id: Maybe<StringQueryOperatorInput>;
   readonly parent: Maybe<NodeFilterInput>;
   readonly children: Maybe<NodeFilterListInput>;
@@ -4451,10 +4455,56 @@ type ResumeJsonSortInput = {
   readonly order: Maybe<ReadonlyArray<Maybe<SortOrderEnum>>>;
 };
 
+type SiteMetadataFragmentFragment = (
+  Pick<SiteSiteMetadata, 'title' | 'description' | 'titleAlt' | 'titleTemplate' | 'url' | 'image' | 'imageAlt' | 'language' | 'locale' | 'keywords'>
+  & { readonly author: Pick<Author, 'name' | 'summary'>, readonly social: Pick<Social, 'github' | 'linkedin'>, readonly routes: ReadonlyArray<RouteFragmentFragment> }
+);
+
+type RouteFragmentFragment = Pick<Route, 'uri' | 'url' | 'title' | 'description' | 'disabled' | 'hidden'>;
+
+type SiteSiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type SiteSiteMetadataQuery = { readonly site: Maybe<(
+    Pick<Site, 'buildTime'>
+    & { readonly siteMetadata: Maybe<SiteMetadataFragmentFragment> }
+  )> };
+
 type GetResumePdfURLQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 type GetResumePdfURLQuery = { readonly file: Maybe<Pick<File, 'id' | 'publicURL'>> };
+
+type BlogPostDetailsFragment = (
+  Pick<Mdx, 'fileAbsolutePath' | 'id' | 'excerpt'>
+  & { readonly fields: Maybe<Pick<MdxFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'author' | 'date' | 'description' | 'banner' | 'bannerCredit' | 'published' | 'unlisted' | 'redirects'>>, readonly parent: Maybe<Pick<File, 'name' | 'sourceInstanceName'>> }
+);
+
+type CreatePagesDataQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type CreatePagesDataQuery = { readonly allMdx: { readonly blogPosts: ReadonlyArray<{ readonly blogPost: BlogPostDetailsFragment, readonly next: Maybe<(
+        Pick<Mdx, 'id' | 'fileAbsolutePath'>
+        & { readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
+      )>, readonly previous: Maybe<(
+        Pick<Mdx, 'id' | 'fileAbsolutePath'>
+        & { readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
+      )> }> } };
+
+type RoutesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type RoutesQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly routes: ReadonlyArray<RouteFragmentFragment> }> }> };
+
+type PostPreviewDataFragment = (
+  Pick<Mdx, 'id' | 'excerpt' | 'timeToRead'>
+  & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'author' | 'title' | 'description' | 'date'>>, readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
+);
+
+type PostsPreviewsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+type PostsPreviewsQuery = { readonly allMdx: { readonly posts: ReadonlyArray<PostPreviewDataFragment> } };
 
 type ResumeQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -4476,52 +4526,6 @@ type PostByIdQuery = { readonly post: Maybe<(
     Pick<Mdx, 'body'>
     & { readonly fields: Maybe<Pick<MdxFields, 'id' | 'published' | 'title' | 'author' | 'description' | 'slug' | 'date' | 'categories' | 'redirects' | 'editLink' | 'historyLink'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'unlisted'>> }
   )> };
-
-type RouteFragmentFragment = Pick<Route, 'uri' | 'url' | 'title' | 'description' | 'disabled' | 'hidden'>;
-
-type RoutesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type RoutesQuery = { readonly site: Maybe<{ readonly siteMetadata: Maybe<{ readonly routes: ReadonlyArray<RouteFragmentFragment> }> }> };
-
-type BlogPostDetailsFragment = (
-  Pick<Mdx, 'fileAbsolutePath' | 'id' | 'excerpt'>
-  & { readonly fields: Maybe<Pick<MdxFields, 'slug'>>, readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'title' | 'author' | 'date' | 'description' | 'banner' | 'bannerCredit' | 'published' | 'unlisted' | 'redirects'>>, readonly parent: Maybe<Pick<File, 'name' | 'sourceInstanceName'>> }
-);
-
-type CreatePagesDataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type CreatePagesDataQuery = { readonly allMdx: { readonly blogPosts: ReadonlyArray<{ readonly blogPost: BlogPostDetailsFragment, readonly next: Maybe<(
-        Pick<Mdx, 'id' | 'fileAbsolutePath'>
-        & { readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
-      )>, readonly previous: Maybe<(
-        Pick<Mdx, 'id' | 'fileAbsolutePath'>
-        & { readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
-      )> }> } };
-
-type SiteMetadataFragmentFragment = (
-  Pick<SiteSiteMetadata, 'title' | 'description' | 'titleAlt' | 'titleTemplate' | 'url' | 'image' | 'imageAlt' | 'language' | 'locale' | 'keywords'>
-  & { readonly author: Pick<Author, 'name' | 'summary'>, readonly social: Pick<Social, 'github' | 'linkedin'>, readonly routes: ReadonlyArray<RouteFragmentFragment> }
-);
-
-type SiteSiteMetadataQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type SiteSiteMetadataQuery = { readonly site: Maybe<(
-    Pick<Site, 'buildTime'>
-    & { readonly siteMetadata: Maybe<SiteMetadataFragmentFragment> }
-  )> };
-
-type PostPreviewDataFragment = (
-  Pick<Mdx, 'id' | 'excerpt' | 'timeToRead'>
-  & { readonly frontmatter: Maybe<Pick<MdxFrontmatter, 'slug' | 'author' | 'title' | 'description' | 'date'>>, readonly fields: Maybe<Pick<MdxFields, 'slug'>> }
-);
-
-type PostsPreviewsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type PostsPreviewsQuery = { readonly allMdx: { readonly posts: ReadonlyArray<PostPreviewDataFragment> } };
 
 type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
 
