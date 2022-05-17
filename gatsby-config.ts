@@ -1,7 +1,6 @@
-import { withMetaConfig } from 'gatsby-ts'
+import type { GatsbyConfig } from 'gatsby'
 
 import config, { routesMap } from './config'
-
 import * as Plugins from './gatsby/plugins'
 
 const gatsbyPluginNetlify = Plugins.makeGatsbyPluginNetlify()
@@ -155,8 +154,10 @@ const siteMetadata: Readonly<GatsbyTypes.SiteSiteMetadata> = {
 
 const gatsbyPluginTsconfigPaths = Plugins.makeGatsbyPluginTsconfigPaths()
 
-export default withMetaConfig(({ loadPlugins }) => {
-  const plugins = loadPlugins([
+const gatsbyConfig: GatsbyConfig = {
+  jsxRuntime: 'automatic',
+  siteMetadata,
+  plugins: [
     gatsbyPluginNetlify,
 
     // 1. Transformers
@@ -184,11 +185,7 @@ export default withMetaConfig(({ loadPlugins }) => {
     // `gatsby-plugin-offline`,
 
     // 3. Local plugins
-  ])
+  ],
+}
 
-  return {
-    jsxRuntime: 'automatic',
-    siteMetadata,
-    plugins,
-  }
-})
+export default gatsbyConfig
