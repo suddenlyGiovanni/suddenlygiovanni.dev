@@ -1,5 +1,6 @@
 import type { GatsbyNode, Node } from 'gatsby'
 import { createFilePath } from 'gatsby-source-filesystem'
+import path from 'path'
 
 import config from '../../config'
 
@@ -23,7 +24,7 @@ const onCreateMdxNode: GatsbyNode['onCreateNode'] = ({
   actions,
   getNode,
 }): void => {
-  const { frontmatter } = node as NodeWithFrontmatter
+  const { frontmatter } = node as unknown as NodeWithFrontmatter
   // const parentNode = getNode(node.parent!)
   const { createNodeField } = actions
 
@@ -34,56 +35,67 @@ const onCreateMdxNode: GatsbyNode['onCreateNode'] = ({
       getNode,
       basePath: 'content/blog',
     })
+
   createNodeField({ name: 'slug', node, value: slug })
+
   createNodeField({ name: 'id', node, value: node.id })
+
   createNodeField({
     name: 'published',
     node,
     value: frontmatter?.published || false,
   })
+
   createNodeField({
     name: 'title',
     node,
     value: frontmatter.title || 'Missing `frontmatter title`',
   })
+
   createNodeField({
     name: 'author',
     node,
     value: frontmatter.author || config.author,
   })
+
   createNodeField({
     name: 'description',
     node,
     value: frontmatter.description || 'Missing `frontmatter description`',
   })
+
   createNodeField({
     name: 'date',
     node,
     value: frontmatter.date || new Date('1986-02-13').toISOString(),
   })
+
   createNodeField({
     name: 'categories',
     node,
     value: frontmatter.categories || [],
   })
+
   createNodeField({
     name: 'redirects',
     node,
     value: frontmatter.redirects,
   })
+
   createNodeField({
     name: 'editLink',
     node,
-    value: `https://github.com/suddenlyGiovanni/suddenlygiovanni.dev/edit/master${(
+    value: `https://github.com/suddenlyGiovanni/suddenlygiovanni.dev/edit/main${(
       node.fileAbsolutePath as string
-    ).replace(__dirname, '')}`,
+    ).replace(path.resolve(), '')}`,
   })
+
   createNodeField({
     name: 'historyLink',
     node,
-    value: `https://github.com/suddenlyGiovanni/suddenlygiovanni.dev/commits/master${(
+    value: `https://github.com/suddenlyGiovanni/suddenlygiovanni.dev/commits/main${(
       node.fileAbsolutePath as string
-    ).replace(__dirname, '')}`,
+    ).replace(path.resolve(), '')}`,
   })
 }
 

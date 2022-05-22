@@ -343,6 +343,7 @@ type Site implements Node {
   port: Int
   host: String
   jsxRuntime: String
+  flags: SiteFlags
   polyfill: Boolean
   pathPrefix: String
   trailingSlash: String
@@ -350,6 +351,10 @@ type Site implements Node {
   parent: Node
   children: [Node!]!
   internal: Internal!
+}
+
+type SiteFlags {
+  DETECT_NODE_MUTATIONS: Boolean
 }
 
 type SiteSiteMetadata {
@@ -833,6 +838,37 @@ type Social {
   linkedin: String!
 }
 
+type MarkdownRemark implements Node {
+  frontmatter: Frontmatter
+  fields: Fields
+  id: ID!
+  parent: Node
+  children: [Node!]!
+  internal: Internal!
+}
+
+type Frontmatter {
+  title: String
+  description: String
+  date(
+    # Format the date using Moment.js' date tokens, e.g. `date(formatString: "YYYY MMMM DD")`. See https://momentjs.com/docs/#/displaying/format/ for documentation for different tokens.
+    formatString: String
+
+    # Returns a string generated with Moment.js' `fromNow` function
+    fromNow: Boolean
+
+    # Returns the difference between this date and the current time. Defaults to "milliseconds" but you can also pass in as the measurement "years", "months", "weeks", "days", "hours", "minutes", and "seconds".
+    difference: String
+
+    # Configures the locale Moment.js will use to format the date.
+    locale: String
+  ): Date
+}
+
+type Fields {
+  slug: String
+}
+
 type ResumeJson implements Node {
   id: ID!
   parent: Node
@@ -991,7 +1027,7 @@ type Query {
   allFile(filter: FileFilterInput, sort: FileSortInput, skip: Int, limit: Int): FileConnection!
   directory(sourceInstanceName: StringQueryOperatorInput, absolutePath: StringQueryOperatorInput, relativePath: StringQueryOperatorInput, extension: StringQueryOperatorInput, size: IntQueryOperatorInput, prettySize: StringQueryOperatorInput, modifiedTime: DateQueryOperatorInput, accessTime: DateQueryOperatorInput, changeTime: DateQueryOperatorInput, birthTime: DateQueryOperatorInput, root: StringQueryOperatorInput, dir: StringQueryOperatorInput, base: StringQueryOperatorInput, ext: StringQueryOperatorInput, name: StringQueryOperatorInput, relativeDirectory: StringQueryOperatorInput, dev: IntQueryOperatorInput, mode: IntQueryOperatorInput, nlink: IntQueryOperatorInput, uid: IntQueryOperatorInput, gid: IntQueryOperatorInput, rdev: IntQueryOperatorInput, ino: FloatQueryOperatorInput, atimeMs: FloatQueryOperatorInput, mtimeMs: FloatQueryOperatorInput, ctimeMs: FloatQueryOperatorInput, atime: DateQueryOperatorInput, mtime: DateQueryOperatorInput, ctime: DateQueryOperatorInput, birthtime: DateQueryOperatorInput, birthtimeMs: FloatQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Directory
   allDirectory(filter: DirectoryFilterInput, sort: DirectorySortInput, skip: Int, limit: Int): DirectoryConnection!
-  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, port: IntQueryOperatorInput, host: StringQueryOperatorInput, jsxRuntime: StringQueryOperatorInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, trailingSlash: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
+  site(buildTime: DateQueryOperatorInput, siteMetadata: SiteSiteMetadataFilterInput, port: IntQueryOperatorInput, host: StringQueryOperatorInput, jsxRuntime: StringQueryOperatorInput, flags: SiteFlagsFilterInput, polyfill: BooleanQueryOperatorInput, pathPrefix: StringQueryOperatorInput, trailingSlash: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Site
   allSite(filter: SiteFilterInput, sort: SiteSortInput, skip: Int, limit: Int): SiteConnection!
   siteFunction(functionRoute: StringQueryOperatorInput, pluginName: StringQueryOperatorInput, originalAbsoluteFilePath: StringQueryOperatorInput, originalRelativeFilePath: StringQueryOperatorInput, relativeCompiledFilePath: StringQueryOperatorInput, absoluteCompiledFilePath: StringQueryOperatorInput, matchPath: StringQueryOperatorInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): SiteFunction
   allSiteFunction(filter: SiteFunctionFilterInput, sort: SiteFunctionSortInput, skip: Int, limit: Int): SiteFunctionConnection!
@@ -1005,6 +1041,8 @@ type Query {
   allImageSharp(filter: ImageSharpFilterInput, sort: ImageSharpSortInput, skip: Int, limit: Int): ImageSharpConnection!
   mdx(rawBody: StringQueryOperatorInput, fileAbsolutePath: StringQueryOperatorInput, frontmatter: MdxFrontmatterFilterInput, slug: StringQueryOperatorInput, body: StringQueryOperatorInput, excerpt: StringQueryOperatorInput, headings: MdxHeadingMdxFilterListInput, html: StringQueryOperatorInput, mdxAST: JSONQueryOperatorInput, tableOfContents: JSONQueryOperatorInput, timeToRead: IntQueryOperatorInput, wordCount: MdxWordCountFilterInput, fields: MdxFieldsFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): Mdx
   allMdx(filter: MdxFilterInput, sort: MdxSortInput, skip: Int, limit: Int): MdxConnection!
+  markdownRemark(frontmatter: FrontmatterFilterInput, fields: FieldsFilterInput, id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput): MarkdownRemark
+  allMarkdownRemark(filter: MarkdownRemarkFilterInput, sort: MarkdownRemarkSortInput, skip: Int, limit: Int): MarkdownRemarkConnection!
   resumeJson(id: StringQueryOperatorInput, parent: NodeFilterInput, children: NodeFilterListInput, internal: InternalFilterInput, _schema: StringQueryOperatorInput, basics: ResumeJsonBasicsFilterInput, work: ResumeJsonWorkFilterListInput, education: ResumeJsonEducationFilterListInput, skills: ResumeJsonSkillsFilterListInput, languages: ResumeJsonLanguagesFilterListInput, interests: ResumeJsonInterestsFilterListInput, meta: ResumeJsonMetaFilterInput): ResumeJson
   allResumeJson(filter: ResumeJsonFilterInput, sort: ResumeJsonSortInput, skip: Int, limit: Int): ResumeJsonConnection!
 }
@@ -2348,6 +2386,10 @@ input SocialFilterInput {
   linkedin: StringQueryOperatorInput
 }
 
+input SiteFlagsFilterInput {
+  DETECT_NODE_MUTATIONS: BooleanQueryOperatorInput
+}
+
 type SiteConnection {
   totalCount: Int!
   edges: [SiteEdge!]!
@@ -2393,6 +2435,7 @@ enum SiteFieldsEnum {
   port
   host
   jsxRuntime
+  flags___DETECT_NODE_MUTATIONS
   polyfill
   pathPrefix
   trailingSlash
@@ -2504,6 +2547,7 @@ input SiteFilterInput {
   port: IntQueryOperatorInput
   host: StringQueryOperatorInput
   jsxRuntime: StringQueryOperatorInput
+  flags: SiteFlagsFilterInput
   polyfill: BooleanQueryOperatorInput
   pathPrefix: StringQueryOperatorInput
   trailingSlash: StringQueryOperatorInput
@@ -3560,6 +3604,155 @@ type MdxGroupConnection {
 
 input MdxSortInput {
   fields: [MdxFieldsEnum]
+  order: [SortOrderEnum] = [ASC]
+}
+
+input FrontmatterFilterInput {
+  title: StringQueryOperatorInput
+  description: StringQueryOperatorInput
+  date: DateQueryOperatorInput
+}
+
+input FieldsFilterInput {
+  slug: StringQueryOperatorInput
+}
+
+type MarkdownRemarkConnection {
+  totalCount: Int!
+  edges: [MarkdownRemarkEdge!]!
+  nodes: [MarkdownRemark!]!
+  pageInfo: PageInfo!
+  distinct(field: MarkdownRemarkFieldsEnum!): [String!]!
+  max(field: MarkdownRemarkFieldsEnum!): Float
+  min(field: MarkdownRemarkFieldsEnum!): Float
+  sum(field: MarkdownRemarkFieldsEnum!): Float
+  group(skip: Int, limit: Int, field: MarkdownRemarkFieldsEnum!): [MarkdownRemarkGroupConnection!]!
+}
+
+type MarkdownRemarkEdge {
+  next: MarkdownRemark
+  node: MarkdownRemark!
+  previous: MarkdownRemark
+}
+
+enum MarkdownRemarkFieldsEnum {
+  frontmatter___title
+  frontmatter___description
+  frontmatter___date
+  fields___slug
+  id
+  parent___id
+  parent___parent___id
+  parent___parent___parent___id
+  parent___parent___parent___children
+  parent___parent___children
+  parent___parent___children___id
+  parent___parent___children___children
+  parent___parent___internal___content
+  parent___parent___internal___contentDigest
+  parent___parent___internal___description
+  parent___parent___internal___fieldOwners
+  parent___parent___internal___ignoreType
+  parent___parent___internal___mediaType
+  parent___parent___internal___owner
+  parent___parent___internal___type
+  parent___children
+  parent___children___id
+  parent___children___parent___id
+  parent___children___parent___children
+  parent___children___children
+  parent___children___children___id
+  parent___children___children___children
+  parent___children___internal___content
+  parent___children___internal___contentDigest
+  parent___children___internal___description
+  parent___children___internal___fieldOwners
+  parent___children___internal___ignoreType
+  parent___children___internal___mediaType
+  parent___children___internal___owner
+  parent___children___internal___type
+  parent___internal___content
+  parent___internal___contentDigest
+  parent___internal___description
+  parent___internal___fieldOwners
+  parent___internal___ignoreType
+  parent___internal___mediaType
+  parent___internal___owner
+  parent___internal___type
+  children
+  children___id
+  children___parent___id
+  children___parent___parent___id
+  children___parent___parent___children
+  children___parent___children
+  children___parent___children___id
+  children___parent___children___children
+  children___parent___internal___content
+  children___parent___internal___contentDigest
+  children___parent___internal___description
+  children___parent___internal___fieldOwners
+  children___parent___internal___ignoreType
+  children___parent___internal___mediaType
+  children___parent___internal___owner
+  children___parent___internal___type
+  children___children
+  children___children___id
+  children___children___parent___id
+  children___children___parent___children
+  children___children___children
+  children___children___children___id
+  children___children___children___children
+  children___children___internal___content
+  children___children___internal___contentDigest
+  children___children___internal___description
+  children___children___internal___fieldOwners
+  children___children___internal___ignoreType
+  children___children___internal___mediaType
+  children___children___internal___owner
+  children___children___internal___type
+  children___internal___content
+  children___internal___contentDigest
+  children___internal___description
+  children___internal___fieldOwners
+  children___internal___ignoreType
+  children___internal___mediaType
+  children___internal___owner
+  children___internal___type
+  internal___content
+  internal___contentDigest
+  internal___description
+  internal___fieldOwners
+  internal___ignoreType
+  internal___mediaType
+  internal___owner
+  internal___type
+}
+
+type MarkdownRemarkGroupConnection {
+  totalCount: Int!
+  edges: [MarkdownRemarkEdge!]!
+  nodes: [MarkdownRemark!]!
+  pageInfo: PageInfo!
+  distinct(field: MarkdownRemarkFieldsEnum!): [String!]!
+  max(field: MarkdownRemarkFieldsEnum!): Float
+  min(field: MarkdownRemarkFieldsEnum!): Float
+  sum(field: MarkdownRemarkFieldsEnum!): Float
+  group(skip: Int, limit: Int, field: MarkdownRemarkFieldsEnum!): [MarkdownRemarkGroupConnection!]!
+  field: String!
+  fieldValue: String
+}
+
+input MarkdownRemarkFilterInput {
+  frontmatter: FrontmatterFilterInput
+  fields: FieldsFilterInput
+  id: StringQueryOperatorInput
+  parent: NodeFilterInput
+  children: NodeFilterListInput
+  internal: InternalFilterInput
+}
+
+input MarkdownRemarkSortInput {
+  fields: [MarkdownRemarkFieldsEnum]
   order: [SortOrderEnum] = [ASC]
 }
 
