@@ -155,6 +155,11 @@ const siteMetadata: Readonly<GatsbyTypes.SiteSiteMetadata> = {
 const gatsbyConfig: GatsbyConfig = {
   jsxRuntime: 'automatic',
   siteMetadata,
+  flags: {
+    DETECT_NODE_MUTATIONS: true,
+    GRAPHQL_TYPEGEN: true,
+  },
+
   plugins: [
     gatsbyPluginNetlify,
 

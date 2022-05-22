@@ -1,18 +1,19 @@
 import type { Actions, GatsbyNode } from 'gatsby'
 
-function createMarkdownRemark(_createTypes: Actions['createTypes']): void {
+function createMarkdownRemark(createTypes: Actions['createTypes']): void {
   /*
    TODO: explicitly define the Markdown frontmatter
    This way the "MarkdownRemark" queries will return `null` even when no
    blog posts are stored inside "content/blog" instead of returning an error
   */
-  `
-   type MarkdownRemark implements Node {
+  // language=GraphQL
+  const typeDefs = `
+    type MarkdownRemark implements Node {
       frontmatter: Frontmatter
       fields: Fields
     }
 
-   type Frontmatter {
+    type Frontmatter {
       title: String
       description: String
       date: Date @dateformat
@@ -21,7 +22,7 @@ function createMarkdownRemark(_createTypes: Actions['createTypes']): void {
       slug: String
     }
   `
-  return void 0
+  createTypes(typeDefs)
 }
 
 function createSiteSiteMetadata(createTypes: Actions['createTypes']): void {
@@ -29,6 +30,7 @@ function createSiteSiteMetadata(createTypes: Actions['createTypes']): void {
     Explicitly define the siteMetadata {} object;
     This way those will always be defined even if removed from gatsby-config.js
   */
+  // language=GraphQL
   const typeDefs = `
     type Route @dontInfer {
 
