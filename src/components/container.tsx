@@ -1,6 +1,6 @@
-import * as Responsive from '@lib/responsive'
-
 import styled, { StyledComponent } from 'styled-components'
+
+import * as Responsive from '../lib/responsive'
 
 interface ContainerProps {
   readonly $maxWidth: number

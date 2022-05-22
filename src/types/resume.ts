@@ -1,4 +1,4 @@
-import type { SocialNetworks } from '../components'
+import type { SocialNetworks } from '../components/index'
 
 export interface Resume {
   /**

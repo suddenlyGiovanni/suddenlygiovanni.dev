@@ -1,5 +1,4 @@
-import type { Skill } from '@typings/resume'
-
+import type { Skill } from '../../types/resume'
 import { Section } from './section'
 import { SubSection } from './sub-section'
 

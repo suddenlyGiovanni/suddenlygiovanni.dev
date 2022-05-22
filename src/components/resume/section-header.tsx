@@ -1,7 +1,7 @@
-import { routesMap } from '@config/index'
-
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+
+import { routesMap } from '../../../config/index'
 
 const Header = styled.header``
 const NameHeading = styled.h1``

@@ -1,7 +1,6 @@
-import type { Language as ILanguage } from '@typings/resume'
-
 import styled from 'styled-components'
 
+import type { Language as ILanguage } from '../../types/resume'
 import { Section } from './section'
 
 const Language = styled.div`

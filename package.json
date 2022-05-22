@@ -49,7 +49,6 @@
     "@types/styled-components": "5.1.19",
     "@types/typography": "0.16.4",
     "gatsby-plugin-netlify": "4.0.0-next.0",
-    "gatsby-plugin-tsconfig-paths": "1.0.5",
     "netlify-cli": "8.19.3",
     "prettier": "2.5.1",
     "ts-graphql-plugin": "2.1.5",

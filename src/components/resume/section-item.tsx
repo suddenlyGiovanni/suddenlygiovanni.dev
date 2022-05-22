@@ -1,7 +1,7 @@
-import { formatDateLocaleShort } from '@lib/dates'
-
 import { FaExternalLinkAlt } from 'react-icons/fa'
 import styled from 'styled-components'
+
+import { formatDateLocaleShort } from '../../lib/dates'
 
 const DescriptionDetailsHighlights: React.VFC<
   React.ComponentProps<'dd'> & {

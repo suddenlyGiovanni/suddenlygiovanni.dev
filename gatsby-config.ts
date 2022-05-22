@@ -152,8 +152,6 @@ const siteMetadata: Readonly<GatsbyTypes.SiteSiteMetadata> = {
   },
 } as const
 
-const gatsbyPluginTsconfigPaths = Plugins.makeGatsbyPluginTsconfigPaths()
-
 const gatsbyConfig: GatsbyConfig = {
   jsxRuntime: 'automatic',
   siteMetadata,
@@ -165,7 +163,6 @@ const gatsbyConfig: GatsbyConfig = {
     gatsbyTransformerSharp,
 
     // 2. Plugins
-    gatsbyPluginTsconfigPaths,
     gatsbyPluginStyledComponents,
     gatsbyPluginReactHelmet,
     gatsbyPluginImage,

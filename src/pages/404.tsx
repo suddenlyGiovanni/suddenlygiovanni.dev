@@ -1,4 +1,4 @@
-import { SEO } from '@components/index'
+import { SEO } from '../components/seo/seo'
 
 import type { PageProps } from 'gatsby'
 

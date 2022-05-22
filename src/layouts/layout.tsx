@@ -1,9 +1,9 @@
-import { mdxComponents, SEO } from '@components/index'
-import { navMobileCtx } from '@context/index'
 import { MDXProvider } from '@mdx-js/react'
 import * as React from 'react'
 import styled from 'styled-components'
 
+import { mdxComponents, SEO } from '../components/index'
+import { navMobileCtx } from '../context/index'
 import { Footer } from './footer'
 import { Header } from './header'
 import { Main } from './main'

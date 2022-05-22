@@ -1,5 +1,4 @@
-import type { Volunteer as IVolunteer } from '@typings/resume'
-
+import type { Volunteer as IVolunteer } from '../../types/resume'
 import { Dump } from '../dump'
 import { Section } from './section'
 

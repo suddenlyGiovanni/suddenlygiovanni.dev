@@ -1,5 +1,4 @@
-import type { Education } from '@typings/resume'
-
+import type { Education } from '../../types/resume'
 import { Section } from './section'
 import { SectionItem } from './section-item'
 

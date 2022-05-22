@@ -1,5 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import * as DateString from '@lib/date-string-yyyymmdd'
+
+import * as DateString from '../lib/date-string-yyyymmdd'
 
 interface PostPreviewData {
   id: string

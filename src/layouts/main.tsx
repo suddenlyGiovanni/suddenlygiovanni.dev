@@ -1,6 +1,6 @@
-import * as Responsive from '@lib/responsive'
-
 import styled, { StyledComponent } from 'styled-components'
+
+import * as Responsive from '../lib/responsive'
 
 export const Main: StyledComponent<
   'main',

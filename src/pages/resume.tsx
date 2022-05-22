@@ -1,5 +1,5 @@
-import { Resume, SEO } from '@components/index'
-import * as customHooks from '@hooks/index'
+import { Resume, SEO } from '../components/index'
+import * as customHooks from '../hooks/index'
 
 import { PageProps } from 'gatsby'
 

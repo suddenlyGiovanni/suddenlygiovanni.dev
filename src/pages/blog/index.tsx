@@ -1,6 +1,6 @@
-import { PostPreview, SEO } from '@components/index'
-import config from '@config/index'
-import { usePostsPreview } from '@hooks/index'
+import { PostPreview, SEO } from '../../components/index'
+import config from '../../../config/index'
+import { usePostsPreview } from '../../hooks/index'
 
 import { PageProps } from 'gatsby'
 import * as React from 'react'

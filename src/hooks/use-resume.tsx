@@ -1,7 +1,6 @@
-import type { SocialNetworks } from '@components/index'
-
 import { graphql, useStaticQuery } from 'gatsby'
 
+import type { SocialNetworks } from '../components/index'
 import type * as R from '../types/resume'
 
 function mapToEducation(

@@ -1,4 +1,4 @@
-import { isNotFalsy, NotFalsy } from '@lib/type-guards'
+import { isNotFalsy, NotFalsy } from './type-guards'
 
 export function insertIf<Condition, T>(
   condition: Condition,

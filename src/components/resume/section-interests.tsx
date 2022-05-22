@@ -1,5 +1,4 @@
-import type { Interest } from '@typings/resume'
-
+import type { Interest } from '../../types/resume'
 import { Section } from './section'
 import { SubSection } from './sub-section'
 

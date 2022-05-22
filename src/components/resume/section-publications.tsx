@@ -1,4 +1,4 @@
-import type { Publication } from '@typings/resume'
+import type { Publication } from '../../types/resume'
 import { Dump } from '../dump'
 import { Section } from './section'
 

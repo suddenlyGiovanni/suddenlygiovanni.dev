@@ -1,8 +1,7 @@
-import { routesMap } from '@config/index'
-import { formatDateLocaleLong } from '@lib/dates'
-
 import styled from 'styled-components'
 
+import { routesMap } from '../../../config/index'
+import { formatDateLocaleLong } from '../../lib/dates'
 import { ReadLink } from '../read-link'
 
 const Version = styled.span`

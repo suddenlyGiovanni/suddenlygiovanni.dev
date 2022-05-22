@@ -1,7 +1,7 @@
-import { Layout } from '@layouts/index'
-import GlobalStyles from '@lib/global-styles'
-
 import type { GatsbyBrowser } from 'gatsby'
+
+import GlobalStyles from '../lib/global-styles'
+import { Layout } from './layout'
 
 export const RootWrapper: GatsbyBrowser['wrapPageElement'] = ({
   element,
