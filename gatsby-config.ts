@@ -48,20 +48,7 @@ const gatsbyTransformerSharp = Plugins.makeGatsbyTransformerSharpPluginConfig()
 const gatsbyPluginImage = Plugins.makeGatsbyPluginImageConfig()
 const gatsbyPluginReactHelmet = Plugins.makeGatsbyPluginReactHelmetConfig()
 const gatsbyPluginTypescript = Plugins.makeGatsbyPluginTypescriptConfig()
-const gatsbyPluginTypegen = Plugins.makeGatsbyPluginTypegenConfig({
-  language: 'typescript',
-  outputPath: 'src/types/gatsby-types.ts',
-  autoFix: true,
-  emitSchema: {
-    'src/__generated__/gatsby-schema.graphql': true,
-    'src/__generated__/gatsby-introspection.json': true,
-  },
-  emitPluginDocuments: {
-    'src/__generated__/gatsby-plugin-documents.graphql': true,
-    'src/__generated__/gatsby-plugin-documents.gql': true,
-    'src/__generated__/gatsby-plugin-documents.json': true,
-  },
-})
+
 const gatsbyRemarkImages = Plugins.makeGatsbyRemarkImagesConfig({
   maxWidth: 1200,
   linkImagesToOriginal: false,
@@ -180,7 +167,6 @@ const gatsbyConfig: GatsbyConfig = {
     gatsbyPluginTypography,
 
     gatsbyPluginTypescript,
-    gatsbyPluginTypegen,
 
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
