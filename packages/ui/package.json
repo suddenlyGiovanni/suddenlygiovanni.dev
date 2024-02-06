@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@suddenly-giovanni/ui",
+  "private": true,
+  "version": "0.0.1",
+  "sideEffects": false,
+  "type": "module",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/index.tsx --format esm --dts --external react",
+    "dev": "tsup src/index.tsx --format esm --watch --dts --external react",
+    "lint": "biome lint ./src",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/react": "18.2.55",
+    "@types/react-dom": "18.2.18",
+    "react": "18.2.0",
+    "tsup": "8.0.1",
+    "typescript": "5.3.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
