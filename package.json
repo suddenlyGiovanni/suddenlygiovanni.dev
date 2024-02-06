@@ -1,6 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
   "name": "suddenlygiovanni.dev",
+  "private": true,
+  "license": "UNLICENSED",
   "version": "0.0.0",
   "description": "suddenlyGiovanni personal website monorepo",
   "author": {
@@ -8,16 +10,16 @@
     "name": "Ravalico Giovanni",
     "url": "suddenlyGiovanni.dev"
   },
-  "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "format": "turbo format"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.3",
     "turbo": "1.12.2"
   },
-  "license": "UNLICENSED",
   "packageManager": "pnpm@8.15.1+sha1.8adba2d20330c02d3856e18c4eb3819d1d3ca6aa",
   "engines": {
     "node": ">=21"
