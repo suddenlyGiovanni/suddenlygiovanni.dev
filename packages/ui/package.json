@@ -5,14 +5,14 @@
   "version": "0.0.1",
   "sideEffects": false,
   "type": "module",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "build": "tsup src/index.tsx --format esm --dts --external react",
-    "dev": "tsup src/index.tsx --format esm --watch --dts --external react",
+    "build": "tsup",
+    "dev": "tsup --watch",
     "lint": "biome lint ./src",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },

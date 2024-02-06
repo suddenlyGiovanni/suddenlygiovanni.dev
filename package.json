@@ -12,9 +12,10 @@
   },
   "scripts": {
     "build": "turbo build",
+    "clean": "turbo run clean && rm -rf node_modules",
     "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "turbo format"
+    "format": "turbo format",
+    "lint": "turbo lint"
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
