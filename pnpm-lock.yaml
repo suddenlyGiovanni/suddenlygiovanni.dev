@@ -48,6 +48,12 @@ importers:
       '@storybook/test':
         specifier: 7.6.13
         version: 7.6.13
+      '@tsconfig/strictest':
+        specifier: 2.0.2
+        version: 2.0.2
+      '@tsconfig/vite-react':
+        specifier: 3.0.0
+        version: 3.0.0
       storybook:
         specifier: 7.6.13
         version: 7.6.13
@@ -57,6 +63,12 @@ importers:
 
   packages/ui:
     devDependencies:
+      '@tsconfig/strictest':
+        specifier: 2.0.2
+        version: 2.0.2
+      '@tsconfig/vite-react':
+        specifier: 3.0.0
+        version: 3.0.0
       '@types/react':
         specifier: 18.2.55
         version: 18.2.55
@@ -3525,6 +3537,14 @@ packages:
       '@testing-library/dom': '>=7.21.4'
     dependencies:
       '@testing-library/dom': 9.3.4
+    dev: true
+
+  /@tsconfig/strictest@2.0.2:
+    resolution: {integrity: sha512-jt4jIsWKvUvuY6adJnQJlb/UR7DdjC8CjHI/OaSQruj2yX9/K6+KOvDt/vD6udqos/FUk5Op66CvYT7TBLYO5Q==}
+    dev: true
+
+  /@tsconfig/vite-react@3.0.0:
+    resolution: {integrity: sha512-haOFbphpavQ1+eyQjeqvlz7sRkQue/bS0GvFmraHml31Ufhv+7juUSc8PVe0In7sly+n+5zTLmzc287KciiGXg==}
     dev: true
 
   /@types/aria-query@5.0.4:
