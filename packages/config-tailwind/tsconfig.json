@@ -1,0 +1,11 @@
+{
+  "extends": "@suddenly-giovanni/config-typescript/base.json",
+  "include": [
+    "."
+  ],
+  "exclude": [
+    "dist",
+    "build",
+    "node_modules"
+  ]
+}

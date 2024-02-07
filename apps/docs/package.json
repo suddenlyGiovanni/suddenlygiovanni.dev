@@ -17,6 +17,7 @@
     "@storybook/react": "7.6.13",
     "@storybook/react-vite": "7.6.13",
     "@storybook/test": "7.6.13",
+    "@suddenly-giovanni/config-tailwind": "workspace:*",
     "@suddenly-giovanni/config-typescript": "workspace:*",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.19",

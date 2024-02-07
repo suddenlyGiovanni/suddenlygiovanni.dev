@@ -3,27 +3,40 @@
   "name": "@suddenly-giovanni/ui",
   "private": true,
   "version": "0.0.1",
-  "sideEffects": false,
-  "type": "module",
-  "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist/**"
+  "sideEffects": [
+    "**/*.css"
   ],
+  "exports": {
+    "./styles.css": "./dist/styles.css",
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "type": "module",
   "scripts": {
-    "build": "tsup",
     "check": "biome check .",
     "check:fix": "biome check --apply .",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "dev": "tsup --watch"
+    "build": "pnpm run build:ts && pnpm run build:css",
+    "build:ts": "tsup",
+    "build:css": "tailwindcss -i ./src/styles.css -o dist/styles.css",
+    "dev:ts": "pnpm run build:ts --watch",
+    "dev:css": "pnpm run build:css --watch",
+    "dev": "pnpm run dev:ts & pnpm run dev:css"
+  },
+  "peerDependencies": {
+    "react": "18.2.0"
   },
   "devDependencies": {
+    "@suddenly-giovanni/config-tailwind": "workspace:*",
     "@suddenly-giovanni/config-typescript": "workspace:*",
-    "@tsconfig/strictest": "2.0.2",
-    "@tsconfig/vite-react": "3.0.0",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.18",
+    "autoprefixer": "10.4.17",
+    "postcss": "8.4.35",
     "react": "18.2.0",
+    "tailwindcss": "3.4.1",
     "tsup": "8.0.1",
     "typescript": "5.3.3"
   },

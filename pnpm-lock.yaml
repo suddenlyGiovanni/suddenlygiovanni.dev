@@ -54,6 +54,9 @@ importers:
       '@storybook/test':
         specifier: 7.6.13
         version: 7.6.13
+      '@suddenly-giovanni/config-tailwind':
+        specifier: workspace:*
+        version: link:../../packages/config-tailwind
       '@suddenly-giovanni/config-typescript':
         specifier: workspace:*
         version: link:../../packages/config-typescript
@@ -97,6 +100,9 @@ importers:
       '@remix-run/dev':
         specifier: 2.6.0
         version: 2.6.0(@remix-run/serve@2.6.0)(typescript@5.3.3)(vite@5.0.12)
+      '@suddenly-giovanni/config-tailwind':
+        specifier: workspace:*
+        version: link:../../packages/config-tailwind
       '@suddenly-giovanni/config-typescript':
         specifier: workspace:*
         version: link:../../packages/config-typescript
@@ -149,6 +155,15 @@ importers:
         specifier: 4.3.1
         version: 4.3.1(typescript@5.3.3)(vite@5.0.12)
 
+  packages/config-tailwind:
+    devDependencies:
+      '@suddenly-giovanni/config-typescript':
+        specifier: workspace:*
+        version: link:../config-typescript
+      tailwindcss:
+        specifier: 3.4.1
+        version: 3.4.1
+
   packages/config-typescript:
     dependencies:
       '@tsconfig/node21':
@@ -166,27 +181,33 @@ importers:
 
   packages/ui:
     devDependencies:
+      '@suddenly-giovanni/config-tailwind':
+        specifier: workspace:*
+        version: link:../config-tailwind
       '@suddenly-giovanni/config-typescript':
         specifier: workspace:*
         version: link:../config-typescript
-      '@tsconfig/strictest':
-        specifier: 2.0.2
-        version: 2.0.2
-      '@tsconfig/vite-react':
-        specifier: 3.0.0
-        version: 3.0.0
       '@types/react':
         specifier: 18.2.55
         version: 18.2.55
       '@types/react-dom':
         specifier: 18.2.18
         version: 18.2.18
+      autoprefixer:
+        specifier: 10.4.17
+        version: 10.4.17(postcss@8.4.35)
+      postcss:
+        specifier: 8.4.35
+        version: 8.4.35
       react:
         specifier: 18.2.0
         version: 18.2.0
+      tailwindcss:
+        specifier: 3.4.1
+        version: 3.4.1
       tsup:
         specifier: 8.0.1
-        version: 8.0.1(typescript@5.3.3)
+        version: 8.0.1(postcss@8.4.35)(typescript@5.3.3)
       typescript:
         specifier: 5.3.3
         version: 5.3.3
@@ -4263,9 +4284,11 @@ packages:
 
   /@tsconfig/strictest@2.0.2:
     resolution: {integrity: sha512-jt4jIsWKvUvuY6adJnQJlb/UR7DdjC8CjHI/OaSQruj2yX9/K6+KOvDt/vD6udqos/FUk5Op66CvYT7TBLYO5Q==}
+    dev: false
 
   /@tsconfig/vite-react@3.0.0:
     resolution: {integrity: sha512-haOFbphpavQ1+eyQjeqvlz7sRkQue/bS0GvFmraHml31Ufhv+7juUSc8PVe0In7sly+n+5zTLmzc287KciiGXg==}
+    dev: false
 
   /@types/acorn@4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
@@ -10864,7 +10887,7 @@ packages:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: true
 
-  /tsup@8.0.1(typescript@5.3.3):
+  /tsup@8.0.1(postcss@8.4.35)(typescript@5.3.3):
     resolution: {integrity: sha512-hvW7gUSG96j53ZTSlT4j/KL0q1Q2l6TqGBFc6/mu/L46IoNWqLLUzLRLP1R8Q7xrJTmkDxxDoojV5uCVs1sVOg==}
     engines: {node: '>=18'}
     hasBin: true
@@ -10891,6 +10914,7 @@ packages:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
+      postcss: 8.4.35
       postcss-load-config: 4.0.2(postcss@8.4.35)
       resolve-from: 5.0.0
       rollup: 4.9.6

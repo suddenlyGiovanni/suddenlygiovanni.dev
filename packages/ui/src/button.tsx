@@ -6,7 +6,11 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function Button({ children, ...other }: ButtonProps): JSX.Element {
 	return (
-		<button type="button" {...other}>
+		<button
+			type="button"
+			{...other}
+			className="p-1 text-2xl text-blue-600"
+		>
 			{children}
 		</button>
 	)

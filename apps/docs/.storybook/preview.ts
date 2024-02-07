@@ -1,5 +1,7 @@
 import type { Preview } from '@storybook/react'
 
+import '@suddenly-giovanni/ui/styles.css'
+
 const preview = {
 	parameters: {
 		actions: { argTypesRegex: '^on[A-Z].*' },

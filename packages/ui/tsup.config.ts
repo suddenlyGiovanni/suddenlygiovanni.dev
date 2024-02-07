@@ -1,12 +1,14 @@
 import { defineConfig } from 'tsup'
 
-// biome-ignore lint/style/noDefaultExport: ok in this case
-export default defineConfig({
-	entry: ['src/index.tsx'],
+export default defineConfig(options => ({
+	treeshake: true,
+	entry: ['src/**/*.tsx'],
 	splitting: true,
 	sourcemap: true,
 	clean: true,
-	format: 'esm',
+	format: ['esm'],
 	dts: true,
-	external: ['react', 'react-dom'],
-})
+	minify: false,
+	external: ['react'],
+	...options,
+}))

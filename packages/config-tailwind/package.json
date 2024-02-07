@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@suddenly-giovanni/config-tailwind",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "@suddenly-giovanni/config-typescript": "workspace:*",
+    "tailwindcss": "3.4.1"
+  },
+  "exports": {
+    ".": "./tailwind.config.ts"
+  }
+}

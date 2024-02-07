@@ -3,11 +3,18 @@
   "include": ["env.d.ts", "**/*.ts", "**/*.tsx"],
   "extends": "@suddenly-giovanni/config-typescript/remix.json",
   "compilerOptions": {
-    "lib": ["DOM", "DOM.Iterable", "ES2022"],
-    "target": "ES2022",
     "baseUrl": ".",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2022"
+    ],
     "paths": {
-      "~/*": ["./app/*"]
+      "~/*": [
+        "./app/*"
+      ]
     },
+    "skipLibCheck": true,
+    "target": "ES2022"
   }
 }
