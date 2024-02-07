@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@suddenly-giovanni/config-typescript",
+  "version": "0.0.1",
+  "private": true,
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@tsconfig/strictest": "2.0.2",
+    "@tsconfig/remix": "2.0.3",
+    "@tsconfig/vite-react": "3.0.0",
+    "@tsconfig/node21": "21.0.1"
+  }
+}

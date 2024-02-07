@@ -17,6 +17,7 @@
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "devDependencies": {
+    "@suddenly-giovanni/config-typescript": "workspace:*",
     "@tsconfig/strictest": "2.0.2",
     "@tsconfig/vite-react": "3.0.0",
     "@types/react": "18.2.55",

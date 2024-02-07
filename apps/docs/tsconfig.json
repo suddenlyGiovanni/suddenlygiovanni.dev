@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": ["@tsconfig/vite-react/tsconfig.json", "@tsconfig/strictest/tsconfig.json"],
+  "extends": "@suddenly-giovanni/config-typescript/react-library.json",
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

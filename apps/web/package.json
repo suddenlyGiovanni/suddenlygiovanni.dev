@@ -34,8 +34,7 @@
     "typescript": "5.3.3",
     "vite": "5.0.12",
     "vite-tsconfig-paths": "4.3.1",
-    "@tsconfig/strictest": "2.0.2",
-    "@tsconfig/remix": "2.0.3"
+    "@suddenly-giovanni/config-typescript": "workspace:*"
   },
   "engines": {
     "node": ">=21"

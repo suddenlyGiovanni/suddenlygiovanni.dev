@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "suddenlygiovanni.dev",
+  "name": "@suddenly-giovanni/root",
   "private": true,
   "license": "UNLICENSED",
   "version": "0.0.0",
