@@ -17,15 +17,19 @@
     "@storybook/react": "7.6.13",
     "@storybook/react-vite": "7.6.13",
     "@storybook/test": "7.6.13",
+    "@suddenly-giovanni/config-typescript": "workspace:*",
+    "@types/react": "18.2.55",
+    "@types/react-dom": "18.2.19",
     "storybook": "7.6.13",
-    "typescript": "5.3.3",
-    "@suddenly-giovanni/config-typescript": "workspace:*"
+    "typescript": "5.3.3"
   },
   "scripts": {
-    "dev": "storybook dev -p 6006",
     "build": "storybook build --docs",
-    "preview-storybook": "serve storybook-static",
+    "check": "biome check ./stories",
+    "check:fix": "pnpm check --apply",
     "clean": "rm -rf .turbo && rm -rf node_modules",
-    "lint": "echo 'No linting configured'"
+    "dev": "storybook dev -p 6006",
+    "lint": "echo 'No linting configured'",
+    "preview-storybook": "serve storybook-static"
   }
 }

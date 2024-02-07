@@ -12,9 +12,10 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "lint": "biome lint ./src",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "check": "biome check .",
+    "check:fix": "biome check --apply .",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "dev": "tsup --watch"
   },
   "devDependencies": {
     "@suddenly-giovanni/config-typescript": "workspace:*",
