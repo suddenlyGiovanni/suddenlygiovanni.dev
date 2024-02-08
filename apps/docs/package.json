@@ -21,13 +21,13 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "7.6.13",
-    "@storybook/addon-interactions": "7.6.13",
-    "@storybook/addon-links": "7.6.13",
-    "@storybook/blocks": "7.6.13",
-    "@storybook/react": "7.6.13",
-    "@storybook/react-vite": "7.6.13",
-    "@storybook/test": "7.6.13",
+    "@storybook/addon-essentials": "8.0.0-beta.1",
+    "@storybook/addon-interactions": "8.0.0-beta.1",
+    "@storybook/addon-links": "8.0.0-beta.1",
+    "@storybook/blocks": "8.0.0-beta.1",
+    "@storybook/react": "8.0.0-beta.1",
+    "@storybook/react-vite": "8.0.0-beta.1",
+    "@storybook/test": "8.0.0-beta.1",
     "@suddenly-giovanni/config-prettier": "workspace:*",
     "@suddenly-giovanni/config-tailwind": "workspace:*",
     "@suddenly-giovanni/config-typescript": "workspace:*",
@@ -36,7 +36,7 @@
     "@types/react-dom": "18.2.19",
     "eslint-plugin-storybook": "0.6.15",
     "prettier": "3.2.5",
-    "storybook": "7.6.13",
+    "storybook": "8.0.0-beta.1",
     "typescript": "5.3.3"
   }
 }
