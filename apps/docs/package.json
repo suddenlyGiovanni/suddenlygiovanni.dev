@@ -4,6 +4,17 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
+  "scripts": {
+    "build": "storybook build --docs",
+    "check": "biome check ./stories",
+    "check:fix": "pnpm check --apply",
+    "clean": "rm -rf .turbo && rm -rf node_modules",
+    "dev": "storybook dev -p 6006",
+    "format": "prettier --write ./stories",
+    "lint": "eslint --ext .ts,.tsx ./stories",
+    "preview-storybook": "serve storybook-static",
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "@suddenly-giovanni/ui": "workspace:*",
     "react": "18.2.0",
@@ -17,20 +28,15 @@
     "@storybook/react": "7.6.13",
     "@storybook/react-vite": "7.6.13",
     "@storybook/test": "7.6.13",
+    "@suddenly-giovanni/config-prettier": "workspace:*",
     "@suddenly-giovanni/config-tailwind": "workspace:*",
     "@suddenly-giovanni/config-typescript": "workspace:*",
+    "@suddenly-giovanni/eslint-config": "workspace:*",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.19",
+    "eslint-plugin-storybook": "0.6.15",
+    "prettier": "3.2.5",
     "storybook": "7.6.13",
     "typescript": "5.3.3"
-  },
-  "scripts": {
-    "build": "storybook build --docs",
-    "check": "biome check ./stories",
-    "check:fix": "pnpm check --apply",
-    "clean": "rm -rf .turbo && rm -rf node_modules",
-    "dev": "storybook dev -p 6006",
-    "lint": "echo 'No linting configured'",
-    "preview-storybook": "serve storybook-static"
   }
 }

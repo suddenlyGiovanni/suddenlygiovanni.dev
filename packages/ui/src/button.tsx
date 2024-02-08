@@ -9,7 +9,7 @@ export function Button({ children, ...other }: ButtonProps): JSX.Element {
 		<button
 			type="button"
 			{...other}
-			className="p-1 text-2xl text-blue-600"
+			className=" p-1 text-2xl text-blue-600 "
 		>
 			{children}
 		</button>

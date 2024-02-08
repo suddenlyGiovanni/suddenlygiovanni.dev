@@ -22,7 +22,12 @@ type Story = StoryObj<typeof Button>
  */
 export const Primary: Story = {
 	render: props => (
-		<Button {...props} onClick={(): void => alert('Hello from Turborepo!')}>
+		<Button
+			{...props}
+			onClick={(): void => {
+				alert('Hello from Turborepo!')
+			}}
+		>
 			Hello
 		</Button>
 	),

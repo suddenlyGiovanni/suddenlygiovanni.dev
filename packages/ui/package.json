@@ -18,8 +18,10 @@
     "check": "biome check .",
     "check:fix": "biome check --apply .",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "build": "tailwindcss -i ./src/styles.css -o dist/styles.css",
-    "dev": "pnpm run build --watch"
+    "dev": "pnpm run build --watch",
+    "format": "prettier --write src",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/"
   },
   "peerDependencies": {
     "react": "18.2.0"
@@ -27,6 +29,7 @@
   "devDependencies": {
     "@suddenly-giovanni/config-tailwind": "workspace:*",
     "@suddenly-giovanni/config-typescript": "workspace:*",
+    "@suddenly-giovanni/eslint-config": "workspace:*",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.18",
     "autoprefixer": "10.4.17",
