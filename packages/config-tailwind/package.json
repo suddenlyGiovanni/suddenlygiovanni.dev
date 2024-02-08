@@ -3,6 +3,9 @@
   "name": "@suddenly-giovanni/config-tailwind",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "clean": "rm -rf node_modules"
+  },
   "devDependencies": {
     "@suddenly-giovanni/config-typescript": "workspace:*",
     "tailwindcss": "3.4.1"

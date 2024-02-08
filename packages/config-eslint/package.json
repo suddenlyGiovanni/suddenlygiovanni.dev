@@ -6,6 +6,9 @@
   "peerDependencies": {
     "eslint": "8.56.0"
   },
+  "scripts": {
+    "clean": "rm -rf node_modules"
+  },
   "devDependencies": {
     "@types/node": "20.11.16",
     "@vercel/style-guide": "5.2.0",

@@ -7,6 +7,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "clean": "rm -rf node_modules"
+  },
   "dependencies": {
     "@tsconfig/strictest": "2.0.2",
     "@tsconfig/remix": "2.0.3",
