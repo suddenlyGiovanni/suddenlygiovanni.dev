@@ -16,7 +16,8 @@
     "dev": "turbo dev",
     "check": "biome check --apply .",
     "format": "turbo format",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck"
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",

@@ -2,8 +2,13 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "outputs": ["dist/**", "storybook-static/**"],
-      "dependsOn": ["^build"]
+      "outputs": [
+        "dist/**",
+        "storybook-static/**"
+      ],
+      "dependsOn": [
+        "^build"
+      ]
     },
     "clean": {
       "cache": false
@@ -13,6 +18,9 @@
       "persistent": true
     },
     "format": {
+      "cache": false
+    },
+    "typecheck": {
       "cache": false
     },
     "lint": {}
