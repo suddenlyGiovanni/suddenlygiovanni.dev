@@ -1,6 +1,6 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import { type ReactNode, type JSX } from 'react'
-import { NavLink } from '~/components/nav-link.tsx'
+import { NavLink, SuddenlyGiovanni } from '~/components'
 
 import './styles/tailwind.css'
 
@@ -32,29 +32,51 @@ export default function App(): JSX.Element {
 	return (
 		<Document>
 			<header className="flex w-full shrink-0 items-center justify-between border-b border-b-stone-950 pb-4 pt-4">
-				<nav>
-					<ul className="flex flex-row">
+				<nav className="container mx-auto flex justify-between">
+					<SuddenlyGiovanni
+						ariaLabel="Navigate to blog page"
+						to="/blog"
+					/>
+					<ul className="flex flex-row items-center">
 						<li>
-							<NavLink to="/">ABOUT ME</NavLink>
+							<NavLink
+								prefetch="intent"
+								to="/"
+							>
+								ABOUT ME
+							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/blog">BLOG</NavLink>
+							<NavLink
+								prefetch="intent"
+								to="/blog"
+							>
+								BLOG
+							</NavLink>
 						</li>
 						<li>
 							<NavLink
 								aria-disabled
+								prefetch="intent"
 								to="/reading-journal"
 							>
 								READING JOURNAL
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/resume">RÉSUMÉ</NavLink>
+							<NavLink
+								prefetch="intent"
+								to="/resume"
+							>
+								RÉSUMÉ
+							</NavLink>
 						</li>
 					</ul>
 				</nav>
 			</header>
-			<Outlet />
+			<div className="container mx-auto">
+				<Outlet />
+			</div>
 		</Document>
 	)
 }
