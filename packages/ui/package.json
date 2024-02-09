@@ -28,6 +28,7 @@
     "react": "18.3.0-canary-ba5e6a832-20240208"
   },
   "devDependencies": {
+    "@total-typescript/ts-reset": "0.5.1",
     "@suddenly-giovanni/config-prettier": "workspace:*",
     "@suddenly-giovanni/config-tailwind": "workspace:*",
     "@suddenly-giovanni/config-typescript": "workspace:*",

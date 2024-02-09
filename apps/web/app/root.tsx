@@ -1,3 +1,4 @@
+import '@total-typescript/ts-reset'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import type { MetaFunction, LinksFunction } from '@remix-run/node'
 import { type ReactNode, type JSX } from 'react'
