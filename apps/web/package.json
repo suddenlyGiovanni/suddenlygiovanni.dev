@@ -19,8 +19,8 @@
     "@remix-run/serve": "2.6.0",
     "@suddenly-giovanni/ui": "workspace:*",
     "isbot": "4.4.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "18.3.0-canary-ba5e6a832-20240208",
+    "react-dom": "18.3.0-canary-ba5e6a832-20240208"
   },
   "devDependencies": {
     "@remix-run/dev": "2.6.0",

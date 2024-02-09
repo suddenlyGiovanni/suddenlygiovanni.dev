@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "@suddenly-giovanni/ui": "workspace:*",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react": "18.3.0-canary-ba5e6a832-20240208",
+    "react-dom": "18.3.0-canary-ba5e6a832-20240208"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "8.0.0-beta.1",
