@@ -1,7 +1,7 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import type { JSX } from 'react'
 
-import './tailwind.css'
+import './styles/tailwind.css'
 
 export default function App(): JSX.Element {
 	return (
