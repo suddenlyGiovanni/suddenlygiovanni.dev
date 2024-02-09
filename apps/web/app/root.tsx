@@ -1,7 +1,7 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import type { MetaFunction, LinksFunction } from '@remix-run/node'
 import { type ReactNode, type JSX } from 'react'
-import { NavLink, SuddenlyGiovanni } from '~/components'
+import { Footer, NavLink, SuddenlyGiovanni } from '~/components'
 import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
 import './styles/tailwind.css'
 
@@ -58,7 +58,7 @@ export default function App(): JSX.Element {
 						ariaLabel="Navigate to blog page"
 						to="/blog"
 					/>
-					<ul className="flex flex-row items-center">
+					<ul className="flex flex-row items-center gap-2">
 						<li>
 							<NavLink
 								prefetch="intent"
@@ -95,9 +95,10 @@ export default function App(): JSX.Element {
 					</ul>
 				</nav>
 			</header>
-			<div className="container mx-auto">
+			<div className="container mx-auto h-full">
 				<Outlet />
 			</div>
+			<Footer />
 		</Document>
 	)
 }
