@@ -1,8 +1,29 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
+import type { MetaFunction, LinksFunction } from '@remix-run/node'
 import { type ReactNode, type JSX } from 'react'
 import { NavLink, SuddenlyGiovanni } from '~/components'
-
+import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
 import './styles/tailwind.css'
+
+export const links: LinksFunction = () => {
+	return [
+		{
+			rel: 'icon',
+			type: 'image/svg+xml',
+			href: faviconAssertUrl,
+		},
+	]
+}
+
+export const meta: MetaFunction = () => {
+	return [
+		{ title: 'suddenlyGiovanni' },
+		{
+			name: 'description',
+			content: "@suddenlyGiovanni's personal website",
+		},
+	]
+}
 
 function Document({ children }: { children: ReactNode }): JSX.Element {
 	return (
@@ -11,12 +32,12 @@ function Document({ children }: { children: ReactNode }): JSX.Element {
 			lang="en"
 		>
 			<head>
-				<Meta />
 				<meta charSet="utf-8" />
 				<meta
 					content="width=device-width, initial-scale=1"
 					name="viewport"
 				/>
+				<Meta />
 				<Links />
 			</head>
 			<body className="bg-background text-foreground">
