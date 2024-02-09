@@ -1,25 +1,9 @@
-import { NavLink, type NavLinkProps } from '@remix-run/react'
 import type { MetaFunction } from '@remix-run/node'
 import type { JSX } from 'react'
+import { NavLink } from '~/components/nav-link.tsx'
 
 export const meta: MetaFunction = () => {
 	return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }]
-}
-
-function Link({ children, ...props }: Omit<NavLinkProps, 'className'>): JSX.Element {
-	return (
-		<NavLink
-			{...props}
-			className={({ isActive }) => {
-				const base = 'p-1'
-				const disabled = 'aria-[disabled]:cursor-not-allowed aria-[disabled]:line-through'
-				const extended = `${base} + ${disabled}` as const
-				return isActive ? (`${extended} border-b-2 border-stone-950` as const) : extended
-			}}
-		>
-			{children}
-		</NavLink>
-	)
 }
 
 export default function Index(): JSX.Element {
@@ -29,21 +13,21 @@ export default function Index(): JSX.Element {
 				<nav>
 					<ul className="flex flex-row">
 						<li>
-							<Link to="/">ABOUT ME</Link>
+							<NavLink to="/">ABOUT ME</NavLink>
 						</li>
 						<li>
-							<Link to="/blog">BLOG</Link>
+							<NavLink to="/blog">BLOG</NavLink>
 						</li>
 						<li>
-							<Link
+							<NavLink
 								aria-disabled
 								to="/reading-journal"
 							>
 								READING JOURNAL
-							</Link>
+							</NavLink>
 						</li>
 						<li>
-							<Link to="/resume">RÉSUMÉ</Link>
+							<NavLink to="/resume">RÉSUMÉ</NavLink>
 						</li>
 					</ul>
 				</nav>
