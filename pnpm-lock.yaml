@@ -244,7 +244,7 @@ importers:
   packages/ui:
     dependencies:
       react-icons:
-        specifier: ^5.0.1
+        specifier: 5.0.1
         version: 5.0.1(react@18.3.0-canary-ba5e6a832-20240208)
     devDependencies:
       '@suddenly-giovanni/config-prettier':
