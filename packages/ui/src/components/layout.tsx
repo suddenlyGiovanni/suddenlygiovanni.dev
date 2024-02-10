@@ -1,6 +1,19 @@
 import { type JSX, forwardRef } from 'react'
 import { cn } from '../lib/cn'
 
+const bodyName = 'Body'
+const Body = forwardRef<HTMLBodyElement, JSX.IntrinsicElements['body']>(
+	({ className, ...rest }, ref) => (
+		<body
+			className={cn('mx-auto h-full', className)}
+			data-testid={bodyName}
+			ref={ref}
+			{...rest}
+		/>
+	),
+)
+Body.displayName = bodyName
+
 const headerName = 'Header'
 const Header = forwardRef<HTMLHeadElement, JSX.IntrinsicElements['header']>(
 	({ className, ...rest }, ref) => (
@@ -13,19 +26,6 @@ const Header = forwardRef<HTMLHeadElement, JSX.IntrinsicElements['header']>(
 	),
 )
 Header.displayName = headerName
-
-const bodyName = 'Body'
-const Body = forwardRef<HTMLBodyElement, JSX.IntrinsicElements['body']>(
-	({ className, ...rest }, ref) => (
-		<body
-			className={cn('container mx-auto h-full', className)}
-			data-testid={bodyName}
-			ref={ref}
-			{...rest}
-		/>
-	),
-)
-Body.displayName = bodyName
 
 const mainName = 'Main'
 const Main = forwardRef<HTMLElement, JSX.IntrinsicElements['main']>(
@@ -54,8 +54,8 @@ const Footer = forwardRef<HTMLElement, JSX.IntrinsicElements['footer']>(
 Footer.displayName = footerName
 
 export const Layout = {
-	Header,
 	Body,
+	Header,
 	Main,
 	Footer,
 }

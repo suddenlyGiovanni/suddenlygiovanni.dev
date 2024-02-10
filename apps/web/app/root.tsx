@@ -2,8 +2,10 @@ import '@total-typescript/ts-reset'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import type { MetaFunction, LinksFunction } from '@remix-run/node'
 import { type ReactNode, type JSX } from 'react'
+import { Layout } from '@suddenly-giovanni/ui'
 import { Footer, NavLink, SuddenlyGiovanni } from '~/components'
 import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
+
 import './styles/tailwind.css'
 
 export const links: LinksFunction = () => {
@@ -41,11 +43,11 @@ function Document({ children }: { children: ReactNode }): JSX.Element {
 				<Meta />
 				<Links />
 			</head>
-			<body className="bg-background text-foreground">
+			<Layout.Body className="bg-background text-foreground">
 				{children}
 				<ScrollRestoration />
 				<Scripts />
-			</body>
+			</Layout.Body>
 		</html>
 	)
 }
@@ -53,7 +55,7 @@ function Document({ children }: { children: ReactNode }): JSX.Element {
 export default function App(): JSX.Element {
 	return (
 		<Document>
-			<header className="flex w-full shrink-0 items-center justify-between border-b border-b-stone-950 pb-4 pt-4">
+			<Layout.Header className="flex w-full shrink-0 items-center justify-between border-b border-b-stone-950 pb-4 pt-4">
 				<nav className="container mx-auto flex justify-between">
 					<SuddenlyGiovanni
 						ariaLabel="Navigate to blog page"
@@ -95,10 +97,10 @@ export default function App(): JSX.Element {
 						</li>
 					</ul>
 				</nav>
-			</header>
-			<div className="container mx-auto h-full">
+			</Layout.Header>
+			<Layout.Main className="container mx-auto h-full">
 				<Outlet />
-			</div>
+			</Layout.Main>
 			<Footer />
 		</Document>
 	)
