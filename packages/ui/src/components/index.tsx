@@ -1,3 +1,5 @@
-export { Button, type ButtonProps } from './button.tsx'
+export { Button } from './button.tsx'
 export { Card } from './card.tsx'
 export { LinkedIn, Twitter, GitHub } from './social.tsx'
+export { Layout } from './layout.tsx'
+export { Placeholder } from './placeholder.tsx'
