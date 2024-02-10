@@ -7,7 +7,7 @@
     "**/*.css"
   ],
   "exports": {
-    "./styles.css": "./dist/styles.css",
+    "./styles.css": "./dist/styles/styles.css",
     ".": {
       "import": "./src/index.tsx",
       "types": "./dist/index.d.ts"
@@ -15,7 +15,7 @@
   },
   "type": "module",
   "scripts": {
-    "build": "tailwindcss -i ./src/styles.css -o dist/styles.css",
+    "build": "tailwindcss -i ./src/styles/styles.css -o dist/styles/styles.css",
     "check": "biome check .",
     "check:fix": "biome check --apply .",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
