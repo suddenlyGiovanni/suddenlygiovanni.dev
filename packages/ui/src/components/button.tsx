@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, JSX, ReactNode } from 'react'
-import { cn } from '../lib/cn'
+import { cn } from '../lib/utils'
 
 const name = 'Button'
 

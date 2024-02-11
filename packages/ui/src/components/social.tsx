@@ -1,5 +1,5 @@
 import type { JSX } from 'react'
-import { cn } from '../lib'
+import { cn } from '../lib/utils'
 import { SocialIcon } from './social-icon'
 
 function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a']): JSX.Element {

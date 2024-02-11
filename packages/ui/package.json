@@ -19,20 +19,22 @@
     "check": "biome check .",
     "check:fix": "biome check --apply .",
     "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "components-add": "pnpm dlx shadcn-ui@latest add",
+    "components-diff": "pnpm dlx shadcn-ui@latest diff",
     "dev": "pnpm run build --watch",
     "format": "prettier --write src",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint src/"
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": "18.3.0-canary-ba5e6a832-20240208"
   },
   "devDependencies": {
-    "@total-typescript/ts-reset": "0.5.1",
     "@suddenly-giovanni/config-prettier": "workspace:*",
     "@suddenly-giovanni/config-tailwind": "workspace:*",
     "@suddenly-giovanni/config-typescript": "workspace:*",
     "@suddenly-giovanni/eslint-config": "workspace:*",
+    "@total-typescript/ts-reset": "0.5.1",
     "@types/react": "18.2.55",
     "@types/react-dom": "18.2.18",
     "autoprefixer": "10.4.17",
@@ -49,6 +51,7 @@
     "access": "public"
   },
   "dependencies": {
-    "react-icons": "5.0.1"
+    "@radix-ui/react-icons": "1.3.0",
+    "tailwindcss-animate": "1.0.7"
   }
 }

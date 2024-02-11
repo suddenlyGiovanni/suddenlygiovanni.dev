@@ -1,24 +1,28 @@
-import type { IconBaseProps, IconType } from 'react-icons'
-import type { JSX } from 'react'
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { forwardRef } from 'react'
+import { TwitterLogoIcon, LinkedInLogoIcon, GitHubLogoIcon } from '@radix-ui/react-icons'
+import type { IconProps } from '@radix-ui/react-icons/dist/types'
 
-export type SocialNetworks = 'twitter' | 'github' | 'linkedin'
-
-export const IconMap = new Map<SocialNetworks, IconType>([
-	['twitter', FaTwitter],
-	['github', FaGithub],
-	['linkedin', FaLinkedin],
+export const IconMap = new Map([
+	['twitter', TwitterLogoIcon],
+	['github', GitHubLogoIcon],
+	['linkedin', LinkedInLogoIcon],
 ] as const)
+export type SocialNetworks = Parameters<(typeof IconMap)['get']>[0]
 
-interface Props extends IconBaseProps {
+interface Props extends IconProps {
 	network: SocialNetworks
 }
 
-export function SocialIcon({ network, ...props }: Props): JSX.Element {
-	const iconMapKey = network.toLowerCase() as SocialNetworks
-	if (!IconMap.has(iconMapKey)) {
+export const SocialIcon = forwardRef<SVGSVGElement, Props>(({ network, ...props }: Props, ref) => {
+	if (!IconMap.has(network)) {
 		throw new Error("couldn't find the social icon associated to the required network key")
 	} else {
-		return IconMap.get(iconMapKey)!(props)
+		const Icon = IconMap.get(network)!
+		return (
+			<Icon
+				{...props}
+				ref={ref}
+			/>
+		)
 	}
-}
+})
