@@ -1,7 +1,6 @@
 import type {Preview} from '@storybook/react'
 
-// import '@suddenly-giovanni/ui/styles.css'
-import '../styles/tailwind.css'
+import './tailwind.css'
 
 
 const preview = {

@@ -16,6 +16,7 @@
     "tailwindcss": "3.4.1"
   },
   "exports": {
+    "./tailwind.css": "./tailwind.css",
     "./tailwind.config.ts": "./tailwind.config.ts",
     "./postcss.config.mjs": "./postcss.config.mjs"
   }
