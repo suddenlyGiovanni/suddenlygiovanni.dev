@@ -1,4 +1,4 @@
-@import "@suddenly-giovanni/ui/styles.css";
+@import "@suddenly-giovanni/ui/tailwind.css";
 
 @tailwind base;
 @tailwind components;

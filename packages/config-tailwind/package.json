@@ -6,11 +6,17 @@
   "scripts": {
     "clean": "rm -rf node_modules"
   },
+  "peerDependencies": {
+    "tailwindcss": "3.4.1",
+    "postcss": "8.4.35",
+    "autoprefixer": "10.4.17"
+  },
   "devDependencies": {
     "@suddenly-giovanni/config-typescript": "workspace:*",
     "tailwindcss": "3.4.1"
   },
   "exports": {
-    ".": "./tailwind.config.ts"
+    "./tailwind.config.ts": "./tailwind.config.ts",
+    "./postcss.config.mjs": "./postcss.config.mjs"
   }
 }
