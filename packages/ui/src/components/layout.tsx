@@ -29,7 +29,7 @@ Header.displayName = headerName
 
 const mainName = 'Main'
 const Main = forwardRef<HTMLElement, JSX.IntrinsicElements['main']>(
-	({ children, className, ...rest }, ref) => (
+	({ className, ...rest }, ref) => (
 		<main
 			className={cn('row-start-2 row-end-3 overflow-auto', className)}
 			data-testid={mainName}
