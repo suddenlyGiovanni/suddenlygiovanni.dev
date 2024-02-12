@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Layout, Placeholder } from '@suddenly-giovanni/ui'
+import { Placeholder } from '../placeholder/placeholder.tsx'
+import { Layout } from './layout.tsx'
 
 const meta = {
 	title: 'Layout/Body',
@@ -13,12 +14,15 @@ type Story = StoryObj<typeof meta>
 export const Body = {
 	render: ({ children, className, ...args }) => (
 		<Layout.Body
+			as="div"
 			{...args}
 			className="border-dashed border-violet-500 bg-violet-200 text-center text-xl text-violet-500"
 		>
 			Body
 			<Layout.Header>
-				<Placeholder className="border-green-500 bg-green-200 text-green-500">Header</Placeholder>
+				<Placeholder className="border-green-500 bg-green-200 text-green-500">
+					Header
+				</Placeholder>
 			</Layout.Header>
 			<Layout.Main>
 				<Placeholder className="border-sky-500 bg-sky-200 text-sky-500">Main</Placeholder>

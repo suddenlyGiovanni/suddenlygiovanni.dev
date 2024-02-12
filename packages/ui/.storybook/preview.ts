@@ -1,10 +1,9 @@
 import type { Preview } from '@storybook/react'
 
-import './tailwind.css'
+import '../dist/styles/tailwind.css'
 
-const preview = {
+const preview: Preview = {
 	parameters: {
-		actions: { argTypesRegex: '^on[A-Z].*' },
 		controls: {
 			matchers: {
 				color: /(background|color)$/i,
@@ -12,6 +11,6 @@ const preview = {
 			},
 		},
 	},
-} satisfies Preview
+}
 
 export default preview

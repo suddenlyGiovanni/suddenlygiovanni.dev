@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { GitHubIconLink } from '@suddenly-giovanni/ui'
+import { GitHubIconLink } from './social.tsx'
 
 const meta = {
 	title: 'Icons/GitHub',

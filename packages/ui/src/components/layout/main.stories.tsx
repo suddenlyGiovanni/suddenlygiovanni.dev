@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Layout, Placeholder } from '@suddenly-giovanni/ui'
+import { Placeholder } from '../placeholder/placeholder.tsx'
+import { Layout } from './layout.tsx'
 
 const meta = {
 	title: 'Layout/Main',
@@ -10,10 +11,13 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Main = {
+export const Main: Story = {
 	decorators: [
 		Story => (
-			<Layout.Body className="border-dashed border-violet-500 bg-violet-200 text-center text-xl text-violet-500">
+			<Layout.Body
+				as="div"
+				className="border-dashed border-violet-500 bg-violet-200 text-center text-xl text-violet-500"
+			>
 				Body
 				<Story />
 			</Layout.Body>
@@ -24,4 +28,4 @@ export const Main = {
 			<Placeholder>Main</Placeholder>
 		</Layout.Main>
 	),
-} satisfies StoryObj<typeof meta>
+}

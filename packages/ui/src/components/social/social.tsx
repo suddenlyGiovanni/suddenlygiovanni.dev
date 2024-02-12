@@ -1,6 +1,6 @@
-import type { JSX } from 'react'
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
-import { cn } from '../lib/utils'
+import type { JSX } from 'react'
+import { cn } from '../../lib/utils'
 import { SocialIcon } from './social-icon'
 
 function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a']): JSX.Element {

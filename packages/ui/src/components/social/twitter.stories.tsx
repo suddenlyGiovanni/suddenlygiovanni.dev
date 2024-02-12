@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { TwitterIconLink } from '@suddenly-giovanni/ui'
+import { TwitterIconLink } from './social.tsx'
 
 const meta = {
 	title: 'Icons/Twitter',

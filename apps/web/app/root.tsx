@@ -2,15 +2,15 @@ import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import { NavLink as UnstyledNavLink, type NavLinkProps } from '@remix-run/react'
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react'
 import {
-	Layout,
-	SuddenlyGiovanni,
 	GitHubIconLink,
+	Layout,
 	LinkedInIconLink,
+	SuddenlyGiovanni,
 	TwitterIconLink,
 } from '@suddenly-giovanni/ui'
 import type { JSX, ReactNode } from 'react'
-import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
 import avatarAssetUrl from '~/assets/giovanni_ravalico-profile_bw.webp'
+import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
 
 import './styles/tailwind.css'
 

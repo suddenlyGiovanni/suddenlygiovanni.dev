@@ -1,11 +1,28 @@
-import { type JSX, forwardRef } from 'react'
-import { cn } from '../lib/utils'
+import { type JSX, type ElementType, forwardRef } from 'react'
+import type {
+	PolymorphicComponentPropWithRef,
+	PolymorphicRef,
+} from '../../lib/polymorphic-component-prop'
+import { cn } from '../../lib/utils'
 
 const bodyName = 'Body'
-const Body = forwardRef<HTMLBodyElement, JSX.IntrinsicElements['body']>(
-	({ className, ...rest }, ref) => (
-		<body className={cn('mx-auto h-full', className)} data-testid={bodyName} ref={ref} {...rest} />
-	),
+const Body = forwardRef(
+	<C extends ElementType = 'body'>(
+		{ className, children, as, ...rest }: PolymorphicComponentPropWithRef<C>,
+		ref: PolymorphicRef<C>,
+	) => {
+		const Component = as || 'body'
+		return (
+			<Component
+				className={cn('mx-auto h-full', className)}
+				data-testid={bodyName}
+				ref={ref}
+				{...rest}
+			>
+				{children}
+			</Component>
+		)
+	},
 )
 Body.displayName = bodyName
 
