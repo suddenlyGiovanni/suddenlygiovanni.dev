@@ -1,4 +1,5 @@
 import type { JSX } from 'react'
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 import { cn } from '../lib/utils'
 import { SocialIcon } from './social-icon'
 
@@ -6,7 +7,10 @@ function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a'
 	return (
 		<a
 			{...props}
-			className={cn('flex content-center items-center text-black hover:text-black/70', className)}
+			className={cn(
+				'flex cursor-pointer content-center items-center text-black hover:text-black/70',
+				className,
+			)}
 		>
 			{children}
 		</a>
@@ -15,7 +19,7 @@ function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a'
 
 type Props = Omit<JSX.IntrinsicElements['a'], 'children'>
 
-export function Twitter({ href, className, ...props }: Props): JSX.Element {
+export function TwitterIconLink({ href, className, ...props }: Props): JSX.Element {
 	return (
 		<SocialLink
 			aria-label="Visit my Twitter"
@@ -24,12 +28,18 @@ export function Twitter({ href, className, ...props }: Props): JSX.Element {
 			target="_blank"
 			{...props}
 		>
-			<SocialIcon aria-label="Twitter icon" network="twitter" size={24} />
+			<AccessibleIcon label="Twitter">
+				<SocialIcon
+					aria-label="Twitter icon"
+					network="twitter"
+					// size={24}
+				/>
+			</AccessibleIcon>
 		</SocialLink>
 	)
 }
 
-export function LinkedIn({ href, className, ...props }: Props): JSX.Element {
+export function LinkedInIconLink({ href, className, ...props }: Props): JSX.Element {
 	return (
 		<SocialLink
 			aria-label="Visit my LinkedIn"
@@ -38,12 +48,18 @@ export function LinkedIn({ href, className, ...props }: Props): JSX.Element {
 			target="_blank"
 			{...props}
 		>
-			<SocialIcon aria-label="LinkedIn icon" network="linkedin" size={24} />
+			<AccessibleIcon label="LinkedIn">
+				<SocialIcon
+					aria-label="LinkedIn icon"
+					network="linkedin"
+					// size={24}
+				/>
+			</AccessibleIcon>
 		</SocialLink>
 	)
 }
 
-export function GitHub({ className, href, ...props }: Props): JSX.Element {
+export function GitHubIconLink({ className, href, ...props }: Props): JSX.Element {
 	return (
 		<SocialLink
 			aria-label="Visit my GitHub"
@@ -52,7 +68,13 @@ export function GitHub({ className, href, ...props }: Props): JSX.Element {
 			target="_blank"
 			{...props}
 		>
-			<SocialIcon aria-label="GitHub icon" network="github" size={24} />
+			<AccessibleIcon label="GitHub">
+				<SocialIcon
+					aria-label="GitHub icon"
+					network="github"
+					// size={24}
+				/>
+			</AccessibleIcon>
 		</SocialLink>
 	)
 }
