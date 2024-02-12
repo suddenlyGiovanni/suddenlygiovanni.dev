@@ -10,7 +10,7 @@
     "clean": "rm -rf node_modules"
   },
   "devDependencies": {
-    "@types/node": "20.11.16",
+    "@types/node": "20.11.17",
     "@vercel/style-guide": "5.2.0",
     "eslint-config-turbo": "1.12.3",
     "eslint-plugin-n": "17.0.0-1",
