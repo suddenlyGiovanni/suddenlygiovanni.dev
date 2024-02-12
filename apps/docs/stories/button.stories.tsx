@@ -1,14 +1,14 @@
-import type {Meta, StoryObj} from '@storybook/react'
-import {Button} from '@suddenly-giovanni/ui'
+import type { Meta, StoryObj } from '@storybook/react'
+import { Button } from '@suddenly-giovanni/ui'
 
 const meta: Meta<typeof Button> = {
-  component: Button,
-  argTypes: {
-    type: {
-      control: {type: 'radio'},
-      options: ['button', 'submit', 'reset'],
-    },
-  },
+	component: Button,
+	argTypes: {
+		type: {
+			control: { type: 'radio' },
+			options: ['button', 'submit', 'reset'],
+		},
+	},
 }
 
 export default meta
@@ -21,12 +21,12 @@ type Story = StoryObj<typeof Button>
  * to learn how to use render functions.
  */
 export const Primary: Story = {
-  name: 'Button',
-  argTypes: {
-    onClick: {action: 'clicked'},
-  },
-  args: {
-    children: 'Hello',
-    type: 'button',
-  },
+	name: 'Button',
+	argTypes: {
+		onClick: { action: 'clicked' },
+	},
+	args: {
+		children: 'Hello',
+		type: 'button',
+	},
 }
