@@ -4,12 +4,7 @@ import { cn } from '../lib/utils'
 const bodyName = 'Body'
 const Body = forwardRef<HTMLBodyElement, JSX.IntrinsicElements['body']>(
 	({ className, ...rest }, ref) => (
-		<body
-			className={cn('mx-auto h-full', className)}
-			data-testid={bodyName}
-			ref={ref}
-			{...rest}
-		/>
+		<body className={cn('mx-auto h-full', className)} data-testid={bodyName} ref={ref} {...rest} />
 	),
 )
 Body.displayName = bodyName

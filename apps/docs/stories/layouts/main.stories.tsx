@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Layout, Placeholder, cn } from '@suddenly-giovanni/ui'
+import { Layout, Placeholder } from '@suddenly-giovanni/ui'
 
 const meta = {
 	title: 'Layout/Main',

@@ -1,6 +1,6 @@
-import '@total-typescript/ts-reset'
 import { dirname, join } from 'node:path'
 import type { StorybookConfig } from '@storybook/react-vite'
+import '@total-typescript/ts-reset'
 
 const config = {
 	stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(ts|tsx)'],

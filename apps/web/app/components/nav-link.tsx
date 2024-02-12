@@ -1,4 +1,4 @@
-import { type NavLinkProps, NavLink as UnstyledNavLink } from '@remix-run/react'
+import { NavLink as UnstyledNavLink, type NavLinkProps } from '@remix-run/react'
 import type { JSX } from 'react'
 
 export function NavLink({ children, ...props }: Omit<NavLinkProps, 'className'>): JSX.Element {

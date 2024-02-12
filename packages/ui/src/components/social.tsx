@@ -6,10 +6,7 @@ function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a'
 	return (
 		<a
 			{...props}
-			className={cn(
-				'flex content-center items-center text-black hover:text-black/70',
-				className,
-			)}
+			className={cn('flex content-center items-center text-black hover:text-black/70', className)}
 		>
 			{children}
 		</a>
@@ -27,11 +24,7 @@ export function Twitter({ href, className, ...props }: Props): JSX.Element {
 			target="_blank"
 			{...props}
 		>
-			<SocialIcon
-				aria-label="Twitter icon"
-				network="twitter"
-				size={24}
-			/>
+			<SocialIcon aria-label="Twitter icon" network="twitter" size={24} />
 		</SocialLink>
 	)
 }
@@ -45,11 +38,7 @@ export function LinkedIn({ href, className, ...props }: Props): JSX.Element {
 			target="_blank"
 			{...props}
 		>
-			<SocialIcon
-				aria-label="LinkedIn icon"
-				network="linkedin"
-				size={24}
-			/>
+			<SocialIcon aria-label="LinkedIn icon" network="linkedin" size={24} />
 		</SocialLink>
 	)
 }
@@ -63,11 +52,7 @@ export function GitHub({ className, href, ...props }: Props): JSX.Element {
 			target="_blank"
 			{...props}
 		>
-			<SocialIcon
-				aria-label="GitHub icon"
-				network="github"
-				size={24}
-			/>
+			<SocialIcon aria-label="GitHub icon" network="github" size={24} />
 		</SocialLink>
 	)
 }

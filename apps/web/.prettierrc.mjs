@@ -2,8 +2,7 @@ import basePrettier from '@suddenly-giovanni/config-prettier'
 
 /** @type {import('prettier').Config} */
 const config = {
-  ...basePrettier,
-
+	...basePrettier,
 }
 
 export default config

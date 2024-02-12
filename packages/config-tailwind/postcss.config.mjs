@@ -3,8 +3,8 @@
  * https://tailwindcss.com/docs/using-with-preprocessors
  */
 export default {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  },
+	plugins: {
+		tailwindcss: {},
+		autoprefixer: {},
+	},
 }

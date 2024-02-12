@@ -1,4 +1,4 @@
-import { Twitter, LinkedIn, GitHub, Layout } from '@suddenly-giovanni/ui'
+import { GitHub, Layout, LinkedIn, Twitter } from '@suddenly-giovanni/ui'
 import type { JSX } from 'react'
 
 const twitter = { url: '', handle: '', user: '' },

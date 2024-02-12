@@ -1,5 +1,5 @@
-import type { Config } from 'tailwindcss'
 import sharedConfig from '@suddenly-giovanni/config-tailwind/tailwind.config.ts'
+import type { Config } from 'tailwindcss'
 
 const config = {
 	content: ['./app/**/*.tsx'],
