@@ -1,17 +1,18 @@
 import type { LinkProps } from '@remix-run/react'
 import { Link } from '@remix-run/react'
-import { cn } from '@suddenly-giovanni/ui'
 import type { JSX } from 'react'
-import hrefUrl from '~/assets/giovanni_ravalico-profile_bw.webp'
+import { cn } from '../lib/utils'
 
 export function SuddenlyGiovanni({
 	className,
 	ariaLabel = 'LinkToBlog.description',
 	to = '/blog',
+	hrefUrl,
 }: {
 	readonly ariaLabel: string
 	readonly className?: string
 	readonly to: LinkProps['to']
+	hrefUrl: string
 }): JSX.Element {
 	return (
 		<Link
