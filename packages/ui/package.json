@@ -25,7 +25,7 @@
     "dev": "concurrently \"npm:dev:css\" \"npm:dev:storybook\" \"npm:typecheck --watch --preserveWatchOutput\" ",
     "dev:css": "pnpm run build:css --watch",
     "dev:storybook": "storybook dev -p 6006",
-    "format": "prettier --write src",
+    "format": "scripty",
     "lint": "eslint src/ --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "typecheck": "tsc --noEmit"
   },
@@ -67,7 +67,6 @@
     "eslint-plugin-react-refresh": "0.4.5",
     "eslint-plugin-storybook": "0.6.15",
     "postcss": "8.4.35",
-    "prettier": "3.2.5",
     "storybook": "8.0.0-beta.2",
     "tailwind-merge": "2.2.1",
     "tailwindcss": "3.4.1",

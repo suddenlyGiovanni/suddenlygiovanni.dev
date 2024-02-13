@@ -3,12 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "exports": "./index.js",
+  "exports": {
+    ".": "./prettier.config.mjs"
+  },
   "scripts": {
     "clean": "scripty"
   },
   "peerDependencies": {
     "prettier": "3.2.5"
+  },
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": false
+    }
   },
   "devDependencies": {
     "prettier-plugin-tailwindcss": "0.5.11"

@@ -11,6 +11,9 @@ importers:
       '@biomejs/biome':
         specifier: 1.5.3
         version: 1.5.3
+      prettier:
+        specifier: 3.2.5
+        version: 3.2.5
       scripty:
         specifier: 2.1.1
         version: 2.1.1
@@ -96,9 +99,6 @@ importers:
       postcss:
         specifier: 8.4.35
         version: 8.4.35
-      prettier:
-        specifier: 3.2.5
-        version: 3.2.5
       tailwindcss:
         specifier: 3.4.1
         version: 3.4.1
@@ -123,7 +123,7 @@ importers:
         version: 20.11.17
       '@vercel/style-guide':
         specifier: 5.2.0
-        version: 5.2.0(eslint@8.56.0)(typescript@5.3.3)
+        version: 5.2.0(eslint@8.56.0)(prettier@3.2.5)(typescript@5.3.3)
       eslint-config-turbo:
         specifier: 1.12.3
         version: 1.12.3(eslint@8.56.0)
@@ -144,10 +144,6 @@ importers:
         version: 0.3.22(eslint@8.56.0)(typescript@5.3.3)
 
   packages/config-prettier:
-    dependencies:
-      prettier:
-        specifier: 3.2.5
-        version: 3.2.5
     devDependencies:
       prettier-plugin-tailwindcss:
         specifier: 0.5.11
@@ -283,9 +279,6 @@ importers:
       postcss:
         specifier: 8.4.35
         version: 8.4.35
-      prettier:
-        specifier: 3.2.5
-        version: 3.2.5
       storybook:
         specifier: 8.0.0-beta.2
         version: 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
@@ -4880,7 +4873,7 @@ packages:
     resolution: {integrity: sha512-17kVyLq3ePTKOkveHxXuIJZtGYs+cSoev7BlP+Lf4916qfDhk/HBjvlYDe8egrea7LNPHKwSZJK/bzZC+Q6AwQ==}
     dev: true
 
-  /@vercel/style-guide@5.2.0(eslint@8.56.0)(typescript@5.3.3):
+  /@vercel/style-guide@5.2.0(eslint@8.56.0)(prettier@3.2.5)(typescript@5.3.3):
     resolution: {integrity: sha512-fNSKEaZvSkiBoF6XEefs8CcgAV9K9e+MbcsDZjUsktHycKdA0jvjAzQi1W/FzLS+Nr5zZ6oejCwq/97dHUKe0g==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -4917,7 +4910,8 @@ packages:
       eslint-plugin-testing-library: 6.2.0(eslint@8.56.0)(typescript@5.3.3)
       eslint-plugin-tsdoc: 0.2.17
       eslint-plugin-unicorn: 48.0.1(eslint@8.56.0)
-      prettier-plugin-packagejson: 2.4.10
+      prettier: 3.2.5
+      prettier-plugin-packagejson: 2.4.10(prettier@3.2.5)
       typescript: 5.3.3
     transitivePeerDependencies:
       - eslint-import-resolver-node
@@ -5259,7 +5253,7 @@ packages:
     dev: true
 
   /async@2.6.4:
-    resolution: { integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA== }
+    resolution: {integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==}
     dependencies:
       lodash: 4.17.21
     dev: true
@@ -9659,7 +9653,7 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  /prettier-plugin-packagejson@2.4.10:
+  /prettier-plugin-packagejson@2.4.10(prettier@3.2.5):
     resolution: {integrity: sha512-qFzOfQDHi1tzvVJRuZ2jh1j6IFV5MURh5m5WDt+qfEMOf4SSL5RpwSysiX8u0W1PJYsM0vKJGNULt43wwteKiQ==}
     peerDependencies:
       prettier: '>= 1.16.0'
@@ -9667,6 +9661,7 @@ packages:
       prettier:
         optional: true
     dependencies:
+      prettier: 3.2.5
       sort-package-json: 2.7.0
       synckit: 0.9.0
     dev: true
@@ -9733,6 +9728,7 @@ packages:
     resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
+    dev: true
 
   /pretty-format@27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
@@ -10252,8 +10248,8 @@ packages:
     dev: true
 
   /resolve-from@2.0.0:
-    resolution: { integrity: sha512-qpFcKaXsq8+oRoLilkwyc7zHGF5i9Q2/25NIgLQQ/+VVv9rU4qvr6nXVAw1DsnXJyQkZsR4Ytfbtg5ehfcUssQ== }
-    engines: { node: '>=0.10.0' }
+    resolution: {integrity: sha512-qpFcKaXsq8+oRoLilkwyc7zHGF5i9Q2/25NIgLQQ/+VVv9rU4qvr6nXVAw1DsnXJyQkZsR4Ytfbtg5ehfcUssQ==}
+    engines: {node: '>=0.10.0'}
     dev: true
 
   /resolve-from@4.0.0:
@@ -10270,8 +10266,8 @@ packages:
     dev: true
 
   /resolve-pkg@1.0.0:
-    resolution: { integrity: sha512-L0/+vjdV3UjcQaXRlQcObpCyySS8GEqVNYGYRDAGlYOcw4J1y33WMIAD3XvYWIPnBeyN5Ilp5RHoifs3gR1S2g== }
-    engines: { node: '>=4' }
+    resolution: {integrity: sha512-L0/+vjdV3UjcQaXRlQcObpCyySS8GEqVNYGYRDAGlYOcw4J1y33WMIAD3XvYWIPnBeyN5Ilp5RHoifs3gR1S2g==}
+    engines: {node: '>=4'}
     dependencies:
       resolve-from: 2.0.0
     dev: true
@@ -10416,7 +10412,7 @@ packages:
       loose-envify: 1.4.0
 
   /scripty@2.1.1:
-    resolution: { integrity: sha512-yAutoO7+MfJcc7UAjAOp1CNbAI6GhxXYB63yFLEJe80BY1VkKQWrJ2xrdd57rh/UBnUIKmO31hzKUHWGxIupbA== }
+    resolution: {integrity: sha512-yAutoO7+MfJcc7UAjAOp1CNbAI6GhxXYB63yFLEJe80BY1VkKQWrJ2xrdd57rh/UBnUIKmO31hzKUHWGxIupbA==}
     hasBin: true
     dependencies:
       async: 2.6.4

@@ -1,60 +1,69 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
-	"files": {
-		"include": ["./apps/**/*", "./packages/**/*"],
-		"ignore": ["node_modules", "**/node_modules"]
-	},
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"defaultBranch": "main",
-		"root": "."
-	},
-	"formatter": {
-		"enabled": true,
-		"indentStyle": "tab",
-		"lineWidth": 100,
-		"lineEnding": "lf",
-		"indentWidth": 2,
-		"formatWithErrors": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"all": true,
-			"nursery": {
-				"all": true
-			}
-		}
-	},
-	"javascript": {
-		"formatter": {
-			"enabled": true,
-			"arrowParentheses": "asNeeded",
-			"bracketSameLine": false,
-			"bracketSpacing": true,
-			"jsxQuoteStyle": "double",
-			"quoteProperties": "asNeeded",
-			"semicolons": "asNeeded",
-			"quoteStyle": "single",
-			"trailingComma": "all"
-		}
-	},
-	"css": {
-		"formatter": {
-			"enabled": true
-		}
-	},
-	"overrides": [
-		{
-			"include": ["apps/web/**/*", "apps/docs/**/*"],
-			"linter": {
-				"rules": {
-					"style": {
-						"noDefaultExport": "off"
-					}
-				}
-			}
-		}
-	]
+  "$schema": "https://biomejs.dev/schemas/1.5.3/schema.json",
+  "files": {
+    "include": [
+      "./apps/**/*",
+      "./packages/**/*"
+    ],
+    "ignore": [
+      "node_modules",
+      "**/node_modules"
+    ]
+  },
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "defaultBranch": "main",
+    "root": "."
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "tab",
+    "lineWidth": 100,
+    "lineEnding": "lf",
+    "indentWidth": 2,
+    "formatWithErrors": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "all": true,
+      "nursery": {
+        "all": true
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": true,
+      "arrowParentheses": "asNeeded",
+      "bracketSameLine": false,
+      "bracketSpacing": true,
+      "jsxQuoteStyle": "double",
+      "quoteProperties": "asNeeded",
+      "semicolons": "asNeeded",
+      "quoteStyle": "single",
+      "trailingComma": "all"
+    }
+  },
+  "css": {
+    "formatter": {
+      "enabled": true
+    }
+  },
+  "overrides": [
+    {
+      "include": [
+        "apps/web/**/*",
+        "apps/docs/**/*"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ]
 }

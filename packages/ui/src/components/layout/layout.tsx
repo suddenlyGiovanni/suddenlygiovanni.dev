@@ -1,4 +1,4 @@
-import { type JSX, type ElementType, forwardRef } from 'react'
+import { type ElementType, type JSX, forwardRef } from 'react'
 import type {
 	PolymorphicComponentPropWithRef,
 	PolymorphicRef,
