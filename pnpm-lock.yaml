@@ -11,6 +11,9 @@ importers:
       '@biomejs/biome':
         specifier: 1.5.3
         version: 1.5.3
+      scripty:
+        specifier: 2.1.1
+        version: 2.1.1
       turbo:
         specifier: 1.12.3
         version: 1.12.3
@@ -5255,6 +5258,12 @@ packages:
     hasBin: true
     dev: true
 
+  /async@2.6.4:
+    resolution: { integrity: sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA== }
+    dependencies:
+      lodash: 4.17.21
+    dev: true
+
   /async@3.2.5:
     resolution: {integrity: sha512-baNZyqaaLhyLVKm/DlvdW051MSgO6b8eVfIezl9E5PqWxFgzLm/wQntEW4zOytVburDEr0JlALEpdOFwvErLsg==}
     dev: true
@@ -10242,6 +10251,11 @@ packages:
     engines: {node: '>=0.10.5'}
     dev: true
 
+  /resolve-from@2.0.0:
+    resolution: { integrity: sha512-qpFcKaXsq8+oRoLilkwyc7zHGF5i9Q2/25NIgLQQ/+VVv9rU4qvr6nXVAw1DsnXJyQkZsR4Ytfbtg5ehfcUssQ== }
+    engines: { node: '>=0.10.0' }
+    dev: true
+
   /resolve-from@4.0.0:
     resolution: {integrity: sha512-pb/MYmXstAkysRFx8piNI1tGFNQIFA3vkE3Gq4EuA1dF6gHp/+vgZqsCGJapvy8N3Q+4o7FwvquPJcnZ7RYy4g==}
     engines: {node: '>=4'}
@@ -10253,6 +10267,13 @@ packages:
 
   /resolve-pkg-maps@1.0.0:
     resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
+    dev: true
+
+  /resolve-pkg@1.0.0:
+    resolution: { integrity: sha512-L0/+vjdV3UjcQaXRlQcObpCyySS8GEqVNYGYRDAGlYOcw4J1y33WMIAD3XvYWIPnBeyN5Ilp5RHoifs3gR1S2g== }
+    engines: { node: '>=4' }
+    dependencies:
+      resolve-from: 2.0.0
     dev: true
 
   /resolve.exports@2.0.2:
@@ -10393,6 +10414,16 @@ packages:
     resolution: {integrity: sha512-9JV5F8f0c5mUFeGQ3gGEyjmYaoNIHn5RiGp/eaag0EHxMl0f9kMBtxT9b/H4tuI7o3OTtd/qRUNXm7krIrH+6w==}
     dependencies:
       loose-envify: 1.4.0
+
+  /scripty@2.1.1:
+    resolution: { integrity: sha512-yAutoO7+MfJcc7UAjAOp1CNbAI6GhxXYB63yFLEJe80BY1VkKQWrJ2xrdd57rh/UBnUIKmO31hzKUHWGxIupbA== }
+    hasBin: true
+    dependencies:
+      async: 2.6.4
+      glob: 7.2.3
+      lodash: 4.17.21
+      resolve-pkg: 1.0.0
+    dev: true
 
   /semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
