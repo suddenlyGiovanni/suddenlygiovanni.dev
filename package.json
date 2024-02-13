@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "turbo build",
-    "clean": "turbo run clean && rm -rf node_modules",
+    "clean": "turbo run clean && scripty clean",
     "dev": "turbo dev",
     "check": "biome check --apply .",
     "format": "turbo format",

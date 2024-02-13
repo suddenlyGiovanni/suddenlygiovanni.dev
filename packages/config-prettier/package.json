@@ -5,12 +5,17 @@
   "type": "module",
   "exports": "./index.js",
   "scripts": {
-    "clean": "rm -rf node_modules"
+    "clean": "scripty"
   },
   "peerDependencies": {
     "prettier": "3.2.5"
   },
   "devDependencies": {
     "prettier-plugin-tailwindcss": "0.5.11"
+  },
+  "config": {
+    "scripty": {
+      "path": "../../scripts"
+    }
   }
 }

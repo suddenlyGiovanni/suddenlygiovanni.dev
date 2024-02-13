@@ -19,7 +19,7 @@
     "build:css": "tailwindcss --input ./src/styles/tailwind.css --output dist/styles/tailwind.css",
     "check": "biome check .",
     "check:fix": "biome check --apply .",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "clean": "scripty",
     "components-add": "pnpm dlx shadcn-ui@latest add",
     "components-diff": "pnpm dlx shadcn-ui@latest diff",
     "dev": "concurrently \"npm:dev:css\" \"npm:dev:storybook\" \"npm:typecheck --watch --preserveWatchOutput\" ",
@@ -77,5 +77,10 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "config": {
+    "scripty": {
+      "path": "../../scripts"
+    }
   }
 }

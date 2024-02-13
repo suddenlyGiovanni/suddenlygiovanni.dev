@@ -3,8 +3,13 @@
   "name": "@suddenly-giovanni/config-tailwind",
   "version": "0.0.1",
   "private": true,
+  "exports": {
+    "./tailwind.css": "./tailwind.css",
+    "./tailwind.config.ts": "./tailwind.config.ts",
+    "./postcss.config.mjs": "./postcss.config.mjs"
+  },
   "scripts": {
-    "clean": "rm -rf node_modules"
+    "clean": "scripty"
   },
   "peerDependencies": {
     "tailwindcss": "3.4.1",
@@ -15,9 +20,9 @@
     "@suddenly-giovanni/config-typescript": "workspace:*",
     "tailwindcss": "3.4.1"
   },
-  "exports": {
-    "./tailwind.css": "./tailwind.css",
-    "./tailwind.config.ts": "./tailwind.config.ts",
-    "./postcss.config.mjs": "./postcss.config.mjs"
+  "config": {
+    "scripty": {
+      "path": "../../scripts"
+    }
   }
 }

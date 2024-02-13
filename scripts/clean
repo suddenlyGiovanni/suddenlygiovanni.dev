@@ -1,0 +1,25 @@
+#! /usr/bin/env sh
+
+log_message="🏗️ Cleaning up node_modules directory..."
+
+echo $log_message
+
+
+# List of directories to remove
+directories=("node_modules" ".turbo" "dist")
+
+for dir in "${directories[@]}"
+do
+  if [ -d "$dir" ]
+  then
+    rm -rf "$dir"
+    echo "✅ Removed '$dir'"
+  else
+    echo "🔍'$dir' does not exist; ✅ moving on..."
+  fi
+done
+
+if [[ $? -eq 0 ]];
+then echo "✅ Cleanup successful."
+  else echo "❌ Cleanup failed."
+fi

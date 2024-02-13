@@ -7,7 +7,7 @@
     "build": "remix vite:build",
     "check": "biome check .",
     "check:fix": "biome check --apply .",
-    "clean": "rm -rf node_modules",
+    "clean": "scripty",
     "dev": "remix vite:dev",
     "inspect-router": "remix routes | bat --language TypeScriptReact",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
@@ -50,5 +50,10 @@
   },
   "engines": {
     "node": ">=21"
+  },
+  "config": {
+    "scripty": {
+      "path": "../../scripts"
+    }
   }
 }
