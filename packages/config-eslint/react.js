@@ -1,3 +1,4 @@
+// @ts-check
 const { resolve } = require("node:path");
 
 const project = resolve(process.cwd(), "tsconfig.json");
@@ -13,9 +14,9 @@ const project = resolve(process.cwd(), "tsconfig.json");
 
 module.exports = {
   extends: [
-   '@vercel/style-guide/eslint/browser'",
-   '@vercel/style-guide/eslint/typescript'",
-   '@vercel/style-guide/eslint/react'",
+    "@vercel/style-guide/eslint/browser",
+    "@vercel/style-guide/eslint/typescript",
+    "@vercel/style-guide/eslint/react",
   ].map((eslintConfig) => require.resolve(eslintConfig)),
   parserOptions: {
     project,
@@ -23,15 +24,15 @@ module.exports = {
   globals: {
     JSX: true,
   },
-  plugins: ['only-warn'],
+  plugins: ["only-warn"],
   settings: {
-    'import/resolver': {
+    "import/resolver": {
       typescript: {
         project,
       },
     },
   },
-  ignorePatterns: ['node_modules/', 'dist/', '.eslintrc.js', '**/*.css'],
+  ignorePatterns: ["node_modules/", "dist/", ".eslintrc.js", "**/*.css"],
   // add rules configurations here
   rules: {},
 };

@@ -9,6 +9,14 @@
   "scripts": {
     "clean": "scripty"
   },
+  "peerDependencies": {
+    "typescript": "5.3.3"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": false
+    }
+  },
   "dependencies": {
     "@tsconfig/node21": "21.0.1",
     "@tsconfig/remix": "2.0.3",

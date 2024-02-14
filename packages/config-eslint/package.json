@@ -3,6 +3,7 @@
   "name": "@suddenly-giovanni/eslint-config",
   "version": "0.0.1",
   "private": true,
+  "type": "commonjs",
   "peerDependencies": {
     "eslint": "8.56.0"
   },
@@ -10,6 +11,7 @@
     "clean": "scripty"
   },
   "devDependencies": {
+    "@suddenly-giovanni/config-typescript": "workspace:*",
     "@types/node": "20.11.17",
     "@vercel/style-guide": "5.2.0",
     "eslint-config-turbo": "1.12.3",

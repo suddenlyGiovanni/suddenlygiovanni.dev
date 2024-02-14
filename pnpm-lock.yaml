@@ -20,6 +20,9 @@ importers:
       turbo:
         specifier: 1.12.3
         version: 1.12.3
+      typescript:
+        specifier: 5.3.3
+        version: 5.3.3
 
   apps/web:
     dependencies:
@@ -102,9 +105,6 @@ importers:
       tailwindcss:
         specifier: 3.4.1
         version: 3.4.1
-      typescript:
-        specifier: 5.3.3
-        version: 5.3.3
       vite:
         specifier: 5.1.1
         version: 5.1.1
@@ -118,6 +118,9 @@ importers:
         specifier: 8.56.0
         version: 8.56.0
     devDependencies:
+      '@suddenly-giovanni/config-typescript':
+        specifier: workspace:*
+        version: link:../config-typescript
       '@types/node':
         specifier: 20.11.17
         version: 20.11.17
@@ -144,7 +147,14 @@ importers:
         version: 0.3.22(eslint@8.56.0)(typescript@5.3.3)
 
   packages/config-prettier:
+    dependencies:
+      prettier:
+        specifier: 3.2.5
+        version: 3.2.5
     devDependencies:
+      '@suddenly-giovanni/config-typescript':
+        specifier: workspace:*
+        version: link:../config-typescript
       prettier-plugin-tailwindcss:
         specifier: 0.5.11
         version: 0.5.11(prettier@3.2.5)
@@ -179,27 +189,27 @@ importers:
       '@tsconfig/vite-react':
         specifier: 3.0.0
         version: 3.0.0
+      typescript:
+        specifier: 5.3.3
+        version: 5.3.3
 
   packages/ui:
     dependencies:
       '@radix-ui/react-accessible-icon':
         specifier: 1.0.3
-        version: 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+        version: 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@radix-ui/react-avatar':
         specifier: 1.0.4
-        version: 1.0.4(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+        version: 1.0.4(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@radix-ui/react-icons':
         specifier: 1.3.0
         version: 1.3.0(react@18.3.0-canary-ba5e6a832-20240208)
       '@remix-run/react':
         specifier: 2.6.0
-        version: 2.6.0(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)
+        version: 2.6.0(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)
       react:
         specifier: 18.3.0-canary-ba5e6a832-20240208
         version: 18.3.0-canary-ba5e6a832-20240208
-      react-dom:
-        specifier: 18.3.0-canary-ba5e6a832-20240208
-        version: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
       tailwindcss-animate:
         specifier: 1.0.7
         version: 1.0.7(tailwindcss@3.4.1)
@@ -209,7 +219,7 @@ importers:
         version: 1.1.6(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/addon-essentials':
         specifier: 8.0.0-beta.2
-        version: 8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+        version: 8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/addon-interactions':
         specifier: 8.0.0-beta.2
         version: 8.0.0-beta.2
@@ -218,16 +228,16 @@ importers:
         version: 8.0.0-beta.2(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/addon-onboarding':
         specifier: ^1.0.11
-        version: 1.0.11(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+        version: 1.0.11(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/blocks':
         specifier: 8.0.0-beta.2
-        version: 8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+        version: 8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/react':
         specifier: 8.0.0-beta.2
-        version: 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)
+        version: 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)
       '@storybook/react-vite':
         specifier: 8.0.0-beta.2
-        version: 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)(vite@5.1.1)
+        version: 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)(vite@5.1.1)
       '@storybook/test':
         specifier: 8.0.0-beta.2
         version: 8.0.0-beta.2
@@ -281,16 +291,13 @@ importers:
         version: 8.4.35
       storybook:
         specifier: 8.0.0-beta.2
-        version: 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+        version: 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       tailwind-merge:
         specifier: 2.2.1
         version: 2.2.1
       tailwindcss:
         specifier: 3.4.1
         version: 3.4.1
-      typescript:
-        specifier: 5.3.3
-        version: 5.3.3
       vite:
         specifier: 5.1.1
         version: 5.1.1
@@ -2615,7 +2622,7 @@ packages:
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
     dev: true
 
-  /@radix-ui/react-accessible-icon@1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@radix-ui/react-accessible-icon@1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-duVGKeWPSUILr/MdlPxV+GeULTc2rS1aihGdQ3N2qCUPMgxYLxvAsHJM3mCVLF8d5eK+ympmB22mb1F3a5biNw==}
     peerDependencies:
       '@types/react': '*'
@@ -2629,14 +2636,14 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.23.9
-      '@radix-ui/react-visually-hidden': 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@radix-ui/react-visually-hidden': 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@types/react': 18.2.55
       '@types/react-dom': 18.2.19
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
     dev: false
 
-  /@radix-ui/react-avatar@1.0.4(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@radix-ui/react-avatar@1.0.4(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-kVK2K7ZD3wwj3qhle0ElXhOjbezIgyl2hVvgwfIdexL3rN6zJmy5AqqIf+D31lxVppdzV8CjAfZ6PklkmInZLw==}
     peerDependencies:
       '@types/react': '*'
@@ -2651,13 +2658,13 @@ packages:
     dependencies:
       '@babel/runtime': 7.23.9
       '@radix-ui/react-context': 1.0.1(@types/react@18.2.55)(react@18.3.0-canary-ba5e6a832-20240208)
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.55)(react@18.3.0-canary-ba5e6a832-20240208)
       '@radix-ui/react-use-layout-effect': 1.0.1(@types/react@18.2.55)(react@18.3.0-canary-ba5e6a832-20240208)
       '@types/react': 18.2.55
       '@types/react-dom': 18.2.19
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
     dev: false
 
   /@radix-ui/react-compose-refs@1.0.1(@types/react@18.2.55)(react@18.2.0):
@@ -2709,7 +2716,7 @@ packages:
       react: 18.3.0-canary-ba5e6a832-20240208
     dev: false
 
-  /@radix-ui/react-primitive@1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@radix-ui/react-primitive@1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-yi58uVyoAcK/Nq1inRY56ZSjKypBNKTa/1mcL8qdl6oJeEaDbOldlzrGn7P6Q3Id5d+SYNGc5AJgc4vGhjs5+g==}
     peerDependencies:
       '@types/react': '*'
@@ -2727,7 +2734,7 @@ packages:
       '@types/react': 18.2.55
       '@types/react-dom': 18.2.19
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
     dev: false
 
   /@radix-ui/react-slot@1.0.2(@types/react@18.2.55)(react@18.2.0):
@@ -2787,7 +2794,7 @@ packages:
       react: 18.3.0-canary-ba5e6a832-20240208
     dev: false
 
-  /@radix-ui/react-visually-hidden@1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@radix-ui/react-visually-hidden@1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-D4w41yN5YRKtu464TLnByKzMDG/JlMPHtfZgQAu9v6mNakUqGUI9vUrfQKz8NK41VMm/xbZbh76NUTVtIYqOMA==}
     peerDependencies:
       '@types/react': '*'
@@ -2801,11 +2808,11 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.23.9
-      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.2.19)(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@types/react': 18.2.55
       '@types/react-dom': 18.2.19
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
     dev: false
 
   /@remix-run/dev@2.6.0(@remix-run/serve@2.6.0)(typescript@5.3.3)(vite@5.1.1):
@@ -2930,6 +2937,26 @@ packages:
       source-map-support: 0.5.21
       stream-slice: 0.1.2
       typescript: 5.3.3
+
+  /@remix-run/react@2.6.0(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3):
+    resolution: { integrity: sha512-m/Ph6bryny7wrmrQyXQMvIiW+cBLrU/MepcLGFPvTVVwvfeiGBgXRiYZJ6yPNsfrmHFaS83d+Ja/Mx4N4zUWcg== }
+    engines: { node: '>=18.0.0' }
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+      typescript: ^5.1.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@remix-run/router': 1.15.0
+      '@remix-run/server-runtime': 2.6.0(typescript@5.3.3)
+      react: 18.3.0-canary-ba5e6a832-20240208
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
+      react-router: 6.22.0(react@18.3.0-canary-ba5e6a832-20240208)
+      react-router-dom: 6.22.0(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
+      typescript: 5.3.3
+    dev: false
 
   /@remix-run/react@2.6.0(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3):
     resolution: {integrity: sha512-m/Ph6bryny7wrmrQyXQMvIiW+cBLrU/MepcLGFPvTVVwvfeiGBgXRiYZJ6yPNsfrmHFaS83d+Ja/Mx4N4zUWcg==}
@@ -3168,10 +3195,10 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
-  /@storybook/addon-controls@8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/addon-controls@8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-9rvjv4Er7WJkSeXPvCJ78GnKeUqbc7NFGZVlWl2gS3gFeLrXRgtrA5raOR+XneI51UtvAPZX89Mdeg/bQueUvQ==}
     dependencies:
-      '@storybook/blocks': 8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/blocks': 8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       lodash: 4.17.21
       ts-dedent: 2.2.0
     transitivePeerDependencies:
@@ -3210,12 +3237,12 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/addon-essentials@8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/addon-essentials@8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-zB1sRf/ynxddBcWkzxZ55YVN5trbh2sMh9iPA+MLmKwz/tWK+f8/EoV8jfevu1ou2MS/2Jkjyk90jyZEXloVjg==}
     dependencies:
       '@storybook/addon-actions': 8.0.0-beta.2
       '@storybook/addon-backgrounds': 8.0.0-beta.2
-      '@storybook/addon-controls': 8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/addon-controls': 8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/addon-docs': 8.0.0-beta.2
       '@storybook/addon-highlight': 8.0.0-beta.2
       '@storybook/addon-measure': 8.0.0-beta.2
@@ -3223,7 +3250,7 @@ packages:
       '@storybook/addon-toolbars': 8.0.0-beta.2
       '@storybook/addon-viewport': 8.0.0-beta.2
       '@storybook/core-common': 8.0.0-beta.2
-      '@storybook/manager-api': 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/manager-api': 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/node-logger': 8.0.0-beta.2
       '@storybook/preview-api': 8.0.0-beta.2
       ts-dedent: 2.2.0
@@ -3272,7 +3299,7 @@ packages:
       tiny-invariant: 1.3.1
     dev: true
 
-  /@storybook/addon-onboarding@1.0.11(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/addon-onboarding@1.0.11(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-0Sa7PJDsM6AANOWZX7vq3kgCbS9AZFjr3tfr3bLGfXviwIBKjoZDDdIErJkS3D4mNcDa78lYQvp3PTCKwLIJ9A==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -3281,7 +3308,7 @@ packages:
       '@storybook/telemetry': 7.6.14
       react: 18.3.0-canary-ba5e6a832-20240208
       react-confetti: 6.1.0(react@18.3.0-canary-ba5e6a832-20240208)
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
     transitivePeerDependencies:
       - encoding
       - supports-color
@@ -3347,7 +3374,7 @@ packages:
       - supports-color
     dev: true
 
-  /@storybook/blocks@8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/blocks@8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-IH8hEfPtR5N81PGydrPQdpBWGqOf6l1mXFjRjWwp1BkWvrvWv4lLk4bQ9JqpMF0zH2soKl5BUa5aP0yiufFtlg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -3360,15 +3387,15 @@ packages:
     dependencies:
       '@storybook/channels': 8.0.0-beta.2
       '@storybook/client-logger': 8.0.0-beta.2
-      '@storybook/components': 8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/components': 8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/core-events': 8.0.0-beta.2
       '@storybook/csf': 0.1.2
       '@storybook/docs-tools': 8.0.0-beta.2
       '@storybook/global': 5.0.0
-      '@storybook/icons': 1.2.5(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
-      '@storybook/manager-api': 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/icons': 1.2.5(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/manager-api': 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/preview-api': 8.0.0-beta.2
-      '@storybook/theming': 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/theming': 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/types': 8.0.0-beta.2
       '@types/lodash': 4.14.202
       color-convert: 2.0.1
@@ -3378,8 +3405,8 @@ packages:
       memoizerific: 1.11.3
       polished: 4.3.1
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-colorful: 5.6.1(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-colorful: 5.6.1(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
       telejson: 7.2.0
       tocbot: 4.25.0
       ts-dedent: 2.2.0
@@ -3472,7 +3499,7 @@ packages:
       tiny-invariant: 1.3.1
     dev: true
 
-  /@storybook/cli@8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/cli@8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-IfCYCpkOZvMQnf3i+AIdTZ4x45lfuEYNRWZYAZT8Nmnuz2gc0AKui3So4IgNB276Zmbru+OCudf05xHgoxxu3A==}
     hasBin: true
     dependencies:
@@ -3481,7 +3508,7 @@ packages:
       '@storybook/codemod': 8.0.0-beta.2
       '@storybook/core-common': 8.0.0-beta.2
       '@storybook/core-events': 8.0.0-beta.2
-      '@storybook/core-server': 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/core-server': 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/csf-tools': 8.0.0-beta.2
       '@storybook/node-logger': 8.0.0-beta.2
       '@storybook/telemetry': 8.0.0-beta.2
@@ -3576,7 +3603,7 @@ packages:
       - '@types/react'
     dev: true
 
-  /@storybook/components@8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/components@8.0.0-beta.2(@types/react@18.2.55)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-FsY+Sk6i/62RSPRTupUkBJEBb02Ry5Cg9XEfAa7eH5MpaxxLLIBBDxJ8y1FPepvr0Hkzqo0sBa8w3KMbTfo2ow==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -3586,12 +3613,12 @@ packages:
       '@storybook/client-logger': 8.0.0-beta.2
       '@storybook/csf': 0.1.2
       '@storybook/global': 5.0.0
-      '@storybook/icons': 1.2.5(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
-      '@storybook/theming': 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/icons': 1.2.5(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/theming': 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/types': 8.0.0-beta.2
       memoizerific: 1.11.3
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
       util-deprecate: 1.0.2
     transitivePeerDependencies:
       - '@types/react'
@@ -3676,7 +3703,7 @@ packages:
       ts-dedent: 2.2.0
     dev: true
 
-  /@storybook/core-server@8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/core-server@8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-J96aic++0180m6KrIerWxNAbDxjUnUor7smbVWFWcvvZAM2cW77Th2tIXxs5gcyJ6LEEAea/jYV0P+/I+afdoA==}
     dependencies:
       '@aw-web-design/x-default-browser': 1.4.126
@@ -3690,7 +3717,7 @@ packages:
       '@storybook/docs-mdx': 3.0.0
       '@storybook/global': 5.0.0
       '@storybook/manager': 8.0.0-beta.2
-      '@storybook/manager-api': 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/manager-api': 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/node-logger': 8.0.0-beta.2
       '@storybook/preview-api': 8.0.0-beta.2
       '@storybook/telemetry': 8.0.0-beta.2
@@ -3817,7 +3844,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@storybook/icons@1.2.5(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/icons@1.2.5(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-m3jnuE+zmkZy6K+cdUDzAoUuCJyl0fWCAXPCji7VZCH1TzFohyvnPqhc9JMkQpanej2TOW3wWXaplPzHghcBSg==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
@@ -3825,7 +3852,7 @@ packages:
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
     dev: true
 
   /@storybook/instrumenter@8.0.0-beta.2:
@@ -3862,7 +3889,7 @@ packages:
       - react-dom
     dev: true
 
-  /@storybook/manager-api@8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/manager-api@8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-LMgxSXqpB8Zdtmvs0rthityGE77rVgQ82gq+LBMaBEEFlwdSfYhoLLnlNLHrc3m8A2mTXJ4/aDhvTTjh9PPG5w==}
     dependencies:
       '@storybook/channels': 8.0.0-beta.2
@@ -3871,7 +3898,7 @@ packages:
       '@storybook/csf': 0.1.2
       '@storybook/global': 5.0.0
       '@storybook/router': 8.0.0-beta.2
-      '@storybook/theming': 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/theming': 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/types': 8.0.0-beta.2
       dequal: 2.0.3
       lodash: 4.17.21
@@ -3929,17 +3956,17 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@storybook/react-dom-shim@8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/react-dom-shim@8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-z372LCk+5WbSX/nWpnYaxP4oWoeKTtmq7CHqK7pWrdtZJRwZJbsIKZdZragzO4yyfZLEuAybw7kR9qgCqz1ToA==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
     dev: true
 
-  /@storybook/react-vite@8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)(vite@5.1.1):
+  /@storybook/react-vite@8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)(vite@5.1.1):
     resolution: {integrity: sha512-PKbOW0JP03e0x9cndFkCXoCUUQ+P7C7JzUnURRz/uRGXl/DUiR1IcjxL0aNT7uv9Gm+whpnGCP977RHFrvMlqA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -3950,11 +3977,11 @@ packages:
       '@joshwooding/vite-plugin-react-docgen-typescript': 0.3.0(typescript@5.3.3)(vite@5.1.1)
       '@rollup/pluginutils': 5.1.0
       '@storybook/builder-vite': 8.0.0-beta.2(typescript@5.3.3)(vite@5.1.1)
-      '@storybook/react': 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)
+      '@storybook/react': 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)
       magic-string: 0.30.7
       react: 18.3.0-canary-ba5e6a832-20240208
       react-docgen: 7.0.3
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
       vite: 5.1.1
     transitivePeerDependencies:
       - '@preact/preset-vite'
@@ -3965,7 +3992,7 @@ packages:
       - vite-plugin-glimmerx
     dev: true
 
-  /@storybook/react@8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3):
+  /@storybook/react@8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3):
     resolution: {integrity: sha512-6Snd+u9UQHrzYkmEYi/BxJMl1FNnJI+3aXdopiwdslze9bosZg0glK4TKBvhqGwCBYLnKgzKHXhttMECWQApFA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
@@ -3980,7 +4007,7 @@ packages:
       '@storybook/docs-tools': 8.0.0-beta.2
       '@storybook/global': 5.0.0
       '@storybook/preview-api': 8.0.0-beta.2
-      '@storybook/react-dom-shim': 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/react-dom-shim': 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/types': 8.0.0-beta.2
       '@types/escodegen': 0.0.6
       '@types/estree': 0.0.51
@@ -3993,8 +4020,8 @@ packages:
       lodash: 4.17.21
       prop-types: 15.8.1
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
-      react-element-to-jsx-string: 15.0.0(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
+      react-element-to-jsx-string: 15.0.0(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
       semver: 7.6.0
       ts-dedent: 2.2.0
       type-fest: 2.19.0
@@ -4086,7 +4113,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /@storybook/theming@8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /@storybook/theming@8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-Nl3eCdsBVjh98sghb7YF/v+65bUWEyJfvhU7aQHxRcYoBw+UKJIX5FKSd+PFnC/BOkH0So2ngDU2XFoOdA6BPg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -4102,7 +4129,7 @@ packages:
       '@storybook/global': 5.0.0
       memoizerific: 1.11.3
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
     dev: true
 
   /@storybook/types@7.6.14:
@@ -9728,7 +9755,6 @@ packages:
     resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
-    dev: true
 
   /pretty-format@27.5.1:
     resolution: {integrity: sha512-Qb1gy5OrP5+zDf2Bvnzdl3jsTf1qXVMazbvCoKhtKqVs4/YK4ozX4gKQJJVyNe+cajNPn0KoC0MC3FUmaHWEmQ==}
@@ -9887,14 +9913,14 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: true
 
-  /react-colorful@5.6.1(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /react-colorful@5.6.1(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-1exovf0uGTGyq5mXQT0zgQ80uvj2PCwvF8zY1RN9/vbJVSjSo3fsB/4L3ObbF7u70NduSiK4xu4Y6q1MHoUGEw==}
     peerDependencies:
       react: '>=16.8.0'
       react-dom: '>=16.8.0'
     dependencies:
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
     dev: true
 
   /react-confetti@6.1.0(react@18.3.0-canary-ba5e6a832-20240208):
@@ -9943,6 +9969,15 @@ packages:
       scheduler: 0.23.0
     dev: true
 
+  /react-dom@18.2.0(react@18.3.0-canary-ba5e6a832-20240208):
+    resolution: { integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g== }
+    peerDependencies:
+      react: ^18.2.0
+    dependencies:
+      loose-envify: 1.4.0
+      react: 18.3.0-canary-ba5e6a832-20240208
+      scheduler: 0.23.0
+
   /react-dom@18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-3dpBZi5Lx+4xN/C05hJlN/Phqt11cSJYMYxG3r0WN3R+XpzeyUeeForbdYco0IIQRPGS+7tuAr3Nce3KW8f2KQ==}
     peerDependencies:
@@ -9951,8 +9986,9 @@ packages:
       loose-envify: 1.4.0
       react: 18.3.0-canary-ba5e6a832-20240208
       scheduler: 0.24.0-canary-ba5e6a832-20240208
+    dev: false
 
-  /react-element-to-jsx-string@15.0.0(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /react-element-to-jsx-string@15.0.0(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-UDg4lXB6BzlobN60P8fHWVPX3Kyw8ORrTeBtClmIlGdkOOE+GYQSFvmEU5iLLpwp/6v42DINwNcwOhOLfQ//FQ==}
     peerDependencies:
       react: ^0.14.8 || ^15.0.1 || ^16.0.0 || ^17.0.1 || ^18.0.0
@@ -9961,7 +9997,7 @@ packages:
       '@base2/pretty-print-object': 1.0.1
       is-plain-object: 5.0.0
       react: 18.3.0-canary-ba5e6a832-20240208
-      react-dom: 18.3.0-canary-ba5e6a832-20240208(react@18.3.0-canary-ba5e6a832-20240208)
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
       react-is: 18.1.0
     dev: true
 
@@ -9985,6 +10021,19 @@ packages:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /react-router-dom@6.22.0(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
+    resolution: { integrity: sha512-z2w+M4tH5wlcLmH3BMMOMdrtrJ9T3oJJNsAlBJbwk+8Syxd5WFJ7J5dxMEW0/GEXD1BBis4uXRrNIz3mORr0ag== }
+    engines: { node: '>=14.0.0' }
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.15.0
+      react: 18.3.0-canary-ba5e6a832-20240208
+      react-dom: 18.2.0(react@18.3.0-canary-ba5e6a832-20240208)
+      react-router: 6.22.0(react@18.3.0-canary-ba5e6a832-20240208)
+    dev: false
 
   /react-router-dom@6.22.0(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-z2w+M4tH5wlcLmH3BMMOMdrtrJ9T3oJJNsAlBJbwk+8Syxd5WFJ7J5dxMEW0/GEXD1BBis4uXRrNIz3mORr0ag==}
@@ -10404,12 +10453,12 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
-    dev: true
 
   /scheduler@0.24.0-canary-ba5e6a832-20240208:
     resolution: {integrity: sha512-9JV5F8f0c5mUFeGQ3gGEyjmYaoNIHn5RiGp/eaag0EHxMl0f9kMBtxT9b/H4tuI7o3OTtd/qRUNXm7krIrH+6w==}
     dependencies:
       loose-envify: 1.4.0
+    dev: false
 
   /scripty@2.1.1:
     resolution: {integrity: sha512-yAutoO7+MfJcc7UAjAOp1CNbAI6GhxXYB63yFLEJe80BY1VkKQWrJ2xrdd57rh/UBnUIKmO31hzKUHWGxIupbA==}
@@ -10635,11 +10684,11 @@ packages:
     resolution: {integrity: sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==}
     dev: true
 
-  /storybook@8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208):
+  /storybook@8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
     resolution: {integrity: sha512-iXPJck+USEAp9JIBgPvkHNOGzgbfcRoyrk18JMtypwoEXeMZgf6gPw9uKqH2rAoQ0opEYHKbU8FsJ2v+GX01yQ==}
     hasBin: true
     dependencies:
-      '@storybook/cli': 8.0.0-beta.2(react-dom@18.3.0-canary-ba5e6a832-20240208)(react@18.3.0-canary-ba5e6a832-20240208)
+      '@storybook/cli': 8.0.0-beta.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
     transitivePeerDependencies:
       - '@babel/preset-env'
       - bufferutil
