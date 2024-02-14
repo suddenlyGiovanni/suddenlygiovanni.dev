@@ -11,6 +11,17 @@
   "scripts": {
     "clean": "scripty"
   },
+  "peerDependenciesMeta": {
+    "tailwindcss": {
+      "optional": false
+    },
+    "postcss": {
+      "optional": false
+    },
+    "autoprefixer": {
+      "optional": false
+    }
+  },
   "peerDependencies": {
     "tailwindcss": "3.4.1",
     "postcss": "8.4.35",
