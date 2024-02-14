@@ -15,8 +15,8 @@
   },
   "type": "module",
   "scripts": {
-    "build:storybook": "storybook build",
     "build:css": "tailwindcss --input ./src/styles/tailwind.css --output dist/styles/tailwind.css",
+    "build:storybook": "storybook build",
     "check": "biome check .",
     "check:fix": "biome check --apply .",
     "clean": "scripty",
