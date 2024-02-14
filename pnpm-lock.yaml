@@ -11,6 +11,9 @@ importers:
       '@biomejs/biome':
         specifier: 1.5.3
         version: 1.5.3
+      eslint:
+        specifier: 8.56.0
+        version: 8.56.0
       prettier:
         specifier: 3.2.5
         version: 3.2.5
@@ -78,9 +81,6 @@ importers:
       autoprefixer:
         specifier: 10.4.17
         version: 10.4.17(postcss@8.4.35)
-      eslint:
-        specifier: 8.56.0
-        version: 8.56.0
       eslint-config-prettier:
         specifier: 9.1.0
         version: 9.1.0(eslint@8.56.0)
@@ -280,9 +280,6 @@ importers:
       concurrently:
         specifier: 8.2.2
         version: 8.2.2
-      eslint:
-        specifier: 8.56.0
-        version: 8.56.0
       eslint-plugin-react-refresh:
         specifier: 0.4.5
         version: 0.4.5(eslint@8.56.0)
@@ -2942,8 +2939,8 @@ packages:
       typescript: 5.3.3
 
   /@remix-run/react@2.6.0(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3):
-    resolution: { integrity: sha512-m/Ph6bryny7wrmrQyXQMvIiW+cBLrU/MepcLGFPvTVVwvfeiGBgXRiYZJ6yPNsfrmHFaS83d+Ja/Mx4N4zUWcg== }
-    engines: { node: '>=18.0.0' }
+    resolution: {integrity: sha512-m/Ph6bryny7wrmrQyXQMvIiW+cBLrU/MepcLGFPvTVVwvfeiGBgXRiYZJ6yPNsfrmHFaS83d+Ja/Mx4N4zUWcg==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -9596,8 +9593,8 @@ packages:
       yaml: 2.3.4
 
   /postcss-load-config@5.0.3(postcss@8.4.35):
-    resolution: { integrity: sha512-90pBBI5apUVruIEdCxZic93Wm+i9fTrp7TXbgdUCH+/L+2WnfpITSpq5dFU/IPvbv7aNiMlQISpUkAm3fEcvgQ== }
-    engines: { node: '>= 18' }
+    resolution: {integrity: sha512-90pBBI5apUVruIEdCxZic93Wm+i9fTrp7TXbgdUCH+/L+2WnfpITSpq5dFU/IPvbv7aNiMlQISpUkAm3fEcvgQ==}
+    engines: {node: '>= 18'}
     peerDependencies:
       jiti: '>=1.21.0'
       postcss: '>=8.0.9'
@@ -9990,7 +9987,7 @@ packages:
     dev: true
 
   /react-dom@18.2.0(react@18.3.0-canary-ba5e6a832-20240208):
-    resolution: { integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g== }
+    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
       react: ^18.2.0
     dependencies:
@@ -10043,8 +10040,8 @@ packages:
     dev: true
 
   /react-router-dom@6.22.0(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208):
-    resolution: { integrity: sha512-z2w+M4tH5wlcLmH3BMMOMdrtrJ9T3oJJNsAlBJbwk+8Syxd5WFJ7J5dxMEW0/GEXD1BBis4uXRrNIz3mORr0ag== }
-    engines: { node: '>=14.0.0' }
+    resolution: {integrity: sha512-z2w+M4tH5wlcLmH3BMMOMdrtrJ9T3oJJNsAlBJbwk+8Syxd5WFJ7J5dxMEW0/GEXD1BBis4uXRrNIz3mORr0ag==}
+    engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
