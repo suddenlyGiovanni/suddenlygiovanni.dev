@@ -171,6 +171,9 @@ importers:
       '@suddenly-giovanni/config-typescript':
         specifier: workspace:*
         version: link:../config-typescript
+      postcss-load-config:
+        specifier: 5.0.3
+        version: 5.0.3(postcss@8.4.35)
       tailwindcss:
         specifier: 3.4.1
         version: 3.4.1
@@ -9591,6 +9594,23 @@ packages:
       lilconfig: 3.0.0
       postcss: 8.4.35
       yaml: 2.3.4
+
+  /postcss-load-config@5.0.3(postcss@8.4.35):
+    resolution: { integrity: sha512-90pBBI5apUVruIEdCxZic93Wm+i9fTrp7TXbgdUCH+/L+2WnfpITSpq5dFU/IPvbv7aNiMlQISpUkAm3fEcvgQ== }
+    engines: { node: '>= 18' }
+    peerDependencies:
+      jiti: '>=1.21.0'
+      postcss: '>=8.0.9'
+    peerDependenciesMeta:
+      jiti:
+        optional: true
+      postcss:
+        optional: true
+    dependencies:
+      lilconfig: 3.0.0
+      postcss: 8.4.35
+      yaml: 2.3.4
+    dev: true
 
   /postcss-modules-extract-imports@3.0.0(postcss@8.4.35):
     resolution: {integrity: sha512-bdHleFnP3kZ4NYDhuGlVK+CMrQ/pqUm8bx/oGL93K6gVwiclvX5x0n76fYMKuIGKzlABOy13zsvqjb0f92TEXw==}

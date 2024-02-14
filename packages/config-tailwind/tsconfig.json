@@ -1,11 +1,18 @@
 {
   "extends": "@suddenly-giovanni/config-typescript/base.json",
+  "compilerOptions": {
+    "allowImportingTsExtensions": false,
+    "module": "Node16",
+    "noEmit": false,
+    "outDir": "dist",
+    "rootDir": "src",
+    "target": "ESNext"
+  },
   "include": [
-    "."
+    "src/postcss.config.ts"
   ],
   "exclude": [
     "dist",
-    "build",
     "node_modules"
   ]
 }

@@ -1,5 +1,5 @@
-import sharedConfig from '@suddenly-giovanni/config-tailwind/tailwind.config.ts'
-import type { Config } from 'tailwindcss'
+import sharedConfig, {type Config} from '@suddenly-giovanni/config-tailwind/tailwind.config'
+
 
 const config = {
 	darkMode: ['class'],

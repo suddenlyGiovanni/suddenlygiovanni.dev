@@ -3,13 +3,16 @@
   "name": "@suddenly-giovanni/config-tailwind",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "exports": {
-    "./tailwind.css": "./tailwind.css",
-    "./tailwind.config.ts": "./tailwind.config.ts",
-    "./postcss.config.mjs": "./postcss.config.mjs"
+    "./postcss.config": "./dist/postcss.config.js",
+    "./tailwind.config": "./src/tailwind.config.ts",
+    "./tailwind.css": "./src/tailwind.css"
   },
   "scripts": {
-    "clean": "scripty"
+    "clean": "scripty",
+    "build": "tsc --build",
+    "dev": "pnpm run build --watch --preserveWatchOutput"
   },
   "peerDependenciesMeta": {
     "tailwindcss": {
@@ -23,12 +26,13 @@
     }
   },
   "peerDependencies": {
-    "tailwindcss": "3.4.1",
+    "autoprefixer": "10.4.17",
     "postcss": "8.4.35",
-    "autoprefixer": "10.4.17"
+    "tailwindcss": "3.4.1"
   },
   "devDependencies": {
     "@suddenly-giovanni/config-typescript": "workspace:*",
+    "postcss-load-config": "5.0.3",
     "tailwindcss": "3.4.1"
   },
   "config": {
