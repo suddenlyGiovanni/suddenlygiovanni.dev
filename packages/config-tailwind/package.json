@@ -12,7 +12,8 @@
   "scripts": {
     "clean": "scripty",
     "build": "tsc --build",
-    "dev": "pnpm run build --watch --preserveWatchOutput"
+    "dev": "pnpm run build --watch --preserveWatchOutput",
+    "typecheck": "scripty"
   },
   "peerDependenciesMeta": {
     "tailwindcss": {

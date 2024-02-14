@@ -27,7 +27,7 @@
     "dev:storybook": "storybook dev -p 6006",
     "format": "scripty",
     "lint": "eslint src/ --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "scripty"
   },
   "peerDependencies": {
     "react": "18.3.0-canary-ba5e6a832-20240208"

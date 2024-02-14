@@ -17,7 +17,8 @@
     "check": "biome check --apply .",
     "format": "turbo format",
     "lint": "turbo lint",
-    "typecheck": "turbo typecheck"
+    "typecheck": "turbo typecheck --log-order=grouped",
+    "typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"
   },
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
