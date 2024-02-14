@@ -23,7 +23,7 @@ export const Footer: Story = {
 			</Layout.Body>
 		),
 	],
-	render: ({ children, ...args }) => (
+	render: ({ children: _, ...args }) => (
 		<Layout.Footer {...args}>
 			<Placeholder>Footer</Placeholder>
 		</Layout.Footer>

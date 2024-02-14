@@ -12,7 +12,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Body = {
-	render: ({ children, className, ...args }) => (
+	render: ({ children: _, className: __, ...args }) => (
 		<Layout.Body
 			as="div"
 			{...args}

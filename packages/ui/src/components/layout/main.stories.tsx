@@ -23,7 +23,7 @@ export const Main: Story = {
 			</Layout.Body>
 		),
 	],
-	render: ({ children, ...args }) => (
+	render: ({ children: _, ...args }) => (
 		<Layout.Main {...args}>
 			<Placeholder>Main</Placeholder>
 		</Layout.Main>

@@ -11,7 +11,7 @@ export function Button({ children, className, ...rest }: ButtonProps): JSX.Eleme
 	return (
 		<button
 			className={cn('p-1 text-2xl text-blue-600', className)}
-			dates-testid={name}
+			data-testid={name}
 			type="button"
 			{...rest}
 		>

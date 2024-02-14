@@ -23,7 +23,7 @@ export const Header: Story = {
 			</Layout.Body>
 		),
 	],
-	render: ({ children, ...args }) => (
+	render: ({ children: _, ...args }) => (
 		<Layout.Header {...args}>
 			<Placeholder>Header</Placeholder>
 		</Layout.Header>
