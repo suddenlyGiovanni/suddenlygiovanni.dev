@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "exports": {
-    ".": "./prettier.config.mjs"
-  },
+  "main": "dist/prettier.config.js",
+  "types": "dist/prettier.config.d.ts",
   "scripts": {
-    "clean": "scripty"
+    "clean": "scripty",
+    "build": "tsc --build .",
+    "dev": "pnpm run build --watch --preserveWatchOutput"
   },
   "peerDependencies": {
     "prettier": "3.2.5"
