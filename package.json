@@ -16,7 +16,7 @@
     "dev": "turbo dev",
     "check": "biome check --apply .",
 		"format": "turbo format --log-order=grouped",
-    "lint": "turbo lint",
+		"lint": "turbo lint --log-order=grouped",
     "typecheck": "turbo typecheck --log-order=grouped",
     "typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"
   },

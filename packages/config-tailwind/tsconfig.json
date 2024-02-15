@@ -8,11 +8,7 @@
     "rootDir": "src",
     "target": "ESNext"
   },
-  "include": [
-    "src/postcss.config.ts"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules"
-  ]
+	"include": [
+		"src/postcss-config.ts"
+	]
 }

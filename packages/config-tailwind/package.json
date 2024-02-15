@@ -1,44 +1,47 @@
 {
-  "$schema": "https://json.schemastore.org/package.json",
-  "name": "@suddenly-giovanni/config-tailwind",
-  "version": "0.0.1",
-  "private": true,
-  "type": "module",
-  "exports": {
-    "./postcss.config": "./dist/postcss.config.js",
-    "./tailwind.config": "./src/tailwind.config.ts",
-    "./tailwind.css": "./src/tailwind.css"
-  },
-  "scripts": {
-    "clean": "scripty",
-    "build": "tsc --build",
-    "dev": "pnpm run build --watch --preserveWatchOutput",
-    "typecheck": "scripty"
-  },
-  "peerDependenciesMeta": {
-    "tailwindcss": {
-      "optional": false
-    },
-    "postcss": {
-      "optional": false
-    },
-    "autoprefixer": {
-      "optional": false
-    }
-  },
-  "peerDependencies": {
-    "autoprefixer": "10.4.17",
-    "postcss": "8.4.35",
-    "tailwindcss": "3.4.1"
-  },
-  "devDependencies": {
-    "@suddenly-giovanni/config-typescript": "workspace:*",
-    "postcss-load-config": "5.0.3",
-    "tailwindcss": "3.4.1"
-  },
-  "config": {
-    "scripty": {
-      "path": "../../scripts"
-    }
-  }
+	"$schema": "https://json.schemastore.org/package.json",
+	"name": "@suddenly-giovanni/config-tailwind",
+	"version": "0.0.1",
+	"private": true,
+	"type": "module",
+	"exports": {
+		"./postcss-config.js": {
+			"import": "./dist/postcss-config.js",
+			"types": "./dist/postcss-config.d.ts"
+		},
+		"./tailwind-config.ts": "./src/tailwind-config.ts",
+		"./styles.css": "./src/styles.css"
+	},
+	"scripts": {
+		"clean": "scripty",
+		"build": "tsc --build",
+		"dev": "pnpm run build --watch --preserveWatchOutput",
+		"typecheck": "scripty"
+	},
+	"peerDependenciesMeta": {
+		"tailwindcss": {
+			"optional": false
+		},
+		"postcss": {
+			"optional": false
+		},
+		"autoprefixer": {
+			"optional": false
+		}
+	},
+	"peerDependencies": {
+		"autoprefixer": "10.4.17",
+		"postcss": "8.4.35",
+		"tailwindcss": "3.4.1"
+	},
+	"devDependencies": {
+		"@suddenly-giovanni/config-typescript": "workspace:*",
+		"postcss-load-config": "5.0.3",
+		"tailwindcss": "3.4.1"
+	},
+	"config": {
+		"scripty": {
+			"path": "../../scripts"
+		}
+	}
 }

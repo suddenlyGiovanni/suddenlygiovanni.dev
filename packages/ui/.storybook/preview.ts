@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react'
 
-import '../dist/styles/tailwind.css'
+import '../dist/styles/styles.css'
 
 const preview: Preview = {
 	parameters: {

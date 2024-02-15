@@ -7,7 +7,7 @@
 		"**/*.css"
 	],
 	"exports": {
-		"./tailwind.css": "./dist/styles/tailwind.css",
+		"./styles.css": "./dist/styles/styles.css",
 		".": {
 			"import": "./src/index.tsx",
 			"types": "./dist/index.d.ts"
@@ -15,7 +15,7 @@
 	},
 	"type": "module",
 	"scripts": {
-		"build:css": "tailwindcss --input ./src/styles/tailwind.css --output dist/styles/tailwind.css",
+		"build:css": "tailwindcss --input ./src/styles/styles.css --output dist/styles/styles.css",
 		"build:storybook": "storybook build",
 		"check": "biome check .",
 		"check:fix": "biome check --apply .",
