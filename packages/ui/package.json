@@ -1,82 +1,82 @@
 {
-  "$schema": "https://json.schemastore.org/package.json",
-  "name": "@suddenly-giovanni/ui",
-  "private": true,
-  "version": "0.0.1",
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "exports": {
-    "./tailwind.css": "./dist/styles/tailwind.css",
-    ".": {
-      "import": "./src/index.tsx",
-      "types": "./dist/index.d.ts"
-    }
-  },
-  "type": "module",
-  "scripts": {
-    "build:css": "tailwindcss --input ./src/styles/tailwind.css --output dist/styles/tailwind.css",
-    "build:storybook": "storybook build",
-    "check": "biome check .",
-    "check:fix": "biome check --apply .",
-    "clean": "scripty",
-    "components-add": "pnpm dlx shadcn-ui@latest add",
-    "components-diff": "pnpm dlx shadcn-ui@latest diff",
-    "dev": "concurrently \"npm:dev:css\" \"npm:dev:storybook\" \"npm:typecheck --watch --preserveWatchOutput\" ",
-    "dev:css": "pnpm run build:css --watch",
-    "dev:storybook": "storybook dev -p 6006",
-    "format": "scripty",
-	  "lint": "scripty src/",
-    "typecheck": "scripty"
-  },
-  "peerDependencies": {
-    "react": "18.3.0-canary-ba5e6a832-20240208"
-  },
-  "dependencies": {
-    "@radix-ui/react-accessible-icon": "1.0.3",
-    "@radix-ui/react-avatar": "1.0.4",
-    "@radix-ui/react-icons": "1.3.0",
-    "@remix-run/react": "2.6.0",
-    "react": "18.3.0-canary-ba5e6a832-20240208",
-    "tailwindcss-animate": "1.0.7"
-  },
-  "devDependencies": {
-    "@chromatic-com/storybook": "1.1.8",
-    "@storybook/addon-essentials": "8.0.0-beta.2",
-    "@storybook/addon-interactions": "8.0.0-beta.2",
-    "@storybook/addon-links": "8.0.0-beta.2",
-    "@storybook/addon-onboarding": "^1.0.11",
-    "@storybook/blocks": "8.0.0-beta.2",
-    "@storybook/react": "8.0.0-beta.2",
-    "@storybook/react-vite": "8.0.0-beta.2",
-    "@storybook/test": "8.0.0-beta.2",
-    "@suddenly-giovanni/config-prettier": "workspace:*",
-    "@suddenly-giovanni/config-tailwind": "workspace:*",
-    "@suddenly-giovanni/config-typescript": "workspace:*",
-    "@suddenly-giovanni/eslint-config": "workspace:*",
-    "@total-typescript/ts-reset": "0.5.1",
-    "@types/react": "18.2.55",
-    "@types/react-dom": "18.2.19",
-    "@vitejs/plugin-react-swc": "3.6.0",
-    "autoprefixer": "10.4.17",
-    "class-variance-authority": "0.7.0",
-    "clsx": "2.1.0",
-    "concurrently": "8.2.2",
-    "eslint-plugin-react-refresh": "0.4.5",
-    "eslint-plugin-storybook": "0.6.15",
-    "postcss": "8.4.35",
-    "storybook": "8.0.0-beta.2",
-    "tailwind-merge": "2.2.1",
-    "tailwindcss": "3.4.1",
-    "vite": "5.1.2",
-    "vite-tsconfig-paths": "4.3.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "config": {
-    "scripty": {
-      "path": "../../scripts"
-    }
-  }
+	"$schema": "https://json.schemastore.org/package.json",
+	"name": "@suddenly-giovanni/ui",
+	"private": true,
+	"version": "0.0.1",
+	"sideEffects": [
+		"**/*.css"
+	],
+	"exports": {
+		"./tailwind.css": "./dist/styles/tailwind.css",
+		".": {
+			"import": "./src/index.tsx",
+			"types": "./dist/index.d.ts"
+		}
+	},
+	"type": "module",
+	"scripts": {
+		"build:css": "tailwindcss --input ./src/styles/tailwind.css --output dist/styles/tailwind.css",
+		"build:storybook": "storybook build",
+		"check": "biome check .",
+		"check:fix": "biome check --apply .",
+		"clean": "scripty",
+		"components-add": "pnpm dlx shadcn-ui@latest add",
+		"components-diff": "pnpm dlx shadcn-ui@latest diff",
+		"dev": "concurrently \"npm:dev:css\" \"npm:dev:storybook\" \"npm:typecheck --watch --preserveWatchOutput\" ",
+		"dev:css": "pnpm run build:css --watch",
+		"dev:storybook": "storybook dev -p 6006",
+		"format": "scripty",
+		"lint": "scripty src/",
+		"typecheck": "scripty"
+	},
+	"peerDependencies": {
+		"react": "18.3.0-canary-ba5e6a832-20240208"
+	},
+	"dependencies": {
+		"@radix-ui/react-accessible-icon": "1.0.3",
+		"@radix-ui/react-avatar": "1.0.4",
+		"@radix-ui/react-icons": "1.3.0",
+		"@remix-run/react": "2.6.0",
+		"react": "18.3.0-canary-ba5e6a832-20240208",
+		"tailwindcss-animate": "1.0.7"
+	},
+	"devDependencies": {
+		"@chromatic-com/storybook": "1.1.8",
+		"@storybook/addon-essentials": "8.0.0-beta.2",
+		"@storybook/addon-interactions": "8.0.0-beta.2",
+		"@storybook/addon-links": "8.0.0-beta.2",
+		"@storybook/addon-onboarding": "^1.0.11",
+		"@storybook/blocks": "8.0.0-beta.2",
+		"@storybook/react": "8.0.0-beta.2",
+		"@storybook/react-vite": "8.0.0-beta.2",
+		"@storybook/test": "8.0.0-beta.2",
+		"@suddenly-giovanni/config-prettier": "workspace:*",
+		"@suddenly-giovanni/config-tailwind": "workspace:*",
+		"@suddenly-giovanni/config-typescript": "workspace:*",
+		"@suddenly-giovanni/eslint-config": "workspace:*",
+		"@total-typescript/ts-reset": "0.5.1",
+		"@types/react": "18.2.55",
+		"@types/react-dom": "18.2.19",
+		"@vitejs/plugin-react-swc": "3.6.0",
+		"autoprefixer": "10.4.17",
+		"class-variance-authority": "0.7.0",
+		"clsx": "2.1.0",
+		"concurrently": "8.2.2",
+		"eslint-plugin-react-refresh": "0.4.5",
+		"eslint-plugin-storybook": "0.6.15",
+		"postcss": "8.4.35",
+		"storybook": "8.0.0-beta.2",
+		"tailwind-merge": "2.2.1",
+		"tailwindcss": "3.4.1",
+		"vite": "5.1.2",
+		"vite-tsconfig-paths": "4.3.1"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"config": {
+		"scripty": {
+			"path": "../../scripts"
+		}
+	}
 }

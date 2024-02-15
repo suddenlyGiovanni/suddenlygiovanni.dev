@@ -3,6 +3,7 @@ node_modules
 /.cache
 /build
 .env
+.prettierrc.js
 prettier.config.mjs
 postcss.config.mjs
 .eslintrc.cjs

@@ -27,7 +27,7 @@ echo "🏗️ Formatting directory: '$path'"
 pnpm exec prettier \
   --write \
   --ignore-path .prettierignore \
-  --config prettier.config.mjs \
+  --config .prettierrc.js \
   "$path/**/*.{ts,tsx,js,jsx,json,cjs,mjs}" \
 
 

@@ -1,4 +1,4 @@
-import sharedPostcssConfig from '@suddenly-giovanni/config-tailwind/postcss.config.mjs'
+import sharedPostcssConfig from '@suddenly-giovanni/config-tailwind/postcss.config'
 
 export default {
 	...sharedPostcssConfig,

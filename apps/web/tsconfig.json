@@ -1,24 +1,24 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "include": [
-    "env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "extends": "@suddenly-giovanni/config-typescript/remix.json",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ES2022"
-    ],
-    "paths": {
-      "~/*": [
-        "./app/*"
-      ]
-    },
-    "skipLibCheck": true,
-    "target": "ES2022"
-  }
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"include": [
+		"env.d.ts",
+		"**/*.ts",
+		"**/*.tsx"
+	],
+	"extends": "@suddenly-giovanni/config-typescript/remix.json",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ES2022"
+		],
+		"paths": {
+			"~/*": [
+				"./app/*"
+			]
+		},
+		"skipLibCheck": true,
+		"target": "ES2022"
+	}
 }

@@ -11,11 +11,11 @@
     "url": "suddenlyGiovanni.dev"
   },
   "scripts": {
-    "build": "turbo build",
+		"build": "turbo build --log-order=grouped",
     "clean": "turbo run clean && scripty clean",
     "dev": "turbo dev",
     "check": "biome check --apply .",
-    "format": "turbo format",
+		"format": "turbo format --log-order=grouped",
     "lint": "turbo lint",
     "typecheck": "turbo typecheck --log-order=grouped",
     "typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"

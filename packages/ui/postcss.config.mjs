@@ -1,5 +1,4 @@
-import sharedPostcssConfig
-  from '@suddenly-giovanni/config-tailwind/postcss.config'
+import sharedPostcssConfig from '@suddenly-giovanni/config-tailwind/postcss.config'
 
 /**
  * If you want to use other PostCSS plugins, see the following:
@@ -7,5 +6,5 @@ import sharedPostcssConfig
  */
 /**  @type {import('@suddenly-giovanni/config-tailwind/postcss.config').Config} */
 export default {
-  ...sharedPostcssConfig,
+	...sharedPostcssConfig,
 }
