@@ -7,10 +7,12 @@ import {
 	LinkedInIconLink,
 	SuddenlyGiovanni,
 	TwitterIconLink,
+	cn,
 } from '@suddenly-giovanni/ui'
 import type { JSX, ReactNode } from 'react'
 import avatarAssetUrl from '~/assets/giovanni_ravalico-profile_bw.webp'
 import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
+import hamburgerMenuAssertUrl from '~/assets/hamburger-menu.svg'
 
 import './styles/tailwind.css'
 
@@ -76,17 +78,44 @@ function NavLink({ children, ...props }: Omit<NavLinkProps, 'className'>): JSX.E
 
 function Header(): JSX.Element {
 	return (
-		<Layout.Header className="flex w-full shrink-0 items-center justify-between border-b border-b-stone-950 pb-4 pt-4">
-			<nav className="container mx-auto flex justify-between">
-				<SuddenlyGiovanni
-					ariaLabel="Navigate to blog page"
-					hrefUrl={avatarAssetUrl}
-					to="/blog"
-				/>
-				<ul className="flex flex-row items-center gap-2">
+		<Layout.Header className="flex w-full justify-between gap-4 border-b border-b-stone-950 py-4">
+			<SuddenlyGiovanni
+				ariaLabel="Navigate to blog page"
+				hrefUrl={avatarAssetUrl}
+				to="/blog"
+			/>
+			<button
+				aria-controls="primary-navigation"
+				className={cn(
+					'block md:hidden',
+					'absolute right-4 top-8 z-40',
+					'border-0 bg-transparent',
+					`bg-[url(${hamburgerMenuAssertUrl})]`,
+				)}
+				type="button"
+			>
+				<span
+					aria-expanded={false}
+					className="sr-only"
+				>
+					Menu
+				</span>
+			</button>
+			<nav aria-label="mobile navigation">
+				<menu
+					className={cn(
+						'inset-y-0 left-[20%] right-0 z-auto px-8 py-12 md:h-full md:p-0',
+						'fixed md:static',
+						'flex justify-between gap-2',
+						'flex-col items-center md:flex-row md:items-center',
+						'bg-slate-700/20 backdrop-blur-xl md:bg-inherit md:backdrop-filter-none',
+					)}
+					id="primary-navigation"
+				>
 					<li>
 						<NavLink
 							prefetch="intent"
+							tabIndex={0}
 							to="/"
 						>
 							ABOUT ME
@@ -95,6 +124,7 @@ function Header(): JSX.Element {
 					<li>
 						<NavLink
 							prefetch="intent"
+							tabIndex={0}
 							to="/blog"
 						>
 							BLOG
@@ -104,6 +134,7 @@ function Header(): JSX.Element {
 						<NavLink
 							aria-disabled
 							prefetch="intent"
+							tabIndex={0}
 							to="/reading-journal"
 						>
 							READING JOURNAL
@@ -112,12 +143,13 @@ function Header(): JSX.Element {
 					<li>
 						<NavLink
 							prefetch="intent"
+							tabIndex={0}
 							to="/resume"
 						>
 							RÉSUMÉ
 						</NavLink>
 					</li>
-				</ul>
+				</menu>
 			</nav>
 		</Layout.Header>
 	)
