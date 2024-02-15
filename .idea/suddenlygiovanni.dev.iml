@@ -13,6 +13,9 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/config-tailwind/node_modules" />
       <excludeFolder url="file://$MODULE_DIR$/packages/config-typescript/node_modules" />
       <excludeFolder url="file://$MODULE_DIR$/packages/ui/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/config-prettier/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/config-tailwind/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/ui/dist" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
