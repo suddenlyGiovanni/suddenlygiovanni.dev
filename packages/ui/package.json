@@ -26,7 +26,7 @@
     "dev:css": "pnpm run build:css --watch",
     "dev:storybook": "storybook dev -p 6006",
     "format": "scripty",
-    "lint": "eslint src/ --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+	  "lint": "scripty src/",
     "typecheck": "scripty"
   },
   "peerDependencies": {

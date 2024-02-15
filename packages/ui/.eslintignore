@@ -6,3 +6,4 @@ node_modules
 prettier.config.mjs
 postcss.config.mjs
 .eslintrc.cjs
+.prettierrc.js
