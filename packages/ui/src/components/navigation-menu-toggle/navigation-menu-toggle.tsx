@@ -1,21 +1,24 @@
-import { type ReactElement } from 'react'
-import {
-	ToggleButton as RACToggleButton,
-	composeRenderProps,
-	type ToggleButtonProps,
-} from 'react-aria-components'
-import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons'
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
+import { forwardRef, memo } from 'react'
+import { composeRenderProps, ToggleButton, type ToggleButtonProps } from 'react-aria-components'
 import { cn, tv } from '../../lib/utils.ts'
+import { HamburgerIcon } from './hamburger-icon.tsx'
 
-const focusRing = tv({
-	base: [
+const styles = tv({
+	base: cn(
+		'size-6',
+		'aspect-square',
+		'border-0',
+		'rounded',
+		'bg-transparent',
+		'flex',
+		'items-center',
+		'content-center',
+		'justify-center',
 		'outline',
 		'outline-offset-2',
 		'outline-blue-600',
-		'dark:outline-blue-500',
-		'forced-colors:outline-[Highlight]',
-	],
+	),
 	variants: {
 		isFocusVisible: {
 			false: 'outline-0',
@@ -24,53 +27,10 @@ const focusRing = tv({
 	},
 })
 
-const styles = tv({
-	extend: focusRing,
-	base: cn(
-		'size-6',
-		'aspect-square',
-		'border-0',
-		'bg-transparent',
-		'flex',
-		'items-center',
-		'content-center',
-		'justify-center',
-	),
-	variants: {
-		isSelected: {
-			false: [
-				'bg-gray-100',
-				'text-gray-800',
-				'hover:bg-gray-200',
-				'pressed:bg-gray-300',
-				'dark:bg-zinc-600',
-				'dark:hover:bg-zinc-500',
-				'dark:pressed:bg-zinc-400',
-				'dark:text-zinc-100',
-				'forced-colors:!bg-[ButtonFace]',
-				'forced-colors:!text-[ButtonText]',
-			],
-			true: [
-				'pressed:bg-gray-900',
-				'dark:pressed:bg-slate-100',
-				'bg-gray-700',
-				'text-white',
-				'hover:bg-gray-800',
-				'dark:bg-slate-300',
-				'dark:text-black',
-				'dark:hover:bg-slate-200',
-				'forced-colors:!bg-[Highlight]',
-				'forced-colors:!text-[HighlightText]',
-			],
-		},
-	},
-})
-
-type Props = Omit<ToggleButtonProps, 'children' | 'type'>
-
-export function NavigationMenuToggle(props: Props): ReactElement {
-	return (
-		<RACToggleButton
+export const NavigationMenuToggle = memo(
+	forwardRef<HTMLButtonElement, Omit<ToggleButtonProps, 'children' | 'type'>>((props, ref) => (
+		<ToggleButton
+			ref={ref}
 			{...props}
 			className={composeRenderProps(props.className, (className, renderProps) =>
 				styles({ ...renderProps, className }),
@@ -79,11 +39,10 @@ export function NavigationMenuToggle(props: Props): ReactElement {
 		>
 			{({ isSelected }) => (
 				<AccessibleIcon label="Navigation menu toggle">
-					{!isSelected ?
-						<HamburgerMenuIcon />
-					:	<Cross1Icon />}
+					<HamburgerIcon isSelected={isSelected} />
 				</AccessibleIcon>
 			)}
-		</RACToggleButton>
-	)
-}
+		</ToggleButton>
+	)),
+)
+NavigationMenuToggle.displayName = 'NavigationMenuToggle'
