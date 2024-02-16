@@ -5,6 +5,7 @@ export {
 	TwitterIconLink,
 	LinkedInIconLink,
 	SuddenlyGiovanni,
+	NavigationMenuToggle,
 } from './components'
 export {
 	cn,

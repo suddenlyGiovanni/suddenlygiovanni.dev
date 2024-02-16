@@ -7,12 +7,13 @@ import {
 	LinkedInIconLink,
 	SuddenlyGiovanni,
 	TwitterIconLink,
+	NavigationMenuToggle,
 	cn,
 } from '@suddenly-giovanni/ui'
 import type { JSX, ReactNode } from 'react'
+import { useState } from 'react'
 import avatarAssetUrl from '~/assets/giovanni_ravalico-profile_bw.webp'
 import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
-import hamburgerMenuAssertUrl from '~/assets/hamburger-menu.svg'
 
 import './styles/tailwind.css'
 
@@ -77,6 +78,7 @@ function NavLink({ children, ...props }: Omit<NavLinkProps, 'className'>): JSX.E
 }
 
 function Header(): JSX.Element {
+	const [state, setState] = useState(false)
 	return (
 		<Layout.Header className="flex w-full justify-between gap-4 border-b border-b-stone-950 py-4">
 			<SuddenlyGiovanni
@@ -84,23 +86,13 @@ function Header(): JSX.Element {
 				hrefUrl={avatarAssetUrl}
 				to="/blog"
 			/>
-			<button
+			<NavigationMenuToggle
 				aria-controls="primary-navigation"
-				className={cn(
-					'block md:hidden',
-					'absolute right-4 top-8 z-40',
-					'border-0 bg-transparent',
-					`bg-[url(${hamburgerMenuAssertUrl})]`,
-				)}
-				type="button"
-			>
-				<span
-					aria-expanded={false}
-					className="sr-only"
-				>
-					Menu
-				</span>
-			</button>
+				className={cn('block md:hidden', 'absolute right-4 top-8 z-40', '')}
+				onPress={() => {
+					setState(s => !s)
+				}}
+			/>
 			<nav aria-label="mobile navigation">
 				<menu
 					className={cn(
@@ -108,7 +100,10 @@ function Header(): JSX.Element {
 						'fixed md:static',
 						'flex justify-between gap-2',
 						'flex-col items-center md:flex-row md:items-center',
-						'bg-slate-700/20 backdrop-blur-xl md:bg-inherit md:backdrop-filter-none',
+						'bg-slate-700/20 shadow-2xl backdrop-blur-xl md:bg-inherit md:shadow-none' +
+							' md:backdrop-filter-none',
+						'transition-transform duration-300 ease-in-out md:transition-none',
+						state ? 'translate-x-0 md:translate-x-0' : 'translate-x-full',
 					)}
 					id="primary-navigation"
 				>
