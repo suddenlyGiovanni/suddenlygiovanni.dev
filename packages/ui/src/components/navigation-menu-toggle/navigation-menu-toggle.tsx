@@ -6,10 +6,16 @@ import {
 } from 'react-aria-components'
 import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons'
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
-import { tv } from '../../lib/utils.ts'
+import { cn, tv } from '../../lib/utils.ts'
 
 const focusRing = tv({
-	base: 'outline outline-offset-2 outline-blue-600 dark:outline-blue-500 forced-colors:outline-[Highlight]',
+	base: [
+		'outline',
+		'outline-offset-2',
+		'outline-blue-600',
+		'dark:outline-blue-500',
+		'forced-colors:outline-[Highlight]',
+	],
 	variants: {
 		isFocusVisible: {
 			false: 'outline-0',
@@ -20,23 +26,23 @@ const focusRing = tv({
 
 const styles = tv({
 	extend: focusRing,
-	base: [
-		'aspect-square',
+	base: cn(
 		'size-6',
+		'aspect-square',
 		'border-0',
 		'bg-transparent',
-		'content-center',
 		'flex',
-		'justify-center',
 		'items-center',
-	],
+		'content-center',
+		'justify-center',
+	),
 	variants: {
 		isSelected: {
 			false: [
 				'bg-gray-100',
+				'text-gray-800',
 				'hover:bg-gray-200',
 				'pressed:bg-gray-300',
-				'text-gray-800',
 				'dark:bg-zinc-600',
 				'dark:hover:bg-zinc-500',
 				'dark:pressed:bg-zinc-400',
@@ -44,7 +50,18 @@ const styles = tv({
 				'forced-colors:!bg-[ButtonFace]',
 				'forced-colors:!text-[ButtonText]',
 			],
-			true: 'pressed:bg-gray-900 dark:pressed:bg-slate-100 bg-gray-700 text-white hover:bg-gray-800 dark:bg-slate-300 dark:text-black dark:hover:bg-slate-200 forced-colors:!bg-[Highlight] forced-colors:!text-[HighlightText]',
+			true: [
+				'pressed:bg-gray-900',
+				'dark:pressed:bg-slate-100',
+				'bg-gray-700',
+				'text-white',
+				'hover:bg-gray-800',
+				'dark:bg-slate-300',
+				'dark:text-black',
+				'dark:hover:bg-slate-200',
+				'forced-colors:!bg-[Highlight]',
+				'forced-colors:!text-[HighlightText]',
+			],
 		},
 	},
 })
