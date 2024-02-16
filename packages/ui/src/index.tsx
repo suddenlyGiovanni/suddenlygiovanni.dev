@@ -1,8 +1,6 @@
 export {
 	Layout,
-	Card,
 	Placeholder,
-	Button,
 	GitHubIconLink,
 	TwitterIconLink,
 	LinkedInIconLink,
