@@ -1,11 +1,12 @@
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
-import { forwardRef, memo } from 'react'
+import type { ReactElement } from 'react'
 import { composeRenderProps, ToggleButton, type ToggleButtonProps } from 'react-aria-components'
 import { cn, tv } from '../../lib/utils.ts'
 import { HamburgerIcon } from './hamburger-icon.tsx'
 
 const styles = tv({
 	base: cn(
+		'relative',
 		'size-6',
 		'aspect-square',
 		'border-0',
@@ -27,10 +28,11 @@ const styles = tv({
 	},
 })
 
-export const NavigationMenuToggle = memo(
-	forwardRef<HTMLButtonElement, Omit<ToggleButtonProps, 'children' | 'type'>>((props, ref) => (
+export function NavigationMenuToggle(
+	props: Omit<ToggleButtonProps, 'children' | 'type'>,
+): ReactElement {
+	return (
 		<ToggleButton
-			ref={ref}
 			{...props}
 			className={composeRenderProps(props.className, (className, renderProps) =>
 				styles({ ...renderProps, className }),
@@ -43,6 +45,5 @@ export const NavigationMenuToggle = memo(
 				</AccessibleIcon>
 			)}
 		</ToggleButton>
-	)),
-)
-NavigationMenuToggle.displayName = 'NavigationMenuToggle'
+	)
+}

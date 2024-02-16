@@ -1,5 +1,5 @@
-import type {Meta, StoryObj} from '@storybook/react'
-import {NavigationMenuToggle} from './navigation-menu-toggle.tsx'
+import type { Meta, StoryObj } from '@storybook/react'
+import { NavigationMenuToggle } from './navigation-menu-toggle.tsx'
 
 const meta: Meta<typeof NavigationMenuToggle> = {
 	component: NavigationMenuToggle,
@@ -11,6 +11,6 @@ const meta: Meta<typeof NavigationMenuToggle> = {
 
 export default meta
 
-export const Example: StoryObj<typeof meta> = {
-	render: args => <NavigationMenuToggle {...args}>Pin</NavigationMenuToggle>,
+export const Default: StoryObj<typeof meta> = {
+	render: args => <NavigationMenuToggle {...args} />,
 }
