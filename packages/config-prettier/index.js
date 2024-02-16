@@ -1,5 +1,6 @@
-import type { Config } from "prettier";
-
+/**
+ * @type {import('prettier').Config}
+ */
 const config = {
 	arrowParens: "avoid",
 	bracketSameLine: false,
@@ -19,6 +20,6 @@ const config = {
 	trailingComma: "all",
 	useTabs: true,
 	tailwindFunctions: ["tv", "cn"],
-} satisfies Config;
+};
 
 export default config;
