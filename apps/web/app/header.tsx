@@ -7,7 +7,7 @@ import {
 	SuddenlyGiovanni,
 	useToggle,
 } from '@suddenly-giovanni/ui'
-import type { JSX } from 'react'
+import { useCallback, type JSX, type SyntheticEvent } from 'react'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
 
 /**
@@ -15,7 +15,13 @@ import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
  * @param isActive - Is NavLink currently active
  * @returns  Resulting class name
  */
-function calculateClassName({ isActive }: { isActive: boolean }): string {
+function calculateClassName({
+	isActive,
+	className,
+}: {
+	isActive: boolean
+	className?: undefined | string
+}): string {
 	return cn(
 		// baseClasses
 		['select-none', 'p-1', 'text-base', 'font-medium', 'capitalize', 'md:text-sm'],
@@ -27,22 +33,49 @@ function calculateClassName({ isActive }: { isActive: boolean }): string {
 		],
 		// isActiveClasses
 		isActive && ['border-b-2', 'border-stone-950'],
+		className,
 	)
 }
 
-function NavLink({ children, ...props }: Omit<NavLinkProps, 'className'>): JSX.Element {
+function NavLink({
+	children,
+	className,
+	...props
+}: Omit<NavLinkProps, 'className'> & {
+	className?: undefined | string
+}): JSX.Element {
 	return (
 		<UnstyledNavLink
 			{...props}
-			className={calculateClassName}
+			className={({ isActive }) => calculateClassName({ isActive, className })}
 		>
 			{children}
 		</UnstyledNavLink>
 	)
 }
 
+const routes = [
+	{ label: 'about me', to: '/' },
+	{ label: 'blog', to: '/blog' },
+	{ label: 'reading journal', to: '/reading-journal', disabled: true },
+	{ label: 'résumé', to: '/resume' },
+] satisfies readonly { label: string; to: string; disabled?: boolean }[]
+
 export function Header(): JSX.Element {
 	const [isMobileNavigationVisible, toggleMobileNavigationVisibility] = useToggle(false)
+
+	const handleMobileNavigationClick = useCallback(
+		<T extends HTMLElement>(event: SyntheticEvent<T>) => {
+			event.stopPropagation()
+			toggleMobileNavigationVisibility()
+		},
+		[toggleMobileNavigationVisibility],
+	)
+
+	const stopPropagation = useCallback(<T extends HTMLElement>(event: SyntheticEvent<T>) => {
+		event.stopPropagation()
+	}, [])
+
 	return (
 		<Layout.Header className="w-full border-b border-b-stone-950 bg-white py-2 md:py-4">
 			<div className="container relative flex w-full justify-between gap-4">
@@ -63,55 +96,42 @@ export function Header(): JSX.Element {
 					<menu
 						className={cn(
 							// Base styles
-							'fixed z-auto flex items-center justify-between gap-2 px-8 py-12',
+							'fixed z-auto flex  px-8 py-12',
 							// Mobile navigation
-							'inset-0 transform-gpu flex-col bg-slate-700/10 shadow-none backdrop-blur-md transition-transform delay-150 duration-300 ease-in-out',
+							'inset-0 transform-gpu flex-col items-end justify-start gap-12 bg-slate-700/10 shadow-none backdrop-blur-md transition-transform  delay-150  duration-300 ease-in-out',
 							// Desktop navigation
-							'md:static md:h-full md:translate-x-0 md:flex-row md:items-center md:bg-inherit md:p-0 md:shadow-none md:backdrop-filter-none md:transition-none',
+							'md:static md:h-full md:translate-x-0 md:flex-row md:items-center md:justify-between md:gap-2 md:bg-inherit md:p-0 md:shadow-none md:backdrop-filter-none md:transition-none',
 							// Mobile navigation
 							isMobileNavigationVisible ? 'translate-x-0 ' : (
 								'translate-x-full shadow-2xl shadow-slate-400'
 							),
 						)}
 						id="primary-navigation"
+						onClick={handleMobileNavigationClick}
+						role="menu"
 					>
-						<li>
-							<NavLink
-								prefetch="intent"
-								tabIndex={0}
-								to="/"
+						{routes.map(({ label, to, disabled }) => (
+							<li
+								className={cn(
+									'flex min-h-16 min-w-32 items-center justify-end',
+									'md:min-h-fit md:min-w-fit',
+								)}
+								key={to}
+								onClick={stopPropagation}
+								role="menuitem"
 							>
-								about me
-							</NavLink>
-						</li>
-						<li>
-							<NavLink
-								prefetch="intent"
-								tabIndex={0}
-								to="/blog"
-							>
-								blog
-							</NavLink>
-						</li>
-						<li>
-							<NavLink
-								aria-disabled
-								prefetch="intent"
-								tabIndex={0}
-								to="/reading-journal"
-							>
-								reading journal
-							</NavLink>
-						</li>
-						<li>
-							<NavLink
-								prefetch="intent"
-								tabIndex={0}
-								to="/resume"
-							>
-								résumé
-							</NavLink>
-						</li>
+								<NavLink
+									aria-disabled={disabled}
+									className=""
+									onClick={handleMobileNavigationClick}
+									prefetch="intent"
+									tabIndex={0}
+									to={to}
+								>
+									{label}
+								</NavLink>
+							</li>
+						))}
 					</menu>
 				</nav>
 			</div>
