@@ -6,16 +6,14 @@
 	"type": "module",
 	"exports": {
 		"./postcss-config.js": {
-			"import": "./dist/postcss-config.js",
-			"types": "./dist/postcss-config.d.ts"
+			"import": "./postcss-config.js",
+			"types": "./postcss-config.d.ts"
 		},
-		"./tailwind-config.ts": "./src/tailwind-config.ts",
-		"./styles.css": "./src/styles.css"
+		"./tailwind-config.ts": "./tailwind-config.ts",
+		"./styles.css": "./styles.css"
 	},
 	"scripts": {
 		"clean": "scripty",
-		"build": "tsc --build",
-		"dev": "pnpm run build --watch --preserveWatchOutput",
 		"typecheck": "scripty"
 	},
 	"peerDependenciesMeta": {

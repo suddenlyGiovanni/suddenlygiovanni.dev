@@ -7,7 +7,7 @@
 		"**/*.css"
 	],
 	"exports": {
-		"./styles.css": "./dist/styles/styles.css",
+		"./dist/styles/styles.css": "./dist/styles/styles.css",
 		".": {
 			"import": "./src/index.tsx"
 		}
