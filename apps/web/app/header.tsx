@@ -13,6 +13,7 @@ import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
 /**
  * Calculates class name based on activated state and base classes
  * @param isActive - Is NavLink currently active
+ * @param className - Optional class name
  * @returns  Resulting class name
  */
 function calculateClassName({
@@ -61,6 +62,8 @@ const routes = [
 	{ label: 'résumé', to: '/resume' },
 ] satisfies readonly { label: string; to: string; disabled?: boolean }[]
 
+const PRIMARY_NAVIGATION = 'primary-navigation'
+
 export function Header(): JSX.Element {
 	const [isMobileNavigationVisible, toggleMobileNavigationVisibility] = useToggle(false)
 
@@ -86,7 +89,8 @@ export function Header(): JSX.Element {
 				/>
 
 				<NavigationMenuToggle
-					aria-controls="primary-navigation"
+					aria-controls={PRIMARY_NAVIGATION}
+					aria-expanded={isMobileNavigationVisible}
 					className={cn('absolute right-8 top-3 z-40 block md:hidden')}
 					isSelected={isMobileNavigationVisible}
 					onPress={toggleMobileNavigationVisibility}
@@ -106,7 +110,7 @@ export function Header(): JSX.Element {
 								'translate-x-full shadow-2xl shadow-slate-400'
 							),
 						)}
-						id="primary-navigation"
+						id={PRIMARY_NAVIGATION}
 						onClick={handleMobileNavigationClick}
 						role="menu"
 					>
