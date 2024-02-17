@@ -42,7 +42,7 @@
 		"tailwindcss-animate": "1.0.7"
 	},
 	"devDependencies": {
-		"@chromatic-com/storybook": "1.1.8",
+		"@chromatic-com/storybook": "1.1.9",
 		"@storybook/addon-essentials": "8.0.0-beta.2",
 		"@storybook/addon-interactions": "8.0.0-beta.2",
 		"@storybook/addon-links": "8.0.0-beta.2",
@@ -64,7 +64,7 @@
 		"clsx": "2.1.0",
 		"concurrently": "8.2.2",
 		"eslint-plugin-react-refresh": "0.4.5",
-		"eslint-plugin-storybook": "0.6.15",
+		"eslint-plugin-storybook": "0.8.0",
 		"postcss": "8.4.35",
 		"storybook": "8.0.0-beta.2",
 		"tailwind-merge": "2.2.1",

@@ -224,8 +224,8 @@ importers:
         version: 1.0.7(tailwindcss@3.4.1)
     devDependencies:
       '@chromatic-com/storybook':
-        specifier: 1.1.8
-        version: 1.1.8(react@18.3.0-canary-ba5e6a832-20240208)
+        specifier: 1.1.9
+        version: 1.1.9(react@18.3.0-canary-ba5e6a832-20240208)
       '@storybook/addon-essentials':
         specifier: 8.0.0-beta.2
         version: 8.0.0-beta.2(@types/react@18.2.56)(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)
@@ -290,8 +290,8 @@ importers:
         specifier: 0.4.5
         version: 0.4.5(eslint@8.56.0)
       eslint-plugin-storybook:
-        specifier: 0.6.15
-        version: 0.6.15(eslint@8.56.0)(typescript@5.3.3)
+        specifier: 0.8.0
+        version: 0.8.0(eslint@8.56.0)(typescript@5.3.3)
       postcss:
         specifier: 8.4.35
         version: 8.4.35
@@ -1714,11 +1714,11 @@ packages:
     dev: true
     optional: true
 
-  /@chromatic-com/storybook@1.1.8(react@18.3.0-canary-ba5e6a832-20240208):
-    resolution: { integrity: sha512-vpdw4si7wUeT3eS9i3TmBbc1EBhScyppxyn3RvH9f4DR6w06+kqsrM9hYIJY6Lb+10135Tr84gABf0QHgIGAow== }
+  /@chromatic-com/storybook@1.1.9(react@18.3.0-canary-ba5e6a832-20240208):
+    resolution: { integrity: sha512-6+Ug2gXtWP9VlxcSBRH6bUgV1R5/OIrCoRNjn2ccAxY9TBA+RrWG0+iHgxz2l2WbJ+t7F9TJj5fwfftKHolmjQ== }
     engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
     dependencies:
-      chromatic: 10.9.5
+      chromatic: 10.9.6
       filesize: 10.1.0
       jsonfile: 6.1.0
       react-confetti: 6.1.0(react@18.3.0-canary-ba5e6a832-20240208)
@@ -7093,8 +7093,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /chromatic@10.9.5:
-    resolution: { integrity: sha512-IfZiuMcLT8lvabThNJaByqtfMSMhnO3OGuUsbv97gapFKd34GY+dIRPR0zdAdbSPJmneBYYfKp6g/FZ28yY5HQ== }
+  /chromatic@10.9.6:
+    resolution: { integrity: sha512-1MoT+/U+vQwEiq2GuehPyStbqhxqHmM1B9pdpVU1dKh26userQg1FyOFYifkTgy+9reo2w2p7sAbc0JRd2kzlA== }
     hasBin: true
     peerDependencies:
       '@chromatic-com/cypress': ^0.5.2 || ^1.0.0
@@ -8317,9 +8317,9 @@ packages:
       string.prototype.matchall: 4.0.10
     dev: true
 
-  /eslint-plugin-storybook@0.6.15(eslint@8.56.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-lAGqVAJGob47Griu29KXYowI4G7KwMoJDOkEip8ujikuDLxU+oWJ1l0WL6F2oDO4QiyUFXvtDkEkISMOPzo+7w==}
-    engines: {node: 12.x || 14.x || >= 16}
+  /eslint-plugin-storybook@0.8.0(eslint@8.56.0)(typescript@5.3.3):
+    resolution: { integrity: sha512-CZeVO5EzmPY7qghO2t64oaFM+8FTaD4uzOEjHKp516exyTKo+skKAL9GI3QALS2BXhyALJjNtwbmr1XinGE8bA== }
+    engines: { node: '>= 18' }
     peerDependencies:
       eslint: '>=6'
     dependencies:
