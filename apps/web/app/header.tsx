@@ -10,17 +10,31 @@ import {
 import type { JSX } from 'react'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
 
+/**
+ * Calculates class name based on activated state and base classes
+ * @param isActive - Is NavLink currently active
+ * @returns  Resulting class name
+ */
+function calculateClassName({ isActive }: { isActive: boolean }): string {
+	return cn(
+		// baseClasses
+		['select-none', 'p-1', 'text-base', 'font-medium', 'capitalize', 'md:text-sm'],
+		// disabledClasses
+		[
+			'aria-[disabled]:pointer-events-none',
+			'aria-[disabled]:cursor-not-allowed',
+			'aria-[disabled]:line-through',
+		],
+		// isActiveClasses
+		isActive && ['border-b-2', 'border-stone-950'],
+	)
+}
+
 function NavLink({ children, ...props }: Omit<NavLinkProps, 'className'>): JSX.Element {
 	return (
 		<UnstyledNavLink
 			{...props}
-			className={({ isActive }) => {
-				const base = 'select-none p-1 text-base font-medium capitalize md:text-sm'
-				const disabled =
-					'aria-[disabled]:pointer-events-none aria-[disabled]:cursor-not-allowed aria-[disabled]:line-through'
-				const extended = `${base} + ${disabled}` as const
-				return isActive ? (`${extended} border-b-2 border-stone-950` as const) : extended
-			}}
+			className={calculateClassName}
 		>
 			{children}
 		</UnstyledNavLink>
@@ -30,7 +44,7 @@ function NavLink({ children, ...props }: Omit<NavLinkProps, 'className'>): JSX.E
 export function Header(): JSX.Element {
 	const [isMobileNavigationVisible, toggleMobileNavigationVisibility] = useToggle(false)
 	return (
-		<Layout.Header className="w-full border-b border-b-stone-950 bg-white py-4">
+		<Layout.Header className="w-full border-b border-b-stone-950 bg-white py-2 md:py-4">
 			<div className="container relative flex w-full justify-between gap-4">
 				<SuddenlyGiovanni
 					ariaLabel="Navigate to blog page"
@@ -48,10 +62,16 @@ export function Header(): JSX.Element {
 				<nav aria-label="mobile navigation">
 					<menu
 						className={cn(
-							'shadow-2x duration-30 fixed inset-y-0 left-[20%] right-0 z-auto flex flex-col items-center justify-between gap-2 bg-slate-700/20 px-8 py-12 backdrop-blur-xl transition-transform ease-in-out md:static md:h-full md:translate-x-0 md:flex-row md:items-center md:bg-inherit md:p-0 md:shadow-none md:backdrop-filter-none md:transition-none',
-							isMobileNavigationVisible ?
-								'translate-x-0 md:translate-x-0'
-							:	'translate-x-full',
+							// Base styles
+							'fixed z-auto flex items-center justify-between gap-2 px-8 py-12',
+							// Mobile navigation
+							'inset-0 transform-gpu flex-col bg-slate-700/10 shadow-none backdrop-blur-md transition-transform delay-150 duration-300 ease-in-out',
+							// Desktop navigation
+							'md:static md:h-full md:translate-x-0 md:flex-row md:items-center md:bg-inherit md:p-0 md:shadow-none md:backdrop-filter-none md:transition-none',
+							// Mobile navigation
+							isMobileNavigationVisible ? 'translate-x-0 ' : (
+								'translate-x-full shadow-2xl shadow-slate-400'
+							),
 						)}
 						id="primary-navigation"
 					>
