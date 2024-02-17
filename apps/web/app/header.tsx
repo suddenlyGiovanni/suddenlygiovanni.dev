@@ -15,8 +15,9 @@ function NavLink({ children, ...props }: Omit<NavLinkProps, 'className'>): JSX.E
 		<UnstyledNavLink
 			{...props}
 			className={({ isActive }) => {
-				const base = 'p-1'
-				const disabled = 'aria-[disabled]:cursor-not-allowed aria-[disabled]:line-through'
+				const base = 'select-none p-1 text-base font-medium capitalize md:text-sm'
+				const disabled =
+					'aria-[disabled]:pointer-events-none aria-[disabled]:cursor-not-allowed aria-[disabled]:line-through'
 				const extended = `${base} + ${disabled}` as const
 				return isActive ? (`${extended} border-b-2 border-stone-950` as const) : extended
 			}}
@@ -27,95 +28,73 @@ function NavLink({ children, ...props }: Omit<NavLinkProps, 'className'>): JSX.E
 }
 
 export function Header(): JSX.Element {
-	const [value, toggle] = useToggle(false)
+	const [isMobileNavigationVisible, toggleMobileNavigationVisibility] = useToggle(false)
 	return (
-		<Layout.Header className="relative flex w-full justify-between gap-4 border-b border-b-stone-950 py-4">
-			<SuddenlyGiovanni
-				ariaLabel="Navigate to blog page"
-				hrefUrl={avatarAssetUrl}
-				to="/blog"
-			/>
+		<Layout.Header className="w-full border-b border-b-stone-950 bg-white py-4">
+			<div className="container relative flex w-full justify-between gap-4">
+				<SuddenlyGiovanni
+					ariaLabel="Navigate to blog page"
+					hrefUrl={avatarAssetUrl}
+					to="/blog"
+				/>
 
-			<NavigationMenuToggle
-				aria-controls="primary-navigation"
-				className={cn('block md:hidden', '  right-4 z-40')}
-				isSelected={value}
-				onPress={toggle}
-			/>
+				<NavigationMenuToggle
+					aria-controls="primary-navigation"
+					className={cn('absolute right-8 top-3 z-40 block md:hidden')}
+					isSelected={isMobileNavigationVisible}
+					onPress={toggleMobileNavigationVisibility}
+				/>
 
-			<nav aria-label="mobile navigation">
-				<menu
-					className={cn(
-						[
-							'inset-y-0',
-							'left-[20%]',
-							'right-0',
-							'z-auto',
-							'px-8',
-							'py-12',
-							'md:h-full',
-							'md:p-0',
-						],
-						['fixed', 'md:static'],
-						['flex', 'justify-between', 'gap-2'],
-						['flex-col', 'items-center', 'md:flex-row', 'md:items-center'],
-						[
-							'bg-slate-700/20',
-							'shadow-2xl',
-							'backdrop-blur-xl',
-							'md:bg-inherit',
-							'md:shadow-none',
-							'md:backdrop-filter-none',
-						],
-						[
-							'transition-transform',
-							'duration-300',
-							'ease-in-out',
-							'md:transition-none',
-						],
-						value ? ['translate-x-0', 'md:translate-x-0'] : 'translate-x-full',
-					)}
-					id="primary-navigation"
-				>
-					<li>
-						<NavLink
-							prefetch="intent"
-							tabIndex={0}
-							to="/"
-						>
-							ABOUT ME
-						</NavLink>
-					</li>
-					<li>
-						<NavLink
-							prefetch="intent"
-							tabIndex={0}
-							to="/blog"
-						>
-							BLOG
-						</NavLink>
-					</li>
-					<li>
-						<NavLink
-							aria-disabled
-							prefetch="intent"
-							tabIndex={0}
-							to="/reading-journal"
-						>
-							READING JOURNAL
-						</NavLink>
-					</li>
-					<li>
-						<NavLink
-							prefetch="intent"
-							tabIndex={0}
-							to="/resume"
-						>
-							RÉSUMÉ
-						</NavLink>
-					</li>
-				</menu>
-			</nav>
+				<nav aria-label="mobile navigation">
+					<menu
+						className={cn(
+							'shadow-2x duration-30 fixed inset-y-0 left-[20%] right-0 z-auto flex flex-col items-center justify-between gap-2 bg-slate-700/20 px-8 py-12 backdrop-blur-xl transition-transform ease-in-out md:static md:h-full md:translate-x-0 md:flex-row md:items-center md:bg-inherit md:p-0 md:shadow-none md:backdrop-filter-none md:transition-none',
+							isMobileNavigationVisible ?
+								'translate-x-0 md:translate-x-0'
+							:	'translate-x-full',
+						)}
+						id="primary-navigation"
+					>
+						<li>
+							<NavLink
+								prefetch="intent"
+								tabIndex={0}
+								to="/"
+							>
+								about me
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
+								prefetch="intent"
+								tabIndex={0}
+								to="/blog"
+							>
+								blog
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
+								aria-disabled
+								prefetch="intent"
+								tabIndex={0}
+								to="/reading-journal"
+							>
+								reading journal
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
+								prefetch="intent"
+								tabIndex={0}
+								to="/resume"
+							>
+								résumé
+							</NavLink>
+						</li>
+					</menu>
+				</nav>
+			</div>
 		</Layout.Header>
 	)
 }

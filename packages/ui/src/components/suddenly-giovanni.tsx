@@ -24,11 +24,10 @@ export function SuddenlyGiovanni({
 			to={to}
 		>
 			<img
-				alt="Giovanni Ravalico's profile picture"
+				alt="Giovanni Ravalico's profile"
+				className="aspect-square min-w-[50px]"
 				height={50}
-				// layout="fixed"
 				loading="eager"
-				// placeholder="tracedSVG"
 				src={hrefUrl}
 				style={{
 					overflow: 'hidden',
@@ -36,7 +35,9 @@ export function SuddenlyGiovanni({
 				}}
 				width={50}
 			/>
-			<h1 className="text mb-auto ml-4 mt-auto border-none pb-0 text-xl">suddenlyGiovanni</h1>
+			<h1 className="mb-auto ml-4 mt-auto select-none border-none pb-0 text-base font-medium tracking-wide">
+				suddenlyGiovanni
+			</h1>
 		</Link>
 	)
 }
