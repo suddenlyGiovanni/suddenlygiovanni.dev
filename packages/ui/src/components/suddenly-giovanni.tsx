@@ -32,7 +32,7 @@ export function SuddenlyGiovanni({
 				/>
 				<AvatarFallback>SG</AvatarFallback>
 			</Avatar>
-			<T.h1 className="mb-auto ml-4 mt-auto select-none border-none pb-0 text-base font-medium tracking-wide">
+			<T.h1 className="mb-auto ml-4 mt-auto select-none border-none pb-0 text-base font-medium tracking-wide text-foreground">
 				suddenlyGiovanni
 			</T.h1>
 		</Link>

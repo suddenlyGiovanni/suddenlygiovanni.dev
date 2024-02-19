@@ -10,14 +10,17 @@ import {
 import { cn } from '../../lib/utils.ts'
 
 interface ModeToggleProps {
-	readonly setTheme: (theme: 'DARK' | 'LIGHT') => void
+	readonly setTheme: (theme: 'dark' | 'light') => void
+	readonly theme: 'dark' | 'light' | null
+	readonly className?: string
 }
 
-export function ModeToggle({ setTheme }: ModeToggleProps): ReactNode {
+export function ModeToggle({ setTheme, theme, className }: ModeToggleProps): ReactNode {
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button
+					className={cn(className)}
 					size="icon"
 					variant="ghost"
 				>
@@ -32,6 +35,7 @@ export function ModeToggle({ setTheme }: ModeToggleProps): ReactNode {
 							'dark:scale-0',
 						)}
 					/>
+
 					<SunIcon
 						className={cn(
 							'absolute',
@@ -44,20 +48,23 @@ export function ModeToggle({ setTheme }: ModeToggleProps): ReactNode {
 							'dark:scale-100',
 						)}
 					/>
+
 					<span className="sr-only">Toggle theme</span>
 				</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
 				<DropdownMenuItem
+					disabled={theme === `light`}
 					onClick={() => {
-						setTheme(`LIGHT`)
+						setTheme(`light`)
 					}}
 				>
 					Light
 				</DropdownMenuItem>
 				<DropdownMenuItem
+					disabled={theme === `dark`}
 					onClick={() => {
-						setTheme(`DARK`)
+						setTheme(`dark`)
 					}}
 				>
 					Dark

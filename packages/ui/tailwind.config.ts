@@ -1,7 +1,7 @@
 import sharedConfig, { type Config } from '@suddenly-giovanni/config-tailwind/tailwind.config.ts'
 
 const config = {
-	darkMode: ['class'],
+	darkMode: ['class', '[data-mode="dark"]'],
 	content: ['./src/**/*.tsx'],
 	presets: [sharedConfig],
 	theme: {

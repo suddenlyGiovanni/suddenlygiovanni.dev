@@ -1,4 +1,5 @@
 export {
+	ModeToggle,
 	Layout,
 	Placeholder,
 	GitHubIconLink,

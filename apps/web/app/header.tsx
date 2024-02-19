@@ -1,11 +1,12 @@
-import type { NavLinkProps } from '@remix-run/react'
-import { NavLink as UnstyledNavLink } from '@remix-run/react'
+import { NavLink as UnstyledNavLink, type NavLinkProps } from '@remix-run/react'
+import { useTheme, type Theme } from 'remix-themes'
 import {
 	cn,
 	Layout,
 	NavigationMenuToggle,
 	SuddenlyGiovanni,
 	useToggle,
+	ModeToggle,
 } from '@suddenly-giovanni/ui'
 import { useCallback, type JSX, type SyntheticEvent } from 'react'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
@@ -33,7 +34,7 @@ function calculateClassName({
 			'aria-[disabled]:line-through',
 		],
 		// isActiveClasses
-		isActive && ['border-b-2', 'border-stone-950'],
+		isActive && ['border-b-2', 'border-b-foreground'],
 		className,
 	)
 }
@@ -66,6 +67,7 @@ const PRIMARY_NAVIGATION = 'primary-navigation'
 
 export function Header(): JSX.Element {
 	const [isMobileNavigationVisible, toggleMobileNavigationVisibility] = useToggle(false)
+	const [theme, setTheme] = useTheme()
 
 	const handleMobileNavigationClick = useCallback(
 		<T extends HTMLElement>(event: SyntheticEvent<T>) => {
@@ -79,9 +81,38 @@ export function Header(): JSX.Element {
 		event.stopPropagation()
 	}, [])
 
+	const handleThemeChange = useCallback(
+		(t: Theme.DARK | Theme.LIGHT): void => {
+			setTheme(t)
+			toggleMobileNavigationVisibility()
+		},
+		[setTheme, toggleMobileNavigationVisibility],
+	)
+
 	return (
-		<Layout.Header className="w-full border-b border-b-stone-950 bg-white py-2 md:py-4">
-			<div className="container relative flex w-full max-w-4xl justify-between gap-4 px-4">
+		<Layout.Header
+			className={cn(
+				'w-full',
+				'border-b',
+				'border-b-foreground',
+				'bg-white',
+				'py-2',
+				'md:py-4',
+				'bg-background',
+			)}
+		>
+			<div
+				className={cn(
+					'container',
+					'relative',
+					'flex',
+					'w-full',
+					'max-w-4xl',
+					'justify-between',
+					'gap-4',
+					'px-4',
+				)}
+			>
 				<SuddenlyGiovanni
 					ariaLabel="Navigate to blog page"
 					hrefUrl={avatarAssetUrl}
@@ -136,6 +167,11 @@ export function Header(): JSX.Element {
 								</NavLink>
 							</li>
 						))}
+						<ModeToggle
+							className="ml-16 aspect-square"
+							setTheme={handleThemeChange}
+							theme={theme}
+						/>
 					</menu>
 				</nav>
 			</div>
