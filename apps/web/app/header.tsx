@@ -81,7 +81,7 @@ export function Header(): JSX.Element {
 
 	return (
 		<Layout.Header className="w-full border-b border-b-stone-950 bg-white py-2 md:py-4">
-			<div className="container relative flex w-full justify-between gap-4">
+			<div className="container relative flex w-full max-w-4xl justify-between gap-4 px-4">
 				<SuddenlyGiovanni
 					ariaLabel="Navigate to blog page"
 					hrefUrl={avatarAssetUrl}

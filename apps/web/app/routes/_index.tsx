@@ -17,33 +17,40 @@ export const meta: MetaFunction = () => {
 	return [{ title: 'About me' }, { name: 'description', content: 'All about Giovanni Ravalico' }]
 }
 
+const sourceSrcSet = [
+	`${hero200wAssetUrl} 200w`,
+	`${hero811wAssetUrl} 811w`,
+	`${hero1200wAssetUrl} 1200w`,
+	`${hero1534wAssetUrl} 1534w`,
+].join(', ')
+
+const imgSrcSet = [
+	`${hero461wAssetUrl} 461w`,
+	`${hero929wAssetUrl} 929w`,
+	`${hero1293wAssetUrl} 1293w`,
+	`${hero1826wAssetUrl} 1826w`,
+	`${hero1804wAssetUrl} 1804w`,
+	`${hero2314wAssetUrl} 2314w`,
+	`${hero2670wAssetUrl} 2670w`,
+	`${hero2800wAssetUrl} 2800w`,
+].join(', ')
+
 export default function Index(): JSX.Element {
 	return (
-		<div>
-			About me page
+		<div className="flex w-full flex-col justify-start ">
+			<h2>About me page</h2>
 			<picture>
 				<source
 					media="(max-width: 767px)"
 					sizes="(max-width: 1534px) 100vw, 1534px"
-					srcSet={`
-						${hero200wAssetUrl} 200w,
-						${hero811wAssetUrl} 811w,
-						${hero1200wAssetUrl} 1200w,
-						${hero1534wAssetUrl} 1534w`.trim()}
+					srcSet={sourceSrcSet}
 				/>
 				<img
-					alt=""
+					alt="Giovanni Ravalico"
+					className="w-full"
 					sizes="(max-width: 4667px) 60vw, 2800px"
 					src={hero2800wAssetUrl}
-					srcSet={`
-						${hero461wAssetUrl} 461w,
-						${hero929wAssetUrl} 929w,
-						${hero1293wAssetUrl} 1293w,
-						${hero1826wAssetUrl} 1826w,
-						${hero1804wAssetUrl} 1804w,
-						${hero2314wAssetUrl} 2314w,
-						${hero2670wAssetUrl} 2670w,
-						${hero2800wAssetUrl} 2800w`.trim()}
+					srcSet={imgSrcSet}
 				/>
 			</picture>
 		</div>
