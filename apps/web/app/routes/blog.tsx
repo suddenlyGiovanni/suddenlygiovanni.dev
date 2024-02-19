@@ -1,4 +1,5 @@
 import type { MetaFunction } from '@remix-run/node'
+import { T } from '@suddenly-giovanni/ui'
 import type { JSX } from 'react'
 
 export const meta: MetaFunction = () => {
@@ -13,5 +14,5 @@ export const meta: MetaFunction = () => {
 }
 
 export default function Blog(): JSX.Element {
-	return <h2>Blog page</h2>
+	return <T.h2>Blog page</T.h2>
 }

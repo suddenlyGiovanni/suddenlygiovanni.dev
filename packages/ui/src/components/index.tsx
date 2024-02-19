@@ -2,4 +2,5 @@ export { LinkedInIconLink, TwitterIconLink, GitHubIconLink } from './social/soci
 export { Layout } from './layout/layout.tsx'
 export { Placeholder } from './placeholder/placeholder.tsx'
 export { SuddenlyGiovanni } from './suddenly-giovanni.tsx'
-export {NavigationMenuToggle} from './navigation-menu-toggle/navigation-menu-toggle.tsx'
+export { NavigationMenuToggle } from './navigation-menu-toggle/navigation-menu-toggle.tsx'
+export { T } from './typography/typography.tsx'

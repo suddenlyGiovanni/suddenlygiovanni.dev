@@ -6,6 +6,7 @@ export {
 	LinkedInIconLink,
 	SuddenlyGiovanni,
 	NavigationMenuToggle,
+	T,
 } from './components'
 export {
 	cn,

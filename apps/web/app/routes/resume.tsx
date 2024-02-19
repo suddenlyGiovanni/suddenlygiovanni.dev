@@ -1,4 +1,5 @@
 import type { MetaFunction } from '@remix-run/node'
+import { T } from '@suddenly-giovanni/ui'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -12,5 +13,5 @@ export const meta: MetaFunction = () => {
 }
 
 export default function Blog(): JSX.Element {
-	return <h2>Résumé page</h2>
+	return <T.h2>Résumé page</T.h2>
 }
