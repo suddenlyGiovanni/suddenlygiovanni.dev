@@ -5,11 +5,11 @@
 	"private": true,
 	"type": "module",
 	"exports": {
-		"./postcss-config.js": {
-			"import": "./postcss-config.js",
-			"types": "./postcss-config.d.ts"
+		"./postcss.config.js": {
+			"import": "./postcss.config.js",
+			"types": "./postcss.config.d.ts"
 		},
-		"./tailwind-config.ts": "./tailwind-config.ts",
+		"./tailwind.config.ts": "./tailwind.config.ts",
 		"./styles.css": "./styles.css"
 	},
 	"scripts": {

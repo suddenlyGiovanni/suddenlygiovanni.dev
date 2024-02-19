@@ -10,4 +10,4 @@ declare const config: {
 };
 export default config;
 export { type Config } from "postcss-load-config";
-//# sourceMappingURL=postcss-config.d.ts.map
+//# sourceMappingURL=postcss.config.d.ts.map

@@ -1,4 +1,4 @@
-import sharedPostcssConfig from '@suddenly-giovanni/config-tailwind/postcss-config.js'
+import sharedPostcssConfig from '@suddenly-giovanni/config-tailwind/postcss.config.js'
 
 /**
  * If you want to use other PostCSS plugins, see the following:
