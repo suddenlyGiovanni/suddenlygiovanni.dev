@@ -32,7 +32,17 @@ export function SuddenlyGiovanni({
 				/>
 				<AvatarFallback>SG</AvatarFallback>
 			</Avatar>
-			<T.h1 className="mb-auto ml-4 mt-auto select-none border-none pb-0 text-base font-medium tracking-wide text-foreground">
+			<T.h1
+				className={cn(
+					'my-auto',
+					'ml-4',
+					'select-none',
+					'text-base',
+					'lg:text-base',
+					'font-medium',
+					'text-foreground',
+				)}
+			>
 				suddenlyGiovanni
 			</T.h1>
 		</Link>
