@@ -14,14 +14,7 @@ const Body = forwardRef(
 		const Component = as || 'body'
 		return (
 			<Component
-				className={cn(
-					'min-h-full',
-					'mx-auto',
-					'grid',
-					'grid-cols-1',
-					'auto-rows-auto',
-					className,
-				)}
+				className={cn('w-full', 'grid', 'grid-cols-1', 'auto-rows-auto', className)}
 				data-testid={bodyName}
 				ref={ref}
 				{...rest}
@@ -50,7 +43,7 @@ const mainName = 'Main'
 const Main = forwardRef<HTMLElement, JSX.IntrinsicElements['main']>(
 	({ className, ...rest }, ref) => (
 		<main
-			className={cn('row-start-2 row-end-3 overflow-auto', className)}
+			className={cn('row-start-2', 'row-end-3', 'min-h-screen', 'overflow-y-auto', className)}
 			data-testid={mainName}
 			ref={ref}
 			{...rest}

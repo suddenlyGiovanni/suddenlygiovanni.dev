@@ -15,7 +15,7 @@ const copyrightYear = new Date().getFullYear().toString()
 
 export function Footer(): JSX.Element {
 	return (
-		<Layout.Footer className="w-full border-t border-t-black">
+		<Layout.Footer className={cn('sticky', 'bottom-0', 'bg-background', 'w-full', 'z-30')}>
 			<div
 				className={cn(
 					['flex', 'flex-wrap', 'content-between', 'flex-nowrap'],

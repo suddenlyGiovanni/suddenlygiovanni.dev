@@ -56,7 +56,13 @@ function Document({ children }: { children: ReactNode }): JSX.Element {
 				<Links />
 			</head>
 			<Layout.Body
-				className={cn('bg-background', 'font-sans', 'text-foreground', 'antialiased')}
+				className={cn(
+					'min-h-full',
+					'bg-background',
+					'text-foreground',
+					'font-sans',
+					'antialiased',
+				)}
 			>
 				{children}
 				<ScrollRestoration />
