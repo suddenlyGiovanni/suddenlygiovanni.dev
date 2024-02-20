@@ -20,7 +20,7 @@ export function Footer(): JSX.Element {
 				'sticky',
 				'bottom-0',
 				'w-full',
-				'z-10',
+				'z-auto',
 				'border-t',
 				'border-border/40',
 				'bg-background/95',
