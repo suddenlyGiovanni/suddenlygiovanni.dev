@@ -1,4 +1,3 @@
-import { MoonIcon, SunIcon } from '@radix-ui/react-icons'
 import type { ReactNode } from 'react'
 import { Button } from '../../ui/button.tsx'
 import {
@@ -8,6 +7,7 @@ import {
 	DropdownMenuTrigger,
 } from '../../ui/dropdown-menu'
 import { cn } from '../../lib/utils.ts'
+import { Icons } from '../icons/icons.tsx'
 
 interface ModeToggleProps {
 	readonly setTheme: (theme: 'dark' | 'light') => void
@@ -24,30 +24,9 @@ export function ModeToggle({ setTheme, theme, className }: ModeToggleProps): Rea
 					size="icon"
 					variant="ghost"
 				>
-					<MoonIcon
-						className={cn(
-							'h-[1.2rem]',
-							'w-[1.2rem]',
-							'rotate-0',
-							'scale-100',
-							'transition-all',
-							'dark:-rotate-90',
-							'dark:scale-0',
-						)}
-					/>
-
-					<SunIcon
-						className={cn(
-							'absolute',
-							'h-[1.2rem]',
-							'w-[1.2rem]',
-							'rotate-90',
-							'scale-0',
-							'transition-all',
-							'dark:rotate-0',
-							'dark:scale-100',
-						)}
-					/>
+					{theme === `light` || theme === null ?
+						<Icons.moon className={cn('h-[1.2rem]', 'w-[1.2rem]')} />
+					:	<Icons.sun className={cn('h-[1.2rem]', 'w-[1.2rem]')} />}
 
 					<span className="sr-only">Toggle theme</span>
 				</Button>
