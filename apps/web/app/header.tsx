@@ -92,6 +92,8 @@ export function Header(): JSX.Element {
 	return (
 		<Layout.Header
 			className={cn(
+				'sticky',
+				'top-0',
 				'w-full',
 				'border-b',
 				'border-b-foreground',
