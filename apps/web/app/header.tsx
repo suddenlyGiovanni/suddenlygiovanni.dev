@@ -95,7 +95,7 @@ export function Header(): JSX.Element {
 				'sticky',
 				'top-0',
 				'w-full',
-				'z-40',
+				'z-10',
 				'border-b',
 				'py-2',
 				'border-border/40',
@@ -137,13 +137,11 @@ export function Header(): JSX.Element {
 							// Base styles
 							'fixed flex px-8 py-12',
 							// Mobile navigation
-							'inset-0 z-40 transform-gpu flex-col items-end justify-start gap-12 bg-slate-700/10 shadow-none backdrop-blur-md transition-transform  delay-150  duration-300 ease-in-out',
+							'inset-0 z-40 h-screen transform-gpu flex-col items-end justify-start gap-12 bg-slate-700/10 backdrop-blur-md transition-transform delay-150 duration-300 ease-in-out',
 							// Desktop navigation
-							'md:static md:z-auto md:h-full md:translate-x-0 md:flex-row md:items-center md:justify-between md:gap-2 md:bg-inherit md:p-0 md:shadow-none md:backdrop-filter-none md:transition-none',
+							'md:static md:z-auto md:h-full md:translate-x-0 md:flex-row md:items-center md:justify-between md:gap-2 md:bg-inherit md:p-0 md:backdrop-filter-none md:transition-none',
 							// Mobile navigation
-							isMobileNavigationVisible ? 'translate-x-0 ' : (
-								'translate-x-full shadow-2xl shadow-slate-400'
-							),
+							isMobileNavigationVisible ? 'translate-x-0 ' : 'translate-x-full',
 						)}
 						id={PRIMARY_NAVIGATION}
 						onClick={handleMobileNavigationClick}
