@@ -91,29 +91,31 @@ export function Header(): JSX.Element {
 
 	return (
 		<Layout.Header
-			className={cn(
+			className={cn([
 				'sticky',
 				'top-0',
 				'w-full',
+				'z-40',
 				'border-b',
-				'border-b-foreground',
-				'bg-white',
 				'py-2',
-				'md:py-4',
-				'bg-background',
-			)}
+				'border-border/40',
+				'bg-background/95',
+				'backdrop-blur',
+				'shadow',
+				'supports-[backdrop-filter]:bg-background/60',
+				'overflow-x-clip',
+			])}
 		>
 			<div
-				className={cn(
+				className={cn([
 					'container',
-					'relative',
 					'flex',
-					'w-full',
+					'flex-row',
+					'items-center',
+					'relative',
 					'max-w-4xl',
 					'justify-between',
-					'gap-4',
-					'px-4',
-				)}
+				])}
 			>
 				<SuddenlyGiovanni
 					ariaLabel="Navigate to blog page"
