@@ -8,6 +8,7 @@ export {
 	SuddenlyGiovanni,
 	NavigationMenuToggle,
 	T,
+	Icons,
 } from './components'
 export {
 	cn,
