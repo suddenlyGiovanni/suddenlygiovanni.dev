@@ -41,7 +41,7 @@ function Document({ children }: { children: ReactNode }): JSX.Element {
 	const [theme] = useTheme()
 	return (
 		<html
-			className={cn('h-full', 'overflow-x-hidden', theme)}
+			className={cn(theme, 'min-h-screen')}
 			data-theme={cn(theme)}
 			lang="en"
 		>
@@ -55,7 +55,9 @@ function Document({ children }: { children: ReactNode }): JSX.Element {
 				<PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
 				<Links />
 			</head>
-			<Layout.Body className="bg-background font-sans text-foreground antialiased">
+			<Layout.Body
+				className={cn('bg-background', 'font-sans', 'text-foreground', 'antialiased')}
+			>
 				{children}
 				<ScrollRestoration />
 				<Scripts />

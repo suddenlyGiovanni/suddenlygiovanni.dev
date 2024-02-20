@@ -1,6 +1,6 @@
 import type { MetaFunction } from '@remix-run/node'
 import type { JSX } from 'react'
-import { T } from '@suddenly-giovanni/ui'
+import { T, cn } from '@suddenly-giovanni/ui'
 import hero200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
 import hero811wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
 import hero1200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp'
@@ -38,7 +38,7 @@ const imgSrcSet = [
 
 export default function Index(): JSX.Element {
 	return (
-		<article className="flex w-full flex-col justify-start ">
+		<article className={cn('flex', 'w-full', 'flex-col', 'justify-start')}>
 			<T.h2>About me page</T.h2>
 			<picture>
 				<source

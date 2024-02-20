@@ -14,7 +14,14 @@ const Body = forwardRef(
 		const Component = as || 'body'
 		return (
 			<Component
-				className={cn('mx-auto h-full', className)}
+				className={cn(
+					'min-h-full',
+					'mx-auto',
+					'grid',
+					'grid-cols-1',
+					'auto-rows-auto',
+					className,
+				)}
 				data-testid={bodyName}
 				ref={ref}
 				{...rest}
@@ -30,7 +37,7 @@ const headerName = 'Header'
 const Header = forwardRef<HTMLHeadElement, JSX.IntrinsicElements['header']>(
 	({ className, ...rest }, ref) => (
 		<header
-			className={cn('sticky top-0 z-50', className)}
+			className={cn('row-start-1', 'row-end-2', className)}
 			data-testid={headerName}
 			ref={ref}
 			{...rest}

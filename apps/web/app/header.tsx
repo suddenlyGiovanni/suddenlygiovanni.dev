@@ -122,7 +122,7 @@ export function Header(): JSX.Element {
 				<NavigationMenuToggle
 					aria-controls={PRIMARY_NAVIGATION}
 					aria-expanded={isMobileNavigationVisible}
-					className={cn('absolute right-8 top-3 z-40 block md:hidden')}
+					className={cn('absolute', 'block', 'md:hidden', 'right-8', 'top-3', 'z-50')}
 					isSelected={isMobileNavigationVisible}
 					onPress={toggleMobileNavigationVisibility}
 				/>
