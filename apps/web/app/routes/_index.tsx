@@ -1,6 +1,6 @@
 import type { MetaFunction } from '@remix-run/node'
-import type { JSX } from 'react'
-import { Link } from '@remix-run/react'
+import type { JSX, ReactElement, ComponentPropsWithoutRef } from 'react'
+import { Link as RLink } from '@remix-run/react'
 import { T, cn } from '@suddenly-giovanni/ui'
 import hero200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
 import hero811wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
@@ -37,9 +37,24 @@ const imgSrcSet = [
 	`${hero2800wAssetUrl} 2800w`,
 ].join(', ')
 
+function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RLink>): ReactElement {
+	return (
+		<RLink
+			className={cn(
+				'decoration-wavy',
+				'underline-offset-4',
+				'underline',
+				'decoration-auto',
+				className,
+			)}
+			{...props}
+		/>
+	)
+}
+
 export default function Index(): JSX.Element {
 	return (
-		<article className={cn('flex', 'w-full', 'flex-col', 'justify-start')}>
+		<article className={cn('flex', 'w-full', 'flex-col', 'justify-start', 'font-comic')}>
 			<T.h2>Hi! I'm Giovanni 👋</T.h2>
 			<picture>
 				<source
@@ -85,8 +100,11 @@ export default function Index(): JSX.Element {
 				Thanks to this new perspective, in <strong>2014</strong>, I decided to{' '}
 				<strong>switch career</strong> and transition toward 💻 software engineering. That
 				was the beginning of my unconventional journey toward becoming a software developer.
-				For any further information, please **refer to my{' '}
-				<Link to="/resume">📑 résumé</Link>**.
+				For any further information, please{' '}
+				<strong>
+					refer to my <Link to="/resume">📑 résumé</Link>
+				</strong>
+				.
 			</T.p>
 			<T.p>
 				I am an <strong>incredibly 👀 curious</strong> person by nature and a{' '}
@@ -134,9 +152,28 @@ export default function Index(): JSX.Element {
 			</T.p>
 
 			<T.p>
-				You can <strong>find me on</strong> [🐦 Twitter](https://twitter.com/suddenlyGio/),
-				[🐙 GitHub](https://github.com/suddenlyGiovanni/) and
-				[LinkedIn](https://www.linkedin.com/in/giovanni-ravalico/).
+				You can <strong>find me on</strong>{' '}
+				<T.a
+					href="https://twitter.com/suddenlyGio/"
+					target="_blank"
+				>
+					🐦 Twitter
+				</T.a>
+				,{' '}
+				<T.a
+					href="https://github.com/suddenlyGiovanni/"
+					target="_blank"
+				>
+					🐙 GitHub
+				</T.a>{' '}
+				and
+				<T.a
+					href="https://www.linkedin.com/in/giovanni-ravalico/"
+					target="_blank"
+				>
+					LinkedIn
+				</T.a>
+				.
 			</T.p>
 
 			<Link to="/blog">&larr; back to my Blog</Link>

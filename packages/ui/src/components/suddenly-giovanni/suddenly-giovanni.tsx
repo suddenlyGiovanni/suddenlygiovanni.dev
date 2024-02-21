@@ -41,9 +41,8 @@ export function SuddenlyGiovanni({
 					'select-none',
 					'text-base',
 					'lg:text-base',
-					'font-medium',
 					'text-foreground',
-					'shantell-sans-foop',
+					'font-comic-hero',
 				)}
 			>
 				suddenlyGiovanni
