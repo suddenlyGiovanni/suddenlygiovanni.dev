@@ -3,7 +3,6 @@ import { Link } from '@remix-run/react'
 import type { JSX } from 'react'
 import { cn } from '../lib/utils'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import { T } from '.'
 
 export function SuddenlyGiovanni({
 	className,
@@ -32,7 +31,7 @@ export function SuddenlyGiovanni({
 				/>
 				<AvatarFallback>SG</AvatarFallback>
 			</Avatar>
-			<T.h1
+			<h1
 				className={cn(
 					'my-auto',
 					'ml-4',
@@ -41,10 +40,11 @@ export function SuddenlyGiovanni({
 					'lg:text-base',
 					'font-medium',
 					'text-foreground',
+					'shantell-sans-foop',
 				)}
 			>
 				suddenlyGiovanni
-			</T.h1>
+			</h1>
 		</Link>
 	)
 }

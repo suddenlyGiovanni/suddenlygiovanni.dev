@@ -23,6 +23,15 @@ export const links: LinksFunction = () => {
 			type: 'image/svg+xml',
 			href: faviconAssertUrl,
 		},
+		{
+			rel: 'preconnect',
+			href: 'https://fonts.googleapis.com',
+		},
+		{ rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'use-credentials' },
+		{
+			href: 'https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght,BNCE,INFM@1,500,40,75&display=swap',
+			rel: 'stylesheet',
+		},
 	]
 }
 
