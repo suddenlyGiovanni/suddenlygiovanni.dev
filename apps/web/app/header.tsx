@@ -8,7 +8,7 @@ import {
 	useToggle,
 	ModeToggle,
 } from '@suddenly-giovanni/ui'
-import { useCallback, type JSX, type SyntheticEvent } from 'react'
+import { useCallback, type ReactElement, type SyntheticEvent } from 'react'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
 
 /**
@@ -26,7 +26,16 @@ function calculateClassName({
 }): string {
 	return cn(
 		// baseClasses
-		['select-none', 'p-1', 'text-base', 'font-medium', 'capitalize', 'md:text-sm'],
+		[
+			'select-none',
+			'p-1',
+			'font-medium',
+			'capitalize',
+			'md:text-sm',
+			'transition-colors',
+			'hover:text-foreground/80',
+			'text-foreground/60',
+		],
 		// disabledClasses
 		[
 			'aria-[disabled]:pointer-events-none',
@@ -34,7 +43,16 @@ function calculateClassName({
 			'aria-[disabled]:line-through',
 		],
 		// isActiveClasses
-		isActive && ['border-b-2', 'border-b-foreground'],
+		isActive && [
+			'text-foreground',
+			'decoration-wavy',
+			'underline-offset-8',
+			'underline',
+			'decoration-auto',
+			'decoration-foreground',
+		],
+		// Keyboard active classes
+		['focus-visible:outline-none', 'focus-visible:ring-1', 'focus-visible:ring-ring'],
 		className,
 	)
 }
@@ -45,7 +63,7 @@ function NavLink({
 	...props
 }: Omit<NavLinkProps, 'className'> & {
 	className?: undefined | string
-}): JSX.Element {
+}): ReactElement {
 	return (
 		<UnstyledNavLink
 			{...props}
@@ -65,7 +83,7 @@ const routes = [
 
 const PRIMARY_NAVIGATION = 'primary-navigation'
 
-export function Header(): JSX.Element {
+export function Header(): ReactElement {
 	const [isMobileNavigationVisible, toggleMobileNavigationVisibility] = useToggle(false)
 	const [theme, setTheme] = useTheme()
 
@@ -183,17 +201,18 @@ export function Header(): JSX.Element {
 								className={cn(
 									'flex min-h-16 min-w-32 items-center justify-end',
 									'md:min-h-fit md:min-w-fit',
+									'outline-none',
 								)}
 								key={to}
 								onClick={stopPropagation}
 								role="menuitem"
+								tabIndex={0}
 							>
 								<NavLink
 									aria-disabled={disabled}
-									className=""
 									onClick={handleMobileNavigationClick}
 									prefetch="intent"
-									tabIndex={0}
+									role="link"
 									to={to}
 								>
 									{label}

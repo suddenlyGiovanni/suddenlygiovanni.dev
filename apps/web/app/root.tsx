@@ -1,6 +1,6 @@
 import type { LinksFunction, MetaFunction, LoaderFunctionArgs } from '@remix-run/node'
 import { Links, Meta, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
-import type { JSX, ReactNode } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 import { ThemeProvider, useTheme, PreventFlashOnWrongTheme } from 'remix-themes'
 import { Layout, cn } from '@suddenly-giovanni/ui'
 import { themeSessionResolver } from './sessions.server'
@@ -45,7 +45,7 @@ export const meta: MetaFunction = () => {
 	]
 }
 
-function Document({ children }: { children: ReactNode }): JSX.Element {
+function Document({ children }: { children: ReactNode }): ReactElement {
 	const data = useLoaderData<typeof loader>()
 	const [theme] = useTheme()
 	return (
@@ -91,7 +91,7 @@ function App(): JSX.Element {
 	)
 }
 
-export default function AppWithProviders() {
+export default function AppWithProviders(): ReactElement {
 	const data = useLoaderData<typeof loader>()
 	return (
 		<ThemeProvider
