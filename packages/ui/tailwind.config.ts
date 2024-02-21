@@ -5,6 +5,15 @@ const config = {
 	content: ['./src/**/*.tsx'],
 	presets: [sharedConfig],
 	theme: {
+		fontFamily: {
+			comic: [
+				'"Shantell Sans", cursive',
+				{
+					fontFeatureSettings: '"cv11", "ss01"',
+					fontVariationSettings: '"BNCE" 30, "INFM" 50, "SPAC" 0;',
+				},
+			],
+		},
 		container: {
 			center: true,
 			padding: '2rem',
