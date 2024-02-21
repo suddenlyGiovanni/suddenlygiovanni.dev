@@ -10,6 +10,7 @@ export {
 	T,
 	Icons,
 } from './components'
+export { Skeleton } from './ui/skeleton.tsx'
 export {
 	cn,
 	type PolymorphicRef,
