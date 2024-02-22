@@ -16,18 +16,33 @@ export const meta: MetaFunction = () => {
 }
 
 const addressClasses = {
-	address: cn('my-1', 'bg-slate-500/15', 'py-1'),
-	ul: cn(
-		'mx-auto',
-		'flex',
-		'max-h-32',
-		'flex-col',
-		'flex-wrap',
-		'content-evenly',
-		'items-start',
-		'justify-start',
+	address: cn(
+		[
+			'mx-auto',
+			'my-1',
+			'w-auto',
+			'max-w-max',
+			'rounded-md',
+			'bg-slate-500/15',
+			'px-24',
+			'py-1',
+		],
+		['md:w-full', 'md:max-w-none', 'md:px-0'],
 	),
-	li: cn('flex', 'flex-row', 'items-center', 'justify-start', 'gap-3'),
+	ul: cn(
+		['ml-0', 'grid', 'grid-cols-1'],
+		['md:grid-cols-2', 'md:grid-flow-row-dense', 'md:justify-items-start'],
+	),
+	li: cn(
+		'flex',
+		'flex-row',
+		'items-center',
+		'gap-3',
+		'text-start',
+		'max-w-72',
+		'mx-auto',
+		'w-full',
+	),
 }
 
 export default function Blog(): JSX.Element {
