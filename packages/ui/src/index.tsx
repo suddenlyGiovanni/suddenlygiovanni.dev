@@ -9,7 +9,8 @@ export {
 	NavigationMenuToggle,
 	T,
 	Icons,
-} from './components'
+	SocialIcon,
+} from './components/index.tsx'
 export { Skeleton } from './ui/skeleton.tsx'
 export {
 	cn,
