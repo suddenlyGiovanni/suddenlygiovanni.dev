@@ -38,6 +38,9 @@ importers:
       '@remix-run/serve':
         specifier: 2.7.0
         version: 2.7.0(typescript@5.3.3)
+      '@suddenly-giovanni/resume':
+        specifier: workspace:*
+        version: link:../../packages/resume
       '@suddenly-giovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -201,6 +204,8 @@ importers:
       typescript:
         specifier: 5.3.3
         version: 5.3.3
+
+  packages/resume: { }
 
   packages/ui:
     dependencies:
@@ -6849,7 +6854,7 @@ packages:
       '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.23.9)
       '@vanilla-extract/babel-plugin-debug-ids': 1.0.5
       '@vanilla-extract/css': 1.14.1
-      esbuild: 0.17.6
+      esbuild: 0.19.12
       eval: 0.1.8
       find-up: 5.0.0
       javascript-stringify: 2.1.0
