@@ -15,6 +15,21 @@ export const meta: MetaFunction = () => {
 	]
 }
 
+const addressClasses = {
+	address: cn('my-1', 'bg-slate-500/15', 'py-1'),
+	ul: cn(
+		'mx-auto',
+		'flex',
+		'max-h-32',
+		'flex-col',
+		'flex-wrap',
+		'content-evenly',
+		'items-start',
+		'justify-start',
+	),
+	li: cn('flex', 'flex-row', 'items-center', 'justify-start', 'gap-3'),
+}
+
 export default function Blog(): JSX.Element {
 	const { basics } = resume
 
@@ -45,9 +60,9 @@ export default function Blog(): JSX.Element {
 					</em>
 				</T.p>
 
-				<address className="bg-slate-500/15">
-					<T.ul>
-						<li>
+				<address className={addressClasses.address}>
+					<T.ul className={addressClasses.ul}>
+						<li className={addressClasses.li}>
 							<Icons.globe
 								aria-label="location icon"
 								className="size-4"
@@ -58,7 +73,7 @@ export default function Blog(): JSX.Element {
 							>{`${basics.location.city}, ${basics.location.countryCode}`}</T.a>
 						</li>
 
-						<li>
+						<li className={addressClasses.li}>
 							<Icons.envelope aria-label="mail icon" />
 							<T.a
 								aria-label="email"
@@ -70,7 +85,7 @@ export default function Blog(): JSX.Element {
 							</T.a>
 						</li>
 
-						<li>
+						<li className={addressClasses.li}>
 							<Icons.desktop aria-label="mail icon" />
 							<T.a
 								aria-label="link to my website"
@@ -82,7 +97,7 @@ export default function Blog(): JSX.Element {
 							</T.a>
 						</li>
 
-						<li>
+						<li className={addressClasses.li}>
 							<Icons.mobile aria-label="phone icon" />
 							<T.a
 								aria-label="phone number"
@@ -92,7 +107,10 @@ export default function Blog(): JSX.Element {
 							</T.a>
 						</li>
 						{basics.profiles.map((profile, idx) => (
-							<li key={String(idx) + String(profile.network)}>
+							<li
+								className={addressClasses.li}
+								key={String(idx) + String(profile.network)}
+							>
 								<SocialIcon
 									aria-label={`${profile.network || ''} icon`}
 									network={profile.network.toLowerCase()}
