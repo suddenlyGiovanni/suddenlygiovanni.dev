@@ -61,22 +61,24 @@ interface Props {
 export function Experiences({ works }: Props) {
 	return (
 		<section>
-			<T.h2>Experience</T.h2>
-			{works.map((work, idx) => (
-				<Experience
-					contact={work.contact}
-					description={work.description}
-					endDate={work.endDate}
-					highlights={work.highlights}
-					key={`${idx.toString()} - ${String(work.name)} - ${String(work.position)}`}
-					location={work.location}
-					name={work.name}
-					position={work.position}
-					startDate={work.startDate}
-					summary={work.summary}
-					url={work.url}
-				/>
-			))}
+			<T.h2 className="mb-4">Experience</T.h2>
+			<div className="flex flex-col gap-4">
+				{works.map((work, idx) => (
+					<Experience
+						contact={work.contact}
+						description={work.description}
+						endDate={work.endDate}
+						highlights={work.highlights}
+						key={`${idx.toString()} - ${String(work.name)} - ${String(work.position)}`}
+						location={work.location}
+						name={work.name}
+						position={work.position}
+						startDate={work.startDate}
+						summary={work.summary}
+						url={work.url}
+					/>
+				))}
+			</div>
 		</section>
 	)
 }
@@ -170,14 +172,18 @@ function ExperienceHeader({
 }
 
 function ExperienceSummary(props: { summary: string | undefined }) {
-	return <dd>{props.summary}</dd>
+	return (
+		<dd>
+			<T.muted>{props.summary}</T.muted>
+		</dd>
+	)
 }
 
 function ExperienceHighlights(props: { highlights: string[] | undefined }) {
 	if (!props.highlights) return null
 	return (
 		<dd>
-			<ul
+			<T.ul
 				aria-label="highlights"
 				className={cn('mb-0 ml-0 list-none')}
 			>
@@ -189,7 +195,7 @@ function ExperienceHighlights(props: { highlights: string[] | undefined }) {
 						{highlight}
 					</li>
 				))}
-			</ul>
+			</T.ul>
 		</dd>
 	)
 }
@@ -239,7 +245,13 @@ function Experience({
 	readonly url: Work['url']
 }) {
 	return (
-		<dl className={cn('mt-3.5')}>
+		<dl
+			className={cn(
+				'prose max-w-full',
+				'border-b-2 border-dashed border-b-border/75',
+				'pb-4',
+			)}
+		>
 			<ExperienceHeader
 				description={description}
 				endDate={endDate}
