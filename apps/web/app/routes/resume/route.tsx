@@ -1,9 +1,8 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/node'
-import { Link } from '@remix-run/react'
 import resume from '@suddenly-giovanni/resume'
-import { cn, T } from '@suddenly-giovanni/ui'
-import resumePdfAssetUrl from 'public/giovanni-ravalico-resume-2021.pdf?url'
+import { T } from '@suddenly-giovanni/ui'
 import { Contacts } from '~/routes/resume/contacts.tsx'
+import { Header } from '~/routes/resume/header.tsx'
 import { Skills } from './skills.tsx'
 
 export const meta: MetaFunction = () => {
@@ -32,31 +31,11 @@ export default function Resume(): JSX.Element {
 
 	return (
 		<article>
-			<header>
-				<hgroup>
-					<T.h1>{basics.name}</T.h1>
-					<T.h2>{basics.label}</T.h2>
-				</hgroup>
-				<T.p>{basics.summary}</T.p>
-				<T.p>
-					<em>
-						If you consider me for a role, read through{' '}
-						<Link
-							className={cn(
-								'font-medium',
-								'text-primary',
-								'underline',
-								'underline-offset-4',
-							)}
-							to="/motivations"
-						>
-							{' '}
-							my motivations
-						</Link>{' '}
-						first.
-					</em>
-				</T.p>
-
+			<Header
+				label={basics.label}
+				name={basics.name}
+				summary={basics.summary}
+			>
 				<Contacts
 					email={basics.email}
 					location={basics.location}
@@ -64,25 +43,7 @@ export default function Resume(): JSX.Element {
 					profiles={basics.profiles}
 					url={basics.url}
 				/>
-
-				<T.p>
-					click on this link to download the pdf version of my resume{' '}
-					<span
-						aria-label="pdf"
-						role="img"
-					>
-						📜
-					</span>{' '}
-					<T.a
-						download
-						href={resumePdfAssetUrl}
-						rel="noopener"
-						target="_blank"
-					>
-						giovanni-ravalico-resume.pdf
-					</T.a>
-				</T.p>
-			</header>
+			</Header>
 
 			<Skills skills={skills} />
 
