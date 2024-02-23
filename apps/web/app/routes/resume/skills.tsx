@@ -9,7 +9,7 @@ const skillsClasses = {
 
 export function Skills(props: { skills: { name: string; keywords: string[] }[] }) {
 	return (
-		<section className="prose prose-slate dark:prose-invert">
+		<section className="prose prose-slate max-w-full dark:prose-invert">
 			<T.h2>Skills</T.h2>
 
 			{props.skills.map(({ name, keywords }) => (
