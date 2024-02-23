@@ -215,8 +215,9 @@
 				"JavaScript",
 				"SQL",
 				"GraphQL",
-				"Kotlin (beginner)",
 				"Scala (beginner)",
+				"Rust (beginner)",
+				"Kotlin (beginner)",
 				"Java (beginner)"
 			]
 		},
@@ -249,7 +250,7 @@
 			"level": "",
 			"keywords": [
 				"Semantic HTML",
-				"CSS (SCSS, CSS-in-Js)",
+				"CSS",
 				"React",
 				"React Native",
 				"Redux",
@@ -268,10 +269,8 @@
 				"Node",
 				"Deno",
 				"Next.js",
+				"Remix",
 				"Express",
-				"Koa.js",
-				"Sails.js",
-				"Keystone.js",
 				"Handlebars"
 			]
 		},
@@ -284,9 +283,7 @@
 				"fp-ts",
 				"Underscore",
 				"Lodash",
-				"Lodash/fp",
 				"Ramda",
-				"Sanctuary.js",
 				"RxJS",
 				"XState",
 				"JQuery",
@@ -299,8 +296,8 @@
 			"level": "",
 			"keywords": [
 				"PostgreSQL",
+				"MySQL",
 				"MongoDB",
-				"Waterline",
 				"Redis",
 				"Firebase Realtime Database"
 			]
