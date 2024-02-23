@@ -16,11 +16,11 @@ export function Header({
 }): ReactElement {
 	return (
 		<header>
-			<hgroup>
+			<hgroup className="prose prose-slate">
 				<T.h1>{name}</T.h1>
 				<T.h2>{label}</T.h2>
 			</hgroup>
-			<T.p>{summary}</T.p>
+			<T.blockquote>{summary}</T.blockquote>
 			<T.p>
 				<em>
 					If you consider me for a role, read through{' '}
@@ -40,7 +40,7 @@ export function Header({
 				</em>
 			</T.p>
 			{children}
-			<T.p>
+			<T.muted>
 				click on this link to download the pdf version of my resume{' '}
 				<span
 					aria-label="pdf"
@@ -56,7 +56,7 @@ export function Header({
 				>
 					giovanni-ravalico-resume.pdf
 				</T.a>
-			</T.p>
+			</T.muted>
 		</header>
 	)
 }
