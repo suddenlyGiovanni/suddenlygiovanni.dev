@@ -1,4 +1,5 @@
 import { cn, Icons, T } from '@suddenly-giovanni/ui'
+import type { ReactElement } from 'react'
 
 function formatDateLocaleShort(date: Date): string {
 	return date.toLocaleDateString('en-US', {
@@ -57,142 +58,200 @@ interface Props {
 	readonly works: readonly Work[]
 }
 
-const styles = {
-	span: cn('flex flex-row items-center text-sm font-normal italic accent-muted'),
-} as const
-
 export function Experiences({ works }: Props) {
 	return (
 		<section>
 			<T.h2>Experience</T.h2>
-			{works.map(
-				(
-					{
-						description,
-						endDate,
-						highlights,
-						location,
-						name,
-						position,
-						startDate,
-						summary,
-						url,
-						contact,
-					},
-					idx,
-				) => (
-					<dl key={`${String(name)} - ${String(position)}`}>
-						<dt className="flex w-full flex-col">
-							<h3
-								aria-label="job title"
-								className={cn('mb-0 mt-0 text-base font-bold leading-none')}
-							>
-								{position}
-							</h3>
-
-							<span
-								aria-label="company"
-								className={cn(styles.span, 'text-base font-medium not-italic')}
-							>
-								{name}
-								{url ?
-									<a
-										className="ml-1"
-										href={url}
-										rel="noopener noreferrer"
-										target="_blank"
-									>
-										<Icons.link2
-											aria-label={`link to ${name} company`}
-											className="size-4"
-										/>
-									</a>
-								:	null}
-							</span>
-
-							<span className={cn(styles.span, 'justify-between')}>
-								{startDate ?
-									<span aria-label="start date / end date">
-										<time
-											className="mr-1"
-											dateTime={startDate.toISOString()}
-										>
-											{formatDateLocaleShort(startDate)}
-										</time>
-										{endDate ?
-											<>
-												-
-												<time
-													className="ml-1"
-													dateTime={endDate.toISOString()}
-												>
-													{formatDateLocaleShort(endDate)}
-												</time>
-											</>
-										:	null}
-									</span>
-								:	null}
-
-								{location ?
-									<span aria-label="location">{location}</span>
-								:	null}
-							</span>
-
-							{description ?
-								<span
-									aria-label="description"
-									className={styles.span}
-								>
-									{description}
-								</span>
-							:	null}
-						</dt>
-						<dd>{summary}</dd>
-						<dd>
-							<ul
-								aria-label="highlights"
-								className={cn('mb-0 ml-0 list-none')}
-							>
-								{highlights?.map((highlight, i) => (
-									<li
-										className="pl-0"
-										key={`${i}${highlight[0]}`}
-									>
-										{highlight}
-									</li>
-								))}
-							</ul>
-						</dd>
-
-						{contact ?
-							<>
-								<dt
-									key={`${idx} - ${String(name)} - ${String(position)} -${
-										contact.name
-									} `}
-								>
-									Contacts:
-								</dt>
-								<dd>
-									<address
-										className={cn(
-											'flex flex-row flex-wrap items-baseline justify-between',
-										)}
-									>
-										<span>{contact.name}</span>
-										{contact.email ?
-											<a href={`mailto:${contact.email}`}>{contact.email}</a>
-										:	null}
-										{contact.phone ?
-											<a href={`tel:${contact.phone}`}>{contact.phone}</a>
-										:	null}
-									</address>
-								</dd>
-							</>
-						:	null}
-					</dl>
-				),
-			)}
+			{works.map((work, idx) => (
+				<Experience
+					contact={work.contact}
+					description={work.description}
+					endDate={work.endDate}
+					highlights={work.highlights}
+					key={`${idx.toString()} - ${String(work.name)} - ${String(work.position)}`}
+					location={work.location}
+					name={work.name}
+					position={work.position}
+					startDate={work.startDate}
+					summary={work.summary}
+					url={work.url}
+				/>
+			))}
 		</section>
+	)
+}
+
+const styles = {
+	span: cn('flex flex-row items-center text-sm font-normal italic accent-muted'),
+} as const
+
+function ExperienceHeader({
+	description,
+	endDate,
+	location,
+	name,
+	position,
+	startDate,
+	url,
+}: {
+	position: string | undefined
+	name: string | undefined
+	url: string | undefined
+	startDate: Date | undefined
+	endDate: Date | undefined
+	location: string | undefined
+	description: string | undefined
+}) {
+	return (
+		<dt className="flex w-full flex-col">
+			<h3
+				aria-label="job title"
+				className={cn('mb-0 mt-0 text-base font-bold leading-none')}
+			>
+				{position}
+			</h3>
+
+			<span
+				aria-label="company"
+				className={cn(styles.span, 'text-base font-medium not-italic')}
+			>
+				{name}
+				{!url ? null : (
+					<a
+						className="ml-1"
+						href={url}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						<Icons.link2
+							aria-label={`link to ${name} company`}
+							className="size-4"
+						/>
+					</a>
+				)}
+			</span>
+
+			<span className={cn(styles.span, 'justify-between')}>
+				{!startDate ? null : (
+					<span aria-label="start date / end date">
+						<time
+							className="mr-1"
+							dateTime={startDate.toISOString()}
+						>
+							{formatDateLocaleShort(startDate)}
+						</time>
+						{!endDate ? null : (
+							<>
+								-
+								<time
+									className="ml-1"
+									dateTime={endDate.toISOString()}
+								>
+									{formatDateLocaleShort(endDate)}
+								</time>
+							</>
+						)}
+					</span>
+				)}
+
+				{!location ? null : <span aria-label="location">{location}</span>}
+			</span>
+
+			{!description ? null : (
+				<span
+					aria-label="description"
+					className={styles.span}
+				>
+					{description}
+				</span>
+			)}
+		</dt>
+	)
+}
+
+function ExperienceSummary(props: { summary: string | undefined }) {
+	return <dd>{props.summary}</dd>
+}
+
+function ExperienceHighlights(props: { highlights: string[] | undefined }) {
+	if (!props.highlights) return null
+	return (
+		<dd>
+			<ul
+				aria-label="highlights"
+				className={cn('mb-0 ml-0 list-none')}
+			>
+				{props.highlights.map((highlight, i) => (
+					<li
+						className="pl-0"
+						key={`${i}${highlight[0]}`}
+					>
+						{highlight}
+					</li>
+				))}
+			</ul>
+		</dd>
+	)
+}
+
+function ExperienceContact({
+	contact,
+}: {
+	contact: { name: string; email?: string; phone?: string } | undefined
+}): ReactElement | null {
+	if (!contact) return null
+	const { name, email, phone } = contact
+	return (
+		<>
+			<dt>Contacts:</dt>
+			<dd>
+				<address className={cn('flex flex-row flex-wrap items-baseline justify-between')}>
+					<span>{name}</span>
+					{!email ? null : <a href={`mailto:${email}`}>{email}</a>}
+					{!phone ? null : <a href={`tel:${phone}`}>{phone}</a>}
+				</address>
+			</dd>
+		</>
+	)
+}
+
+function Experience({
+	contact,
+	description,
+	endDate,
+	highlights,
+	location,
+	name,
+	position,
+	startDate,
+	summary,
+	url,
+}: {
+	readonly contact: Work['contact']
+	readonly description: Work['description']
+	readonly endDate: Work['endDate']
+	readonly highlights: Work['highlights']
+	readonly location: Work['location']
+	readonly name: Work['name']
+	readonly position: Work['position']
+	readonly startDate: Work['startDate']
+	readonly summary: Work['summary']
+	readonly url: Work['url']
+}) {
+	return (
+		<dl className={cn('mt-3.5')}>
+			<ExperienceHeader
+				description={description}
+				endDate={endDate}
+				location={location}
+				name={name}
+				position={position}
+				startDate={startDate}
+				url={url}
+			/>
+			<ExperienceSummary summary={summary} />
+			<ExperienceHighlights highlights={highlights} />
+			<ExperienceContact contact={contact} />
+		</dl>
 	)
 }
