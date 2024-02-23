@@ -2,9 +2,8 @@ import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
 import resume from '@suddenly-giovanni/resume'
 import { cn, Icons, SocialIcon, T } from '@suddenly-giovanni/ui'
-import { Option } from 'effect'
 import resumePdfAssetUrl from 'public/giovanni-ravalico-resume-2021.pdf?url'
-import { getDevIconComponent } from '~/routes/resume/utils.tsx'
+import { Skills } from './skills.tsx'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -56,12 +55,8 @@ const addressClasses = {
 		'w-full',
 	),
 }
-const skillsClasses = {
-	ul: cn('mb-0 ml-0 flex list-none flex-row flex-wrap items-start justify-start gap-x-4 '),
-	li: cn('mt-0 flex w-fit flex-row items-center gap-1'),
-}
 
-export default function Blog(): JSX.Element {
+export default function Resume(): JSX.Element {
 	const { basics, skills } = resume
 
 	return (
@@ -177,41 +172,8 @@ export default function Blog(): JSX.Element {
 				</T.p>
 			</header>
 
-			<section className="prose prose-slate dark:prose-invert">
-				<T.h2>Skills</T.h2>
+			<Skills skills={skills} />
 
-				{skills.map(({ name, keywords }) => (
-					<dl key={name}>
-						<dt>{name}</dt>
-						<dd>
-							<T.ul className={skillsClasses.ul}>
-								{keywords.map(keyword => {
-									const maybeIcon = getDevIconComponent(keyword)
-									return (
-										<li
-											className={skillsClasses.li}
-											key={keyword}
-										>
-											{
-												// if it does not match Concepts or Methodologies...
-												Option.match(maybeIcon, {
-													onNone: () => keyword,
-													onSome: Icon => (
-														<>
-															<Icon className="size-4 fill-accent-foreground/80" />
-															<span>{keyword}</span>
-														</>
-													),
-												})
-											}
-										</li>
-									)
-								})}
-							</T.ul>
-						</dd>
-					</dl>
-				))}
-			</section>
 			<T.code>
 				<pre>{JSON.stringify(resume, null, 2)}</pre>
 			</T.code>
