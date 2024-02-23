@@ -1,0 +1,198 @@
+import { cn, Icons, T } from '@suddenly-giovanni/ui'
+
+function formatDateLocaleShort(date: Date): string {
+	return date.toLocaleDateString('en-US', {
+		month: 'short',
+		year: 'numeric',
+	})
+}
+
+export interface Work {
+	/**
+	 * e.g. Social Media Company
+	 */
+	description?: string
+	endDate?: Date
+	/**
+	 * Specify multiple accomplishments
+	 */
+	highlights?: string[]
+	/**
+	 * e.g. Menlo Park, CA
+	 */
+	location?: string
+	/**
+	 * e.g. Facebook
+	 */
+	name?: string
+	/**
+	 * e.g. Software Engineer
+	 */
+	position?: string
+	startDate?: Date
+	/**
+	 * Give an overview of your responsibilities at the company
+	 */
+	summary?: string
+	/**
+	 * e.g. http://facebook.example.com
+	 */
+	url?: string
+
+	contact?: {
+		/**
+		 * ideally name and role
+		 * eg. Mark Zuckerberg (CTO)
+		 */
+		name: string
+		email?: string
+		/**
+		 * Phone numbers are stored as strings so use any format you like, e.g. 712-117-2923
+		 */
+		phone?: string
+	}
+}
+
+interface Props {
+	readonly works: readonly Work[]
+}
+
+const styles = {
+	span: cn('flex flex-row items-center text-sm font-normal italic accent-muted'),
+} as const
+
+export function Experiences({ works }: Props) {
+	return (
+		<section>
+			<T.h2>Experience</T.h2>
+			{works.map(
+				(
+					{
+						description,
+						endDate,
+						highlights,
+						location,
+						name,
+						position,
+						startDate,
+						summary,
+						url,
+						contact,
+					},
+					idx,
+				) => (
+					<dl key={`${String(name)} - ${String(position)}`}>
+						<dt className="flex w-full flex-col">
+							<h3
+								aria-label="job title"
+								className={cn('mb-0 mt-0 text-base font-bold leading-none')}
+							>
+								{position}
+							</h3>
+
+							<span
+								aria-label="company"
+								className={cn(styles.span, 'text-base font-medium not-italic')}
+							>
+								{name}
+								{url ?
+									<a
+										className="ml-1"
+										href={url}
+										rel="noopener noreferrer"
+										target="_blank"
+									>
+										<Icons.link2
+											aria-label={`link to ${name} company`}
+											className="size-4"
+										/>
+									</a>
+								:	null}
+							</span>
+
+							<span className={cn(styles.span, 'justify-between')}>
+								{startDate ?
+									<span aria-label="start date / end date">
+										<time
+											className="mr-1"
+											dateTime={startDate.toISOString()}
+										>
+											{formatDateLocaleShort(startDate)}
+										</time>
+										{endDate ?
+											<>
+												-
+												<time
+													className="ml-1"
+													dateTime={endDate.toISOString()}
+												>
+													{formatDateLocaleShort(endDate)}
+												</time>
+											</>
+										:	null}
+									</span>
+								:	null}
+
+								{location ?
+									<span aria-label="location">{location}</span>
+								:	null}
+							</span>
+
+							{description ?
+								<span
+									aria-label="description"
+									className={styles.span}
+								>
+									{description}
+								</span>
+							:	null}
+						</dt>
+						<dd>{summary}</dd>
+						<dd>
+							<ul
+								aria-label="highlights"
+								className={cn('mb-0 ml-0 list-none')}
+							>
+								{highlights?.map((highlight, i) => (
+									<li
+										className="pl-0"
+										key={`${i}${highlight[0]}`}
+									>
+										{highlight}
+									</li>
+								))}
+							</ul>
+						</dd>
+
+						{contact ?
+							<>
+								<dt
+									key={`${idx} - ${String(name)} - ${String(position)} -${
+										contact.name
+									} `}
+								>
+									Contacts:
+								</dt>
+								<dd>
+									<address
+										className={cn(
+											'flex flex-row flex-wrap items-baseline justify-between',
+										)}
+									>
+										<span>{contact.name}</span>
+										{contact.email ?
+											<a href={`mailto:${contact.email}`}>{contact.email}</a>
+										:	null}
+										{contact.phone ?
+											<a href={`tel:${contact.phone}`}>{contact.phone}</a>
+										:	null}
+									</address>
+								</dd>
+							</>
+						:	null}
+					</dl>
+				),
+			)}
+		</section>
+	)
+}

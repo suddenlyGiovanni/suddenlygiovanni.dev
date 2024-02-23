@@ -1,10 +1,10 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import resume from '@suddenly-giovanni/resume'
 import { T } from '@suddenly-giovanni/ui'
-import { Contacts } from '~/routes/resume/contacts.tsx'
-import { Experience } from '~/routes/resume/experience.tsx'
-import { Header } from '~/routes/resume/header.tsx'
-import { mapToResume } from '~/routes/resume/mapper.ts'
+import { Header } from './header.tsx'
+import { mapToResume } from './mapper.ts'
+import { Contacts } from './contacts.tsx'
+import { Experiences } from './experiences.tsx'
 import { Skills } from './skills.tsx'
 
 export const meta: MetaFunction = () => {
@@ -49,7 +49,7 @@ export default function Resume(): JSX.Element {
 
 			<Skills skills={skills} />
 
-			<Experience works={work} />
+			<Experiences works={work} />
 
 			<T.code>
 				<pre>{JSON.stringify(resume, null, 2)}</pre>
