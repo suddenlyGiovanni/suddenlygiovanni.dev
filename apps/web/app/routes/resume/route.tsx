@@ -1,12 +1,16 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/node'
+import { Link } from '@remix-run/react'
 import resume from '@suddenly-giovanni/resume'
 import { T } from '@suddenly-giovanni/ui'
-import { Education } from '~/routes/resume/education.tsx'
+import { Education } from './education.tsx'
+import { Interests } from './interests.tsx'
+import { Languages } from './languages.tsx'
 import { Header } from './header.tsx'
 import { mapToResume } from './mapper.ts'
 import { Contacts } from './contacts.tsx'
 import { Experiences } from './experiences.tsx'
 import { Skills } from './skills.tsx'
+import { Footer } from '~/routes/resume/footer.tsx'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -30,7 +34,7 @@ export const links: LinksFunction = () => {
 }
 
 export default function Resume(): JSX.Element {
-	const { basics, skills, work, education } = mapToResume(resume)
+	const { basics, skills, work, education, interests, languages } = mapToResume(resume)
 
 	return (
 		<article>
@@ -53,10 +57,17 @@ export default function Resume(): JSX.Element {
 			<Experiences works={work} />
 
 			<Education educations={education} />
+			<Interests interests={interests} />
+			<Languages languages={languages} />
 
-			<T.code>
-				<pre>{JSON.stringify(resume, null, 2)}</pre>
-			</T.code>
+			<footer className="flex items-center justify-between">
+				<Link
+					className="inline-block"
+					to="/about-me"
+				>
+					&larr; back to my About Me
+				</Link>
+			</footer>
 		</article>
 	)
 }

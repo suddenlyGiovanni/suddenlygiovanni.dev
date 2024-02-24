@@ -8,7 +8,7 @@ function formatDateLocaleShort(date: Date): string {
 	})
 }
 
-export interface Work {
+interface Work {
 	/**
 	 * e.g. Social Media Company
 	 */
@@ -54,11 +54,7 @@ export interface Work {
 	}
 }
 
-interface Props {
-	readonly works: readonly Work[]
-}
-
-export function Experiences({ works }: Props) {
+export function Experiences({ works }: { readonly works: readonly Work[] }) {
 	return (
 		<section>
 			<T.h2 className="mb-4">Experience</T.h2>
