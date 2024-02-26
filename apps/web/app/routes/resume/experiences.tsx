@@ -57,7 +57,7 @@ interface Work {
 export function Experiences({ works }: { readonly works: readonly Work[] }): ReactElement {
 	return (
 		<section>
-			<T.h2 className="mb-4">Experience</T.h2>
+			<T.h2 className="mb-0">Experience</T.h2>
 			<div className="flex flex-col gap-4">
 				{works.map((work, idx) => (
 					<>

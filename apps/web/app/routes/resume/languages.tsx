@@ -1,9 +1,10 @@
+import { T } from '@suddenly-giovanni/ui'
 import type { Language } from './interface.ts'
 
 export function Languages({ languages }: { readonly languages: readonly Language[] }) {
 	return (
-		<section>
-			<h2>Languages</h2>
+		<section className="w-full">
+			<T.h2>Languages</T.h2>
 			<dl>
 				{languages.map(({ fluency, language }) => (
 					<div

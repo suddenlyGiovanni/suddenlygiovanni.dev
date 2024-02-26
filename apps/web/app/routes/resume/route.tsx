@@ -36,7 +36,7 @@ export default function Resume(): JSX.Element {
 	const { basics, skills, work, education, interests, languages } = mapToResume(resume)
 
 	return (
-		<article className="prose prose-slate max-w-none dark:prose-invert">
+		<article className="prose prose-slate flex w-full max-w-none flex-col items-center justify-start gap-y-8 dark:prose-invert">
 			<Header
 				label={basics.label}
 				name={basics.name}
@@ -52,9 +52,7 @@ export default function Resume(): JSX.Element {
 			</Header>
 
 			<Skills skills={skills} />
-
 			<Experiences works={work} />
-
 			<Education educations={education} />
 			<Interests interests={interests} />
 			<Languages languages={languages} />

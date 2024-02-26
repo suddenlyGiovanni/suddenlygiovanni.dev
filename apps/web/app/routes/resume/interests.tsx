@@ -1,9 +1,10 @@
+import { T } from '@suddenly-giovanni/ui'
 import type { Interest } from './interface.ts'
 
 export function Interests({ interests }: { readonly interests: readonly Interest[] }) {
 	return (
-		<section>
-			<h2>Interests</h2>
+		<section className="w-full">
+			<T.h2 className="mb-0">Interests</T.h2>
 			{interests.map(({ name, keywords }) => (
 				<dl>
 					<dt>{name}</dt>

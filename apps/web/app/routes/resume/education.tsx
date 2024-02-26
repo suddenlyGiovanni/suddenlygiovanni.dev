@@ -1,4 +1,5 @@
-import { cn, Icons } from '@suddenly-giovanni/ui'
+import { cn, Icons, T } from '@suddenly-giovanni/ui'
+import type { ReactElement } from 'react'
 import { type Education } from './interface.ts'
 
 function formatDateLocaleShort(date: Date): string {
@@ -8,27 +9,33 @@ function formatDateLocaleShort(date: Date): string {
 	})
 }
 
-const styles = {
-	span: cn('slate flex flex-row items-center text-sm font-normal text-muted'),
-} as const
-
-export function Education({ educations }: { readonly educations: readonly Education[] }) {
+export function Education({
+	educations,
+}: {
+	readonly educations: readonly Education[]
+}): ReactElement {
 	return (
 		<section>
-			<h2 className="mb-4">Education</h2>
+			<T.h2 className="mb-0">Education</T.h2>
 			<div className="flex flex-col gap-4">
 				{educations.map((education, idx) => (
-					<Edu
-						area={education.area}
-						courses={education.courses}
-						endDate={education.endDate}
-						institution={education.institution}
-						key={`${idx.toString()} - ${education.institution} - ${education.area}`}
-						location={education.location}
-						startDate={education.startDate}
-						studyType={education.studyType}
-						url={education.url}
-					/>
+					<>
+						<Edu
+							area={education.area}
+							courses={education.courses}
+							endDate={education.endDate}
+							institution={education.institution}
+							key={`${idx.toString()} - ${education.institution} - ${education.area}`}
+							location={education.location}
+							startDate={education.startDate}
+							studyType={education.studyType}
+							url={education.url}
+						/>
+						<div
+							className="border-b-border/75' w-full border-b-2 border-dashed"
+							key={`${idx.toString()} - ${education.institution} - divider`}
+						/>
+					</>
 				))}
 			</div>
 		</section>
@@ -53,15 +60,9 @@ function Edu({
 	studyType: Education['studyType']
 	url: Education['url']
 	location: Education['location']
-}) {
+}): ReactElement {
 	return (
-		<dl
-			className={cn(
-				'prose max-w-full',
-				'border-b-2 border-dashed border-b-border/75',
-				'pb-4',
-			)}
-		>
+		<dl>
 			<EduHeader
 				area={area}
 				endDate={endDate}
@@ -91,6 +92,10 @@ function Edu({
 	)
 }
 
+const styles = {
+	span: cn('flex flex-row items-center text-sm font-normal  accent-muted'),
+} as const
+
 function EduHeader({
 	area,
 	institution,
@@ -107,12 +112,12 @@ function EduHeader({
 	startDate: Education['startDate']
 	studyType: Education['studyType']
 	url: Education['url']
-}) {
+}): ReactElement {
 	return (
 		<dt className="flex w-full flex-col">
 			<h3
 				aria-label="area of education"
-				className="mb-0 mt-0 text-base font-bold leading-none"
+				className={cn('mb-0 mt-0 text-base font-bold leading-none')}
 			>
 				{area}
 			</h3>
