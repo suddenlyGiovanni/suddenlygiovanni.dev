@@ -247,8 +247,8 @@ importers:
         version: 1.0.7(tailwindcss@3.4.1)
     devDependencies:
       '@chromatic-com/storybook':
-        specifier: 1.1.9
-        version: 1.1.9(react@18.3.0-canary-ba5e6a832-20240208)
+        specifier: 1.1.10
+        version: 1.1.10(react@18.3.0-canary-ba5e6a832-20240208)
       '@remix-run/testing':
         specifier: 2.7.2
         version: 2.7.2(react-dom@18.2.0)(react@18.3.0-canary-ba5e6a832-20240208)(typescript@5.3.3)
@@ -1746,8 +1746,8 @@ packages:
     dev: true
     optional: true
 
-  /@chromatic-com/storybook@1.1.9(react@18.3.0-canary-ba5e6a832-20240208):
-    resolution: { integrity: sha512-6+Ug2gXtWP9VlxcSBRH6bUgV1R5/OIrCoRNjn2ccAxY9TBA+RrWG0+iHgxz2l2WbJ+t7F9TJj5fwfftKHolmjQ== }
+  /@chromatic-com/storybook@1.1.10(react@18.3.0-canary-ba5e6a832-20240208):
+    resolution: { integrity: sha512-k7W6TKZoSXZFA53dkxqFKr6lz2HTiiUDBq6ohYQooCJKTUjkqlzLk4fsZHetFsQp8mqTAl9pl68XKW2LyUVx0g== }
     engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
     dependencies:
       chromatic: 10.9.6
