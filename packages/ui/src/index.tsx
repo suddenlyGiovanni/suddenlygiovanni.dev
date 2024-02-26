@@ -13,6 +13,7 @@ export {
 } from './components/index.tsx'
 export { Skeleton } from './ui/skeleton.tsx'
 export { Separator } from './ui/separator.tsx'
+export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './ui/collapsible.tsx'
 export {
 	cn,
 	type PolymorphicRef,
