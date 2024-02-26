@@ -1,8 +1,8 @@
 import sharedConfig, { type Config } from '@suddenly-giovanni/config-tailwind/tailwind.config.ts'
 
-const config = {
+const config: Config = {
 	content: ['./src/**/*.tsx'],
 	presets: [sharedConfig],
-} satisfies Config
+}
 
 export default config

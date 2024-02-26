@@ -16,6 +16,13 @@ export { Separator } from './ui/separator.tsx'
 export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './ui/collapsible.tsx'
 export { Button } from './ui/button.tsx'
 export {
+	Accordion,
+	AccordionItem,
+	AccordionTrigger,
+	AccordionContent,
+	AccordionHeader,
+} from './ui/accordion.tsx'
+export {
 	cn,
 	type PolymorphicRef,
 	type PolymorphicComponentPropWithRef,

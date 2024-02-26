@@ -12,16 +12,16 @@ const triggerClass = cn(
 	'box-border border-0 bg-background p-2.5 text-xl text-foreground',
 	'focus:text-red-500 focus:shadow-inner focus:outline-none',
 	'data-[disabled]:text-gray-300',
-	'data-[state="open"]:bg-red-500 data-[state="open"]:text-white',
-	'focus:data-[state="open"]:text-black',
+	'data-[state=open]:bg-red-500 data-[state="open"]:text-white',
+	'focus:data-[state=open]:text-black',
 )
 
 const contentClass = cn('p-2.5 leading-6')
 
 const styles = cn(
 	'border-2 border-blue-500 bg-blue-300 p-2.5',
-	'data-[state="closed"]:border-red-500',
-	'data-[state="open"]:border-green-500',
+	'data-[state=closed]:border-red-500',
+	'data-[state=open]:border-green-500',
 	'data-[disabled]:border-dashed',
 	':disabled:opacity-50',
 )
