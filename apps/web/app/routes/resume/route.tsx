@@ -57,10 +57,10 @@ export default function Resume(): JSX.Element {
 			<Interests interests={interests} />
 			<Languages languages={languages} />
 
-			<footer className="flex items-center justify-between">
+			<footer className="flex w-full items-center justify-between">
 				<Link
 					className="inline-block"
-					to="/about-me"
+					to="/"
 				>
 					&larr; back to my About Me
 				</Link>
