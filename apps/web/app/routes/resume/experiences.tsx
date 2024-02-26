@@ -1,4 +1,4 @@
-import { cn, Icons, T } from '@suddenly-giovanni/ui'
+import { cn, Icons, Separator, T } from '@suddenly-giovanni/ui'
 import type { ReactElement } from 'react'
 
 function formatDateLocaleShort(date: Date): string {
@@ -74,10 +74,7 @@ export function Experiences({ works }: { readonly works: readonly Work[] }): Rea
 							summary={work.summary}
 							url={work.url}
 						/>
-						<div
-							className="border-b-border/75' w-full border-b-2 border-dashed"
-							key={`${idx.toString()} - ${String(work.name)} - divider`}
-						/>
+						<Separator key={`${idx.toString()} - ${String(work.name)} - divider`} />
 					</>
 				))}
 			</div>

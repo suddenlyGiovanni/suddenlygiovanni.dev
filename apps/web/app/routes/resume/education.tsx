@@ -1,4 +1,4 @@
-import { cn, Icons, T } from '@suddenly-giovanni/ui'
+import { cn, Icons, Separator, T } from '@suddenly-giovanni/ui'
 import type { ReactElement } from 'react'
 import { type Education } from './interface.ts'
 
@@ -31,10 +31,7 @@ export function Education({
 							studyType={education.studyType}
 							url={education.url}
 						/>
-						<div
-							className="border-b-border/75' w-full border-b-2 border-dashed"
-							key={`${idx.toString()} - ${education.institution} - divider`}
-						/>
+						<Separator key={`${idx.toString()} - ${education.institution} - divider`} />
 					</>
 				))}
 			</div>

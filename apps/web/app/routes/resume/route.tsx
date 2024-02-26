@@ -1,7 +1,7 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
 import resume from '@suddenly-giovanni/resume'
-import { T } from '@suddenly-giovanni/ui'
+import { Separator, T } from '@suddenly-giovanni/ui'
 import { Education } from './education.tsx'
 import { Interests } from './interests.tsx'
 import { Languages } from './languages.tsx'
@@ -36,7 +36,7 @@ export default function Resume(): JSX.Element {
 	const { basics, skills, work, education, interests, languages } = mapToResume(resume)
 
 	return (
-		<article className="prose prose-slate flex w-full max-w-none flex-col items-center justify-start gap-y-8 dark:prose-invert">
+		<article className="prose flex w-full max-w-none flex-col items-center justify-start gap-y-8 dark:prose-invert">
 			<Header
 				label={basics.label}
 				name={basics.name}
@@ -52,9 +52,13 @@ export default function Resume(): JSX.Element {
 			</Header>
 
 			<Skills skills={skills} />
+
 			<Experiences works={work} />
+
 			<Education educations={education} />
+
 			<Interests interests={interests} />
+
 			<Languages languages={languages} />
 
 			<footer className="flex w-full items-center justify-between">

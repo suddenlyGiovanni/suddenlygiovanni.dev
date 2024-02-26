@@ -1,8 +1,9 @@
 import { cn, T } from '@suddenly-giovanni/ui'
 import { Option } from 'effect'
+import type { ReactElement } from 'react'
 import { getDevIconComponent } from './dev-icons.tsx'
 
-export function Skills(props: { skills: { name: string; keywords: string[] }[] }) {
+export function Skills(props: { skills: { name: string; keywords: string[] }[] }): ReactElement {
 	return (
 		<section>
 			<T.h2>Skills</T.h2>
@@ -18,7 +19,7 @@ export function Skills(props: { skills: { name: string; keywords: string[] }[] }
 	)
 }
 
-function Skill({ name, keywords }: { name: string; keywords: string[] }) {
+function Skill({ name, keywords }: { name: string; keywords: string[] }): ReactElement {
 	return (
 		<dl key={name}>
 			<dt>{name}</dt>
