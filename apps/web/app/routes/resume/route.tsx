@@ -10,7 +10,6 @@ import { mapToResume } from './mapper.ts'
 import { Contacts } from './contacts.tsx'
 import { Experiences } from './experiences.tsx'
 import { Skills } from './skills.tsx'
-import { Footer } from '~/routes/resume/footer.tsx'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -37,7 +36,7 @@ export default function Resume(): JSX.Element {
 	const { basics, skills, work, education, interests, languages } = mapToResume(resume)
 
 	return (
-		<article>
+		<article className="prose prose-slate max-w-none dark:prose-invert">
 			<Header
 				label={basics.label}
 				name={basics.name}

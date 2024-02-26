@@ -241,13 +241,7 @@ function Experience({
 	readonly url: Work['url']
 }) {
 	return (
-		<dl
-			className={cn(
-				'prose max-w-full',
-				'border-b-2 border-dashed border-b-border/75',
-				'pb-4',
-			)}
-		>
+		<dl className={cn('border-b-2 border-dashed border-b-border/75', 'pb-4')}>
 			<ExperienceHeader
 				description={description}
 				endDate={endDate}

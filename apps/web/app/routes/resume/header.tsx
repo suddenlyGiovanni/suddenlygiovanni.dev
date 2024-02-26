@@ -16,7 +16,7 @@ export function Header({
 }): ReactElement {
 	return (
 		<header>
-			<hgroup className="prose prose-slate">
+			<hgroup>
 				<T.h1>{name}</T.h1>
 				<T.h2>{label}</T.h2>
 			</hgroup>
