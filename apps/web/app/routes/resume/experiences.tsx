@@ -1,5 +1,15 @@
-import { cn, Icons, Separator, T } from '@suddenly-giovanni/ui'
-import type { ReactElement } from 'react'
+import {
+	cn,
+	Collapsible,
+	CollapsibleContent,
+	CollapsibleTrigger,
+	Icons,
+	Separator,
+	T,
+	Button,
+	useToggle,
+} from '@suddenly-giovanni/ui'
+import { type ReactElement, useEffect, memo } from 'react'
 
 function formatDateLocaleShort(date: Date): string {
 	return date.toLocaleDateString('en-US', {
@@ -55,9 +65,22 @@ interface Work {
 }
 
 export function Experiences({ works }: { readonly works: readonly Work[] }): ReactElement {
+	const [isCollapsed, toggleAllExperience] = useToggle(true)
 	return (
-		<section>
+		<section className="relative w-full">
 			<T.h2 className="mb-0">Experience</T.h2>
+			<Button
+				className="absolute right-0 top-0 rounded-full"
+				onClick={toggleAllExperience}
+				size="icon"
+				variant="ghost"
+			>
+				{isCollapsed ?
+					<Icons.rowSpacing />
+				:	<Icons.cross2 />}
+				<span className="sr-only">Toggle</span>
+			</Button>
+
 			<div className="flex flex-col gap-4">
 				{works.map((work, idx) => (
 					<>
@@ -70,6 +93,7 @@ export function Experiences({ works }: { readonly works: readonly Work[] }): Rea
 							location={work.location}
 							name={work.name}
 							position={work.position}
+							shouldBeCollapsed={isCollapsed}
 							startDate={work.startDate}
 							summary={work.summary}
 							url={work.url}
@@ -86,7 +110,7 @@ const styles = {
 	span: cn('flex flex-row items-center text-sm font-normal italic accent-muted'),
 } as const
 
-function ExperienceHeader({
+const ExperienceHeader = memo(function ExperienceHeader({
 	description,
 	endDate,
 	location,
@@ -94,6 +118,7 @@ function ExperienceHeader({
 	position,
 	startDate,
 	url,
+	isCollapsed,
 }: {
 	position: string | undefined
 	name: string | undefined
@@ -102,9 +127,10 @@ function ExperienceHeader({
 	endDate: Date | undefined
 	location: string | undefined
 	description: string | undefined
+	isCollapsed: boolean
 }): ReactElement {
 	return (
-		<dt className="mt-0 flex w-full flex-col">
+		<dt className="relative mt-0 flex w-full flex-col">
 			<h3
 				aria-label="job title"
 				className={cn('mb-0 mt-0 text-base font-bold leading-none')}
@@ -166,9 +192,21 @@ function ExperienceHeader({
 					{description}
 				</span>
 			)}
+			<CollapsibleTrigger asChild>
+				<Button
+					className="absolute right-0 top-0 rounded-full"
+					size="icon"
+					variant="ghost"
+				>
+					{isCollapsed ?
+						<Icons.rowSpacing />
+					:	<Icons.cross2 />}
+					<span className="sr-only">Toggle</span>
+				</Button>
+			</CollapsibleTrigger>
 		</dt>
 	)
-}
+})
 
 function ExperienceSummary(props: { summary: string | undefined }): ReactElement {
 	return (
@@ -231,6 +269,7 @@ function Experience({
 	startDate,
 	summary,
 	url,
+	shouldBeCollapsed,
 }: {
 	readonly contact: Work['contact']
 	readonly description: Work['description']
@@ -242,21 +281,37 @@ function Experience({
 	readonly startDate: Work['startDate']
 	readonly summary: Work['summary']
 	readonly url: Work['url']
+	readonly shouldBeCollapsed: boolean
 }): ReactElement {
+	const [isCollapsed, toggleCollapse, setCollapsed] = useToggle(shouldBeCollapsed)
+
+	useEffect(() => {
+		setCollapsed(shouldBeCollapsed)
+	}, [shouldBeCollapsed, setCollapsed])
+
 	return (
-		<dl>
-			<ExperienceHeader
-				description={description}
-				endDate={endDate}
-				location={location}
-				name={name}
-				position={position}
-				startDate={startDate}
-				url={url}
-			/>
-			<ExperienceSummary summary={summary} />
-			<ExperienceHighlights highlights={highlights} />
-			<ExperienceContact contact={contact} />
-		</dl>
+		<Collapsible
+			asChild
+			onOpenChange={toggleCollapse}
+			open={!isCollapsed}
+		>
+			<dl className="w-full">
+				<ExperienceHeader
+					description={description}
+					endDate={endDate}
+					isCollapsed={isCollapsed}
+					location={location}
+					name={name}
+					position={position}
+					startDate={startDate}
+					url={url}
+				/>
+				<CollapsibleContent>
+					<ExperienceSummary summary={summary} />
+					<ExperienceHighlights highlights={highlights} />
+					<ExperienceContact contact={contact} />
+				</CollapsibleContent>
+			</dl>
+		</Collapsible>
 	)
 }

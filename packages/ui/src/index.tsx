@@ -14,6 +14,7 @@ export {
 export { Skeleton } from './ui/skeleton.tsx'
 export { Separator } from './ui/separator.tsx'
 export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './ui/collapsible.tsx'
+export { Button } from './ui/button.tsx'
 export {
 	cn,
 	type PolymorphicRef,
