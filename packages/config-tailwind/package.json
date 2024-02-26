@@ -34,8 +34,11 @@
 	},
 	"devDependencies": {
 		"@suddenly-giovanni/config-typescript": "workspace:*",
+		"@tailwindcss/typography": "0.5.10",
 		"postcss-load-config": "5.0.3",
-		"tailwindcss": "3.4.1"
+		"tailwind-variants": "0.2.0",
+		"tailwindcss": "3.4.1",
+		"tailwindcss-animate": "1.0.7"
 	},
 	"config": {
 		"scripty": {

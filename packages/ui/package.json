@@ -42,8 +42,7 @@
 		"@remix-run/react": "2.7.2",
 		"react": "18.3.0-canary-ba5e6a832-20240208",
 		"react-aria-components": "1.1.1",
-		"tailwind-variants": "0.2.0",
-		"tailwindcss-animate": "1.0.7"
+		"tailwind-variants": "0.2.0"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "1.1.10",
@@ -51,7 +50,7 @@
 		"@storybook/addon-essentials": "8.0.0-beta.3",
 		"@storybook/addon-interactions": "8.0.0-beta.3",
 		"@storybook/addon-links": "8.0.0-beta.3",
-		"@storybook/addon-onboarding": "^1.0.11",
+		"@storybook/addon-onboarding": "1.0.11",
 		"@storybook/addon-themes": "8.0.0-beta.3",
 		"@storybook/blocks": "8.0.0-beta.3",
 		"@storybook/react": "8.0.0-beta.3",
@@ -61,7 +60,6 @@
 		"@suddenly-giovanni/config-tailwind": "workspace:*",
 		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"@suddenly-giovanni/eslint-config": "workspace:*",
-		"@tailwindcss/typography": "0.5.10",
 		"@total-typescript/ts-reset": "0.5.1",
 		"@types/react": "18.2.58",
 		"@types/react-dom": "18.2.19",
