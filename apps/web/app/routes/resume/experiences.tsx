@@ -54,25 +54,31 @@ interface Work {
 	}
 }
 
-export function Experiences({ works }: { readonly works: readonly Work[] }) {
+export function Experiences({ works }: { readonly works: readonly Work[] }): ReactElement {
 	return (
 		<section>
 			<T.h2 className="mb-4">Experience</T.h2>
 			<div className="flex flex-col gap-4">
 				{works.map((work, idx) => (
-					<Experience
-						contact={work.contact}
-						description={work.description}
-						endDate={work.endDate}
-						highlights={work.highlights}
-						key={`${idx.toString()} - ${String(work.name)} - ${String(work.position)}`}
-						location={work.location}
-						name={work.name}
-						position={work.position}
-						startDate={work.startDate}
-						summary={work.summary}
-						url={work.url}
-					/>
+					<>
+						<Experience
+							contact={work.contact}
+							description={work.description}
+							endDate={work.endDate}
+							highlights={work.highlights}
+							key={`${idx.toString()} - ${String(work.name)} - ${String(work.position)}`}
+							location={work.location}
+							name={work.name}
+							position={work.position}
+							startDate={work.startDate}
+							summary={work.summary}
+							url={work.url}
+						/>
+						<div
+							className="border-b-border/75' w-full border-b-2 border-dashed"
+							key={`${idx.toString()} - ${String(work.name)} - divider`}
+						/>
+					</>
 				))}
 			</div>
 		</section>
@@ -99,9 +105,9 @@ function ExperienceHeader({
 	endDate: Date | undefined
 	location: string | undefined
 	description: string | undefined
-}) {
+}): ReactElement {
 	return (
-		<dt className="flex w-full flex-col">
+		<dt className="mt-0 flex w-full flex-col">
 			<h3
 				aria-label="job title"
 				className={cn('mb-0 mt-0 text-base font-bold leading-none')}
@@ -167,7 +173,7 @@ function ExperienceHeader({
 	)
 }
 
-function ExperienceSummary(props: { summary: string | undefined }) {
+function ExperienceSummary(props: { summary: string | undefined }): ReactElement {
 	return (
 		<dd>
 			<T.muted>{props.summary}</T.muted>
@@ -175,7 +181,7 @@ function ExperienceSummary(props: { summary: string | undefined }) {
 	)
 }
 
-function ExperienceHighlights(props: { highlights: string[] | undefined }) {
+function ExperienceHighlights(props: { highlights: string[] | undefined }): ReactElement | null {
 	if (!props.highlights) return null
 	return (
 		<dd>
@@ -239,9 +245,9 @@ function Experience({
 	readonly startDate: Work['startDate']
 	readonly summary: Work['summary']
 	readonly url: Work['url']
-}) {
+}): ReactElement {
 	return (
-		<dl className={cn('border-b-2 border-dashed border-b-border/75', 'pb-4')}>
+		<dl>
 			<ExperienceHeader
 				description={description}
 				endDate={endDate}

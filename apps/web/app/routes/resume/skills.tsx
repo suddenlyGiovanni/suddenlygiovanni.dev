@@ -2,11 +2,6 @@ import { cn, T } from '@suddenly-giovanni/ui'
 import { Option } from 'effect'
 import { getDevIconComponent } from './dev-icons.tsx'
 
-const skillsClasses = {
-	ul: cn('mb-0 ml-0 flex list-none flex-row flex-wrap items-start justify-start gap-x-4 '),
-	li: cn('mt-0 flex w-fit flex-row items-center gap-1'),
-}
-
 export function Skills(props: { skills: { name: string; keywords: string[] }[] }) {
 	return (
 		<section>
@@ -28,12 +23,18 @@ function Skill({ name, keywords }: { name: string; keywords: string[] }) {
 		<dl key={name}>
 			<dt>{name}</dt>
 			<dd>
-				<T.ul className={skillsClasses.ul}>
+				<ul
+					className={cn(
+						'my-0 ml-0 flex list-none flex-row flex-wrap items-start justify-start gap-x-4',
+					)}
+				>
 					{keywords.map(keyword => {
 						const maybeIcon = getDevIconComponent(keyword)
 						return (
 							<li
-								className={skillsClasses.li}
+								className={cn(
+									'my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle',
+								)}
 								key={keyword}
 							>
 								{
@@ -43,7 +44,7 @@ function Skill({ name, keywords }: { name: string; keywords: string[] }) {
 										onSome: Icon => (
 											<>
 												<Icon className="size-4 fill-accent-foreground/80" />
-												<span>{keyword}</span>
+												{keyword}
 											</>
 										),
 									})
@@ -51,7 +52,7 @@ function Skill({ name, keywords }: { name: string; keywords: string[] }) {
 							</li>
 						)
 					})}
-				</T.ul>
+				</ul>
 			</dd>
 		</dl>
 	)
