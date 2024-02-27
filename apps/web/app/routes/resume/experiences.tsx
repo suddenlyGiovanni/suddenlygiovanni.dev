@@ -63,7 +63,11 @@ interface Work {
 	}
 }
 
-export function Experiences({ works }: { readonly works: readonly Work[] }): ReactElement {
+export const Experiences = memo(function Experiences({
+	works,
+}: {
+	readonly works: readonly Work[]
+}): ReactElement {
 	const all = useMemo(() => {
 		return works.map((_, idx) => `experience-${idx}`)
 	}, [works])
@@ -114,9 +118,9 @@ export function Experiences({ works }: { readonly works: readonly Work[] }): Rea
 			</Accordion>
 		</section>
 	)
-}
+})
 
-function Experience({
+const Experience = memo(function Experience({
 	contact,
 	description,
 	endDate,
@@ -164,7 +168,7 @@ function Experience({
 			</dl>
 		</AccordionItem>
 	)
-}
+})
 
 const styles = {
 	span: cn('flex flex-row items-center text-sm font-normal italic accent-muted'),

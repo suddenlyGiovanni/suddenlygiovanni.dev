@@ -9,8 +9,8 @@ import {
 	Button,
 } from '@suddenly-giovanni/ui'
 import type { ReactElement } from 'react'
-import { useCallback, useMemo, useState } from 'react'
-import { type Education } from './interface.ts'
+import { memo, useCallback, useMemo, useState } from 'react'
+import { type Education as IEducation } from './interface.ts'
 
 function formatDateLocaleShort(date: Date): string {
 	return date.toLocaleDateString('en-US', {
@@ -19,10 +19,10 @@ function formatDateLocaleShort(date: Date): string {
 	})
 }
 
-export function Education({
+export const Education = memo(function Education({
 	educations,
 }: {
-	readonly educations: readonly Education[]
+	readonly educations: readonly IEducation[]
 }): ReactElement {
 	const all = useMemo(() => {
 		return educations.map((_, idx) => `education-${idx}`)
@@ -73,9 +73,9 @@ export function Education({
 			</Accordion>
 		</section>
 	)
-}
+})
 
-function Edu({
+const Edu = memo(function Edu({
 	area,
 	courses,
 	endDate,
@@ -86,14 +86,14 @@ function Edu({
 	location,
 	value,
 }: {
-	area: Education['area']
-	courses: Education['courses']
-	endDate: Education['endDate']
-	startDate: Education['startDate']
-	institution: Education['institution']
-	studyType: Education['studyType']
-	url: Education['url']
-	location: Education['location']
+	area: IEducation['area']
+	courses: IEducation['courses']
+	endDate: IEducation['endDate']
+	startDate: IEducation['startDate']
+	institution: IEducation['institution']
+	studyType: IEducation['studyType']
+	url: IEducation['url']
+	location: IEducation['location']
 	value: string
 }): ReactElement {
 	return (
@@ -132,13 +132,13 @@ function Edu({
 			</dl>
 		</AccordionItem>
 	)
-}
+})
 
 const styles = {
 	span: cn('flex flex-row items-center text-sm font-normal  accent-muted'),
 } as const
 
-function EduHeader({
+const EduHeader = memo(function EduHeader({
 	area,
 	institution,
 	url,
@@ -147,13 +147,13 @@ function EduHeader({
 	location,
 	studyType,
 }: {
-	area: Education['area']
-	endDate: Education['endDate']
-	institution: Education['institution']
-	location: Education['location']
-	startDate: Education['startDate']
-	studyType: Education['studyType']
-	url: Education['url']
+	area: IEducation['area']
+	endDate: IEducation['endDate']
+	institution: IEducation['institution']
+	location: IEducation['location']
+	startDate: IEducation['startDate']
+	studyType: IEducation['studyType']
+	url: IEducation['url']
 }): ReactElement {
 	return (
 		<dt className="relative my-4 flex w-full flex-col">
@@ -239,4 +239,4 @@ function EduHeader({
 			</Trigger>
 		</dt>
 	)
-}
+})
