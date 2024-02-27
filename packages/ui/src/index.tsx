@@ -21,6 +21,7 @@ export {
 	AccordionTrigger,
 	AccordionContent,
 	AccordionHeader,
+	Trigger,
 } from './ui/accordion.tsx'
 export {
 	cn,

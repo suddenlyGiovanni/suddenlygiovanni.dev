@@ -5,7 +5,7 @@ import { cn } from '../lib/utils'
 
 const Accordion = AccordionPrimitive.Root
 const AccordionHeader = AccordionPrimitive.Header
-
+const Trigger = AccordionPrimitive.Trigger
 const AccordionItem = React.forwardRef<
 	React.ElementRef<typeof AccordionPrimitive.Item>,
 	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
@@ -23,7 +23,7 @@ const AccordionTrigger = React.forwardRef<
 	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => (
 	<AccordionPrimitive.Header className="flex">
-		<AccordionPrimitive.Trigger
+		<Trigger
 			className={cn(
 				'flex flex-1 items-center justify-between',
 				'py-4',
@@ -36,7 +36,7 @@ const AccordionTrigger = React.forwardRef<
 		>
 			{children}
 			<ChevronDownIcon className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
-		</AccordionPrimitive.Trigger>
+		</Trigger>
 	</AccordionPrimitive.Header>
 ))
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
@@ -60,4 +60,4 @@ const AccordionContent = React.forwardRef<
 ))
 AccordionContent.displayName = AccordionPrimitive.Content.displayName
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, AccordionHeader }
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, AccordionHeader, Trigger }

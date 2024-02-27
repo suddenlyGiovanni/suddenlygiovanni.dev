@@ -1,4 +1,13 @@
-import { cn, Icons, Separator, T } from '@suddenly-giovanni/ui'
+import {
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	cn,
+	Icons,
+	Trigger,
+	T,
+	Button,
+} from '@suddenly-giovanni/ui'
 import type { ReactElement } from 'react'
 import { type Education } from './interface.ts'
 
@@ -15,26 +24,28 @@ export function Education({
 	readonly educations: readonly Education[]
 }): ReactElement {
 	return (
-		<section>
+		<section className="w-full">
 			<T.h2 className="mb-0">Education</T.h2>
-			<div className="flex flex-col gap-4">
+			<Accordion
+				className="w-full"
+				// collapsible
+				type="multiple"
+			>
 				{educations.map((education, idx) => (
-					<>
-						<Edu
-							area={education.area}
-							courses={education.courses}
-							endDate={education.endDate}
-							institution={education.institution}
-							key={`${idx.toString()} - ${education.institution} - ${education.area}`}
-							location={education.location}
-							startDate={education.startDate}
-							studyType={education.studyType}
-							url={education.url}
-						/>
-						<Separator key={`${idx.toString()} - ${education.institution} - divider`} />
-					</>
+					<Edu
+						area={education.area}
+						courses={education.courses}
+						endDate={education.endDate}
+						idx={idx}
+						institution={education.institution}
+						key={`${idx.toString()} - ${education.institution} - ${education.area}`}
+						location={education.location}
+						startDate={education.startDate}
+						studyType={education.studyType}
+						url={education.url}
+					/>
 				))}
-			</div>
+			</Accordion>
 		</section>
 	)
 }
@@ -48,6 +59,7 @@ function Edu({
 	studyType,
 	url,
 	location,
+	idx,
 }: {
 	area: Education['area']
 	courses: Education['courses']
@@ -57,35 +69,43 @@ function Edu({
 	studyType: Education['studyType']
 	url: Education['url']
 	location: Education['location']
+	idx: number
 }): ReactElement {
 	return (
-		<dl>
-			<EduHeader
-				area={area}
-				endDate={endDate}
-				institution={institution}
-				location={location}
-				startDate={startDate}
-				studyType={studyType}
-				url={url}
-			/>
+		<AccordionItem
+			asChild
+			value={`education-${idx}`}
+		>
+			<dl>
+				<EduHeader
+					area={area}
+					endDate={endDate}
+					institution={institution}
+					location={location}
+					startDate={startDate}
+					studyType={studyType}
+					url={url}
+				/>
 
-			<dd>
-				<ul
-					aria-label="highlights"
-					className="mb-0 ml-0 list-none"
-				>
-					{courses?.map((highlight, i) => (
-						<li
-							className="pl-0"
-							key={`${i}${highlight[0]}`}
+				<AccordionContent asChild>
+					<dd>
+						<ul
+							aria-label="highlights"
+							className="mb-0 ml-0 list-none"
 						>
-							{highlight}
-						</li>
-					))}
-				</ul>
-			</dd>
-		</dl>
+							{courses?.map((highlight, i) => (
+								<li
+									className="pl-0"
+									key={`${i}${highlight[0]}`}
+								>
+									{highlight}
+								</li>
+							))}
+						</ul>
+					</dd>
+				</AccordionContent>
+			</dl>
+		</AccordionItem>
 	)
 }
 
@@ -111,7 +131,7 @@ function EduHeader({
 	url: Education['url']
 }): ReactElement {
 	return (
-		<dt className="flex w-full flex-col">
+		<dt className="relative my-4 flex w-full flex-col">
 			<h3
 				aria-label="area of education"
 				className={cn('mb-0 mt-0 text-base font-bold leading-none')}
@@ -177,6 +197,20 @@ function EduHeader({
 					{studyType}
 				</span>
 			)}
+			<Trigger asChild>
+				<Button
+					className={cn(
+						'rounded-full',
+						'transition-all [&[data-state=open]>svg]:rotate-180',
+						'absolute right-0 top-0',
+					)}
+					size="icon"
+					type="button"
+					variant="ghost"
+				>
+					<Icons.chevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+				</Button>
+			</Trigger>
 		</dt>
 	)
 }
