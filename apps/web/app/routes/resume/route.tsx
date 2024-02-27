@@ -1,7 +1,6 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
 import resume from '@suddenly-giovanni/resume'
-import { Separator, T } from '@suddenly-giovanni/ui'
 import { Education } from './education.tsx'
 import { Interests } from './interests.tsx'
 import { Languages } from './languages.tsx'

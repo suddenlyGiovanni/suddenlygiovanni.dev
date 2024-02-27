@@ -234,6 +234,7 @@ function EduHeader({
 					variant="ghost"
 				>
 					<Icons.chevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+					<span className="sr-only">Toggle {institution} accordion</span>
 				</Button>
 			</Trigger>
 		</dt>
