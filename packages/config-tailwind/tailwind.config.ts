@@ -3,7 +3,7 @@ import animatePlugin from "tailwindcss-animate";
 import typographyPlugin from "@tailwindcss/typography";
 
 const config = {
-	darkMode: ["class", '[data-mode="dark"]'],
+	darkMode: ["class", '[data-theme="dark"]'],
 	theme: {
 		fontFamily: {
 			comic: [

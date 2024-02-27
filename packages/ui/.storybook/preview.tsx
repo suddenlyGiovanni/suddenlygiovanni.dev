@@ -41,7 +41,7 @@ const preview: Preview = {
 		}),
 		withThemeByDataAttribute<ReactRenderer>({
 			...themeConfig,
-			attributeName: 'data-mode',
+			attributeName: 'data-theme',
 		}),
 	],
 }

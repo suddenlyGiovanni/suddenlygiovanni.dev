@@ -1,6 +1,7 @@
 import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
 import resume from '@suddenly-giovanni/resume'
+import { cn } from '@suddenly-giovanni/ui'
 import { Education } from './education.tsx'
 import { Interests } from './interests.tsx'
 import { Languages } from './languages.tsx'
@@ -35,7 +36,13 @@ export default function Resume(): JSX.Element {
 	const { basics, skills, work, education, interests, languages } = mapToResume(resume)
 
 	return (
-		<article className="prose flex w-full max-w-none flex-col items-center justify-start gap-y-8 dark:prose-invert">
+		<article
+			className={cn(
+				'flex flex-col items-center justify-start gap-y-8',
+				'w-full max-w-none',
+				'prose prose-blue dark:prose-invert',
+			)}
+		>
 			<Header
 				label={basics.label}
 				name={basics.name}
