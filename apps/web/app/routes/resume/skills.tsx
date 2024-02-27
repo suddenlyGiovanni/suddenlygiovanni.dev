@@ -1,9 +1,9 @@
 import { cn, T } from '@suddenly-giovanni/ui'
 import { Option } from 'effect'
-import type { ReactElement } from 'react'
+import { type ReactElement, memo } from 'react'
 import { getDevIconComponent } from './dev-icons.tsx'
 
-export function Skills({
+export const Skills = memo(function Skills({
 	skills,
 }: {
 	skills: { name: string; keywords: string[] }[]
@@ -21,9 +21,15 @@ export function Skills({
 			))}
 		</section>
 	)
-}
+})
 
-function Skill({ name, keywords }: { name: string; keywords: string[] }): ReactElement {
+const Skill = memo(function Skill({
+	name,
+	keywords,
+}: {
+	name: string
+	keywords: string[]
+}): ReactElement {
 	return (
 		<dl key={name}>
 			<dt>{name}</dt>
@@ -32,9 +38,13 @@ function Skill({ name, keywords }: { name: string; keywords: string[] }): ReactE
 			</dd>
 		</dl>
 	)
-}
+})
 
-function KeywordsList({ keywords }: { keywords: string[] }): ReactElement {
+const KeywordsList = memo(function KeywordsList({
+	keywords,
+}: {
+	keywords: string[]
+}): ReactElement {
 	return (
 		<ul
 			className={cn(
@@ -49,27 +59,29 @@ function KeywordsList({ keywords }: { keywords: string[] }): ReactElement {
 			))}
 		</ul>
 	)
-}
+})
 
-function Keyword({ keyword }: { keyword: string }): ReactElement {
+const Keyword = memo(function Keyword({ keyword }: { keyword: string }): ReactElement {
 	const maybeIcon = getDevIconComponent(keyword)
-	return (
-		<li
-			className={cn('my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle')}
-			key={keyword}
-		>
-			{
-				// if it does not match Concepts or Methodologies...
-				Option.match(maybeIcon, {
-					onNone: () => keyword,
-					onSome: Icon => (
-						<>
-							<Icon className="size-4 fill-accent-foreground/80" />
-							{keyword}
-						</>
-					),
-				})
-			}
-		</li>
-	)
-}
+	const classname = cn('my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle')
+
+	return Option.match(maybeIcon, {
+		onNone: () => (
+			<li
+				className={classname}
+				key={keyword}
+			>
+				{keyword}
+			</li>
+		),
+		onSome: Icon => (
+			<li
+				className={classname}
+				key={keyword}
+			>
+				<Icon className="size-4 fill-accent-foreground/80" />
+				{keyword}
+			</li>
+		),
+	})
+})
