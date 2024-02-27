@@ -27,8 +27,12 @@ export const Education = memo(function Education({
 	const all = useMemo(() => {
 		return educations.map((_, idx) => `education-${idx}`)
 	}, [educations])
-	const none = useMemo(() => [], [])
-	const [value, setValue] = useState<string[]>(none)
+	const none = useMemo<string[]>(() => [], [])
+	const initialState = useMemo(() => {
+		const [head] = all
+		return head ? [head] : none
+	}, [all, none])
+	const [value, setValue] = useState<string[]>(initialState)
 
 	const toggleEducation = useCallback(() => {
 		setValue(prevState => (prevState.length > 0 ? none : all))

@@ -20,8 +20,12 @@ export const Skills = memo(function Skills({
 	const all = useMemo(() => {
 		return skills.map((_, idx) => `skill-${idx}`)
 	}, [skills])
-	const none = useMemo(() => [], [])
-	const [value, setValue] = useState<string[]>(none)
+	const none = useMemo<string[]>(() => [], [])
+	const initialState = useMemo(() => {
+		const [head] = all
+		return head ? [head] : none
+	}, [all, none])
+	const [value, setValue] = useState<string[]>(initialState)
 
 	const toggleSkillsAccordion = useCallback(() => {
 		setValue(prevState => (prevState.length > 0 ? none : all))

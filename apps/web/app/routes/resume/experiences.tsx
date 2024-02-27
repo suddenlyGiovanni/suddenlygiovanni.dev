@@ -71,8 +71,12 @@ export const Experiences = memo(function Experiences({
 	const all = useMemo(() => {
 		return works.map((_, idx) => `experience-${idx}`)
 	}, [works])
-	const none = useMemo(() => [], [])
-	const [value, setValue] = useState<string[]>(none)
+	const none = useMemo<string[]>(() => [], [])
+	const initialState = useMemo(() => {
+		const [head] = all
+		return head ? [head] : none
+	}, [all, none])
+	const [value, setValue] = useState<string[]>(initialState)
 
 	const toggleExperiences = useCallback(() => {
 		setValue(prevState => (prevState.length > 0 ? none : all))
