@@ -2,7 +2,7 @@ import type { Preview, ReactRenderer } from '@storybook/react'
 import { withThemeByClassName } from '@storybook/addon-themes'
 import { createRemixStub } from '@remix-run/testing'
 
-import '../dist/styles/styles.css'
+import '../src/styles/styles.css'
 
 const preview: Preview = {
 	parameters: {

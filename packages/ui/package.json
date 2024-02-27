@@ -3,11 +3,7 @@
 	"name": "@suddenly-giovanni/ui",
 	"private": true,
 	"version": "0.0.1",
-	"sideEffects": [
-		"**/*.css"
-	],
 	"exports": {
-		"./dist/styles/styles.css": "./dist/styles/styles.css",
 		"./tailwind.config.ts": "./tailwind.config.ts",
 		".": {
 			"import": "./src/index.tsx"
@@ -15,16 +11,13 @@
 	},
 	"type": "module",
 	"scripts": {
-		"build:css": "tailwindcss --input ./src/styles/styles.css --output dist/styles/styles.css",
-		"build:storybook": "storybook build",
+		"build": "storybook build",
 		"check": "biome check .",
 		"check:fix": "biome check --apply .",
 		"clean": "scripty",
 		"components-add": "pnpm dlx shadcn-ui@latest add",
 		"components-diff": "pnpm dlx shadcn-ui@latest diff",
-		"dev": "concurrently \"npm:dev:css\" \"npm:dev:storybook\" \"npm:typecheck --watch --preserveWatchOutput\" ",
-		"dev:css": "pnpm run build:css --watch",
-		"dev:storybook": "storybook dev -p 6006",
+		"dev": "storybook dev -p 6006",
 		"format": "scripty",
 		"lint": "scripty src/",
 		"typecheck": "scripty"
