@@ -9,6 +9,7 @@ import {
 	Button,
 } from '@suddenly-giovanni/ui'
 import type { ReactElement } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 import { type Education } from './interface.ts'
 
 function formatDateLocaleShort(date: Date): string {
@@ -23,26 +24,50 @@ export function Education({
 }: {
 	readonly educations: readonly Education[]
 }): ReactElement {
+	const all = useMemo(() => {
+		return educations.map((_, idx) => `education-${idx}`)
+	}, [educations])
+	const none = useMemo(() => [], [])
+	const [value, setValue] = useState<string[]>(none)
+
+	const toggleEducation = useCallback(() => {
+		setValue(prevState => (prevState.length > 0 ? none : all))
+	}, [all, none])
+
 	return (
-		<section className="w-full">
+		<section className="relative w-full">
 			<T.h2 className="mb-0">Education</T.h2>
+
+			<Button
+				className="absolute right-0 top-0 rounded-full"
+				onClick={toggleEducation}
+				size="icon"
+				variant="ghost"
+			>
+				{value.length === 0 ?
+					<Icons.rowSpacing />
+				:	<Icons.cross2 />}
+				<span className="sr-only">Toggle education accordion</span>
+			</Button>
+
 			<Accordion
 				className="w-full"
-				// collapsible
+				onValueChange={setValue}
 				type="multiple"
+				value={value}
 			>
 				{educations.map((education, idx) => (
 					<Edu
 						area={education.area}
 						courses={education.courses}
 						endDate={education.endDate}
-						idx={idx}
 						institution={education.institution}
 						key={`${idx.toString()} - ${education.institution} - ${education.area}`}
 						location={education.location}
 						startDate={education.startDate}
 						studyType={education.studyType}
 						url={education.url}
+						value={all[idx]!}
 					/>
 				))}
 			</Accordion>
@@ -59,7 +84,7 @@ function Edu({
 	studyType,
 	url,
 	location,
-	idx,
+	value,
 }: {
 	area: Education['area']
 	courses: Education['courses']
@@ -69,12 +94,12 @@ function Edu({
 	studyType: Education['studyType']
 	url: Education['url']
 	location: Education['location']
-	idx: number
+	value: string
 }): ReactElement {
 	return (
 		<AccordionItem
 			asChild
-			value={`education-${idx}`}
+			value={value}
 		>
 			<dl>
 				<EduHeader
