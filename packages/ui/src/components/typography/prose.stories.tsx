@@ -1,4 +1,5 @@
 import { type Meta } from '@storybook/react'
+import { cn } from '../../lib/utils.ts'
 
 const meta = {
 	title: 'typography/Prose',
@@ -7,16 +8,20 @@ export default meta
 
 export function Prose() {
 	return (
-		<div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-8 lg:py-12">
-			<img
-				alt=""
-				className="fixed left-1/2 top-48 max-w-none -translate-x-2/3 -translate-y-1/2"
-				src="/img/beams.jpg"
-				width="1308"
-			/>
-			<div className="absolute inset-0 bg-[url(/img/grid.svg)] bg-top [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-			<div className="relative w-full bg-white px-6 py-12 shadow-xl shadow-slate-700/10 ring-1 ring-gray-900/5 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16">
-				<div className="prose prose-slate mx-auto mt-8 lg:prose-lg">
+		<div
+			className={cn(
+				'relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-8 lg:py-12',
+			)}
+		>
+			<div
+				className={cn(
+					'relative w-full px-6 py-12 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16',
+					'shadow-xl shadow-slate-700/10',
+					'ring-1 ring-gray-900/5',
+					'bg-background',
+				)}
+			>
+				<div className={cn('prose prose-slate lg:prose-lg', 'mx-auto mt-8')}>
 					<svg
 						className="h-6"
 						fill="none"
@@ -38,7 +43,12 @@ export function Prose() {
 						/>
 					</svg>
 				</div>
-				<div className="prose prose-slate mx-auto mt-8 dark:prose-invert lg:prose-lg">
+				<div
+					className={cn(
+						'prose prose-slate dark:prose-invert lg:prose-lg',
+						'mx-auto mt-8',
+					)}
+				>
 					<p className="lead">
 						Until now, trying to style an article, document, or blog post with Tailwind
 						has been a tedious task that required a keen eye for typography and a lot of
@@ -81,14 +91,21 @@ export function Prose() {
 					</p>
 					<pre>
 						<code className="language-html">
-							&lt;article class="prose"&gt; &lt;h1&gt;Garlic bread with cheese: What
-							the science tells us&lt;/h1&gt; &lt;p&gt; For years parents have
-							espoused the health benefits of eating garlic bread with cheese to their
-							children, with the food earning such an iconic status in our culture
-							that kids will often dress up as warm, cheesy loaf for Halloween.
-							&lt;/p&gt; &lt;p&gt; But a recent study shows that the celebrated
-							appetizer may be linked to a series of rabies cases springing up around
-							the country. &lt;/p&gt; &lt;!-- ... --&gt; &lt;/article&gt;
+							{`
+<article class="prose">
+  <h1>Garlic bread with cheese: What the science tells us</h1>
+  <p>
+    For years parents have espoused the health benefits of eating garlic bread with cheese to their
+    children, with the food earning such an iconic status in our culture that kids will often dress
+    up as warm, cheesy loaf for Halloween.
+  </p>
+  <p>
+    But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases
+    springing up around the country.
+  </p>
+  <!-- ... -->
+</article>
+`}
 						</code>
 					</pre>
 					<p>
