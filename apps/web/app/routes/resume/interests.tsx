@@ -6,7 +6,7 @@ export function Interests({ interests }: { readonly interests: readonly Interest
 		<section className="w-full">
 			<T.h2 className="mb-0">Interests</T.h2>
 			{interests.map(({ name, keywords }) => (
-				<dl>
+				<dl key={name}>
 					<dt>{name}</dt>
 					<dd>
 						<ul className="mb-0 ml-0 flex list-none flex-row flex-wrap items-start justify-start">
