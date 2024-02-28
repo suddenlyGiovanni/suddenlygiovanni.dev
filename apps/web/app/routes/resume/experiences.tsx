@@ -211,7 +211,7 @@ const ExperienceHeader = memo(function ExperienceHeader({
 				{name}
 				{!url ? null : (
 					<a
-						className="ml-1"
+						className="ml-2"
 						href={url}
 						rel="noopener noreferrer"
 						target="_blank"

@@ -175,12 +175,15 @@ const EduHeader = memo(function EduHeader({
 				{institution}
 				{url ?
 					<a
-						className="mr-2"
+						className="ml-2"
 						href={url}
 						rel="noopener noreferrer"
 						target="_blank"
 					>
-						<Icons.link2 aria-label={`link to ${institution} institution`} />
+						<Icons.link2
+							aria-label={`link to ${institution} institution`}
+							className="size-4"
+						/>
 					</a>
 				:	null}
 			</span>
