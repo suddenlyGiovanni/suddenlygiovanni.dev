@@ -1,7 +1,13 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
-import { Link } from '@remix-run/react'
-import resume from '@suddenly-giovanni/resume'
+import {
+	type LinksFunction,
+	type MetaFunction,
+	type LoaderFunctionArgs,
+	json,
+} from '@remix-run/node'
+import { Link, useLoaderData } from '@remix-run/react'
+import resumeAssetUrl from '@suddenly-giovanni/resume'
 import { cn } from '@suddenly-giovanni/ui'
+import type { ReactElement } from 'react'
 import { Education } from './education.tsx'
 import { Interests } from './interests.tsx'
 import { Languages } from './languages.tsx'
@@ -32,7 +38,12 @@ export const links: LinksFunction = () => {
 	]
 }
 
-export default function Resume(): JSX.Element {
+export async function loader(_: LoaderFunctionArgs) {
+	return json({ resume: resumeAssetUrl })
+}
+
+export default function Resume(): ReactElement {
+	const { resume } = useLoaderData<typeof loader>()
 	const { basics, skills, work, education, interests, languages } = mapToResume(resume)
 
 	return (
