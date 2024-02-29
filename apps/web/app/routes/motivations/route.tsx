@@ -12,7 +12,7 @@ export const meta: MetaFunction = () => {
 
 export default function Motivation(): ReactElement {
 	return (
-		<article className="prose bg-background font-comic dark:prose-invert">
+		<article className="prose w-full max-w-none bg-background font-comic dark:prose-invert">
 			<h1>My Motivations</h1>
 			<p className="lead">
 				Over the years, I have learned how and under which conditions I like to work, what
