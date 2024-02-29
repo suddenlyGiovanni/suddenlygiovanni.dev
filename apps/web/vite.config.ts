@@ -13,7 +13,16 @@ export default defineConfig({
 		mdx({
 			remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
 		}),
-		remix(),
+		remix({
+			appDirectory: 'app',
+			serverModuleFormat: 'esm',
+			buildDirectory: 'build',
+			ssr: true,
+			future: {
+				v3_throwAbortReason: true,
+				v3_relativeSplatPath: true,
+			},
+		}),
 		tsconfigPaths(),
 	],
 })
