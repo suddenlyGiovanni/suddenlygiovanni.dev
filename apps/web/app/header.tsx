@@ -78,7 +78,7 @@ function NavLink({
 const routes = (
 	[
 		routesRecord['about-me'],
-		routesRecord.blog,
+		routesRecord['brain-dump'],
 		routesRecord['reading-journal'],
 		routesRecord.resume,
 		routesRecord.motivations,
@@ -170,9 +170,9 @@ export const Header = memo(function Header(): ReactElement {
 				])}
 			>
 				<SuddenlyGiovanni
-					ariaLabel={routesRecord.blog.description}
+					ariaLabel={routesRecord['about-me'].description}
 					hrefUrl={avatarAssetUrl}
-					to={routesRecord.blog.url}
+					to={routesRecord['about-me'].url}
 				/>
 
 				<NavigationMenuToggle

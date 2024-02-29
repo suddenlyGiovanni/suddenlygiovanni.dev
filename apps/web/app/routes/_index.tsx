@@ -176,8 +176,6 @@ export default function Index(): JSX.Element {
 				</T.a>
 				.
 			</T.p>
-
-			<Link to={routesRecord.blog.url}>&larr; back to my Blog</Link>
 		</article>
 	)
 }

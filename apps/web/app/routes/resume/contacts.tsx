@@ -1,4 +1,5 @@
 import { cn, Icons, SocialIcon, T } from '@suddenly-giovanni/ui'
+import type { ReactElement } from 'react'
 
 interface Location {
 	/**
@@ -108,7 +109,7 @@ export function Contacts({
 	phone,
 	profiles,
 	url,
-}: Pick<Basics, 'email' | 'location' | 'phone' | 'profiles' | 'url'>) {
+}: Pick<Basics, 'email' | 'location' | 'phone' | 'profiles' | 'url'>): ReactElement {
 	return (
 		<address className={addressClasses.address}>
 			<T.ul className={addressClasses.ul}>

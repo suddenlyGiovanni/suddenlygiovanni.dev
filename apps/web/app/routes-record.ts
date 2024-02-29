@@ -34,12 +34,12 @@ export const routesRecord = {
 		disabled: false,
 		hidden: false,
 	},
-	blog: {
-		uri: 'blog',
-		url: '/blog',
-		title: 'blog',
-		description: 'Go to blog page',
-		disabled: false,
+	'brain-dump': {
+		uri: 'brain-dump',
+		url: '/brain-dump',
+		title: 'brain dump',
+		description: 'Go to brain dump page',
+		disabled: true,
 		hidden: false,
 	},
 
