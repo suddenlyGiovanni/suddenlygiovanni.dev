@@ -8,6 +8,7 @@ import { Link, useLoaderData } from '@remix-run/react'
 import resumeAssetUrl from '@suddenly-giovanni/resume'
 import { cn } from '@suddenly-giovanni/ui'
 import type { ReactElement } from 'react'
+import { routesRecord } from '~/routes-record.ts'
 import { Education } from './education.tsx'
 import { Interests } from './interests.tsx'
 import { Languages } from './languages.tsx'
@@ -81,7 +82,7 @@ export default function Resume(): ReactElement {
 			<footer className="flex w-full items-center justify-between">
 				<Link
 					className="inline-block"
-					to="/"
+					to={routesRecord['about-me'].url}
 				>
 					&larr; back to my About Me
 				</Link>

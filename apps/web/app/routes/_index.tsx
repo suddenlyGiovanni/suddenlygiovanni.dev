@@ -14,6 +14,7 @@ import hero1804wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4c
 import hero2314wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2314.webp'
 import hero2670wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp'
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import { routesRecord } from '~/routes-record.ts'
 
 export const meta: MetaFunction = () => {
 	return [{ title: 'About me' }, { name: 'description', content: 'All about Giovanni Ravalico' }]
@@ -102,7 +103,7 @@ export default function Index(): JSX.Element {
 				was the beginning of my unconventional journey toward becoming a software developer.
 				For any further information, please{' '}
 				<strong>
-					refer to my <Link to="/resume">📑 résumé</Link>
+					refer to my <Link to={routesRecord.resume.url}>📑 résumé</Link>
 				</strong>
 				.
 			</T.p>
@@ -176,7 +177,7 @@ export default function Index(): JSX.Element {
 				.
 			</T.p>
 
-			<Link to="/blog">&larr; back to my Blog</Link>
+			<Link to={routesRecord.blog.url}>&larr; back to my Blog</Link>
 		</article>
 	)
 }

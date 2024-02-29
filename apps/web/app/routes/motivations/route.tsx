@@ -1,6 +1,7 @@
 import { Link } from '@remix-run/react'
 import type { MetaFunction } from '@remix-run/node'
 import type { ReactElement } from 'react'
+import { routesRecord } from '~/routes-record.ts'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -123,7 +124,7 @@ export default function Motivation(): ReactElement {
 			</p>
 			<p>
 				My previous work experience and contact informations are available in my{' '}
-				<Link to="/resume">resume</Link>.
+				<Link to={routesRecord.resume.url}>resume</Link>.
 			</p>
 		</article>
 	)

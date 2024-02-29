@@ -1,15 +1,16 @@
 import { NavLink as UnstyledNavLink, type NavLinkProps } from '@remix-run/react'
-import { useTheme, type Theme } from 'remix-themes'
 import {
 	cn,
 	Layout,
+	ModeToggle,
 	NavigationMenuToggle,
 	SuddenlyGiovanni,
 	useToggle,
-	ModeToggle,
 } from '@suddenly-giovanni/ui'
-import { useCallback, type ReactElement, type SyntheticEvent } from 'react'
+import { type ReactElement, type SyntheticEvent, useCallback, useMemo, memo } from 'react'
+import { type Theme, useTheme } from 'remix-themes'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
+import { routesRecord } from './routes-record'
 
 /**
  * Calculates class name based on activated state and base classes
@@ -74,16 +75,19 @@ function NavLink({
 	)
 }
 
-const routes = [
-	{ label: 'about me', to: '/' },
-	{ label: 'blog', to: '/blog' },
-	{ label: 'reading journal', to: '/reading-journal', disabled: true },
-	{ label: 'résumé', to: '/resume' },
-] satisfies readonly { label: string; to: string; disabled?: boolean }[]
+const routes = (
+	[
+		routesRecord['about-me'],
+		routesRecord.blog,
+		routesRecord['reading-journal'],
+		routesRecord.resume,
+		routesRecord.motivations,
+	] as const
+).filter(({ hidden }) => !hidden)
 
 const PRIMARY_NAVIGATION = 'primary-navigation'
 
-export function Header(): ReactElement {
+export const Header = memo(function Header(): ReactElement {
 	const [isMobileNavigationVisible, toggleMobileNavigationVisibility] = useToggle(false)
 	const [theme, setTheme] = useTheme()
 
@@ -105,6 +109,36 @@ export function Header(): ReactElement {
 			toggleMobileNavigationVisibility()
 		},
 		[setTheme, toggleMobileNavigationVisibility],
+	)
+
+	const renderLi = useMemo(
+		() =>
+			routes.map(({ title, url, uri, description, disabled }) => (
+				<li
+					className={cn(
+						'flex min-h-16 min-w-32 items-center justify-end',
+						'md:min-h-fit md:min-w-fit',
+						'outline-none',
+					)}
+					key={uri}
+					onClick={stopPropagation}
+					role="menuitem"
+					tabIndex={0}
+				>
+					<NavLink
+						aria-disabled={disabled ? 'true' : undefined}
+						aria-label={description}
+						onClick={handleMobileNavigationClick}
+						prefetch="intent"
+						role="link"
+						to={url}
+					>
+						{title}
+					</NavLink>
+				</li>
+			)),
+
+		[handleMobileNavigationClick, stopPropagation],
 	)
 
 	return (
@@ -136,9 +170,9 @@ export function Header(): ReactElement {
 				])}
 			>
 				<SuddenlyGiovanni
-					ariaLabel="Navigate to blog page"
+					ariaLabel={routesRecord.blog.description}
 					hrefUrl={avatarAssetUrl}
-					to="/blog"
+					to={routesRecord.blog.url}
 				/>
 
 				<NavigationMenuToggle
@@ -196,29 +230,7 @@ export function Header(): ReactElement {
 						onClick={handleMobileNavigationClick}
 						role="menu"
 					>
-						{routes.map(({ label, to, disabled }) => (
-							<li
-								className={cn(
-									'flex min-h-16 min-w-32 items-center justify-end',
-									'md:min-h-fit md:min-w-fit',
-									'outline-none',
-								)}
-								key={to}
-								onClick={stopPropagation}
-								role="menuitem"
-								tabIndex={0}
-							>
-								<NavLink
-									aria-disabled={disabled}
-									onClick={handleMobileNavigationClick}
-									prefetch="intent"
-									role="link"
-									to={to}
-								>
-									{label}
-								</NavLink>
-							</li>
-						))}
+						{renderLi}
 						<ModeToggle
 							className="ml-16 aspect-square"
 							setTheme={handleThemeChange}
@@ -229,4 +241,4 @@ export function Header(): ReactElement {
 			</div>
 		</Layout.Header>
 	)
-}
+})

@@ -2,6 +2,7 @@ import { Link } from '@remix-run/react'
 import { cn, T } from '@suddenly-giovanni/ui'
 import type { ReactElement, ReactNode } from 'react'
 import resumePdfAssetUrl from 'public/giovanni-ravalico-resume-2021.pdf?url'
+import { routesRecord } from '~/routes-record.ts'
 
 export function Header({
 	name,
@@ -31,9 +32,8 @@ export function Header({
 							'underline',
 							'underline-offset-4',
 						)}
-						to="/motivations"
+						to={routesRecord.motivations.url}
 					>
-						{' '}
 						my motivations
 					</Link>{' '}
 					first.
