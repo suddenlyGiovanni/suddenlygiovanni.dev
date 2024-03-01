@@ -141,3 +141,8 @@ node_modules
 ### macOS template
 # General
 .DS_Store
+
+
+### Docker
+.dockerignore
+Dockerfile
