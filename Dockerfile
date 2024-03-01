@@ -6,12 +6,14 @@ LABEL authors="suddenlyGiovanni"
 # set for base and all layer that inherit from it
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
+ENV NODE_ENV production
 
-RUN apt-get update
+RUN apt-get update && apt-get install -y openssl
 
 RUN corepack enable
 
-FROM base AS builder
+# Install all node_modules, including dev dependencies
+FROM base AS deps
 
 COPY . /usr/src/app
 
@@ -31,4 +33,4 @@ WORKDIR /usr/src/app
 # This is important for ensuring consistent builds.
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
-# RUN pnpm --filter @suddenly-giovanni/web run build
+RUN pnpm --filter @suddenly-giovanni/web run build
