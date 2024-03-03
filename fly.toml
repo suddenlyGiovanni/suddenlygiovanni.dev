@@ -1,0 +1,22 @@
+# fly.toml app configuration file generated for suddenlygiovanni-dev on 2024-03-03T02:43:25+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'suddenlygiovanni-dev'
+primary_region = 'ams'
+
+[build]
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1

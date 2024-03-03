@@ -24,4 +24,6 @@ RUN pnpm install --prod false --frozen-lockfile
 
 RUN pnpm run build
 
+EXPOSE 3000
+
 CMD ["pnpm", "--filter", "@suddenly-giovanni/web", "run", "start"]
