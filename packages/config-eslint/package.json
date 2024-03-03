@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@suddenly-giovanni/eslint-config",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "peerDependencies": {
+    "eslint": "8.56.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint": {
+      "optional": false
+    }
+  },
+  "scripts": {
+    "clean": "scripty"
+  },
+  "devDependencies": {
+    "@suddenly-giovanni/config-typescript": "workspace:*",
+    "@types/node": "20.11.24",
+    "@vercel/style-guide": "5.2.0",
+    "eslint-config-turbo": "1.12.4",
+    "eslint-plugin-n": "17.0.0-1",
+    "eslint-plugin-only-warn": "1.1.0",
+    "eslint-plugin-tailwindcss": "3.14.3",
+    "eslint-plugin-testing-library": "6.2.0",
+    "eslint-plugin-vitest": "0.3.22"
+  },
+  "config": {
+    "scripty": {
+      "path": "../../scripts"
+    }
+  }
+}

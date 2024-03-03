@@ -1,0 +1,38 @@
+{
+	"$schema": "https://turbo.build/schema.json",
+	"pipeline": {
+		"build": {
+			"outputs": [
+				"dist/**",
+				"storybook-static/**"
+			],
+			"dependsOn": [
+				"^build"
+			]
+		},
+		"clean": {
+			"cache": false
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true,
+			"dependsOn": [
+				"topo"
+			]
+		},
+		"format": {
+			"cache": false
+		},
+		"lint": {},
+		"topo": {
+			"dependsOn": [
+				"^topo"
+			]
+		},
+		"typecheck": {
+			"dependsOn": [
+				"topo"
+			]
+		}
+	}
+}

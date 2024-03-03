@@ -1,0 +1,14 @@
+{
+	"extends": "@suddenly-giovanni/config-typescript/base.json",
+	"compilerOptions": {
+		"noEmit": false,
+		"allowJs": true,
+		"checkJs": true
+	},
+	"include": [
+		"index.js"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}

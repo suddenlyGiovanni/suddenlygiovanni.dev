@@ -1,0 +1,27 @@
+{
+  "name": "@suddenly-giovanni/config-prettier",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+	"main": "index.js",
+  "scripts": {
+		"clean": "scripty"
+  },
+  "peerDependencies": {
+    "prettier": "3.2.5"
+  },
+  "peerDependenciesMeta": {
+    "prettier": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "@suddenly-giovanni/config-typescript": "workspace:*",
+    "prettier-plugin-tailwindcss": "0.5.11"
+  },
+  "config": {
+    "scripty": {
+      "path": "../../scripts"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "version": 3,
+  "file": "postcss.config.d.ts",
+  "sourceRoot": "",
+  "sources": ["./postcss.config.js"],
+  "names": [],
+  "mappings": "AAEA;;;GAGG;AACH,QAAA,MAAM,MAAM;;;;;CAKM,CAAC;AACnB,eAAe,MAAM,CAAC;AAEtB,OAAO,EAAE,KAAK,MAAM,EAAE,MAAM,qBAAqB,CAAC"
+}

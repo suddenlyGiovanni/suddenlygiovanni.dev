@@ -1,131 +1,81 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/fb78a4e6-1971-4bc5-bbba-dea431a51fb3/deploy-status)](https://app.netlify.com/sites/suddenlygiovanni/deploys)
+# Turborepo starter
 
-# [suddenlyGiovanni.dev]
+This is an official starter Turborepo.
 
-- [Contributing](#contributing)
-- [Getting Started](#getting-started)
-  - [Installing](#installing)
-  - [Running](#running)
-- [🧐 What's inside?](#---what-s-inside-)
-- [Built With](#built-with)
-- [Versioning](#versioning)
-- [Authors](#authors)
-- [License](#license)
+## Using this example
 
-My personal JAM Stack Website, built with Gatsby, TypeScript, React, and deployed with Netlify
+Run the following command:
 
-It host **my blog** and some auxiliary resources.
-
-| Page       | Path           | url                                                                              |
-| ---------- | -------------- | -------------------------------------------------------------------------------- |
-| Blog       | `/`            | [suddenlygiovanni.dev](https://www.suddenlygiovanni.dev)                         |
-| About Me   | `/about-me`    | [suddenlygiovanni.dev/about-me](https://www.suddenlygiovanni.dev/about-me)       |
-| Résumé     | `/resume`      | [suddenlygiovanni.dev/resume](https://www.suddenlygiovanni.dev/resume)           |
-| Motivation | `/motivations` | [suddenlygiovanni.dev/motivations](https://www.suddenlygiovanni.dev/motivations) |
-
-## Contributing
-
-If you desire to contribute to the website codebase or fix an error in a post (code or copy), feel free to open an issue or submit a Pull Request.
-
-To get started, please read the steps below.
-
-## Getting Started
-
-This is a Gatsby project, so all the required knowledge can be learned from the [gatsby documentation](https://www.gatsbyjs.org/docs/).
-
-The only significant difference from a standard Gatsby project is the usage of TypeScript for both front end code and also for all the Node build scripts.
-This means that `gatsby-config.js` is just as a proxy for the gatsby's configurations modules located at `/.gatsby/**.ts`
-
-### Installing
-
-To install just run:
-
-```shell
-yarn install
+```sh
+npx create-turbo@latest
 ```
 
-### Running
+## What's inside?
 
-Start it up:
+This Turborepo includes the following packages/apps:
 
-```shell
-gatsby develop
+### Apps and Packages
+
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+### Utilities
+
+This Turborepo has some additional tools already setup for you:
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+### Build
+
+To build all apps and packages, run the following command:
+
+```
+cd my-turborepo
+pnpm build
 ```
 
-the site will be running locally at `http://localhost:8000`
+### Develop
 
-## 🧐 What's inside?
+To develop all apps and packages, run the following command:
 
-A quick look at the top-level files and directories:
-
-```shell
-.
-├── .gatsby
-│ ├── create-blog-pages.ts
-│ ├── create-pages.ts
-│ ├── create-posts.ts
-│ ├── gatsby-browser.ts
-│ ├── gatsby-config.ts
-│ ├── gatsby-node.ts
-│ ├── gatsby-ssr.ts
-│ └── on-create-node.ts
-├── config
-│ ├── site-metadata.ts
-│ └── website.ts
-├── content
-│ ├── assets
-│ ├── blog
-│ └── resume
-├── cypress
-├── src
-│ ├── components
-│ ├── hooks
-│ ├── lib
-│ ├── pages
-│ ├── templates
-│ └── utils
-├── tests
-├── typings
-├── apollo.config.js
-├── gatsby-config.js
-├── LICENSE
-├── package.json
-├── README.md
-└── tsconfig.json
+```
+cd my-turborepo
+pnpm dev
 ```
 
-## Built With
+### Remote Caching
 
-- [Gatsby] - The JAM Stack web framework used.
-- [TypeScript] - Typed JavaScript at Any Scale.
-- [Jest] - JavaScript testing framework
-- [Cypress] - E2E testing framework
-- [Netlify] - E2E testing framework
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-## Versioning
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-We use [SemVer] for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+```
+cd my-turborepo
+npx turbo login
+```
 
-## Authors
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-- **Giovanni Ravalico** - _Initial work_
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
-See also the list of [contributors] who participated in this project.
+```
+npx turbo link
+```
 
-## License
+## Useful Links
 
-This website codebase is licensed under the BSD Zero Clause License - see the [LICENSE-website] file for details
-The code snippets are licensed under the MIT License - see the [LICENSE-code-snippets] file for details
-The post are protected by copyright - see the [LICENSE-posts] file for details
+Learn more about the power of Turborepo:
 
-[suddenlygiovanni.dev]: https://www.suddenlygiovanni.dev/
-[gatsby]: https://www.gatsbyjs.org
-[typescript]: https://www.typescriptlang.org
-[jest]: https://jestjs.io
-[cypress]: https://www.cypress.io
-[netlify]: https://www.netlify.com
-[semver]: http://semver.org/
-[contributors]: https://github.com/your/project/contributors
-[license-website]: LICENSE-website.md
-[license-code-snippets]: LICENSE-code-snippets.md
-[license-posts]: LICENSE-posts.md
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
