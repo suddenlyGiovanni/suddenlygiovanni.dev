@@ -6,7 +6,7 @@ echo $log_message
 
 
 # List of directories to remove
-directories=("node_modules" ".turbo" "dist")
+directories=("node_modules" ".turbo" "dist" "build" )
 
 for dir in "${directories[@]}"
 do
