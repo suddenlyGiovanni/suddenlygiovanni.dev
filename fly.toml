@@ -29,7 +29,7 @@ primary_region = 'ams'
 [[services.http_checks]]
 	interval = 10000
 	grace_period = "5s"
-	method = "HEAD"
+	method = "get"
 	path = "/"
 	protocol = "http"
 	timeout = 2000
