@@ -1,0 +1,21 @@
+name: 🚀 Deploy
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    name: 🚀 Deploy app to Fly.io
+    runs-on: ubuntu-latest
+    environment: production
+    concurrency: deploy-group # this ensures only one action run at a time
+    steps:
+      - name: ⬇️Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🚀Deploy to Production
+        uses: superfly/flyctl-actions/setup-flyctl@master
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+        with:
+          args: "deploy --remote-only"
