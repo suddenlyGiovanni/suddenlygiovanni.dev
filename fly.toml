@@ -5,48 +5,51 @@
 
 app = 'suddenlygiovanni-dev'
 primary_region = 'ams'
+kill_signal = 'SIGINT'
+kill_timeout = 5
 
-[build]
+[[vm]]
+memory = '1gb'
+cpu_kind = 'shared'
+cpus = 1
 
-[http_service]
-  internal_port = 3000
-  force_https = true
-  auto_stop_machines = true
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
+[[services]]
+internal_port = 3000
+processes = ['app']
+protocol = "tcp"
 
-[[services.ports]]
-	handlers = ["tls", "http"]
+	[services.concurrency]
+	hard_limit = 100
+	soft_limit = 80
+	type = "requests"
+
+	[http_service]
+	force_https = true
+	auto_stop_machines = true
+	auto_start_machines = true
+	min_machines_running = 0
+
+	[[services.ports]]
+	handlers = [ "http" ]
+	port = 80
+	force_https = true
+
+	[[services.ports]]
+	handlers = [ "tls", "http" ]
 	port = 443
 
-[[services.tcp_checks]]
-	grace_period = "10s"
+	[[services.tcp_checks]]
+	grace_period = "1s"
 	interval = "15s"
 	restart_limit = 0
 	timeout = "2s"
 
-[[services.http_checks]]
-	interval = 10_000
-	grace_period = "5s"
-	method = "get"
-	path = "/"
-	protocol = "http"
-	timeout = 2_000
-	tls_skip_verify = false
-	[services.http_checks.headers]
-
-[[services.http_checks]]
-	interval = 10_000
+	[[services.http_checks]]
+	interval = "10s"
 	grace_period = "5s"
 	method = "get"
 	path = "/resources/healthcheck"
 	protocol = "http"
-	timeout = 2_000
+	timeout = "2s"
 	tls_skip_verify = false
-	[services.http_checks.headers]
-
-[[vm]]
-  memory = '1gb'
-  cpu_kind = 'shared'
-  cpus = 1
+	headers = { }
