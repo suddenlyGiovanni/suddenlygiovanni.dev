@@ -79,3 +79,7 @@ node_modules
 ### Docker
 .dockerignore
 Dockerfile
+
+### Git
+.gitignore
+.git/
