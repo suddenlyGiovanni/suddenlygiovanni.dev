@@ -1,56 +1,60 @@
-# base node image
-FROM node:21-alpine3.19@sha256:d3271e4bd89eec4d97087060fd4db0c238d9d22fcfad090a73fa9b5128699888 AS base
+FROM node:21-alpine3.19 AS base
 
 LABEL authors="suddenlyGiovanni"
 
-# set for base and all layer that inherit from it
 ENV PNPM_HOME="/pnpm"
 
 ENV PATH="$PNPM_HOME:$PATH"
 
-RUN apk add --no-cache libc6-compat
-
-RUN apk update
-
 RUN corepack enable
 
-COPY . /app
+WORKDIR /home/node/
 
-WORKDIR /app
+FROM base AS builder
 
-#ENTRYPOINT ["sh"]
+WORKDIR /home/node/builder
 
+RUN pnpm add --global turbo
 
-FROM base AS prod-deps
+COPY . .
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+RUN turbo prune --docker @suddenly-giovanni/web
 
-#ENTRYPOINT ["sh"]
-
+ENTRYPOINT ["sh"]
 
 FROM base AS build
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+WORKDIR /home/node/build
+
+COPY .gitignore .gitignore
+
+COPY --from=builder /home/node/builder/out/json/ .
+
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod=false
+
+# Build the project
+COPY --from=builder /home/node/builder/out/full/ .
 
 ENV NODE_ENV production
 
-RUN pnpm run build
+RUN pnpm turbo build --filter=@suddenly-giovanni/web
 
-#ENTRYPOINT ["sh"]
+RUN pnpm --filter @suddenly-giovanni/web --prod deploy pruned
 
 
-FROM base AS runner
+FROM base AS production
 
 ENV NODE_ENV production
 
-COPY --from=prod-deps /app/node_modules /app/node_modules
-COPY --from=prod-deps /app/apps/web/node_modules /app/apps/web/node_modules
-COPY --from=build /app/apps/web/build /app/apps/web/build
+WORKDIR /home/node/code
+
+RUN apk add --no-cache dumb-init
+
+COPY --from=build --chown=node:node /home/node/build/pruned .
+COPY --from=build --chown=node:node /home/node/build/apps/web/build ./build
 
 USER node
 
 EXPOSE 3000
 
-WORKDIR /app/apps/web
-
-CMD ["pnpm", "run",  "start"]
+CMD ["dumb-init", "pnpm", "run", "start"]

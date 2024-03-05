@@ -1,7 +1,8 @@
 .idea/
 .git/
+.github/
 node_modules/
 .DS_Store
 .dockerignore
+docker-compose.yml
 Dockerfile
-.github/
