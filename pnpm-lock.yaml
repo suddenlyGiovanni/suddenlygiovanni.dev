@@ -152,8 +152,8 @@ importers:
         specifier: 1.12.4
         version: 1.12.4(eslint@8.57.0)
       eslint-plugin-n:
-        specifier: 17.0.0-1
-        version: 17.0.0-1(eslint@8.57.0)
+        specifier: 17.0.0-3
+        version: 17.0.0-3(eslint@8.57.0)
       eslint-plugin-only-warn:
         specifier: 1.1.0
         version: 1.1.0
@@ -9095,8 +9095,8 @@ packages:
       object.fromentries: 2.0.7
     dev: true
 
-  /eslint-plugin-n@17.0.0-1(eslint@8.57.0):
-    resolution: {integrity: sha512-eJnqP02Kix/hmwOLWIYlGx2hXUiGX3YRhW50nim4PzduFhM8Mka76b/sA8u+pkJWr78e5dl1vJMfavsifUFuxQ==}
+  /eslint-plugin-n@17.0.0-3(eslint@8.57.0):
+    resolution: {integrity: sha512-7wtgGpGaq83Fhh3LfpC62ce1FRwh093Jp9VkqTXrZT1tGRXJznes7MDOCFMGZsmS4JQ56coW5iSWkGyQyi4sGg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
@@ -9106,7 +9106,7 @@ packages:
       eslint: 8.57.0
       eslint-plugin-es-x: 7.5.0(eslint@8.57.0)
       get-tsconfig: 4.7.2
-      globals: 13.24.0
+      globals: 14.0.0
       ignore: 5.3.1
       is-builtin-module: 3.2.1
       is-core-module: 2.13.1
@@ -9968,6 +9968,11 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       type-fest: 0.20.2
+
+  /globals@14.0.0:
+    resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
+    engines: {node: '>=18'}
+    dev: true
 
   /globalthis@1.0.3:
     resolution: {integrity: sha512-sFdI5LyBiNTHjRd7cGPWapiHWMOXKyuBNX/cWJ3NfzrZQVa8GI/8cofCl74AOVqq9W5kNmguTIzJ/1s2gyI9wA==}
