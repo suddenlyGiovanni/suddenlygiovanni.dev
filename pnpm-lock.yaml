@@ -24,8 +24,8 @@ importers:
         specifier: 1.12.4
         version: 1.12.4
       typescript:
-        specifier: 5.3.3
-        version: 5.3.3
+        specifier: 5.4.1-rc
+        version: 5.4.1-rc
 
   apps/web:
     dependencies:
@@ -223,8 +223,8 @@ importers:
         specifier: 3.0.0
         version: 3.0.0
       typescript:
-        specifier: 5.3.3
-        version: 5.3.3
+        specifier: 5.4.1-rc
+        version: 5.4.1-rc
 
   packages/resume: {}
 
@@ -14259,6 +14259,11 @@ packages:
 
   /typescript@5.3.3:
     resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  /typescript@5.4.1-rc:
+    resolution: {integrity: sha512-gInURzaO0bbfzfQAc3mfcHxh8qev+No4QOFUZHajo9vBgOLaljELJ3wuzyoGo/zHIzMSezdhtrsRdqL6E9SvNA==}
     engines: {node: '>=14.17'}
     hasBin: true
 
