@@ -1,33 +1,56 @@
 # base node image
-FROM node:21-alpine3.19
+FROM node:21-alpine3.19 AS base
+
 LABEL authors="suddenlyGiovanni"
 
 # set for base and all layer that inherit from it
 ENV PNPM_HOME="/pnpm"
+
 ENV PATH="$PNPM_HOME:$PATH"
-ENV NODE_ENV=production
+
+RUN apk add --no-cache libc6-compat
+
+RUN apk update
 
 RUN corepack enable
 
-USER node
+COPY . /app
 
-# Create app directory
-WORKDIR /home/node/code
+WORKDIR /app
 
-# Copy the entire workspace
-COPY --chown=node:node . .
+#ENTRYPOINT ["sh"]
 
-# Install app dependencies
-RUN pnpm install --prod false --frozen-lockfile
 
-# Change to the web app directory
-WORKDIR /home/node/code/apps/web
+FROM base AS prod-deps
 
-# Build the project
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+
+#ENTRYPOINT ["sh"]
+
+
+FROM base AS build
+
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+
+ENV NODE_ENV production
+
 RUN pnpm run build
 
-# Expose the port the app runs in
+#ENTRYPOINT ["sh"]
+
+
+FROM base AS runner
+
+ENV NODE_ENV production
+
+COPY --from=prod-deps /app/node_modules /app/node_modules
+COPY --from=prod-deps /app/apps/web/node_modules /app/apps/web/node_modules
+COPY --from=build /app/apps/web/build /app/apps/web/build
+
+USER node
+
 EXPOSE 3000
 
-# Serve the app
-CMD ["pnpm", "run", "start"]
+WORKDIR /app/apps/web
+
+CMD ["pnpm", "run",  "start"]

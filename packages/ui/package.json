@@ -11,7 +11,7 @@
 	},
 	"type": "module",
 	"scripts": {
-		"build": "storybook build",
+		"build:storybook": "storybook build",
 		"check": "biome check .",
 		"check:fix": "biome check --apply .",
 		"clean": "scripty",
