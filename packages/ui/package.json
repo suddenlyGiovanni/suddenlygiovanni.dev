@@ -23,7 +23,7 @@
 		"typecheck": "scripty"
 	},
 	"peerDependencies": {
-		"react": "18.3.0-canary-3bcd2de01-20240227"
+		"react": "18.3.0-next-fecc288b7-20221025"
 	},
 	"dependencies": {
 		"@radix-ui/react-accessible-icon": "1.0.3",
@@ -36,7 +36,7 @@
 		"@radix-ui/react-separator": "1.0.3",
 		"@radix-ui/react-slot": "1.0.2",
 		"@remix-run/react": "2.8.0",
-		"react": "18.3.0-canary-3bcd2de01-20240227",
+		"react": "18.3.0-next-fecc288b7-20221025",
 		"react-aria-components": "1.1.1",
 		"tailwind-variants": "0.2.0"
 	},
@@ -57,7 +57,7 @@
 		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"@suddenly-giovanni/eslint-config": "workspace:*",
 		"@total-typescript/ts-reset": "0.5.1",
-		"@types/react": "18.2.61",
+		"@types/react": "18.2.62",
 		"@types/react-dom": "18.2.19",
 		"@vitejs/plugin-react-swc": "3.6.0",
 		"autoprefixer": "10.4.17",
