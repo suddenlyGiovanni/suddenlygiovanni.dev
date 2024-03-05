@@ -1,4 +1,20 @@
 {
 	$schema: "https://docs.renovatebot.com/renovate-schema.json",
-	extends: ["config:recommended"],
+	"configMigration": true,
+	extends: [
+		"config:recommended",
+		"docker:pinDigests",
+		"helpers:pinGitHubActionDigests",
+		":pinDevDependencies",
+		"group:monorepos",
+		"group:recommended",
+		"replacements:all",
+		"workarounds:all",
+		":followTag(typescript, rc)",
+		"schedule:earlyMondays",
+	],
+	labels: ["dependencies"],
+	dockerfile: {
+		enabled: true,
+	},
 }
