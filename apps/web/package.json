@@ -37,7 +37,7 @@
 		"@suddenly-giovanni/eslint-config": "workspace:*",
 		"@total-typescript/ts-reset": "0.5.1",
 		"@types/react": "18.2.63",
-		"@types/react-dom": "18.2.19",
+		"@types/react-dom": "18.2.20",
 		"@typescript-eslint/eslint-plugin": "7.1.1",
 		"autoprefixer": "10.4.18",
 		"eslint-config-prettier": "9.1.0",
