@@ -21,7 +21,7 @@
 		"@remix-run/serve": "2.8.0",
 		"@suddenly-giovanni/resume": "workspace:*",
 		"@suddenly-giovanni/ui": "workspace:*",
-		"effect": "2.4.0",
+		"effect": "2.4.1",
 		"isbot": "4.4.0",
 		"react": "18.3.0-next-fecc288b7-20221025",
 		"react-dom": "18.3.0-next-fecc288b7-20221025",
