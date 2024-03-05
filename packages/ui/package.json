@@ -11,9 +11,10 @@
 	},
 	"type": "module",
 	"scripts": {
-		"build:storybook": "storybook build",
+		"build-storybook": "storybook build",
 		"check": "biome check .",
 		"check:fix": "biome check --apply .",
+		"chromatic": "npx chromatic",
 		"clean": "scripty",
 		"components-add": "pnpm dlx shadcn-ui@latest add",
 		"components-diff": "pnpm dlx shadcn-ui@latest diff",
