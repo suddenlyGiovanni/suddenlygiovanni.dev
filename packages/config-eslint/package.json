@@ -18,7 +18,7 @@
   "devDependencies": {
     "@suddenly-giovanni/config-typescript": "workspace:*",
     "@types/node": "20.11.24",
-    "@vercel/style-guide": "5.2.0",
+    "@vercel/style-guide": "6.0.0",
     "eslint-config-turbo": "1.12.4",
     "eslint-plugin-n": "17.0.0-1",
     "eslint-plugin-only-warn": "1.1.0",
