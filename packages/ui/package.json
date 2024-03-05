@@ -23,7 +23,7 @@
 		"typecheck": "scripty"
 	},
 	"peerDependencies": {
-		"react": "18.3.0-canary-3bcd2de01-20240227"
+		"react": "18.3.0-next-fecc288b7-20221025"
 	},
 	"dependencies": {
 		"@radix-ui/react-accessible-icon": "1.0.3",
@@ -36,28 +36,28 @@
 		"@radix-ui/react-separator": "1.0.3",
 		"@radix-ui/react-slot": "1.0.2",
 		"@remix-run/react": "2.8.0",
-		"react": "18.3.0-canary-3bcd2de01-20240227",
+		"react": "18.3.0-next-fecc288b7-20221025",
 		"react-aria-components": "1.1.1",
 		"tailwind-variants": "0.2.0"
 	},
 	"devDependencies": {
-		"@chromatic-com/storybook": "1.2.1",
+		"@chromatic-com/storybook": "1.2.2",
 		"@remix-run/testing": "2.8.0",
-		"@storybook/addon-essentials": "8.0.0-rc.0",
-		"@storybook/addon-interactions": "8.0.0-rc.0",
-		"@storybook/addon-links": "8.0.0-rc.0",
+		"@storybook/addon-essentials": "8.0.0-rc.1",
+		"@storybook/addon-interactions": "8.0.0-rc.1",
+		"@storybook/addon-links": "8.0.0-rc.1",
 		"@storybook/addon-onboarding": "1.0.11",
-		"@storybook/addon-themes": "8.0.0-rc.0",
-		"@storybook/blocks": "8.0.0-rc.0",
-		"@storybook/react": "8.0.0-rc.0",
-		"@storybook/react-vite": "8.0.0-rc.0",
-		"@storybook/test": "8.0.0-rc.0",
+		"@storybook/addon-themes": "8.0.0-rc.1",
+		"@storybook/blocks": "8.0.0-rc.1",
+		"@storybook/react": "8.0.0-rc.1",
+		"@storybook/react-vite": "8.0.0-rc.1",
+		"@storybook/test": "8.0.0-rc.1",
 		"@suddenly-giovanni/config-prettier": "workspace:*",
 		"@suddenly-giovanni/config-tailwind": "workspace:*",
 		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"@suddenly-giovanni/eslint-config": "workspace:*",
 		"@total-typescript/ts-reset": "0.5.1",
-		"@types/react": "18.2.61",
+		"@types/react": "18.2.62",
 		"@types/react-dom": "18.2.19",
 		"@vitejs/plugin-react-swc": "3.6.0",
 		"autoprefixer": "10.4.17",
@@ -67,10 +67,10 @@
 		"eslint-plugin-react-refresh": "0.4.5",
 		"eslint-plugin-storybook": "0.8.0",
 		"postcss": "8.4.35",
-		"storybook": "8.0.0-rc.0",
+		"storybook": "8.0.0-rc.1",
 		"tailwind-merge": "2.2.1",
 		"tailwindcss": "3.4.1",
-		"vite": "5.1.4",
+		"vite": "5.1.5",
 		"vite-tsconfig-paths": "4.3.1"
 	},
 	"publishConfig": {
