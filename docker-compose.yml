@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: apps/web/Dockerfile
-      target: runner
+      target: production
     ports:
       - "3000:3000"
     init: true
