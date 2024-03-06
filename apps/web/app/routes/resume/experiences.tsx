@@ -1,14 +1,14 @@
 import {
-	cn,
+	Accordion,
+	AccordionContent,
+	AccordionItem,
+	Button,
 	Icons,
 	T,
-	Button,
-	Accordion,
 	Trigger,
-	AccordionItem,
-	AccordionContent,
+	cn,
 } from '@suddenly-giovanni/ui'
-import { type ReactElement, memo, useState, useMemo, useCallback } from 'react'
+import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 
 function formatDateLocaleShort(date: Date): string {
 	return date.toLocaleDateString('en-US', {
@@ -91,18 +91,11 @@ export const Experiences = memo(function Experiences({
 				size="icon"
 				variant="ghost"
 			>
-				{value.length === 0 ?
-					<Icons.rowSpacing />
-				:	<Icons.cross2 />}
+				{value.length === 0 ? <Icons.rowSpacing /> : <Icons.cross2 />}
 				<span className="sr-only">Toggle experiences accordion</span>
 			</Button>
 
-			<Accordion
-				className="w-full"
-				onValueChange={setValue}
-				type="multiple"
-				value={value}
-			>
+			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
 				{works.map((work, idx) => (
 					<Experience
 						contact={work.contact}
@@ -150,10 +143,7 @@ const Experience = memo(function Experience({
 	value: string
 }): ReactElement {
 	return (
-		<AccordionItem
-			asChild
-			value={value}
-		>
+		<AccordionItem asChild value={value}>
 			<dl>
 				<ExperienceHeader
 					description={description}
@@ -197,29 +187,15 @@ const ExperienceHeader = memo(function ExperienceHeader({
 }): ReactElement {
 	return (
 		<dt className="relative my-4 flex w-full flex-col">
-			<h3
-				aria-label="job title"
-				className={cn('mb-0 mt-0 text-base font-bold leading-none')}
-			>
+			<h3 aria-label="job title" className={cn('mb-0 mt-0 text-base font-bold leading-none')}>
 				{position}
 			</h3>
 
-			<span
-				aria-label="company"
-				className={cn(styles.span, 'text-base font-medium not-italic')}
-			>
+			<span aria-label="company" className={cn(styles.span, 'text-base font-medium not-italic')}>
 				{name}
 				{!url ? null : (
-					<a
-						className="ml-2"
-						href={url}
-						rel="noopener noreferrer"
-						target="_blank"
-					>
-						<Icons.link2
-							aria-label={`link to ${name} company`}
-							className="size-4"
-						/>
+					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
+						<Icons.link2 aria-label={`link to ${name} company`} className="size-4" />
 					</a>
 				)}
 			</span>
@@ -227,19 +203,13 @@ const ExperienceHeader = memo(function ExperienceHeader({
 			<span className={cn(styles.span, 'justify-between')}>
 				{!startDate ? null : (
 					<span aria-label="start date / end date">
-						<time
-							className="mr-1"
-							dateTime={startDate.toISOString()}
-						>
+						<time className="mr-1" dateTime={startDate.toISOString()}>
 							{formatDateLocaleShort(startDate)}
 						</time>
 						{!endDate ? null : (
 							<>
 								-
-								<time
-									className="ml-1"
-									dateTime={endDate.toISOString()}
-								>
+								<time className="ml-1" dateTime={endDate.toISOString()}>
 									{formatDateLocaleShort(endDate)}
 								</time>
 							</>
@@ -251,10 +221,7 @@ const ExperienceHeader = memo(function ExperienceHeader({
 			</span>
 
 			{!description ? null : (
-				<span
-					aria-label="description"
-					className={styles.span}
-				>
+				<span aria-label="description" className={styles.span}>
 					{description}
 				</span>
 			)}
@@ -293,15 +260,9 @@ function ExperienceHighlights({
 	if (!highlights) return null
 	return (
 		<dd>
-			<T.ul
-				aria-label="highlights"
-				className={cn('mb-0 ml-0 list-none')}
-			>
+			<T.ul aria-label="highlights" className={cn('mb-0 ml-0 list-none')}>
 				{highlights.map((highlight, i) => (
-					<li
-						className="pl-0"
-						key={`${i}${highlight[0]}`}
-					>
+					<li className="pl-0" key={`${i}${highlight[0]}`}>
 						{highlight}
 					</li>
 				))}

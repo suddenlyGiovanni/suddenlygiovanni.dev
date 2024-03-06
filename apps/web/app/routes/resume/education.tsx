@@ -2,15 +2,15 @@ import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
-	cn,
-	Icons,
-	Trigger,
-	T,
 	Button,
+	Icons,
+	T,
+	Trigger,
+	cn,
 } from '@suddenly-giovanni/ui'
 import type { ReactElement } from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
-import { type Education as IEducation } from './interface.ts'
+import type { Education as IEducation } from './interface.ts'
 
 function formatDateLocaleShort(date: Date): string {
 	return date.toLocaleDateString('en-US', {
@@ -48,18 +48,11 @@ export const Education = memo(function Education({
 				size="icon"
 				variant="ghost"
 			>
-				{value.length === 0 ?
-					<Icons.rowSpacing />
-				:	<Icons.cross2 />}
+				{value.length === 0 ? <Icons.rowSpacing /> : <Icons.cross2 />}
 				<span className="sr-only">Toggle education accordion</span>
 			</Button>
 
-			<Accordion
-				className="w-full"
-				onValueChange={setValue}
-				type="multiple"
-				value={value}
-			>
+			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
 				{educations.map((education, idx) => (
 					<Edu
 						area={education.area}
@@ -101,10 +94,7 @@ const Edu = memo(function Edu({
 	value: string
 }): ReactElement {
 	return (
-		<AccordionItem
-			asChild
-			value={value}
-		>
+		<AccordionItem asChild value={value}>
 			<dl>
 				<EduHeader
 					area={area}
@@ -118,15 +108,9 @@ const Edu = memo(function Edu({
 
 				<AccordionContent asChild>
 					<dd>
-						<ul
-							aria-label="highlights"
-							className="mb-0 ml-0 list-none"
-						>
+						<ul aria-label="highlights" className="mb-0 ml-0 list-none">
 							{courses?.map((highlight, i) => (
-								<li
-									className="pl-0"
-									key={`${i}${highlight[0]}`}
-								>
+								<li className="pl-0" key={`${i}${highlight[0]}`}>
 									{highlight}
 								</li>
 							))}
@@ -173,59 +157,39 @@ const EduHeader = memo(function EduHeader({
 				className={cn(styles.span, 'text-base font-medium not-italic')}
 			>
 				{institution}
-				{url ?
-					<a
-						className="ml-2"
-						href={url}
-						rel="noopener noreferrer"
-						target="_blank"
-					>
-						<Icons.link2
-							aria-label={`link to ${institution} institution`}
-							className="size-4"
-						/>
+				{url ? (
+					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
+						<Icons.link2 aria-label={`link to ${institution} institution`} className="size-4" />
 					</a>
-				:	null}
+				) : null}
 			</span>
 
 			<span className={cn(styles.span, 'justify-between')}>
 				{!startDate ? null : (
 					<span aria-label="start date / end date">
-						<time
-							className="mr-2"
-							dateTime={startDate.toISOString()}
-						>
+						<time className="mr-2" dateTime={startDate.toISOString()}>
 							{formatDateLocaleShort(startDate)}
 						</time>
-						{endDate ?
+						{endDate ? (
 							<>
 								-
-								<time
-									className="ml-2"
-									dateTime={endDate.toISOString()}
-								>
+								<time className="ml-2" dateTime={endDate.toISOString()}>
 									{formatDateLocaleShort(endDate)}
 								</time>
 							</>
-						:	null}
+						) : null}
 					</span>
 				)}
 
 				{!location ? null : (
-					<span
-						aria-label="location"
-						className={styles.span}
-					>
+					<span aria-label="location" className={styles.span}>
 						{location}
 					</span>
 				)}
 			</span>
 
 			{!studyType ? null : (
-				<span
-					aria-label="description"
-					className={styles.span}
-				>
+				<span aria-label="description" className={styles.span}>
 					{studyType}
 				</span>
 			)}

@@ -3,13 +3,13 @@ import {
 	AccordionContent,
 	AccordionItem,
 	Button,
-	cn,
 	Icons,
 	T,
 	Trigger,
+	cn,
 } from '@suddenly-giovanni/ui'
 import { Option } from 'effect'
-import { type ReactElement, memo, useMemo, useCallback, useState } from 'react'
+import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 import { getDevIconComponent } from './dev-icons.tsx'
 
 export const Skills = memo(function Skills({
@@ -41,25 +41,13 @@ export const Skills = memo(function Skills({
 				size="icon"
 				variant="ghost"
 			>
-				{value.length === 0 ?
-					<Icons.rowSpacing />
-				:	<Icons.cross2 />}
+				{value.length === 0 ? <Icons.rowSpacing /> : <Icons.cross2 />}
 				<span className="sr-only">Toggle skills accordion</span>
 			</Button>
 
-			<Accordion
-				className="w-full"
-				onValueChange={setValue}
-				type="multiple"
-				value={value}
-			>
+			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
 				{skills.map(({ name, keywords }, idx) => (
-					<Skill
-						key={name}
-						keywords={keywords}
-						name={name}
-						value={all[idx]!}
-					/>
+					<Skill key={name} keywords={keywords} name={name} value={all[idx]!} />
 				))}
 			</Accordion>
 		</section>
@@ -76,19 +64,13 @@ const Skill = memo(function Skill({
 	value: string
 }): ReactElement {
 	return (
-		<AccordionItem
-			asChild
-			value={value}
-		>
+		<AccordionItem asChild value={value}>
 			<dl key={name}>
 				<dt className="relative flex flex-row items-center justify-between">
 					<span>{name}</span>
 					<Trigger asChild>
 						<Button
-							className={cn(
-								'rounded-full',
-								'transition-all [&[data-state=open]>svg]:rotate-180',
-							)}
+							className={cn('rounded-full', 'transition-all [&[data-state=open]>svg]:rotate-180')}
 							size="icon"
 							type="button"
 							variant="ghost"
@@ -119,10 +101,7 @@ const KeywordsList = memo(function KeywordsList({
 				)}
 			>
 				{keywords.map(keyword => (
-					<Keyword
-						key={keyword}
-						keyword={keyword}
-					/>
+					<Keyword key={keyword} keyword={keyword} />
 				))}
 			</T.ul>
 		</AccordionContent>
@@ -135,18 +114,12 @@ const Keyword = memo(function Keyword({ keyword }: { keyword: string }): ReactEl
 
 	return Option.match(maybeIcon, {
 		onNone: () => (
-			<li
-				className={classname}
-				key={keyword}
-			>
+			<li className={classname} key={keyword}>
 				{keyword}
 			</li>
 		),
 		onSome: Icon => (
-			<li
-				className={classname}
-				key={keyword}
-			>
+			<li className={classname} key={keyword}>
 				<Icon className="size-4 fill-accent-foreground/80" />
 				{keyword}
 			</li>

@@ -5,4 +5,5 @@ const config = {
 	...basePrettier,
 }
 
+// biome-ignore lint/style/noDefaultExport: This is a configuration file
 export default config

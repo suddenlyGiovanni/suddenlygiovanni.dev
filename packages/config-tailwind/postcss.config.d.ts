@@ -4,10 +4,13 @@
  */
 declare const config: {
 	plugins: {
-		tailwindcss: {};
-		autoprefixer: {};
-	};
-};
-export default config;
-export { type Config } from "postcss-load-config";
+		// biome-ignore lint/suspicious/noExplicitAny: this is a configuration file
+		tailwindcss: Record<string, any>
+		// biome-ignore lint/suspicious/noExplicitAny: this is a configuration file
+		autoprefixer: Record<string, any>
+	}
+}
+// biome-ignore lint/style/noDefaultExport: This is a configuration file
+export default config
+export { type Config } from 'postcss-load-config'
 //# sourceMappingURL=postcss.config.d.ts.map

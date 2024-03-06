@@ -20,9 +20,7 @@ export const Body = {
 		>
 			Body
 			<Layout.Header>
-				<Placeholder className="border-green-500 bg-green-200 text-green-500">
-					Header
-				</Placeholder>
+				<Placeholder className="border-green-500 bg-green-200 text-green-500">Header</Placeholder>
 			</Layout.Header>
 			<Layout.Main>
 				<Placeholder className="border-sky-500 bg-sky-200 text-sky-500">Main</Placeholder>

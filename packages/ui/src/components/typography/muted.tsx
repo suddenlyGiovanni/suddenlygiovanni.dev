@@ -3,11 +3,7 @@ import { cn } from '../../lib/utils'
 
 export const Muted = forwardRef<HTMLParagraphElement, ComponentPropsWithoutRef<'p'>>(
 	({ className, children, ...props }, ref) => (
-		<p
-			className={cn('text-sm', 'text-muted-foreground', className)}
-			ref={ref}
-			{...props}
-		>
+		<p className={cn('text-sm', 'text-muted-foreground', className)} ref={ref} {...props}>
 			{children}
 		</p>
 	),

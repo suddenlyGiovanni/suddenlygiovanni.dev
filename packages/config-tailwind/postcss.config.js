@@ -8,5 +8,6 @@ const config = {
 		tailwindcss: {},
 		autoprefixer: {},
 	},
-};
-export default config;
+}
+// biome-ignore lint/style/noDefaultExport: This is a configuration file
+export default config

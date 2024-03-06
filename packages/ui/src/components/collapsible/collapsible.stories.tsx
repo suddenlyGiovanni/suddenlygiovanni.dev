@@ -1,9 +1,9 @@
 import { CaretSortIcon } from '@radix-ui/react-icons'
 import type { Meta } from '@storybook/react'
-import { useState, type ReactElement } from 'react'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../../ui/collapsible'
-import { Button } from '../../ui/button'
+import { type ReactElement, useState } from 'react'
 import { cn } from '../../lib/utils'
+import { Button } from '../../ui/button'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../../ui/collapsible'
 
 const rootClass = cn('sans max-w-[20em]')
 
@@ -44,18 +44,11 @@ export function Default(): ReactElement {
 	const [isOpen, setIsOpen] = useState(false)
 
 	return (
-		<Collapsible
-			className="w-[350px] space-y-2"
-			onOpenChange={setIsOpen}
-			open={isOpen}
-		>
+		<Collapsible className="w-[350px] space-y-2" onOpenChange={setIsOpen} open={isOpen}>
 			<div className="flex items-center justify-between space-x-4 px-4">
 				<h4 className="text-sm font-semibold">@peduarte starred 3 repositories</h4>
-				<CollapsibleTrigger asChild>
-					<Button
-						size="sm"
-						variant="ghost"
-					>
+				<CollapsibleTrigger asChild={true}>
+					<Button size="sm" variant="ghost">
 						<CaretSortIcon className="h-4 w-4" />
 						<span className="sr-only">Toggle</span>
 					</Button>
@@ -88,18 +81,9 @@ export function Styled(): ReactElement {
 export function Controlled(): ReactElement {
 	const [open, setOpen] = useState(false)
 	return (
-		<Collapsible
-			className={rootClass}
-			onOpenChange={setOpen}
-			open={open}
-		>
-			<CollapsibleTrigger className={triggerClass}>
-				{open ? 'close' : 'open'}
-			</CollapsibleTrigger>
-			<CollapsibleContent
-				asChild
-				className={contentClass}
-			>
+		<Collapsible className={rootClass} onOpenChange={setOpen} open={open}>
+			<CollapsibleTrigger className={triggerClass}>{open ? 'close' : 'open'}</CollapsibleTrigger>
+			<CollapsibleContent asChild={true} className={contentClass}>
 				<article>Content 1</article>
 			</CollapsibleContent>
 		</Collapsible>
@@ -117,38 +101,26 @@ export function Chromatic(): ReactElement {
 			</Collapsible>
 
 			<h2>Open</h2>
-			<Collapsible
-				className={rootClass}
-				defaultOpen
-			>
+			<Collapsible className={rootClass} defaultOpen={true}>
 				<CollapsibleTrigger className={triggerClass}>Trigger</CollapsibleTrigger>
 				<CollapsibleContent className={contentClass}>Content 1</CollapsibleContent>
 			</Collapsible>
 
 			<h1>Controlled</h1>
 			<h2>Closed</h2>
-			<Collapsible
-				className={rootClass}
-				open={false}
-			>
+			<Collapsible className={rootClass} open={false}>
 				<CollapsibleTrigger className={triggerClass}>Trigger</CollapsibleTrigger>
 				<CollapsibleContent className={contentClass}>Content 1</CollapsibleContent>
 			</Collapsible>
 
 			<h2>Open</h2>
-			<Collapsible
-				className={rootClass}
-				open
-			>
+			<Collapsible className={rootClass} open={true}>
 				<CollapsibleTrigger className={triggerClass}>Trigger</CollapsibleTrigger>
 				<CollapsibleContent className={contentClass}>Content 1</CollapsibleContent>
 			</Collapsible>
 
 			<h1>Disabled</h1>
-			<Collapsible
-				className={rootClass}
-				disabled
-			>
+			<Collapsible className={rootClass} disabled={true}>
 				<CollapsibleTrigger className={triggerClass}>Trigger</CollapsibleTrigger>
 				<CollapsibleContent className={contentClass}>Content 1</CollapsibleContent>
 			</Collapsible>
@@ -161,20 +133,13 @@ export function Chromatic(): ReactElement {
 			</Collapsible>
 
 			<h2>Open</h2>
-			<Collapsible
-				className={rootAttrClass}
-				defaultOpen
-			>
+			<Collapsible className={rootAttrClass} defaultOpen={true}>
 				<CollapsibleTrigger className={triggerAttrClass}>Trigger</CollapsibleTrigger>
 				<CollapsibleContent className={contentAttrClass}>Content 1</CollapsibleContent>
 			</Collapsible>
 
 			<h2>Disabled</h2>
-			<Collapsible
-				className={rootAttrClass}
-				defaultOpen
-				disabled
-			>
+			<Collapsible className={rootAttrClass} defaultOpen={true} disabled={true}>
 				<CollapsibleTrigger className={triggerAttrClass}>Trigger</CollapsibleTrigger>
 				<CollapsibleContent className={contentAttrClass}>Content 1</CollapsibleContent>
 			</Collapsible>

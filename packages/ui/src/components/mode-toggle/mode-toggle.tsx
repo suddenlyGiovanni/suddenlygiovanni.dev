@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { cn } from '../../lib/utils.ts'
 import { Button } from '../../ui/button.tsx'
 import {
 	DropdownMenu,
@@ -6,7 +7,6 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '../../ui/dropdown-menu'
-import { cn } from '../../lib/utils.ts'
 import { Icons } from '../icons/icons.tsx'
 
 interface ModeToggleProps {
@@ -18,15 +18,13 @@ interface ModeToggleProps {
 export function ModeToggle({ setTheme, theme, className }: ModeToggleProps): ReactNode {
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<Button
-					className={cn(className)}
-					size="icon"
-					variant="ghost"
-				>
-					{theme === `light` || theme === null ?
+			<DropdownMenuTrigger asChild={true}>
+				<Button className={cn(className)} size="icon" variant="ghost">
+					{theme === `light` || theme === null ? (
 						<Icons.moon className={cn('h-[1.2rem]', 'w-[1.2rem]')} />
-					:	<Icons.sun className={cn('h-[1.2rem]', 'w-[1.2rem]')} />}
+					) : (
+						<Icons.sun className={cn('h-[1.2rem]', 'w-[1.2rem]')} />
+					)}
 
 					<span className="sr-only">Toggle theme</span>
 				</Button>

@@ -1,4 +1,4 @@
-import { cn, Icons, SocialIcon, T } from '@suddenly-giovanni/ui'
+import { Icons, SocialIcon, T, cn } from '@suddenly-giovanni/ui'
 import type { ReactElement } from 'react'
 
 interface Location {
@@ -114,63 +114,42 @@ export function Contacts({
 		<address className={addressClasses.address}>
 			<T.ul className={addressClasses.ul}>
 				<li className={addressClasses.li}>
-					<Icons.globe
-						aria-label="location icon"
-						className="size-4"
-					/>
+					<Icons.globe aria-label="location icon" className="size-4" />
 					<T.a
 						href="https://www.openstreetmap.org/search?query=berlin#map=11/52.5072/13.4249"
 						target="_blank"
+						rel="noreferrer"
 					>{`${location.city}, ${location.countryCode}`}</T.a>
 				</li>
 
 				<li className={addressClasses.li}>
 					<Icons.envelope aria-label="mail icon" />
-					<T.a
-						aria-label="email"
-						href={`mailto:${email}`}
-						rel="noreferrer"
-						target="_blank"
-					>
+					<T.a aria-label="email" href={`mailto:${email}`} rel="noreferrer" target="_blank">
 						{email}
 					</T.a>
 				</li>
 
 				<li className={addressClasses.li}>
 					<Icons.desktop aria-label="mail icon" />
-					<T.a
-						aria-label="link to my website"
-						href={url}
-						rel="noreferrer"
-						target="_blank"
-					>
+					<T.a aria-label="link to my website" href={url} rel="noreferrer" target="_blank">
 						{url}
 					</T.a>
 				</li>
 
 				<li className={addressClasses.li}>
 					<Icons.mobile aria-label="phone icon" />
-					<T.a
-						aria-label="phone number"
-						href={`tel:${phone || ''}`}
-					>
+					<T.a aria-label="phone number" href={`tel:${phone || ''}`}>
 						{phone}
 					</T.a>
 				</li>
 				{profiles.map((profile, idx) => (
-					<li
-						className={addressClasses.li}
-						key={String(idx) + String(profile.network)}
-					>
+					<li className={addressClasses.li} key={String(idx) + String(profile.network)}>
 						<SocialIcon
 							aria-label={`${profile.network || ''} icon`}
 							network={profile.network.toLowerCase()}
 						/>
 
-						<T.a
-							aria-label={`link to ${profile.network || ''}`}
-							href={profile.url}
-						>
+						<T.a aria-label={`link to ${profile.network || ''}`} href={profile.url}>
 							{profile.url.replace(/(https:\/\/www\.)|(https:\/\/)/i, '')}
 						</T.a>
 					</li>

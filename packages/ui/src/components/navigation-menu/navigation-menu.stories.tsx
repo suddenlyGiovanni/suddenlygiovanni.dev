@@ -73,7 +73,7 @@ export function Default() {
 							)}
 						>
 							<li className="row-span-3">
-								<NavigationMenuLink asChild>
+								<NavigationMenuLink asChild={true}>
 									<a
 										className={cn(
 											'flex',
@@ -94,32 +94,20 @@ export function Default() {
 										href="/"
 									>
 										<Icons.logo className="h-6 w-6" />
-										<div className="mb-2 mt-4 text-lg font-medium">
-											shadcn/ui
-										</div>
+										<div className="mb-2 mt-4 text-lg font-medium">shadcn/ui</div>
 										<p className="text-sm leading-tight text-muted-foreground">
-											Beautifully designed components built with Radix UI and
-											Tailwind CSS.
+											Beautifully designed components built with Radix UI and Tailwind CSS.
 										</p>
 									</a>
 								</NavigationMenuLink>
 							</li>
-							<ListItem
-								href="/docs"
-								title="Introduction"
-							>
+							<ListItem href="/docs" title="Introduction">
 								Re-usable components built using Radix UI and Tailwind CSS.
 							</ListItem>
-							<ListItem
-								href="/docs/installation"
-								title="Installation"
-							>
+							<ListItem href="/docs/installation" title="Installation">
 								How to install dependencies and structure your app.
 							</ListItem>
-							<ListItem
-								href="/docs/primitives/typography"
-								title="Typography"
-							>
+							<ListItem href="/docs/primitives/typography" title="Typography">
 								Styles for headings, paragraphs, lists...etc
 							</ListItem>
 						</ul>
@@ -140,11 +128,7 @@ export function Default() {
 							)}
 						>
 							{components.map(component => (
-								<ListItem
-									href={component.href}
-									key={component.title}
-									title={component.title}
-								>
+								<ListItem href={component.href} key={component.title} title={component.title}>
 									{component.description}
 								</ListItem>
 							))}
@@ -167,7 +151,7 @@ const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(
 	({ className, title, children, ...props }, ref) => {
 		return (
 			<li>
-				<NavigationMenuLink asChild>
+				<NavigationMenuLink asChild={true}>
 					<a
 						className={cn(
 							'block',
@@ -189,14 +173,7 @@ const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(
 						{...props}
 					>
 						<div className={cn('text-sm', 'font-medium', 'leading-none')}>{title}</div>
-						<p
-							className={cn(
-								'line-clamp-2',
-								'text-sm',
-								'leading-snug',
-								'text-muted-foreground',
-							)}
-						>
+						<p className={cn('line-clamp-2', 'text-sm', 'leading-snug', 'text-muted-foreground')}>
 							{children}
 						</p>
 					</a>

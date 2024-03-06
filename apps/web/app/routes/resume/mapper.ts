@@ -49,10 +49,7 @@ function mapToBasics(
 				> & {
 					readonly profiles: GatsbyTypes.Maybe<
 						readonly GatsbyTypes.Maybe<
-							Pick<
-								GatsbyTypes.ResumeJsonBasicsProfiles,
-								'network' | 'url' | 'username'
-							>
+							Pick<GatsbyTypes.ResumeJsonBasicsProfiles, 'network' | 'url' | 'username'>
 						>[]
 					>
 					readonly location: GatsbyTypes.Maybe<
@@ -166,9 +163,7 @@ function mapToLanguage(
 
 function mapToMeta(
 	meta:
-		| GatsbyTypes.Maybe<
-				Pick<GatsbyTypes.ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>
-		  >
+		| GatsbyTypes.Maybe<Pick<GatsbyTypes.ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>>
 		| undefined,
 ): Readonly<R.Meta> {
 	return {

@@ -11,11 +11,5 @@ export default meta
 export function Default(args: StoryObj<typeof ModeToggle>['args']) {
 	const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
-	return (
-		<ModeToggle
-			{...args}
-			setTheme={setTheme}
-			theme={theme}
-		/>
-	)
+	return <ModeToggle {...args} setTheme={setTheme} theme={theme} />
 }

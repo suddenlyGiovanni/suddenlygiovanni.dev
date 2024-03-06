@@ -1,7 +1,7 @@
 import {
 	type LinksFunction,
-	type MetaFunction,
 	type LoaderFunctionArgs,
+	type MetaFunction,
 	json,
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
@@ -9,13 +9,13 @@ import resumeAssetUrl from '@suddenly-giovanni/resume'
 import { cn } from '@suddenly-giovanni/ui'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
+import { Contacts } from './contacts.tsx'
 import { Education } from './education.tsx'
+import { Experiences } from './experiences.tsx'
+import { Header } from './header.tsx'
 import { Interests } from './interests.tsx'
 import { Languages } from './languages.tsx'
-import { Header } from './header.tsx'
 import { mapToResume } from './mapper.ts'
-import { Contacts } from './contacts.tsx'
-import { Experiences } from './experiences.tsx'
 import { Skills } from './skills.tsx'
 
 export const meta: MetaFunction = () => {
@@ -55,11 +55,7 @@ export default function Resume(): ReactElement {
 				'prose prose-blue dark:prose-invert',
 			)}
 		>
-			<Header
-				label={basics.label}
-				name={basics.name}
-				summary={basics.summary}
-			>
+			<Header label={basics.label} name={basics.name} summary={basics.summary}>
 				<Contacts
 					email={basics.email}
 					location={basics.location}
@@ -80,10 +76,7 @@ export default function Resume(): ReactElement {
 			<Languages languages={languages} />
 
 			<footer className="flex w-full items-center justify-between">
-				<Link
-					className="inline-block"
-					to={routesRecord['about-me'].url}
-				>
+				<Link className="inline-block" to={routesRecord['about-me'].url}>
 					&larr; back to my About Me
 				</Link>
 			</footer>
