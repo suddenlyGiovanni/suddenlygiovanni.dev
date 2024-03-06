@@ -4,9 +4,6 @@
   "version": "0.0.1",
   "private": true,
   "type": "commonjs",
-  "peerDependencies": {
-    "eslint": "8.57.0"
-  },
   "peerDependenciesMeta": {
     "eslint": {
       "optional": false
