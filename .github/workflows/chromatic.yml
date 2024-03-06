@@ -1,5 +1,10 @@
 name: "Chromatic"
-on: push
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "packages/ui/**"
 jobs:
   chromatic:
     runs-on: ubuntu-latest
@@ -41,3 +46,4 @@ jobs:
         with:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           workingDir: packages/ui
+          skip: "@(renovate/**|dependabot/**)"
