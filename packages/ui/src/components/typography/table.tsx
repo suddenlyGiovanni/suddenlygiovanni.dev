@@ -3,11 +3,7 @@ import { cn } from '../../lib/utils'
 
 export const Tr = forwardRef<HTMLTableRowElement, ComponentPropsWithoutRef<'tr'>>(
 	({ className, children, ...props }, ref) => (
-		<tr
-			className={cn('m-0', 'border-t', 'p-0', 'even:bg-muted', className)}
-			ref={ref}
-			{...props}
-		>
+		<tr className={cn('m-0', 'border-t', 'p-0', 'even:bg-muted', className)} ref={ref} {...props}>
 			{children}
 		</tr>
 	),

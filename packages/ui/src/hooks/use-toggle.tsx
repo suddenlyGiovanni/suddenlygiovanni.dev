@@ -1,4 +1,4 @@
-import { useCallback, useState, type Dispatch, type SetStateAction } from 'react'
+import { type Dispatch, type SetStateAction, useCallback, useState } from 'react'
 
 /**
  * Custom hook for managing a boolean toggle state in React components.

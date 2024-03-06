@@ -22,4 +22,5 @@ const config = {
 	tailwindFunctions: ["tv", "cn"],
 };
 
+// biome-ignore lint/style/noDefaultExport: This is a configuration file
 export default config;

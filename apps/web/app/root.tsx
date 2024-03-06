@@ -1,13 +1,13 @@
-import type { LinksFunction, MetaFunction, LoaderFunctionArgs } from '@remix-run/node'
+import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
 import { Links, Meta, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
-import type { ReactElement, ReactNode } from 'react'
-import { ThemeProvider, useTheme, PreventFlashOnWrongTheme } from 'remix-themes'
 import { Layout, cn } from '@suddenly-giovanni/ui'
-import { themeSessionResolver } from './sessions.server'
+import type { ReactElement, ReactNode } from 'react'
+import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes'
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
 import { Footer } from './footer.tsx'
-import { Main } from './main.tsx'
 import { Header } from './header.tsx'
+import { Main } from './main.tsx'
+import { themeSessionResolver } from './sessions.server'
 
 import './styles/tailwind.css'
 
@@ -49,29 +49,16 @@ function Document({ children }: { children: ReactNode }): ReactElement {
 	const data = useLoaderData<typeof loader>()
 	const [theme] = useTheme()
 	return (
-		<html
-			className={cn(theme, 'min-h-screen')}
-			data-theme={cn(theme)}
-			lang="en"
-		>
+		<html className={cn(theme, 'min-h-screen')} data-theme={cn(theme)} lang="en">
 			<head>
 				<meta charSet="utf-8" />
-				<meta
-					content="width=device-width, initial-scale=1"
-					name="viewport"
-				/>
+				<meta content="width=device-width, initial-scale=1" name="viewport" />
 				<Meta />
 				<PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
 				<Links />
 			</head>
 			<Layout.Body
-				className={cn(
-					'min-h-full',
-					'bg-background',
-					'text-foreground',
-					'font-sans',
-					'antialiased',
-				)}
+				className={cn('min-h-full', 'bg-background', 'text-foreground', 'font-sans', 'antialiased')}
 			>
 				{children}
 				<ScrollRestoration />
@@ -94,10 +81,7 @@ function App(): JSX.Element {
 export default function AppWithProviders(): ReactElement {
 	const data = useLoaderData<typeof loader>()
 	return (
-		<ThemeProvider
-			specifiedTheme={data.theme}
-			themeAction="/action/set-theme"
-		>
+		<ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
 			<App />
 		</ThemeProvider>
 	)

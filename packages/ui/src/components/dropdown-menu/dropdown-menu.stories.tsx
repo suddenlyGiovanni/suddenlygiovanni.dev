@@ -1,23 +1,23 @@
-import type { Meta, StoryObj, StoryFn } from '@storybook/react'
 import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu'
+import type { Meta, StoryFn } from '@storybook/react'
 import { useState } from 'react'
 import { Button } from '../../ui/button.tsx'
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
 	DropdownMenuContent,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-	DropdownMenuRadioGroup,
-	DropdownMenuRadioItem,
 	DropdownMenuGroup,
 	DropdownMenuItem,
+	DropdownMenuLabel,
 	DropdownMenuPortal,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
+	DropdownMenuSeparator,
 	DropdownMenuShortcut,
 	DropdownMenuSub,
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
+	DropdownMenuTrigger,
 } from '../../ui/dropdown-menu'
 
 const meta = {
@@ -35,29 +35,23 @@ export const Checkboxes: StoryFn = () => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
+			<DropdownMenuTrigger asChild={true}>
 				<Button variant="outline">Open</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56">
 				<DropdownMenuLabel>Appearance</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				<DropdownMenuCheckboxItem
-					checked={showStatusBar}
-					onCheckedChange={setShowStatusBar}
-				>
+				<DropdownMenuCheckboxItem checked={showStatusBar} onCheckedChange={setShowStatusBar}>
 					Status Bar
 				</DropdownMenuCheckboxItem>
 				<DropdownMenuCheckboxItem
 					checked={showActivityBar}
-					disabled
+					disabled={true}
 					onCheckedChange={setShowActivityBar}
 				>
 					Activity Bar
 				</DropdownMenuCheckboxItem>
-				<DropdownMenuCheckboxItem
-					checked={showPanel}
-					onCheckedChange={setShowPanel}
-				>
+				<DropdownMenuCheckboxItem checked={showPanel} onCheckedChange={setShowPanel}>
 					Panel
 				</DropdownMenuCheckboxItem>
 			</DropdownMenuContent>
@@ -76,16 +70,13 @@ export const RadioGroup: StoryFn = () => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
+			<DropdownMenuTrigger asChild={true}>
 				<Button variant="outline">Open</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56">
 				<DropdownMenuLabel>Panel Position</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				<DropdownMenuRadioGroup
-					onValueChange={setPosition}
-					value={position}
-				>
+				<DropdownMenuRadioGroup onValueChange={setPosition} value={position}>
 					<DropdownMenuRadioItem value={Position.Top}>Top</DropdownMenuRadioItem>
 					<DropdownMenuRadioItem value={Position.Bottom}>Bottom</DropdownMenuRadioItem>
 					<DropdownMenuRadioItem value={Position.Right}>Right</DropdownMenuRadioItem>
@@ -97,7 +88,7 @@ export const RadioGroup: StoryFn = () => {
 
 export const KitchenSink: StoryFn = () => (
 	<DropdownMenu>
-		<DropdownMenuTrigger asChild>
+		<DropdownMenuTrigger asChild={true}>
 			<Button variant="outline">Open</Button>
 		</DropdownMenuTrigger>
 		<DropdownMenuContent className="w-56">
@@ -143,7 +134,7 @@ export const KitchenSink: StoryFn = () => (
 			<DropdownMenuSeparator />
 			<DropdownMenuItem>GitHub</DropdownMenuItem>
 			<DropdownMenuItem>Support</DropdownMenuItem>
-			<DropdownMenuItem disabled>API</DropdownMenuItem>
+			<DropdownMenuItem disabled={true}>API</DropdownMenuItem>
 			<DropdownMenuSeparator />
 			<DropdownMenuItem>
 				Log out

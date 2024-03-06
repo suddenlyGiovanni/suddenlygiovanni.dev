@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BiomeSettings">
-    <option name="configPath" value="$PROJECT_DIR$/biome.json" />
-    <option name="executablePath" value="$PROJECT_DIR$/node_modules/.pnpm/@biomejs+biome@1.5.3/node_modules/@biomejs/biome/bin/biome" />
+    <option name="configPath" value="$PROJECT_DIR$" />
+    <option name="executablePath" value="/opt/homebrew/bin/biome " />
   </component>
 </project>

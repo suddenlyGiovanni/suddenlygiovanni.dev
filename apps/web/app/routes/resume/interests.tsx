@@ -11,10 +11,7 @@ export function Interests({ interests }: { readonly interests: readonly Interest
 					<dd>
 						<ul className="mb-0 ml-0 flex list-none flex-row flex-wrap items-start justify-start">
 							{keywords?.map(keyword => (
-								<li
-									className="mb-0 mr-4"
-									key={keyword}
-								>
+								<li className="mb-0 mr-4" key={keyword}>
 									{keyword}
 								</li>
 							))}

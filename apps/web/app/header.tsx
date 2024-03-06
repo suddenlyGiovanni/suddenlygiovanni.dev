@@ -1,13 +1,13 @@
 import { NavLink as UnstyledNavLink, type NavLinkProps } from '@remix-run/react'
 import {
-	cn,
 	Layout,
 	ModeToggle,
 	NavigationMenuToggle,
 	SuddenlyGiovanni,
+	cn,
 	useToggle,
 } from '@suddenly-giovanni/ui'
-import { type ReactElement, type SyntheticEvent, useCallback, useMemo, memo } from 'react'
+import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
 import { type Theme, useTheme } from 'remix-themes'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
 import { routesRecord } from './routes-record'

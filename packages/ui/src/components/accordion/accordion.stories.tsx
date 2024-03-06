@@ -1,13 +1,13 @@
 import type { Meta } from '@storybook/react'
-import { useState, type ReactElement, useRef, useEffect } from 'react'
+import { type ReactElement, useEffect, useRef, useState } from 'react'
+import { cn } from '../../lib/utils'
 import {
 	Accordion,
 	AccordionContent,
+	AccordionHeader,
 	AccordionItem,
 	AccordionTrigger,
-	AccordionHeader,
 } from '../../ui/accordion'
-import { cn } from '../../lib/utils'
 
 const meta: Meta = {
 	title: 'Accordion',
@@ -75,7 +75,7 @@ const animatedContentClass = cn(
 	'data-[state=closed]:animate-accordion-down',
 )
 
-const animated2DContentClass = cn(
+const animated2dContentClass = cn(
 	'overflow-hidden',
 	'data-[state=open]:animate-accordion-open',
 	'data-[state=closed]:animate-accordion-close',
@@ -89,11 +89,7 @@ const contentAttrClass = cn('block', styles)
 
 export function _Accordion(): ReactElement {
 	return (
-		<Accordion
-			className="w-full"
-			collapsible
-			type="single"
-		>
+		<Accordion className="w-full" collapsible={true} type="single">
 			<AccordionItem value="item-1">
 				<AccordionTrigger>Is it accessible?</AccordionTrigger>
 				<AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
@@ -102,8 +98,7 @@ export function _Accordion(): ReactElement {
 			<AccordionItem value="item-2">
 				<AccordionTrigger>Is it styled?</AccordionTrigger>
 				<AccordionContent>
-					Yes. It comes with default styles that matches the other components&apos;
-					aesthetic.
+					Yes. It comes with default styles that matches the other components&apos; aesthetic.
 				</AccordionContent>
 			</AccordionItem>
 
@@ -119,59 +114,42 @@ export function _Accordion(): ReactElement {
 
 export function SingleUncontrolled(): ReactElement {
 	return (
-		<Accordion
-			className={rootClass}
-			type="single"
-		>
-			<AccordionItem
-				className={itemClass}
-				value="one"
-			>
+		<Accordion className={rootClass} type="single">
+			<AccordionItem className={itemClass} value="one">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-					viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
-					quam suscipit habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
+					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
+					habitant sed.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="two"
-			>
+			<AccordionItem className={itemClass} value="two">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget
-					bibendum porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
+					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				disabled
-				value="three"
-			>
+			<AccordionItem className={itemClass} disabled={true} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat
-					himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
+					euismod magna, nec tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="four"
-			>
+			<AccordionItem className={itemClass} value="four">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula
-					penatibus dignissim vitae, enim vulputate nullam semper potenti etiam volutpat
-					libero.
+					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button>Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -185,61 +163,42 @@ export function SingleControlled(): ReactElement {
 	)
 
 	return (
-		<Accordion
-			className={rootClass}
-			onValueChange={setValueOne}
-			type="single"
-			value={valueOne}
-		>
-			<AccordionItem
-				className={itemClass}
-				value="one"
-			>
+		<Accordion className={rootClass} onValueChange={setValueOne} type="single" value={valueOne}>
+			<AccordionItem className={itemClass} value="one">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-					viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
-					quam suscipit habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
+					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
+					habitant sed.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="two"
-			>
+			<AccordionItem className={itemClass} value="two">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget
-					bibendum porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
+					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				disabled
-				value="three"
-			>
+			<AccordionItem className={itemClass} disabled={true} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat
-					himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
+					euismod magna, nec tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="four"
-			>
+			<AccordionItem className={itemClass} value="four">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula
-					penatibus dignissim vitae, enim vulputate nullam semper potenti etiam volutpat
-					libero.
+					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button>Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -249,61 +208,42 @@ export function SingleControlled(): ReactElement {
 
 export function SingleCollapsible(): ReactElement {
 	return (
-		<Accordion
-			className={rootClass}
-			collapsible
-			defaultValue="one"
-			type="single"
-		>
-			<AccordionItem
-				className={itemClass}
-				value="one"
-			>
+		<Accordion className={rootClass} collapsible={true} defaultValue="one" type="single">
+			<AccordionItem className={itemClass} value="one">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-					viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
-					quam suscipit habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
+					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
+					habitant sed.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="two"
-			>
+			<AccordionItem className={itemClass} value="two">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget
-					bibendum porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
+					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				disabled
-				value="three"
-			>
+			<AccordionItem className={itemClass} disabled={true} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat
-					himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
+					euismod magna, nec tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="four"
-			>
+			<AccordionItem className={itemClass} value="four">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula
-					penatibus dignissim vitae, enim vulputate nullam semper potenti etiam volutpat
-					libero.
+					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button>Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -313,59 +253,42 @@ export function SingleCollapsible(): ReactElement {
 
 export function MultipleUncontrolled(): ReactElement {
 	return (
-		<Accordion
-			className={rootClass}
-			type="multiple"
-		>
-			<AccordionItem
-				className={itemClass}
-				value="one"
-			>
+		<Accordion className={rootClass} type="multiple">
+			<AccordionItem className={itemClass} value="one">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-					viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
-					quam suscipit habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
+					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
+					habitant sed.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="two"
-			>
+			<AccordionItem className={itemClass} value="two">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget
-					bibendum porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
+					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				disabled
-				value="three"
-			>
+			<AccordionItem className={itemClass} disabled={true} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat
-					himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
+					euismod magna, nec tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="four"
-			>
+			<AccordionItem className={itemClass} value="four">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula
-					penatibus dignissim vitae, enim vulputate nullam semper potenti etiam volutpat
-					libero.
+					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button>Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -379,61 +302,42 @@ export function MultipleControlled(): ReactElement {
 	])
 
 	return (
-		<Accordion
-			className={rootClass}
-			onValueChange={setValue}
-			type="multiple"
-			value={value}
-		>
-			<AccordionItem
-				className={itemClass}
-				value="one"
-			>
+		<Accordion className={rootClass} onValueChange={setValue} type="multiple" value={value}>
+			<AccordionItem className={itemClass} value="one">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-					viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
-					quam suscipit habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
+					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
+					habitant sed.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="two"
-			>
+			<AccordionItem className={itemClass} value="two">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget
-					bibendum porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
+					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				disabled
-				value="three"
-			>
+			<AccordionItem className={itemClass} disabled={true} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat
-					himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
+					euismod magna, nec tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="four"
-			>
+			<AccordionItem className={itemClass} value="four">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula
-					penatibus dignissim vitae, enim vulputate nullam semper potenti etiam volutpat
-					libero.
+					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button>Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -479,28 +383,18 @@ export function Animated(): ReactElement {
 			<br />
 			<br />
 			<h1>Closed by default</h1>
-			<Accordion
-				className={rootClass}
-				type="single"
-			>
+			<Accordion className={rootClass} type="single">
 				{values.map(value => (
-					<AccordionItem
-						className={itemClass}
-						key={value}
-						value={value}
-					>
+					<AccordionItem className={itemClass} key={value} value={value}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{value}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={animatedContentClass}>
 							{[...Array(count)].map((_, index) => (
-								<div
-									key={index}
-									style={{ padding: 10 }}
-								>
-									Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-									elit vulputate viverra integer ullamcorper congue curabitur
-									sociis, nisi malesuada scelerisque quam suscipit habitant sed.
+								<div key={index} style={{ padding: 10 }}>
+									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+									viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
+									quam suscipit habitant sed.
 								</div>
 							))}
 						</AccordionContent>
@@ -509,29 +403,18 @@ export function Animated(): ReactElement {
 			</Accordion>
 
 			<h1>Open by default</h1>
-			<Accordion
-				className={rootClass}
-				defaultValue="One"
-				type="single"
-			>
+			<Accordion className={rootClass} defaultValue="One" type="single">
 				{values.map(value => (
-					<AccordionItem
-						className={itemClass}
-						key={value}
-						value={value}
-					>
+					<AccordionItem className={itemClass} key={value} value={value}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{value}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={animatedContentClass}>
 							{[...Array(count)].map((_, index) => (
-								<div
-									key={index}
-									style={{ padding: 10 }}
-								>
-									Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-									elit vulputate viverra integer ullamcorper congue curabitur
-									sociis, nisi malesuada scelerisque quam suscipit habitant sed.
+								<div key={index} style={{ padding: 10 }}>
+									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+									viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
+									quam suscipit habitant sed.
 								</div>
 							))}
 						</AccordionContent>
@@ -546,25 +429,18 @@ export function Animated2D(): ReactElement {
 	const values = ['One', 'Two', 'Three', 'Four']
 
 	return (
-		<Accordion
-			className={rootClass}
-			type="single"
-		>
+		<Accordion className={rootClass} type="single">
 			{values.map(value => (
-				<AccordionItem
-					className={itemClass}
-					key={value}
-					value={value}
-				>
+				<AccordionItem className={itemClass} key={value} value={value}>
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>{value}</AccordionTrigger>
 					</AccordionHeader>
-					<AccordionContent className={animated2DContentClass}>
+					<AccordionContent className={animated2dContentClass}>
 						<div style={{ padding: 10, background: 'whitesmoke', overflow: 'hidden' }}>
 							<div style={{ width: 'calc(20em - 20px)', height: 100 }}>
-								Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit
-								vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-								malesuada scelerisque quam suscipit habitant sed.
+								Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+								viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+								suscipit habitant sed.
 							</div>
 						</div>
 					</AccordionContent>
@@ -582,60 +458,42 @@ export function AnimatedControlled(): ReactElement {
 		'four',
 	])
 	return (
-		<Accordion
-			className={rootClass}
-			onValueChange={setValue}
-			type="multiple"
-			value={value}
-		>
-			<AccordionItem
-				className={itemClass}
-				value="one"
-			>
+		<Accordion className={rootClass} onValueChange={setValue} type="multiple" value={value}>
+			<AccordionItem className={itemClass} value="one">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={animatedContentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-					viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
-					quam suscipit habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
+					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
+					habitant sed.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="two"
-			>
+			<AccordionItem className={itemClass} value="two">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={animatedContentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget
-					bibendum porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
+					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="three"
-			>
+			<AccordionItem className={itemClass} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={animatedContentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat
-					himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
+					euismod magna, nec tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem
-				className={itemClass}
-				value="four"
-			>
+			<AccordionItem className={itemClass} value="four">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={animatedContentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula
-					penatibus dignissim vitae, enim vulputate nullam semper potenti etiam volutpat
-					libero.
+					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button>Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -649,65 +507,45 @@ export function OutsideViewport(): ReactElement {
 			<p>Scroll down to see tabs</p>
 			<div style={{ height: '150vh' }} />
 			<p>
-				When accordion buttons are focused and the user is navigating via keyboard, the page
-				should not scroll unless the next tab is entering the viewport.
+				When accordion buttons are focused and the user is navigating via keyboard, the page should
+				not scroll unless the next tab is entering the viewport.
 			</p>
-			<Accordion
-				className={rootClass}
-				type="single"
-			>
-				<AccordionItem
-					className={itemClass}
-					value="one"
-				>
+			<Accordion className={rootClass} type="single">
+				<AccordionItem className={itemClass} value="one">
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit
-						vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-						malesuada scelerisque quam suscipit habitant sed.
+						Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
+						integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
+						habitant sed.
 					</AccordionContent>
 				</AccordionItem>
-				<AccordionItem
-					className={itemClass}
-					value="two"
-				>
+				<AccordionItem className={itemClass} value="two">
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam
-						eget bibendum porta nascetur ac dictum, leo tellus dis integer platea
-						ultrices mi.
+						Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
+						porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 					</AccordionContent>
 				</AccordionItem>
-				<AccordionItem
-					className={itemClass}
-					disabled
-					value="three"
-				>
+				<AccordionItem className={itemClass} disabled={true} value="three">
 					<AccordionHeader className={headerClass}>
-						<AccordionTrigger className={triggerClass}>
-							Three (disabled)
-						</AccordionTrigger>
+						<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus
-						feugiat himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
+						Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat
+						himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
 					</AccordionContent>
 				</AccordionItem>
-				<AccordionItem
-					className={itemClass}
-					value="four"
-				>
+				<AccordionItem className={itemClass} value="four">
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula
-						penatibus dignissim vitae, enim vulputate nullam semper potenti etiam
-						volutpat libero.
+						Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+						dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 						<button>Cool</button>
 					</AccordionContent>
 				</AccordionItem>
@@ -721,63 +559,42 @@ export function Horizontal(): ReactElement {
 	return (
 		<>
 			<h1>Horizontal Orientation</h1>
-			<Accordion
-				className={rootClass}
-				orientation="horizontal"
-				type="single"
-			>
-				<AccordionItem
-					className={itemClass}
-					value="one"
-				>
+			<Accordion className={rootClass} orientation="horizontal" type="single">
+				<AccordionItem className={itemClass} value="one">
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit
-						vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-						malesuada scelerisque quam suscipit habitant sed.
+						Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
+						integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
+						habitant sed.
 					</AccordionContent>
 				</AccordionItem>
-				<AccordionItem
-					className={itemClass}
-					value="two"
-				>
+				<AccordionItem className={itemClass} value="two">
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam
-						eget bibendum porta nascetur ac dictum, leo tellus dis integer platea
-						ultrices mi.
+						Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
+						porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 					</AccordionContent>
 				</AccordionItem>
-				<AccordionItem
-					className={itemClass}
-					disabled
-					value="three"
-				>
+				<AccordionItem className={itemClass} disabled={true} value="three">
 					<AccordionHeader className={headerClass}>
-						<AccordionTrigger className={triggerClass}>
-							Three (disabled)
-						</AccordionTrigger>
+						<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus
-						feugiat himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
+						Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat
+						himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
 					</AccordionContent>
 				</AccordionItem>
-				<AccordionItem
-					className={itemClass}
-					value="four"
-				>
+				<AccordionItem className={itemClass} value="four">
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula
-						penatibus dignissim vitae, enim vulputate nullam semper potenti etiam
-						volutpat libero.
+						Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+						dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 						<button>Cool</button>
 					</AccordionContent>
 				</AccordionItem>
@@ -792,94 +609,64 @@ export function Chromatic() {
 		<>
 			<h1>Uncontrolled</h1>
 			<h2>Single closed</h2>
-			<Accordion
-				className={rootClass}
-				type="single"
-			>
+			<Accordion className={rootClass} type="single">
 				{items.map(item => (
-					<AccordionItem
-						className={itemClass}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemClass} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
 			</Accordion>
 
 			<h2>Single open</h2>
-			<Accordion
-				className={rootClass}
-				defaultValue="Two"
-				type="single"
-			>
+			<Accordion className={rootClass} defaultValue="Two" type="single">
 				{items.map(item => (
-					<AccordionItem
-						className={itemClass}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemClass} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
 			</Accordion>
 
 			<h2>Multiple closed</h2>
-			<Accordion
-				className={rootClass}
-				type="multiple"
-			>
+			<Accordion className={rootClass} type="multiple">
 				{items.map(item => (
-					<AccordionItem
-						className={itemClass}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemClass} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
 			</Accordion>
 
 			<h2>Multiple open</h2>
-			<Accordion
-				className={rootClass}
-				defaultValue={['One', 'Two']}
-				type="multiple"
-			>
+			<Accordion className={rootClass} defaultValue={['One', 'Two']} type="multiple">
 				{items.map(item => (
-					<AccordionItem
-						className={itemClass}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemClass} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -887,72 +674,48 @@ export function Chromatic() {
 
 			<h1>Controlled</h1>
 			<h2>Single open</h2>
-			<Accordion
-				className={rootClass}
-				type="single"
-				value="Three"
-			>
+			<Accordion className={rootClass} type="single" value="Three">
 				{items.map(item => (
-					<AccordionItem
-						className={itemClass}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemClass} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
 			</Accordion>
 
 			<h2>Multiple open</h2>
-			<Accordion
-				className={rootClass}
-				type="multiple"
-				value={['Two', 'Three']}
-			>
+			<Accordion className={rootClass} type="multiple" value={['Two', 'Three']}>
 				{items.map(item => (
-					<AccordionItem
-						className={itemClass}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemClass} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
 			</Accordion>
 
 			<h1>Disabled (whole)</h1>
-			<Accordion
-				className={rootClass}
-				disabled
-				type="single"
-			>
+			<Accordion className={rootClass} disabled={true} type="single">
 				{items.map(item => (
-					<AccordionItem
-						className={itemClass}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemClass} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -960,75 +723,48 @@ export function Chromatic() {
 
 			<h1>Disabled (item)</h1>
 			<h2>Just item</h2>
-			<Accordion
-				className={rootClass}
-				type="single"
-			>
+			<Accordion className={rootClass} type="single">
 				{items.map(item => (
-					<AccordionItem
-						className={itemClass}
-						disabled={item === 'Two'}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemClass} disabled={item === 'Two'} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
 			</Accordion>
 
 			<h2>with `disabled=false` on top-level</h2>
-			<Accordion
-				className={rootClass}
-				disabled={false}
-				type="single"
-			>
+			<Accordion className={rootClass} disabled={false} type="single">
 				{items.map(item => (
-					<AccordionItem
-						className={itemClass}
-						disabled={item === 'Two'}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemClass} disabled={item === 'Two'} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
 			</Accordion>
 
 			<h1>Force mounted contents</h1>
-			<Accordion
-				className={rootClass}
-				type="single"
-			>
+			<Accordion className={rootClass} type="single">
 				{items.map(item => (
-					<AccordionItem
-						className={itemClass}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemClass} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
-						<AccordionContent
-							className={contentClass}
-							forceMount
-						>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+						<AccordionContent className={contentClass} forceMount={true}>
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -1036,37 +772,23 @@ export function Chromatic() {
 
 			<h1>State attributes</h1>
 			<h2>Accordion disabled</h2>
-			<Accordion
-				className={rootAttrClass}
-				defaultValue="Two"
-				disabled
-				type="single"
-			>
+			<Accordion className={rootAttrClass} defaultValue="Two" disabled={true} type="single">
 				{items.map(item => (
-					<AccordionItem
-						className={itemAttrClass}
-						key={item}
-						value={item}
-					>
+					<AccordionItem className={itemAttrClass} key={item} value={item}>
 						<AccordionHeader className={headerAttrClass}>
 							<AccordionTrigger className={triggerAttrClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentAttrClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
 			</Accordion>
 
 			<h2>Accordion enabled with item override</h2>
-			<Accordion
-				className={rootAttrClass}
-				defaultValue="Two"
-				disabled={false}
-				type="single"
-			>
+			<Accordion className={rootAttrClass} defaultValue="Two" disabled={false} type="single">
 				{items.map(item => (
 					<AccordionItem
 						className={itemAttrClass}
@@ -1078,21 +800,16 @@ export function Chromatic() {
 							<AccordionTrigger className={triggerAttrClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentAttrClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
 			</Accordion>
 
 			<h2>Accordion disabled with item override</h2>
-			<Accordion
-				className={rootAttrClass}
-				defaultValue="Two"
-				disabled
-				type="single"
-			>
+			<Accordion className={rootAttrClass} defaultValue="Two" disabled={true} type="single">
 				{items.map(item => (
 					<AccordionItem
 						className={itemAttrClass}
@@ -1104,9 +821,9 @@ export function Chromatic() {
 							<AccordionTrigger className={triggerAttrClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentAttrClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis
-							elit vulputate viverra integer ullamcorper congue curabitur sociis, nisi
-							malesuada scelerisque quam suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
+							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
+							suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}

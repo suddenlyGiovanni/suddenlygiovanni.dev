@@ -9,4 +9,5 @@ const config = {
 		autoprefixer: {},
 	},
 };
+// biome-ignore lint/style/noDefaultExport: This is a configuration file
 export default config;

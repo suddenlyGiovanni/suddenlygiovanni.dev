@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentPropsWithoutRef } from 'react'
+import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 import { Icons } from '../icons/icons.tsx'
 
 export const IconMap = new Map([

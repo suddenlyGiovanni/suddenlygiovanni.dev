@@ -197,9 +197,7 @@
 			"startDate": "2011-09-01",
 			"endDate": "2014-09-01",
 			"gpa": "",
-			"courses": [
-				"Completed 90% of required credits toward Bachelor of Arts in Modern History"
-			],
+			"courses": ["Completed 90% of required credits toward Bachelor of Arts in Modern History"],
 			"location": "Trieste, Italy"
 		}
 	],
@@ -265,14 +263,7 @@
 		{
 			"name": "Back-end",
 			"level": "",
-			"keywords": [
-				"Node",
-				"Deno",
-				"Next.js",
-				"Remix",
-				"Express",
-				"Handlebars"
-			]
+			"keywords": ["Node", "Deno", "Next.js", "Remix", "Express", "Handlebars"]
 		},
 		{
 			"name": "Libraries",
@@ -294,31 +285,17 @@
 		{
 			"name": "Databases",
 			"level": "",
-			"keywords": [
-				"PostgreSQL",
-				"MySQL",
-				"MongoDB",
-				"Redis",
-				"Firebase Realtime Database"
-			]
+			"keywords": ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Firebase Realtime Database"]
 		},
 		{
 			"name": "APIs",
 			"level": "",
-			"keywords": [
-				"GraphQL",
-				"RESTful"
-			]
+			"keywords": ["GraphQL", "RESTful"]
 		},
 		{
 			"name": "Tools",
 			"level": "",
-			"keywords": [
-				"Git",
-				"Docker",
-				"CircleCI",
-				"GitHub Actions"
-			]
+			"keywords": ["Git", "Docker", "CircleCI", "GitHub Actions"]
 		}
 	],
 	"languages": [
@@ -334,18 +311,11 @@
 	"interests": [
 		{
 			"name": "Functional Programming",
-			"keywords": [
-				"Scala",
-				"Rust",
-				"Haskell"
-			]
+			"keywords": ["Scala", "Rust", "Haskell"]
 		},
 		{
 			"name": "Object Oriented Programming",
-			"keywords": [
-				"Kotlin",
-				"Java"
-			]
+			"keywords": ["Kotlin", "Java"]
 		}
 	],
 	"references": [],
