@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition -- Reason: sotrybook story */
 import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu'
 import type { Meta, StoryFn } from '@storybook/react'
 import { useState } from 'react'
@@ -35,7 +36,7 @@ export const Checkboxes: StoryFn = () => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild={true}>
+			<DropdownMenuTrigger asChild>
 				<Button variant="outline">Open</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56">
@@ -46,7 +47,7 @@ export const Checkboxes: StoryFn = () => {
 				</DropdownMenuCheckboxItem>
 				<DropdownMenuCheckboxItem
 					checked={showActivityBar}
-					disabled={true}
+					disabled
 					onCheckedChange={setShowActivityBar}
 				>
 					Activity Bar
@@ -70,7 +71,7 @@ export const RadioGroup: StoryFn = () => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild={true}>
+			<DropdownMenuTrigger asChild>
 				<Button variant="outline">Open</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56">
@@ -88,7 +89,7 @@ export const RadioGroup: StoryFn = () => {
 
 export const KitchenSink: StoryFn = () => (
 	<DropdownMenu>
-		<DropdownMenuTrigger asChild={true}>
+		<DropdownMenuTrigger asChild>
 			<Button variant="outline">Open</Button>
 		</DropdownMenuTrigger>
 		<DropdownMenuContent className="w-56">
@@ -134,7 +135,7 @@ export const KitchenSink: StoryFn = () => (
 			<DropdownMenuSeparator />
 			<DropdownMenuItem>GitHub</DropdownMenuItem>
 			<DropdownMenuItem>Support</DropdownMenuItem>
-			<DropdownMenuItem disabled={true}>API</DropdownMenuItem>
+			<DropdownMenuItem disabled>API</DropdownMenuItem>
 			<DropdownMenuSeparator />
 			<DropdownMenuItem>
 				Log out
