@@ -104,4 +104,5 @@ const config = {
 } satisfies Pick<Config, 'prefix' | 'theme' | 'plugins' | 'darkMode'>
 
 export type { Config } from 'tailwindcss'
+// biome-ignore lint/style/noDefaultExport: This is a configuration file
 export default config
