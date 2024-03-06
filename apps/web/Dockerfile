@@ -1,4 +1,4 @@
-FROM node:21-alpine3.19 AS base
+FROM node:21-alpine3.19@sha256:d3271e4bd89eec4d97087060fd4db0c238d9d22fcfad090a73fa9b5128699888 AS base
 
 LABEL authors="suddenlyGiovanni"
 
