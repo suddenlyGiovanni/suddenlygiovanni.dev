@@ -11,7 +11,7 @@ const Body = forwardRef(
 		{ className, children, as, ...rest }: PolymorphicComponentPropWithRef<C>,
 		ref: PolymorphicRef<C>,
 	) => {
-		const Component = as || 'body'
+		const Component = as ?? 'body'
 		return (
 			<Component
 				className={cn('w-full', 'grid', 'grid-cols-1', 'auto-rows-auto', className)}
