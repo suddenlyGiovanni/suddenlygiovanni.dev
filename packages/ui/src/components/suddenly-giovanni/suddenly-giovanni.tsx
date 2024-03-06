@@ -1,9 +1,9 @@
 import type { LinkProps } from '@remix-run/react'
 import { Link } from '@remix-run/react'
 import type { JSX } from 'react'
-import { cn } from '../../lib/utils'
 import { Avatar, AvatarFallback, AvatarImage } from '../../ui/avatar'
 import { Skeleton } from '../../ui/skeleton'
+import { cn } from '~/lib'
 
 export function SuddenlyGiovanni({
 	className,
