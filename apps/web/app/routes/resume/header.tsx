@@ -26,12 +26,7 @@ export function Header({
 				<em>
 					If you consider me for a role, read through{' '}
 					<Link
-						className={cn(
-							'font-medium',
-							'text-primary',
-							'underline',
-							'underline-offset-4',
-						)}
+						className={cn('font-medium', 'text-primary', 'underline', 'underline-offset-4')}
 						to={routesRecord.motivations.url}
 					>
 						my motivations
@@ -42,18 +37,10 @@ export function Header({
 			{children}
 			<T.muted>
 				click on this link to download the pdf version of my resume{' '}
-				<span
-					aria-label="pdf"
-					role="img"
-				>
+				<span aria-label="pdf" role="img">
 					📜
 				</span>{' '}
-				<T.a
-					download
-					href={resumePdfAssetUrl}
-					rel="noopener"
-					target="_blank"
-				>
+				<T.a download href={resumePdfAssetUrl} rel="noopener" target="_blank">
 					giovanni-ravalico-resume.pdf
 				</T.a>
 			</T.muted>

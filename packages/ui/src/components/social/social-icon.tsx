@@ -19,13 +19,7 @@ export const SocialIcon = forwardRef<SVGSVGElement, SocialIconProps>(
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- we are already checking if the key exists
 			const Icon = IconMap.get(network)!
 			const dataTestId = `${NAME}-${network}`
-			return (
-				<Icon
-					data-testid={dataTestId}
-					ref={ref}
-					{...props}
-				/>
-			)
+			return <Icon data-testid={dataTestId} ref={ref} {...props} />
 		}
 		throw new Error("couldn't find the social icon associated to the required network key")
 	},
