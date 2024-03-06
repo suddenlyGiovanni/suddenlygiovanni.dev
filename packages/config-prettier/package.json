@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-	"main": "index.js",
+  "main": "index.js",
   "scripts": {
-		"clean": "scripty"
+    "clean": "scripty"
   },
   "peerDependenciesMeta": {
     "prettier": {
@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@suddenly-giovanni/config-typescript": "workspace:*",
-    "prettier-plugin-tailwindcss": "0.5.11"
+    "prettier-plugin-tailwindcss": "0.5.12"
   },
   "config": {
     "scripty": {
