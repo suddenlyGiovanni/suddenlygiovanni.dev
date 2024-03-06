@@ -2,7 +2,11 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"extends": "@suddenly-giovanni/config-typescript/react-library.json",
 	"compilerOptions": {
-		"useDefineForClassFields": true
+		"useDefineForClassFields": true,
+		 "paths": {
+			"~/*": ["src/*"]
+		 }
+
 	},
 	"include": [
 		"env.d.ts",
