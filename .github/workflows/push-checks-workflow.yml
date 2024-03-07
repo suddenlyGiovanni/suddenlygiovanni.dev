@@ -42,14 +42,25 @@ jobs:
       - name: 🧩 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: 📝 Format code
-        run: pnpm format
+      - name: 🚨 Lint code (with ESLint)
+        run: pnpm lint -- --fix
 
-      - name: 🚨 Lint code
-        run: pnpm lint
+      - name: Git Auto Commit Lint fixes
+        uses: stefanzweifel/git-auto-commit-action@v5.0.0
+        with:
+          commit_message: 'chore: lint code with ESLint [skip ci]'
+
+      - name: 📝 Format code (with Prettier)
+        run: pnpm format -- --write
+
+      - name: Git Auto Commit Format fixes
+        uses: stefanzweifel/git-auto-commit-action@v5.0.0
+        with:
+          commit_message: 'chore: format code with Prettier [skip ci]'
 
       - name: 🔍 Typecheck code
         run: pnpm typecheck
 
       - name: 🧪 Run tests
         run: pnpm test
+
