@@ -42,13 +42,8 @@ jobs:
       - name: 🧩 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Setup Biome
-        uses: biomejs/setup-biome@v2
-        with:
-          version: latest
-
       - name: 🚨 Lint code (with Biome)
-        run: biome lint . --apply
+        run: pnpm exec biome lint . --apply
 
       - name: Git Auto Commit Lint fixes (with Biome)
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
@@ -65,7 +60,7 @@ jobs:
           commit_message: 'chore: lint code with ESLint [skip ci]'
 
       - name: 📝 Format code (with Biome)
-        run: biome format . --write
+        run: pnpm exec biome format . --write
 
       - name: Git Auto Commit Format fixes (with Biome)
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
