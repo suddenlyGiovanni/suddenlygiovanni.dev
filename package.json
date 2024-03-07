@@ -11,15 +11,16 @@
     "url": "suddenlyGiovanni.dev"
   },
   "scripts": {
-    "build": "turbo build --log-order=grouped",
-    "clean": "turbo run clean && scripty clean",
-    "dev": "turbo dev",
-    "check": "biome check --apply .",
-    "format": "turbo format --log-order=grouped",
-    "lint": "turbo lint --log-order=grouped",
-    "typecheck": "turbo typecheck --log-order=grouped",
-    "typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"
-  },
+		"build": "turbo build --log-order=grouped",
+		"check": "biome check --apply .",
+		"clean": "turbo run clean && scripty clean",
+		"dev": "turbo dev",
+		"format": "turbo format --log-order=grouped",
+		"lint": "turbo lint --log-order=grouped",
+		"test": "turbo test --log-order=grouped",
+		"typecheck": "turbo typecheck --log-order=grouped",
+		"typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"
+	},
   "devDependencies": {
     "@biomejs/biome": "1.5.3",
     "eslint": "8.57.0",
