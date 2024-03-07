@@ -2,7 +2,7 @@ import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run
 import { Links, Meta, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
 import { Layout, cn } from '@suddenly-giovanni/ui'
 import type { ReactElement, ReactNode } from 'react'
-import { PreventFlashOnWrongTheme, ThemeProvider, useTheme } from 'remix-themes'
+import { PreventFlashOnWrongTheme, ThemeProvider, useTheme, type Theme } from 'remix-themes'
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
 import { Footer } from './footer.tsx'
 import { Header } from './header.tsx'
@@ -11,7 +11,9 @@ import { themeSessionResolver } from './sessions.server'
 
 import './styles/tailwind.css'
 
-export async function loader({ request }: LoaderFunctionArgs) {
+export async function loader({ request }: LoaderFunctionArgs): Promise<{
+	theme: null | Theme
+}> {
 	const { getTheme } = await themeSessionResolver(request)
 	return { theme: getTheme() }
 }
