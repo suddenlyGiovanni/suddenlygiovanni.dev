@@ -10,7 +10,7 @@
     "clean": "scripty"
   },
   "peerDependencies": {
-    "typescript": "5.4.1-rc"
+    "typescript": "5.4.2"
   },
   "peerDependenciesMeta": {
     "typescript": {
