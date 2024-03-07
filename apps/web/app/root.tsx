@@ -70,7 +70,7 @@ function Document({ children }: { children: ReactNode }): ReactElement {
 	)
 }
 
-function App(): JSX.Element {
+function App(): ReactElement {
 	return (
 		<Document>
 			<Header />
