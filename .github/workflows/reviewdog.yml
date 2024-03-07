@@ -33,6 +33,25 @@ jobs:
           reporter: github-pr-review
           github_token: ${{ secrets.github_token }}
 
+  shellcheck:
+    name: runner / shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with shellcheck (shell)
+        uses: reviewdog/action-shellcheck@v1
+        with:
+          check_all_files_with_shebangs: "true" # Optional.
+          exclude: "./.git/*" # Optional.
+          fail_on_error: false
+          filter_mode: nofilter
+          github_token: ${{ secrets.github_token }}
+          path: "." # Optional.
+          pattern: "*.sh" # Optional.
+          reporter: github-pr-review
+
 #  prettier:
 #    name: runner / prettier
 #    runs-on: ubuntu-latest
