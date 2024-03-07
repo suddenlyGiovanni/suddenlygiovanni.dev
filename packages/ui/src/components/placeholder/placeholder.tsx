@@ -1,5 +1,5 @@
 import { type JSX, forwardRef } from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '~/lib'
 
 const name = 'Placeholder'
 export const Placeholder = forwardRef<HTMLDivElement, JSX.IntrinsicElements['div']>(

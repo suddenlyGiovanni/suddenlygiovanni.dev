@@ -18,7 +18,7 @@ interface ModeToggleProps {
 export function ModeToggle({ setTheme, theme, className }: ModeToggleProps): ReactNode {
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild={true}>
+			<DropdownMenuTrigger asChild>
 				<Button className={cn(className)} size="icon" variant="ghost">
 					{theme === `light` || theme === null ? (
 						<Icons.moon className={cn('h-[1.2rem]', 'w-[1.2rem]')} />

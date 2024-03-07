@@ -1,3 +1,9 @@
+/*
+	eslint-disable jsx-a11y/anchor-is-valid,
+		react/no-array-index-key,
+		react/no-unescaped-entities -- Reason: This rule is disabled because...
+*/
+
 import type { Meta } from '@storybook/react'
 import { type ReactElement, useEffect, useRef, useState } from 'react'
 import { cn } from '../../lib/utils'
@@ -89,7 +95,7 @@ const contentAttrClass = cn('block', styles)
 
 export function _Accordion(): ReactElement {
 	return (
-		<Accordion className="w-full" collapsible={true} type="single">
+		<Accordion className="w-full" collapsible type="single">
 			<AccordionItem value="item-1">
 				<AccordionTrigger>Is it accessible?</AccordionTrigger>
 				<AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
@@ -134,7 +140,7 @@ export function SingleUncontrolled(): ReactElement {
 					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem className={itemClass} disabled={true} value="three">
+			<AccordionItem className={itemClass} disabled value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
@@ -150,7 +156,7 @@ export function SingleUncontrolled(): ReactElement {
 				<AccordionContent className={contentClass}>
 					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
-					<button>Cool</button>
+					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
 		</Accordion>
@@ -158,6 +164,7 @@ export function SingleUncontrolled(): ReactElement {
 }
 
 export function SingleControlled(): ReactElement {
+	// eslint-disable-next-line @typescript-eslint/ban-types -- Reason: I need a sum type and the ability to use a string as a value.
 	const [valueOne, setValueOne] = useState<('one' | 'two' | 'three' | 'four') | (string & {})>(
 		'one',
 	)
@@ -183,7 +190,7 @@ export function SingleControlled(): ReactElement {
 					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem className={itemClass} disabled={true} value="three">
+			<AccordionItem className={itemClass} disabled value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
@@ -199,7 +206,7 @@ export function SingleControlled(): ReactElement {
 				<AccordionContent className={contentClass}>
 					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
-					<button>Cool</button>
+					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
 		</Accordion>
@@ -208,7 +215,7 @@ export function SingleControlled(): ReactElement {
 
 export function SingleCollapsible(): ReactElement {
 	return (
-		<Accordion className={rootClass} collapsible={true} defaultValue="one" type="single">
+		<Accordion className={rootClass} collapsible defaultValue="one" type="single">
 			<AccordionItem className={itemClass} value="one">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
@@ -228,7 +235,7 @@ export function SingleCollapsible(): ReactElement {
 					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem className={itemClass} disabled={true} value="three">
+			<AccordionItem className={itemClass} disabled value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
@@ -244,7 +251,7 @@ export function SingleCollapsible(): ReactElement {
 				<AccordionContent className={contentClass}>
 					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
-					<button>Cool</button>
+					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
 		</Accordion>
@@ -273,7 +280,7 @@ export function MultipleUncontrolled(): ReactElement {
 					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem className={itemClass} disabled={true} value="three">
+			<AccordionItem className={itemClass} disabled value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
@@ -289,13 +296,16 @@ export function MultipleUncontrolled(): ReactElement {
 				<AccordionContent className={contentClass}>
 					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
-					<button>Cool</button>
+					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
 		</Accordion>
 	)
 }
 export function MultipleControlled(): ReactElement {
+	/*
+	 eslint-disable-next-line @typescript-eslint/ban-types -- Reason: I need a sum type and the ability to use a string as a value.
+	*/
 	const [value, setValue] = useState<(('one' | 'two' | 'three' | 'four') | (string & {}))[]>([
 		'one',
 		'two',
@@ -322,7 +332,7 @@ export function MultipleControlled(): ReactElement {
 					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem className={itemClass} disabled={true} value="three">
+			<AccordionItem className={itemClass} disabled value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
@@ -338,7 +348,7 @@ export function MultipleControlled(): ReactElement {
 				<AccordionContent className={contentClass}>
 					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
-					<button>Cool</button>
+					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
 		</Accordion>
@@ -390,7 +400,7 @@ export function Animated(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{value}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={animatedContentClass}>
-							{[...Array(count)].map((_, index) => (
+							{[...new Array<unknown>(count)].map((_, index) => (
 								<div key={index} style={{ padding: 10 }}>
 									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
 									viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
@@ -410,7 +420,7 @@ export function Animated(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{value}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={animatedContentClass}>
-							{[...Array(count)].map((_, index) => (
+							{[...new Array<unknown>(count)].map((_, index) => (
 								<div key={index} style={{ padding: 10 }}>
 									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
 									viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
@@ -451,6 +461,7 @@ export function Animated2D(): ReactElement {
 }
 
 export function AnimatedControlled(): ReactElement {
+	// eslint-disable-next-line @typescript-eslint/ban-types -- Reason: I need a sum type and the ability to use a string as a value.
 	const [value, setValue] = useState<(('one' | 'two' | 'three' | 'four') | (string & {}))[]>([
 		'one',
 		'two',
@@ -494,7 +505,7 @@ export function AnimatedControlled(): ReactElement {
 				<AccordionContent className={animatedContentClass}>
 					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
-					<button>Cool</button>
+					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
 		</Accordion>
@@ -530,7 +541,7 @@ export function OutsideViewport(): ReactElement {
 						porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 					</AccordionContent>
 				</AccordionItem>
-				<AccordionItem className={itemClass} disabled={true} value="three">
+				<AccordionItem className={itemClass} disabled value="three">
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 					</AccordionHeader>
@@ -546,7 +557,8 @@ export function OutsideViewport(): ReactElement {
 					<AccordionContent className={contentClass}>
 						Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
 						dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
-						<button>Cool</button>
+						{}
+						<button type="button">Cool</button>
 					</AccordionContent>
 				</AccordionItem>
 			</Accordion>
@@ -579,7 +591,7 @@ export function Horizontal(): ReactElement {
 						porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 					</AccordionContent>
 				</AccordionItem>
-				<AccordionItem className={itemClass} disabled={true} value="three">
+				<AccordionItem className={itemClass} disabled value="three">
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 					</AccordionHeader>
@@ -595,7 +607,7 @@ export function Horizontal(): ReactElement {
 					<AccordionContent className={contentClass}>
 						Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
 						dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
-						<button>Cool</button>
+						<button type="button">Cool</button>
 					</AccordionContent>
 				</AccordionItem>
 			</Accordion>
@@ -603,7 +615,7 @@ export function Horizontal(): ReactElement {
 	)
 }
 
-export function Chromatic() {
+export function Chromatic(): ReactElement {
 	const items = ['One', 'Two', 'Three', 'Four']
 	return (
 		<>
@@ -706,7 +718,7 @@ export function Chromatic() {
 			</Accordion>
 
 			<h1>Disabled (whole)</h1>
-			<Accordion className={rootClass} disabled={true} type="single">
+			<Accordion className={rootClass} disabled type="single">
 				{items.map(item => (
 					<AccordionItem className={itemClass} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
@@ -761,7 +773,7 @@ export function Chromatic() {
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
-						<AccordionContent className={contentClass} forceMount={true}>
+						<AccordionContent className={contentClass} forceMount>
 							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
 							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
 							suscipit habitant sed.
@@ -772,7 +784,7 @@ export function Chromatic() {
 
 			<h1>State attributes</h1>
 			<h2>Accordion disabled</h2>
-			<Accordion className={rootAttrClass} defaultValue="Two" disabled={true} type="single">
+			<Accordion className={rootAttrClass} defaultValue="Two" disabled type="single">
 				{items.map(item => (
 					<AccordionItem className={itemAttrClass} key={item} value={item}>
 						<AccordionHeader className={headerAttrClass}>
@@ -809,7 +821,7 @@ export function Chromatic() {
 			</Accordion>
 
 			<h2>Accordion disabled with item override</h2>
-			<Accordion className={rootAttrClass} defaultValue="Two" disabled={true} type="single">
+			<Accordion className={rootAttrClass} defaultValue="Two" disabled type="single">
 				{items.map(item => (
 					<AccordionItem
 						className={itemAttrClass}

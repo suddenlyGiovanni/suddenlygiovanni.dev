@@ -1,4 +1,6 @@
+/* eslint-disable react/no-unescaped-entities -- Reason: storybook story */
 import type { Meta } from '@storybook/react'
+import { type ReactElement } from 'react'
 import { T } from './typography.tsx'
 
 const meta = {
@@ -12,7 +14,7 @@ const meta = {
 
 export default meta
 
-export function Table() {
+export function Table(): ReactElement {
 	return (
 		<div className="my-6 w-full overflow-y-auto">
 			<table className="w-full">

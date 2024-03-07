@@ -1,8 +1,9 @@
 import { Link } from '@remix-run/react'
 import type { Meta } from '@storybook/react'
-import type { ComponentPropsWithoutRef, ElementRef } from 'react'
+import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react'
 import { forwardRef } from 'react'
-import { cn } from '../../lib/utils'
+import { Icons } from '../icons/icons'
+import { cn } from '~/lib'
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -11,8 +12,7 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
-} from '../../ui/navigation-menu'
-import { Icons } from '../icons/icons'
+} from '~/ui/navigation-menu.tsx'
 
 const meta: Meta = { title: 'NavigationMenu' }
 
@@ -55,7 +55,7 @@ const components: { title: string; href: string; description: string }[] = [
 	},
 ]
 
-export function Default() {
+export function Default(): ReactElement {
 	return (
 		<NavigationMenu>
 			<NavigationMenuList>
@@ -73,7 +73,7 @@ export function Default() {
 							)}
 						>
 							<li className="row-span-3">
-								<NavigationMenuLink asChild={true}>
+								<NavigationMenuLink asChild>
 									<a
 										className={cn(
 											'flex',
@@ -93,7 +93,7 @@ export function Default() {
 										)}
 										href="/"
 									>
-										<Icons.logo className="h-6 w-6" />
+										<Icons.globe className="h-6 w-6" />
 										<div className="mb-2 mt-4 text-lg font-medium">shadcn/ui</div>
 										<p className="text-sm leading-tight text-muted-foreground">
 											Beautifully designed components built with Radix UI and Tailwind CSS.
@@ -151,7 +151,7 @@ const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(
 	({ className, title, children, ...props }, ref) => {
 		return (
 			<li>
-				<NavigationMenuLink asChild={true}>
+				<NavigationMenuLink asChild>
 					<a
 						className={cn(
 							'block',

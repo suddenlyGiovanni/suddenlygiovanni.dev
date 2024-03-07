@@ -1,10 +1,11 @@
+/* eslint-disable react/no-unescaped-entities -- Reason: storybook story */
 import type { Meta, StoryObj } from '@storybook/react'
 import { T } from './typography.tsx'
 
 const meta = {
 	component: T.blockquote,
 	title: 'typography',
-	decorators: story => (
+	decorators: Story => (
 		<div className="flex min-h-96 w-full items-center justify-center p-10">
 			<Story />
 		</div>

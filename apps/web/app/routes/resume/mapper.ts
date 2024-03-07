@@ -1,3 +1,7 @@
+/*
+	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
+		need to fix it
+	*/
 import type * as R from './interface.ts'
 
 type GatsbyTypes = any

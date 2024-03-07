@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
+import { type ReactElement, useState } from 'react'
 import { ModeToggle } from './mode-toggle.tsx'
 
 const meta = {
@@ -8,7 +8,7 @@ const meta = {
 
 export default meta
 
-export function Default(args: StoryObj<typeof ModeToggle>['args']) {
+export function Default(args: StoryObj<typeof ModeToggle>['args']): ReactElement {
 	const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
 	return <ModeToggle {...args} setTheme={setTheme} theme={theme} />

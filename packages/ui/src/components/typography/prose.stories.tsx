@@ -1,12 +1,14 @@
+/* eslint-disable react/no-unescaped-entities -- Reason: storybook story */
 import type { Meta } from '@storybook/react'
-import { cn } from '../../lib/utils.ts'
+import { type ReactElement } from 'react'
+import { cn } from '~/lib'
 
 const meta = {
 	title: 'typography/Prose',
 } satisfies Meta
 export default meta
 
-export function Prose() {
+export function Prose(): ReactElement {
 	return (
 		<div
 			className={cn(

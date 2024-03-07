@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities -- TODO: need to validate the rule  */
 import type { MetaFunction } from '@remix-run/node'
 import { Link as RLink } from '@remix-run/react'
 import { T, cn } from '@suddenly-giovanni/ui'

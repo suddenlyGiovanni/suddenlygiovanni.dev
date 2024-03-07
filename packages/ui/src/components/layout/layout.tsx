@@ -1,9 +1,5 @@
 import { type ElementType, type JSX, forwardRef } from 'react'
-import type {
-	PolymorphicComponentPropWithRef,
-	PolymorphicRef,
-} from '../../lib/polymorphic-component-prop'
-import { cn } from '../../lib/utils'
+import { type PolymorphicComponentPropWithRef, type PolymorphicRef, cn } from '~/lib'
 
 const bodyName = 'Body'
 const Body = forwardRef(
@@ -11,7 +7,7 @@ const Body = forwardRef(
 		{ className, children, as, ...rest }: PolymorphicComponentPropWithRef<C>,
 		ref: PolymorphicRef<C>,
 	) => {
-		const Component = as || 'body'
+		const Component = as ?? 'body'
 		return (
 			<Component
 				className={cn('w-full', 'grid', 'grid-cols-1', 'auto-rows-auto', className)}

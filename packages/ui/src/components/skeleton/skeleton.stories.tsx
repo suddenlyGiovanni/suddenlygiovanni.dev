@@ -1,3 +1,4 @@
+/* eslint-disable react/function-component-definition -- Reason: storybook story */
 import type { Meta, StoryFn } from '@storybook/react'
 import { Skeleton } from '../../ui/skeleton'
 
