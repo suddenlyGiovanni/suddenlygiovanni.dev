@@ -134,6 +134,29 @@ jobs:
           fail_on_error: false
           tsc_flags: "--noEmit --pretty --project apps/web"
 
+  biome:
+    name: runner / Biome
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with Biome
+        uses: mongolyy/reviewdog-action-biome@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          workdir: "."
+          level: error
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: false
+          biome_flags: "ci ."
+
+
 #  prettier:
 #    name: runner / prettier
 #    runs-on: ubuntu-latest
@@ -205,20 +228,6 @@ jobs:
 #          reporter: github-pr-review # Change reporter.
 #          workdir: packages/ui
 #          eslint_flags: --ext ts,tsx,js,cjs,mjs,jsx  ./src
-
-#  biome:
-#    name: runner / Biome
-#    runs-on: ubuntu-latest
-#    permissions:
-#      contents: read
-#      pull-requests: write
-#    steps:
-#      - name: 📥 Checkout code
-#        uses: actions/checkout@v4
-#      - uses: mongolyy/reviewdog-action-biome@v1
-#        with:
-#          github_token: ${{ secrets.github_token }}
-#          reporter: github-pr-review
 
 #  misspell:
 #    name: runner / misspell
