@@ -4,9 +4,10 @@
 	"compilerOptions": {
 		"useDefineForClassFields": true,
 		"paths": {
-			"~/*": ["src/*"]
-		}
+			"~/*": ["./src/*"],
+		},
+		"types": ["@total-typescript/ts-reset", "vite/client", "react", "react-dom"],
 	},
-	"include": ["env.d.ts", "."],
+	"include": ["./src/**/*"],
 	"exclude": ["dist", "build", "node_modules"]
 }

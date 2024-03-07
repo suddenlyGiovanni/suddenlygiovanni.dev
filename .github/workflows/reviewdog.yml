@@ -90,6 +90,50 @@ jobs:
           filter_mode: nofilter
           fail_on_error: false
 
+  tsc:
+    name: runner / tsc
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: current
+          cache: "pnpm"
+
+      - name: 🧩 Install dependencies
+        run: pnpm install --frozen-lockfile --prod=false
+
+      - name: 🐶 reviewdog with tsc (TypeScript) - packages/ui
+        uses: EPMatt/reviewdog-action-tsc@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          workdir: "."
+          level: error
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: false
+          tsc_flags: "--noEmit --pretty --project packages/ui"
+
+      - name: 🐶 reviewdog with tsc (TypeScript) - apps/web
+        uses: EPMatt/reviewdog-action-tsc@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          workdir: "."
+          level: error
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: false
+          tsc_flags: "--noEmit --pretty --project apps/web"
+
 #  prettier:
 #    name: runner / prettier
 #    runs-on: ubuntu-latest
@@ -175,41 +219,6 @@ jobs:
 #        with:
 #          github_token: ${{ secrets.github_token }}
 #          reporter: github-pr-review
-
-#  tsc:
-#    name: runner / tsc
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: 📥 Checkout code
-#        uses: actions/checkout@v4
-#
-#      - name: 📦 Install pnpm
-#        uses: pnpm/action-setup@v3
-#        with:
-#          version: 8
-#
-#      - name: 🛠️ Set up Node.js
-#        uses: actions/setup-node@v4
-#        with:
-#          node-version: current
-#          cache: "pnpm"
-#
-#      - name: 🧩 Install dependencies
-#        run: pnpm install --frozen-lockfile
-#
-#      - uses: EPMatt/reviewdog-action-tsc@v1
-#        with:
-#          github_token: ${{ secrets.github_token }}
-#          # Change reviewdog reporter if you need
-#          # [github-pr-check,github-check,github-pr-review].
-#          # More about reviewdog reporters at
-#          # https://github.com/reviewdog/reviewdog#reporters
-#          reporter: github-pr-review
-#          # Change reporter level if you need
-#          # [info,warning,error].
-#          # More about reviewdog reporter level at
-#          # https://github.com/reviewdog/reviewdog#reporters
-#          level: warning
 
 #  misspell:
 #    name: runner / misspell
