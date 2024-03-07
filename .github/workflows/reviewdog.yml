@@ -161,7 +161,7 @@ jobs:
       - name: 🐶 reviewdog with Biome
         shell: bash
         run: |
-          "$(pnpm root)"/.bin/biome ci --formatter-enabled=false --linter-enabled=true . 2>&1 1>/dev/null |
+          biome ci --formatter-enabled=false --linter-enabled=true . 2>&1 1>/dev/null |
           sed 's/ *$//' |
           awk 'BEGIN { RS=""; ORS="\n\n" } { if (index($0, "│") > 0) { print "  ```\n" $0 "\n  ```" } else { print $0 } }' |
           reviewdog \
