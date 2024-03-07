@@ -145,18 +145,40 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
+      - name: 🐶 Setup reviewdog
+        uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
         with:
           biome-version: latest
           token: ${{ secrets.github_token }}
           working-dir: "."
+          version: "latest"
 
-      - name: Run Biome
-        run: biome ci --formatter-enabled=false --linter-enabled=true apps/web
-
-
-
+      - name: 🐶 reviewdog with Biome
+        shell: bash
+        run: |
+          "$(pnpm root)"/.bin/biome ci --formatter-enabled=false --linter-enabled=true . 2>&1 1>/dev/null |
+          sed 's/ *$//' |
+          awk 'BEGIN { RS=""; ORS="\n\n" } { if (index($0, "│") > 0) { print "  ```\n" $0 "\n  ```" } else { print $0 } }' |
+          reviewdog \
+            -efm="%-G%f ci ━%#" \
+            -efm="%-G%f lint ━%#" \
+            -efm="%-Gci ━%#" \
+            -efm="%E%f:%l:%c %.%#" \
+            -efm="%E%f %.%#" \
+            -efm="%C" \
+            -efm="%C  × %m" \
+            -efm="%C  %m" \
+            -efm="%-G%.%#" \
+            -name="Biome" \
+            -reporter="github-pr-review" \
+            -filter-mode="nofilter" \
+            -fail-on-error="false" \
+            -level="error"
 
 #  prettier:
 #    name: runner / prettier
