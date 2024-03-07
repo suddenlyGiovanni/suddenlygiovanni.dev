@@ -56,7 +56,7 @@ export interface Award {
 
 export interface Basics {
 	/**
-	 * e.g. thomas@gmail.com
+	 * e.g. `thomas@gmail.com`
 	 */
 	email?: string
 	/**
