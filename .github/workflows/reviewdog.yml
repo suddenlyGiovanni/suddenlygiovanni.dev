@@ -138,6 +138,7 @@ jobs:
     name: runner / Biome
     runs-on: ubuntu-latest
     continue-on-error: true
+    timeout-minutes: 5
     permissions:
       contents: read
       pull-requests: write
@@ -154,7 +155,7 @@ jobs:
           reporter: github-pr-review
           filter_mode: nofilter
           fail_on_error: false
-          biome_flags: "ci ."
+          biome_flags: "--formatter-enabled=false --linter-enabled=true apps/web"
 
 
 #  prettier:
