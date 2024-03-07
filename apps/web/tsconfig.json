@@ -1,22 +1,12 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"include": [
-		"env.d.ts",
-		"**/*.ts",
-		"**/*.tsx"
-	],
+	"include": ["env.d.ts", "**/*.ts", "**/*.tsx"],
 	"extends": "@suddenly-giovanni/config-typescript/remix.json",
 	"compilerOptions": {
 		"baseUrl": ".",
-		"lib": [
-			"DOM",
-			"DOM.Iterable",
-			"ES2022"
-		],
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
 		"paths": {
-			"~/*": [
-				"./app/*"
-			]
+			"~/*": ["./app/*"]
 		},
 		"skipLibCheck": true,
 		"target": "ES2022"
