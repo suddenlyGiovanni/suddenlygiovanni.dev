@@ -208,8 +208,8 @@ importers:
         specifier: 3.0.1
         version: 3.0.1
       typescript:
-        specifier: 5.4.1-rc
-        version: 5.4.1-rc
+        specifier: 5.4.2
+        version: 5.4.2
 
   packages/resume: {}
 
@@ -14445,12 +14445,6 @@ packages:
       for-each: 0.3.3
       is-typed-array: 1.1.13
     dev: true
-
-  /typescript@5.4.1-rc:
-    resolution: {integrity: sha512-gInURzaO0bbfzfQAc3mfcHxh8qev+No4QOFUZHajo9vBgOLaljELJ3wuzyoGo/zHIzMSezdhtrsRdqL6E9SvNA==}
-    engines: {node: '>=14.17'}
-    hasBin: true
-    dev: false
 
   /typescript@5.4.2:
     resolution: {integrity: sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==}
