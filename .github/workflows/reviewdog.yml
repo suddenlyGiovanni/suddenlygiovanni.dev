@@ -73,6 +73,22 @@ jobs:
           pattern: "*.sh"
           reporter: github-pr-review
 
+  markdownlint:
+    name: runner / markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with markdownlint (markdown)
+        continue-on-error: true
+        uses: reviewdog/action-markdownlint@v0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          level: warning
+          filter_mode: nofilter
+          fail_on_error: false
 
 #  prettier:
 #    name: runner / prettier
@@ -206,16 +222,3 @@ jobs:
 #        with:
 #          github_token: ${{ secrets.github_token }}
 #          locale: "US"
-
-#  markdownlint:
-#    name: runner / markdownlint
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: 📥 Checkout code
-#        uses: actions/checkout@v4
-#
-#      - name: markdownlint
-#        uses: reviewdog/action-markdownlint@v0
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          reporter: github-pr-review
