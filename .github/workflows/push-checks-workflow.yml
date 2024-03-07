@@ -29,7 +29,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: current
-          cache: 'pnpm'
+          cache: "pnpm"
 
       - name: 🗄️ Setup pnpm cache
         uses: actions/cache@v4
@@ -42,14 +42,6 @@ jobs:
       - name: 🧩 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: 🚨 Lint code (with Biome)
-        run: pnpm exec biome lint . --apply
-
-      - name: Git Auto Commit Lint fixes (with Biome)
-        uses: stefanzweifel/git-auto-commit-action@v5.0.0
-        with:
-          commit_message: 'chore: lint code with Biome [skip ci]'
-
       - name: 🚨 Lint code (with ESLint)
         run: pnpm lint -- --fix
         continue-on-error: true
@@ -57,15 +49,7 @@ jobs:
       - name: Git Auto Commit Lint fixes (with ESLint)
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
         with:
-          commit_message: 'chore: lint code with ESLint [skip ci]'
-
-      - name: 📝 Format code (with Biome)
-        run: pnpm exec biome format . --write
-
-      - name: Git Auto Commit Format fixes (with Biome)
-        uses: stefanzweifel/git-auto-commit-action@v5.0.0
-        with:
-          commit_message: 'chore: lint code with ESLint [skip ci]'
+          commit_message: "chore: lint code with ESLint [skip ci]"
 
       - name: 📝 Format code (with Prettier)
         run: pnpm format -- --write
@@ -74,10 +58,8 @@ jobs:
       - name: Git Auto Commit Format fixes (with Prettier)
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
         with:
-          commit_message: 'chore: format code with Prettier [skip ci]'
+          commit_message: "chore: format code with Prettier [skip ci]"
 
       - name: 🔍 Typecheck code
         run: pnpm typecheck
         continue-on-error: true
-
-
