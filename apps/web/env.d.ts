@@ -4,10 +4,8 @@
 import type { ReactElement } from 'react'
 
 declare module '*.mdx' {
-	// biome-ignore lint/suspicious/noExplicitAny: this is a configuration file
-	let MDXComponent: (props: any) => ReactElement
-	// biome-ignore lint/suspicious/noExplicitAny: this is a configuration file
-	export const frontmatter: any
+	let MDXComponent: (props: unknown) => ReactElement
+	export const frontmatter: unknown
 	// biome-ignore lint/correctness/noUndeclaredVariables: this is a configuration file
 	export default MDXComponent
 }
