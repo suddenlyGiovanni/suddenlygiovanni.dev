@@ -52,7 +52,7 @@ jobs:
           commit_message: "chore: lint code with ESLint [skip ci]"
 
       - name: 📝 Format code (with Prettier)
-        run: pnpm format -- --write
+        run: pnpm format
         continue-on-error: true
 
       - name: Git Auto Commit Format fixes (with Prettier)
