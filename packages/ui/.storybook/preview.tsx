@@ -1,6 +1,7 @@
 import { createRemixStub } from '@remix-run/testing'
 import { withThemeByClassName, withThemeByDataAttribute } from '@storybook/addon-themes'
 import type { Preview, ReactRenderer } from '@storybook/react'
+import type { ReactNode } from 'react'
 
 import '../src/styles/styles.css'
 
@@ -23,13 +24,13 @@ const preview: Preview = {
 		},
 	},
 	decorators: [
-		Story => {
+		story => {
+			// biome-ignore lint/style/useNamingConvention: <explanation>
 			const RemixStub = createRemixStub([
 				{
 					path: '/',
-					Component() {
-						return <Story />
-					},
+					// biome-ignore lint/style/useNamingConvention: <explanation>
+					Component: (): ReactNode => story(),
 				},
 			])
 
