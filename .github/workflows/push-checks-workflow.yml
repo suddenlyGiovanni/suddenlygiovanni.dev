@@ -47,6 +47,14 @@ jobs:
         with:
           version: latest
 
+      - name: 🚨 Lint code (with Biome)
+        run: biome lint . --apply
+
+      - name: Git Auto Commit Lint fixes (with Biome)
+        uses: stefanzweifel/git-auto-commit-action@v5.0.0
+        with:
+          commit_message: 'chore: lint code with Biome [skip ci]'
+
       - name: 🚨 Lint code (with ESLint)
         run: pnpm lint -- --fix
         continue-on-error: true
