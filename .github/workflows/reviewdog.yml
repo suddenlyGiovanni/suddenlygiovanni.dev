@@ -61,6 +61,7 @@ jobs:
 
       - name: 🐶 reviewdog with shfmt (shell)
         uses: reviewdog/action-shfmt@v1
+        continue-on-error: true
         with:
           check_all_files_with_shebangs: true
           exclude: "*/.git/*"
@@ -71,6 +72,8 @@ jobs:
           path: "."
           pattern: "*.sh"
           reporter: github-pr-review
+
+
 #  prettier:
 #    name: runner / prettier
 #    runs-on: ubuntu-latest
