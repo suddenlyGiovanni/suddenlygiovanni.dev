@@ -52,6 +52,25 @@ jobs:
           pattern: "*.sh" # Optional.
           reporter: github-pr-review
 
+  shfmt:
+    name: runner / shfmt
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with shfmt (shell)
+        uses: reviewdog/action-shfmt@v1
+        with:
+          check_all_files_with_shebangs: true
+          exclude: "*/.git/*"
+          fail_on_error: false
+          filter_mode: nofilter
+          github_token: ${{ secrets.github_token }}
+          level: "warning"
+          path: "."
+          pattern: "*.sh"
+          reporter: github-pr-review
 #  prettier:
 #    name: runner / prettier
 #    runs-on: ubuntu-latest
