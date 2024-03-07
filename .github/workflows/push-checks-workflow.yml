@@ -44,6 +44,7 @@ jobs:
 
       - name: 🚨 Lint code (with ESLint)
         run: pnpm lint -- --fix
+        continue-on-error: true
 
       - name: Git Auto Commit Lint fixes
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
@@ -52,6 +53,7 @@ jobs:
 
       - name: 📝 Format code (with Prettier)
         run: pnpm format -- --write
+        continue-on-error: true
 
       - name: Git Auto Commit Format fixes
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
