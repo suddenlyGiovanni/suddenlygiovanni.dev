@@ -138,7 +138,6 @@ jobs:
     name: runner / Biome
     runs-on: ubuntu-latest
     continue-on-error: true
-    timeout-minutes: 5
     permissions:
       contents: read
       pull-requests: write
@@ -146,30 +145,17 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: 📦 Install pnpm
-        uses: pnpm/action-setup@v3
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
         with:
-          version: 8
+          biome-version: latest
+          token: ${{ secrets.github_token }}
+          working-dir: "."
 
-      - name: 🛠️ Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: current
-          cache: "pnpm"
+      - name: Run Biome
+        run: biome ci --formatter-enabled=false --linter-enabled=true apps/web
 
-      - name: 🧩 Install dependencies
-        run: pnpm install --frozen-lockfile --prod=false
 
-      - name: 🐶 reviewdog with Biome
-        uses: mongolyy/reviewdog-action-biome@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          workdir: "."
-          level: error
-          reporter: github-pr-review
-          filter_mode: nofilter
-          fail_on_error: false
-          biome_flags: "--formatter-enabled=false --linter-enabled=true apps/web"
 
 
 #  prettier:
