@@ -1,0 +1,176 @@
+name: 🐶 reviewdog
+on: pull_request
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with actionlint
+        uses: reviewdog/action-actionlint@v1
+        continue-on-error: true
+        with:
+          fail_on_error: false
+          filter_mode: nofilter
+          github_token: ${{ secrets.github_token }}
+          level: error
+          reporter: github-pr-review
+          tool_name: actionlint
+
+#  prettier:
+#    name: runner / prettier
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: 📥 Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: 📦 Install pnpm
+#        uses: pnpm/action-setup@v3
+#        with:
+#          version: 8
+#
+#      - name: 🛠️ Set up Node.js
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: current
+#          cache: "pnpm"
+#
+#      - name: 🧩 Install dependencies
+#        run: pnpm install --frozen-lockfile
+#
+#      - name: 🐶 reviewdog with prettier (apps/web)
+#        uses: EPMatt/reviewdog-action-prettier@v1
+#        continue-on-error: true
+#        with:
+#          github_token: ${{ secrets.github_token }}
+#          reporter: github-pr-review
+#          level: warning
+#          filter_mode: nofilter
+#          workdir: .
+#          prettier_flags: --check --config ./apps/web/.prettierrc.js --ignore-path ./apps/web/.prettierignore apps/web/**/*.{ts,tsx,js,jsx,json,cjs,mjs}
+
+#  eslint:
+#    name: runner / eslint
+#    runs-on: ubuntu-latest
+#    permissions:
+#      contents: read
+#      pull-requests: write
+#    steps:
+#      - name: 📥 Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: 📦 Install pnpm
+#        uses: pnpm/action-setup@v3
+#        with:
+#          version: 8
+#
+#      - name: 🛠️ Set up Node.js
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: current
+#          cache: "pnpm"
+#
+#      - name: 🧩 Install dependencies
+#        run: pnpm install --frozen-lockfile
+#
+#      - uses: reviewdog/action-eslint@v1
+#        continue-on-error: true
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          reporter: github-pr-review # Change reporter.
+#          workdir: apps/web
+#          eslint_flags: --ext ts,tsx,js,cjs,mjs,jsx  ./app
+#
+#      - uses: reviewdog/action-eslint@v1
+#        continue-on-error: true
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          reporter: github-pr-review # Change reporter.
+#          workdir: packages/ui
+#          eslint_flags: --ext ts,tsx,js,cjs,mjs,jsx  ./src
+
+#  biome:
+#    name: runner / Biome
+#    runs-on: ubuntu-latest
+#    permissions:
+#      contents: read
+#      pull-requests: write
+#    steps:
+#      - name: 📥 Checkout code
+#        uses: actions/checkout@v4
+#      - uses: mongolyy/reviewdog-action-biome@v1
+#        with:
+#          github_token: ${{ secrets.github_token }}
+#          reporter: github-pr-review
+
+#  tsc:
+#    name: runner / tsc
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: 📥 Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: 📦 Install pnpm
+#        uses: pnpm/action-setup@v3
+#        with:
+#          version: 8
+#
+#      - name: 🛠️ Set up Node.js
+#        uses: actions/setup-node@v4
+#        with:
+#          node-version: current
+#          cache: "pnpm"
+#
+#      - name: 🧩 Install dependencies
+#        run: pnpm install --frozen-lockfile
+#
+#      - uses: EPMatt/reviewdog-action-tsc@v1
+#        with:
+#          github_token: ${{ secrets.github_token }}
+#          # Change reviewdog reporter if you need
+#          # [github-pr-check,github-check,github-pr-review].
+#          # More about reviewdog reporters at
+#          # https://github.com/reviewdog/reviewdog#reporters
+#          reporter: github-pr-review
+#          # Change reporter level if you need
+#          # [info,warning,error].
+#          # More about reviewdog reporter level at
+#          # https://github.com/reviewdog/reviewdog#reporters
+#          level: warning
+
+#  misspell:
+#    name: runner / misspell
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: 📥 Checkout code
+#        uses: actions/checkout@v4
+#      - name: misspell
+#        uses: reviewdog/action-misspell@v1
+#        with:
+#          github_token: ${{ secrets.github_token }}
+#          locale: "US"
+
+#  markdownlint:
+#    name: runner / markdownlint
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: 📥 Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: markdownlint
+#        uses: reviewdog/action-markdownlint@v0
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          reporter: github-pr-review
+
+#  hadolint:
+#    name: runner / hadolint
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: 📥 Checkout code
+#        uses: actions/checkout@v4
+#      - name: hadolint
+#        uses: reviewdog/action-hadolint@v1
+#        with:
+#          reporter: github-pr-review # Default is github-pr-check
