@@ -21,7 +21,7 @@
     "eslint-plugin-only-warn": "1.1.0",
     "eslint-plugin-tailwindcss": "3.14.3",
     "eslint-plugin-testing-library": "6.2.0",
-    "eslint-plugin-vitest": "0.3.22"
+    "eslint-plugin-vitest": "0.3.24"
   },
   "config": {
     "scripty": {
