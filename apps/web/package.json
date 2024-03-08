@@ -16,9 +16,9 @@
 		"typecheck": "scripty"
 	},
 	"dependencies": {
-		"@remix-run/node": "2.8.0",
-		"@remix-run/react": "2.8.0",
-		"@remix-run/serve": "2.8.0",
+		"@remix-run/node": "2.8.1",
+		"@remix-run/react": "2.8.1",
+		"@remix-run/serve": "2.8.1",
 		"@suddenly-giovanni/resume": "workspace:*",
 		"@suddenly-giovanni/ui": "workspace:*",
 		"effect": "2.4.1",
@@ -29,8 +29,8 @@
 	},
 	"devDependencies": {
 		"@mdx-js/rollup": "3.0.1",
-		"@remix-run/dev": "2.8.0",
-		"@remix-run/testing": "2.8.0",
+		"@remix-run/dev": "2.8.1",
+		"@remix-run/testing": "2.8.1",
 		"@suddenly-giovanni/config-prettier": "workspace:*",
 		"@suddenly-giovanni/config-tailwind": "workspace:*",
 		"@suddenly-giovanni/config-typescript": "workspace:*",
