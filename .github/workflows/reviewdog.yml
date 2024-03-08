@@ -232,49 +232,21 @@ jobs:
           workdir: packages/ui
           eslint_flags: --ext ts,tsx ./src
 
+  misspell:
+    name: runner / misspell
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
 
-#  prettier:
-#    name: runner / prettier
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: 📥 Checkout code
-#        uses: actions/checkout@v4
-#
-#      - name: 📦 Install pnpm
-#        uses: pnpm/action-setup@v3
-#        with:
-#          version: 8
-#
-#      - name: 🛠️ Set up Node.js
-#        uses: actions/setup-node@v4
-#        with:
-#          node-version: current
-#          cache: "pnpm"
-#
-#      - name: 🧩 Install dependencies
-#        run: pnpm install --frozen-lockfile
-#
-#      - name: 🐶 reviewdog with prettier (apps/web)
-#        uses: EPMatt/reviewdog-action-prettier@v1
-#        continue-on-error: true
-#        with:
-#          github_token: ${{ secrets.github_token }}
-#          reporter: github-pr-review
-#          level: warning
-#          filter_mode: nofilter
-#          workdir: .
-#          prettier_flags: --check --config ./apps/web/.prettierrc.js --ignore-path ./apps/web/.prettierignore apps/web/**/*.{ts,tsx,js,jsx,json,cjs,mjs}
-
-
-
-#  misspell:
-#    name: runner / misspell
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: 📥 Checkout code
-#        uses: actions/checkout@v4
-#      - name: misspell
-#        uses: reviewdog/action-misspell@v1
-#        with:
-#          github_token: ${{ secrets.github_token }}
-#          locale: "US"
+      - name: 🐶 reviewdog with misspell
+        uses: reviewdog/action-misspell@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          locale: "US"
+          level: "info"
+          reporter: "github-pr-review"
+          path: "."
+          filter_mode: "nofilter"
+          fail_on_error: "false"
