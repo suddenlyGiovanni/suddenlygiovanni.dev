@@ -23,10 +23,10 @@ export {
 	AccordionHeader,
 	Trigger,
 } from './ui/accordion.tsx'
+export { cn } from './lib/utils.ts'
 export {
-	cn,
 	type PolymorphicRef,
 	type PolymorphicComponentPropWithRef,
 	type PolymorphicComponentProp,
-} from './lib'
+} from './lib/polymorphic-component-prop.tsx'
 export { useToggle } from './hooks/use-toggle.tsx'

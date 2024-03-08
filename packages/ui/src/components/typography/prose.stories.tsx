@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities -- Reason: storybook story */
 import type { Meta } from '@storybook/react'
 import { type ReactElement } from 'react'
-import { cn } from '~/lib'
+import { cn } from '~/lib/utils.ts'
 
 const meta = {
 	title: 'typography/Prose',

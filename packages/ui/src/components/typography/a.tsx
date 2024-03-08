@@ -1,5 +1,5 @@
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
-import { cn } from '~/lib'
+import { cn } from '~/lib/utils.ts'
 
 export const A = forwardRef<HTMLAnchorElement, ComponentPropsWithoutRef<'a'>>(
 	({ className, children, ...props }, ref) => (

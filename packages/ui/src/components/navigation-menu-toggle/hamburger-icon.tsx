@@ -1,5 +1,5 @@
 import type { ComponentProps, ReactElement } from 'react'
-import { cn } from '~/lib'
+import { cn } from '~/lib/utils.ts'
 
 const baseClasses = cn('absolute', 'w-6', 'h-0.5', 'transition-all', 'ease-in-out', 'duration-250')
 
