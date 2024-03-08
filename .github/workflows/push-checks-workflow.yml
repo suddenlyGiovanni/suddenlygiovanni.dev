@@ -44,7 +44,7 @@ jobs:
 
       - name: 🧬 Lint code (with Biome)
         continue-on-error: true
-        run: pnpm exec biome check --apply .
+        run: pnpm exec biome format --changed --write .
 
       - name: Git Auto Commit Lint fixes (with Biome)
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
