@@ -8,6 +8,7 @@
 		"enabled": true,
 		"clientKind": "git",
 		"defaultBranch": "main",
+		"useIgnoreFile": true,
 		"root": "."
 	},
 	"formatter": {
