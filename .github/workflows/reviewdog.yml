@@ -183,6 +183,56 @@ jobs:
             -fail-on-error="false" \
             -level="error"
 
+
+  eslint:
+    name: runner / eslint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: current
+          cache: "pnpm"
+
+      - name: 🧩 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🐶 reviewdog with ESLint (TypeScript) - apps/web
+        uses: reviewdog/action-eslint@v1
+        continue-on-error: true
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: error
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: false
+          workdir: apps/web
+          eslint_flags: --ext ts,tsx ./app
+
+      - name: 🐶 reviewdog with ESLint (TypeScript) - packages/ui
+        uses: reviewdog/action-eslint@v1
+        continue-on-error: true
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: error
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: false
+          workdir: packages/ui
+          eslint_flags: --ext ts,tsx ./src
+
+
 #  prettier:
 #    name: runner / prettier
 #    runs-on: ubuntu-latest
@@ -215,45 +265,7 @@ jobs:
 #          workdir: .
 #          prettier_flags: --check --config ./apps/web/.prettierrc.js --ignore-path ./apps/web/.prettierignore apps/web/**/*.{ts,tsx,js,jsx,json,cjs,mjs}
 
-#  eslint:
-#    name: runner / eslint
-#    runs-on: ubuntu-latest
-#    permissions:
-#      contents: read
-#      pull-requests: write
-#    steps:
-#      - name: 📥 Checkout code
-#        uses: actions/checkout@v4
-#
-#      - name: 📦 Install pnpm
-#        uses: pnpm/action-setup@v3
-#        with:
-#          version: 8
-#
-#      - name: 🛠️ Set up Node.js
-#        uses: actions/setup-node@v4
-#        with:
-#          node-version: current
-#          cache: "pnpm"
-#
-#      - name: 🧩 Install dependencies
-#        run: pnpm install --frozen-lockfile
-#
-#      - uses: reviewdog/action-eslint@v1
-#        continue-on-error: true
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          reporter: github-pr-review # Change reporter.
-#          workdir: apps/web
-#          eslint_flags: --ext ts,tsx,js,cjs,mjs,jsx  ./app
-#
-#      - uses: reviewdog/action-eslint@v1
-#        continue-on-error: true
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          reporter: github-pr-review # Change reporter.
-#          workdir: packages/ui
-#          eslint_flags: --ext ts,tsx,js,cjs,mjs,jsx  ./src
+
 
 #  misspell:
 #    name: runner / misspell
