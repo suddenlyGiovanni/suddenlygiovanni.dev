@@ -54,7 +54,9 @@ jobs:
           commit_message: "chore: lint code with Biome [skip ci]"
 
       - name: 🚨 Lint code (with ESLint)
-        run: pnpm lint -- --fix
+        run: |
+          CHANGED_FILES=$(git diff --name-only $(git rev-parse origin/main))
+          pnpm lint -- --fix $CHANGED_FILES
         continue-on-error: true
 
       - name: Git Auto Commit Lint fixes (with ESLint)
