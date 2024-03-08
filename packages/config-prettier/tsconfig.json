@@ -5,10 +5,6 @@
 		"allowJs": true,
 		"checkJs": true
 	},
-	"include": [
-		"index.js"
-	],
-	"exclude": [
-		"node_modules"
-	]
+	"include": ["index.js"],
+	"exclude": ["node_modules"]
 }
