@@ -1,0 +1,64 @@
+name: 🔗Pull Request Checks Workflow
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  checks:
+    name: 🫸 Pull Request Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+          run_install: false
+
+      - name: 🗂️ Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: current
+          cache: "pnpm"
+
+      - name: 🗄️ Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: 🧩 Install dependencies
+        run: pnpm install --frozen-lockfile --prod=false
+
+      - name: 🧬 check code (with Biome)
+        run: pnpm exec biome ci .
+
+      - name: 🚨 Lint code (with ESLint)
+        run: pnpm lint
+
+      - name: 🔍 Typecheck code
+        run: pnpm typecheck
+
+      - name: 🧪 Run unit tests
+        run: pnpm test:unit
+
+      - name: 🧪 Run integration tests
+        run: pnpm test:integration
+
+      - name: 🧪 Run smoke tests
+        run: pnpm test:smoke
+
+      - name: 🏗️ Build project
+        run: pnpm build
