@@ -17,7 +17,9 @@
 		"dev": "turbo dev",
 		"format": "turbo format --log-order=grouped",
 		"lint": "turbo lint --log-order=grouped",
-		"test": "turbo test --log-order=grouped",
+		"test:unit": "turbo test --log-order=grouped",
+		"test:integration": "echo 'No integration tests configured' && exit 0",
+		"test:smoke": "echo 'No smoke tests configured' && exit 0",
 		"typecheck": "turbo typecheck --log-order=grouped",
 		"typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"
 	},
