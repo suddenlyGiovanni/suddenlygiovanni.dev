@@ -25,4 +25,15 @@ module.exports = {
 	ignorePatterns: ['node_modules/', 'dist/', '.eslintrc.js', '**/*.css'],
 	// add rules configurations here
 	rules: {},
+	// I need to disable a bunch of rules in the context of `*.stories.tsx` files
+	overrides: [
+		{
+			files: ['**/*.stories.tsx'],
+			extends: ['plugin:storybook/recommended', 'plugin:storybook/csf-strict'],
+			rules: {
+				// add more rules to disable here
+				'react/function-component-definition': 'off',
+			},
+		},
+	],
 }

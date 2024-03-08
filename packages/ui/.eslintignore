@@ -7,3 +7,4 @@ prettier.config.mjs
 postcss.config.mjs
 .eslintrc.cjs
 .prettierrc.js
+!.storybook
