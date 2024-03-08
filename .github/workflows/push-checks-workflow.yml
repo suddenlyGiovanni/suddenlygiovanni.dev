@@ -40,7 +40,16 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: 🧩 Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --prod=false
+
+      - name: 🧬 Lint code (with Biome)
+        continue-on-error: true
+        run: pnpm exec biome check --changed --apply .
+
+      - name: Git Auto Commit Lint fixes (with Biome)
+        uses: stefanzweifel/git-auto-commit-action@v5.0.0
+        with:
+          commit_message: "chore: lint code with Biome [skip ci]"
 
       - name: 🚨 Lint code (with ESLint)
         run: pnpm lint -- --fix
@@ -51,14 +60,14 @@ jobs:
         with:
           commit_message: "chore: lint code with ESLint [skip ci]"
 
-      - name: 📝 Format code (with Prettier)
-        run: pnpm format
-        continue-on-error: true
-
-      - name: Git Auto Commit Format fixes (with Prettier)
-        uses: stefanzweifel/git-auto-commit-action@v5.0.0
-        with:
-          commit_message: "chore: format code with Prettier [skip ci]"
+#      - name: 📝 Format code (with Prettier)
+#        run: pnpm format
+#        continue-on-error: true
+#
+#      - name: Git Auto Commit Format fixes (with Prettier)
+#        uses: stefanzweifel/git-auto-commit-action@v5.0.0
+#        with:
+#          commit_message: "chore: format code with Prettier [skip ci]"
 
       - name: 🔍 Typecheck code
         run: pnpm typecheck
