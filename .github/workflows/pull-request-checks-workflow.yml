@@ -42,11 +42,8 @@ jobs:
       - name: 🧩 Install dependencies
         run: pnpm install --frozen-lockfile --prod=false
 
-      - name: 🧬 Format code (with Biome)
-        run: pnpm exec biome format --changed --since="$(git rev-parse origin/main)" .
-
-      - name: 🧬 Lint code (with Biome)
-        run: pnpm exec biome lint --changed --since="$(git rev-parse origin/main)" .
+      - name: 🧬 check code (with Biome)
+        run: pnpm exec biome ci .
 
       - name: 🚨 Lint code (with ESLint)
         run: pnpm lint
