@@ -42,9 +42,9 @@ jobs:
       - name: 🧩 Install dependencies
         run: pnpm install --frozen-lockfile --prod=false
 
-      - name: 🧬 Lint code (with Biome)
+      - name: 🧬 Format code (with Biome)
         continue-on-error: true
-        run: pnpm exec biome format --changed --write .
+        run: pnpm exec biome format --changed --since="$(git rev-parse origin/main)" --write .
 
       - name: Git Auto Commit Lint fixes (with Biome)
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
@@ -59,15 +59,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
         with:
           commit_message: "chore: lint code with ESLint [skip ci]"
-
-#      - name: 📝 Format code (with Prettier)
-#        run: pnpm format
-#        continue-on-error: true
-#
-#      - name: Git Auto Commit Format fixes (with Prettier)
-#        uses: stefanzweifel/git-auto-commit-action@v5.0.0
-#        with:
-#          commit_message: "chore: format code with Prettier [skip ci]"
 
       - name: 🔍 Typecheck code
         run: pnpm typecheck
