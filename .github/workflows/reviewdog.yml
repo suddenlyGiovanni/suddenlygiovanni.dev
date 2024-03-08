@@ -1,0 +1,252 @@
+name: 🐶 reviewdog
+on: pull_request
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with actionlint
+        uses: reviewdog/action-actionlint@v1
+        continue-on-error: true
+        with:
+          fail_on_error: false
+          filter_mode: nofilter
+          github_token: ${{ secrets.github_token }}
+          level: error
+          reporter: github-pr-review
+          tool_name: actionlint
+
+  hadolint:
+    name: runner / hadolint
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with hadolint (Dockerfile)
+        uses: reviewdog/action-hadolint@v1
+        continue-on-error: true
+        with:
+          filter_mode: nofilter
+          reporter: github-pr-review
+          github_token: ${{ secrets.github_token }}
+
+  shellcheck:
+    name: runner / shellcheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with shellcheck (shell)
+        uses: reviewdog/action-shellcheck@v1
+        with:
+          check_all_files_with_shebangs: "true" # Optional.
+          exclude: "./.git/*" # Optional.
+          fail_on_error: false
+          filter_mode: nofilter
+          github_token: ${{ secrets.github_token }}
+          path: "." # Optional.
+          pattern: "*.sh" # Optional.
+          reporter: github-pr-review
+
+  shfmt:
+    name: runner / shfmt
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with shfmt (shell)
+        uses: reviewdog/action-shfmt@v1
+        continue-on-error: true
+        with:
+          check_all_files_with_shebangs: true
+          exclude: "*/.git/*"
+          fail_on_error: false
+          filter_mode: nofilter
+          github_token: ${{ secrets.github_token }}
+          level: "warning"
+          path: "."
+          pattern: "*.sh"
+          reporter: github-pr-review
+
+  markdownlint:
+    name: runner / markdownlint
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with markdownlint (markdown)
+        continue-on-error: true
+        uses: reviewdog/action-markdownlint@v0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          level: warning
+          filter_mode: nofilter
+          fail_on_error: false
+
+  tsc:
+    name: runner / tsc
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: current
+          cache: "pnpm"
+
+      - name: 🧩 Install dependencies
+        run: pnpm install --frozen-lockfile --prod=false
+
+      - name: 🐶 reviewdog with tsc (TypeScript) - packages/ui
+        uses: EPMatt/reviewdog-action-tsc@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          workdir: "."
+          level: error
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: false
+          tsc_flags: "--noEmit --pretty --project packages/ui"
+
+      - name: 🐶 reviewdog with tsc (TypeScript) - apps/web
+        uses: EPMatt/reviewdog-action-tsc@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          workdir: "."
+          level: error
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: false
+          tsc_flags: "--noEmit --pretty --project apps/web"
+
+  biome:
+    name: runner / Biome
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 Setup reviewdog
+        uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
+        with:
+          biome-version: latest
+          token: ${{ secrets.github_token }}
+          working-dir: "."
+          version: "latest"
+
+      - name: 🐶 reviewdog with Biome
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.github_token }}
+        continue-on-error: true
+        shell: bash
+        run: |
+          biome ci --formatter-enabled=false --linter-enabled=true . 2>&1 1>/dev/null |
+          sed 's/ *$//' |
+          awk 'BEGIN { RS=""; ORS="\n\n" } { if (index($0, "│") > 0) { print "  ```\n" $0 "\n  ```" } else { print $0 } }' |
+          reviewdog \
+            -efm="%-G%f ci ━%#" \
+            -efm="%-G%f lint ━%#" \
+            -efm="%-Gci ━%#" \
+            -efm="%E%f:%l:%c %.%#" \
+            -efm="%E%f %.%#" \
+            -efm="%C" \
+            -efm="%C  × %m" \
+            -efm="%C  %m" \
+            -efm="%-G%.%#" \
+            -name="Biome" \
+            -reporter="github-pr-review" \
+            -filter-mode="nofilter" \
+            -fail-on-error="false" \
+            -level="error"
+
+
+  eslint:
+    name: runner / eslint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📦 Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: 🛠️ Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: current
+          cache: "pnpm"
+
+      - name: 🧩 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🐶 reviewdog with ESLint (TypeScript) - apps/web
+        uses: reviewdog/action-eslint@v1
+        continue-on-error: true
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: error
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: false
+          workdir: apps/web
+          eslint_flags: --ext ts,tsx ./app
+
+      - name: 🐶 reviewdog with ESLint (TypeScript) - packages/ui
+        uses: reviewdog/action-eslint@v1
+        continue-on-error: true
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          level: error
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: false
+          workdir: packages/ui
+          eslint_flags: --ext ts,tsx ./src
+
+  misspell:
+    name: runner / misspell
+    continue-on-error: true
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🐶 reviewdog with misspell
+        uses: reviewdog/action-misspell@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          locale: "US"
+          level: "info"
+          reporter: "github-pr-review"
+          path: "."
+          filter_mode: "nofilter"
+          fail_on_error: "false"
