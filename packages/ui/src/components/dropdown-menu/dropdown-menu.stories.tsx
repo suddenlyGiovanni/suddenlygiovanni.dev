@@ -1,8 +1,7 @@
-/* eslint-disable react/function-component-definition -- Reason: sotrybook story */
 import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu'
 import type { Meta, StoryFn } from '@storybook/react'
-import { useState } from 'react'
-import { Button } from '../../ui/button.tsx'
+import { useCallback, useState } from 'react'
+import { Button } from '~/ui/button.tsx'
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -19,15 +18,16 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from '../../ui/dropdown-menu'
+} from '~/ui/dropdown-menu'
 
-const meta = {
+const meta: Meta = {
 	title: 'DropdownMenu',
-} satisfies Meta
+	component: DropdownMenu,
+}
 
 export default meta
 
-type Checked = DropdownMenuCheckboxItemProps['checked']
+type Checked = NonNullable<DropdownMenuCheckboxItemProps['checked']>
 
 export const Checkboxes: StoryFn = () => {
 	const [showStatusBar, setShowStatusBar] = useState<Checked>(true)
@@ -66,8 +66,16 @@ export const RadioGroup: StoryFn = () => {
 		Bottom = 'bottom',
 		Right = 'right',
 	}
-
 	const [position, setPosition] = useState(Position.Bottom)
+
+	const onValueChange = useCallback((value: string): void => {
+		function isPosition(value: string): value is Position {
+			return Object.values(Position).includes(value as Position)
+		}
+		if (isPosition(value)) {
+			setPosition(value)
+		}
+	}, [])
 
 	return (
 		<DropdownMenu>
@@ -77,7 +85,7 @@ export const RadioGroup: StoryFn = () => {
 			<DropdownMenuContent className="w-56">
 				<DropdownMenuLabel>Panel Position</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				<DropdownMenuRadioGroup onValueChange={setPosition} value={position}>
+				<DropdownMenuRadioGroup onValueChange={onValueChange} value={position}>
 					<DropdownMenuRadioItem value={Position.Top}>Top</DropdownMenuRadioItem>
 					<DropdownMenuRadioItem value={Position.Bottom}>Bottom</DropdownMenuRadioItem>
 					<DropdownMenuRadioItem value={Position.Right}>Right</DropdownMenuRadioItem>

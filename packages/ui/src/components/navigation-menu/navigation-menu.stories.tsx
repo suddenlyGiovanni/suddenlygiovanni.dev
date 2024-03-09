@@ -2,8 +2,8 @@ import { Link } from '@remix-run/react'
 import type { Meta } from '@storybook/react'
 import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react'
 import { forwardRef } from 'react'
-import { Icons } from '../icons/icons'
-import { cn } from '~/lib'
+import { Icons } from '~/components'
+import { cn } from '~/lib/utils.ts'
 import {
 	NavigationMenu,
 	NavigationMenuContent,

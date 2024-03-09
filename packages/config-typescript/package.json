@@ -1,31 +1,31 @@
 {
-  "$schema": "https://json.schemastore.org/package.json",
-  "name": "@suddenly-giovanni/config-typescript",
-  "version": "0.0.1",
-  "private": true,
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "clean": "scripty"
-  },
-  "peerDependencies": {
-    "typescript": "5.4.2"
-  },
-  "peerDependenciesMeta": {
-    "typescript": {
-      "optional": false
-    }
-  },
-  "dependencies": {
-    "@tsconfig/node21": "21.0.1",
-    "@tsconfig/remix": "2.0.3",
-    "@tsconfig/strictest": "2.0.3",
-    "@tsconfig/vite-react": "3.0.1"
-  },
-  "config": {
-    "scripty": {
-      "path": "../../scripts"
-    }
-  }
+	"$schema": "https://json.schemastore.org/package.json",
+	"name": "@suddenly-giovanni/config-typescript",
+	"version": "0.0.1",
+	"private": true,
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"clean": "scripty"
+	},
+	"peerDependencies": {
+		"typescript": "5.4.2"
+	},
+	"peerDependenciesMeta": {
+		"typescript": {
+			"optional": false
+		}
+	},
+	"dependencies": {
+		"@tsconfig/node21": "21.0.1",
+		"@tsconfig/remix": "2.0.3",
+		"@tsconfig/strictest": "2.0.3",
+		"@tsconfig/vite-react": "3.0.1"
+	},
+	"config": {
+		"scripty": {
+			"path": "../../scripts"
+		}
+	}
 }
