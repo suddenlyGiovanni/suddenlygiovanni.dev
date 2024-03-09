@@ -75,7 +75,7 @@ export const Loading: Story = {
 export const AsChild: Story = {
 	render: args => (
 		<Button {...args} asChild>
-			<T.a>Login</T.a>
+			<T.a href='#1' >Login</T.a>
 		</Button>
 	),
 }

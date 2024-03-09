@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Placeholder } from '../placeholder/placeholder.tsx'
+import { Placeholder } from '~/components/placeholder/placeholder.tsx'
 import { Layout } from './layout.tsx'
 
 const meta = {
@@ -16,7 +16,7 @@ export const Footer: Story = {
 		Story => (
 			<Layout.Body
 				as="div"
-				className="border-dashed border-violet-500 bg-violet-200 text-center text-xl text-violet-500"
+				className='border-violet-500 border-dashed bg-violet-200 text-center text-violet-500 text-xl'
 			>
 				Body
 				<Story />
