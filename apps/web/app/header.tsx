@@ -1,12 +1,10 @@
-import { NavLink as UnstyledNavLink, type NavLinkProps } from '@remix-run/react'
-import {
-	Layout,
-	ModeToggle,
-	NavigationMenuToggle,
-	SuddenlyGiovanni,
-} from '@suddenly-giovanni/ui/components'
-import { useToggle } from '@suddenly-giovanni/ui/hooks'
-import { cn } from '@suddenly-giovanni/ui/lib'
+import { type NavLinkProps, NavLink as UnstyledNavLink } from '@remix-run/react'
+import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
+import { ModeToggle } from '@suddenly-giovanni/ui/components/mode-toggle/mode-toggle.tsx'
+import { NavigationMenuToggle } from '@suddenly-giovanni/ui/components/navigation-menu-toggle/navigation-menu-toggle.tsx'
+import { SuddenlyGiovanni } from '@suddenly-giovanni/ui/components/suddenly-giovanni/suddenly-giovanni.tsx'
+import { useToggle } from '@suddenly-giovanni/ui/hooks/use-toggle.tsx'
+import { cn } from '@suddenly-giovanni/ui/lib/utils.ts'
 import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
 import { type Theme, useTheme } from 'remix-themes'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'

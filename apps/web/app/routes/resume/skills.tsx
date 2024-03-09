@@ -1,14 +1,15 @@
-import { cn } from '@suddenly-giovanni/ui/lib'
+import { cn } from '@suddenly-giovanni/ui/lib/utils.ts'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
-	Button,
 	Trigger,
-} from '@suddenly-giovanni/ui/ui'
-import { Icons, T } from '@suddenly-giovanni/ui/components'
+} from '@suddenly-giovanni/ui/ui/accordion.tsx'
 import { Option } from 'effect'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
+import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import { getDevIconComponent } from './dev-icons.tsx'
 
 export const Skills = memo(function Skills({

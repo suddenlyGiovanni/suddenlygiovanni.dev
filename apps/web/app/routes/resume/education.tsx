@@ -1,14 +1,15 @@
-import { Icons, T } from '@suddenly-giovanni/ui/components'
+import { cn } from '@suddenly-giovanni/ui/lib/utils.ts'
+import type { ReactElement } from 'react'
+import { memo, useCallback, useMemo, useState } from 'react'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
-	Button,
 	Trigger,
-} from '@suddenly-giovanni/ui/ui'
-import { cn } from '@suddenly-giovanni/ui/lib'
-import type { ReactElement } from 'react'
-import { memo, useCallback, useMemo, useState } from 'react'
+} from '@suddenly-giovanni/ui/ui/accordion.tsx'
+import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
 import type { Education as IEducation } from './interface.ts'
 
 function formatDateLocaleShort(date: Date): string {

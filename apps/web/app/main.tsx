@@ -1,5 +1,5 @@
 import { Outlet } from '@remix-run/react'
-import { Layout } from '@suddenly-giovanni/ui/components'
+import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
 import type { JSX } from 'react'
 
 export function Main(): JSX.Element {

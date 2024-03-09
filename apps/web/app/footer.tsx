@@ -1,10 +1,10 @@
+import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
 import {
 	GitHubIconLink,
-	Layout,
 	LinkedInIconLink,
 	TwitterIconLink,
-} from '@suddenly-giovanni/ui/components'
-import { cn } from '@suddenly-giovanni/ui/lib'
+} from '@suddenly-giovanni/ui/components/social/social.tsx'
+import { cn } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { JSX } from 'react'
 
 export const twitter = { url: '', handle: '', user: '' },

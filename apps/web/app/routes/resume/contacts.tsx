@@ -1,5 +1,7 @@
-import { Icons, SocialIcon, T } from '@suddenly-giovanni/ui/components'
-import { cn } from '@suddenly-giovanni/ui/lib'
+import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
+import { SocialIcon } from '@suddenly-giovanni/ui/components/social/social-icon.tsx'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { cn } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 
 interface Location {

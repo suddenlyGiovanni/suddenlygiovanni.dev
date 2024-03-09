@@ -1,9 +1,9 @@
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
-import type { JSX } from 'react'
-import { cn } from '../../lib/utils'
-import { SocialIcon } from './social-icon'
+import type { JSX, ReactElement } from 'react'
+import { SocialIcon } from './social-icon.tsx'
+import { cn } from '~/lib/utils.ts'
 
-function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a']): JSX.Element {
+function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a']): ReactElement {
 	return (
 		<a
 			{...props}
@@ -19,7 +19,7 @@ function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a'
 
 type Props = Omit<JSX.IntrinsicElements['a'], 'children'>
 
-export function TwitterIconLink({ href, className, ...props }: Props): JSX.Element {
+export function TwitterIconLink({ href, className, ...props }: Props): ReactElement {
 	return (
 		<SocialLink
 			aria-label="Visit my Twitter"
@@ -39,7 +39,7 @@ export function TwitterIconLink({ href, className, ...props }: Props): JSX.Eleme
 	)
 }
 
-export function LinkedInIconLink({ href, className, ...props }: Props): JSX.Element {
+export function LinkedInIconLink({ href, className, ...props }: Props): ReactElement {
 	return (
 		<SocialLink
 			aria-label="Visit my LinkedIn"
@@ -59,7 +59,7 @@ export function LinkedInIconLink({ href, className, ...props }: Props): JSX.Elem
 	)
 }
 
-export function GitHubIconLink({ className, href, ...props }: Props): JSX.Element {
+export function GitHubIconLink({ className, href, ...props }: Props): ReactElement {
 	return (
 		<SocialLink
 			aria-label="Visit my GitHub"

@@ -8,7 +8,7 @@ import {
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from '~/ui/dropdown-menu'
+} from '~/ui/dropdown-menu.tsx'
 
 interface ModeToggleProps {
 	readonly setTheme: (theme: Theme) => void

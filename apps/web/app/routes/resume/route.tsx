@@ -6,7 +6,7 @@ import {
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
 import resumeAssetUrl from '@suddenly-giovanni/resume'
-import { cn } from '@suddenly-giovanni/ui/lib'
+import { cn } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
 import { Contacts } from './contacts.tsx'
