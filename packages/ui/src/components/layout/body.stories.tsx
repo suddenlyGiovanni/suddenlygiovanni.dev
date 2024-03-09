@@ -16,7 +16,7 @@ export const Body = {
 		<Layout.Body
 			as="div"
 			{...args}
-			className='border-violet-500 border-dashed bg-violet-200 text-center text-violet-500 text-xl'
+			className="border-violet-500 border-dashed bg-violet-200 text-center text-violet-500 text-xl"
 		>
 			Body
 			<Layout.Header>
