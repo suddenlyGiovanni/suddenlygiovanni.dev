@@ -1,16 +1,16 @@
 interface Route<
-	URI extends string = string,
-	URL extends `/${string}` = `/${string}`,
+	Uri extends string = string,
+	Url extends `/${string}` = `/${string}`,
 	Title extends string = string,
 	Description extends string = string,
 	Disabled extends boolean = boolean,
 	Hidden extends boolean = boolean,
 > {
 	/** unique route identifier */
-	readonly uri: URI
+	readonly uri: Uri
 
 	/** Route Url */
-	readonly url: URL
+	readonly url: Url
 
 	/** The human-readable route name */
 	readonly title: Title
