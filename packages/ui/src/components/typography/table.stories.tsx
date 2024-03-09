@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities -- Reason: storybook story */
 import type { Meta } from '@storybook/react'
-import { type ReactElement } from 'react'
+import type { ReactElement } from 'react'
 import { T } from './typography.tsx'
 
 const meta = {

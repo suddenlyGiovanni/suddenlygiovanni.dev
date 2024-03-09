@@ -1,7 +1,7 @@
 import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
 import { Links, Meta, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
 import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
-import { cn } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement, ReactNode } from 'react'
 import { PreventFlashOnWrongTheme, type Theme, ThemeProvider, useTheme } from 'remix-themes'
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
@@ -52,7 +52,7 @@ function Document({ children }: { children: ReactNode }): ReactElement {
 	const data = useLoaderData<typeof loader>()
 	const [theme] = useTheme()
 	return (
-		<html className={cn(theme, 'min-h-screen')} data-theme={cn(theme)} lang="en">
+		<html className={clsx(theme, 'min-h-screen')} data-theme={clsx(theme)} lang="en">
 			<head>
 				<meta charSet="utf-8" />
 				<meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -61,7 +61,13 @@ function Document({ children }: { children: ReactNode }): ReactElement {
 				<Links />
 			</head>
 			<Layout.Body
-				className={cn('min-h-full', 'bg-background', 'text-foreground', 'font-sans', 'antialiased')}
+				className={clsx(
+					'min-h-full',
+					'bg-background',
+					'text-foreground',
+					'font-sans',
+					'antialiased',
+				)}
 			>
 				{children}
 				<ScrollRestoration />

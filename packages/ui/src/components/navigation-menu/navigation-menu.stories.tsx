@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react'
 import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react'
 import { forwardRef } from 'react'
 import { Icons } from '~/components/icons/icons.tsx'
-import { cn } from '~/lib/utils.ts'
+import { clsx } from '~/lib/utils.ts'
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -63,7 +63,7 @@ export function Default(): ReactElement {
 					<NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul
-							className={cn(
+							className={clsx(
 								'grid',
 								'gap-3',
 								'p-4',
@@ -75,7 +75,7 @@ export function Default(): ReactElement {
 							<li className="row-span-3">
 								<NavigationMenuLink asChild>
 									<a
-										className={cn(
+										className={clsx(
 											'flex',
 											'h-full',
 											'w-full',
@@ -117,7 +117,7 @@ export function Default(): ReactElement {
 					<NavigationMenuTrigger>Components</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul
-							className={cn(
+							className={clsx(
 								'grid',
 								'w-[400px]',
 								'gap-3',
@@ -153,7 +153,7 @@ const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(
 			<li>
 				<NavigationMenuLink asChild>
 					<a
-						className={cn(
+						className={clsx(
 							'block',
 							'select-none',
 							'space-y-1',
@@ -172,8 +172,8 @@ const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(
 						ref={ref}
 						{...props}
 					>
-						<div className={cn('text-sm', 'font-medium', 'leading-none')}>{title}</div>
-						<p className={cn('line-clamp-2', 'text-sm', 'leading-snug', 'text-muted-foreground')}>
+						<div className={clsx('text-sm', 'font-medium', 'leading-none')}>{title}</div>
+						<p className={clsx('line-clamp-2', 'text-sm', 'leading-snug', 'text-muted-foreground')}>
 							{children}
 						</p>
 					</a>

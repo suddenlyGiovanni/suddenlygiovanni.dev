@@ -1,15 +1,15 @@
-import { cn } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	Trigger,
 } from '@suddenly-giovanni/ui/ui/accordion.tsx'
+import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import { Option } from 'effect'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
-import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
-import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import { getDevIconComponent } from './dev-icons.tsx'
 
 export const Skills = memo(function Skills({
@@ -70,7 +70,7 @@ const Skill = memo(function Skill({
 					<span>{name}</span>
 					<Trigger asChild>
 						<Button
-							className={cn('rounded-full', 'transition-all [&[data-state=open]>svg]:rotate-180')}
+							className={clsx('rounded-full', 'transition-all [&[data-state=open]>svg]:rotate-180')}
 							size="icon"
 							type="button"
 							variant="ghost"
@@ -96,7 +96,7 @@ const KeywordsList = memo(function KeywordsList({
 	return (
 		<AccordionContent asChild>
 			<T.ul
-				className={cn(
+				className={clsx(
 					'my-0 ml-0 flex list-none flex-row flex-wrap items-start justify-start gap-x-4',
 				)}
 			>
@@ -110,7 +110,7 @@ const KeywordsList = memo(function KeywordsList({
 
 const Keyword = memo(function Keyword({ keyword }: { keyword: string }): ReactElement {
 	const maybeIcon = getDevIconComponent(keyword)
-	const classname = cn('my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle')
+	const classname = clsx('my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle')
 
 	return Option.match(maybeIcon, {
 		onNone: () => (

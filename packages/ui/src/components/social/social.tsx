@@ -1,13 +1,13 @@
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 import type { JSX, ReactElement } from 'react'
 import { SocialIcon } from './social-icon.tsx'
-import { cn } from '~/lib/utils.ts'
+import { clsx } from '~/lib/utils.ts'
 
 function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a']): ReactElement {
 	return (
 		<a
 			{...props}
-			className={cn(
+			className={clsx(
 				'flex cursor-pointer content-center items-center text-black hover:text-black/70',
 				className,
 			)}

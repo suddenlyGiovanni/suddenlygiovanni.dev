@@ -5,7 +5,7 @@
 
 import type { Meta } from '@storybook/react'
 import { type ReactElement, useEffect, useRef, useState } from 'react'
-import { cn } from '~/lib/utils.ts'
+import { clsx } from '~/lib/utils.ts'
 import {
 	Accordion,
 	AccordionContent,
@@ -18,7 +18,7 @@ const meta = {
 	component: Accordion,
 } satisfies Meta<typeof Accordion>
 
-const rootClass = cn(
+const rootClass = clsx(
 	'font-sans',
 	[
 		'data-[orientation=horizontal]:flex',
@@ -28,7 +28,7 @@ const rootClass = cn(
 	'data-[orientation=vertical]:max-w-[20em]',
 )
 
-const itemClass = cn(
+const itemClass = clsx(
 	[
 		'data-[orientation=horizontal]:flex',
 		'data-[orientation=horizontal]:border-r-2',
@@ -42,15 +42,15 @@ const itemClass = cn(
 	],
 )
 
-const headerClass = cn('m-0', 'data-[orientation=horizontal]:h-full')
+const headerClass = clsx('m-0', 'data-[orientation=horizontal]:h-full')
 
-const RECOMMENDED_CSS__ACCORDION__TRIGGER = cn(
+const RECOMMENDED_CSS__ACCORDION__TRIGGER = clsx(
 	'align-inherit',
 	'data-[orientation=horizontal]:h-full',
 	'data-[orientation=vertical]:w-full',
 )
 
-const triggerClass = cn(
+const triggerClass = clsx(
 	RECOMMENDED_CSS__ACCORDION__TRIGGER,
 	['box-border border-0 bg-black p-2.5 text-lg text-white'],
 	'focus:text-red-500 focus:shadow-inner focus:outline-none',
@@ -62,9 +62,9 @@ const triggerClass = cn(
 	],
 )
 
-const contentClass = cn('p-2.5 leading-6')
+const contentClass = clsx('p-2.5 leading-6')
 
-const styles = cn(
+const styles = clsx(
 	'border-2 border-solid border-blue-500 bg-blue-800 p-10',
 	'data-[state=closed]:border-red-500',
 	'data-[state=open]:border-green-500',
@@ -72,23 +72,23 @@ const styles = cn(
 	'disabled:opacity-50',
 )
 
-const animatedContentClass = cn(
+const animatedContentClass = clsx(
 	'overflow-hidden',
 	'data-[state=open]:animate-accordion-up',
 	'data-[state=closed]:animate-accordion-down',
 )
 
-const animated2dContentClass = cn(
+const animated2dContentClass = clsx(
 	'overflow-hidden',
 	'data-[state=open]:animate-accordion-open',
 	'data-[state=closed]:animate-accordion-close',
 )
 
-const rootAttrClass = cn(styles)
-const itemAttrClass = cn(styles)
-const headerAttrClass = cn(styles)
-const triggerAttrClass = cn(styles)
-const contentAttrClass = cn('block', styles)
+const rootAttrClass = clsx(styles)
+const itemAttrClass = clsx(styles)
+const headerAttrClass = clsx(styles)
+const triggerAttrClass = clsx(styles)
+const contentAttrClass = clsx('block', styles)
 
 export function _Accordion(): ReactElement {
 	return (

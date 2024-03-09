@@ -1,7 +1,7 @@
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
 import * as React from 'react'
-import { cn } from '../lib/utils'
+import { clsx } from '~/lib/utils'
 
 const Accordion = AccordionPrimitive.Root
 const AccordionHeader = AccordionPrimitive.Header
@@ -10,7 +10,7 @@ const AccordionItem = React.forwardRef<
 	React.ElementRef<typeof AccordionPrimitive.Item>,
 	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >(({ className, ...props }, ref) => (
-	<AccordionPrimitive.Item className={cn('border-b', className)} ref={ref} {...props} />
+	<AccordionPrimitive.Item className={clsx('border-b', className)} ref={ref} {...props} />
 ))
 AccordionItem.displayName = 'AccordionItem'
 
@@ -20,7 +20,7 @@ const AccordionTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
 	<AccordionPrimitive.Header className="flex">
 		<Trigger
-			className={cn(
+			className={clsx(
 				'flex flex-1 items-center justify-between',
 				'py-4',
 				'text-sm font-medium hover:underline',
@@ -42,7 +42,7 @@ const AccordionContent = React.forwardRef<
 	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 >(({ className, children, ...props }, ref) => (
 	<AccordionPrimitive.Content
-		className={cn(
+		className={clsx(
 			'overflow-hidden',
 			'text-sm',
 			'data-[state=closed]:animate-accordion-up',
@@ -51,7 +51,7 @@ const AccordionContent = React.forwardRef<
 		ref={ref}
 		{...props}
 	>
-		<div className={cn('pb-4 pt-0', className)}>{children}</div>
+		<div className={clsx('pb-4 pt-0', className)}>{children}</div>
 	</AccordionPrimitive.Content>
 ))
 AccordionContent.displayName = AccordionPrimitive.Content.displayName

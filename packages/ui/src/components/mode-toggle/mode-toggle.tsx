@@ -1,7 +1,7 @@
-import { memo, type ReactNode, useMemo } from 'react'
+import { type ReactNode, memo, useMemo } from 'react'
 import { Theme } from 'remix-themes'
 import { Icons } from '~/components/icons/icons.tsx'
-import { cn } from '~/lib/utils.ts'
+import { clsx } from '~/lib/utils.ts'
 import { Button } from '~/ui/button.tsx'
 import {
 	DropdownMenu,
@@ -28,11 +28,11 @@ const ModeToggle = memo(function ModeToggle({
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button className={cn(className)} size="icon" variant="ghost" data-testid={NAME}>
+				<Button className={clsx(className)} size="icon" variant="ghost" data-testid={NAME}>
 					{isLight || theme === null ? (
-						<Icons.moon className={cn('h-[1.2rem]', 'w-[1.2rem]')} />
+						<Icons.moon className={clsx('h-[1.2rem]', 'w-[1.2rem]')} />
 					) : (
-						<Icons.sun className={cn('h-[1.2rem]', 'w-[1.2rem]')} />
+						<Icons.sun className={clsx('h-[1.2rem]', 'w-[1.2rem]')} />
 					)}
 
 					<span className="sr-only">Toggle theme</span>

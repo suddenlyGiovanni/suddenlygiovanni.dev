@@ -1,7 +1,7 @@
 import type { LinkProps } from '@remix-run/react'
 import { Link } from '@remix-run/react'
 import type { JSX } from 'react'
-import { cn } from '~/lib/utils.ts'
+import { clsx } from '~/lib/utils.ts'
 import { Avatar, AvatarFallback, AvatarImage } from '~/ui/avatar.tsx'
 import { Skeleton } from '~/ui/skeleton.tsx'
 
@@ -19,7 +19,7 @@ export function SuddenlyGiovanni({
 	return (
 		<Link
 			aria-label={ariaLabel}
-			className={cn(
+			className={clsx(
 				'relative flex flex-row items-center no-underline hover:no-underline',
 				className,
 			)}
@@ -32,7 +32,7 @@ export function SuddenlyGiovanni({
 				</AvatarFallback>
 			</Avatar>
 			<h1
-				className={cn(
+				className={clsx(
 					'my-auto',
 					'ml-4',
 					'select-none',

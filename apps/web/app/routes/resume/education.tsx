@@ -1,15 +1,15 @@
-import { cn } from '@suddenly-giovanni/ui/lib/utils.ts'
-import type { ReactElement } from 'react'
-import { memo, useCallback, useMemo, useState } from 'react'
+import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
-import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	Trigger,
 } from '@suddenly-giovanni/ui/ui/accordion.tsx'
-import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
+import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
+import type { ReactElement } from 'react'
+import { memo, useCallback, useMemo, useState } from 'react'
 import type { Education as IEducation } from './interface.ts'
 
 function formatDateLocaleShort(date: Date): string {
@@ -123,7 +123,7 @@ const Edu = memo(function Edu({
 })
 
 const styles = {
-	span: cn('flex flex-row items-center text-sm font-normal  accent-muted'),
+	span: clsx('flex flex-row items-center text-sm font-normal  accent-muted'),
 } as const
 
 const EduHeader = memo(function EduHeader({
@@ -147,14 +147,14 @@ const EduHeader = memo(function EduHeader({
 		<dt className="relative my-4 flex w-full flex-col">
 			<h3
 				aria-label="area of education"
-				className={cn('mb-0 mt-0 text-base font-bold leading-none')}
+				className={clsx('mb-0 mt-0 text-base font-bold leading-none')}
 			>
 				{area}
 			</h3>
 
 			<span
 				aria-label="institution"
-				className={cn(styles.span, 'text-base font-medium not-italic')}
+				className={clsx(styles.span, 'text-base font-medium not-italic')}
 			>
 				{institution}
 				{url ? (
@@ -164,7 +164,7 @@ const EduHeader = memo(function EduHeader({
 				) : null}
 			</span>
 
-			<span className={cn(styles.span, 'justify-between')}>
+			<span className={clsx(styles.span, 'justify-between')}>
 				{!startDate ? null : (
 					<span aria-label="start date / end date">
 						<time className="mr-2" dateTime={startDate.toISOString()}>
@@ -195,7 +195,7 @@ const EduHeader = memo(function EduHeader({
 			)}
 			<Trigger asChild>
 				<Button
-					className={cn(
+					className={clsx(
 						'rounded-full',
 						'transition-all [&[data-state=open]>svg]:rotate-180',
 						'absolute right-0 top-0',
