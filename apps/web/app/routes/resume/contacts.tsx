@@ -1,4 +1,7 @@
-import { Icons, SocialIcon, T, cn } from '@suddenly-giovanni/ui'
+import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
+import { SocialIcon } from '@suddenly-giovanni/ui/components/social/social-icon.tsx'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 
 interface Location {
@@ -69,7 +72,7 @@ interface Profile {
 }
 
 const addressClasses = {
-	address: cn(
+	address: clsx(
 		[
 			'mx-auto',
 			'my-1',
@@ -86,12 +89,12 @@ const addressClasses = {
 		],
 		['md:w-full', 'md:max-w-none', 'md:px-0', 'md:px-24'],
 	),
-	ul: cn(
+	ul: clsx(
 		'my-0 pl-0',
 		['ml-0', 'grid', 'grid-cols-1'],
 		['md:grid-cols-2', 'md:grid-flow-row-dense', 'md:justify-items-start'],
 	),
-	li: cn(
+	li: clsx(
 		'flex',
 		'flex-row',
 		'items-center',

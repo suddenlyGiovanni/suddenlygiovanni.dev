@@ -1,5 +1,6 @@
 import { Link } from '@remix-run/react'
-import { cn, T } from '@suddenly-giovanni/ui'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement, ReactNode } from 'react'
 import resumePdfAssetUrl from 'public/giovanni-ravalico-resume-2021.pdf?url'
 import { routesRecord } from '~/routes-record.ts'
@@ -26,7 +27,7 @@ export function Header({
 				<em>
 					If you consider me for a role, read through{' '}
 					<Link
-						className={cn('font-medium', 'text-primary', 'underline', 'underline-offset-4')}
+						className={clsx('font-medium', 'text-primary', 'underline', 'underline-offset-4')}
 						to={routesRecord.motivations.url}
 					>
 						my motivations

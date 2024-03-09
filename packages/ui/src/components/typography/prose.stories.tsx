@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities -- Reason: storybook story */
 import type { Meta } from '@storybook/react'
-import { type ReactElement } from 'react'
-import { cn } from '~/lib/utils.ts'
+import type { ReactElement } from 'react'
+import { clsx } from '~/lib/utils.ts'
 
 const meta = {
 	title: 'typography/Prose',
@@ -11,19 +11,19 @@ export default meta
 export function Prose(): ReactElement {
 	return (
 		<div
-			className={cn(
+			className={clsx(
 				'relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-8 lg:py-12',
 			)}
 		>
 			<div
-				className={cn(
+				className={clsx(
 					'relative w-full px-6 py-12 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pb-28 lg:pt-16',
 					'shadow-xl shadow-slate-700/10',
 					'ring-1 ring-gray-900/5',
 					'bg-background',
 				)}
 			>
-				<div className={cn('prose prose-slate lg:prose-lg', 'mx-auto mt-8')}>
+				<div className={clsx('prose prose-slate lg:prose-lg', 'mx-auto mt-8')}>
 					<svg className="h-6" fill="none" viewBox="0 0 297 24">
 						<path
 							className="fill-sky-400"
@@ -41,7 +41,7 @@ export function Prose(): ReactElement {
 						/>
 					</svg>
 				</div>
-				<div className={cn('prose prose-slate dark:prose-invert lg:prose-lg', 'mx-auto mt-8')}>
+				<div className={clsx('prose prose-slate dark:prose-invert lg:prose-lg', 'mx-auto mt-8')}>
 					<p className="lead">
 						Until now, trying to style an article, document, or blog post with Tailwind has been a
 						tedious task that required a keen eye for typography and a lot of complex custom CSS.

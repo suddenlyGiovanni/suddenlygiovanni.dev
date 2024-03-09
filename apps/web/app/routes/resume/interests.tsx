@@ -1,4 +1,4 @@
-import { T } from '@suddenly-giovanni/ui'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import type { Interest } from './interface.ts'
 
 export function Interests({ interests }: { readonly interests: readonly Interest[] }) {

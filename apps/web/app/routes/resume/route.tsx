@@ -6,7 +6,7 @@ import {
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
 import resumeAssetUrl from '@suddenly-giovanni/resume'
-import { cn } from '@suddenly-giovanni/ui'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
 import { Contacts } from './contacts.tsx'
@@ -49,7 +49,7 @@ export default function Resume(): ReactElement {
 
 	return (
 		<article
-			className={cn(
+			className={clsx(
 				'flex flex-col items-center justify-start gap-y-8',
 				'w-full max-w-none',
 				'prose prose-blue dark:prose-invert',

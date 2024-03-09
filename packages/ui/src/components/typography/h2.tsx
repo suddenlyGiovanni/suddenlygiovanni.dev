@@ -1,10 +1,10 @@
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
-import { cn } from '../../lib/utils'
+import { clsx } from '~/lib/utils.ts'
 
 export const H2 = forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<'h2'>>(
 	({ className, children, ...props }, ref) => (
 		<h2
-			className={cn(
+			className={clsx(
 				'scroll-m-20',
 				'border-b',
 				'pb-2',

@@ -1,10 +1,10 @@
+import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
 import {
 	GitHubIconLink,
-	Layout,
 	LinkedInIconLink,
 	TwitterIconLink,
-	cn,
-} from '@suddenly-giovanni/ui'
+} from '@suddenly-giovanni/ui/components/social/social.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { JSX } from 'react'
 
 export const twitter = { url: '', handle: '', user: '' },
@@ -16,7 +16,7 @@ const copyrightYear = new Date().getFullYear().toString()
 export function Footer(): JSX.Element {
 	return (
 		<Layout.Footer
-			className={cn([
+			className={clsx([
 				'sticky',
 				'bottom-0',
 				'w-full',
@@ -30,7 +30,7 @@ export function Footer(): JSX.Element {
 			])}
 		>
 			<div
-				className={cn([
+				className={clsx([
 					'container',
 					'relative',
 					'mx-auto',

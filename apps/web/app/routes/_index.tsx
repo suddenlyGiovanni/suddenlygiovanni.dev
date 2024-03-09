@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unescaped-entities -- TODO: need to validate the rule  */
 import type { MetaFunction } from '@remix-run/node'
 import { Link as RLink } from '@remix-run/react'
-import { T, cn } from '@suddenly-giovanni/ui'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ComponentPropsWithoutRef, JSX, ReactElement } from 'react'
 import hero200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
 import hero811wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
@@ -42,7 +43,7 @@ const imgSrcSet = [
 function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RLink>): ReactElement {
 	return (
 		<RLink
-			className={cn(
+			className={clsx(
 				'decoration-wavy',
 				'underline-offset-4',
 				'underline',
@@ -56,7 +57,7 @@ function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RLink>): 
 
 export default function Index(): JSX.Element {
 	return (
-		<article className={cn('flex', 'w-full', 'flex-col', 'justify-start', 'font-comic')}>
+		<article className={clsx('flex', 'w-full', 'flex-col', 'justify-start', 'font-comic')}>
 			<T.h2>Hi! I'm Giovanni 👋</T.h2>
 			<picture>
 				<source

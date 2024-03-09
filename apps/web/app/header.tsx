@@ -1,12 +1,10 @@
-import { NavLink as UnstyledNavLink, type NavLinkProps } from '@remix-run/react'
-import {
-	Layout,
-	ModeToggle,
-	NavigationMenuToggle,
-	SuddenlyGiovanni,
-	cn,
-	useToggle,
-} from '@suddenly-giovanni/ui'
+import { type NavLinkProps, NavLink as UnstyledNavLink } from '@remix-run/react'
+import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
+import { ModeToggle } from '@suddenly-giovanni/ui/components/mode-toggle/mode-toggle.tsx'
+import { NavigationMenuToggle } from '@suddenly-giovanni/ui/components/navigation-menu-toggle/navigation-menu-toggle.tsx'
+import { SuddenlyGiovanni } from '@suddenly-giovanni/ui/components/suddenly-giovanni/suddenly-giovanni.tsx'
+import { useToggle } from '@suddenly-giovanni/ui/hooks/use-toggle.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
 import { type Theme, useTheme } from 'remix-themes'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
@@ -25,7 +23,7 @@ function calculateClassName({
 	isActive: boolean
 	className?: undefined | string
 }): string {
-	return cn(
+	return clsx(
 		// baseClasses
 		[
 			'select-none',
@@ -115,7 +113,7 @@ export const Header = memo(function Header(): ReactElement {
 		() =>
 			routes.map(({ title, url, uri, description, disabled }) => (
 				<li
-					className={cn(
+					className={clsx(
 						'flex min-h-16 min-w-32 items-center justify-end',
 						'md:min-h-fit md:min-w-fit',
 						'outline-none',
@@ -143,7 +141,7 @@ export const Header = memo(function Header(): ReactElement {
 
 	return (
 		<Layout.Header
-			className={cn([
+			className={clsx([
 				'sticky',
 				'top-0',
 				'w-full',
@@ -159,7 +157,7 @@ export const Header = memo(function Header(): ReactElement {
 			])}
 		>
 			<div
-				className={cn([
+				className={clsx([
 					'container',
 					'flex',
 					'flex-row',
@@ -178,14 +176,14 @@ export const Header = memo(function Header(): ReactElement {
 				<NavigationMenuToggle
 					aria-controls={PRIMARY_NAVIGATION}
 					aria-expanded={isMobileNavigationVisible}
-					className={cn('absolute', 'block', 'md:hidden', 'right-8', 'top-3', 'z-50')}
+					className={clsx('absolute', 'block', 'md:hidden', 'right-8', 'top-3', 'z-50')}
 					isSelected={isMobileNavigationVisible}
 					onPress={toggleMobileNavigationVisibility}
 				/>
 
 				<nav aria-label="mobile navigation">
 					<menu
-						className={cn(
+						className={clsx(
 							// Base styles
 							['fixed', 'flex', 'px-8', 'py-12'],
 							// Mobile navigation

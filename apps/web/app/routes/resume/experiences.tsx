@@ -1,13 +1,13 @@
+import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
-	Button,
-	Icons,
-	T,
 	Trigger,
-	cn,
-} from '@suddenly-giovanni/ui'
+} from '@suddenly-giovanni/ui/ui/accordion.tsx'
+import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 
 function formatDateLocaleShort(date: Date): string {
@@ -165,7 +165,7 @@ const Experience = memo(function Experience({
 })
 
 const styles = {
-	span: cn('flex flex-row items-center text-sm font-normal italic accent-muted'),
+	span: clsx('flex flex-row items-center text-sm font-normal italic accent-muted'),
 } as const
 
 const ExperienceHeader = memo(function ExperienceHeader({
@@ -187,11 +187,11 @@ const ExperienceHeader = memo(function ExperienceHeader({
 }): ReactElement {
 	return (
 		<dt className="relative my-4 flex w-full flex-col">
-			<h3 aria-label="job title" className={cn('mb-0 mt-0 text-base font-bold leading-none')}>
+			<h3 aria-label="job title" className={clsx('mb-0 mt-0 text-base font-bold leading-none')}>
 				{position}
 			</h3>
 
-			<span aria-label="company" className={cn(styles.span, 'text-base font-medium not-italic')}>
+			<span aria-label="company" className={clsx(styles.span, 'text-base font-medium not-italic')}>
 				{name}
 				{!url ? null : (
 					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
@@ -200,7 +200,7 @@ const ExperienceHeader = memo(function ExperienceHeader({
 				)}
 			</span>
 
-			<span className={cn(styles.span, 'justify-between')}>
+			<span className={clsx(styles.span, 'justify-between')}>
 				{!startDate ? null : (
 					<span aria-label="start date / end date">
 						<time className="mr-1" dateTime={startDate.toISOString()}>
@@ -227,7 +227,7 @@ const ExperienceHeader = memo(function ExperienceHeader({
 			)}
 			<Trigger asChild>
 				<Button
-					className={cn(
+					className={clsx(
 						'rounded-full',
 						'transition-all [&[data-state=open]>svg]:rotate-180',
 						'absolute right-0 top-0',
@@ -260,7 +260,7 @@ function ExperienceHighlights({
 	if (!highlights) return null
 	return (
 		<dd>
-			<T.ul aria-label="highlights" className={cn('mb-0 ml-0 list-none')}>
+			<T.ul aria-label="highlights" className={clsx('mb-0 ml-0 list-none')}>
 				{highlights.map((highlight, i) => (
 					<li className="pl-0" key={`${i}${highlight[0]}`}>
 						{highlight}
@@ -282,7 +282,7 @@ function ExperienceContact({
 		<>
 			<dt>Contacts:</dt>
 			<dd>
-				<address className={cn('flex flex-row flex-wrap items-baseline justify-between')}>
+				<address className={clsx('flex flex-row flex-wrap items-baseline justify-between')}>
 					<span>{name}</span>
 					{!email ? null : <a href={`mailto:${email}`}>{email}</a>}
 					{!phone ? null : <a href={`tel:${phone}`}>{phone}</a>}

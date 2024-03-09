@@ -1,29 +1,38 @@
-import type { ReactNode } from 'react'
-import { cn } from '../../lib/utils.ts'
-import { Button } from '../../ui/button.tsx'
+import { type ReactNode, memo, useMemo } from 'react'
+import { Theme } from 'remix-themes'
+import { Icons } from '~/components/icons/icons.tsx'
+import { clsx } from '~/lib/utils.ts'
+import { Button } from '~/ui/button.tsx'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from '../../ui/dropdown-menu'
-import { Icons } from '../icons/icons.tsx'
+} from '~/ui/dropdown-menu.tsx'
 
 interface ModeToggleProps {
-	readonly setTheme: (theme: 'dark' | 'light') => void
-	readonly theme: 'dark' | 'light' | null
+	readonly setTheme: (theme: Theme) => void
+	readonly theme: Theme | null
 	readonly className?: string
 }
 
-export function ModeToggle({ setTheme, theme, className }: ModeToggleProps): ReactNode {
+const NAME = 'ModeToggle'
+const ModeToggle = memo(function ModeToggle({
+	setTheme,
+	theme,
+	className,
+}: ModeToggleProps): ReactNode {
+	const isLight = useMemo<boolean>(() => theme === Theme.LIGHT, [theme])
+	const isDark = useMemo<boolean>(() => theme === Theme.DARK, [theme])
+
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
-				<Button className={cn(className)} size="icon" variant="ghost">
-					{theme === `light` || theme === null ? (
-						<Icons.moon className={cn('h-[1.2rem]', 'w-[1.2rem]')} />
+				<Button className={clsx(className)} size="icon" variant="ghost" data-testid={NAME}>
+					{isLight || theme === null ? (
+						<Icons.moon className={clsx('h-[1.2rem]', 'w-[1.2rem]')} />
 					) : (
-						<Icons.sun className={cn('h-[1.2rem]', 'w-[1.2rem]')} />
+						<Icons.sun className={clsx('h-[1.2rem]', 'w-[1.2rem]')} />
 					)}
 
 					<span className="sr-only">Toggle theme</span>
@@ -31,17 +40,17 @@ export function ModeToggle({ setTheme, theme, className }: ModeToggleProps): Rea
 			</DropdownMenuTrigger>
 			<DropdownMenuContent align="end">
 				<DropdownMenuItem
-					disabled={theme === `light`}
+					disabled={isLight}
 					onClick={() => {
-						setTheme(`light`)
+						setTheme(Theme.LIGHT)
 					}}
 				>
 					Light
 				</DropdownMenuItem>
 				<DropdownMenuItem
-					disabled={theme === `dark`}
+					disabled={isDark}
 					onClick={() => {
-						setTheme(`dark`)
+						setTheme(Theme.DARK)
 					}}
 				>
 					Dark
@@ -49,4 +58,7 @@ export function ModeToggle({ setTheme, theme, className }: ModeToggleProps): Rea
 			</DropdownMenuContent>
 		</DropdownMenu>
 	)
-}
+})
+ModeToggle.displayName = NAME
+
+export { ModeToggle, Theme }

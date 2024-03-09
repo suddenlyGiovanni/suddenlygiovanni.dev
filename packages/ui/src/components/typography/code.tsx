@@ -1,10 +1,10 @@
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
-import { cn } from '../../lib/utils'
+import { clsx } from '~/lib/utils.ts'
 
 export const Code = forwardRef<HTMLElement, ComponentPropsWithoutRef<'code'>>(
 	({ className, children, ...props }, ref) => (
 		<code
-			className={cn(
+			className={clsx(
 				'relative',
 				'rounded',
 				'bg-muted',

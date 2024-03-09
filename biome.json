@@ -24,7 +24,8 @@
 		"rules": {
 			"all": true,
 			"nursery": {
-				"all": true
+				"all": true,
+				"noUndeclaredDependencies": "off"
 			}
 		}
 	},

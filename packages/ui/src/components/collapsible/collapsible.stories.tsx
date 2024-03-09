@@ -1,13 +1,13 @@
 import { CaretSortIcon } from '@radix-ui/react-icons'
 import type { Meta } from '@storybook/react'
 import { type ReactElement, useState } from 'react'
-import { cn } from '~/lib/utils.ts'
+import { clsx } from '~/lib/utils.ts'
 import { Button } from '~/ui/button.tsx'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '~/ui/collapsible.tsx'
 
-const rootClass = cn('sans max-w-[20em]')
+const rootClass = clsx('sans max-w-[20em]')
 
-const triggerClass = cn(
+const triggerClass = clsx(
 	['w-full', 'text-center'],
 	'box-border border-0 bg-background p-2.5 text-xl text-foreground',
 	'focus:text-red-500 focus:shadow-inner focus:outline-none',
@@ -16,9 +16,9 @@ const triggerClass = cn(
 	'focus:data-[state=open]:text-black',
 )
 
-const contentClass = cn('p-2.5 leading-6')
+const contentClass = clsx('p-2.5 leading-6')
 
-const styles = cn(
+const styles = clsx(
 	'border-2 border-blue-500 bg-blue-300 p-2.5',
 	'data-[state=closed]:border-red-500',
 	'data-[state=open]:border-green-500',
@@ -26,9 +26,9 @@ const styles = cn(
 	':disabled:opacity-50',
 )
 
-const rootAttrClass = cn(styles)
-const triggerAttrClass = cn(styles)
-const contentAttrClass = cn(
+const rootAttrClass = clsx(styles)
+const triggerAttrClass = clsx(styles)
+const contentAttrClass = clsx(
 	// ensure we can see the content (because it has `hidden` attribute)
 	'block',
 	styles,
