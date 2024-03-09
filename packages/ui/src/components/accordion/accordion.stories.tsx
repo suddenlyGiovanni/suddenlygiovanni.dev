@@ -1,6 +1,5 @@
 /*
-	eslint-disable jsx-a11y/anchor-is-valid,
-		react/no-array-index-key,
+	eslint-disable react/no-array-index-key,
 		react/no-unescaped-entities -- Reason: This rule is disabled because...
 */
 
@@ -15,10 +14,9 @@ import {
 	AccordionTrigger,
 } from '../../ui/accordion'
 
-const meta: Meta = {
-	title: 'Accordion',
+const meta = {
 	component: Accordion,
-}
+} satisfies Meta<typeof Accordion>
 
 const rootClass = cn(
 	'font-sans',
@@ -824,7 +822,7 @@ export function Chromatic(): ReactElement {
 				{items.map(item => (
 					<AccordionItem
 						className={itemAttrClass}
-						disabled={['Two', 'Four'].includes(item) ? false : undefined}
+						{...(['Two', 'Four'].includes(item) ? { disabled: false } : {})}
 						key={item}
 						value={item}
 					>
