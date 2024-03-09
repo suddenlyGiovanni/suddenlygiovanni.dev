@@ -1,14 +1,8 @@
 {
 	"$schema": "https://biomejs.dev/schemas/1.6.0/schema.json",
 	"files": {
-		"include": [
-			"./apps/**/*",
-			"./packages/**/*"
-		],
-		"ignore": [
-			"node_modules",
-			"**/node_modules"
-		]
+		"include": ["./apps/**/*", "./packages/**/*"],
+		"ignore": ["node_modules", "**/node_modules"]
 	},
 	"vcs": {
 		"enabled": true,
@@ -55,9 +49,7 @@
 	},
 	"overrides": [
 		{
-			"include": [
-				"**/*.stories.tsx"
-			],
+			"include": ["**/*.stories.tsx"],
 			"linter": {
 				"rules": {
 					"style": {
@@ -67,9 +59,7 @@
 			}
 		},
 		{
-			"include": [
-				"apps/web/**/*"
-			],
+			"include": ["apps/web/**/*"],
 			"linter": {
 				"rules": {
 					"style": {
