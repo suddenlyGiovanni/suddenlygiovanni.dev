@@ -5,8 +5,17 @@
 	"version": "0.0.1",
 	"exports": {
 		"./tailwind.config.ts": "./tailwind.config.ts",
-		".": {
-			"import": "./src/index.tsx"
+		"./lib": {
+			"import": "./src/lib/index.ts"
+		},
+		"./components": {
+			"import": "./src/components/index.tsx"
+		},
+		"./ui": {
+			"import": "./src/ui/index.tsx"
+		},
+		"./hooks": {
+			"import": "./src/hooks/index.tsx"
 		}
 	},
 	"type": "module",

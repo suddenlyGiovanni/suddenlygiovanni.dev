@@ -1,5 +1,6 @@
 import { Link } from '@remix-run/react'
-import { cn, T } from '@suddenly-giovanni/ui'
+import { T } from '@suddenly-giovanni/ui/components'
+import { cn } from '@suddenly-giovanni/ui/lib'
 import type { ReactElement, ReactNode } from 'react'
 import resumePdfAssetUrl from 'public/giovanni-ravalico-resume-2021.pdf?url'
 import { routesRecord } from '~/routes-record.ts'

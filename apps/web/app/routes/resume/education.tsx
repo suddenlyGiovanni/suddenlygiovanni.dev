@@ -1,13 +1,12 @@
+import { Icons, T } from '@suddenly-giovanni/ui/components'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	Button,
-	Icons,
-	T,
 	Trigger,
-	cn,
-} from '@suddenly-giovanni/ui'
+} from '@suddenly-giovanni/ui/ui'
+import { cn } from '@suddenly-giovanni/ui/lib'
 import type { ReactElement } from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
 import type { Education as IEducation } from './interface.ts'

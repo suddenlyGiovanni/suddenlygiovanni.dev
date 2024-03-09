@@ -1,13 +1,12 @@
+import { Icons, T } from '@suddenly-giovanni/ui/components'
+import { cn } from '@suddenly-giovanni/ui/lib'
 import {
 	Accordion,
+	Trigger,
 	AccordionContent,
 	AccordionItem,
 	Button,
-	Icons,
-	T,
-	Trigger,
-	cn,
-} from '@suddenly-giovanni/ui'
+} from '@suddenly-giovanni/ui/ui'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 
 function formatDateLocaleShort(date: Date): string {

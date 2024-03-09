@@ -4,9 +4,9 @@ import {
 	ModeToggle,
 	NavigationMenuToggle,
 	SuddenlyGiovanni,
-	cn,
-	useToggle,
-} from '@suddenly-giovanni/ui'
+} from '@suddenly-giovanni/ui/components'
+import { useToggle } from '@suddenly-giovanni/ui/hooks'
+import { cn } from '@suddenly-giovanni/ui/lib'
 import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
 import { type Theme, useTheme } from 'remix-themes'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'

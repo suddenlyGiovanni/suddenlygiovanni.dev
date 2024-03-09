@@ -1,6 +1,7 @@
 import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
 import { Links, Meta, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
-import { Layout, cn } from '@suddenly-giovanni/ui'
+import { Layout } from '@suddenly-giovanni/ui/components'
+import { cn } from '@suddenly-giovanni/ui/lib'
 import type { ReactElement, ReactNode } from 'react'
 import { PreventFlashOnWrongTheme, ThemeProvider, useTheme, type Theme } from 'remix-themes'
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'

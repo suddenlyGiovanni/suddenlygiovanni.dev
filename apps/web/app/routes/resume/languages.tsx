@@ -1,4 +1,4 @@
-import { T } from '@suddenly-giovanni/ui'
+import { T } from '@suddenly-giovanni/ui/components'
 import type { ReactElement } from 'react'
 import type { Language } from './interface.ts'
 

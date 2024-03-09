@@ -3,8 +3,8 @@ import {
 	Layout,
 	LinkedInIconLink,
 	TwitterIconLink,
-	cn,
-} from '@suddenly-giovanni/ui'
+} from '@suddenly-giovanni/ui/components'
+import { cn } from '@suddenly-giovanni/ui/lib'
 import type { JSX } from 'react'
 
 export const twitter = { url: '', handle: '', user: '' },
