@@ -153,7 +153,7 @@ importers:
       eslint-plugin-only-warn:
         specifier: 1.1.0
         version: 1.1.0
-w      eslint-plugin-storybook:
+      eslint-plugin-storybook:
         specifier: 0.8.0
         version: 0.8.0(eslint@8.57.0)(typescript@5.4.2)
       eslint-plugin-tailwindcss:
