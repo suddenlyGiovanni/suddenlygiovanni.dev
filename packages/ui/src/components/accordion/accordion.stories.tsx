@@ -5,14 +5,14 @@
 
 import type { Meta } from '@storybook/react'
 import { type ReactElement, useEffect, useRef, useState } from 'react'
-import { cn } from '../../lib/utils'
+import { cn } from '~/lib/utils.ts'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionHeader,
 	AccordionItem,
 	AccordionTrigger,
-} from '../../ui/accordion'
+} from '~/ui/accordion.tsx'
 
 const meta = {
 	component: Accordion,
@@ -299,6 +299,7 @@ export function MultipleUncontrolled(): ReactElement {
 		</Accordion>
 	)
 }
+
 export function MultipleControlled(): ReactElement {
 	/*
 	 eslint-disable-next-line @typescript-eslint/ban-types -- Reason: I need a sum type and the ability to use a string as a value.
