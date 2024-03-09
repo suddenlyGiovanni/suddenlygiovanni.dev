@@ -18,7 +18,6 @@ import {
 const meta: Meta = {
 	title: 'Accordion',
 	component: Accordion,
-	subcomponents: { AccordionItem, AccordionTrigger, AccordionContent, AccordionHeader },
 }
 
 const rootClass = cn(
@@ -154,7 +153,7 @@ export function SingleUncontrolled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
@@ -204,7 +203,7 @@ export function SingleControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					Odio placerat <a href="#2">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
@@ -249,7 +248,7 @@ export function SingleCollapsible(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					Odio placerat <a href="#3">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
@@ -294,7 +293,7 @@ export function MultipleUncontrolled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					Odio placerat <a href="#4">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
@@ -346,7 +345,7 @@ export function MultipleControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					Odio placerat <a href="#5">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
@@ -370,9 +369,9 @@ export function Animated(): ReactElement {
 					return nextCount
 				})
 			}, 3000)
-			return () => {
-				clearTimeout(timerRef.current)
-			}
+		}
+		return () => {
+			hasDynamicContent && clearTimeout(timerRef.current)
 		}
 	}, [count, hasDynamicContent])
 
