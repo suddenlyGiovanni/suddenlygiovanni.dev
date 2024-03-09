@@ -27,7 +27,7 @@ const meta: Meta = {
 
 export default meta
 
-type Checked = DropdownMenuCheckboxItemProps['checked']
+type Checked = NonNullable<DropdownMenuCheckboxItemProps['checked']>
 
 export const Checkboxes: StoryFn = () => {
 	const [showStatusBar, setShowStatusBar] = useState<Checked>(true)
