@@ -1,7 +1,7 @@
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 import type { JSX, ReactElement } from 'react'
-import { SocialIcon } from './social-icon.tsx'
 import { clsx } from '~/lib/utils.ts'
+import { SocialIcon } from './social-icon.tsx'
 
 function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a']): ReactElement {
 	return (

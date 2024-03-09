@@ -1,29 +1,30 @@
-import * as AccordionPrimitive from '@radix-ui/react-accordion'
+import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
-import * as React from 'react'
+import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from 'react'
 import { clsx } from '~/lib/utils'
 
-const Accordion = AccordionPrimitive.Root
-const AccordionHeader = AccordionPrimitive.Header
-const Trigger = AccordionPrimitive.Trigger
-const AccordionItem = React.forwardRef<
-	React.ElementRef<typeof AccordionPrimitive.Item>,
-	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->(({ className, ...props }, ref) => (
-	<AccordionPrimitive.Item className={clsx('border-b', className)} ref={ref} {...props} />
-))
+const Accordion = Root
+Accordion.displayName = Root.displayName
+const AccordionHeader = Header
+AccordionHeader.displayName = Header.displayName
+
+const AccordionItem = forwardRef<ElementRef<typeof Item>, ComponentPropsWithoutRef<typeof Item>>(
+	({ className, ...props }, ref) => (
+		<Item className={clsx('border-b', className)} ref={ref} {...props} />
+	),
+)
 AccordionItem.displayName = 'AccordionItem'
 
-const AccordionTrigger = React.forwardRef<
-	React.ElementRef<typeof AccordionPrimitive.Trigger>,
-	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
+const AccordionTrigger = forwardRef<
+	ElementRef<typeof Trigger>,
+	ComponentPropsWithoutRef<typeof Trigger>
 >(({ className, children, ...props }, ref) => (
-	<AccordionPrimitive.Header className="flex">
+	<Header className="flex">
 		<Trigger
 			className={clsx(
 				'flex flex-1 items-center justify-between',
 				'py-4',
-				'text-sm font-medium hover:underline',
+				'font-medium text-sm hover:underline',
 				'transition-all [&[data-state=open]>svg]:rotate-180',
 				className,
 			)}
@@ -31,17 +32,19 @@ const AccordionTrigger = React.forwardRef<
 			{...props}
 		>
 			{children}
-			<ChevronDownIcon className="h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+			<ChevronDownIcon
+				className={clsx('h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200')}
+			/>
 		</Trigger>
-	</AccordionPrimitive.Header>
+	</Header>
 ))
-AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
+AccordionTrigger.displayName = Trigger.displayName
 
-const AccordionContent = React.forwardRef<
-	React.ElementRef<typeof AccordionPrimitive.Content>,
-	React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
+const AccordionContent = forwardRef<
+	ElementRef<typeof Content>,
+	ComponentPropsWithoutRef<typeof Content>
 >(({ className, children, ...props }, ref) => (
-	<AccordionPrimitive.Content
+	<Content
 		className={clsx(
 			'overflow-hidden',
 			'text-sm',
@@ -52,8 +55,8 @@ const AccordionContent = React.forwardRef<
 		{...props}
 	>
 		<div className={clsx('pb-4 pt-0', className)}>{children}</div>
-	</AccordionPrimitive.Content>
+	</Content>
 ))
-AccordionContent.displayName = AccordionPrimitive.Content.displayName
+AccordionContent.displayName = Content.displayName
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, AccordionHeader, Trigger }
