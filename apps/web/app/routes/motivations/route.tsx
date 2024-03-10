@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities -- Reason: storybook story */
 import type { MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
 
@@ -13,7 +14,7 @@ export const meta: MetaFunction = () => {
 
 export default function Motivation(): ReactElement {
 	return (
-		<article className="prose w-full max-w-none bg-background font-comic dark:prose-invert">
+		<article className={clsx('prose dark:prose-invert w-full max-w-none bg-background font-comic')}>
 			<h1>My Motivations</h1>
 			<p className="lead">
 				Over the years, I have learned how and under which conditions I like to work, what drives

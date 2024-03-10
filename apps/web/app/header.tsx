@@ -119,24 +119,23 @@ export const Header = memo(function Header(): ReactElement {
 						'outline-none',
 					)}
 					key={uri}
-					onClick={stopPropagation}
-					role="menuitem"
-					tabIndex={0}
+					// onClick={stopPropagation}
 				>
 					<NavLink
 						aria-disabled={disabled ? 'true' : undefined}
 						aria-label={description}
 						onClick={handleMobileNavigationClick}
 						prefetch="intent"
-						role="link"
+						role="menuitem"
 						to={url}
+						tabIndex={0}
 					>
 						{title}
 					</NavLink>
 				</li>
 			)),
 
-		[handleMobileNavigationClick, stopPropagation],
+		[handleMobileNavigationClick],
 	)
 
 	return (
@@ -222,7 +221,7 @@ export const Header = memo(function Header(): ReactElement {
 								'md:transition-none',
 							],
 							// Mobile navigation
-							isMobileNavigationVisible ? 'translate-x-0 ' : 'translate-x-full',
+							isMobileNavigationVisible ? 'translate-x-0' : 'translate-x-full',
 						)}
 						id={PRIMARY_NAVIGATION}
 						onClick={handleMobileNavigationClick}

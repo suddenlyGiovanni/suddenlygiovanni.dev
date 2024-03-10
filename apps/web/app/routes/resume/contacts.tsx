@@ -145,14 +145,14 @@ export function Contacts({
 						{phone}
 					</T.a>
 				</li>
-				{profiles.map((profile, idx) => (
-					<li className={addressClasses.li} key={String(idx) + String(profile.network)}>
+				{profiles.map(profile => (
+					<li className={addressClasses.li} key={profile.network}>
 						<SocialIcon
-							aria-label={`${profile.network || ''} icon`}
+							aria-label={`${profile.network} icon`}
 							network={profile.network.toLowerCase()}
 						/>
 
-						<T.a aria-label={`link to ${profile.network || ''}`} href={profile.url}>
+						<T.a aria-label={`link to ${profile.network}`} href={profile.url}>
 							{profile.url.replace(/(https:\/\/www\.)|(https:\/\/)/i, '')}
 						</T.a>
 					</li>

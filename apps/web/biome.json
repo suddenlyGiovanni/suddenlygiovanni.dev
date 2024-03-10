@@ -4,5 +4,17 @@
 	"files": {
 		"include": ["app/*"],
 		"ignoreUnknown": true
-	}
+	},
+	"overrides": [
+		{
+			"include": ["app/routes/**/*.tsx"],
+			"linter": {
+				"rules": {
+					"style": {
+						"noDefaultExport": "off"
+					}
+				}
+			}
+		}
+	]
 }
