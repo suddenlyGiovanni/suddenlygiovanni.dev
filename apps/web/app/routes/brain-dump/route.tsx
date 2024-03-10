@@ -1,5 +1,6 @@
 import type { MetaFunction } from '@remix-run/node'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { JSX } from 'react'
 import { routesRecord } from '~/routes-record.ts'
 
@@ -16,7 +17,7 @@ export const meta: MetaFunction = () => {
 
 export default function BrainDump(): JSX.Element {
 	return (
-		<article className="prose w-full max-w-none bg-background font-comic dark:prose-invert">
+		<article className={clsx('prose dark:prose-invert w-full max-w-none bg-background font-comic')}>
 			<T.h2>BrainDump</T.h2>
 		</article>
 	)

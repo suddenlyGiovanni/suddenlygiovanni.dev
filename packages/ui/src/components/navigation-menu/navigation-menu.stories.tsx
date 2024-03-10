@@ -94,8 +94,8 @@ export function Default(): ReactElement {
 										href="/"
 									>
 										<Icons.globe className="h-6 w-6" />
-										<div className="mb-2 mt-4 text-lg font-medium">shadcn/ui</div>
-										<p className="text-sm leading-tight text-muted-foreground">
+										<div className="mt-4 mb-2 font-medium text-lg">shadcn/ui</div>
+										<p className="text-muted-foreground text-sm leading-tight">
 											Beautifully designed components built with Radix UI and Tailwind CSS.
 										</p>
 									</a>

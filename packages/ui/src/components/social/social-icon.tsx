@@ -1,5 +1,5 @@
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
-import { Icons } from '../icons/icons.tsx'
+import { Icons } from '~/components/icons/icons.tsx'
 
 export const IconMap = new Map([
 	['twitter', Icons.twitter],
@@ -17,6 +17,7 @@ export const SocialIcon = forwardRef<SVGSVGElement, SocialIconProps>(
 	({ network, ...props }: SocialIconProps, ref) => {
 		if (IconMap.has(network)) {
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- we are already checking if the key exists
+			// biome-ignore lint/style/useNamingConvention: <explanation>
 			const Icon = IconMap.get(network)!
 			const dataTestId = `${NAME}-${network}`
 			return <Icon data-testid={dataTestId} ref={ref} {...props} />

@@ -39,7 +39,7 @@ export const links: LinksFunction = () => {
 	]
 }
 
-export async function loader(_: LoaderFunctionArgs) {
+export function loader(_: LoaderFunctionArgs) {
 	return json({ resume: resumeAssetUrl })
 }
 
