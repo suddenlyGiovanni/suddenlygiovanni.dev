@@ -2,9 +2,12 @@
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
+import * as S from "@effect/schema/Schema";
 import type * as R from './interface.ts'
 
+
 type GatsbyTypes = any
+
 
 export function mapToResume(resumeJson: GatsbyTypes.ResumeQuery['resumeJson']): Readonly<R.Resume> {
 	return {

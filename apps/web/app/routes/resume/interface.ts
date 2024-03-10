@@ -1,3 +1,18 @@
+import * as S from '@effect/schema/Schema'
+
+const UrlString: S.Schema<string> = S.string.pipe(
+	S.filter(value => {
+		try {
+			new URL(value)
+			return true
+		} catch (_) {
+			return false
+		}
+	}),
+	S.description('URL (as per RFC 3986)'),
+	S.examples(['http://facebook.example.com']),
+)
+
 export interface Resume {
 	/**
 	 * link to the version of the schema that can validate the resume
@@ -87,39 +102,112 @@ export interface Basics {
 	url?: string
 }
 
-export interface Location {
+export const Location = S.struct({
 	/**
 	 * To add multiple address lines, use
 	 * . For example, 1234 Glücklichkeit Straße
 	 * Hinterhaus 5. Etage li.
 	 */
-	address?: string
-	city?: string
+	address: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.description('Address line'),
+			S.examples(['1234 Glücklichkeit Straße Hinterhaus 5. Etage li']),
+		),
+		{ exact: true },
+	),
+
+	city: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.description('City'),
+			S.examples(['Berlin', 'New York', 'San Francisco']),
+		),
+		{ exact: true },
+	),
+
 	/**
 	 * code as per ISO-3166-1 ALPHA-2, e.g. US, AU, IN
 	 */
-	countryCode?: string
-	postalCode?: string
+	countryCode: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.length(2),
+			S.description('code as per ISO-3166-1 ALPHA-2'),
+			S.examples(['US', 'AU', 'IN']),
+		),
+		{ exact: true },
+	),
+
+	/**
+	 * european postal code
+	 * e.g. 12209
+	 */
+	postalCode: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.description('european postal code'),
+			S.examples(['12209']),
+		),
+		{ exact: true },
+	),
+
 	/**
 	 * The general region where you live. Can be a US state, or a province, for instance.
 	 */
-	region?: string
-}
+	region: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.description('The general region where you live. Can be a US state, or a province'),
+			S.examples(['California', 'Quebec']),
+		),
+		{ exact: true },
+	),
+})
 
-export interface Profile {
+export type Location = S.Schema.To<typeof Location>
+
+const Profile = S.struct({
 	/**
 	 * e.g. Facebook or Twitter
 	 */
-	network?: string
+	network: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'network',
+			description: 'The name of the social network',
+			examples: ['Facebook', 'Twitter'],
+		},
+	}),
+
 	/**
 	 * e.g. http://twitter.example.com/neutralthoughts
 	 */
-	url?: string
+	url: S.optional(UrlString, {
+		exact: true,
+		annotations: {
+			title: 'url',
+			description: 'The URL of the profile on the social network',
+			examples: ['http://twitter.example.com/neutralthoughts'],
+		},
+	}),
 	/**
 	 * e.g. neutralthoughts
 	 */
-	username?: string
-}
+	username: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'username',
+			description: 'The username of the profile on the social network',
+			examples: ['neutralthoughts'],
+		},
+	}),
+})
+export type Profile = S.Schema.To<typeof Profile>
 
 export interface Education {
 	/**
