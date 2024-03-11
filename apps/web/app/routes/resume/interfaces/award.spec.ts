@@ -1,7 +1,7 @@
 import * as S from '@effect/schema/Schema'
 import { expect, test, describe } from 'vitest'
 
-import { Award } from './interface.ts'
+import { Award } from './award.ts'
 
 describe('award', () => {
 	const awardInput: S.Schema.To<typeof Award> = {
