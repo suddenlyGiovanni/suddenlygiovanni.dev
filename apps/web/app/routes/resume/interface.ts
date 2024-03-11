@@ -13,14 +13,63 @@ const UrlString: S.Schema<string> = S.string.pipe(
 	S.examples(['https://facebook.example.com']),
 )
 
+const ISODateString = S.pattern(
+	/^[0-9]{4}-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|(02)-(0[1-9]|[12][0-9]))T(0[0-9]|1[0-9]|2[0-3]):(0[0-9]|[1-5][0-9]):(0[0-9]|[1-5][0-9])\.[0-9]{3}Z$/,
+	{
+		title: 'date',
+		description: 'Using ISO 8601',
+		examples: ['2012-04-05', '2012-04-05T10:00:00.000Z'],
+	},
+)
+
 const Email = S.pattern(
 	/^(?!\.)(?!.*\.\.)([A-Z0-9_+-.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9-]*\.)+[A-Z]{2,}$/i,
 	{
 		title: 'email',
 		description: 'Email address',
-		examples: ['foop@bar.baz']
-	}
-);
+		examples: ['foop@bar.baz'],
+	},
+)
+
+const Award = S.struct({
+	awarder: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'awarder',
+			description: 'The name of the award given',
+			examples: ['Time Magazine'],
+		},
+	}),
+
+	date: S.optional(ISODateString, {
+		exact: true,
+		annotations: {
+			title: 'date',
+			description: 'Date of the award',
+			examples: ['2012-04-05', '2012-04-05T10:00:00.000Z'],
+		},
+	}),
+
+	summary: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'summary',
+			description: 'A brief summary of the award',
+			examples: ['Received for my work with Quantum Physics'],
+		},
+	}),
+
+	title: S.optional(S.string, {
+		exact: true,
+		annotations: {
+			title: 'title',
+			description: 'Title of the award',
+			examples: ['One of the 100 greatest minds of the century'],
+		},
+	}),
+})
+
+export interface Award extends S.Schema.To<typeof Award> {}
 
 export interface Resume {
 	/**
@@ -62,21 +111,7 @@ export interface Resume {
 	work?: Work[]
 }
 
-export interface Award {
-	/**
-	 * e.g. Time Magazine
-	 */
-	awarder?: string
-	date?: string
-	/**
-	 * e.g. Received for my work with Quantum Physics
-	 */
-	summary?: string
-	/**
-	 * e.g. One of the 100 greatest minds of the century
-	 */
-	title?: string
-}
+
 
 export const Location = S.struct({
 	address: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
@@ -271,8 +306,6 @@ export interface Basics extends S.Schema.To<typeof Basics> {
 	 */
 	url?: string
 }
-
-
 
 export interface Education {
 	/**
