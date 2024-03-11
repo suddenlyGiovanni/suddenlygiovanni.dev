@@ -2,8 +2,9 @@
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
-import type { Location } from './interfaces/location.ts'
+import { Basics } from './interfaces/basics.ts'
 import type * as R from './interfaces/interface.ts'
+import type { Location } from './interfaces/location.ts'
 
 type GatsbyTypes = any
 
@@ -66,7 +67,7 @@ function mapToBasics(
 				}
 		  >
 		| undefined,
-): Readonly<R.Basics> {
+): Readonly<Basics> {
 	return {
 		/**
 		 * e.g. thomas@gmail.com
