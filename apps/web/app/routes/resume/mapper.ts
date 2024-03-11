@@ -2,8 +2,8 @@
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
-import type { Location } from './location.ts'
-import type * as R from './interface.ts'
+import type { Location } from './interfaces/location.ts'
+import type * as R from './interfaces/interface.ts'
 
 type GatsbyTypes = any
 

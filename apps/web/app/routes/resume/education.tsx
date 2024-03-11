@@ -10,7 +10,7 @@ import {
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import type { ReactElement } from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
-import type { Education as IEducation } from './interface.ts'
+import type { Education as IEducation } from 'app/routes/resume/interfaces/interface.ts'
 
 function formatDateLocaleShort(date: Date): string {
 	return date.toLocaleDateString('en-US', {
@@ -157,42 +157,42 @@ const EduHeader = memo(function EduHeader({
 				className={clsx(styles.span, 'text-base font-medium not-italic')}
 			>
 				{institution}
-				{url ? (
-					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
-						<Icons.link2 aria-label={`link to ${institution} institution`} className="size-4" />
-					</a>
-				) : null}
+				{url
+					? <a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
+							<Icons.link2 aria-label={`link to ${institution} institution`} className="size-4" />
+					  </a>
+					: null}
 			</span>
 
 			<span className={clsx(styles.span, 'justify-between')}>
-				{!startDate ? null : (
-					<span aria-label="start date / end date">
-						<time className="mr-2" dateTime={startDate.toISOString()}>
-							{formatDateLocaleShort(startDate)}
-						</time>
-						{endDate ? (
-							<>
-								-
-								<time className="ml-2" dateTime={endDate.toISOString()}>
-									{formatDateLocaleShort(endDate)}
-								</time>
-							</>
-						) : null}
-					</span>
-				)}
+				{!startDate
+					? null
+					: <span aria-label="start date / end date">
+							<time className="mr-2" dateTime={startDate.toISOString()}>
+								{formatDateLocaleShort(startDate)}
+							</time>
+							{endDate
+								? <>
+										-
+										<time className="ml-2" dateTime={endDate.toISOString()}>
+											{formatDateLocaleShort(endDate)}
+										</time>
+								  </>
+								: null}
+					  </span>}
 
-				{!location ? null : (
-					<span aria-label="location" className={styles.span}>
-						{location}
-					</span>
-				)}
+				{!location
+					? null
+					: <span aria-label="location" className={styles.span}>
+							{location}
+					  </span>}
 			</span>
 
-			{!studyType ? null : (
-				<span aria-label="description" className={styles.span}>
-					{studyType}
-				</span>
-			)}
+			{!studyType
+				? null
+				: <span aria-label="description" className={styles.span}>
+						{studyType}
+				  </span>}
 			<Trigger asChild>
 				<Button
 					className={clsx(
