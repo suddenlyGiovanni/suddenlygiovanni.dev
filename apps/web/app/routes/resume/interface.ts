@@ -697,42 +697,67 @@ const Work = S.struct({
 
 export interface Work extends S.Schema.To<typeof Work> {}
 
-export interface Resume {
-	/**
-	 * link to the version of the schema that can validate the resume
-	 */
-	$schema?: string
-	/**
-	 * Specify any awards you have received throughout your professional career
-	 */
-	awards?: Award[]
-	basics?: Basics
-	education?: Education[]
-	interests?: Interest[]
-	/**
-	 * List any other languages you speak
-	 */
-	languages?: Language[]
-	/**
-	 * The schema version and any other tooling configuration lives here
-	 */
-	meta?: Meta
-	/**
-	 * Specify career projects
-	 */
-	projects?: Project[]
-	/**
-	 * Specify your publications through your career
-	 */
-	publications?: Publication[]
-	/**
-	 * List references you have received
-	 */
-	references?: Reference[]
-	/**
-	 * List out your professional skill-set
-	 */
-	skills?: Skill[]
-	volunteer?: Volunteer[]
-	work?: Work[]
-}
+const Resume = S.struct({
+	$schema: S.string.pipe(
+		S.trimmed(),
+		S.nonEmpty(),
+		S.title('$schema'),
+		S.description('link to the version of the schema that can validate the resume'),
+		S.examples(['http://jsonresume.org/schema']),
+	),
+
+	awards: S.optional(
+		S.array(Award).pipe(
+			S.title('awards'),
+			S.description('Specify any awards you have received throughout your professional career'),
+		),
+	),
+
+	basics: S.optional(Basics),
+
+	education: S.optional(S.array(Education)),
+
+	interests: S.optional(S.array(Interest)),
+
+	languages: S.optional(
+		S.array(Language).pipe(
+			S.title('languages'),
+			S.description('List any other languages you speak'),
+		),
+	),
+
+	meta: S.optional(
+		Meta.pipe(
+			S.title('meta'),
+			S.description('The schema version and any other tooling configuration lives here'),
+		),
+	),
+
+	projects: S.optional(
+		S.array(Project).pipe(S.title('projects'), S.description('Specify career projects')),
+	),
+
+	publications: S.optional(
+		S.array(Publication).pipe(
+			S.title('publications'),
+			S.description('Specify your publications through your career'),
+		),
+	),
+
+	references: S.optional(
+		S.array(Reference).pipe(
+			S.title('references'),
+			S.description('List references you have received'),
+		),
+	),
+
+	skills: S.optional(
+		S.array(Skill).pipe(S.title('skills'), S.description('List out your professional skill-set')),
+	),
+
+	volunteer: S.optional(S.array(Volunteer)),
+
+	work: S.optional(S.array(Work)),
+})
+
+export interface Resume extends S.Schema.To<typeof Resume> {}
