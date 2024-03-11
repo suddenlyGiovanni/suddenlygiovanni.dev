@@ -1,6 +1,8 @@
 import * as S from '@effect/schema/Schema'
 
-const UrlString: S.Schema<string> = S.string.pipe(
+export const UrlString: S.Schema<string> = S.string.pipe(
+	S.trimmed(),
+	S.nonEmpty(),
 	S.filter(value => {
 		try {
 			new URL(value)
@@ -14,6 +16,8 @@ const UrlString: S.Schema<string> = S.string.pipe(
 )
 
 export const ISODateString = S.string.pipe(
+	S.trimmed(),
+	S.nonEmpty(),
 	S.pattern(
 		/^[0-9]{4}-((0[13578]|1[02])-(0[1-9]|[12][0-9]|3[01])|(0[469]|11)-(0[1-9]|[12][0-9]|30)|(02)-(0[1-9]|[12][0-9]))T(0[0-9]|1[0-9]|2[0-3]):(0[0-9]|[1-5][0-9]):(0[0-9]|[1-5][0-9])\.[0-9]{3}Z$/,
 		{
@@ -24,7 +28,7 @@ export const ISODateString = S.string.pipe(
 	),
 )
 
-const Email = S.string.pipe(
+export const Email = S.string.pipe(
 	S.pattern(/^(?!\.)(?!.*\.\.)([A-Z0-9_+-.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9-]*\.)+[A-Z]{2,}$/i, {
 		title: 'email',
 		description: 'Email address',
@@ -159,7 +163,7 @@ const Profile = S.struct({
 })
 export type Profile = S.Schema.To<typeof Profile>
 
-const Basics = S.struct({
+export const Basics = S.struct({
 	email: S.optional(Email, {
 		exact: true,
 		annotations: {
