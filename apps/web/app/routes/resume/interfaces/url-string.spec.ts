@@ -1,7 +1,6 @@
 import * as S from '@effect/schema/Schema'
 import { expect, test, describe } from 'vitest'
-
-import { UrlString } from './interface.ts'
+import { UrlString } from './url-string.ts'
 
 type UrlDescriptionTuple = [url: string, description: string]
 type UrlDescriptionTupleArray = readonly UrlDescriptionTuple[]

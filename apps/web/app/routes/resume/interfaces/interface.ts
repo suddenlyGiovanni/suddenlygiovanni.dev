@@ -1,22 +1,9 @@
 import * as S from '@effect/schema/Schema'
-import { ISODateString } from './iso-date-string.ts'
-import { Email } from './email.ts'
-import { Location } from './location.ts'
 
-export const UrlString: S.Schema<string> = S.string.pipe(
-	S.trimmed(),
-	S.nonEmpty(),
-	S.filter(value => {
-		try {
-			new URL(value)
-			return true
-		} catch (_) {
-			return false
-		}
-	}),
-	S.description('URL (as per RFC 3986)'),
-	S.examples(['https://facebook.example.com']),
-)
+import { UrlString } from './url-string.ts'
+import { Email } from './email.ts'
+import { ISODateString } from './iso-date-string.ts'
+import { Location } from './location.ts'
 
 export const Award = S.struct({
 	awarder: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
