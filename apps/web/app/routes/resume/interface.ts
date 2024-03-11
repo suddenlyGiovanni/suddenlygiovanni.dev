@@ -95,7 +95,7 @@ export const Location = S.struct({
 		},
 	}),
 
-	countryCode: S.optional(S.string.pipe(S.trimmed(), S.length(2)), {
+	countryCode: S.optional(S.string.pipe(S.trimmed(), S.length(2), S.uppercased()), {
 		exact: true,
 		annotations: {
 			title: 'countryCode',
