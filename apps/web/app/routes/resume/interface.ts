@@ -252,7 +252,7 @@ const Education = S.struct({
 		annotations: { title: 'courses', description: 'List notable courses/subjects' },
 	}),
 
-	endDate: S.optional(ISODateString),
+	endDate: S.optional(ISODateString, { exact: true }),
 
 	gpa: S.optional(S.string, {
 		exact: true,
@@ -271,11 +271,8 @@ const Education = S.struct({
 		},
 	}),
 
-	startDate: S.optional(ISODateString),
+	startDate: S.optional(ISODateString, { exact: true }),
 
-	/**
-	 * e.g. Bachelor
-	 */
 	studyType: S.optional(S.string, {
 		exact: true,
 		annotations: {
@@ -285,17 +282,16 @@ const Education = S.struct({
 		},
 	}),
 
-	/**
-	 * e.g. http://facebook.example.com
-	 */
 	url: S.optional(UrlString, {
 		exact: true,
 		annotations: {
 			title: 'url',
 			description: 'URL (as per RFC 3986)',
+			examples: ['http://facebook.example.com'],
 		},
 	}),
-	location: S.optional(S.string),
+
+	location: S.optional(S.string, { exact: true }),
 })
 
 export interface Education extends S.Schema.To<typeof Education> {}
@@ -508,6 +504,7 @@ const Reference = S.struct({
 				'Joe blogs was a great employee, who turned up to work at least once a week. He exceeded my expectations when it came to doing nothing.',
 			]),
 		),
+		{ exact: true },
 	),
 })
 
@@ -520,6 +517,7 @@ const Skill = S.struct({
 			S.description('List some keywords pertaining to this skill'),
 			S.examples(['Rust', 'Java']),
 		),
+		{ exact: true },
 	),
 
 	level: S.optional(
@@ -530,6 +528,7 @@ const Skill = S.struct({
 			S.description('Level of expertise'),
 			S.examples(['Master', 'Intermediate']),
 		),
+		{ exact: true },
 	),
 
 	name: S.string.pipe(
@@ -551,6 +550,7 @@ const Volunteer = S.struct({
 			S.description('Specify accomplishments and achievements'),
 			S.examples(['Saved the world']),
 		),
+		{ exact: true },
 	),
 
 	organization: S.optional(
@@ -561,6 +561,7 @@ const Volunteer = S.struct({
 			S.description('Organization'),
 			S.examples(['Facebook']),
 		),
+		{ exact: true },
 	),
 
 	position: S.optional(
@@ -571,6 +572,7 @@ const Volunteer = S.struct({
 			S.description('The title of your position at the company'),
 			S.examples(['Software Engineer']),
 		),
+		{ exact: true },
 	),
 
 	startDate: ISODateString,
@@ -583,6 +585,7 @@ const Volunteer = S.struct({
 			S.description('Give an overview of your responsibilities at the company'),
 			S.examples(['My day-to-day activities involved designing and building web applications...']),
 		),
+		{ exact: true },
 	),
 
 	url: S.optional(
@@ -591,6 +594,7 @@ const Volunteer = S.struct({
 			S.description('URL (as per RFC 3986) of the company'),
 			S.examples(['https://facebook.example.com']),
 		),
+		{ exact: true },
 	),
 })
 
@@ -605,6 +609,7 @@ const Work = S.struct({
 			S.description('A short description of the company'),
 			S.examples(['Social Media Company', 'Educational Software Company']),
 		),
+		{ exact: true },
 	),
 
 	endDate: S.optional(ISODateString),
@@ -615,6 +620,7 @@ const Work = S.struct({
 			S.description('Specify multiple accomplishments'),
 			S.examples(['Started the company', 'Wrote a new algorithm']),
 		),
+		{ exact: true },
 	),
 
 	location: S.optional(
@@ -625,6 +631,7 @@ const Work = S.struct({
 			S.description('Location of the company'),
 			S.examples(['Menlo Park, CA']),
 		),
+		{ exact: true },
 	),
 
 	name: S.optional(
@@ -635,6 +642,7 @@ const Work = S.struct({
 			S.description('Name of the company'),
 			S.examples(['Facebook']),
 		),
+		{ exact: true },
 	),
 
 	/**
@@ -648,6 +656,7 @@ const Work = S.struct({
 			S.description('The title of your position at the company'),
 			S.examples(['Software Engineer']),
 		),
+		{ exact: true },
 	),
 
 	startDate: S.optional(ISODateString),
@@ -660,6 +669,7 @@ const Work = S.struct({
 			S.description('Give an overview of your responsibilities at the company'),
 			S.examples(['My day-to-day activities involved designing and building web applications...']),
 		),
+		{ exact: true },
 	),
 
 	url: S.optional(
@@ -668,6 +678,7 @@ const Work = S.struct({
 			S.description('URL (as per RFC 3986) of the company'),
 			S.examples(['https://facebook.example.com']),
 		),
+		{ exact: true },
 	),
 
 	contact: S.optional(
@@ -680,7 +691,7 @@ const Work = S.struct({
 				S.examples(['Mark Zuckerberg (CTO)']),
 			),
 
-			email: S.optional(Email),
+			email: S.optional(Email, { exact: true }),
 
 			phone: S.optional(
 				S.string.pipe(
@@ -690,8 +701,10 @@ const Work = S.struct({
 					S.description('Phone number'),
 					S.examples(['712-117-2923']),
 				),
+				{ exact: true },
 			),
 		}),
+		{ exact: true },
 	),
 })
 
@@ -711,19 +724,21 @@ const Resume = S.struct({
 			S.title('awards'),
 			S.description('Specify any awards you have received throughout your professional career'),
 		),
+		{ exact: true },
 	),
 
-	basics: S.optional(Basics),
+	basics: S.optional(Basics, { exact: true }),
 
-	education: S.optional(S.array(Education)),
+	education: S.optional(S.array(Education), { exact: true }),
 
-	interests: S.optional(S.array(Interest)),
+	interests: S.optional(S.array(Interest), { exact: true }),
 
 	languages: S.optional(
 		S.array(Language).pipe(
 			S.title('languages'),
 			S.description('List any other languages you speak'),
 		),
+		{ exact: true },
 	),
 
 	meta: S.optional(
@@ -731,10 +746,12 @@ const Resume = S.struct({
 			S.title('meta'),
 			S.description('The schema version and any other tooling configuration lives here'),
 		),
+		{ exact: true },
 	),
 
 	projects: S.optional(
 		S.array(Project).pipe(S.title('projects'), S.description('Specify career projects')),
+		{ exact: true },
 	),
 
 	publications: S.optional(
@@ -742,6 +759,7 @@ const Resume = S.struct({
 			S.title('publications'),
 			S.description('Specify your publications through your career'),
 		),
+		{ exact: true },
 	),
 
 	references: S.optional(
@@ -749,15 +767,17 @@ const Resume = S.struct({
 			S.title('references'),
 			S.description('List references you have received'),
 		),
+		{ exact: true },
 	),
 
 	skills: S.optional(
 		S.array(Skill).pipe(S.title('skills'), S.description('List out your professional skill-set')),
+		{ exact: true },
 	),
 
-	volunteer: S.optional(S.array(Volunteer)),
+	volunteer: S.optional(S.array(Volunteer), { exact: true }),
 
-	work: S.optional(S.array(Work)),
+	work: S.optional(S.array(Work), { exact: true }),
 })
 
 export interface Resume extends S.Schema.To<typeof Resume> {}
