@@ -3,11 +3,7 @@
 	"extends": "@suddenly-giovanni/config-typescript/remix.json",
 	"compilerOptions": {
 		"baseUrl": ".",
-		"lib": [
-			"DOM",
-			"DOM.Iterable",
-			"ES2022"
-		],
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
 		"types": [
 			"@total-typescript/ts-reset",
 			"vite/client",
@@ -19,13 +15,6 @@
 		"skipLibCheck": true,
 		"target": "ES2022"
 	},
-	"include": [
-		"env.d.ts",
-		"**/*.ts",
-		"**/*.tsx"
-	],
-	"exclude": [
-		"build",
-		"node_modules"
-	]
+	"include": ["env.d.ts", "**/*.ts", "**/*.tsx"],
+	"exclude": ["build", "node_modules"]
 }
