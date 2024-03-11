@@ -2,10 +2,11 @@
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
-import type { Profile } from './interfaces/profile.ts'
+import type { Education } from './interfaces/education.ts'
 import type { Basics } from './interfaces/basics.ts'
 import type * as R from './interfaces/interface.ts'
 import type { Location } from './interfaces/location.ts'
+import type { Profile } from './interfaces/profile.ts'
 
 type GatsbyTypes = any
 
@@ -118,7 +119,7 @@ function mapToEducation(
 				| 'url'
 		  >
 		| undefined,
-): Readonly<R.Education> {
+): Readonly<Education> {
 	return {
 		/**
 		 * e.g. Arts
