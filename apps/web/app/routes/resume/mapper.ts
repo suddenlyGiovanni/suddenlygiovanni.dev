@@ -2,7 +2,7 @@
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
-import * as S from '@effect/schema/Schema'
+import type { Location } from './location.ts'
 import type * as R from './interface.ts'
 
 type GatsbyTypes = any
@@ -259,7 +259,7 @@ function mapToLocation(
 				>
 		  >
 		| undefined,
-): Readonly<R.Location> {
+): Readonly<Location> {
 	return {
 		/**
 		 * To add multiple address lines, use

@@ -1,7 +1,6 @@
 import * as S from '@effect/schema/Schema'
 import { expect, test, describe } from 'vitest'
-
-import { Location } from './interface.ts'
+import { Location } from './location.ts'
 
 describe('Location', () => {
 	const locationInput: S.Schema.To<typeof Location> = {
