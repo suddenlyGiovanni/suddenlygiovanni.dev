@@ -10,8 +10,17 @@ const UrlString: S.Schema<string> = S.string.pipe(
 		}
 	}),
 	S.description('URL (as per RFC 3986)'),
-	S.examples(['http://facebook.example.com']),
+	S.examples(['https://facebook.example.com']),
 )
+
+const Email = S.pattern(
+	/^(?!\.)(?!.*\.\.)([A-Z0-9_+-.]*)[A-Z0-9_+-]@([A-Z0-9][A-Z0-9-]*\.)+[A-Z]{2,}$/i,
+	{
+		title: 'email',
+		description: 'Email address',
+		examples: ['foop@bar.baz']
+	}
+);
 
 export interface Resume {
 	/**
@@ -69,104 +78,51 @@ export interface Award {
 	title?: string
 }
 
-export interface Basics {
-	/**
-	 * e.g. `thomas@gmail.com`
-	 */
-	email?: string
-	/**
-	 * URL (as per RFC 3986) to a image in JPEG or PNG format
-	 */
-	image?: string
-	/**
-	 * e.g. Web Developer
-	 */
-	label?: string
-	location?: Location
-	name?: string
-	/**
-	 * Phone numbers are stored as strings so use any format you like, e.g. 712-117-2923
-	 */
-	phone?: string
-	/**
-	 * Specify any number of social networks that you participate in
-	 */
-	profiles?: Profile[]
-	/**
-	 * Write a short 2-3 sentence biography about yourself
-	 */
-	summary?: string
-	/**
-	 * URL (as per RFC 3986) to your website, e.g. personal homepage
-	 */
-	url?: string
-}
-
 export const Location = S.struct({
-	/**
-	 * To add multiple address lines, use
-	 * . For example, 1234 Glücklichkeit Straße
-	 * Hinterhaus 5. Etage li.
-	 */
-	address: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
-			S.description('Address line'),
-			S.examples(['1234 Glücklichkeit Straße Hinterhaus 5. Etage li']),
-		),
-		{ exact: true },
-	),
+	address: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'address',
+			description: 'Address line',
+			examples: ['1234 Glücklichkeit Straße Hinterhaus 5. Etage li.'],
+		},
+	}),
 
-	city: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
-			S.description('City'),
-			S.examples(['Berlin', 'New York', 'San Francisco']),
-		),
-		{ exact: true },
-	),
+	city: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'city',
+			description: 'City',
+			examples: ['Berlin', 'New York', 'San Francisco'],
+		},
+	}),
 
-	/**
-	 * code as per ISO-3166-1 ALPHA-2, e.g. US, AU, IN
-	 */
-	countryCode: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.length(2),
-			S.description('code as per ISO-3166-1 ALPHA-2'),
-			S.examples(['US', 'AU', 'IN']),
-		),
-		{ exact: true },
-	),
+	countryCode: S.optional(S.string.pipe(S.trimmed(), S.length(2)), {
+		exact: true,
+		annotations: {
+			title: 'countryCode',
+			description: 'Country code as per ISO-3166-1 ALPHA-2',
+			examples: ['US', 'AU', 'IN'],
+		},
+	}),
 
-	/**
-	 * european postal code
-	 * e.g. 12209
-	 */
-	postalCode: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
-			S.description('european postal code'),
-			S.examples(['12209']),
-		),
-		{ exact: true },
-	),
+	postalCode: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'postalCode',
+			description: 'European postal code',
+			examples: ['12209'],
+		},
+	}),
 
-	/**
-	 * The general region where you live. Can be a US state, or a province, for instance.
-	 */
-	region: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
-			S.description('The general region where you live. Can be a US state, or a province'),
-			S.examples(['California', 'Quebec']),
-		),
-		{ exact: true },
-	),
+	region: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'region',
+			description: 'The general region where you live. Can be a US state, or a province',
+			examples: ['California', 'Quebec'],
+		},
+	}),
 })
 
 export type Location = S.Schema.To<typeof Location>
@@ -208,6 +164,115 @@ const Profile = S.struct({
 	}),
 })
 export type Profile = S.Schema.To<typeof Profile>
+
+const Basics = S.struct({
+	email: S.optional(Email, {
+		exact: true,
+		annotations: {
+			title: 'email',
+			description: 'Email address',
+			examples: ['thomas@gmail.com'],
+		},
+	}),
+
+	image: S.optional(UrlString, {
+		exact: true,
+		annotations: {
+			title: 'image',
+			description: 'URL to a image in JPEG or PNG format (as per RFC 3986)',
+		},
+	}),
+
+	label: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'label',
+			description: 'Label',
+			examples: ['Web Developer'],
+		},
+	}),
+
+	location: S.optional(Location, { exact: true }),
+
+	name: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'name',
+			description: 'Your full name',
+			examples: ['Thomas Anderson'],
+		},
+	}),
+
+	phone: S.optional(S.string, {
+		exact: true,
+		annotations: {
+			title: 'phone',
+			description: 'Phone number',
+			examples: ['+4907121172923'],
+		},
+	}),
+
+	profiles: S.optional(S.array(Profile), {
+		exact: true,
+		annotations: {
+			title: 'profiles',
+			description: 'Social network profiles',
+		},
+	}),
+
+	summary: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'summary',
+			description: 'Write a short 2-3 sentence biography about yourself',
+			examples: ['Web Developer with a passion for web-based applications'],
+		},
+	}),
+
+	url: S.optional(UrlString, {
+		exact: true,
+		annotations: {
+			title: 'url',
+			description: 'URL to your website',
+			examples: ['http://thomasanderson.com'],
+		},
+	}),
+})
+
+export interface Basics extends S.Schema.To<typeof Basics> {
+	/**
+	 * e.g. `thomas@gmail.com`
+	 */
+	email?: string
+	/**
+	 * URL (as per RFC 3986) to a image in JPEG or PNG format
+	 */
+	image?: string
+	/**
+	 * e.g. Web Developer
+	 */
+	label?: string
+	location?: Location
+	name?: string
+	/**
+	 * Phone numbers are stored as strings so use any format you like, e.g. 712-117-2923
+	 */
+	phone?: string
+	/**
+	 * Specify any number of social networks that you participate in
+	 */
+	profiles?: Profile[]
+	/**
+	 * Write a short 2-3 sentence biography about yourself
+	 */
+	summary?: string
+	/**
+	 * URL (as per RFC 3986) to your website, e.g. personal homepage
+	 */
+	url?: string
+}
+
+
 
 export interface Education {
 	/**
