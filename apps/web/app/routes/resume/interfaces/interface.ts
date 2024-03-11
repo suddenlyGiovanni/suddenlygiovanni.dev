@@ -1,52 +1,13 @@
 import * as S from '@effect/schema/Schema'
 
+import { Language } from './language.ts'
 import { Award } from './award.ts'
 import { Basics } from './basics.ts'
 import { Education } from './education.ts'
 import { Email } from './email.ts'
+import { Interest } from './interest.ts'
 import { ISODateString } from './iso-date-string.ts'
 import { UrlString } from './url-string.ts'
-
-export const Interest = S.struct({
-	keywords: S.optional(S.array(S.string.pipe(S.trimmed(), S.nonEmpty())), {
-		exact: true,
-		annotations: {
-			title: 'keywords',
-			description: 'List some keywords pertaining to this interest',
-			examples: ['philosophy', 'distributed systems'],
-		},
-	}),
-
-	name: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
-		exact: true,
-		annotations: {
-			title: 'name',
-			description: 'Interest name',
-			examples: ['Philosophy'],
-		},
-	}),
-})
-export interface Interest extends S.Schema.To<typeof Interest> {}
-
-export const Language = S.struct({
-	fluency: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
-		exact: true,
-		annotations: {
-			title: 'fluency',
-			description: 'e.g. Fluent, Beginner',
-			examples: ['Fluent', 'Beginner', 'Intermediate', 'Advanced', 'Native'],
-		},
-	}),
-	language: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
-		exact: true,
-		annotations: {
-			title: 'language',
-			description: 'e.g. English, Spanish',
-			examples: ['English', 'Spanish'],
-		},
-	}),
-})
-export interface Language extends S.Schema.To<typeof Language> {}
 
 const Meta = S.struct({
 	/**
