@@ -2,7 +2,8 @@
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
-import { Basics } from './interfaces/basics.ts'
+import type { Profile } from './interfaces/profile.ts'
+import type { Basics } from './interfaces/basics.ts'
 import type * as R from './interfaces/interface.ts'
 import type { Location } from './interfaces/location.ts'
 
@@ -283,7 +284,7 @@ function mapToLocation(
 
 function mapToProfile(
 	profile: Pick<GatsbyTypes.ResumeJsonBasicsProfiles, 'network' | 'url' | 'username'> | undefined,
-): Readonly<R.Profile> {
+): Readonly<Profile> {
 	return {
 		/**
 		 * e.g. Facebook or Twitter

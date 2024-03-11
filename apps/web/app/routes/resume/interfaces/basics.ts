@@ -1,7 +1,7 @@
 import * as S from '@effect/schema/Schema'
 
+import { Profile } from './profile.ts'
 import { Email } from './email.ts'
-import { Profile } from './interface.ts'
 import { Location } from './location.ts'
 import { UrlString } from './url-string.ts'
 
