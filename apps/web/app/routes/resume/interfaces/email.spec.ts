@@ -1,7 +1,6 @@
 import * as S from '@effect/schema/Schema'
 import { expect, test, describe } from 'vitest'
-
-import { Email } from './interface.ts'
+import { Email } from './email.ts'
 
 describe('Email', () => {
 	describe('decode', () => {
