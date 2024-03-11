@@ -71,46 +71,6 @@ const Award = S.struct({
 
 export interface Award extends S.Schema.To<typeof Award> {}
 
-export interface Resume {
-	/**
-	 * link to the version of the schema that can validate the resume
-	 */
-	$schema?: string
-	/**
-	 * Specify any awards you have received throughout your professional career
-	 */
-	awards?: Award[]
-	basics?: Basics
-	education?: Education[]
-	interests?: Interest[]
-	/**
-	 * List any other languages you speak
-	 */
-	languages?: Language[]
-	/**
-	 * The schema version and any other tooling configuration lives here
-	 */
-	meta?: Meta
-	/**
-	 * Specify career projects
-	 */
-	projects?: Project[]
-	/**
-	 * Specify your publications through your career
-	 */
-	publications?: Publication[]
-	/**
-	 * List references you have received
-	 */
-	references?: Reference[]
-	/**
-	 * List out your professional skill-set
-	 */
-	skills?: Skill[]
-	volunteer?: Volunteer[]
-	work?: Work[]
-}
-
 export const Location = S.struct({
 	address: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
@@ -338,35 +298,7 @@ const Education = S.struct({
 	location: S.optional(S.string),
 })
 
-export interface Education extends S.Schema.To<typeof Education> {
-	/**
-	 * e.g. Arts
-	 */
-	area?: string
-	/**
-	 * List notable courses/subjects
-	 */
-	courses?: string[]
-	endDate?: Date
-	/**
-	 * grade point average, e.g. 3.67/4.0
-	 */
-	gpa?: string
-	/**
-	 * e.g. Massachusetts Institute of Technology
-	 */
-	institution?: string
-	startDate?: Date
-	/**
-	 * e.g. Bachelor
-	 */
-	studyType?: string
-	/**
-	 * e.g. http://facebook.example.com
-	 */
-	url?: string
-	location?: string
-}
+export interface Education extends S.Schema.To<typeof Education> {}
 
 const Interest = S.struct({
 	keywords: S.optional(S.array(S.string.pipe(S.trimmed(), S.nonEmpty())), {
@@ -445,42 +377,68 @@ const Meta = S.struct({
  */
 export interface Meta extends S.Schema.To<typeof Meta> {}
 
-export interface Project {
-	/**
-	 * Short summary of project. e.g. Collated works of 2017.
-	 */
-	description?: string
-	endDate?: Date
-	/**
-	 * Specify the relevant company/entity affiliations e.g. 'greenpeace', 'corporationXYZ'
-	 */
-	entity?: string
-	/**
-	 * Specify multiple features
-	 */
-	highlights?: string[]
-	/**
-	 * Specify special elements involved
-	 */
-	keywords?: string[]
-	/**
-	 * e.g. The World Wide Web
-	 */
-	name?: string
-	/**
-	 * Specify your role on this project or in company
-	 */
-	roles?: string[]
-	startDate?: Date
-	/**
-	 * e.g. 'volunteering', 'presentation', 'talk', 'application', 'conference'
-	 */
-	type?: string
-	/**
-	 * e.g. http://www.computer.org/csdl/mags/co/1996/10/rx069-abs.html
-	 */
-	url?: string
-}
+const Project = S.partial(
+	S.struct({
+		description: S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.description('Short summary of project'),
+			S.examples(['Collated works of 2017']),
+		),
+
+		endDate: ISODateString,
+
+		entity: S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.description('Specify the relevant company/entity affiliations'),
+			S.examples(['greenpeace', 'corporationXYZ']),
+		),
+
+		highlights: S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
+			S.title('highlights'),
+			S.description('Specify multiple features'),
+			S.examples(['Feature 1']),
+		),
+
+		keywords: S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
+			S.title('keywords'),
+			S.description('Specify special elements involved'),
+			S.examples(['special', 'elements']),
+		),
+
+		name: S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.description('Name of the project'),
+			S.examples(['The World Wide Web']),
+		),
+
+		roles: S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
+			S.title('roles'),
+			S.description('Specify your role on this project or in company'),
+			S.examples(['Software Engineer Lead']),
+		),
+
+		startDate: ISODateString,
+
+		type: S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('type'),
+			S.description('Type of project'),
+			S.examples(['volunteering', 'presentation', 'talk', 'application', 'conference']),
+		),
+
+		url: UrlString.pipe(
+			S.title('url'),
+			S.description('URL (as per RFC 3986)'),
+			S.examples(['http://www.computer.org.csdl/mags/co/1996/10/rx069-abs.html']),
+		),
+	}),
+)
+
+export interface Project extends S.Schema.To<typeof Project> {}
 
 const Publication = S.struct({
 	name: S.optional(S.string, {
@@ -531,100 +489,250 @@ const Publication = S.struct({
 
 export interface Publication extends S.Schema.To<typeof Publication> {}
 
-export interface Reference {
-	/**
-	 * e.g. Timothy Cook
-	 */
-	name?: string
-	/**
-	 * e.g. Joe blogs was a great employee, who turned up to work at least once a week. He
-	 * exceeded my expectations when it came to doing nothing.
-	 */
-	reference?: string
-}
+const Reference = S.struct({
+	name: S.string.pipe(
+		S.trimmed(),
+		S.nonEmpty(),
+		S.title('name'),
+		S.description('The name of the reference'),
+		S.examples(['Timothy Cook']),
+	),
 
-export interface Skill {
-	/**
-	 * List some keywords pertaining to this skill
-	 */
-	keywords?: string[]
-	/**
-	 * e.g. Master
-	 */
-	level?: string
-	/**
-	 * e.g. Web Development
-	 */
-	name?: string
-}
+	reference: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('reference'),
+			S.description('The reference text'),
+			S.examples([
+				'Joe blogs was a great employee, who turned up to work at least once a week. He exceeded my expectations when it came to doing nothing.',
+			]),
+		),
+	),
+})
 
-export interface Volunteer {
-	endDate?: Date
-	/**
-	 * Specify accomplishments and achievements
-	 */
-	highlights?: string[]
-	/**
-	 * e.g. Facebook
-	 */
-	organization?: string
+export interface Reference extends S.Schema.To<typeof Reference> {}
+
+const Skill = S.struct({
+	keywords: S.optional(
+		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
+			S.title('keywords'),
+			S.description('List some keywords pertaining to this skill'),
+			S.examples(['Rust', 'Java']),
+		),
+	),
+
+	level: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('level'),
+			S.description('Level of expertise'),
+			S.examples(['Master', 'Intermediate']),
+		),
+	),
+
+	name: S.string.pipe(
+		S.trimmed(),
+		S.nonEmpty(),
+		S.title('name'),
+		S.description('Name of the skill'),
+		S.examples(['Web Development']),
+	),
+})
+export interface Skill extends S.Schema.To<typeof Skill> {}
+
+const Volunteer = S.struct({
+	endDate: ISODateString,
+
+	highlights: S.optional(
+		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
+			S.title('highlights'),
+			S.description('Specify accomplishments and achievements'),
+			S.examples(['Saved the world']),
+		),
+	),
+
+	organization: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('organization'),
+			S.description('Organization'),
+			S.examples(['Facebook']),
+		),
+	),
+
+	position: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('position'),
+			S.description('The title of your position at the company'),
+			S.examples(['Software Engineer']),
+		),
+	),
+
+	startDate: ISODateString,
+
+	summary: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('summary'),
+			S.description('Give an overview of your responsibilities at the company'),
+			S.examples(['My day-to-day activities involved designing and building web applications...']),
+		),
+	),
+
+	url: S.optional(
+		UrlString.pipe(
+			S.title('url'),
+			S.description('URL (as per RFC 3986) of the company'),
+			S.examples(['https://facebook.example.com']),
+		),
+	),
+})
+
+export interface Volunteer extends S.Schema.To<typeof Volunteer> {}
+
+const Work = S.struct({
+	description: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('description'),
+			S.description('A short description of the company'),
+			S.examples(['Social Media Company', 'Educational Software Company']),
+		),
+	),
+
+	endDate: S.optional(ISODateString),
+
+	highlights: S.optional(
+		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
+			S.title('highlights'),
+			S.description('Specify multiple accomplishments'),
+			S.examples(['Started the company', 'Wrote a new algorithm']),
+		),
+	),
+
+	location: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('location'),
+			S.description('Location of the company'),
+			S.examples(['Menlo Park, CA']),
+		),
+	),
+
+	name: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('name'),
+			S.description('Name of the company'),
+			S.examples(['Facebook']),
+		),
+	),
+
 	/**
 	 * e.g. Software Engineer
 	 */
-	position?: string
-	startDate?: Date
-	/**
-	 * Give an overview of your responsibilities at the company
-	 */
-	summary?: string
-	/**
-	 * e.g. http://facebook.example.com
-	 */
-	url?: string
-}
+	position: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('position'),
+			S.description('The title of your position at the company'),
+			S.examples(['Software Engineer']),
+		),
+	),
 
-export interface Work {
-	/**
-	 * e.g. Social Media Company
-	 */
-	description?: string
-	endDate?: Date
-	/**
-	 * Specify multiple accomplishments
-	 */
-	highlights?: string[]
-	/**
-	 * e.g. Menlo Park, CA
-	 */
-	location?: string
-	/**
-	 * e.g. Facebook
-	 */
-	name?: string
-	/**
-	 * e.g. Software Engineer
-	 */
-	position?: string
-	startDate?: Date
-	/**
-	 * Give an overview of your responsibilities at the company
-	 */
-	summary?: string
-	/**
-	 * e.g. http://facebook.example.com
-	 */
-	url?: string
+	startDate: S.optional(ISODateString),
 
-	contact?: {
-		/**
-		 * ideally name and role
-		 * eg. Mark Zuckerberg (CTO)
-		 */
-		name: string
-		email?: string
-		/**
-		 * Phone numbers are stored as strings so use any format you like, e.g. 712-117-2923
-		 */
-		phone?: string
-	}
+	summary: S.optional(
+		S.string.pipe(
+			S.trimmed(),
+			S.nonEmpty(),
+			S.title('summary'),
+			S.description('Give an overview of your responsibilities at the company'),
+			S.examples(['My day-to-day activities involved designing and building web applications...']),
+		),
+	),
+
+	url: S.optional(
+		UrlString.pipe(
+			S.title('url'),
+			S.description('URL (as per RFC 3986) of the company'),
+			S.examples(['https://facebook.example.com']),
+		),
+	),
+
+	contact: S.optional(
+		S.struct({
+			name: S.string.pipe(
+				S.trimmed(),
+				S.nonEmpty(),
+				S.title('name'),
+				S.description('The name and role of the contact person'),
+				S.examples(['Mark Zuckerberg (CTO)']),
+			),
+
+			email: S.optional(Email),
+
+			phone: S.optional(
+				S.string.pipe(
+					S.trimmed(),
+					S.nonEmpty(),
+					S.title('phone'),
+					S.description('Phone number'),
+					S.examples(['712-117-2923']),
+				),
+			),
+		}),
+	),
+})
+
+export interface Work extends S.Schema.To<typeof Work> {}
+
+export interface Resume {
+	/**
+	 * link to the version of the schema that can validate the resume
+	 */
+	$schema?: string
+	/**
+	 * Specify any awards you have received throughout your professional career
+	 */
+	awards?: Award[]
+	basics?: Basics
+	education?: Education[]
+	interests?: Interest[]
+	/**
+	 * List any other languages you speak
+	 */
+	languages?: Language[]
+	/**
+	 * The schema version and any other tooling configuration lives here
+	 */
+	meta?: Meta
+	/**
+	 * Specify career projects
+	 */
+	projects?: Project[]
+	/**
+	 * Specify your publications through your career
+	 */
+	publications?: Publication[]
+	/**
+	 * List references you have received
+	 */
+	references?: Reference[]
+	/**
+	 * List out your professional skill-set
+	 */
+	skills?: Skill[]
+	volunteer?: Volunteer[]
+	work?: Work[]
 }
