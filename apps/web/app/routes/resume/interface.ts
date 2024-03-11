@@ -111,8 +111,6 @@ export interface Resume {
 	work?: Work[]
 }
 
-
-
 export const Location = S.struct({
 	address: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
@@ -274,38 +272,7 @@ const Basics = S.struct({
 	}),
 })
 
-export interface Basics extends S.Schema.To<typeof Basics> {
-	/**
-	 * e.g. `thomas@gmail.com`
-	 */
-	email?: string
-	/**
-	 * URL (as per RFC 3986) to a image in JPEG or PNG format
-	 */
-	image?: string
-	/**
-	 * e.g. Web Developer
-	 */
-	label?: string
-	location?: Location
-	name?: string
-	/**
-	 * Phone numbers are stored as strings so use any format you like, e.g. 712-117-2923
-	 */
-	phone?: string
-	/**
-	 * Specify any number of social networks that you participate in
-	 */
-	profiles?: Profile[]
-	/**
-	 * Write a short 2-3 sentence biography about yourself
-	 */
-	summary?: string
-	/**
-	 * URL (as per RFC 3986) to your website, e.g. personal homepage
-	 */
-	url?: string
-}
+export interface Basics extends S.Schema.To<typeof Basics> {}
 
 export interface Education {
 	/**
@@ -337,42 +304,82 @@ export interface Education {
 	location?: string
 }
 
-export interface Interest {
-	keywords?: string[]
-	/**
-	 * e.g. Philosophy
-	 */
-	name?: string
-}
+const Interest = S.struct({
+	keywords: S.optional(S.array(S.string.pipe(S.trimmed(), S.nonEmpty())), {
+		exact: true,
+		annotations: {
+			title: 'keywords',
+			description: 'List some keywords pertaining to this interest',
+			examples: ['philosophy', 'distributed systems'],
+		},
+	}),
 
-export interface Language {
+	name: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'name',
+			description: 'Interest name',
+			examples: ['Philosophy'],
+		},
+	}),
+})
+export interface Interest extends S.Schema.To<typeof Interest> {}
+
+const Language = S.struct({
+	fluency: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'fluency',
+			description: 'e.g. Fluent, Beginner',
+			examples: ['Fluent', 'Beginner', 'Intermediate', 'Advanced', 'Native'],
+		},
+	}),
+	language: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+		annotations: {
+			title: 'language',
+			description: 'e.g. English, Spanish',
+			examples: ['English', 'Spanish'],
+		},
+	}),
+})
+
+export interface Language extends S.Schema.To<typeof Language> {}
+
+const Meta = S.struct({
 	/**
-	 * e.g. Fluent, Beginner
+	 * URL (as per RFC 3986) to latest version of this document
 	 */
-	fluency?: string
-	/**
-	 * e.g. English, Spanish
-	 */
-	language?: string
-}
+	canonical: S.optional(UrlString, {
+		exact: true,
+		annotations: {
+			title: 'canonical',
+			description: 'URL (as per RFC 3986) to latest version of this document',
+		},
+	}),
+
+	lastModified: S.optional(ISODateString, {
+		annotations: {
+			title: 'lastModified',
+			description: 'Using ISO 8601 with YYYY-MM-DDThh:mm:ss',
+			examples: ['2012-04-05', '2012-04-05T10:00:00.000Z'],
+		},
+	}),
+
+	version: S.optional(S.string, {
+		exact: true,
+		annotations: {
+			title: 'version',
+			description: 'A version field which follows semver - e.g. v1.0.0',
+			examples: ['v1.0.0'],
+		},
+	}),
+})
 
 /**
  * The schema version and any other tooling configuration lives here
  */
-export interface Meta {
-	/**
-	 * URL (as per RFC 3986) to latest version of this document
-	 */
-	canonical?: string
-	/**
-	 * Using ISO 8601 with YYYY-MM-DDThh:mm:ss
-	 */
-	lastModified?: Date
-	/**
-	 * A version field which follows semver - e.g. v1.0.0
-	 */
-	version?: string
-}
+export interface Meta extends S.Schema.To<typeof Meta> {}
 
 export interface Project {
 	/**
@@ -411,25 +418,54 @@ export interface Project {
 	url?: string
 }
 
-export interface Publication {
-	/**
-	 * e.g. The World Wide Web
-	 */
-	name?: string
-	/**
-	 * e.g. IEEE, Computer Magazine
-	 */
-	publisher?: string
-	releaseDate?: Date
-	/**
-	 * Short summary of publication. e.g. Discussion of the World Wide Web, HTTP, HTML.
-	 */
-	summary?: string
-	/**
-	 * e.g. http://www.computer.org.example.com/csdl/mags/co/1996/10/rx069-abs.html
-	 */
-	url?: string
-}
+const Publication = S.struct({
+	name: S.optional(S.string, {
+		exact: true,
+		annotations: {
+			title: 'name',
+			description: 'The name of the publication',
+			examples: ['The World Wide Web'],
+		},
+	}),
+
+	publisher: S.optional(S.string, {
+		exact: true,
+		annotations: {
+			title: 'publisher',
+			description: 'The publisher of the publication',
+			examples: ['IEEE', 'Computer Magazine'],
+		},
+	}),
+
+	releaseDate: S.optional(ISODateString, {
+		exact: true,
+		annotations: {
+			title: 'releaseDate',
+			description: 'Using ISO 8601 with YYYY-MM-DDThh:mm:ss',
+			examples: ['2012-04-05', '2012-04-05T10:00:00.000Z'],
+		},
+	}),
+
+	summary: S.optional(S.string, {
+		exact: true,
+		annotations: {
+			title: 'summary',
+			description: 'Short summary of publication',
+			examples: ['Discussion of the World Wide Web, HTTP, HTML'],
+		},
+	}),
+
+	url: S.optional(UrlString, {
+		exact: true,
+		annotations: {
+			title: 'url',
+			description: 'URL (as per RFC 3986)',
+			examples: ['http://www.computer.org.example.com/csdl/mags/co/1996/10/rx069-abs.html'],
+		},
+	}),
+})
+
+export interface Publication extends S.Schema.To<typeof Publication> {}
 
 export interface Reference {
 	/**
