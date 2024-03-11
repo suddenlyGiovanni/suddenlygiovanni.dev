@@ -9,6 +9,7 @@ describe('Location', () => {
 		city: 'Berlin',
 		countryCode: 'DE',
 		postalCode: '10999',
+		region: 'California',
 	} satisfies S.Schema.To<typeof Location>
 
 	describe('decode', () => {
@@ -45,6 +46,12 @@ describe('Location', () => {
 			expect(() => parse({ postalCode: '  ' })).toThrow()
 			// expect(() => parse({ postalCode: 'ABCS' })).toThrow()
 			expect(() => parse({ postalCode: locationInput.postalCode })).not.toThrow()
+		})
+
+		test('region', () => {
+			expect(() => parse({ region: '' })).toThrow()
+			expect(() => parse({ region: '  ' })).toThrow()
+			expect(() => parse({ region: locationInput.region })).not.toThrow()
 		})
 	})
 })
