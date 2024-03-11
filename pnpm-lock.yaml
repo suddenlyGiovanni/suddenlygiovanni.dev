@@ -45,8 +45,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       effect:
-        specifier: 2.4.1
-        version: 2.4.1
+        specifier: 2.4.2
+        version: 2.4.2
       isbot:
         specifier: 5.1.1
         version: 5.1.1
@@ -8562,8 +8562,8 @@ packages:
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  /effect@2.4.1:
-    resolution: {integrity: sha512-YsoMB/EGCohGKFyTPYqaFe2B7UCU2MM303dkoowF8DNOdks/4q/00cyhTbBUmM/0FMDoUPmUi/AJ0Aj3E7vO1A==}
+  /effect@2.4.2:
+    resolution: {integrity: sha512-bvm1Dy11s0QXPPPKR+pP7nGkBA58kyrxzhRGMBRtQSFpB7JWiZVg5bNaA6fANy7zkhrVk1SViJ5emDjIiGmbhw==}
     dev: false
 
   /ejs@3.1.9:
@@ -13582,7 +13582,7 @@ packages:
       '@remix-run/react': '>= 1'
       '@remix-run/server-runtime': '>= 1'
     dependencies:
-      '@remix-run/react': 2.8.1(react-dom@18.2.0)(react@18.3.0-next-fecc288b7-20221025)(typescript@5.4.2)
+      '@remix-run/react': 2.8.1(react-dom@18.3.0-next-fecc288b7-20221025)(react@18.3.0-next-fecc288b7-20221025)(typescript@5.4.2)
       '@remix-run/server-runtime': 2.8.1(typescript@5.4.2)
     dev: false
 
