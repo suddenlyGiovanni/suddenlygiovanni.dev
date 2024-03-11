@@ -47,7 +47,7 @@ export const Award = S.struct({
 		annotations: {
 			title: 'date',
 			description: 'Date of the award',
-			examples: ['2012-04-05', '2012-04-05T10:00:00.000Z'],
+			examples: ['1970-01-01T00:00:00.000Z'],
 		},
 	}),
 
@@ -60,7 +60,7 @@ export const Award = S.struct({
 		},
 	}),
 
-	title: S.optional(S.string, {
+	title: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
 		annotations: {
 			title: 'title',
