@@ -1,6 +1,6 @@
 import * as S from '@effect/schema/Schema'
 import { expect, test, describe } from 'vitest'
-import { ISODateString } from './interface.ts'
+import { ISODateString } from './iso-date-string.ts'
 
 describe('ISODateString', () => {
 	describe('decode', () => {
