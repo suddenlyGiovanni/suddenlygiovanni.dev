@@ -2,19 +2,20 @@
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
-import type { Skill } from './interfaces/skill.ts'
+import type { Resume } from './interfaces/resume.ts'
 import type { Basics } from './interfaces/basics.ts'
 import type { Education } from './interfaces/education.ts'
 import type { Interest } from './interfaces/interest.ts'
-import type * as R from './interfaces/interface.ts'
 import type { Language } from './interfaces/language.ts'
 import type { Location } from './interfaces/location.ts'
 import type { Meta } from './interfaces/meta.ts'
 import type { Profile } from './interfaces/profile.ts'
+import type { Skill } from './interfaces/skill.ts'
+import type { Work } from './interfaces/work.ts'
 
 type GatsbyTypes = any
 
-export function mapToResume(resumeJson: GatsbyTypes.ResumeQuery['resumeJson']): Readonly<R.Resume> {
+export function mapToResume(resumeJson: GatsbyTypes.ResumeQuery['resumeJson']): Readonly<Resume> {
 	return {
 		/**
 		 * Specify any awards you have received throughout your professional career
@@ -220,7 +221,7 @@ function mapToWork(
 				| 'contact'
 		  >
 		| undefined,
-): Readonly<R.Work> {
+): Readonly<Work> {
 	return {
 		/**
 		 * e.g. Social Media Company
@@ -253,7 +254,7 @@ function mapToWork(
 		 */
 		url: work?.url,
 
-		contact: work?.contact as undefined | R.Work['contact'],
+		contact: work?.contact as undefined | Work['contact'],
 	}
 }
 
