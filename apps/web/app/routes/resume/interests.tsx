@@ -1,6 +1,7 @@
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import type { ReactElement } from 'react'
-import type { Interest } from './interface.ts'
+
+import type { Interest } from './interfaces/interest.ts'
 
 export function Interests({
 	interests,

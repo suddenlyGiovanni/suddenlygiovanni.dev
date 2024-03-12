@@ -4,7 +4,14 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"lib": ["DOM", "DOM.Iterable", "ES2022"],
-		"types": ["@total-typescript/ts-reset", "vite/client", "react", "react-dom", "./env.d.ts"],
+		"types": [
+			"@total-typescript/ts-reset",
+			"vite/client",
+			"react",
+			"react-dom",
+			"./env.d.ts",
+			"vitest"
+		],
 		"skipLibCheck": true,
 		"target": "ES2022"
 	},

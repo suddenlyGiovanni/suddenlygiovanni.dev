@@ -2,11 +2,20 @@
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
-import type * as R from './interface.ts'
+import type { Resume } from './interfaces/resume.ts'
+import type { Basics } from './interfaces/basics.ts'
+import type { Education } from './interfaces/education.ts'
+import type { Interest } from './interfaces/interest.ts'
+import type { Language } from './interfaces/language.ts'
+import type { Location } from './interfaces/location.ts'
+import type { Meta } from './interfaces/meta.ts'
+import type { Profile } from './interfaces/profile.ts'
+import type { Skill } from './interfaces/skill.ts'
+import type { Work } from './interfaces/work.ts'
 
 type GatsbyTypes = any
 
-export function mapToResume(resumeJson: GatsbyTypes.ResumeQuery['resumeJson']): Readonly<R.Resume> {
+export function mapToResume(resumeJson: GatsbyTypes.ResumeQuery['resumeJson']): Readonly<Resume> {
 	return {
 		/**
 		 * Specify any awards you have received throughout your professional career
@@ -65,7 +74,7 @@ function mapToBasics(
 				}
 		  >
 		| undefined,
-): Readonly<R.Basics> {
+): Readonly<Basics> {
 	return {
 		/**
 		 * e.g. thomas@gmail.com
@@ -115,7 +124,7 @@ function mapToEducation(
 				| 'url'
 		  >
 		| undefined,
-): Readonly<R.Education> {
+): Readonly<Education> {
 	return {
 		/**
 		 * e.g. Arts
@@ -149,7 +158,7 @@ function mapToEducation(
 
 function mapToInterest(
 	interest: Pick<GatsbyTypes.ResumeJsonInterests, 'keywords' | 'name'> | undefined,
-): Readonly<R.Interest> {
+): Readonly<Interest> {
 	return {
 		keywords: interest?.keywords as string[] | undefined,
 		name: interest?.name,
@@ -158,7 +167,7 @@ function mapToInterest(
 
 function mapToLanguage(
 	language: Pick<GatsbyTypes.ResumeJsonLanguages, 'fluency' | 'language'> | undefined,
-): Readonly<R.Language> {
+): Readonly<Language> {
 	return {
 		language: language?.language,
 		fluency: language?.fluency,
@@ -169,7 +178,7 @@ function mapToMeta(
 	meta:
 		| GatsbyTypes.Maybe<Pick<GatsbyTypes.ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>>
 		| undefined,
-): Readonly<R.Meta> {
+): Readonly<Meta> {
 	return {
 		/**
 		 * URL (as per RFC 3986) to latest version of this document
@@ -188,7 +197,7 @@ function mapToMeta(
 
 function mapToSkill(
 	skill: Pick<GatsbyTypes.ResumeJsonSkills, 'keywords' | 'level' | 'name'> | undefined,
-): Readonly<R.Skill> {
+): Readonly<Skill> {
 	return {
 		name: skill?.name,
 		level: skill?.level,
@@ -212,7 +221,7 @@ function mapToWork(
 				| 'contact'
 		  >
 		| undefined,
-): Readonly<R.Work> {
+): Readonly<Work> {
 	return {
 		/**
 		 * e.g. Social Media Company
@@ -245,7 +254,7 @@ function mapToWork(
 		 */
 		url: work?.url,
 
-		contact: work?.contact as undefined | R.Work['contact'],
+		contact: work?.contact as undefined | Work['contact'],
 	}
 }
 
@@ -258,7 +267,7 @@ function mapToLocation(
 				>
 		  >
 		| undefined,
-): Readonly<R.Location> {
+): Readonly<Location> {
 	return {
 		/**
 		 * To add multiple address lines, use
@@ -281,7 +290,7 @@ function mapToLocation(
 
 function mapToProfile(
 	profile: Pick<GatsbyTypes.ResumeJsonBasicsProfiles, 'network' | 'url' | 'username'> | undefined,
-): Readonly<R.Profile> {
+): Readonly<Profile> {
 	return {
 		/**
 		 * e.g. Facebook or Twitter
