@@ -2,13 +2,14 @@
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
-import type { Meta } from './interfaces/meta.ts'
+import type { Skill } from './interfaces/skill.ts'
 import type { Basics } from './interfaces/basics.ts'
 import type { Education } from './interfaces/education.ts'
 import type { Interest } from './interfaces/interest.ts'
 import type * as R from './interfaces/interface.ts'
 import type { Language } from './interfaces/language.ts'
 import type { Location } from './interfaces/location.ts'
+import type { Meta } from './interfaces/meta.ts'
 import type { Profile } from './interfaces/profile.ts'
 
 type GatsbyTypes = any
@@ -195,7 +196,7 @@ function mapToMeta(
 
 function mapToSkill(
 	skill: Pick<GatsbyTypes.ResumeJsonSkills, 'keywords' | 'level' | 'name'> | undefined,
-): Readonly<R.Skill> {
+): Readonly<Skill> {
 	return {
 		name: skill?.name,
 		level: skill?.level,
