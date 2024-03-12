@@ -4,7 +4,7 @@ import { ISODateString } from './iso-date-string.ts'
 import { UrlString } from './url-string.ts'
 
 export const Publication = S.struct({
-	name: S.optional(S.string, {
+	name: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
 		annotations: {
 			title: 'name',
@@ -13,7 +13,7 @@ export const Publication = S.struct({
 		},
 	}),
 
-	publisher: S.optional(S.string, {
+	publisher: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
 		annotations: {
 			title: 'publisher',
@@ -31,7 +31,7 @@ export const Publication = S.struct({
 		},
 	}),
 
-	summary: S.optional(S.string, {
+	summary: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
 		annotations: {
 			title: 'summary',
