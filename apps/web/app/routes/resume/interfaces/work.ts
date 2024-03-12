@@ -1,5 +1,6 @@
 import * as S from '@effect/schema/Schema'
 
+import { Phone } from './phone.ts'
 import { Email } from './email.ts'
 import { ISODateString } from './iso-date-string.ts'
 import { UrlString } from './url-string.ts'
@@ -16,13 +17,13 @@ export const Work = S.struct({
 		{ exact: true },
 	),
 
-	endDate: S.optional(ISODateString),
+	endDate: S.optional(ISODateString, { exact: true }),
 
 	highlights: S.optional(
 		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
 			S.title('highlights'),
 			S.description('Specify multiple accomplishments'),
-			S.examples(['Started the company', 'Wrote a new algorithm']),
+			S.examples(['Founded the company', 'Wrote a new algorithm']),
 		),
 		{ exact: true },
 	),
@@ -63,7 +64,7 @@ export const Work = S.struct({
 		{ exact: true },
 	),
 
-	startDate: S.optional(ISODateString),
+	startDate: S.optional(ISODateString, { exact: true }),
 
 	summary: S.optional(
 		S.string.pipe(
@@ -97,16 +98,7 @@ export const Work = S.struct({
 
 			email: S.optional(Email, { exact: true }),
 
-			phone: S.optional(
-				S.string.pipe(
-					S.trimmed(),
-					S.nonEmpty(),
-					S.title('phone'),
-					S.description('Phone number'),
-					S.examples(['712-117-2923']),
-				),
-				{ exact: true },
-			),
+			phone: S.optional(Phone, { exact: true }),
 		}),
 		{ exact: true },
 	),
