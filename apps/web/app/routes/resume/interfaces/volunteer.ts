@@ -4,7 +4,7 @@ import { ISODateString } from './iso-date-string.ts'
 import { UrlString } from './url-string.ts'
 
 export const Volunteer = S.struct({
-	endDate: ISODateString,
+	endDate: S.optional(ISODateString, { exact: true }),
 
 	highlights: S.optional(
 		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
@@ -37,7 +37,7 @@ export const Volunteer = S.struct({
 		{ exact: true },
 	),
 
-	startDate: ISODateString,
+	startDate: S.optional(ISODateString, { exact: true }),
 
 	summary: S.optional(
 		S.string.pipe(
