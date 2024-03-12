@@ -8,6 +8,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 installGlobals()
 
+/// <reference types="vitest" />
 export default defineConfig({
 	plugins: [
 		mdx({
@@ -25,4 +26,12 @@ export default defineConfig({
 		}),
 		tsconfigPaths(),
 	],
+
+	test: {
+		reporters: process.env.GITHUB_ACTIONS ? ['dot', 'github-actions'] : ['default'],
+		coverage: {
+			provider: 'v8',
+			reporter: ['text', 'json', 'html'],
+		},
+	},
 })
