@@ -5,10 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: 🐶 reviewdog with actionlint
-        uses: reviewdog/action-actionlint@v1
+        uses: reviewdog/action-actionlint@c6ee1eb0a5d47b2af53a203652b5dac0b6c4016e # v1
         continue-on-error: true
         with:
           fail_on_error: false
@@ -23,10 +23,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: 🐶 reviewdog with hadolint (Dockerfile)
-        uses: reviewdog/action-hadolint@v1
+        uses: reviewdog/action-hadolint@a5498b3af526595744db9bf22d987111aa8c4687 # v1
         continue-on-error: true
         with:
           filter_mode: nofilter
@@ -38,10 +38,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: 🐶 reviewdog with shellcheck (shell)
-        uses: reviewdog/action-shellcheck@v1
+        uses: reviewdog/action-shellcheck@72365a51bf6476fe952a117c3ff703eb7775e40a # v1
         with:
           check_all_files_with_shebangs: "true" # Optional.
           exclude: "./.git/*" # Optional.
@@ -57,10 +57,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: 🐶 reviewdog with shfmt (shell)
-        uses: reviewdog/action-shfmt@v1
+        uses: reviewdog/action-shfmt@f59386f08bd9a24ac1a746e69f026ddc2ed06710 # v1
         continue-on-error: true
         with:
           check_all_files_with_shebangs: true
@@ -78,11 +78,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: 🐶 reviewdog with markdownlint (markdown)
         continue-on-error: true
-        uses: reviewdog/action-markdownlint@v0
+        uses: reviewdog/action-markdownlint@6e02140816b5fcc7295ea7ae2a664af18190ff29 # v0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
@@ -96,7 +96,7 @@ jobs:
     continue-on-error: true
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v3
@@ -104,7 +104,7 @@ jobs:
           version: 8
 
       - name: 🛠️ Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
           node-version: current
           cache: "pnpm"
@@ -113,7 +113,7 @@ jobs:
         run: pnpm install --frozen-lockfile --prod=false
 
       - name: 🐶 reviewdog with tsc (TypeScript) - packages/ui
-        uses: EPMatt/reviewdog-action-tsc@v1
+        uses: EPMatt/reviewdog-action-tsc@3777408796aadf116630f57f7267909d38f9e01a # v1
         with:
           github_token: ${{ secrets.github_token }}
           workdir: "."
@@ -124,7 +124,7 @@ jobs:
           tsc_flags: "--noEmit --pretty --project packages/ui"
 
       - name: 🐶 reviewdog with tsc (TypeScript) - apps/web
-        uses: EPMatt/reviewdog-action-tsc@v1
+        uses: EPMatt/reviewdog-action-tsc@3777408796aadf116630f57f7267909d38f9e01a # v1
         with:
           github_token: ${{ secrets.github_token }}
           workdir: "."
@@ -143,15 +143,15 @@ jobs:
       pull-requests: write
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: 🐶 Setup reviewdog
-        uses: reviewdog/action-setup@v1
+        uses: reviewdog/action-setup@1d18b2938261447f64c39f831d7395e90ef5a40e # v1
         with:
           reviewdog_version: latest
 
       - name: Setup Biome
-        uses: biomejs/setup-biome@v2
+        uses: biomejs/setup-biome@b9af8bac86b0da736cfbfadbfeb3f7463da083f2 # v2
         with:
           biome-version: latest
           token: ${{ secrets.github_token }}
@@ -192,7 +192,7 @@ jobs:
       pull-requests: write
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: 📦 Install pnpm
         uses: pnpm/action-setup@v3
@@ -200,7 +200,7 @@ jobs:
           version: 8
 
       - name: 🛠️ Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
           node-version: current
           cache: "pnpm"
@@ -209,7 +209,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: 🐶 reviewdog with ESLint (TypeScript) - apps/web
-        uses: reviewdog/action-eslint@v1
+        uses: reviewdog/action-eslint@b3c5aa2589ed06195b52faffd3afb108c02faaf5 # v1
         continue-on-error: true
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -221,7 +221,7 @@ jobs:
           eslint_flags: --ext ts,tsx ./app
 
       - name: 🐶 reviewdog with ESLint (TypeScript) - packages/ui
-        uses: reviewdog/action-eslint@v1
+        uses: reviewdog/action-eslint@b3c5aa2589ed06195b52faffd3afb108c02faaf5 # v1
         continue-on-error: true
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -238,10 +238,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
 
       - name: 🐶 reviewdog with misspell
-        uses: reviewdog/action-misspell@v1
+        uses: reviewdog/action-misspell@32cdac969bc45951d79b89420a60c9b0102cf6ed # v1
         with:
           github_token: ${{ secrets.github_token }}
           locale: "US"
