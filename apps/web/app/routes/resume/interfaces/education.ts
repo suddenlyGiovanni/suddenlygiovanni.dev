@@ -7,23 +7,23 @@ export const Education = S.struct({
 	/**
 	 * e.g. Arts
 	 */
-	area: S.optional(S.string, {
+	area: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
 		annotations: {
 			title: 'area',
 			description: 'e.g. Arts',
-			examples: ['Arts'],
+			examples: ['Arts', 'Computer Science'],
 		},
 	}),
 
-	courses: S.optional(S.array(S.string), {
+	courses: S.optional(S.array(S.string.pipe(S.trimmed(), S.nonEmpty())), {
 		exact: true,
 		annotations: { title: 'courses', description: 'List notable courses/subjects' },
 	}),
 
 	endDate: S.optional(ISODateString, { exact: true }),
 
-	gpa: S.optional(S.string, {
+	gpa: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
 		annotations: {
 			title: 'gpa',
@@ -32,7 +32,7 @@ export const Education = S.struct({
 		},
 	}),
 
-	institution: S.optional(S.string, {
+	institution: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		annotations: {
 			title: 'institution',
 			description: 'e.g. Massachusetts Institute of Technology',
@@ -42,12 +42,12 @@ export const Education = S.struct({
 
 	startDate: S.optional(ISODateString, { exact: true }),
 
-	studyType: S.optional(S.string, {
+	studyType: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
 		annotations: {
 			title: 'studyType',
-			description: 'tuYpe of study',
-			examples: ['Bachelor'],
+			description: 'the type of study',
+			examples: ['Bachelor', 'Master', 'Doctorate'],
 		},
 	}),
 
@@ -60,7 +60,7 @@ export const Education = S.struct({
 		},
 	}),
 
-	location: S.optional(S.string, { exact: true }),
+	location: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), { exact: true }),
 })
 
 export interface Education extends S.Schema.To<typeof Education> {}
