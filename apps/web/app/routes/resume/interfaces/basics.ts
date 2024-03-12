@@ -1,4 +1,5 @@
 import * as S from '@effect/schema/Schema'
+import { Phone } from '~/routes/resume/interfaces/phone.ts'
 
 import { Profile } from './profile.ts'
 import { Email } from './email.ts'
@@ -43,7 +44,7 @@ export const Basics = S.struct({
 		},
 	}),
 
-	phone: S.optional(S.string, {
+	phone: S.optional(Phone, {
 		exact: true,
 		annotations: {
 			title: 'phone',
