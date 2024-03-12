@@ -54,6 +54,16 @@ jobs:
       - name: 🧪 Run unit tests
         run: pnpm test:unit
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: suddenlyGiovanni/suddenlygiovanni.dev
+          working-directory: apps/web
+          directory: coverage
+          fail_ci_if_error: false
+
+
       - name: 🧪 Run integration tests
         run: pnpm test:integration
 
