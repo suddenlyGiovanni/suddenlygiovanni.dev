@@ -2,11 +2,12 @@
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
-import type { Language } from './interfaces/language.ts'
+import type { Meta } from './interfaces/meta.ts'
 import type { Basics } from './interfaces/basics.ts'
 import type { Education } from './interfaces/education.ts'
 import type { Interest } from './interfaces/interest.ts'
 import type * as R from './interfaces/interface.ts'
+import type { Language } from './interfaces/language.ts'
 import type { Location } from './interfaces/location.ts'
 import type { Profile } from './interfaces/profile.ts'
 
@@ -175,7 +176,7 @@ function mapToMeta(
 	meta:
 		| GatsbyTypes.Maybe<Pick<GatsbyTypes.ResumeJsonMeta, 'canonical' | 'lastModified' | 'version'>>
 		| undefined,
-): Readonly<R.Meta> {
+): Readonly<Meta> {
 	return {
 		/**
 		 * URL (as per RFC 3986) to latest version of this document
