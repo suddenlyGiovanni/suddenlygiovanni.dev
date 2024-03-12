@@ -1,5 +1,6 @@
 import * as S from '@effect/schema/Schema'
-import { Publication } from './publication.ts'
+
+import { Reference } from './reference.ts'
 import { Award } from './award.ts'
 import { Basics } from './basics.ts'
 import { Education } from './education.ts'
@@ -9,32 +10,8 @@ import { ISODateString } from './iso-date-string.ts'
 import { Language } from './language.ts'
 import { Meta } from './meta.ts'
 import { Project } from './project.ts'
+import { Publication } from './publication.ts'
 import { UrlString } from './url-string.ts'
-
-export const Reference = S.struct({
-	name: S.string.pipe(
-		S.trimmed(),
-		S.nonEmpty(),
-		S.title('name'),
-		S.description('The name of the reference'),
-		S.examples(['Timothy Cook']),
-	),
-
-	reference: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
-			S.title('reference'),
-			S.description('The reference text'),
-			S.examples([
-				'Joe blogs was a great employee, who turned up to work at least once a week. He exceeded my expectations when it came to doing nothing.',
-			]),
-		),
-		{ exact: true },
-	),
-})
-
-export interface Reference extends S.Schema.To<typeof Reference> {}
 
 export const Skill = S.struct({
 	keywords: S.optional(
