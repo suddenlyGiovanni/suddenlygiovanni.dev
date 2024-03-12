@@ -1,6 +1,5 @@
 import * as S from '@effect/schema/Schema'
-
-import { Project } from './project.ts'
+import { Publication } from './publication.ts'
 import { Award } from './award.ts'
 import { Basics } from './basics.ts'
 import { Education } from './education.ts'
@@ -9,58 +8,10 @@ import { Interest } from './interest.ts'
 import { ISODateString } from './iso-date-string.ts'
 import { Language } from './language.ts'
 import { Meta } from './meta.ts'
+import { Project } from './project.ts'
 import { UrlString } from './url-string.ts'
 
-const Publication = S.struct({
-	name: S.optional(S.string, {
-		exact: true,
-		annotations: {
-			title: 'name',
-			description: 'The name of the publication',
-			examples: ['The World Wide Web'],
-		},
-	}),
-
-	publisher: S.optional(S.string, {
-		exact: true,
-		annotations: {
-			title: 'publisher',
-			description: 'The publisher of the publication',
-			examples: ['IEEE', 'Computer Magazine'],
-		},
-	}),
-
-	releaseDate: S.optional(ISODateString, {
-		exact: true,
-		annotations: {
-			title: 'releaseDate',
-			description: 'Using ISO 8601 with YYYY-MM-DDThh:mm:ss',
-			examples: ['2012-04-05', '2012-04-05T10:00:00.000Z'],
-		},
-	}),
-
-	summary: S.optional(S.string, {
-		exact: true,
-		annotations: {
-			title: 'summary',
-			description: 'Short summary of publication',
-			examples: ['Discussion of the World Wide Web, HTTP, HTML'],
-		},
-	}),
-
-	url: S.optional(UrlString, {
-		exact: true,
-		annotations: {
-			title: 'url',
-			description: 'URL (as per RFC 3986)',
-			examples: ['http://www.computer.org.example.com/csdl/mags/co/1996/10/rx069-abs.html'],
-		},
-	}),
-})
-
-export interface Publication extends S.Schema.To<typeof Publication> {}
-
-const Reference = S.struct({
+export const Reference = S.struct({
 	name: S.string.pipe(
 		S.trimmed(),
 		S.nonEmpty(),
@@ -85,7 +36,7 @@ const Reference = S.struct({
 
 export interface Reference extends S.Schema.To<typeof Reference> {}
 
-const Skill = S.struct({
+export const Skill = S.struct({
 	keywords: S.optional(
 		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
 			S.title('keywords'),
@@ -117,7 +68,7 @@ const Skill = S.struct({
 
 export interface Skill extends S.Schema.To<typeof Skill> {}
 
-const Volunteer = S.struct({
+export const Volunteer = S.struct({
 	endDate: ISODateString,
 
 	highlights: S.optional(
@@ -176,7 +127,7 @@ const Volunteer = S.struct({
 
 export interface Volunteer extends S.Schema.To<typeof Volunteer> {}
 
-const Work = S.struct({
+export const Work = S.struct({
 	description: S.optional(
 		S.string.pipe(
 			S.trimmed(),
@@ -286,7 +237,7 @@ const Work = S.struct({
 
 export interface Work extends S.Schema.To<typeof Work> {}
 
-const Resume = S.struct({
+export const Resume = S.struct({
 	$schema: S.string.pipe(
 		S.trimmed(),
 		S.nonEmpty(),
