@@ -19,11 +19,11 @@ export const Meta = S.struct({
 		annotations: {
 			title: 'lastModified',
 			description: 'Using ISO 8601 with YYYY-MM-DDThh:mm:ss',
-			examples: ['2012-04-05', '2012-04-05T10:00:00.000Z'],
+			examples: ['2012-04-05T10:00:00.000Z'],
 		},
 	}),
 
-	version: S.optional(S.string, {
+	version: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
 		annotations: {
 			title: 'version',
