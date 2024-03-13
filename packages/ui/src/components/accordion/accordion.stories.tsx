@@ -359,6 +359,7 @@ export function Animated(): ReactElement {
 	const [hasDynamicContent, setHasDynamicContent] = useState(false)
 	const timerRef = useRef(0)
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: trust me; it has the correct dependencies.
 	useEffect(() => {
 		if (hasDynamicContent) {
 			timerRef.current = window.setTimeout(() => {
@@ -399,6 +400,7 @@ export function Animated(): ReactElement {
 						</AccordionHeader>
 						<AccordionContent className={animatedContentClass}>
 							{[...new Array<unknown>(count)].map((_, index) => (
+								// biome-ignore lint/suspicious/noArrayIndexKey: This is a test component.
 								<div key={index} style={{ padding: 10 }}>
 									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
 									viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
@@ -419,6 +421,7 @@ export function Animated(): ReactElement {
 						</AccordionHeader>
 						<AccordionContent className={animatedContentClass}>
 							{[...new Array<unknown>(count)].map((_, index) => (
+								// biome-ignore lint/suspicious/noArrayIndexKey: This is a test component.
 								<div key={index} style={{ padding: 10 }}>
 									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
 									viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
