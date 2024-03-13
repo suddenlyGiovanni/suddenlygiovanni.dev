@@ -1,0 +1,12 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"files": [],
+	"references": [
+		{ "path": "apps/web" },
+		{ "path": "packages/ui" },
+		{ "path": "packages/config-eslint" },
+		{ "path": "packages/config-prettier" },
+		{ "path": "packages/config-tailwind" },
+		{ "path": "packages/config-typescript" }
+	]
+}
