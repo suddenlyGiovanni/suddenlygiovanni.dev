@@ -1,21 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { T } from './typography.tsx'
 
-const meta = {
+const meta: Meta<typeof T.ul> = {
 	component: T.ul,
-	title: 'typography',
 	decorators: Story => (
 		<div className="flex min-h-96 w-full items-center justify-center p-10">
 			<Story />
 		</div>
 	),
-} satisfies Meta<typeof T.ul>
+}
 
-type Story = StoryObj<typeof meta>
-
-export default meta
-
-export const Ul: Story = {
+export const Ul: StoryObj<typeof meta> = {
 	render: args => (
 		<T.ul {...args}>
 			<li>1st level of puns: 5 gold coins</li>
@@ -24,3 +19,5 @@ export const Ul: Story = {
 		</T.ul>
 	),
 }
+
+export default meta
