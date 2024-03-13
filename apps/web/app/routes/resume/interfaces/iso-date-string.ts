@@ -1,3 +1,4 @@
+// biome-ignore lint/nursery/noNamespaceImport: this is hoow we import from schema
 import * as S from '@effect/schema/Schema'
 
 export const ISODateString = S.string.pipe(
