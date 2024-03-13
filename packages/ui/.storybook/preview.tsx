@@ -47,4 +47,5 @@ const preview: Preview = {
 	],
 }
 
+// biome-ignore lint/style/noDefaultExport: it is part of the api
 export default preview
