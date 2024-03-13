@@ -30,9 +30,6 @@ module.exports = {
 		node: true,
 	},
 	plugins: ['only-warn'],
-	globals: {
-		JSX: true,
-	},
 	settings: {
 		'import/resolver': {
 			typescript: {
