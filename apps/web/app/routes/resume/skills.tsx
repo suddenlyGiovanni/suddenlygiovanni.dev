@@ -47,6 +47,7 @@ export const Skills = memo(function Skills({
 
 			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
 				{skills.map(({ name, keywords }, idx) => (
+					// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non null assertions
 					<Skill key={name} keywords={keywords} name={name} value={all[idx]!} />
 				))}
 			</Accordion>

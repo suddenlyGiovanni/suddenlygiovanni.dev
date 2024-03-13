@@ -1,17 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Placeholder } from './placeholder.tsx'
 
-const meta = {
+const meta: Meta<typeof Placeholder> = {
 	component: Placeholder,
 	decorators: [
 		Story => <div className="flex items-center justify-center bg-blue-200 p-8">{Story()}</div>,
 	],
-} satisfies Meta<typeof Placeholder>
+}
 
 type Story = StoryObj<typeof meta>
-
-// biome-ignore lint/style/noDefaultExport: <explanation>
-export default meta
 
 export const Base: Story = {}
 
@@ -28,3 +25,5 @@ export const MediumSize: Story = {
 export const LargeSize: Story = {
 	decorators: [story => <div className="w-full rounded bg-green-200 p-4">{story()}</div>],
 }
+
+export default meta

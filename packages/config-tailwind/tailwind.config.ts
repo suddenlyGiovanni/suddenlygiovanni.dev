@@ -29,30 +29,37 @@ const config = {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
+					// biome-ignore lint/style/useNamingConvention: part of the tailwindcss theme
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
 				},
 				secondary: {
+					// biome-ignore lint/style/useNamingConvention: part of the tailwindcss theme
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))',
 				},
 				destructive: {
+					// biome-ignore lint/style/useNamingConvention: part of the tailwindcss theme
 					DEFAULT: 'hsl(var(--destructive))',
 					foreground: 'hsl(var(--destructive-foreground))',
 				},
 				muted: {
+					// biome-ignore lint/style/useNamingConvention: part of the tailwindcss theme
 					DEFAULT: 'hsl(var(--muted))',
 					foreground: 'hsl(var(--muted-foreground))',
 				},
 				accent: {
+					// biome-ignore lint/style/useNamingConvention: part of the tailwindcss theme
 					DEFAULT: 'hsl(var(--accent))',
 					foreground: 'hsl(var(--accent-foreground))',
 				},
 				popover: {
+					// biome-ignore lint/style/useNamingConvention: part of the tailwindcss theme
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))',
 				},
 				card: {
+					// biome-ignore lint/style/useNamingConvention: part of the tailwindcss theme
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',
 				},

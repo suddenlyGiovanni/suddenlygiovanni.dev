@@ -2,15 +2,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { T } from './typography.tsx'
 
-const meta = {
-	title: 'typography',
-} satisfies Meta
+const meta = {} satisfies Meta
 
-type Story = StoryObj<typeof meta>
-
-export default meta
-
-export const Demo: Story = {
+export const Demo: StoryObj<typeof meta> = {
 	render: () => (
 		<div>
 			<T.h1>The Joke Tax Chronicles</T.h1>
@@ -22,7 +16,7 @@ export const Demo: Story = {
 			<T.h2 className="mt-mu10 transition-colors">The King's Plan</T.h2>
 			<T.p>
 				The king thought long and hard, and finally came up with{' '}
-				<T.a href="#">a brilliant plan</T.a>: he would tax the jokes in the kingdom.
+				<T.a href="#1">a brilliant plan</T.a>: he would tax the jokes in the kingdom.
 			</T.p>
 			<T.blockquote className="mt-6">
 				"After all," he said, "everyone enjoys a good joke, so it's only fair that they should pay
@@ -94,3 +88,5 @@ export const Demo: Story = {
 		</div>
 	),
 }
+
+export default meta

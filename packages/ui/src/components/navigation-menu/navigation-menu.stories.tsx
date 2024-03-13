@@ -14,9 +14,9 @@ import {
 	navigationMenuTriggerStyle,
 } from '~/ui/navigation-menu.tsx'
 
-const meta: Meta = { title: 'NavigationMenu' }
-
-export default meta
+const meta: Meta = {
+	component: NavigationMenu,
+}
 
 const components: { title: string; href: string; description: string }[] = [
 	{
@@ -183,3 +183,5 @@ const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(
 	},
 )
 ListItem.displayName = 'ListItem'
+
+export default meta

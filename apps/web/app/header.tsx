@@ -97,10 +97,6 @@ export const Header = memo(function Header(): ReactElement {
 		[toggleMobileNavigationVisibility],
 	)
 
-	const stopPropagation = useCallback(<T extends HTMLElement>(event: SyntheticEvent<T>) => {
-		event.stopPropagation()
-	}, [])
-
 	const handleThemeChange = useCallback(
 		(t: Theme.DARK | Theme.LIGHT): void => {
 			setTheme(t)
@@ -225,6 +221,7 @@ export const Header = memo(function Header(): ReactElement {
 						)}
 						id={PRIMARY_NAVIGATION}
 						onClick={handleMobileNavigationClick}
+						onKeyDown={handleMobileNavigationClick}
 						role="menu"
 					>
 						{renderLi}

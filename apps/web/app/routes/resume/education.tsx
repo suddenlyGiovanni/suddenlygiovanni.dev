@@ -11,7 +11,7 @@ import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import type { ReactElement } from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
 
-import { Education as IEducation } from '~/routes/resume/interfaces/education.ts'
+import type { Education as IEducation } from '~/routes/resume/interfaces/education.ts'
 
 function formatDateLocaleShort(date: Date): string {
 	return date.toLocaleDateString('en-US', {
@@ -44,7 +44,7 @@ export const Education = memo(function Education({
 			<T.h2 className="mb-0">Education</T.h2>
 
 			<Button
-				className="absolute right-0 top-0 rounded-full"
+				className="absolute top-0 right-0 rounded-full"
 				onClick={toggleEducation}
 				size="icon"
 				variant="ghost"
@@ -65,6 +65,7 @@ export const Education = memo(function Education({
 						startDate={education.startDate}
 						studyType={education.studyType}
 						url={education.url}
+						// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non-null assertion
 						value={all[idx]!}
 					/>
 				))}
@@ -148,14 +149,14 @@ const EduHeader = memo(function EduHeader({
 		<dt className="relative my-4 flex w-full flex-col">
 			<h3
 				aria-label="area of education"
-				className={clsx('mb-0 mt-0 text-base font-bold leading-none')}
+				className={clsx('mt-0 mb-0 font-bold text-base leading-none')}
 			>
 				{area}
 			</h3>
 
 			<span
 				aria-label="institution"
-				className={clsx(styles.span, 'text-base font-medium not-italic')}
+				className={clsx(styles.span, 'font-medium text-base not-italic')}
 			>
 				{institution}
 				{url ? (
@@ -199,7 +200,7 @@ const EduHeader = memo(function EduHeader({
 					className={clsx(
 						'rounded-full',
 						'transition-all [&[data-state=open]>svg]:rotate-180',
-						'absolute right-0 top-0',
+						'absolute top-0 right-0',
 					)}
 					size="icon"
 					type="button"

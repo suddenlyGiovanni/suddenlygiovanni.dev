@@ -3,16 +3,14 @@ import type { Meta } from '@storybook/react'
 import type { ReactElement } from 'react'
 import { T } from './typography.tsx'
 
-const meta = {
-	title: 'typography',
+const meta: Meta = {
+	component: T.tr,
 	decorators: Story => (
 		<div className="flex min-h-96 w-full items-center justify-center p-10">
 			<Story />
 		</div>
 	),
-} satisfies Meta
-
-export default meta
+}
 
 export function Table(): ReactElement {
 	return (
@@ -42,3 +40,5 @@ export function Table(): ReactElement {
 		</div>
 	)
 }
+
+export default meta

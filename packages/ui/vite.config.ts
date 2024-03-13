@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 // https://vitejs.dev/config/
+// biome-ignore lint/style/noDefaultExport: this is how Vite expects the config to be
 export default defineConfig({
 	build: {
 		target: 'esnext',

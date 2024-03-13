@@ -1,20 +1,19 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { T } from './typography.tsx'
 
-const meta = {
+const meta: Meta<typeof T.code> = {
 	component: T.code,
-	title: 'typography',
 	decorators: Story => (
 		<div className="flex min-h-96 w-full items-center justify-center p-10">
 			<Story />
 		</div>
 	),
-} satisfies Meta<typeof T.code>
+}
 
-type Story = StoryObj<typeof meta>
+export const Code: StoryObj<typeof meta> = {
+	args: {
+		children: '@radix-ui/react-alert-dialog',
+	},
+}
 
 export default meta
-
-export const Code: Story = {
-	render: args => <T.code {...args}> @radix-ui/react-alert-dialog</T.code>,
-}

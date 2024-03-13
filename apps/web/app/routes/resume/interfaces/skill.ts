@@ -1,3 +1,4 @@
+// biome-ignore lint/nursery/noNamespaceImport: this is how Schema is exported
 import * as S from '@effect/schema/Schema'
 
 export const Skill = S.struct({

@@ -20,6 +20,7 @@ import {
 	type ComponentPropsWithoutRef,
 	type ElementRef,
 	type HTMLAttributes,
+	type ReactElement,
 	forwardRef,
 } from 'react'
 import { clsx } from '~/lib/utils.ts'
@@ -171,7 +172,10 @@ const DropdownMenuSeparator = forwardRef<
 ))
 DropdownMenuSeparator.displayName = Separator.displayName
 
-function DropdownMenuShortcut({ className, ...props }: HTMLAttributes<HTMLSpanElement>) {
+function DropdownMenuShortcut({
+	className,
+	...props
+}: HTMLAttributes<HTMLSpanElement>): ReactElement {
 	return (
 		<span className={clsx('ml-auto text-xs tracking-widest opacity-60', className)} {...props} />
 	)

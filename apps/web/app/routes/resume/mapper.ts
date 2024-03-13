@@ -1,19 +1,20 @@
+import type { Resume } from '~/routes/resume/interfaces'
+import type { Basics } from '~/routes/resume/interfaces/basics.ts'
+import type { Education } from '~/routes/resume/interfaces/education.ts'
+import type { Interest } from '~/routes/resume/interfaces/interest.ts'
+import type { Language } from '~/routes/resume/interfaces/language.ts'
+import type { Location } from '~/routes/resume/interfaces/location.ts'
+import type { Meta } from '~/routes/resume/interfaces/meta.ts'
+import type { Profile } from '~/routes/resume/interfaces/profile.ts'
+import type { Skill } from '~/routes/resume/interfaces/skill.ts'
+import type { Work } from '~/routes/resume/interfaces/work.ts'
+
 /*
 	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
 		need to fix it
 	*/
-import type { Resume } from './interfaces/resume.ts'
-import type { Basics } from './interfaces/basics.ts'
-import type { Education } from './interfaces/education.ts'
-import type { Interest } from './interfaces/interest.ts'
-import type { Language } from './interfaces/language.ts'
-import type { Location } from './interfaces/location.ts'
-import type { Meta } from './interfaces/meta.ts'
-import type { Profile } from './interfaces/profile.ts'
-import type { Skill } from './interfaces/skill.ts'
-import type { Work } from './interfaces/work.ts'
 
-type GatsbyTypes = any
+type GatsbyTypes = unknown
 
 export function mapToResume(resumeJson: GatsbyTypes.ResumeQuery['resumeJson']): Readonly<Resume> {
 	return {

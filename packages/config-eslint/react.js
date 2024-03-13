@@ -1,4 +1,5 @@
 // @ts-check
+// biome-ignore lint/nursery/noNodejsModules: this is fine in this context
 const { resolve } = require('node:path')
 
 const project = resolve(process.cwd(), 'tsconfig.json')
@@ -19,7 +20,6 @@ module.exports = {
 		'@vercel/style-guide/eslint/react',
 	].map(eslintConfig => require.resolve(eslintConfig)),
 	parserOptions: { project },
-	globals: { JSX: true },
 	plugins: ['only-warn'],
 	// settings: { "import/resolver": { project } },
 	ignorePatterns: ['node_modules/', 'dist/', '.eslintrc.js', '**/*.css'],

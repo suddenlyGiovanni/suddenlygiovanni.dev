@@ -21,7 +21,6 @@ import {
 } from '~/ui/dropdown-menu'
 
 const meta: Meta = {
-	title: 'DropdownMenu',
 	component: DropdownMenu,
 }
 
@@ -60,18 +59,19 @@ export const Checkboxes: StoryFn = () => {
 	)
 }
 
+enum Position {
+	Top = 'top',
+	Bottom = 'bottom',
+	Right = 'right',
+}
 export const RadioGroup: StoryFn = () => {
-	enum Position {
-		Top = 'top',
-		Bottom = 'bottom',
-		Right = 'right',
-	}
 	const [position, setPosition] = useState(Position.Bottom)
 
 	const onValueChange = useCallback((value: string): void => {
-		function isPosition(value: string): value is Position {
-			return Object.values(Position).includes(value as Position)
+		function isPosition(_value: string): _value is Position {
+			return Object.values(Position).includes(_value as Position)
 		}
+
 		if (isPosition(value)) {
 			setPosition(value)
 		}

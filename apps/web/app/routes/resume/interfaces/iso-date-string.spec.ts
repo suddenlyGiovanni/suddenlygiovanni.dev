@@ -1,5 +1,6 @@
+// biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
-import { expect, test, describe } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { ISODateString } from './iso-date-string.ts'
 
 describe('ISODateString', () => {
