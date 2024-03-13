@@ -1,10 +1,10 @@
 import { Option } from 'effect'
 import {
 	type ComponentPropsWithoutRef,
-	forwardRef,
 	type ForwardRefExoticComponent,
 	type PropsWithoutRef,
 	type RefAttributes,
+	forwardRef,
 } from 'react'
 
 const DevIconRecord = {
