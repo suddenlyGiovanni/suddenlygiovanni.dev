@@ -2,15 +2,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { T } from './typography.tsx'
 
-const meta = {
-	title: 'typography',
-} satisfies Meta
+const meta = {} satisfies Meta
 
-type Story = StoryObj<typeof meta>
-
-export default meta
-
-export const Demo: Story = {
+export const Demo: StoryObj<typeof meta> = {
 	render: () => (
 		<div>
 			<T.h1>The Joke Tax Chronicles</T.h1>
@@ -94,3 +88,5 @@ export const Demo: Story = {
 		</div>
 	),
 }
+
+export default meta
