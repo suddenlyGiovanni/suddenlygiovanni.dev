@@ -501,7 +501,7 @@ export function AnimatedControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={animatedContentClass}>
-					Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+					Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus
 					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
@@ -553,7 +553,7 @@ export function OutsideViewport(): ReactElement {
 						<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+						Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus
 						dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 						{}
 						<button type="button">Cool</button>
@@ -603,7 +603,7 @@ export function Horizontal(): ReactElement {
 						<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Odio placerat <a href="#">quisque</a> sapien sagittis non sociis ligula penatibus
+						Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus
 						dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
 						<button type="button">Cool</button>
 					</AccordionContent>
