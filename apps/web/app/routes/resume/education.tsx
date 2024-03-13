@@ -44,7 +44,7 @@ export const Education = memo(function Education({
 			<T.h2 className="mb-0">Education</T.h2>
 
 			<Button
-				className="absolute right-0 top-0 rounded-full"
+				className="absolute top-0 right-0 rounded-full"
 				onClick={toggleEducation}
 				size="icon"
 				variant="ghost"
