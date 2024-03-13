@@ -1,4 +1,5 @@
 // @ts-check
+// biome-ignore lint/nursery/noNodejsModules: this is fine in this context
 const { resolve } = require('node:path')
 const project = resolve(process.cwd(), 'tsconfig.json')
 
