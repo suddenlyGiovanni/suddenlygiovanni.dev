@@ -17,7 +17,8 @@ export const SocialIcon = forwardRef<SVGSVGElement, SocialIconProps>(
 	({ network, ...props }: SocialIconProps, ref) => {
 		if (IconMap.has(network)) {
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- we are already checking if the key exists
-			// biome-ignore lint/style/useNamingConvention: <explanation>
+			// biome-ignore lint/style/useNamingConvention: do not rename the Icon will be a React component
+			// biome-ignore lint/style/noNonNullAssertion:  we are already checking if the key exists
 			const Icon = IconMap.get(network)!
 			const dataTestId = `${NAME}-${network}`
 			return <Icon data-testid={dataTestId} ref={ref} {...props} />
