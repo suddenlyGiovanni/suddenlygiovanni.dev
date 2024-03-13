@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types -- Reason this is a special case */
 import type {
 	ComponentPropsWithRef,
 	ComponentPropsWithoutRef,
