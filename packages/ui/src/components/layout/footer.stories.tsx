@@ -3,7 +3,6 @@ import { Placeholder } from '~/components/placeholder/placeholder.tsx'
 import { Layout } from './layout.tsx'
 
 const meta = {
-	title: 'Layout/Footer',
 	component: Layout.Footer,
 } satisfies Meta<typeof Layout.Footer>
 

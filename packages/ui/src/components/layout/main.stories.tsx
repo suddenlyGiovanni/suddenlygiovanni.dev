@@ -3,11 +3,8 @@ import { Placeholder } from '~/components/placeholder/placeholder.tsx'
 import { Layout } from './layout.tsx'
 
 const meta = {
-	title: 'Layout/Main',
 	component: Layout.Main,
 } satisfies Meta<typeof Layout.Main>
-
-export default meta
 
 type Story = StoryObj<typeof meta>
 
@@ -29,3 +26,5 @@ export const Main: Story = {
 		</Layout.Main>
 	),
 }
+
+export default meta
