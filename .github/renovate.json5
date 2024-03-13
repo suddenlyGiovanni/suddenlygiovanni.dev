@@ -3,8 +3,6 @@
 	"configMigration": true,
 	extends: [
 		"config:recommended",
-		"docker:pinDigests",
-		"helpers:pinGitHubActionDigests",
 		":pinDevDependencies",
 		"group:monorepos",
 		"group:recommended",
@@ -13,7 +11,9 @@
 		":followTag(typescript, rc)",
 		"schedule:earlyMondays",
 	],
-	labels: ["dependencies"],
+	labels: [
+		"dependencies"
+	],
 	dockerfile: {
 		enabled: true,
 	},
