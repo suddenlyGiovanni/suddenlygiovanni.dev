@@ -1,5 +1,5 @@
 import * as S from '@effect/schema/Schema'
-import { expect, test, describe } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { UrlString } from './url-string.ts'
 
 type UrlDescriptionTuple = [url: string, description: string]

@@ -1,9 +1,9 @@
 import * as S from '@effect/schema/Schema'
 import { Phone } from '~/routes/resume/interfaces/phone.ts'
 
-import { Profile } from './profile.ts'
 import { Email } from './email.ts'
 import { Location } from './location.ts'
+import { Profile } from './profile.ts'
 import { UrlString } from './url-string.ts'
 
 export const Basics = S.struct({
