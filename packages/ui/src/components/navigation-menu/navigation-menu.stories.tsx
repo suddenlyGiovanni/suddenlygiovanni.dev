@@ -15,8 +15,7 @@ import {
 } from '~/ui/navigation-menu.tsx'
 
 const meta: Meta = {
-	// eslint-disable-next-line storybook/no-title-property-in-meta -- Reason: this is the way it is here
-	title: 'NavigationMenu',
+	component: NavigationMenu,
 }
 
 const components: { title: string; href: string; description: string }[] = [

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion -- Reason map api force to re-check  */
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 import { Icons } from '~/components/icons/icons.tsx'
 
@@ -16,7 +17,6 @@ const NAME = 'SocialIcon'
 export const SocialIcon = forwardRef<SVGSVGElement, SocialIconProps>(
 	({ network, ...props }: SocialIconProps, ref) => {
 		if (IconMap.has(network)) {
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- we are already checking if the key exists
 			// biome-ignore lint/style/useNamingConvention: do not rename the Icon will be a React component
 			// biome-ignore lint/style/noNonNullAssertion:  we are already checking if the key exists
 			const Icon = IconMap.get(network)!
