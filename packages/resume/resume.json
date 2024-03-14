@@ -3,7 +3,7 @@
 	"basics": {
 		"name": "Giovanni Ravalico",
 		"label": "Software Developer",
-		"image": "",
+		"image": "https://avatars.githubusercontent.com/u/15946771?v=4",
 		"email": "ravalico.giovanni@gmail.com",
 		"phone": "+49 (0) 162 455 6031",
 		"url": "https://suddenlyGiovanni.dev",
@@ -12,7 +12,7 @@
 			"address": "Ferdinandstraße 11",
 			"postalCode": "12209",
 			"city": "Berlin",
-			"countryCode": "Germany",
+			"countryCode": "DE",
 			"region": "Berlin"
 		},
 		"profiles": [
@@ -93,7 +93,6 @@
 			"url": "https://appico.com/",
 			"startDate": "2019-01-01",
 			"endDate": "2019-02-28",
-			"summary": "",
 			"highlights": [
 				"Enable a new service offering to our customers by researching and studying mobile app development with React Native.",
 				"Organize the knowledge transfer to the rest of the team. Build several in house prototypes to illustrate commonalities and differences with regular web development.",
@@ -132,7 +131,6 @@
 			"location": "Rijeka, Croatia",
 			"description": "Handmade Fashion e-commerce",
 			"position": "Front-end Web Developer",
-			"url": "",
 			"startDate": "2016-10-01",
 			"endDate": "2017-06-30",
 			"summary": "Co-founded and managed a Lifestyle brand with my wife.",
@@ -146,7 +144,6 @@
 			"location": "Trieste, Italy",
 			"description": "Real Estate Agency",
 			"position": "Front-end Web Developer",
-			"url": "",
 			"startDate": "2015-10-01",
 			"endDate": "2016-10-30",
 			"summary": "Helped the company in its modernization process by pivoting its business model from brick and mortar to an online-first presence.",
@@ -165,7 +162,6 @@
 			"studyType": "Coding Bootcamp",
 			"startDate": "2017-06-01",
 			"endDate": "2017-09-30",
-			"gpa": "",
 			"courses": [
 				"Work with responsive design using HTML, CSS, and JavaScript.",
 				"Create exciting, interactive web apps and animations using native browser APIs as well as the jQuery library.",
@@ -177,12 +173,10 @@
 		},
 		{
 			"institution": "Innovation Factory, AREA Science Park",
-			"url": "",
 			"area": "Disciplined Entrepreneurship",
 			"studyType": "Business Bootcamp",
 			"startDate": "2015-04-01",
 			"endDate": "2015-05-30",
-			"gpa": "",
 			"courses": [
 				"Learned how to transform innovative business ideas into real products and services.",
 				"Applied innovation-driven entrepreneurship process to develop a B2B startup in the real estate industry."
@@ -196,7 +190,6 @@
 			"studyType": "Bachelor",
 			"startDate": "2011-09-01",
 			"endDate": "2014-09-01",
-			"gpa": "",
 			"courses": ["Completed 90% of required credits toward Bachelor of Arts in Modern History"],
 			"location": "Trieste, Italy"
 		}
@@ -206,7 +199,6 @@
 	"skills": [
 		{
 			"name": "Programming languages",
-			"level": "",
 			"keywords": [
 				"TypeScript",
 				"Flow",
@@ -221,7 +213,6 @@
 		},
 		{
 			"name": "Methodologies",
-			"level": "",
 			"keywords": [
 				"Agile",
 				"Kanban",
@@ -235,7 +226,6 @@
 		},
 		{
 			"name": "Concepts",
-			"level": "",
 			"keywords": [
 				"Functional programming (FP)",
 				"Object-oriented programming (OOP)",
@@ -245,7 +235,6 @@
 		},
 		{
 			"name": "Front-end",
-			"level": "",
 			"keywords": [
 				"Semantic HTML",
 				"CSS",
@@ -262,12 +251,10 @@
 		},
 		{
 			"name": "Back-end",
-			"level": "",
 			"keywords": ["Node", "Deno", "Next.js", "Remix", "Express", "Handlebars"]
 		},
 		{
 			"name": "Libraries",
-			"level": "",
 			"keywords": [
 				"Jest",
 				"Cypress",
@@ -284,24 +271,21 @@
 		},
 		{
 			"name": "Databases",
-			"level": "",
 			"keywords": ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Firebase Realtime Database"]
 		},
 		{
 			"name": "APIs",
-			"level": "",
 			"keywords": ["GraphQL", "RESTful"]
 		},
 		{
 			"name": "Tools",
-			"level": "",
 			"keywords": ["Git", "Docker", "CircleCI", "GitHub Actions"]
 		}
 	],
 	"languages": [
 		{
 			"language": "English",
-			"fluency": " Full professional proficiency"
+			"fluency": "Full professional proficiency"
 		},
 		{
 			"fluency": "Native speaker",
@@ -321,7 +305,7 @@
 	"references": [],
 	"projects": [],
 	"meta": {
-		"canonical": "",
+		"canonical": "https://github.com/suddenlyGiovanni/suddenlygiovanni.dev/blob/main/packages/resume/resume.json",
 		"lastModified": "2022-01-09T18:44:13.077Z",
 		"version": "v1.2.0"
 	}

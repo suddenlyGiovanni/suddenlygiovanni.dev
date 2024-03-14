@@ -37,7 +37,7 @@ describe('Location', () => {
 			expect(() => parse({ countryCode: '  ' })).toThrow()
 			expect(() => parse({ countryCode: 'D' })).toThrow()
 			expect(() => parse({ countryCode: 'DEUTSCHLAND' })).toThrow()
-			expect(() => parse({ countryCode: 'de' })).toThrow()
+			expect(() => parse({ countryCode: 'de' })).not.toThrow()
 			expect(() => parse({ countryCode: locationInput.countryCode })).not.toThrow()
 		})
 

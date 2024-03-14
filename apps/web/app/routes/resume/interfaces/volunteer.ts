@@ -8,18 +8,17 @@ export const Volunteer = S.struct({
 	endDate: S.optional(ISODateString, { exact: true }),
 
 	highlights: S.optional(
-		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
-			S.title('highlights'),
-			S.description('Specify accomplishments and achievements'),
-			S.examples([['Saved the world']]),
-		),
+		S.array(
+			S.compose(S.Trim, S.NonEmpty).pipe(
+				S.title('highlight'),
+				S.examples(['Increased profits by 20% from 2011-2012 through viral advertising']),
+			),
+		).pipe(S.title('highlights'), S.description('Specify accomplishments and achievements')),
 		{ exact: true },
 	),
 
 	organization: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
+		S.compose(S.Trim, S.NonEmpty).pipe(
 			S.title('organization'),
 			S.description('Organization'),
 			S.examples(['Facebook']),
@@ -28,9 +27,7 @@ export const Volunteer = S.struct({
 	),
 
 	position: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
+		S.compose(S.Trim, S.NonEmpty).pipe(
 			S.title('position'),
 			S.description('The title of your position at the company'),
 			S.examples(['Software Engineer']),
@@ -41,9 +38,7 @@ export const Volunteer = S.struct({
 	startDate: S.optional(ISODateString, { exact: true }),
 
 	summary: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
+		S.compose(S.Trim, S.NonEmpty).pipe(
 			S.title('summary'),
 			S.description('Give an overview of your responsibilities at the company'),
 			S.examples(['My day-to-day activities involved designing and building web applications...']),
@@ -61,4 +56,4 @@ export const Volunteer = S.struct({
 	),
 })
 
-export interface Volunteer extends S.Schema.Type<typeof Volunteer> {}
+export interface Volunteer extends S.Schema.Encoded<typeof Volunteer> {}
