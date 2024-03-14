@@ -20,4 +20,4 @@ export const Reference = S.struct({
 	),
 })
 
-export interface Reference extends S.Schema.Encoded<typeof Reference> {}
+export type Reference = S.Schema.Encoded<typeof Reference>

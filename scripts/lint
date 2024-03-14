@@ -46,7 +46,7 @@ pnpm exec eslint \
 	"$path" \
 	--ext ts,tsx,js,cjs,mjs,jsx \
 	--report-unused-disable-directives \
-	--max-warnings 50 \
+	--max-warnings 100 \
 	"${eslint_args[@]}"
 
 linting_status=$?

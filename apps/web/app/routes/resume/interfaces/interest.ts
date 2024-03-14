@@ -26,4 +26,4 @@ export const Interest = S.struct({
 	),
 })
 
-export interface Interest extends S.Schema.Encoded<typeof Interest> {}
+export type Interest = S.Schema.Encoded<typeof Interest>

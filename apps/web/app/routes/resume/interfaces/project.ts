@@ -93,4 +93,4 @@ export const Project = S.struct({
 	),
 })
 
-export interface Project extends S.Schema.Encoded<typeof Project> {}
+export type Project = S.Schema.Encoded<typeof Project>

@@ -38,4 +38,4 @@ export const Certificate = S.struct({
 	),
 })
 
-export interface Certificate extends S.Schema.Encoded<typeof Certificate> {}
+export type Certificate = S.Schema.Encoded<typeof Certificate>
