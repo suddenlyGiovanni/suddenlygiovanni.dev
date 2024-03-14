@@ -9,8 +9,6 @@ import type { Profile } from '~/routes/resume/interfaces/profile.ts'
 import type { Skill } from '~/routes/resume/interfaces/skill.ts'
 import type { Work } from '~/routes/resume/interfaces/work.ts'
 
- 
-
 type GatsbyTypes = unknown
 
 export function mapToResume(resumeJson: GatsbyTypes.ResumeQuery['resumeJson']): Readonly<Resume> {
