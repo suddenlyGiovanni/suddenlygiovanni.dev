@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  cheks:
+  checks:
     name: 🫸 Push Checks
     runs-on: ubuntu-latest
 
@@ -31,26 +31,25 @@ jobs:
       - name: 🧩 Install dependencies
         run: pnpm install --frozen-lockfile --prod=false
 
-      - name: 👣 setting up git hash to compare with
+      - name: 👣 Retrieve Git REF
         run: echo "GIT_REF=$(git rev-parse origin/main)" >> $GITHUB_ENV
 
-      - name: 🐛 debug git hash
-        run: echo $GIT_REF
+      - name: 🐛 Debug Git REF
+        run: echo "${{ env.GIT_REF }}"
 
       - name: 🧬 Lint code (with Biome)
         continue-on-error: true
         run: |
-          REF="$(git rev-parse origin/main)"
           pnpm exec biome check               \
             --apply                           \
             --changed                         \
-            --verbose                         \
-            --since=$REF                      \
+            --since=${{ env.GIT_REF }}        \
             --formatter-enabled=false         \
             --linter-enabled=true             \
             --organize-imports-enabled=false  \
             --vcs-enabled=true                \
             --vcs-use-ignore-file=true        \
+            --verbose                         \
             --no-errors-on-unmatched          \
             --diagnostic-level=info           \
             --log-level=warn                  \
@@ -65,11 +64,10 @@ jobs:
       - name: 💅 Format code (with Biome)
         continue-on-error: true
         run: |
-          REF="$(git rev-parse origin/main)"
           pnpm exec biome check               \
             --apply                           \
             --changed                         \
-            --since=$REF                      \
+            --since=${{ env.GIT_REF }}        \
             --formatter-enabled=true          \
             --linter-enabled=false            \
             --organize-imports-enabled=true   \
