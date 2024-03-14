@@ -1,8 +1,6 @@
 {
-	"extends": ["../../tsconfig.json", "@suddenly-giovanni/config-typescript/base.json"],
+	"extends": "@suddenly-giovanni/config-typescript/base.json",
 	"compilerOptions": {
-		"composite": true,
-		"incremental": true,
 		"noEmit": true,
 		"allowJs": true,
 		"checkJs": true

@@ -1,9 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": ["../../tsconfig.json", "@suddenly-giovanni/config-typescript/react-library.json"],
+	"extends": "@suddenly-giovanni/config-typescript/react-library.json",
 	"compilerOptions": {
-		"composite": true,
-		"incremental": true,
 		"noEmit": true,
 		"paths": {
 			"~/*": ["./src/*"]
@@ -17,6 +15,7 @@
 		"postcss.config.mjs",
 		".prettierrc.js",
 		".eslintrc.cjs",
+		"./.storybook/**/*",
 		"./src/**/*"
 	],
 	"exclude": ["dist", "build", "node_modules", "./~"]

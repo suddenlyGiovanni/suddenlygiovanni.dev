@@ -1,10 +1,8 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": ["../../tsconfig.json", "@suddenly-giovanni/config-typescript/remix.json"],
+	"extends": "@suddenly-giovanni/config-typescript/remix.json",
 	"compilerOptions": {
 		"baseUrl": ".",
-		"composite": true,
-		"incremental": true,
 		"lib": ["DOM", "DOM.Iterable", "ES2022"],
 		"noEmit": true,
 		"skipLibCheck": true,
