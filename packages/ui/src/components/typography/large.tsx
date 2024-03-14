@@ -1,5 +1,5 @@
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
-import { clsx } from '~/lib/utils.ts'
+import { clsx } from '@/lib/utils.ts'
 
 export const Large = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
 	({ className, children, ...props }, ref) => (

@@ -4,15 +4,15 @@
 	*/
 import { type ReactNode, memo, useMemo } from 'react'
 import { Theme } from 'remix-themes'
-import { Icons } from '~/components/icons/icons.tsx'
-import { clsx } from '~/lib/utils.ts'
-import { Button } from '~/ui/button.tsx'
+import { Icons } from '@/components/icons/icons.tsx'
+import { clsx } from '@/lib/utils.ts'
+import { Button } from '@/ui/button.tsx'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from '~/ui/dropdown-menu.tsx'
+} from '@/ui/dropdown-menu.tsx'
 
 interface ModeToggleProps {
 	readonly setTheme: (theme: Theme) => void

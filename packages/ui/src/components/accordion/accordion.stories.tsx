@@ -5,14 +5,14 @@
 
 import type { Meta } from '@storybook/react'
 import { type ReactElement, useEffect, useRef, useState } from 'react'
-import { clsx } from '~/lib/utils.ts'
+import { clsx } from '@/lib/utils.ts'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionHeader,
 	AccordionItem,
 	AccordionTrigger,
-} from '~/ui/accordion.tsx'
+} from '@/ui/accordion.tsx'
 
 const meta = {
 	component: Accordion,
