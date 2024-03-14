@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion -- Reason map api force to re-check  */
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
-import { Icons } from '~/components/icons/icons.tsx'
+import { Icons } from '@/components/icons/icons.tsx'
 
 export const IconMap = new Map([
 	['twitter', Icons.twitter],

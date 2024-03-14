@@ -1,7 +1,7 @@
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 import type { ReactElement } from 'react'
 import { ToggleButton, type ToggleButtonProps, composeRenderProps } from 'react-aria-components'
-import { clsx, tv } from '~/lib/utils.ts'
+import { clsx, tv } from '@/lib/utils.ts'
 import { HamburgerIcon } from './hamburger-icon.tsx'
 
 const styles = tv({

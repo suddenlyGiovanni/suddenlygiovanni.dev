@@ -23,7 +23,7 @@ import {
 	type ReactElement,
 	forwardRef,
 } from 'react'
-import { clsx } from '~/lib/utils.ts'
+import { clsx } from '@/lib/utils.ts'
 
 const DropdownMenu = Root
 const DropdownMenuTrigger = Trigger

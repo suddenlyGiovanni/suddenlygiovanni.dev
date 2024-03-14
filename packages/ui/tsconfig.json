@@ -4,7 +4,7 @@
 	"compilerOptions": {
 		"noEmit": true,
 		"paths": {
-			"~/*": ["./src/*"]
+			"@/*": ["./src/*"]
 		},
 		"types": ["@total-typescript/ts-reset", "vite/client", "react", "react-dom"],
 		"useDefineForClassFields": true
