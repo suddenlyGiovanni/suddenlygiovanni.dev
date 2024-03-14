@@ -1,3 +1,4 @@
+import { clsx, cva } from '@/lib/utils.ts'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
 import {
 	Content,
@@ -11,7 +12,6 @@ import {
 	Viewport,
 } from '@radix-ui/react-navigation-menu'
 import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from 'react'
-import { clsx, cva } from '@/lib/utils.ts'
 
 const NavigationMenu = forwardRef<ElementRef<typeof Root>, ComponentPropsWithoutRef<typeof Root>>(
 	({ className, children, ...props }, ref) => (

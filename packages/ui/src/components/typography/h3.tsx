@@ -1,5 +1,5 @@
-import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 import { clsx } from '@/lib/utils.ts'
+import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 
 export const H3 = forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<'h3'>>(
 	({ className, children, ...props }, ref) => (

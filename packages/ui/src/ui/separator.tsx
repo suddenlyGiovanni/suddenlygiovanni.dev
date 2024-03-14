@@ -1,6 +1,6 @@
+import { clsx } from '@/lib/utils.ts'
 import { Root } from '@radix-ui/react-separator'
 import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from 'react'
-import { clsx } from '@/lib/utils.ts'
 
 export const Separator = forwardRef<ElementRef<typeof Root>, ComponentPropsWithoutRef<typeof Root>>(
 	({ className, orientation = 'horizontal', decorative = true, ...props }, ref) => (

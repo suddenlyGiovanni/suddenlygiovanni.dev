@@ -1,5 +1,5 @@
-import type { ComponentProps, ReactElement } from 'react'
 import { clsx } from '@/lib/utils.ts'
+import type { ComponentProps, ReactElement } from 'react'
 
 const baseClasses = clsx(
 	'absolute',
