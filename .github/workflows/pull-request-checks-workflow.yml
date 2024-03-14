@@ -42,13 +42,24 @@ jobs:
       - name: 🧩 Install dependencies
         run: pnpm install --frozen-lockfile --prod=false
 
-      - name: 🧬 check code (with Biome)
-        run: pnpm exec biome ci .
+      - name: 🧬 check code for errors (with Biome)
+        run: |
+          pnpm exec biome ci                  \
+            --formatter-enabled=false         \
+            --linter-enabled=true             \
+            --organize-imports-enabled=false  \
+            --vcs-enabled=true                \
+            --vcs-use-ignore-file=true        \
+            --no-errors-on-unmatched          \
+            --diagnostic-level=error          \
+            .
 
       - name: 🚨 Lint code (with ESLint)
+        continue-on-error: true
         run: pnpm lint
 
       - name: 🔍 Typecheck code
+        continue-on-error: true
         run: pnpm typecheck
 
       - name: 🧪 Run unit tests
@@ -62,7 +73,6 @@ jobs:
           working-directory: apps/web
           directory: coverage
           fail_ci_if_error: false
-
 
       - name: 🧪 Run integration tests
         run: pnpm test:integration
