@@ -9,11 +9,10 @@ export const Profile = S.struct({
 	 */
 	network: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
-		annotations: {
-			title: 'network',
-			description: 'The name of the social network',
-			examples: ['Facebook', 'Twitter'],
-		},
+	}).annotations({
+		title: 'network',
+		description: 'The name of the social network',
+		examples: ['Facebook', 'Twitter'],
 	}),
 
 	/**
@@ -21,22 +20,21 @@ export const Profile = S.struct({
 	 */
 	url: S.optional(UrlString, {
 		exact: true,
-		annotations: {
-			title: 'url',
-			description: 'The URL of the profile on the social network',
-			examples: ['http://twitter.example.com/neutralthoughts'],
-		},
+	}).annotations({
+		title: 'url',
+		description: 'The URL of the profile on the social network',
+		examples: ['http://twitter.example.com/neutralthoughts'],
 	}),
+
 	/**
 	 * e.g. neutralthoughts
 	 */
 	username: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
-		annotations: {
-			title: 'username',
-			description: 'The username of the profile on the social network',
-			examples: ['neutralthoughts'],
-		},
+	}).annotations({
+		title: 'username',
+		description: 'The username of the profile on the social network',
+		examples: ['neutralthoughts'],
 	}),
 })
-export type Profile = S.Schema.To<typeof Profile>
+export type Profile = S.Schema.Type<typeof Profile>

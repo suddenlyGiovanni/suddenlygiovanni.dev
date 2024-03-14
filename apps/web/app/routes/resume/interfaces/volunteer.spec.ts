@@ -13,7 +13,7 @@ describe('Volunteer', () => {
 		startDate: '2020-01-01T01:00:00.000Z',
 		summary: 'My day-to-day activities involved designing and building web applications...',
 		url: 'https://facebook.example.com',
-	} satisfies S.Schema.To<typeof Volunteer>
+	} satisfies S.Schema.Type<typeof Volunteer>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Volunteer)

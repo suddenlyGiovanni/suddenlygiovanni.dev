@@ -11,7 +11,7 @@ describe('Publication', () => {
 		releaseDate: '2022-04-05T10:00:00.000Z',
 		summary: 'Discussion of the World Wide Web, HTTP, HTML',
 		url: 'http://www.computer.org.example.com/csdl/mags/co/1996/10/rx069-abs.html',
-	} satisfies S.Schema.To<typeof Publication>
+	} satisfies S.Schema.Type<typeof Publication>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Publication)

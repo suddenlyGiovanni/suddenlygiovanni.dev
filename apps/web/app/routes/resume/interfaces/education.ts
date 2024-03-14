@@ -10,58 +10,51 @@ export const Education = S.struct({
 	 */
 	area: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
-		annotations: {
-			title: 'area',
-			description: 'e.g. Arts',
-			examples: ['Arts', 'Computer Science'],
-		},
+	}).annotations({
+		title: 'area',
+		description: 'e.g. Arts',
+		examples: ['Arts', 'Computer Science'],
 	}),
 
 	courses: S.optional(S.array(S.string.pipe(S.trimmed(), S.nonEmpty())), {
 		exact: true,
-		annotations: { title: 'courses', description: 'List notable courses/subjects' },
-	}),
+	}).annotations({ title: 'courses', description: 'List notable courses/subjects' }),
 
 	endDate: S.optional(ISODateString, { exact: true }),
 
 	gpa: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
-		annotations: {
-			title: 'gpa',
-			description: 'grade point average, e.g. 3.67/4.0',
-			examples: ['3.67/4.0'],
-		},
+	}).annotations({
+		title: 'gpa',
+		description: 'grade point average, e.g. 3.67/4.0',
+		examples: ['3.67/4.0'],
 	}),
 
-	institution: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
-		annotations: {
-			title: 'institution',
-			description: 'e.g. Massachusetts Institute of Technology',
-			examples: ['Massachusetts Institute of Technology'],
-		},
+	institution: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {}).annotations({
+		title: 'institution',
+		description: 'e.g. Massachusetts Institute of Technology',
+		examples: ['Massachusetts Institute of Technology'],
 	}),
 
 	startDate: S.optional(ISODateString, { exact: true }),
 
 	studyType: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
 		exact: true,
-		annotations: {
-			title: 'studyType',
-			description: 'the type of study',
-			examples: ['Bachelor', 'Master', 'Doctorate'],
-		},
+	}).annotations({
+		title: 'studyType',
+		description: 'the type of study',
+		examples: ['Bachelor', 'Master', 'Doctorate'],
 	}),
 
 	url: S.optional(UrlString, {
 		exact: true,
-		annotations: {
-			title: 'url',
-			description: 'URL (as per RFC 3986)',
-			examples: ['http://facebook.example.com'],
-		},
+	}).annotations({
+		title: 'url',
+		description: 'URL (as per RFC 3986)',
+		examples: ['http://facebook.example.com'],
 	}),
 
 	location: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), { exact: true }),
 })
 
-export interface Education extends S.Schema.To<typeof Education> {}
+export interface Education extends S.Schema.Type<typeof Education> {}

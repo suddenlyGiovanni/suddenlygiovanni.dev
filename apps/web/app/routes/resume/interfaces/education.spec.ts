@@ -15,7 +15,7 @@ describe('Education', () => {
 		studyType: 'Bachelor',
 		url: 'https://mit.com',
 		location: 'Cambridge, MA',
-	} satisfies S.Schema.To<typeof Education>
+	} satisfies S.Schema.Type<typeof Education>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Education)

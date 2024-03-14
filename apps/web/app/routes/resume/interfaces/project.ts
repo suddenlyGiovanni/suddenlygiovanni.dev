@@ -65,4 +65,4 @@ export const Project = S.partial(
 	}),
 )
 
-export interface Project extends S.Schema.To<typeof Project> {}
+export interface Project extends S.Schema.Type<typeof Project> {}

@@ -105,4 +105,4 @@ export const Work = S.struct({
 	),
 })
 
-export interface Work extends S.Schema.To<typeof Work> {}
+export interface Work extends S.Schema.Type<typeof Work> {}

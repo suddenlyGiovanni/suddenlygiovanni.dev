@@ -8,7 +8,7 @@ describe('Interest', () => {
 	const interestInput = {
 		keywords: ['philosophy', 'distributed systems'],
 		name: 'Philosophy',
-	} satisfies S.Schema.To<typeof Interest>
+	} satisfies S.Schema.Type<typeof Interest>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Interest)

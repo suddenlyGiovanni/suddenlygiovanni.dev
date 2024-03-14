@@ -4,13 +4,13 @@ import { describe, expect, test } from 'vitest'
 import { Location } from './location.ts'
 
 describe('Location', () => {
-	const locationInput: S.Schema.To<typeof Location> = {
+	const locationInput: S.Schema.Type<typeof Location> = {
 		address: '1234 Glücklichkeit Straße Hinterhaus 5. Etage li.',
 		city: 'Berlin',
 		countryCode: 'DE',
 		postalCode: '10999',
 		region: 'California',
-	} satisfies S.Schema.To<typeof Location>
+	} satisfies S.Schema.Type<typeof Location>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Location)

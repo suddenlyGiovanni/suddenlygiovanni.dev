@@ -31,4 +31,4 @@ export const Skill = S.struct({
 	),
 })
 
-export interface Skill extends S.Schema.To<typeof Skill> {}
+export interface Skill extends S.Schema.Type<typeof Skill> {}

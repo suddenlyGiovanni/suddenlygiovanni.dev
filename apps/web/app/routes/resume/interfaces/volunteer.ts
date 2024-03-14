@@ -61,4 +61,4 @@ export const Volunteer = S.struct({
 	),
 })
 
-export interface Volunteer extends S.Schema.To<typeof Volunteer> {}
+export interface Volunteer extends S.Schema.Type<typeof Volunteer> {}

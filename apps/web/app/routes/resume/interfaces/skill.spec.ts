@@ -8,7 +8,7 @@ describe('Skill', () => {
 		keywords: ['Rust', 'Java', 'Scala'],
 		level: 'Wizard',
 		name: 'Web Development',
-	} satisfies S.Schema.To<typeof Skill>
+	} satisfies S.Schema.Type<typeof Skill>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Skill)
