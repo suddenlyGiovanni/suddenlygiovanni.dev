@@ -5,11 +5,11 @@ import { describe, expect, test } from 'vitest'
 import { Profile } from './profile.ts'
 
 describe('Profile', () => {
-	const profileInput: S.Schema.To<typeof Profile> = {
+	const profileInput: S.Schema.Type<typeof Profile> = {
 		network: 'Facebook',
 		url: 'http://twitter.example.com/neutralthoughts',
 		username: 'neutralthoughts',
-	} satisfies S.Schema.To<typeof Profile>
+	} satisfies S.Schema.Type<typeof Profile>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Profile)

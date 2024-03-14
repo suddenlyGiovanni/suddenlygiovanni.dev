@@ -84,4 +84,4 @@ export const Resume = S.struct({
 	work: S.optional(S.array(Work), { exact: true }),
 })
 
-export interface Resume extends S.Schema.To<typeof Resume> {}
+export interface Resume extends S.Schema.Type<typeof Resume> {}

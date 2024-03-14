@@ -1,16 +1,15 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
 import { describe, expect, test } from 'vitest'
-
 import { Award } from './award.ts'
 
 describe('award', () => {
-	const awardInput: S.Schema.To<typeof Award> = {
+	const awardInput = {
 		awarder: 'Time Magazine',
 		title: 'One of the 100 greatest minds of the century',
 		date: '1970-01-01T00:00:00.000Z',
 		summary: 'Received for my work with Quantum Physics',
-	} satisfies S.Schema.To<typeof Award>
+	} satisfies S.Schema.Encoded<typeof Award>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Award)

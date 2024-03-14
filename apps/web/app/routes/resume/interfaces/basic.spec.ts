@@ -5,7 +5,7 @@ import { describe, expect, test } from 'vitest'
 import { Basics } from './basics.ts'
 
 describe('Basics', () => {
-	const basicsInput: S.Schema.To<typeof Basics> = {
+	const basicsInput: S.Schema.Type<typeof Basics> = {
 		email: 'thomas@gmail.com',
 		image: 'http://example.com/image.jpg',
 		label: 'Web Developer',
@@ -27,7 +27,7 @@ describe('Basics', () => {
 		],
 		summary: 'Web Developer with a passion for web-based applications',
 		url: 'http://thomasanderson.com',
-	} satisfies S.Schema.To<typeof Basics>
+	} satisfies S.Schema.Type<typeof Basics>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Basics)

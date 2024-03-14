@@ -25,13 +25,13 @@ export const Project = S.partial(
 		highlights: S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
 			S.title('highlights'),
 			S.description('Specify multiple features'),
-			S.examples(['Feature 1']),
+			S.examples([['Feature 1']]),
 		),
 
 		keywords: S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
 			S.title('keywords'),
 			S.description('Specify special elements involved'),
-			S.examples(['special', 'elements']),
+			S.examples([['special', 'elements']]),
 		),
 
 		name: S.string.pipe(
@@ -44,7 +44,7 @@ export const Project = S.partial(
 		roles: S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
 			S.title('roles'),
 			S.description('Specify your role on this project or in company'),
-			S.examples(['Software Engineer Lead']),
+			S.examples([['Software Engineer Lead']]),
 		),
 
 		startDate: ISODateString,
@@ -65,4 +65,4 @@ export const Project = S.partial(
 	}),
 )
 
-export interface Project extends S.Schema.To<typeof Project> {}
+export interface Project extends S.Schema.Type<typeof Project> {}

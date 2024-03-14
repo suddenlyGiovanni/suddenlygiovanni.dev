@@ -8,7 +8,7 @@ describe('Language', () => {
 	const languageInput = {
 		fluency: 'Fluent',
 		language: 'English',
-	} satisfies S.Schema.To<typeof Language>
+	} satisfies S.Schema.Type<typeof Language>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Language)

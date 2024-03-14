@@ -20,7 +20,7 @@ describe('Work', () => {
 			email: 'zuckerberg@mark.cto',
 			name: 'Mark Zuckerberg (CTO)',
 		},
-	} satisfies S.Schema.To<typeof Work>
+	} satisfies S.Schema.Type<typeof Work>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Work)
