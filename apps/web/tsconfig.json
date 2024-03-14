@@ -3,11 +3,7 @@
 	"extends": "@suddenly-giovanni/config-typescript/remix.json",
 	"compilerOptions": {
 		"baseUrl": ".",
-		"lib": [
-			"DOM",
-			"DOM.Iterable",
-			"ES2022"
-		],
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
 		"noEmit": true,
 		"skipLibCheck": true,
 		"target": "ES2022",
@@ -29,9 +25,5 @@
 		"postcss.config.mjs",
 		"app/**/*"
 	],
-	"exclude": [
-		"build",
-		"node_modules",
-		"./~"
-	]
+	"exclude": ["build", "node_modules", "./~"]
 }
