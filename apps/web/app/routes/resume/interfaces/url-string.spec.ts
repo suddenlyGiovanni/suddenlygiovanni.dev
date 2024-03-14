@@ -15,6 +15,11 @@ describe('UrlString', () => {
 		})
 
 		test.each([
+			['', 'Empty string'],
+			[' ', 'Whitespace'],
+			['\t', 'Tab'],
+			['\n', 'Newline'],
+			['\r', 'Carriage return'],
 			['facebook.example.com', 'Without protocol'],
 			['http//facebook.example.com', 'Missing colon in protocol'],
 			['http:/#', 'Only fragment identifier'],

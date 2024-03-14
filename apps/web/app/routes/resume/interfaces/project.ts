@@ -1,68 +1,96 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
-
-import { ISODateString } from './iso-date-string.ts'
 import { UrlString } from './url-string.ts'
 
-export const Project = S.partial(
-	S.struct({
-		description: S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
-			S.description('Short summary of project'),
-			S.examples(['Collated works of 2017']),
-		),
+export const Project = S.struct({
+	description: S.optional(
+		S.compose(S.Trim, S.NonEmpty).annotations({
+			title: 'description',
+			description: 'Short summary of project',
+			examples: ['Collated works of 2017'],
+		}),
+		{ exact: true },
+	),
 
-		endDate: ISODateString,
+	endDate: S.optional(S.Date, { exact: true }),
 
-		entity: S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
-			S.description('Specify the relevant company/entity affiliations'),
-			S.examples(['greenpeace', 'corporationXYZ']),
-		),
+	entity: S.optional(
+		S.compose(S.Trim, S.NonEmpty).annotations({
+			title: 'entity',
+			description: 'Specify the relevant company/entity affiliations',
+			examples: ['Greenpeace', 'Microsoft'],
+		}),
+		{ exact: true },
+	),
 
-		highlights: S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
-			S.title('highlights'),
-			S.description('Specify multiple features'),
-			S.examples([['Feature 1']]),
-		),
+	highlights: S.optional(
+		S.array(
+			S.compose(S.Trim, S.NonEmpty).annotations({
+				title: 'highlight',
+				description: 'Specify multiple features',
+				examples: ['Directs you close but not quite there'],
+			}),
+		).annotations({
+			title: 'highlights',
+			description: 'Specify multiple features',
+		}),
+		{ exact: true },
+	),
 
-		keywords: S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
-			S.title('keywords'),
-			S.description('Specify special elements involved'),
-			S.examples([['special', 'elements']]),
-		),
+	keywords: S.optional(
+		S.array(
+			S.compose(S.Trim, S.NonEmpty).annotations({
+				title: 'keyword',
+				examples: ['AngularJS', 'elements'],
+			}),
+		).annotations({
+			title: 'keywords',
+			description: 'Specify special elements involved',
+		}),
+		{ exact: true },
+	),
 
-		name: S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
-			S.description('Name of the project'),
-			S.examples(['The World Wide Web']),
-		),
+	name: S.optional(
+		S.compose(S.Trim, S.NonEmpty).annotations({
+			title: 'name',
+			description: 'Name of the project',
+			examples: ['The World Wide Web'],
+		}),
+		{ exact: true },
+	),
 
-		roles: S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
-			S.title('roles'),
-			S.description('Specify your role on this project or in company'),
-			S.examples([['Software Engineer Lead']]),
-		),
+	roles: S.optional(
+		S.array(
+			S.compose(S.Trim, S.NonEmpty).annotations({
+				title: 'role',
+				examples: ['Team Lead', 'Speaker', 'Writer'],
+			}),
+		).annotations({
+			title: 'roles',
+			description: 'Specify your role on this project or in company',
+		}),
+		{ exact: true },
+	),
 
-		startDate: ISODateString,
+	startDate: S.optional(S.Date, { exact: true }),
 
-		type: S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
-			S.title('type'),
-			S.description('Type of project'),
-			S.examples(['volunteering', 'presentation', 'talk', 'application', 'conference']),
-		),
+	type: S.optional(
+		S.compose(S.Trim, S.NonEmpty).annotations({
+			title: 'type',
+			description: 'Type of project',
+			examples: ['volunteering', 'presentation', 'talk', 'application', 'conference'],
+		}),
+		{ exact: true },
+	),
 
-		url: UrlString.pipe(
-			S.title('url'),
-			S.description('URL (as per RFC 3986)'),
-			S.examples(['http://www.computer.org.csdl/mags/co/1996/10/rx069-abs.html']),
-		),
-	}),
-)
+	url: S.optional(
+		UrlString.annotations({
+			title: 'url',
+			description: 'URL (as per RFC 3986)',
+			examples: ['http://www.computer.org.csdl/mags/co/1996/10/rx069-abs.html'],
+		}),
+		{ exact: true },
+	),
+})
 
-export interface Project extends S.Schema.Type<typeof Project> {}
+export interface Project extends S.Schema.Encoded<typeof Project> {}

@@ -5,7 +5,7 @@ import { describe, expect, test } from 'vitest'
 import { Project } from './project.ts'
 
 describe('Project', () => {
-	const projectInput: S.Schema.Type<typeof Project> = {
+	const projectInput = {
 		description: 'Collated works of 2017',
 		endDate: '2017-12-01T00:00:00.000Z',
 		entity: 'greenpeace',
@@ -16,10 +16,10 @@ describe('Project', () => {
 		startDate: '1970-01-01T00:00:00.000Z',
 		type: 'talk',
 		url: 'http://example.com/project',
-	} satisfies S.Schema.Type<typeof Project>
+	} satisfies S.Schema.Encoded<typeof Project>
 
 	describe('decode', () => {
-		const parse = S.decodeUnknownSync(Project)
+		const parse = S.decodeUnknownSync(Project, { errors: 'all' })
 		test('handle all missing property', () => {
 			const input: unknown = {}
 			expect(() => parse(input)).not.toThrow()

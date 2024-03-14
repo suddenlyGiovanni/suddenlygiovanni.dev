@@ -5,7 +5,7 @@ import {
 	json,
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
-import resumeAssetUrl from '@suddenly-giovanni/resume'
+import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'

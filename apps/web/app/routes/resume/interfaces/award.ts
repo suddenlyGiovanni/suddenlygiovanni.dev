@@ -1,40 +1,42 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
 
-import { ISODateString } from './iso-date-string.ts'
-
 export const Award = S.struct({
-	awarder: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
-		exact: true,
-	}).annotations({
-		title: 'awarder',
-		description: 'The name of the award given',
-		examples: ['Time Magazine'],
-	}),
+	awarder: S.optional(
+		S.compose(S.Trim, S.NonEmpty).annotations({
+			title: 'awarder',
+			description: 'The name of the award given',
+			examples: ['Time Magazine'],
+		}),
+		{ exact: true },
+	),
 
-	date: S.optional(ISODateString, {
-		exact: true,
-	}).annotations({
-		title: 'date',
-		description: 'Date of the award',
-		examples: ['1970-01-01T00:00:00.000Z'],
-	}),
+	date: S.optional(
+		S.Date.annotations({
+			title: 'date',
+			description: 'Date of the award',
+			examples: [new Date('1970-01-01T00:00:00.000Z')],
+		}),
+		{ exact: true },
+	),
 
-	summary: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
-		exact: true,
-	}).annotations({
-		title: 'summary',
-		description: 'A brief summary of the award',
-		examples: ['Received for my work with Quantum Physics'],
-	}),
+	summary: S.optional(
+		S.compose(S.Trim, S.NonEmpty).annotations({
+			title: 'summary',
+			description: 'A brief summary of the award',
+			examples: ['Received for my work with Quantum Physics'],
+		}),
+		{ exact: true },
+	),
 
-	title: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
-		exact: true,
-	}).annotations({
-		title: 'title',
-		description: 'Title of the award',
-		examples: ['One of the 100 greatest minds of the century'],
-	}),
+	title: S.optional(
+		S.compose(S.Trim, S.NonEmpty).annotations({
+			title: 'title',
+			description: 'Title of the award',
+			examples: ['One of the 100 greatest minds of the century'],
+		}),
+		{ exact: true },
+	),
 })
 
 export type Award = S.Schema.Encoded<typeof Award>

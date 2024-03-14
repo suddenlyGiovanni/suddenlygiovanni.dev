@@ -2,5 +2,8 @@
 	"name": "@suddenly-giovanni/resume",
 	"version": "0.0.1",
 	"private": true,
-	"main": "resume.json"
+	"type": "module",
+	"exports": {
+		"./resume.json": "./resume.json"
+	}
 }

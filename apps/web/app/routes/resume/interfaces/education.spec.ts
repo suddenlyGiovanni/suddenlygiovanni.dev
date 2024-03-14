@@ -8,14 +8,14 @@ describe('Education', () => {
 	const educationInput = {
 		area: 'Computer Science',
 		courses: ['Computer Science', 'Data Structures'],
-		endDate: '2020-01-01T00:00:00.000Z',
-		gpa: '3.67/4.0',
+		endDate: '2020-01-01',
+		score: '3.67/4.0',
 		institution: 'Massachusetts Institute of Technology',
-		startDate: '1970-01-01T00:00:00.000Z',
+		startDate: '1970-01-01T00:00:00',
 		studyType: 'Bachelor',
 		url: 'https://mit.com',
 		location: 'Cambridge, MA',
-	} satisfies S.Schema.Type<typeof Education>
+	} satisfies S.Schema.Encoded<typeof Education>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Education)
@@ -44,10 +44,10 @@ describe('Education', () => {
 			expect(() => parse({ endDate: educationInput.endDate })).not.toThrow()
 		})
 
-		test('gpa', () => {
-			expect(() => parse({ gpa: '' })).toThrow()
-			expect(() => parse({ gpa: '  ' })).toThrow()
-			expect(() => parse({ gpa: educationInput.gpa })).not.toThrow()
+		test('score', () => {
+			expect(() => parse({ score: '' })).toThrow()
+			expect(() => parse({ score: '  ' })).toThrow()
+			expect(() => parse({ score: educationInput.score })).not.toThrow()
 		})
 
 		test('institution', () => {

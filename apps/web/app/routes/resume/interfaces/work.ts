@@ -2,15 +2,27 @@
 import * as S from '@effect/schema/Schema'
 
 import { Email } from './email.ts'
-import { ISODateString } from './iso-date-string.ts'
 import { Phone } from './phone.ts'
 import { UrlString } from './url-string.ts'
 
 export const Work = S.struct({
+	contact: S.optional(
+		S.struct({
+			name: S.compose(S.Trim, S.NonEmpty).pipe(
+				S.title('name'),
+				S.description('The name and role of the contact person'),
+				S.examples(['Mark Zuckerberg (CTO)']),
+			),
+
+			email: S.optional(Email, { exact: true }),
+
+			phone: S.optional(Phone, { exact: true }),
+		}),
+		{ exact: true },
+	),
+
 	description: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
+		S.compose(S.Trim, S.NonEmpty).pipe(
 			S.title('description'),
 			S.description('A short description of the company'),
 			S.examples(['Social Media Company', 'Educational Software Company']),
@@ -18,21 +30,20 @@ export const Work = S.struct({
 		{ exact: true },
 	),
 
-	endDate: S.optional(ISODateString, { exact: true }),
+	endDate: S.optional(S.Date, { exact: true }),
 
 	highlights: S.optional(
-		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
-			S.title('highlights'),
-			S.description('Specify multiple accomplishments'),
-			S.examples([['Founded the company', 'Wrote a new algorithm']]),
-		),
+		S.array(
+			S.compose(S.Trim, S.NonEmpty).pipe(
+				S.title('highlight'),
+				S.examples(['Increased profits by 20% from 2011-2012 through viral advertising']),
+			),
+		).pipe(S.title('highlights'), S.description('Specify multiple accomplishments')),
 		{ exact: true },
 	),
 
 	location: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
+		S.compose(S.Trim, S.NonEmpty).pipe(
 			S.title('location'),
 			S.description('Location of the company'),
 			S.examples(['Menlo Park, CA']),
@@ -41,9 +52,7 @@ export const Work = S.struct({
 	),
 
 	name: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
+		S.compose(S.Trim, S.NonEmpty).pipe(
 			S.title('name'),
 			S.description('Name of the company'),
 			S.examples(['Facebook']),
@@ -55,9 +64,7 @@ export const Work = S.struct({
 	 * e.g. Software Engineer
 	 */
 	position: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
+		S.compose(S.Trim, S.NonEmpty).pipe(
 			S.title('position'),
 			S.description('The title of your position at the company'),
 			S.examples(['Software Engineer']),
@@ -65,12 +72,10 @@ export const Work = S.struct({
 		{ exact: true },
 	),
 
-	startDate: S.optional(ISODateString, { exact: true }),
+	startDate: S.optional(S.Date, { exact: true }),
 
 	summary: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
+		S.compose(S.Trim, S.NonEmpty).pipe(
 			S.title('summary'),
 			S.description('Give an overview of your responsibilities at the company'),
 			S.examples(['My day-to-day activities involved designing and building web applications...']),
@@ -86,23 +91,6 @@ export const Work = S.struct({
 		),
 		{ exact: true },
 	),
-
-	contact: S.optional(
-		S.struct({
-			name: S.string.pipe(
-				S.trimmed(),
-				S.nonEmpty(),
-				S.title('name'),
-				S.description('The name and role of the contact person'),
-				S.examples(['Mark Zuckerberg (CTO)']),
-			),
-
-			email: S.optional(Email, { exact: true }),
-
-			phone: S.optional(Phone, { exact: true }),
-		}),
-		{ exact: true },
-	),
 })
 
-export interface Work extends S.Schema.Type<typeof Work> {}
+export interface Work extends S.Schema.Encoded<typeof Work> {}

@@ -3,7 +3,7 @@ import * as S from '@effect/schema/Schema'
 
 export const Skill = S.struct({
 	keywords: S.optional(
-		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
+		S.array(S.compose(S.Trim, S.NonEmpty)).pipe(
 			S.title('keywords'),
 			S.description('List some keywords pertaining to this skill'),
 			S.examples([['Rust', 'Java']]),
@@ -12,9 +12,7 @@ export const Skill = S.struct({
 	),
 
 	level: S.optional(
-		S.string.pipe(
-			S.trimmed(),
-			S.nonEmpty(),
+		S.compose(S.Trim, S.NonEmpty).pipe(
 			S.title('level'),
 			S.description('Level of expertise'),
 			S.examples(['Master', 'Intermediate']),
@@ -22,13 +20,11 @@ export const Skill = S.struct({
 		{ exact: true },
 	),
 
-	name: S.string.pipe(
-		S.trimmed(),
-		S.nonEmpty(),
+	name: S.compose(S.Trim, S.NonEmpty).pipe(
 		S.title('name'),
 		S.description('Name of the skill'),
 		S.examples(['Web Development']),
 	),
 })
 
-export interface Skill extends S.Schema.Type<typeof Skill> {}
+export interface Skill extends S.Schema.Encoded<typeof Skill> {}
