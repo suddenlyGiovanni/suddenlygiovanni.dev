@@ -4,16 +4,9 @@
 	"compilerOptions": {
 		"noEmit": true,
 		"paths": {
-			"~/*": [
-				"./src/*"
-			]
+			"~/*": ["./src/*"]
 		},
-		"types": [
-			"@total-typescript/ts-reset",
-			"vite/client",
-			"react",
-			"react-dom"
-		],
+		"types": ["@total-typescript/ts-reset", "vite/client", "react", "react-dom"],
 		"useDefineForClassFields": true
 	},
 	"include": [
@@ -25,10 +18,5 @@
 		"./.storybook/**/*",
 		"./src/**/*"
 	],
-	"exclude": [
-		"dist",
-		"build",
-		"node_modules",
-		"./~"
-	]
+	"exclude": ["dist", "build", "node_modules", "./~"]
 }
