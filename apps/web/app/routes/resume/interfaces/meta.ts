@@ -1,6 +1,5 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
-
 import { ISODateString } from './iso-date-string.ts'
 import { UrlString } from './url-string.ts'
 
@@ -37,4 +36,4 @@ export const Meta = S.struct({
 /**
  * The schema version and any other tooling configuration lives here
  */
-export interface Meta extends S.Schema.To<typeof Meta> {}
+export type Meta = S.Schema.To<typeof Meta>

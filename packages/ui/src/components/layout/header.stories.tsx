@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Placeholder } from '~/components/placeholder/placeholder.tsx'
 import { Layout } from './layout.tsx'
+import { Placeholder } from '~/components/placeholder/placeholder.tsx'
 
 const meta = {
 	component: Layout.Header,

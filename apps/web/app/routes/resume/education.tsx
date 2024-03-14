@@ -10,7 +10,6 @@ import {
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import type { ReactElement } from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
-
 import type { Education as IEducation } from '~/routes/resume/interfaces/education.ts'
 
 function formatDateLocaleShort(date: Date): string {

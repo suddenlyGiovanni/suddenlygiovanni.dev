@@ -1,6 +1,5 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
-
 import { Award } from './award.ts'
 import { Basics } from './basics.ts'
 import { Education } from './education.ts'
@@ -84,4 +83,4 @@ export const Resume = S.struct({
 	work: S.optional(S.array(Work), { exact: true }),
 })
 
-export interface Resume extends S.Schema.To<typeof Resume> {}
+export type Resume = S.Schema.To<typeof Resume>

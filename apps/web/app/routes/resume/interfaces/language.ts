@@ -20,4 +20,4 @@ export const Language = S.struct({
 	}),
 })
 
-export interface Language extends S.Schema.To<typeof Language> {}
+export type Language = S.Schema.To<typeof Language>

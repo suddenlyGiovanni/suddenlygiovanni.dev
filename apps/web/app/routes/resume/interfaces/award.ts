@@ -1,6 +1,5 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
-
 import { ISODateString } from './iso-date-string.ts'
 
 export const Award = S.struct({
@@ -41,4 +40,4 @@ export const Award = S.struct({
 	}),
 })
 
-export interface Award extends S.Schema.To<typeof Award> {}
+export type Award = S.Schema.To<typeof Award>

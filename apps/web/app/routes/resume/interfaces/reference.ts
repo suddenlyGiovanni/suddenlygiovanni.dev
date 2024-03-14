@@ -24,4 +24,4 @@ export const Reference = S.struct({
 	),
 })
 
-export interface Reference extends S.Schema.To<typeof Reference> {}
+export type Reference = S.Schema.To<typeof Reference>

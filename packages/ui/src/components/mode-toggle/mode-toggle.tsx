@@ -31,7 +31,7 @@ const ModeToggle = memo(function ModeToggle({
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild={true}>
+			<DropdownMenuTrigger asChild>
 				<Button className={clsx(className)} size="icon" variant="ghost" data-testid={NAME}>
 					{isLight || theme === null ? (
 						<Icons.moon className={clsx('h-[1.2rem]', 'w-[1.2rem]')} />

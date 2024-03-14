@@ -1,6 +1,5 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
-
 import { ISODateString } from './iso-date-string.ts'
 import { UrlString } from './url-string.ts'
 
@@ -65,4 +64,4 @@ export const Project = S.partial(
 	}),
 )
 
-export interface Project extends S.Schema.To<typeof Project> {}
+export type Project = S.Schema.To<typeof Project>

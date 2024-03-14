@@ -1,7 +1,6 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
 import { Phone } from '~/routes/resume/interfaces/phone.ts'
-
 import { Email } from './email.ts'
 import { Location } from './location.ts'
 import { Profile } from './profile.ts'
@@ -81,4 +80,4 @@ export const Basics = S.struct({
 	}),
 })
 
-export interface Basics extends S.Schema.To<typeof Basics> {}
+export type Basics = S.Schema.To<typeof Basics>
