@@ -1,7 +1,3 @@
-import { Link } from '@remix-run/react'
-import type { Meta } from '@storybook/react'
-import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react'
-import { forwardRef } from 'react'
 import { Icons } from '@/components/icons/icons.tsx'
 import { clsx } from '@/lib/utils.ts'
 import {
@@ -13,6 +9,10 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '@/ui/navigation-menu.tsx'
+import { Link } from '@remix-run/react'
+import type { Meta } from '@storybook/react'
+import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react'
+import { forwardRef } from 'react'
 
 const meta: Meta = {
 	component: NavigationMenu,

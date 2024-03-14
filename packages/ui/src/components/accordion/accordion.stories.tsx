@@ -3,8 +3,6 @@
 		react/no-unescaped-entities -- Reason: This rule is disabled because...
 */
 
-import type { Meta } from '@storybook/react'
-import { type ReactElement, useEffect, useRef, useState } from 'react'
 import { clsx } from '@/lib/utils.ts'
 import {
 	Accordion,
@@ -13,6 +11,8 @@ import {
 	AccordionItem,
 	AccordionTrigger,
 } from '@/ui/accordion.tsx'
+import type { Meta } from '@storybook/react'
+import { type ReactElement, useEffect, useRef, useState } from 'react'
 
 const meta = {
 	component: Accordion,

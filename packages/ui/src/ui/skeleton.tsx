@@ -1,5 +1,5 @@
-import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 import { clsx } from '@/lib/utils.ts'
+import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 
 export const Skeleton = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
 	({ className, ...props }, ref) => (

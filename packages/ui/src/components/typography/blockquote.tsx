@@ -1,5 +1,5 @@
-import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 import { clsx } from '@/lib/utils.ts'
+import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 
 export const Blockquote = forwardRef<HTMLQuoteElement, ComponentPropsWithoutRef<'blockquote'>>(
 	({ className, children, ...props }, ref) => (

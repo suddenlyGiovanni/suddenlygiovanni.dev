@@ -1,9 +1,3 @@
-/* eslint-disable
-	react/jsx-pascal-case -- Reason need to modify the Icons component,
-	react/jsx-boolean-value  -- Reason biome is conflicting with this rule,
-	*/
-import { type ReactNode, memo, useMemo } from 'react'
-import { Theme } from 'remix-themes'
 import { Icons } from '@/components/icons/icons.tsx'
 import { clsx } from '@/lib/utils.ts'
 import { Button } from '@/ui/button.tsx'
@@ -13,6 +7,12 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '@/ui/dropdown-menu.tsx'
+/* eslint-disable
+	react/jsx-pascal-case -- Reason need to modify the Icons component,
+	react/jsx-boolean-value  -- Reason biome is conflicting with this rule,
+	*/
+import { type ReactNode, memo, useMemo } from 'react'
+import { Theme } from 'remix-themes'
 
 interface ModeToggleProps {
 	readonly setTheme: (theme: Theme) => void
