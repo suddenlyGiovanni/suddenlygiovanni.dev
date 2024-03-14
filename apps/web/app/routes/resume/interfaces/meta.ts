@@ -1,6 +1,5 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
-
 import { UrlString } from './url-string.ts'
 
 export const Meta = S.struct({
@@ -37,4 +36,4 @@ export const Meta = S.struct({
 /**
  * The schema version and any other tooling configuration lives here
  */
-export interface Meta extends S.Schema.Encoded<typeof Meta> {}
+export type Meta = S.Schema.Encoded<typeof Meta>

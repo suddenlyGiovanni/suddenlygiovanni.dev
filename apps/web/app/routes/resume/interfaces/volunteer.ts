@@ -1,6 +1,5 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
-
 import { ISODateString } from './iso-date-string.ts'
 import { UrlString } from './url-string.ts'
 
@@ -56,4 +55,4 @@ export const Volunteer = S.struct({
 	),
 })
 
-export interface Volunteer extends S.Schema.Encoded<typeof Volunteer> {}
+export type Volunteer = S.Schema.Encoded<typeof Volunteer>

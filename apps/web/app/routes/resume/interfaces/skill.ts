@@ -27,4 +27,4 @@ export const Skill = S.struct({
 	),
 })
 
-export interface Skill extends S.Schema.Encoded<typeof Skill> {}
+export type Skill = S.Schema.Encoded<typeof Skill>

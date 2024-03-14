@@ -1,6 +1,5 @@
 import * as S from '@effect/schema/Schema'
 import { describe, expect, test } from 'vitest'
-
 import { Certificate } from './certificates'
 
 describe('Certificate', () => {

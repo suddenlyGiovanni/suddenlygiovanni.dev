@@ -77,4 +77,4 @@ export const Education = S.struct({
 	),
 })
 
-export interface Education extends S.Schema.Encoded<typeof Education> {}
+export type Education = S.Schema.Encoded<typeof Education>

@@ -9,10 +9,7 @@ import type { Profile } from '~/routes/resume/interfaces/profile.ts'
 import type { Skill } from '~/routes/resume/interfaces/skill.ts'
 import type { Work } from '~/routes/resume/interfaces/work.ts'
 
-/*
-	eslint-disable @typescript-eslint/no-explicit-any -- Reason: this is a WIP module.
-		need to fix it
-	*/
+ 
 
 type GatsbyTypes = unknown
 
