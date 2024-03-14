@@ -2,7 +2,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { T } from './typography.tsx'
 
-const meta = {} satisfies Meta
+const meta = {
+	title: 'components/typography',
+} satisfies Meta
 
 export const Demo: StoryObj<typeof meta> = {
 	render: () => (

@@ -1,14 +1,19 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": ["../../tsconfig.json", "@suddenly-giovanni/config-typescript/react-library.json"],
+	"extends": "@suddenly-giovanni/config-typescript/react-library.json",
 	"compilerOptions": {
-		"composite": true,
-		"incremental": true,
 		"noEmit": true,
 		"paths": {
-			"~/*": ["./src/*"]
+			"~/*": [
+				"./src/*"
+			]
 		},
-		"types": ["@total-typescript/ts-reset", "vite/client", "react", "react-dom"],
+		"types": [
+			"@total-typescript/ts-reset",
+			"vite/client",
+			"react",
+			"react-dom"
+		],
 		"useDefineForClassFields": true
 	},
 	"include": [
@@ -17,7 +22,13 @@
 		"postcss.config.mjs",
 		".prettierrc.js",
 		".eslintrc.cjs",
+		"./.storybook/**/*",
 		"./src/**/*"
 	],
-	"exclude": ["dist", "build", "node_modules", "./~"]
+	"exclude": [
+		"dist",
+		"build",
+		"node_modules",
+		"./~"
+	]
 }
