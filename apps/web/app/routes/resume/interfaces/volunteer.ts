@@ -11,7 +11,7 @@ export const Volunteer = S.struct({
 		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
 			S.title('highlights'),
 			S.description('Specify accomplishments and achievements'),
-			S.examples(['Saved the world']),
+			S.examples([['Saved the world']]),
 		),
 		{ exact: true },
 	),

@@ -6,7 +6,7 @@ export const Skill = S.struct({
 		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
 			S.title('keywords'),
 			S.description('List some keywords pertaining to this skill'),
-			S.examples(['Rust', 'Java']),
+			S.examples([['Rust', 'Java']]),
 		),
 		{ exact: true },
 	),

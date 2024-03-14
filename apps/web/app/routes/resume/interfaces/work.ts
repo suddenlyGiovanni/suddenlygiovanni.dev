@@ -24,7 +24,7 @@ export const Work = S.struct({
 		S.array(S.string.pipe(S.trimmed(), S.nonEmpty())).pipe(
 			S.title('highlights'),
 			S.description('Specify multiple accomplishments'),
-			S.examples(['Founded the company', 'Wrote a new algorithm']),
+			S.examples([['Founded the company', 'Wrote a new algorithm']]),
 		),
 		{ exact: true },
 	),

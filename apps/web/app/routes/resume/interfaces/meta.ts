@@ -15,7 +15,9 @@ export const Meta = S.struct({
 		description: 'URL (as per RFC 3986) to latest version of this document',
 	}),
 
-	lastModified: S.optional(ISODateString, {}).annotations({
+	lastModified: S.optional(ISODateString, {
+		exact: true,
+	}).annotations({
 		title: 'lastModified',
 		description: 'Using ISO 8601 with YYYY-MM-DDThh:mm:ss',
 		examples: ['2012-04-05T10:00:00.000Z'],

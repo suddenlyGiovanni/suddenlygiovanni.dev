@@ -30,7 +30,9 @@ export const Education = S.struct({
 		examples: ['3.67/4.0'],
 	}),
 
-	institution: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {}).annotations({
+	institution: S.optional(S.string.pipe(S.trimmed(), S.nonEmpty()), {
+		exact: true,
+	}).annotations({
 		title: 'institution',
 		description: 'e.g. Massachusetts Institute of Technology',
 		examples: ['Massachusetts Institute of Technology'],
