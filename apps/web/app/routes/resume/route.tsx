@@ -5,10 +5,11 @@ import {
 	json,
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
-import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json'
+import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
+import { Resume as ResumeSchema } from '~/routes/resume/interfaces'
 import { Contacts } from './contacts.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
@@ -17,6 +18,11 @@ import { Interests } from './interests.tsx'
 import { Languages } from './languages.tsx'
 import { mapToResume } from './mapper.ts'
 import { Skills } from './skills.tsx'
+import * as Schema from '@effect/schema/Schema'
+import * as Either from 'effect/Either'
+import * as Option from 'effect/Option'
+import { pipe } from 'effect/Function'
+import { formatError } from '@effect/schema/TreeFormatter'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -40,12 +46,23 @@ export const links: LinksFunction = () => {
 }
 
 export function loader(_: LoaderFunctionArgs) {
-	return json({ resume: resumeAssetUrl })
+	const schema = Schema.parseJson(ResumeSchema)
+	const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
+	const maybeResume = parse(resumeAssetUrl)
+
+	if (Either.isLeft(maybeResume)) {
+		throw new Response(formatError(maybeResume.left), {
+			// find the correct response code and message for this error caused by parsing issue....
+			status: 500,
+			statusText: 'Internal Server Error',
+		})
+	}
+	return json({ resume: maybeResume.right })
 }
 
 export default function Resume(): ReactElement {
 	const { resume } = useLoaderData<typeof loader>()
-	const { basics, skills, work, education, interests, languages } = mapToResume(resume)
+	const { basics, skills, work, education, interests, languages } = resume
 
 	return (
 		<article
