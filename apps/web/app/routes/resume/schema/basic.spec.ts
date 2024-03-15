@@ -33,7 +33,10 @@ describe('Basics', () => {
 		label: basicsInput.label,
 		email: basicsInput.email,
 		summary: basicsInput.summary,
-		location: {},
+		location: {
+			city: basicsInput.location.city,
+			countryCode: basicsInput.location.countryCode,
+		},
 		profiles: [],
 	}
 
@@ -70,7 +73,7 @@ describe('Basics', () => {
 		})
 
 		test('location', () => {
-			expect(() => parse({ ...required, location: {} })).not.toThrow()
+			expect(() => parse({ ...required, location: {} })).toThrow()
 			expect(() => parse({ ...required, location: basicsInput.location })).not.toThrow()
 		})
 

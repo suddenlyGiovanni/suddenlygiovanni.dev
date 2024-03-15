@@ -11,25 +11,19 @@ export const Location = S.struct({
 		{ exact: true },
 	),
 
-	city: S.optional(
-		S.compose(S.Trim, S.NonEmpty).annotations({
-			title: 'city',
-			description: 'City',
-			examples: ['Berlin', 'New York', 'San Francisco'],
-		}),
-		{ exact: true },
-	),
+	city: S.compose(S.Trim, S.NonEmpty).annotations({
+		title: 'city',
+		description: 'City',
+		examples: ['Berlin', 'New York', 'San Francisco'],
+	}),
 
-	countryCode: S.optional(
-		S.compose(S.Trim, S.Uppercase)
-			.pipe(S.length(2))
-			.annotations({
-				title: 'countryCode',
-				description: 'Country code as per ISO-3166-1 ALPHA-2',
-				examples: ['US', 'AU', 'IN'],
-			}),
-		{ exact: true },
-	),
+	countryCode: S.compose(S.Trim, S.Uppercase)
+		.pipe(S.length(2))
+		.annotations({
+			title: 'countryCode',
+			description: 'Country code as per ISO-3166-1 ALPHA-2',
+			examples: ['US', 'AU', 'IN'],
+		}),
 
 	postalCode: S.optional(
 		S.compose(S.Trim, S.NonEmpty).annotations({

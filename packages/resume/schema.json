@@ -51,6 +51,7 @@
 				"location": {
 					"type": "object",
 					"additionalProperties": true,
+					"required": ["city", "countryCode"],
 					"properties": {
 						"address": {
 							"type": "string",

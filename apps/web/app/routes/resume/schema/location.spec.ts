@@ -4,54 +4,59 @@ import { describe, expect, test } from 'vitest'
 import { Location } from './location.ts'
 
 describe('Location', () => {
-	const locationInput: S.Schema.Type<typeof Location> = {
+	const locationInput = {
 		address: '1234 Glücklichkeit Straße Hinterhaus 5. Etage li.',
 		city: 'Berlin',
 		countryCode: 'DE',
 		postalCode: '10999',
 		region: 'California',
-	} satisfies S.Schema.Type<typeof Location>
+	} satisfies S.Schema.Encoded<typeof Location>
+
+	const required: S.Schema.Encoded<typeof Location> = {
+		countryCode: locationInput.countryCode,
+		city: locationInput.city,
+	}
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Location)
 
 		test('handle all missing property', () => {
-			const input: unknown = {}
+			const input: unknown = { ...required }
 			expect(() => parse(input)).not.toThrow()
 		})
 
 		test('address', () => {
-			expect(() => parse({ address: '' })).toThrow()
-			expect(() => parse({ address: '  ' })).toThrow()
-			expect(() => parse({ address: locationInput.address })).not.toThrow()
+			expect(() => parse({ ...required, address: '' })).toThrow()
+			expect(() => parse({ ...required, address: '  ' })).toThrow()
+			expect(() => parse({ ...required, address: '   Booger Hollow Road 69' })).not.toThrow()
 		})
 
 		test('city', () => {
-			expect(() => parse({ city: '' })).toThrow()
-			expect(() => parse({ city: '  ' })).toThrow()
-			expect(() => parse({ city: locationInput.city })).not.toThrow()
+			expect(() => parse({ ...required, city: '' })).toThrow()
+			expect(() => parse({ ...required, city: '  ' })).toThrow()
+			expect(() => parse({ ...required, city: 'Constantinople' })).not.toThrow()
 		})
 
 		test('countryCode', () => {
-			expect(() => parse({ countryCode: '' })).toThrow()
-			expect(() => parse({ countryCode: '  ' })).toThrow()
-			expect(() => parse({ countryCode: 'D' })).toThrow()
-			expect(() => parse({ countryCode: 'DEUTSCHLAND' })).toThrow()
-			expect(() => parse({ countryCode: 'de' })).not.toThrow()
-			expect(() => parse({ countryCode: locationInput.countryCode })).not.toThrow()
+			expect(() => parse({ ...required, countryCode: '' })).toThrow()
+			expect(() => parse({ ...required, countryCode: '  ' })).toThrow()
+			expect(() => parse({ ...required, countryCode: 'D' })).toThrow()
+			expect(() => parse({ ...required, countryCode: 'DEUTSCHLAND' })).toThrow()
+			expect(() => parse({ ...required, countryCode: 'de' })).not.toThrow()
+			expect(() => parse({ ...required, countryCode: 'AU' })).not.toThrow()
 		})
 
 		test('postalCode', () => {
-			expect(() => parse({ postalCode: '' })).toThrow()
-			expect(() => parse({ postalCode: '  ' })).toThrow()
+			expect(() => parse({ ...required, postalCode: '' })).toThrow()
+			expect(() => parse({ ...required, postalCode: '  ' })).toThrow()
 			// expect(() => parse({ postalCode: 'ABCS' })).toThrow()
-			expect(() => parse({ postalCode: locationInput.postalCode })).not.toThrow()
+			expect(() => parse({ ...required, postalCode: '90210' })).not.toThrow()
 		})
 
 		test('region', () => {
-			expect(() => parse({ region: '' })).toThrow()
-			expect(() => parse({ region: '  ' })).toThrow()
-			expect(() => parse({ region: locationInput.region })).not.toThrow()
+			expect(() => parse({ ...required, region: '' })).toThrow()
+			expect(() => parse({ ...required, region: '  ' })).toThrow()
+			expect(() => parse({ ...required, region: 'Mississippi' })).not.toThrow()
 		})
 	})
 })
