@@ -11,6 +11,7 @@ describe('Resume', () => {
 	const basics: Basics = {
 		name: 'Thomas Anderson',
 		label: 'Software Engineer',
+		email: 'thomas@gmail.com',
 	}
 	const $schema = 'http://jsonresume.org/schema'
 

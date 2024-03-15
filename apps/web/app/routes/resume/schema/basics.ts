@@ -7,14 +7,11 @@ import { Profile } from './profile.ts'
 import { UrlString } from './url-string.ts'
 
 export const Basics = S.struct({
-	email: S.optional(
-		Email.annotations({
-			title: 'email',
-			description: 'Email address',
-			examples: ['thomas@gmail.com'],
-		}),
-		{ exact: true },
-	),
+	email: Email.annotations({
+		title: 'email',
+		description: 'Email address',
+		examples: ['thomas@gmail.com'],
+	}),
 
 	image: S.optional(
 		UrlString.annotations({

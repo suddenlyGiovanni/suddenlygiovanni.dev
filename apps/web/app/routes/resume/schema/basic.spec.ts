@@ -31,6 +31,7 @@ describe('Basics', () => {
 	const required: S.Schema.Encoded<typeof Basics> = {
 		name: basicsInput.name,
 		label: basicsInput.label,
+		email: basicsInput.email,
 	}
 
 	describe('decode', () => {

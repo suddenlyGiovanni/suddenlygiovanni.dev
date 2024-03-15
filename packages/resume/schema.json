@@ -16,6 +16,7 @@
 		},
 		"basics": {
 			"type": "object",
+			"required": ["name", "label", "email", "summary", "location", "profiles"],
 			"additionalProperties": true,
 			"properties": {
 				"name": {
