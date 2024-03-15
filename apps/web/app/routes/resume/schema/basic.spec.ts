@@ -7,7 +7,7 @@ describe('Basics', () => {
 	const basicsInput = {
 		email: 'thomas@gmail.com',
 		image: 'http://example.com/image.jpg',
-		label: 'Web Developer',
+		label: 'Software Engineer',
 		location: {
 			address: '1234 Glücklichkeit Straße Hinterhaus 5. Etage li.',
 			city: 'Berlin',
@@ -30,6 +30,7 @@ describe('Basics', () => {
 
 	const required: S.Schema.Encoded<typeof Basics> = {
 		name: basicsInput.name,
+		label: basicsInput.label,
 	}
 
 	describe('decode', () => {
@@ -46,6 +47,12 @@ describe('Basics', () => {
 			expect(() => parse({ ...required, name: basicsInput.name })).not.toThrow()
 		})
 
+		test('label', () => {
+			expect(() => parse({ ...required, label: '' })).toThrow()
+			expect(() => parse({ ...required, label: '  ' })).toThrow()
+			expect(() => parse({ ...required, label: basicsInput.label })).not.toThrow()
+		})
+
 		test('email', () => {
 			expect(() => parse({ ...required, email: '' })).toThrow()
 			expect(() => parse({ ...required, email: '  ' })).toThrow()
@@ -56,12 +63,6 @@ describe('Basics', () => {
 			expect(() => parse({ ...required, image: '' })).toThrow()
 			expect(() => parse({ ...required, image: '  ' })).toThrow()
 			expect(() => parse({ ...required, image: basicsInput.image })).not.toThrow()
-		})
-
-		test('label', () => {
-			expect(() => parse({ ...required, label: '' })).toThrow()
-			expect(() => parse({ ...required, label: '  ' })).toThrow()
-			expect(() => parse({ ...required, label: basicsInput.label })).not.toThrow()
 		})
 
 		test('location', () => {

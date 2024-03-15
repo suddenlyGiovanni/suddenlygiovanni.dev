@@ -1,15 +1,16 @@
 import { ParseError } from '@effect/schema/ParseResult'
 import * as Schema from '@effect/schema/Schema'
-import * as Either from 'effect/Either'
 import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
+import * as Either from 'effect/Either'
+import type { Basics } from './basics.ts'
 
 import { describe, expect, it } from 'vitest'
 import { Resume as ResumeSchema } from './resume.ts'
 
 describe('Resume', () => {
-	const basics = {
-		/* basics data */
+	const basics: Basics = {
 		name: 'Thomas Anderson',
+		label: 'Software Engineer',
 	}
 	const $schema = 'http://jsonresume.org/schema'
 

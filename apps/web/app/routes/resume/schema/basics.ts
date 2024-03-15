@@ -24,14 +24,11 @@ export const Basics = S.struct({
 		{ exact: true },
 	),
 
-	label: S.optional(
-		S.compose(S.Trim, S.NonEmpty).annotations({
-			title: 'label',
-			description: 'Label',
-			examples: ['Web Developer'],
-		}),
-		{ exact: true },
-	),
+	label: S.compose(S.Trim, S.NonEmpty).annotations({
+		title: 'label',
+		description: 'Label',
+		examples: ['Web Developer'],
+	}),
 
 	location: S.optional(Location, { exact: true }),
 
