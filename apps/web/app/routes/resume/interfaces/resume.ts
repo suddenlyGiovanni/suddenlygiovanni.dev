@@ -27,7 +27,7 @@ export const Resume = S.struct({
 			title: 'awards',
 			description: 'Specify any awards you have received throughout your professional career',
 		}),
-		{ exact: true, as: 'Option' },
+		{ exact: true },
 	),
 
 	basics: Basics,
@@ -37,19 +37,19 @@ export const Resume = S.struct({
 			title: 'certificates',
 			description: 'Specify any certificates you have received throughout your professional career',
 		}),
-		{ exact: true, as: 'Option' },
+		{ exact: true },
 	),
 
-	education: S.optional(S.array(Education), { exact: true, as: 'Option' }),
+	education: S.optional(S.array(Education), { exact: true }),
 
-	interests: S.optional(S.array(Interest), { exact: true, as: 'Option' }),
+	interests: S.optional(S.array(Interest), { exact: true }),
 
 	languages: S.optional(
 		S.array(Language).annotations({
 			title: 'languages',
 			description: 'List any other languages you speak',
 		}),
-		{ exact: true, as: 'Option' },
+		{ exact: true },
 	),
 
 	meta: S.optional(
@@ -57,7 +57,7 @@ export const Resume = S.struct({
 			title: 'meta',
 			description: 'The schema version and any other tooling configuration lives here',
 		}),
-		{ exact: true, as: 'Option' },
+		{ exact: true },
 	),
 
 	projects: S.optional(
@@ -65,7 +65,7 @@ export const Resume = S.struct({
 			title: 'projects',
 			description: 'Specify career projects',
 		}),
-		{ exact: true, as: 'Option' },
+		{ exact: true },
 	),
 
 	publications: S.optional(
@@ -73,7 +73,7 @@ export const Resume = S.struct({
 			title: 'publications',
 			description: 'Specify your publications through your career',
 		}),
-		{ exact: true, as: 'Option' },
+		{ exact: true },
 	),
 
 	references: S.optional(
@@ -81,7 +81,7 @@ export const Resume = S.struct({
 			title: 'references',
 			description: 'List references you have received',
 		}),
-		{ exact: true, as: 'Option' },
+		{ exact: true },
 	),
 
 	skills: S.optional(
@@ -89,12 +89,12 @@ export const Resume = S.struct({
 			title: 'skills',
 			description: 'List out your professional skill-set',
 		}),
-		{ exact: true, as: 'Option' },
+		{ exact: true },
 	),
 
-	volunteer: S.optional(S.array(Volunteer), { exact: true, as: 'Option' }),
+	volunteer: S.optional(S.array(Volunteer), { exact: true }),
 
-	work: S.optional(S.array(Work), { exact: true, as: 'Option' }),
+	work: S.optional(S.array(Work), { exact: true }),
 })
 
 export type Resume = S.Schema.Encoded<typeof Resume>

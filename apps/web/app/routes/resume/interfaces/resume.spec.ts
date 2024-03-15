@@ -1,8 +1,7 @@
-import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
 import { ParseError } from '@effect/schema/ParseResult'
 import * as Schema from '@effect/schema/Schema'
 import * as Either from 'effect/Either'
-import * as Option from 'effect/Option'
+import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
 
 import { describe, expect, it } from 'vitest'
 import { Resume as ResumeSchema } from './resume.ts'
@@ -43,42 +42,18 @@ describe('Resume', () => {
 			Either.map(mockResult, resume => {
 				expect(resume.$schema).toBeDefined()
 				expect(resume.basics).toBeDefined()
-
-				expect(Option.isOption(resume.awards)).toBe(true)
-				expect(Option.isNone(resume.awards)).toBe(true)
-
-				expect(Option.isOption(resume.certificates)).toBe(true)
-				expect(Option.isNone(resume.certificates)).toBe(true)
-
-				expect(Option.isOption(resume.education)).toBe(true)
-				expect(Option.isNone(resume.education)).toBe(true)
-
-				expect(Option.isOption(resume.interests)).toBe(true)
-				expect(Option.isNone(resume.interests)).toBe(true)
-
-				expect(Option.isOption(resume.languages)).toBe(true)
-				expect(Option.isNone(resume.languages)).toBe(true)
-
-				expect(Option.isOption(resume.meta)).toBe(true)
-				expect(Option.isNone(resume.meta)).toBe(true)
-
-				expect(Option.isOption(resume.projects)).toBe(true)
-				expect(Option.isNone(resume.projects)).toBe(true)
-
-				expect(Option.isOption(resume.publications)).toBe(true)
-				expect(Option.isNone(resume.publications)).toBe(true)
-
-				expect(Option.isOption(resume.references)).toBe(true)
-				expect(Option.isNone(resume.references)).toBe(true)
-
-				expect(Option.isOption(resume.skills)).toBe(true)
-				expect(Option.isNone(resume.skills)).toBe(true)
-
-				expect(Option.isOption(resume.volunteer)).toBe(true)
-				expect(Option.isNone(resume.volunteer)).toBe(true)
-
-				expect(Option.isOption(resume.work)).toBe(true)
-				expect(Option.isNone(resume.work)).toBe(true)
+				expect(resume.awards).toBeUndefined()
+				expect(resume.certificates).toBeUndefined()
+				expect(resume.education).toBeUndefined()
+				expect(resume.interests).toBeUndefined()
+				expect(resume.languages).toBeUndefined()
+				expect(resume.meta).toBeUndefined()
+				expect(resume.projects).toBeUndefined()
+				expect(resume.publications).toBeUndefined()
+				expect(resume.references).toBeUndefined()
+				expect(resume.skills).toBeUndefined()
+				expect(resume.volunteer).toBeUndefined()
+				expect(resume.work).toBeUndefined()
 			})
 		})
 
@@ -110,18 +85,18 @@ describe('Resume', () => {
 			Either.map(mockResult, resume => {
 				expect(resume.$schema).toBeDefined()
 				expect(resume.basics).toBeDefined()
-				expect(Option.isSome(resume.awards)).toBe(true)
-				expect(Option.isSome(resume.certificates)).toBe(true)
-				expect(Option.isSome(resume.education)).toBe(true)
-				expect(Option.isSome(resume.interests)).toBe(true)
-				expect(Option.isSome(resume.languages)).toBe(true)
-				expect(Option.isSome(resume.meta)).toBe(true)
-				expect(Option.isSome(resume.projects)).toBe(true)
-				expect(Option.isSome(resume.publications)).toBe(true)
-				expect(Option.isSome(resume.references)).toBe(true)
-				expect(Option.isSome(resume.skills)).toBe(true)
-				expect(Option.isSome(resume.volunteer)).toBe(true)
-				expect(Option.isSome(resume.work)).toBe(true)
+				expect(resume.awards).toBeDefined()
+				expect(resume.certificates).toBeDefined()
+				expect(resume.education).toBeDefined()
+				expect(resume.interests).toBeDefined()
+				expect(resume.languages).toBeDefined()
+				expect(resume.meta).toBeDefined()
+				expect(resume.projects).toBeDefined()
+				expect(resume.publications).toBeDefined()
+				expect(resume.references).toBeDefined()
+				expect(resume.skills).toBeDefined()
+				expect(resume.volunteer).toBeDefined()
+				expect(resume.work).toBeDefined()
 			})
 		})
 
@@ -129,6 +104,22 @@ describe('Resume', () => {
 			const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
 			const resume = parse(resumeAssetUrl)
 			expect(Either.isRight(resume)).toBe(true)
+			Either.map(resume, r => {
+				expect(r.$schema).toBeDefined()
+				expect(r.basics).toBeDefined()
+				expect(r.awards).toBeDefined()
+				// expect(r.certificates).toBeDefined()
+				expect(r.education).toBeDefined()
+				expect(r.interests).toBeDefined()
+				expect(r.languages).toBeDefined()
+				expect(r.meta).toBeDefined()
+				expect(r.projects).toBeDefined()
+				expect(r.publications).toBeDefined()
+				expect(r.references).toBeDefined()
+				expect(r.skills).toBeDefined()
+				expect(r.volunteer).toBeDefined()
+				expect(r.work).toBeDefined()
+			})
 		})
 	})
 })
