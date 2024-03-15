@@ -3,8 +3,8 @@ import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
 import { SocialIcon } from '@suddenly-giovanni/ui/components/social/social-icon.tsx'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import resumePdfAssetUrl from 'public/giovanni-ravalico-resume-2021.pdf?url'
 import type { ReactElement, ReactNode } from 'react'
+import resumePdfAssetUrl from 'public/giovanni-ravalico-resume-2021.pdf?url'
 import { routesRecord } from '~/routes-record.ts'
 import type { BasicsType } from '~/routes/resume/schema/basics'
 
@@ -133,7 +133,7 @@ function Contacts({ email, location, phone, profiles, url }: ContactsProps): Rea
 
 				<li className={addressClasses.li}>
 					<Icons.mobile aria-label="phone icon" />
-					<T.a aria-label="phone number" href={`tel:${phone || ''}`}>
+					<T.a aria-label="phone number" href={`tel:${phone ?? ''}`}>
 						{phone}
 					</T.a>
 				</li>
@@ -145,7 +145,7 @@ function Contacts({ email, location, phone, profiles, url }: ContactsProps): Rea
 						/>
 
 						<T.a aria-label={`link to ${profile.network}`} href={profile.url}>
-							{profile.url.replace(/(https:\/\/www\.)|(https:\/\/)/i, '')}
+							{profile.url.replace(/(?:https:\/\/www\.)|(?:https:\/\/)/i, '')}
 						</T.a>
 					</li>
 				))}
