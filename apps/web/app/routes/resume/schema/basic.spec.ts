@@ -34,6 +34,7 @@ describe('Basics', () => {
 		email: basicsInput.email,
 		summary: basicsInput.summary,
 		location: {},
+		profiles: [],
 	}
 
 	describe('decode', () => {
@@ -76,6 +77,7 @@ describe('Basics', () => {
 		test('phone', () => {
 			expect(() => parse({ ...required, phone: '' })).toThrow()
 			expect(() => parse({ ...required, phone: '  ' })).toThrow()
+			expect(() => parse({ ...required, phone: ' abcdefghijk' })).toThrow()
 			expect(() => parse({ ...required, phone: basicsInput.phone })).not.toThrow()
 		})
 

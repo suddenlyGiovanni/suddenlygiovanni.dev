@@ -45,15 +45,10 @@ export const Basics = S.struct({
 		{ exact: true },
 	),
 
-	profiles: S.optional(
-		S.array(Profile).annotations({
-			title: 'profiles',
-			description: 'Specify any number of social networks that you participate in',
-		}),
-		{
-			exact: true,
-		},
-	),
+	profiles: S.array(Profile).annotations({
+		title: 'profiles',
+		description: 'Specify any number of social networks that you participate in',
+	}),
 
 	summary: S.compose(S.Trim, S.NonEmpty).annotations({
 		title: 'summary',

@@ -79,6 +79,7 @@
 					"items": {
 						"type": "object",
 						"additionalProperties": true,
+						"required": ["network", "url", "username"],
 						"properties": {
 							"network": {
 								"type": "string",
