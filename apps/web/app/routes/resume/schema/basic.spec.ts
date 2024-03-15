@@ -33,6 +33,7 @@ describe('Basics', () => {
 		label: basicsInput.label,
 		email: basicsInput.email,
 		summary: basicsInput.summary,
+		location: {},
 	}
 
 	describe('decode', () => {

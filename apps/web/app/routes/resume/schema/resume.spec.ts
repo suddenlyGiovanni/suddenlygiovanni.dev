@@ -13,6 +13,7 @@ describe('Resume', () => {
 		label: 'Software Engineer',
 		email: 'thomas@gmail.com',
 		summary: 'Web Developer with a passion for web-based applications',
+		location: {},
 	}
 	const $schema = 'http://jsonresume.org/schema'
 

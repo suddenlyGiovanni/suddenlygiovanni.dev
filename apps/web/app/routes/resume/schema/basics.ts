@@ -27,7 +27,7 @@ export const Basics = S.struct({
 		examples: ['Web Developer'],
 	}),
 
-	location: S.optional(Location, { exact: true }),
+	location: Location,
 
 	name: S.compose(S.Trim, S.NonEmpty).annotations({
 		title: 'name',
