@@ -30,8 +30,8 @@ importers:
   apps/web:
     dependencies:
       '@effect/schema':
-        specifier: 0.64.3
-        version: 0.64.3(effect@2.4.7)(fast-check@3.16.0)
+        specifier: 0.64.5
+        version: 0.64.5(effect@2.4.7)(fast-check@3.16.0)
       '@remix-run/node':
         specifier: 2.8.1
         version: 2.8.1(typescript@5.4.2)
@@ -1831,10 +1831,10 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
-  /@effect/schema@0.64.3(effect@2.4.7)(fast-check@3.16.0):
-    resolution: {integrity: sha512-Pn/IG+X9GTXLVvDtdjptr3QWxpcH+m7LEgM6loLWk7DP8SPKqWdo3rFaZiILpJFci8QWEk7K23C3IJZOnMfTtA==}
+  /@effect/schema@0.64.5(effect@2.4.7)(fast-check@3.16.0):
+    resolution: {integrity: sha512-yYhwdYkGyj4GEepuo7kNvhtYqi3UxdbFR3A+W3/Ln9cKQa0WGJP8v6jKuSBpAJKz8aFuFVsJ6wRtrx1pgjE0OQ==}
     peerDependencies:
-      effect: ^2.4.6
+      effect: ^2.4.7
       fast-check: ^3.13.2
     dependencies:
       effect: 2.4.7
