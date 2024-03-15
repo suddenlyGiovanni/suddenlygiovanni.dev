@@ -4,7 +4,7 @@ import { describe, expect, test } from 'vitest'
 import { Basics } from './basics.ts'
 
 describe('Basics', () => {
-	const basicsInput: S.Schema.Type<typeof Basics> = {
+	const basicsInput = {
 		email: 'thomas@gmail.com',
 		image: 'http://example.com/image.jpg',
 		label: 'Web Developer',
@@ -26,37 +26,39 @@ describe('Basics', () => {
 		],
 		summary: 'Web Developer with a passion for web-based applications',
 		url: 'http://thomasanderson.com',
-	} satisfies S.Schema.Type<typeof Basics>
+	} satisfies S.Schema.Encoded<typeof Basics>
+
+	const required = { name: basicsInput.name } satisfies S.Schema.Encoded<typeof Basics>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Basics)
 
 		test('handle all missing property', () => {
-			const input: unknown = {}
+			const input: unknown = required
 			expect(() => parse(input)).not.toThrow()
 		})
 
 		test('email', () => {
-			expect(() => parse({ email: '' })).toThrow()
-			expect(() => parse({ email: '  ' })).toThrow()
-			expect(() => parse({ email: basicsInput.email })).not.toThrow()
+			expect(() => parse({ ...required, email: '' })).toThrow()
+			expect(() => parse({ ...required, email: '  ' })).toThrow()
+			expect(() => parse({ ...required, email: basicsInput.email })).not.toThrow()
 		})
 
 		test('image', () => {
-			expect(() => parse({ image: '' })).toThrow()
-			expect(() => parse({ image: '  ' })).toThrow()
-			expect(() => parse({ image: basicsInput.image })).not.toThrow()
+			expect(() => parse({ ...required, image: '' })).toThrow()
+			expect(() => parse({ ...required, image: '  ' })).toThrow()
+			expect(() => parse({ ...required, image: basicsInput.image })).not.toThrow()
 		})
 
 		test('label', () => {
-			expect(() => parse({ label: '' })).toThrow()
-			expect(() => parse({ label: '  ' })).toThrow()
-			expect(() => parse({ label: basicsInput.label })).not.toThrow()
+			expect(() => parse({ ...required, label: '' })).toThrow()
+			expect(() => parse({ ...required, label: '  ' })).toThrow()
+			expect(() => parse({ ...required, label: basicsInput.label })).not.toThrow()
 		})
 
 		test('location', () => {
-			expect(() => parse({ location: {} })).not.toThrow()
-			expect(() => parse({ location: basicsInput.location })).not.toThrow()
+			expect(() => parse({ ...required, location: {} })).not.toThrow()
+			expect(() => parse({ ...required, location: basicsInput.location })).not.toThrow()
 		})
 
 		test('name', () => {
@@ -66,26 +68,26 @@ describe('Basics', () => {
 		})
 
 		test('phone', () => {
-			expect(() => parse({ phone: '' })).toThrow()
-			expect(() => parse({ phone: '  ' })).toThrow()
-			expect(() => parse({ phone: basicsInput.phone })).not.toThrow()
+			expect(() => parse({ ...required, phone: '' })).toThrow()
+			expect(() => parse({ ...required, phone: '  ' })).toThrow()
+			expect(() => parse({ ...required, phone: basicsInput.phone })).not.toThrow()
 		})
 
 		test('profiles', () => {
-			expect(() => parse({ profiles: [] })).not.toThrow()
-			expect(() => parse({ profiles: basicsInput.profiles })).not.toThrow()
+			expect(() => parse({ ...required, profiles: [] })).not.toThrow()
+			expect(() => parse({ ...required, profiles: basicsInput.profiles })).not.toThrow()
 		})
 
 		test('summary', () => {
-			expect(() => parse({ summary: '' })).toThrow()
-			expect(() => parse({ summary: '  ' })).toThrow()
-			expect(() => parse({ summary: basicsInput.summary })).not.toThrow()
+			expect(() => parse({ ...required, summary: '' })).toThrow()
+			expect(() => parse({ ...required, summary: '  ' })).toThrow()
+			expect(() => parse({ ...required, summary: basicsInput.summary })).not.toThrow()
 		})
 
 		test('url', () => {
-			expect(() => parse({ url: '' })).toThrow()
-			expect(() => parse({ url: '  ' })).toThrow()
-			expect(() => parse({ url: basicsInput.url })).not.toThrow()
+			expect(() => parse({ ...required, url: '' })).toThrow()
+			expect(() => parse({ ...required, url: '  ' })).toThrow()
+			expect(() => parse({ ...required, url: basicsInput.url })).not.toThrow()
 		})
 	})
 })

@@ -35,14 +35,11 @@ export const Basics = S.struct({
 
 	location: S.optional(Location, { exact: true }),
 
-	name: S.optional(
-		S.compose(S.Trim, S.NonEmpty).annotations({
-			title: 'name',
-			description: 'Your full name',
-			examples: ['Thomas Anderson'],
-		}),
-		{ exact: true },
-	),
+	name: S.compose(S.Trim, S.NonEmpty).annotations({
+		title: 'name',
+		description: 'Your full name',
+		examples: ['Thomas Anderson'],
+	}),
 
 	phone: S.optional(
 		Phone.annotations({
