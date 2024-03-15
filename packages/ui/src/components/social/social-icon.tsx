@@ -1,13 +1,12 @@
 import { Icons } from '@/components/icons/icons.tsx'
-/* eslint-disable @typescript-eslint/no-non-null-assertion -- Reason map api force to re-check  */
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
 
 export const IconMap = new Map([
 	['twitter', Icons.twitter],
 	['github', Icons.gitHub],
 	['linkedin', Icons.linkedin],
-] as const)
-export type SocialNetworks = Parameters<(typeof IconMap)['get']>[0]
+])
+export type SocialNetworks = Parameters<(typeof IconMap)['get']>[number]
 
 interface SocialIconProps extends ComponentPropsWithoutRef<'svg'> {
 	network: SocialNetworks
@@ -16,14 +15,19 @@ interface SocialIconProps extends ComponentPropsWithoutRef<'svg'> {
 const NAME = 'SocialIcon'
 export const SocialIcon = forwardRef<SVGSVGElement, SocialIconProps>(
 	({ network, ...props }: SocialIconProps, ref) => {
-		if (IconMap.has(network)) {
-			// biome-ignore lint/style/useNamingConvention: do not rename the Icon will be a React component
-			// biome-ignore lint/style/noNonNullAssertion:  we are already checking if the key exists
-			const Icon = IconMap.get(network)!
-			const dataTestId = `${NAME}-${network}`
-			return <Icon data-testid={dataTestId} ref={ref} {...props} />
+		// biome-ignore lint/style/useNamingConvention: this is a valid use case for a Map
+		const Icon = IconMap.get(network)
+		if (!Icon) {
+			throw new Error(
+				`Couldn't find key "${network}" in the IconMap. Available keys are: [${Array.from(
+					IconMap.keys(),
+				)
+					.map(value => `"${value}"`)
+					.join(', ')}]`,
+			)
 		}
-		throw new Error("couldn't find the social icon associated to the required network key")
+
+		return <Icon data-testid={`${NAME}-${network}`} ref={ref} {...props} />
 	},
 )
 SocialIcon.displayName = NAME
