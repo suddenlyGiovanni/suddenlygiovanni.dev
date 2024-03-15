@@ -6,9 +6,10 @@ import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import resumePdfAssetUrl from 'public/giovanni-ravalico-resume-2021.pdf?url'
 import type { ReactElement, ReactNode } from 'react'
 import { routesRecord } from '~/routes-record.ts'
-import type { BasicsType } from '~/routes/resume/schema/basics'
+import type { BasicsType } from '~/routes/resume/schema/basics.ts'
+import type { ResumeType } from '~/routes/resume/schema/resume.ts'
 
-export function Basics({ basics }: { basics: BasicsType }): ReactElement {
+export function Basics({ basics }: { basics: ResumeType['basics'] }): ReactElement {
 	return (
 		<Header label={basics.label} name={basics.name} summary={basics.summary}>
 			<Contacts

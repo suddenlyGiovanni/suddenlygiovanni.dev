@@ -98,3 +98,4 @@ export const Resume = S.struct({
 })
 
 export type Resume = S.Schema.Encoded<typeof Resume>
+export type ResumeType = S.Schema.Type<typeof Resume>
