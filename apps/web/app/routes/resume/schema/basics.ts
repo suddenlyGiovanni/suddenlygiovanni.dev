@@ -55,16 +55,11 @@ export const Basics = S.struct({
 		},
 	),
 
-	summary: S.optional(
-		S.compose(S.Trim, S.NonEmpty).annotations({
-			title: 'summary',
-			description: 'Write a short 2-3 sentence biography about yourself',
-			examples: ['Web Developer with a passion for web-based applications'],
-		}),
-		{
-			exact: true,
-		},
-	),
+	summary: S.compose(S.Trim, S.NonEmpty).annotations({
+		title: 'summary',
+		description: 'Write a short 2-3 sentence biography about yourself',
+		examples: ['Web Developer with a passion for web-based applications'],
+	}),
 
 	url: S.optional(
 		UrlString.annotations({

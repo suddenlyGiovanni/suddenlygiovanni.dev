@@ -32,6 +32,7 @@ describe('Basics', () => {
 		name: basicsInput.name,
 		label: basicsInput.label,
 		email: basicsInput.email,
+		summary: basicsInput.summary,
 	}
 
 	describe('decode', () => {
