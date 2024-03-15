@@ -1,13 +1,13 @@
-import type { Resume } from '~/routes/resume/interfaces'
-import type { Basics } from '~/routes/resume/interfaces/basics.ts'
-import type { Education } from '~/routes/resume/interfaces/education.ts'
-import type { Interest } from '~/routes/resume/interfaces/interest.ts'
-import type { Language } from '~/routes/resume/interfaces/language.ts'
-import type { Location } from '~/routes/resume/interfaces/location.ts'
-import type { Meta } from '~/routes/resume/interfaces/meta.ts'
-import type { Profile } from '~/routes/resume/interfaces/profile.ts'
-import type { Skill } from '~/routes/resume/interfaces/skill.ts'
-import type { Work } from '~/routes/resume/interfaces/work.ts'
+import type { Resume } from 'app/routes/resume/schema'
+import type { Basics } from '~/routes/resume/schema/basics.ts'
+import type { Education } from '~/routes/resume/schema/education.ts'
+import type { Interest } from '~/routes/resume/schema/interest.ts'
+import type { Language } from '~/routes/resume/schema/language.ts'
+import type { Location } from '~/routes/resume/schema/location.ts'
+import type { Meta } from '~/routes/resume/schema/meta.ts'
+import type { Profile } from '~/routes/resume/schema/profile.ts'
+import type { Skill } from '~/routes/resume/schema/skill.ts'
+import type { Work } from '~/routes/resume/schema/work.ts'
 
 type GatsbyTypes = unknown
 
