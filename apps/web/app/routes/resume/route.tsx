@@ -16,12 +16,9 @@ import { Experiences } from './experiences.tsx'
 import { Header } from './header.tsx'
 import { Interests } from './interests.tsx'
 import { Languages } from './languages.tsx'
-import { mapToResume } from './mapper.ts'
 import { Skills } from './skills.tsx'
 import * as Schema from '@effect/schema/Schema'
 import * as Either from 'effect/Either'
-import * as Option from 'effect/Option'
-import { pipe } from 'effect/Function'
 import { formatError } from '@effect/schema/TreeFormatter'
 
 export const meta: MetaFunction = () => {

@@ -4,7 +4,7 @@ import * as Schema from '@effect/schema/Schema'
 import * as Either from 'effect/Either'
 import * as Option from 'effect/Option'
 
-import { describe, expect, test, it } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import { Resume as ResumeSchema } from './resume.ts'
 
 describe('Resume', () => {
