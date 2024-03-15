@@ -28,7 +28,9 @@ describe('Basics', () => {
 		url: 'http://thomasanderson.com',
 	} satisfies S.Schema.Encoded<typeof Basics>
 
-	const required = { name: basicsInput.name } satisfies S.Schema.Encoded<typeof Basics>
+	const required: S.Schema.Encoded<typeof Basics> = {
+		name: basicsInput.name,
+	}
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Basics)
@@ -36,6 +38,12 @@ describe('Basics', () => {
 		test('handle all missing property', () => {
 			const input: unknown = required
 			expect(() => parse(input)).not.toThrow()
+		})
+
+		test('name', () => {
+			expect(() => parse({ ...required, name: '' })).toThrow()
+			expect(() => parse({ ...required, name: '  ' })).toThrow()
+			expect(() => parse({ ...required, name: basicsInput.name })).not.toThrow()
 		})
 
 		test('email', () => {
@@ -59,12 +67,6 @@ describe('Basics', () => {
 		test('location', () => {
 			expect(() => parse({ ...required, location: {} })).not.toThrow()
 			expect(() => parse({ ...required, location: basicsInput.location })).not.toThrow()
-		})
-
-		test('name', () => {
-			expect(() => parse({ name: '' })).toThrow()
-			expect(() => parse({ name: '  ' })).toThrow()
-			expect(() => parse({ name: basicsInput.name })).not.toThrow()
 		})
 
 		test('phone', () => {
