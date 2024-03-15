@@ -1,74 +1,64 @@
+import { Link } from '@remix-run/react'
 import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
 import { SocialIcon } from '@suddenly-giovanni/ui/components/social/social-icon.tsx'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import type { ReactElement } from 'react'
+import resumePdfAssetUrl from 'public/giovanni-ravalico-resume-2021.pdf?url'
+import type { ReactElement, ReactNode } from 'react'
+import { routesRecord } from '~/routes-record.ts'
+import type { BasicsType } from '~/routes/resume/schema/basics'
 
-interface Location {
-	/**
-	 * To add multiple address lines, use
-	 * . For example, 1234 Glücklichkeit Straße
-	 * Hinterhaus 5. Etage li.
-	 */
-	address: string
-	city: string
-	/**
-	 * code as per ISO-3166-1 ALPHA-2, e.g. US, AU, IN
-	 */
-	countryCode: string
-	postalCode: string
-	/**
-	 * The general region where you live. Can be a US state, or a province, for instance.
-	 */
-	region: string
+export function Basics({ basics }: { basics: BasicsType }): ReactElement {
+	return (
+		<Header label={basics.label} name={basics.name} summary={basics.summary}>
+			<Contacts
+				email={basics.email}
+				location={basics.location}
+				phone={basics.phone}
+				profiles={basics.profiles}
+				url={basics.url}
+			/>
+		</Header>
+	)
 }
 
-interface Basics {
-	/**
-	 * e.g. thomas@gmail.com
-	 */
-	email: string
-	/**
-	 * URL (as per RFC 3986) to a image in JPEG or PNG format
-	 */
-	image: string
-	/**
-	 * e.g. Web Developer
-	 */
-	label: string
-	location: Location
-	name: string
-	/**
-	 * Phone numbers are stored as strings so use any format you like, e.g. 712-117-2923
-	 */
-	phone: string
-	/**
-	 * Specify any number of social networks that you participate in
-	 */
-	profiles: Profile[]
-	/**
-	 * Write a short 2-3 sentence biography about yourself
-	 */
-	summary: string
-	/**
-	 * URL (as per RFC 3986) to your website, e.g. personal homepage
-	 */
-	url: string
-}
-
-interface Profile {
-	/**
-	 * e.g. Facebook or Twitter
-	 */
-	network: string
-	/**
-	 * e.g. http://twitter.example.com/neutralthoughts
-	 */
-	url: string
-	/**
-	 * e.g. neutralthoughts
-	 */
-	username: string
+function Header({
+	name,
+	label,
+	children,
+	summary,
+}: Pick<BasicsType, 'name' | 'label' | 'summary'> & { children: ReactNode }): ReactElement {
+	return (
+		<header>
+			<hgroup>
+				<T.h1>{name}</T.h1>
+				<T.h2>{label}</T.h2>
+			</hgroup>
+			<T.blockquote>{summary}</T.blockquote>
+			<T.p>
+				<em>
+					If you consider me for a role, read through{' '}
+					<Link
+						className={clsx('font-medium', 'text-primary', 'underline', 'underline-offset-4')}
+						to={routesRecord.motivations.url}
+					>
+						my motivations
+					</Link>{' '}
+					first.
+				</em>
+			</T.p>
+			{children}
+			<T.muted>
+				click on this link to download the pdf version of my resume{' '}
+				<span aria-label="pdf" role="img">
+					📜
+				</span>{' '}
+				<T.a download href={resumePdfAssetUrl} rel="noopener">
+					giovanni-ravalico-resume.pdf
+				</T.a>
+			</T.muted>
+		</header>
+	)
 }
 
 const addressClasses = {
@@ -106,13 +96,15 @@ const addressClasses = {
 	),
 }
 
-export function Contacts({
-	email,
-	location,
-	phone,
-	profiles,
-	url,
-}: Pick<Basics, 'email' | 'location' | 'phone' | 'profiles' | 'url'>): ReactElement {
+interface ContactsProps {
+	readonly email: BasicsType['email']
+	readonly location: BasicsType['location']
+	readonly phone: BasicsType['phone']
+	readonly profiles: BasicsType['profiles']
+	readonly url: BasicsType['url']
+}
+
+function Contacts({ email, location, phone, profiles, url }: ContactsProps): ReactElement {
 	return (
 		<address className={addressClasses.address}>
 			<T.ul className={addressClasses.ul}>

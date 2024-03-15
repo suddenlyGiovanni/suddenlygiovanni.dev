@@ -13,13 +13,7 @@ import { Resume as ResumeSchema } from 'app/routes/resume/schema'
 import * as Either from 'effect/Either'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
-import { Contacts } from './contacts.tsx'
-import { Education } from './education.tsx'
-import { Experiences } from './experiences.tsx'
-import { Header } from './header.tsx'
-import { Interests } from './interests.tsx'
-import { Languages } from './languages.tsx'
-import { Skills } from './skills.tsx'
+import { Basics } from '~/routes/resume/basics.tsx'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -69,25 +63,17 @@ export default function Resume(): ReactElement {
 				'prose prose-blue dark:prose-invert',
 			)}
 		>
-			<Header label={basics.label} name={basics.name} summary={basics.summary}>
-				<Contacts
-					email={basics.email}
-					location={basics.location}
-					phone={basics.phone}
-					profiles={basics.profiles}
-					url={basics.url}
-				/>
-			</Header>
+			<Basics basics={basics} />
 
-			<Skills skills={skills} />
+			{/*<Skills skills={skills} />*/}
 
-			<Experiences works={work} />
+			{/*<Experiences works={work} />*/}
 
-			<Education educations={education} />
+			{/*<Education educations={education} />*/}
 
-			<Interests interests={interests} />
+			{/*<Interests interests={interests} />*/}
 
-			<Languages languages={languages} />
+			{/*<Languages languages={languages} />*/}
 
 			<footer className="flex w-full items-center justify-between">
 				<Link className="inline-block" to={routesRecord['about-me'].url}>

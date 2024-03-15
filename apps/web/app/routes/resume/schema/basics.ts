@@ -69,3 +69,4 @@ export const Basics = S.struct({
 })
 
 export type Basics = S.Schema.Encoded<typeof Basics>
+export type BasicsType = S.Schema.Type<typeof Basics>
