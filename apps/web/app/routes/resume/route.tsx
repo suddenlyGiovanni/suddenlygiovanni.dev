@@ -1,3 +1,5 @@
+import * as Schema from '@effect/schema/Schema'
+import { formatError } from '@effect/schema/TreeFormatter'
 import {
 	type LinksFunction,
 	type LoaderFunctionArgs,
@@ -7,9 +9,10 @@ import {
 import { Link, useLoaderData } from '@remix-run/react'
 import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { Resume as ResumeSchema } from 'app/routes/resume/schema'
+import * as Either from 'effect/Either'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
-import { Resume as ResumeSchema } from 'app/routes/resume/schema'
 import { Contacts } from './contacts.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
@@ -17,9 +20,6 @@ import { Header } from './header.tsx'
 import { Interests } from './interests.tsx'
 import { Languages } from './languages.tsx'
 import { Skills } from './skills.tsx'
-import * as Schema from '@effect/schema/Schema'
-import * as Either from 'effect/Either'
-import { formatError } from '@effect/schema/TreeFormatter'
 
 export const meta: MetaFunction = () => {
 	return [
