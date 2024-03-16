@@ -16,14 +16,7 @@
 		},
 		"basics": {
 			"type": "object",
-			"required": [
-				"name",
-				"label",
-				"email",
-				"summary",
-				"location",
-				"profiles"
-			],
+			"required": ["name", "label", "email", "summary", "location", "profiles"],
 			"additionalProperties": true,
 			"properties": {
 				"name": {
@@ -58,10 +51,7 @@
 				"location": {
 					"type": "object",
 					"additionalProperties": true,
-					"required": [
-						"city",
-						"countryCode"
-					],
+					"required": ["city", "countryCode"],
 					"properties": {
 						"address": {
 							"type": "string",
@@ -90,11 +80,7 @@
 					"items": {
 						"type": "object",
 						"additionalProperties": true,
-						"required": [
-							"network",
-							"url",
-							"username"
-						],
+						"required": ["network", "url", "username"],
 						"properties": {
 							"network": {
 								"type": "string",
@@ -343,10 +329,7 @@
 			"items": {
 				"type": "object",
 				"additionalProperties": true,
-				"required": [
-					"name",
-					"keywords"
-				],
+				"required": ["name", "keywords"],
 				"properties": {
 					"name": {
 						"type": "string",
