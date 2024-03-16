@@ -84,13 +84,10 @@ export const Resume = S.struct({
 		{ exact: true },
 	),
 
-	skills: S.optional(
-		S.array(Skill).annotations({
-			title: 'skills',
-			description: 'List out your professional skill-set',
-		}),
-		{ exact: true },
-	),
+	skills: S.array(Skill).annotations({
+		title: 'skills',
+		description: 'List out your professional skill-set',
+	}),
 
 	volunteer: S.optional(S.array(Volunteer), { exact: true }),
 

@@ -3,9 +3,8 @@ import * as Schema from '@effect/schema/Schema'
 import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
 import * as Either from 'effect/Either'
 import type { Basics } from './basics.ts'
-
 import { describe, expect, it } from 'vitest'
-import { Resume as ResumeSchema } from './resume.ts'
+import { Resume as ResumeSchema, type Resume as ResumeEncoded } from './resume.ts'
 
 describe('Resume', () => {
 	const basics: Basics = {
@@ -20,6 +19,7 @@ describe('Resume', () => {
 		profiles: [],
 	}
 	const $schema = 'http://jsonresume.org/schema'
+	const skills: ResumeEncoded['skills'] = []
 
 	describe('decode', () => {
 		const schema = Schema.parseJson(ResumeSchema)
@@ -27,7 +27,7 @@ describe('Resume', () => {
 		it('should not throw for a valid JSON resume string', () => {
 			const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
 			const mockResult = parse(
-				JSON.stringify({ $schema: 'http://jsonresume.org/schema', basics }, null, 2),
+				JSON.stringify({ $schema: 'http://jsonresume.org/schema', basics, skills }, null, 2),
 			)
 			// Either.mapLeft(mockResult, console.error)
 			expect(Either.isRight(mockResult)).toBe(true)

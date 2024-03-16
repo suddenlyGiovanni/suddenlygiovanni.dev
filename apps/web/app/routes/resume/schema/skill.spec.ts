@@ -10,30 +10,35 @@ describe('Skill', () => {
 		name: 'Web Development',
 	} satisfies S.Schema.Type<typeof Skill>
 
+	const required = {
+		keywords: skillInput.keywords,
+		name: skillInput.name,
+	}
+
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Skill)
 
 		test('handle missing partial properties', () => {
-			expect(() => parse({ name: skillInput.name })).not.toThrow()
-		})
-
-		test('keywords', () => {
-			expect(() => parse({ name: skillInput.name, keywords: [] })).not.toThrow()
-			expect(() => parse({ name: skillInput.name, keywords: [''] })).toThrow()
-			expect(() => parse({ name: skillInput.name, keywords: [' '] })).toThrow()
-			expect(() => parse({ name: skillInput.name, keywords: skillInput.keywords })).not.toThrow()
-		})
-
-		test('level', () => {
-			expect(() => parse({ name: skillInput.name, level: '' })).toThrow()
-			expect(() => parse({ name: skillInput.name, level: ' ' })).toThrow()
-			expect(() => parse({ name: skillInput.name, level: skillInput.level })).not.toThrow()
+			expect(() => parse({ ...required })).not.toThrow()
 		})
 
 		test('name', () => {
-			expect(() => parse({ name: '' })).toThrow()
-			expect(() => parse({ name: ' ' })).toThrow()
-			expect(() => parse({ name: skillInput.name })).not.toThrow()
+			expect(() => parse({ ...required, name: '' })).toThrow()
+			expect(() => parse({ ...required, name: ' ' })).toThrow()
+			expect(() => parse({ ...required, name: 'Baking' })).not.toThrow()
+		})
+
+		test('keywords', () => {
+			expect(() => parse({ ...required, keywords: [] })).not.toThrow()
+			expect(() => parse({ ...required, keywords: [''] })).toThrow()
+			expect(() => parse({ ...required, keywords: [' '] })).toThrow()
+			expect(() => parse({ ...required, keywords: ['foo', 'bar', 'baz'] })).not.toThrow()
+		})
+
+		test('level', () => {
+			expect(() => parse({ ...required, level: '' })).toThrow()
+			expect(() => parse({ ...required, level: ' ' })).toThrow()
+			expect(() => parse({ ...required, level: 'Jesus' })).not.toThrow()
 		})
 	})
 })
