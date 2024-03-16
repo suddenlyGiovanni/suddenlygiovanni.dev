@@ -19,81 +19,91 @@ describe('Work', () => {
 			email: 'zuckerberg@mark.cto',
 			name: 'Mark Zuckerberg (CTO)',
 		},
-	} satisfies S.Schema.Type<typeof Work>
+	} satisfies S.Schema.Encoded<typeof Work>
+
+	const required: S.Schema.Encoded<typeof Work> = {
+		name: workInput.name,
+		position: workInput.position,
+		description: workInput.description,
+		highlights: workInput.highlights,
+		startDate: workInput.startDate,
+	}
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Work)
 
 		test('handle missing partial properties', () => {
-			expect(() => parse({})).not.toThrow()
+			expect(() => parse({ ...required })).not.toThrow()
 		})
 
 		test('description', () => {
-			expect(() => parse({ description: '' })).toThrow()
-			expect(() => parse({ description: ' ' })).toThrow()
-			expect(() => parse({ description: workInput.description })).not.toThrow()
+			expect(() => parse({ ...required, description: '' })).toThrow()
+			expect(() => parse({ ...required, description: ' ' })).toThrow()
+			expect(() =>
+				parse({ ...required, description: 'Educational Software Company' }),
+			).not.toThrow()
 		})
 
 		test('endDate', () => {
-			expect(() => parse({ endDate: '' })).toThrow()
-			expect(() => parse({ endDate: ' ' })).toThrow()
-			expect(() => parse({ endDate: workInput.endDate })).not.toThrow()
+			expect(() => parse({ ...required, endDate: '' })).toThrow()
+			expect(() => parse({ ...required, endDate: ' ' })).toThrow()
+			expect(() => parse({ ...required, endDate: workInput.endDate })).not.toThrow()
 		})
 
 		test('highlights', () => {
-			expect(() => parse({ highlights: [] })).not.toThrow()
-			expect(() => parse({ highlights: [''] })).toThrow()
-			expect(() => parse({ highlights: [' ', ''] })).toThrow()
-			expect(() => parse({ highlights: workInput.highlights })).not.toThrow()
+			expect(() => parse({ ...required, highlights: [] })).not.toThrow()
+			expect(() => parse({ ...required, highlights: [''] })).toThrow()
+			expect(() => parse({ ...required, highlights: [' ', ''] })).toThrow()
+			expect(() => parse({ ...required, highlights: workInput.highlights })).not.toThrow()
 		})
 
 		test('location', () => {
-			expect(() => parse({ location: '' })).toThrow()
-			expect(() => parse({ location: ' ' })).toThrow()
-			expect(() => parse({ location: workInput.location })).not.toThrow()
+			expect(() => parse({ ...required, location: '' })).toThrow()
+			expect(() => parse({ ...required, location: ' ' })).toThrow()
+			expect(() => parse({ ...required, location: workInput.location })).not.toThrow()
 		})
 
 		test('name', () => {
-			expect(() => parse({ name: '' })).toThrow()
-			expect(() => parse({ name: ' ' })).toThrow()
-			expect(() => parse({ name: workInput.name })).not.toThrow()
+			expect(() => parse({ ...required, name: '' })).toThrow()
+			expect(() => parse({ ...required, name: ' ' })).toThrow()
+			expect(() => parse({ ...required, name: workInput.name })).not.toThrow()
 		})
 
 		test('position', () => {
-			expect(() => parse({ position: '' })).toThrow()
-			expect(() => parse({ position: ' ' })).toThrow()
-			expect(() => parse({ position: workInput.position })).not.toThrow()
+			expect(() => parse({ ...required, position: '' })).toThrow()
+			expect(() => parse({ ...required, position: ' ' })).toThrow()
+			expect(() => parse({ ...required, position: workInput.position })).not.toThrow()
 		})
 
 		test('startDate', () => {
-			expect(() => parse({ startDate: '' })).toThrow()
-			expect(() => parse({ startDate: ' ' })).toThrow()
-			expect(() => parse({ startDate: workInput.startDate })).not.toThrow()
+			expect(() => parse({ ...required, startDate: '' })).toThrow()
+			expect(() => parse({ ...required, startDate: ' ' })).toThrow()
+			expect(() => parse({ ...required, startDate: workInput.startDate })).not.toThrow()
 		})
 
 		test('summary', () => {
-			expect(() => parse({ summary: '' })).toThrow()
-			expect(() => parse({ summary: ' ' })).toThrow()
-			expect(() => parse({ summary: workInput.summary })).not.toThrow()
+			expect(() => parse({ ...required, summary: '' })).toThrow()
+			expect(() => parse({ ...required, summary: ' ' })).toThrow()
+			expect(() => parse({ ...required, summary: workInput.summary })).not.toThrow()
 		})
 
 		test('url', () => {
-			expect(() => parse({ url: '' })).toThrow()
-			expect(() => parse({ url: ' ' })).toThrow()
-			expect(() => parse({ url: workInput.url })).not.toThrow()
+			expect(() => parse({ ...required, url: '' })).toThrow()
+			expect(() => parse({ ...required, url: ' ' })).toThrow()
+			expect(() => parse({ ...required, url: workInput.url })).not.toThrow()
 		})
 
 		test('contact', () => {
-			expect(() => parse({ contact: { name: workInput.contact.name } })).not.toThrow()
-			expect(() => parse({ contact: { ...workInput.contact, phone: '' } })).toThrow()
-			expect(() => parse({ contact: { ...workInput.contact, phone: ' ' } })).toThrow()
+			expect(() => parse({ ...required, contact: { name: workInput.contact.name } })).not.toThrow()
+			expect(() => parse({ ...required, contact: { ...workInput.contact, phone: '' } })).toThrow()
+			expect(() => parse({ ...required, contact: { ...workInput.contact, phone: ' ' } })).toThrow()
 			expect(() =>
-				parse({ contact: { ...workInput.contact, phone: workInput.contact.phone } }),
+				parse({ ...required, contact: { ...workInput.contact, phone: workInput.contact.phone } }),
 			).not.toThrow()
-			expect(() => parse({ contact: { ...workInput.contact, email: '' } })).toThrow()
-			expect(() => parse({ contact: { ...workInput.contact, email: ' ' } })).toThrow()
+			expect(() => parse({ ...required, contact: { ...workInput.contact, email: '' } })).toThrow()
+			expect(() => parse({ ...required, contact: { ...workInput.contact, email: ' ' } })).toThrow()
 			expect(() =>
-				parse({ contact: { ...workInput.contact, email: workInput.contact.email } }),
+				parse({ ...required, contact: { ...workInput.contact, email: workInput.contact.email } }),
 			).not.toThrow()
 		})
 	})

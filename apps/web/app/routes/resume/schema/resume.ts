@@ -91,7 +91,7 @@ export const Resume = S.struct({
 
 	volunteer: S.optional(S.array(Volunteer), { exact: true }),
 
-	work: S.optional(S.array(Work), { exact: true }),
+	work: S.array(Work),
 })
 
 export type Resume = S.Schema.Encoded<typeof Resume>

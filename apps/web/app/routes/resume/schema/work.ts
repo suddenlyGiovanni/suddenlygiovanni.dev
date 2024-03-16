@@ -7,12 +7,11 @@ import { UrlString } from './url-string.ts'
 export const Work = S.struct({
 	contact: S.optional(
 		S.struct({
-			name: S.compose(S.Trim, S.NonEmpty).pipe(
-				S.title('name'),
-				S.description('The name and role of the contact person'),
-				S.examples(['Mark Zuckerberg (CTO)']),
-			),
-
+			name: S.compose(S.Trim, S.NonEmpty).annotations({
+				title: 'name',
+				description: 'The name and role of the contact person',
+				examples: ['Mark Zuckerberg (CTO)'],
+			}),
 			email: S.optional(Email, { exact: true }),
 
 			phone: S.optional(Phone, { exact: true }),
@@ -20,74 +19,66 @@ export const Work = S.struct({
 		{ exact: true },
 	),
 
-	description: S.optional(
-		S.compose(S.Trim, S.NonEmpty).pipe(
-			S.title('description'),
-			S.description('A short description of the company'),
-			S.examples(['Social Media Company', 'Educational Software Company']),
-		),
-		{ exact: true },
-	),
+	description: S.compose(S.Trim, S.NonEmpty).annotations({
+		title: 'description',
+		description: 'A short description of the company',
+		examples: ['Social Media Company', 'Educational Software Company'],
+	}),
 
 	endDate: S.optional(S.Date, { exact: true }),
 
-	highlights: S.optional(
-		S.array(
-			S.compose(S.Trim, S.NonEmpty).pipe(
-				S.title('highlight'),
-				S.examples(['Increased profits by 20% from 2011-2012 through viral advertising']),
-			),
-		).pipe(S.title('highlights'), S.description('Specify multiple accomplishments')),
-		{ exact: true },
-	),
+	highlights: S.array(
+		S.compose(S.Trim, S.NonEmpty).annotations({
+			title: 'highlight',
+			description: 'A specific accomplishment',
+			examples: ['Increased profits by 20% from 2011-2012 through viral advertising'],
+		}),
+	).annotations({
+		title: 'highlights',
+		description: 'Specify multiple accomplishments',
+	}),
 
 	location: S.optional(
-		S.compose(S.Trim, S.NonEmpty).pipe(
-			S.title('location'),
-			S.description('Location of the company'),
-			S.examples(['Menlo Park, CA']),
-		),
+		S.compose(S.Trim, S.NonEmpty).annotations({
+			title: 'location',
+			description: 'Location of the company',
+			examples: ['Menlo Park, CA'],
+		}),
 		{ exact: true },
 	),
 
-	name: S.optional(
-		S.compose(S.Trim, S.NonEmpty).pipe(
-			S.title('name'),
-			S.description('Name of the company'),
-			S.examples(['Facebook']),
-		),
-		{ exact: true },
-	),
+	name: S.compose(S.Trim, S.NonEmpty).annotations({
+		title: 'name',
+		description: 'Name of the company',
+		examples: ['Facebook'],
+	}),
 
 	/**
 	 * e.g. Software Engineer
 	 */
-	position: S.optional(
-		S.compose(S.Trim, S.NonEmpty).pipe(
-			S.title('position'),
-			S.description('The title of your position at the company'),
-			S.examples(['Software Engineer']),
-		),
-		{ exact: true },
-	),
+	position: S.compose(S.Trim, S.NonEmpty).annotations({
+		title: 'position',
+		description: 'The title of your position at the company',
+		examples: ['Software Engineer'],
+	}),
 
-	startDate: S.optional(S.Date, { exact: true }),
+	startDate: S.Date,
 
 	summary: S.optional(
-		S.compose(S.Trim, S.NonEmpty).pipe(
-			S.title('summary'),
-			S.description('Give an overview of your responsibilities at the company'),
-			S.examples(['My day-to-day activities involved designing and building web applications...']),
-		),
+		S.compose(S.Trim, S.NonEmpty).annotations({
+			title: 'summary',
+			description: 'Give an overview of your responsibilities at the company',
+			examples: ['My day-to-day activities involved designing and building web applications...'],
+		}),
 		{ exact: true },
 	),
 
 	url: S.optional(
-		UrlString.pipe(
-			S.title('url'),
-			S.description('URL (as per RFC 3986) of the company'),
-			S.examples(['https://facebook.example.com']),
-		),
+		UrlString.annotations({
+			title: 'url',
+			description: 'URL (as per RFC 3986) of the company',
+			examples: ['https://facebook.example.com'],
+		}),
 		{ exact: true },
 	),
 })
