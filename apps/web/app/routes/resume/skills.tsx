@@ -10,16 +10,17 @@ import {
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import { Option } from 'effect'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
+import type { ResumeType } from '~/routes/resume/schema/resume.ts'
+import type { SkillType } from '~/routes/resume/schema/skill.ts'
 import { getDevIconComponent } from './dev-icons.tsx'
 
 export const Skills = memo(function Skills({
 	skills,
 }: {
-	skills: { name: string; keywords: string[] }[]
+	readonly skills: ResumeType['skills']
 }): ReactElement {
-	const all = useMemo(() => {
-		return skills.map((_, idx) => `skill-${idx}`)
-	}, [skills])
+	const all = useMemo(() => skills.map((_, idx) => `skill-${idx}`), [skills])
+
 	const none = useMemo<string[]>(() => [], [])
 	const initialState = useMemo(() => {
 		const [head] = all
@@ -36,7 +37,7 @@ export const Skills = memo(function Skills({
 			<T.h2>Skills</T.h2>
 
 			<Button
-				className="absolute top-0 right-0 rounded-full"
+				className="absolute right-0 top-0 rounded-full"
 				onClick={toggleSkillsAccordion}
 				size="icon"
 				variant="ghost"
@@ -48,7 +49,7 @@ export const Skills = memo(function Skills({
 			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
 				{skills.map(({ name, keywords }, idx) => (
 					// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non null assertions
-					<Skill key={name} keywords={keywords} name={name} value={all[idx]!} />
+					<Skill key={name} keywords={keywords} name={name} value={all.at(idx)!} />
 				))}
 			</Accordion>
 		</section>
@@ -59,11 +60,7 @@ const Skill = memo(function Skill({
 	name,
 	keywords,
 	value,
-}: {
-	name: string
-	keywords: string[]
-	value: string
-}): ReactElement {
+}: SkillType & { readonly value: string }): ReactElement {
 	return (
 		<AccordionItem asChild value={value}>
 			<dl key={name}>
@@ -92,7 +89,7 @@ const Skill = memo(function Skill({
 const KeywordsList = memo(function KeywordsList({
 	keywords,
 }: {
-	keywords: string[]
+	readonly keywords: SkillType['keywords']
 }): ReactElement {
 	return (
 		<AccordionContent asChild>
@@ -109,7 +106,11 @@ const KeywordsList = memo(function KeywordsList({
 	)
 })
 
-const Keyword = memo(function Keyword({ keyword }: { keyword: string }): ReactElement {
+const Keyword = memo(function Keyword({
+	keyword,
+}: {
+	readonly keyword: SkillType['keywords'][number]
+}): ReactElement {
 	const maybeIcon = getDevIconComponent(keyword)
 	const classname = clsx('my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle')
 

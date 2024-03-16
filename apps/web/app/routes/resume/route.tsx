@@ -14,6 +14,7 @@ import * as Either from 'effect/Either'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
 import { Basics } from '~/routes/resume/basics.tsx'
+import { Skills } from '~/routes/resume/skills.tsx'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -65,7 +66,7 @@ export default function Resume(): ReactElement {
 		>
 			<Basics basics={basics} />
 
-			{/*<Skills skills={skills} />*/}
+			<Skills skills={skills} />
 
 			{/*<Experiences works={work} />*/}
 
