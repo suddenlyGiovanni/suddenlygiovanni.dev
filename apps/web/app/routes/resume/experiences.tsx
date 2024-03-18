@@ -1,6 +1,8 @@
 import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { flow, pipe } from 'effect/Function'
+
 import {
 	Accordion,
 	AccordionContent,
@@ -42,7 +44,7 @@ export const Experiences = memo(function Experiences({
 		<section className="relative w-full">
 			<T.h2 className="mb-0">Experience</T.h2>
 			<Button
-				className="absolute top-0 right-0 rounded-full"
+				className="absolute right-0 top-0 rounded-full"
 				onClick={toggleExperiences}
 				size="icon"
 				variant="ghost"
@@ -162,11 +164,11 @@ const ExperienceHeader = memo(function ExperienceHeader({
 }): ReactElement {
 	return (
 		<dt className="relative my-4 flex w-full flex-col">
-			<h3 aria-label="job title" className={clsx('mt-0 mb-0 font-bold text-base leading-none')}>
+			<h3 aria-label="job title" className={clsx('mb-0 mt-0 text-base font-bold leading-none')}>
 				{position}
 			</h3>
 
-			<span aria-label="company" className={clsx(styles.span, 'font-medium text-base not-italic')}>
+			<span aria-label="company" className={clsx(styles.span, 'text-base font-medium not-italic')}>
 				{name}
 				{!url ? null : (
 					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
@@ -203,7 +205,7 @@ const ExperienceHeader = memo(function ExperienceHeader({
 					className={clsx(
 						'rounded-full',
 						'transition-all [&[data-state=open]>svg]:rotate-180',
-						'absolute top-0 right-0',
+						'absolute right-0 top-0',
 					)}
 					size="icon"
 					type="button"
@@ -219,7 +221,9 @@ const ExperienceHeader = memo(function ExperienceHeader({
 
 function ExperienceSummary({
 	summary,
-}: { readonly summary: WorkType['summary'] }): null | ReactElement {
+}: {
+	readonly summary: WorkType['summary']
+}): null | ReactElement {
 	return !summary ? null : (
 		<dd>
 			<T.muted>{summary}</T.muted>
@@ -236,7 +240,10 @@ function ExperienceHighlights({
 		<dd>
 			<T.ul aria-label="highlights" className={clsx('mb-0 ml-0 list-none')}>
 				{highlights.map(highlight => (
-					<li className="pl-0" key={Buffer.from(highlight.substring(0, 10)).toString('base64')}>
+					<li
+						className="pl-0"
+						key={pipe(highlight, s => s.slice(0, highlight.length / 2), hashCode)}
+					>
 						{highlight}
 					</li>
 				))}
@@ -264,4 +271,28 @@ function ExperienceContact({
 			</dd>
 		</>
 	)
+}
+
+/**
+ * This function implements the DJB2 hash algorithm to generate a hash value for a given string.
+ * The DJB2 hash algorithm is a simple yet effective string hashing algorithm proposed by Daniel J. Bernstein.
+ * It uses a combination of bit shifting and prime number multiplication to achieve a good
+ * distribution of hash values for different input strings, which reduces the likelihood of collisions.
+ *
+ * Time Complexity: O(n). This is because the function iterates over each character in the string
+ * exactly once.
+ * Space Complexity: O(1). This is because the function only uses a fixed number of variables and
+ * does not allocate any additional space that grows with the size of the input string.
+ *
+ * @param s - The input string for which the hash value is to be calculated.
+ * @returns The hash value of the input string as a string.
+ */
+function hashCode(s: string): string {
+	let hash = 5381
+	for (const char of s) {
+		const charCode = char.charCodeAt(0)
+		// eslint-disable-next-line no-bitwise -- DJB2 hash algorithm
+		hash = (hash << 5) + hash + charCode /* hash * 33 + c */
+	}
+	return hash.toString()
 }
