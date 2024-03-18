@@ -1,21 +1,9 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
+import { ISO8601Date } from './iso8601-date.ts'
 import { Email } from './email.ts'
 import { Phone } from './phone.ts'
 import { UrlString } from './url-string.ts'
-
-/**
- * A string ISO 8601 date Schema.
- * Given any string date, it validates it to be a valid input for the Date constructor,
- * and then it converts it to a string in the ISO 8601 format.
- */
-export const ISO8601Date: S.Schema<string> = S.Date.pipe(
-	S.transform(
-		S.string,
-		fromDate => fromDate.toISOString(),
-		fromISOString => new Date(fromISOString),
-	),
-)
 
 export const Work = S.struct({
 	contact: S.optional(
