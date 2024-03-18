@@ -106,14 +106,7 @@
 			"items": {
 				"type": "object",
 				"additionalProperties": true,
-				"required": [
-					"name",
-					"position",
-					"description",
-					"summary",
-					"highlights",
-					"startDate"
-				],
+				"required": ["name", "position", "description", "summary", "highlights", "startDate"],
 				"properties": {
 					"name": {
 						"type": "string",
