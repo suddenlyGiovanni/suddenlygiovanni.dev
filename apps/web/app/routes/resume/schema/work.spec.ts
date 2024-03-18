@@ -6,12 +6,12 @@ import { Work } from './work.ts'
 describe('Work', () => {
 	const workInput = {
 		description: 'Social Media Company',
-		endDate: '1970-01-01T00:00:00.000Z',
+		endDate: '1970-01-01T00:00:00',
 		highlights: ['Founded the company', 'Wrote a new algorithm'],
 		location: 'Menlo Park, CA',
 		name: 'Facebook',
 		position: 'Software Engineer',
-		startDate: '1969-01-01T00:00:00.000Z',
+		startDate: '1969-01-01',
 		summary: 'My day-to-day activities involved designing and building web applications...',
 		url: 'https://facebook.example.com',
 		contact: {
@@ -44,12 +44,6 @@ describe('Work', () => {
 			).not.toThrow()
 		})
 
-		test('endDate', () => {
-			expect(() => parse({ ...required, endDate: '' })).toThrow()
-			expect(() => parse({ ...required, endDate: ' ' })).toThrow()
-			expect(() => parse({ ...required, endDate: workInput.endDate })).not.toThrow()
-		})
-
 		test('highlights', () => {
 			expect(() => parse({ ...required, highlights: [] })).not.toThrow()
 			expect(() => parse({ ...required, highlights: [''] })).toThrow()
@@ -73,12 +67,6 @@ describe('Work', () => {
 			expect(() => parse({ ...required, position: '' })).toThrow()
 			expect(() => parse({ ...required, position: ' ' })).toThrow()
 			expect(() => parse({ ...required, position: workInput.position })).not.toThrow()
-		})
-
-		test('startDate', () => {
-			expect(() => parse({ ...required, startDate: '' })).toThrow()
-			expect(() => parse({ ...required, startDate: ' ' })).toThrow()
-			expect(() => parse({ ...required, startDate: workInput.startDate })).not.toThrow()
 		})
 
 		test('summary', () => {
@@ -105,6 +93,35 @@ describe('Work', () => {
 			expect(() =>
 				parse({ ...required, contact: { ...workInput.contact, email: workInput.contact.email } }),
 			).not.toThrow()
+		})
+
+		describe('dates', () => {
+			test('startDate', () => {
+				expect(() => parse({ ...required, startDate: '' })).toThrow()
+				expect(() => parse({ ...required, startDate: ' ' })).toThrow()
+				expect(() => parse({ ...required, startDate: workInput.startDate })).not.toThrow()
+				expect(parse({ ...required, startDate: workInput.startDate }).startDate).toBe(
+					'1969-01-01T00:00:00.000Z',
+				)
+			})
+
+			test('endDate', () => {
+				expect(() => parse({ ...required, endDate: '' })).toThrow()
+				expect(() => parse({ ...required, endDate: ' ' })).toThrow()
+				expect(() => parse({ ...required, endDate: workInput.endDate })).not.toThrow()
+				expect(parse({ ...required, endDate: workInput.endDate }).endDate).toBe(
+					'1969-12-31T23:00:00.000Z',
+				)
+			})
+
+			test('start date before end date', () => {
+				const input: S.Schema.Encoded<typeof Work> = {
+					...required,
+					endDate: '1968-01-01',
+					startDate: '1969-01-01',
+				}
+				expect(() => parse(input)).toThrow()
+			})
 		})
 	})
 })

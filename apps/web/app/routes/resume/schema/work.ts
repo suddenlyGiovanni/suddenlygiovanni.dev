@@ -4,6 +4,19 @@ import { Email } from './email.ts'
 import { Phone } from './phone.ts'
 import { UrlString } from './url-string.ts'
 
+/**
+ * A string ISO 8601 date Schema.
+ * Given any string date, it validates it to be a valid input for the Date constructor,
+ * and then it converts it to a string in the ISO 8601 format.
+ */
+export const ISO8601Date: S.Schema<string> = S.Date.pipe(
+	S.transform(
+		S.string,
+		fromDate => fromDate.toISOString(),
+		fromISOString => new Date(fromISOString),
+	),
+)
+
 export const Work = S.struct({
 	contact: S.optional(
 		S.struct({
@@ -25,7 +38,14 @@ export const Work = S.struct({
 		examples: ['Social Media Company', 'Educational Software Company'],
 	}),
 
-	endDate: S.optional(S.Date, { exact: true }),
+	endDate: S.optional(
+		ISO8601Date.annotations({
+			title: 'endDate',
+			description: 'The date when you stopped working at the company',
+			examples: ['2012-01-01'],
+		}),
+		{ exact: true },
+	),
 
 	highlights: S.array(
 		S.compose(S.Trim, S.NonEmpty).annotations({
@@ -62,7 +82,11 @@ export const Work = S.struct({
 		examples: ['Software Engineer'],
 	}),
 
-	startDate: S.Date,
+	startDate: ISO8601Date.annotations({
+		title: 'startDate',
+		description: 'The date when you started working at the company',
+		examples: ['2011-01-01'],
+	}),
 
 	summary: S.optional(
 		S.compose(S.Trim, S.NonEmpty).annotations({
@@ -81,6 +105,15 @@ export const Work = S.struct({
 		}),
 		{ exact: true },
 	),
-})
+}).pipe(
+	S.filter(
+		work => {
+			if (!work.endDate) return true
+			return new Date(work.startDate) < new Date(work.endDate)
+		},
+		{ message: () => 'The start date must be before the end date' },
+	),
+)
 
 export type Work = S.Schema.Encoded<typeof Work>
+export type WorkType = S.Schema.Type<typeof Work>
