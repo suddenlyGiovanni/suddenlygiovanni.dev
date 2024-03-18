@@ -13,7 +13,8 @@ export const Work = S.struct({
 				description: 'The name and role of the contact person',
 				examples: ['Mark Zuckerberg (CTO)'],
 			}),
-			email: S.optional(Email, { exact: true }),
+
+			email: Email,
 
 			phone: S.optional(Phone, { exact: true }),
 		}),
@@ -96,7 +97,9 @@ export const Work = S.struct({
 }).pipe(
 	S.filter(
 		work => {
+			// short-circuit if there is no end date
 			if (!work.endDate) return true
+			// check if the start date is before the end date
 			return new Date(work.startDate) < new Date(work.endDate)
 		},
 		{ message: () => 'The start date must be before the end date' },
