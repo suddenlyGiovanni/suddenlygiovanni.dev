@@ -44,7 +44,7 @@ export const Experiences = memo(function Experiences({
 		<section className="relative w-full">
 			<T.h2 className="mb-0">Experience</T.h2>
 			<Button
-				className="absolute right-0 top-0 rounded-full"
+				className="absolute top-0 right-0 rounded-full"
 				onClick={toggleExperiences}
 				size="icon"
 				variant="ghost"
@@ -164,11 +164,11 @@ const ExperienceHeader = memo(function ExperienceHeader({
 }): ReactElement {
 	return (
 		<dt className="relative my-4 flex w-full flex-col">
-			<h3 aria-label="job title" className={clsx('mb-0 mt-0 text-base font-bold leading-none')}>
+			<h3 aria-label="job title" className={clsx('mt-0 mb-0 font-bold text-base leading-none')}>
 				{position}
 			</h3>
 
-			<span aria-label="company" className={clsx(styles.span, 'text-base font-medium not-italic')}>
+			<span aria-label="company" className={clsx(styles.span, 'font-medium text-base not-italic')}>
 				{name}
 				{!url ? null : (
 					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
@@ -205,7 +205,7 @@ const ExperienceHeader = memo(function ExperienceHeader({
 					className={clsx(
 						'rounded-full',
 						'transition-all [&[data-state=open]>svg]:rotate-180',
-						'absolute right-0 top-0',
+						'absolute top-0 right-0',
 					)}
 					size="icon"
 					type="button"
