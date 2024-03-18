@@ -8,7 +8,7 @@ import {
 	Trigger,
 } from '@suddenly-giovanni/ui/ui/accordion.tsx'
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
-import { memo, type ReactElement, useCallback, useMemo, useState } from 'react'
+import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 import type { ResumeType } from './schema/resume.ts'
 import type { WorkType } from './schema/work.ts'
 
