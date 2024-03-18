@@ -1,7 +1,6 @@
 import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import { pipe } from 'effect/Function'
 
 import {
 	Accordion,
@@ -10,7 +9,9 @@ import {
 	Trigger,
 } from '@suddenly-giovanni/ui/ui/accordion.tsx'
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
-import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
+import { pipe } from 'effect/Function'
+import { memo, type ReactElement, useCallback, useMemo, useState } from 'react'
+import { generateDjb2Hash } from './generate-djb2-hash.ts'
 import type { ResumeType } from './schema/resume.ts'
 import type { WorkType } from './schema/work.ts'
 
@@ -242,7 +243,7 @@ function ExperienceHighlights({
 				{highlights.map(highlight => (
 					<li
 						className="pl-0"
-						key={pipe(highlight, s => s.slice(0, highlight.length / 2), hashCode)}
+						key={pipe(highlight, s => s.slice(0, highlight.length / 2), generateDjb2Hash)}
 					>
 						{highlight}
 					</li>
@@ -271,28 +272,4 @@ function ExperienceContact({
 			</dd>
 		</>
 	)
-}
-
-/**
- * This function implements the DJB2 hash algorithm to generate a hash value for a given string.
- * The DJB2 hash algorithm is a simple yet effective string hashing algorithm proposed by Daniel J. Bernstein.
- * It uses a combination of bit shifting and prime number multiplication to achieve a good
- * distribution of hash values for different input strings, which reduces the likelihood of collisions.
- *
- * Time Complexity: O(n). This is because the function iterates over each character in the string
- * exactly once.
- * Space Complexity: O(1). This is because the function only uses a fixed number of variables and
- * does not allocate any additional space that grows with the size of the input string.
- *
- * @param s - The input string for which the hash value is to be calculated.
- * @returns The hash value of the input string as a string.
- */
-function hashCode(s: string): string {
-	let hash = 5381
-	for (const char of s) {
-		const charCode = char.charCodeAt(0)
-		// eslint-disable-next-line no-bitwise -- DJB2 hash algorithm
-		hash = (hash << 5) + hash + charCode /* hash * 33 + c */
-	}
-	return hash.toString()
 }
