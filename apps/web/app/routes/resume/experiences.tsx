@@ -1,7 +1,7 @@
 import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import { flow, pipe } from 'effect/Function'
+import { pipe } from 'effect/Function'
 
 import {
 	Accordion,
