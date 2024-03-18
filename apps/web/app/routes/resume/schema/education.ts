@@ -1,5 +1,6 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
+import { ISO8601Date } from './iso8601-date.ts'
 import { UrlString } from './url-string.ts'
 
 export const Education = S.struct({
@@ -28,7 +29,14 @@ export const Education = S.struct({
 		{ exact: true },
 	),
 
-	endDate: S.optional(S.Date, { exact: true }),
+	endDate: S.optional(
+		ISO8601Date.annotations({
+			title: 'endDate',
+			description: 'end date of education',
+			examples: ['2020-01-01'],
+		}),
+		{ exact: true },
+	),
 
 	score: S.optional(
 		S.compose(S.Trim, S.NonEmpty).annotations({
@@ -52,7 +60,14 @@ export const Education = S.struct({
 
 	location: S.optional(S.compose(S.Trim, S.NonEmpty), { exact: true }),
 
-	startDate: S.optional(S.Date, { exact: true }),
+	startDate: S.optional(
+		ISO8601Date.annotations({
+			title: 'startDate',
+			description: 'start date of education',
+			examples: ['1970-01-01T00:00'],
+		}),
+		{ exact: true },
+	),
 
 	studyType: S.optional(
 		S.compose(S.Trim, S.NonEmpty).annotations({
@@ -75,6 +90,18 @@ export const Education = S.struct({
 			exact: true,
 		},
 	),
-})
+}).pipe(
+	S.filter(
+		education => {
+			if (!education.startDate) return true
+			// short-circuit if there is no end date
+			if (!education.endDate) return true
+			// check if the start date is before the end date
+			return new Date(education.startDate) < new Date(education.endDate)
+		},
+		{ message: () => 'The start date must be before the end date' },
+	),
+)
 
 export type Education = S.Schema.Encoded<typeof Education>
+export type EducationType = S.Schema.Type<typeof Education>

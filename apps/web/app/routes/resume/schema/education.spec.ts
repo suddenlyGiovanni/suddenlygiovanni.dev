@@ -1,6 +1,7 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
 import { describe, expect, test } from 'vitest'
+import { Work } from '~/routes/resume/schema/work.ts'
 import { Education } from './education.ts'
 
 describe('Education', () => {
@@ -10,7 +11,7 @@ describe('Education', () => {
 		endDate: '2020-01-01',
 		score: '3.67/4.0',
 		institution: 'Massachusetts Institute of Technology',
-		startDate: '1970-01-01T00:00:00',
+		startDate: '2008-01-01T00:00',
 		studyType: 'Bachelor',
 		url: 'https://mit.com',
 		location: 'Cambridge, MA',
@@ -37,12 +38,6 @@ describe('Education', () => {
 			expect(() => parse({ courses: educationInput.courses })).not.toThrow()
 		})
 
-		test('endDate', () => {
-			expect(() => parse({ endDate: '' })).toThrow()
-			expect(() => parse({ endDate: '  ' })).toThrow()
-			expect(() => parse({ endDate: educationInput.endDate })).not.toThrow()
-		})
-
 		test('score', () => {
 			expect(() => parse({ score: '' })).toThrow()
 			expect(() => parse({ score: '  ' })).toThrow()
@@ -55,10 +50,30 @@ describe('Education', () => {
 			expect(() => parse({ institution: educationInput.institution })).not.toThrow()
 		})
 
-		test('startDate', () => {
-			expect(() => parse({ startDate: '' })).toThrow()
-			expect(() => parse({ startDate: '  ' })).toThrow()
-			expect(() => parse({ startDate: educationInput.startDate })).not.toThrow()
+		describe('dates', () => {
+			test('startDate', () => {
+				expect(() => parse({ startDate: '' })).toThrow()
+				expect(() => parse({ startDate: '  ' })).toThrow()
+				expect(() => parse({ startDate: educationInput.startDate })).not.toThrow()
+				expect(parse({ startDate: educationInput.startDate }).startDate).toBe(
+					'2007-12-31T23:00:00.000Z',
+				)
+			})
+
+			test('endDate', () => {
+				expect(() => parse({ endDate: '' })).toThrow()
+				expect(() => parse({ endDate: '  ' })).toThrow()
+				expect(() => parse({ endDate: educationInput.endDate })).not.toThrow()
+				expect(parse({ endDate: educationInput.endDate }).endDate).toBe('2020-01-01T00:00:00.000Z')
+			})
+
+			test('start date before end date', () => {
+				const input: S.Schema.Encoded<typeof Education> = {
+					startDate: '1989-01-01',
+					endDate: '1988-01-01',
+				}
+				expect(() => parse(input)).toThrow()
+			})
 		})
 
 		test('studyType', () => {
