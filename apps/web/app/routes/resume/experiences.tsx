@@ -8,69 +8,25 @@ import {
 	Trigger,
 } from '@suddenly-giovanni/ui/ui/accordion.tsx'
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
-import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
+import { memo, type ReactElement, useCallback, useMemo, useState } from 'react'
+import type { ResumeType } from './schema/resume.ts'
+import type { WorkType } from './schema/work.ts'
 
-function formatDateLocaleShort(date: Date): string {
-	return date.toLocaleDateString('en-US', {
+function formatDateLocaleShort(date: string): string {
+	return new Date(date).toLocaleDateString('en-US', {
 		month: 'short',
 		year: 'numeric',
 	})
 }
 
-interface Work {
-	/**
-	 * e.g. Social Media Company
-	 */
-	description?: string
-	endDate?: Date
-	/**
-	 * Specify multiple accomplishments
-	 */
-	highlights?: string[]
-	/**
-	 * e.g. Menlo Park, CA
-	 */
-	location?: string
-	/**
-	 * e.g. Facebook
-	 */
-	name?: string
-	/**
-	 * e.g. Software Engineer
-	 */
-	position?: string
-	startDate?: Date
-	/**
-	 * Give an overview of your responsibilities at the company
-	 */
-	summary?: string
-	/**
-	 * e.g. http://facebook.example.com
-	 */
-	url?: string
-
-	contact?: {
-		/**
-		 * ideally name and role
-		 * eg. Mark Zuckerberg (CTO)
-		 */
-		name: string
-		email?: string
-		/**
-		 * Phone numbers are stored as strings so use any format you like, e.g. 712-117-2923
-		 */
-		phone?: string
-	}
-}
-
 export const Experiences = memo(function Experiences({
-	works,
+	work,
 }: {
-	readonly works: readonly Work[]
+	readonly work: ResumeType['work']
 }): ReactElement {
 	const all = useMemo(() => {
-		return works.map((_, idx) => `experience-${idx}`)
-	}, [works])
+		return work.map((_, idx) => `experience-${idx}`)
+	}, [work])
 	const none = useMemo<string[]>(() => [], [])
 	const initialState = useMemo(() => {
 		const [head] = all
@@ -96,23 +52,41 @@ export const Experiences = memo(function Experiences({
 			</Button>
 
 			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
-				{works.map((work, idx) => (
-					<Experience
-						contact={work.contact}
-						description={work.description}
-						endDate={work.endDate}
-						highlights={work.highlights}
-						key={`${idx.toString()} - ${String(work.name)} - ${String(work.position)}`}
-						location={work.location}
-						name={work.name}
-						position={work.position}
-						startDate={work.startDate}
-						summary={work.summary}
-						url={work.url}
-						// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non-null assertion
-						value={all[idx]!}
-					/>
-				))}
+				{work.map(
+					(
+						{
+							contact,
+							description,
+							endDate,
+							highlights,
+							location,
+							name,
+							position,
+							startDate,
+							summary,
+							url,
+						},
+						idx,
+					) => (
+						<Experience
+							contact={contact}
+							description={description}
+							endDate={endDate}
+							highlights={highlights}
+							key={`${idx.toString()} - ${String(name)} - ${String(position)}`}
+							location={location}
+							name={name}
+							position={position}
+							startDate={startDate}
+							summary={summary}
+							url={url}
+							value={
+								// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non-null assertion
+								all.at(idx)!
+							}
+						/>
+					),
+				)}
 			</Accordion>
 		</section>
 	)
@@ -131,16 +105,16 @@ const Experience = memo(function Experience({
 	url,
 	value,
 }: {
-	readonly contact: Work['contact']
-	readonly description: Work['description']
-	readonly endDate: Work['endDate']
-	readonly highlights: Work['highlights']
-	readonly location: Work['location']
-	readonly name: Work['name']
-	readonly position: Work['position']
-	readonly startDate: Work['startDate']
-	readonly summary: Work['summary']
-	readonly url: Work['url']
+	readonly contact: WorkType['contact']
+	readonly description: WorkType['description']
+	readonly endDate: WorkType['endDate']
+	readonly highlights: WorkType['highlights']
+	readonly location: WorkType['location']
+	readonly name: WorkType['name']
+	readonly position: WorkType['position']
+	readonly startDate: WorkType['startDate']
+	readonly summary: WorkType['summary']
+	readonly url: WorkType['url']
 	value: string
 }): ReactElement {
 	return (
@@ -178,13 +152,13 @@ const ExperienceHeader = memo(function ExperienceHeader({
 	startDate,
 	url,
 }: {
-	position: string | undefined
-	name: string | undefined
-	url: string | undefined
-	startDate: Date | undefined
-	endDate: Date | undefined
-	location: string | undefined
-	description: string | undefined
+	readonly position: WorkType['position']
+	readonly name: WorkType['name']
+	readonly url: WorkType['url']
+	readonly startDate: WorkType['startDate']
+	readonly endDate: WorkType['endDate']
+	readonly location: WorkType['location']
+	readonly description: WorkType['description']
 }): ReactElement {
 	return (
 		<dt className="relative my-4 flex w-full flex-col">
@@ -202,21 +176,19 @@ const ExperienceHeader = memo(function ExperienceHeader({
 			</span>
 
 			<span className={clsx(styles.span, 'justify-between')}>
-				{!startDate ? null : (
-					<span aria-label="start date / end date">
-						<time className="mr-1" dateTime={startDate.toISOString()}>
-							{formatDateLocaleShort(startDate)}
-						</time>
-						{!endDate ? null : (
-							<>
-								-
-								<time className="ml-1" dateTime={endDate.toISOString()}>
-									{formatDateLocaleShort(endDate)}
-								</time>
-							</>
-						)}
-					</span>
-				)}
+				<span aria-label="start date / end date">
+					<time className="mr-1" dateTime={startDate}>
+						{formatDateLocaleShort(startDate)}
+					</time>
+					{!endDate ? null : (
+						<>
+							-
+							<time className="ml-1" dateTime={endDate}>
+								{formatDateLocaleShort(endDate)}
+							</time>
+						</>
+					)}
+				</span>
 
 				{!location ? null : <span aria-label="location">{location}</span>}
 			</span>
@@ -245,10 +217,12 @@ const ExperienceHeader = memo(function ExperienceHeader({
 	)
 })
 
-function ExperienceSummary(props: { summary: string | undefined }): ReactElement {
-	return (
+function ExperienceSummary({
+	summary,
+}: { readonly summary: WorkType['summary'] }): null | ReactElement {
+	return !summary ? null : (
 		<dd>
-			<T.muted>{props.summary}</T.muted>
+			<T.muted>{summary}</T.muted>
 		</dd>
 	)
 }
@@ -256,14 +230,13 @@ function ExperienceSummary(props: { summary: string | undefined }): ReactElement
 function ExperienceHighlights({
 	highlights,
 }: {
-	highlights: string[] | undefined
-}): ReactElement | null {
-	if (!highlights) return null
+	readonly highlights: WorkType['highlights']
+}): ReactElement {
 	return (
 		<dd>
 			<T.ul aria-label="highlights" className={clsx('mb-0 ml-0 list-none')}>
-				{highlights.map((highlight, i) => (
-					<li className="pl-0" key={`${i}${highlight[0]}`}>
+				{highlights.map(highlight => (
+					<li className="pl-0" key={Buffer.from(highlight.substring(0, 10)).toString('base64')}>
 						{highlight}
 					</li>
 				))}
@@ -275,8 +248,8 @@ function ExperienceHighlights({
 function ExperienceContact({
 	contact,
 }: {
-	contact: { name: string; email?: string; phone?: string } | undefined
-}): ReactElement | null {
+	readonly contact: WorkType['contact']
+}): null | ReactElement {
 	if (!contact) return null
 	const { name, email, phone } = contact
 	return (
@@ -285,7 +258,7 @@ function ExperienceContact({
 			<dd>
 				<address className={clsx('flex flex-row flex-wrap items-baseline justify-between')}>
 					<span>{name}</span>
-					{!email ? null : <a href={`mailto:${email}`}>{email}</a>}
+					<a href={`mailto:${email}`}>{email}</a>
 					{!phone ? null : <a href={`tel:${phone}`}>{phone}</a>}
 				</address>
 			</dd>

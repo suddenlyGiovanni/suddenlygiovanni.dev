@@ -9,12 +9,13 @@ import {
 import { Link, useLoaderData } from '@remix-run/react'
 import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import { Resume as ResumeSchema } from 'app/routes/resume/schema'
+import { Resume as ResumeSchema } from './schema/resume.ts'
 import * as Either from 'effect/Either'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
-import { Basics } from '~/routes/resume/basics.tsx'
-import { Skills } from '~/routes/resume/skills.tsx'
+import { Basics } from './basics.tsx'
+import { Experiences } from './experiences.tsx'
+import { Skills } from './skills.tsx'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -68,7 +69,7 @@ export default function Resume(): ReactElement {
 
 			<Skills skills={skills} />
 
-			{/*<Experiences works={work} />*/}
+			<Experiences work={work} />
 
 			{/*<Education educations={education} />*/}
 
