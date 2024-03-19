@@ -12,6 +12,7 @@ import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import * as Either from 'effect/Either'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
+import { Languages } from '~/routes/resume/languages.tsx'
 import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
@@ -77,7 +78,7 @@ export default function Resume(): ReactElement {
 
 			{interests ? <Interests interests={interests} /> : null}
 
-			{/*<Languages languages={languages} />*/}
+			{languages ? <Languages languages={languages} /> : null}
 
 			<footer className="flex w-full items-center justify-between">
 				<Link className="inline-block" to={routesRecord['about-me'].url}>
