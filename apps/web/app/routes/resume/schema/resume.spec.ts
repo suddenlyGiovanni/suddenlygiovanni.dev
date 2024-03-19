@@ -21,6 +21,7 @@ describe('Resume', () => {
 	const $schema = 'http://jsonresume.org/schema'
 	const skills: ResumeEncoded['skills'] = []
 	const work: ResumeEncoded['work'] = []
+	const education: ResumeEncoded['education'] = []
 
 	describe('decode', () => {
 		const schema = Schema.parseJson(ResumeSchema)
@@ -28,7 +29,7 @@ describe('Resume', () => {
 		it('should not throw for a valid JSON resume string', () => {
 			const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
 			const mockResult = parse(
-				JSON.stringify({ $schema: 'http://jsonresume.org/schema', basics, skills, work }, null, 2),
+				JSON.stringify({ $schema: 'http://jsonresume.org/schema', basics, skills, work, education }, null, 2),
 			)
 			// Either.mapLeft(mockResult, console.error)
 			expect(Either.isRight(mockResult)).toBe(true)

@@ -16,58 +16,68 @@ describe('Education', () => {
 		location: 'Cambridge, MA',
 	} satisfies S.Schema.Encoded<typeof Education>
 
+	const required: S.Schema.Encoded<typeof Education> = {
+		area: educationInput.area,
+		institution: educationInput.institution,
+		startDate: educationInput.startDate,
+		studyType: educationInput.studyType,
+	}
+
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Education)
 
 		test('handle all missing property', () => {
-			const input: unknown = {}
+			const input: unknown = { ...required }
 			expect(() => parse(input)).not.toThrow()
 		})
 
 		test('area', () => {
-			expect(() => parse({ area: '' })).toThrow()
-			expect(() => parse({ area: '  ' })).toThrow()
-			expect(() => parse({ area: educationInput.area })).not.toThrow()
+			expect(() => parse({ ...required, area: '' })).toThrow()
+			expect(() => parse({ ...required, area: '  ' })).toThrow()
+			expect(() => parse({ ...required, area: 'Cooking' })).not.toThrow()
 		})
 
 		test('courses', () => {
-			expect(() => parse({ courses: [] })).not.toThrow()
-			expect(() => parse({ courses: [''] })).toThrow()
-			expect(() => parse({ courses: ['  '] })).toThrow()
-			expect(() => parse({ courses: educationInput.courses })).not.toThrow()
+			expect(() => parse({ ...required, courses: [] })).not.toThrow()
+			expect(() => parse({ ...required, courses: [''] })).toThrow()
+			expect(() => parse({ ...required, courses: ['  '] })).toThrow()
+			expect(() => parse({ ...required, courses: educationInput.courses })).not.toThrow()
 		})
 
 		test('score', () => {
-			expect(() => parse({ score: '' })).toThrow()
-			expect(() => parse({ score: '  ' })).toThrow()
-			expect(() => parse({ score: educationInput.score })).not.toThrow()
+			expect(() => parse({ ...required, score: '' })).toThrow()
+			expect(() => parse({ ...required, score: '  ' })).toThrow()
+			expect(() => parse({ ...required, score: educationInput.score })).not.toThrow()
 		})
 
 		test('institution', () => {
-			expect(() => parse({ institution: '' })).toThrow()
-			expect(() => parse({ institution: '  ' })).toThrow()
-			expect(() => parse({ institution: educationInput.institution })).not.toThrow()
+			expect(() => parse({ ...required, institution: '' })).toThrow()
+			expect(() => parse({ ...required, institution: '  ' })).toThrow()
+			expect(() => parse({ ...required, institution: educationInput.institution })).not.toThrow()
 		})
 
 		describe('dates', () => {
 			test('startDate', () => {
-				expect(() => parse({ startDate: '' })).toThrow()
-				expect(() => parse({ startDate: '  ' })).toThrow()
-				expect(() => parse({ startDate: educationInput.startDate })).not.toThrow()
-				expect(parse({ startDate: educationInput.startDate }).startDate).toBe(
+				expect(() => parse({ ...required, startDate: '' })).toThrow()
+				expect(() => parse({ ...required, startDate: '  ' })).toThrow()
+				expect(() => parse({ ...required, startDate: educationInput.startDate })).not.toThrow()
+				expect(parse({ ...required, startDate: educationInput.startDate }).startDate).toBe(
 					'2007-12-31T23:00:00.000Z',
 				)
 			})
 
 			test('endDate', () => {
-				expect(() => parse({ endDate: '' })).toThrow()
-				expect(() => parse({ endDate: '  ' })).toThrow()
-				expect(() => parse({ endDate: educationInput.endDate })).not.toThrow()
-				expect(parse({ endDate: educationInput.endDate }).endDate).toBe('2020-01-01T00:00:00.000Z')
+				expect(() => parse({ ...required, endDate: '' })).toThrow()
+				expect(() => parse({ ...required, endDate: '  ' })).toThrow()
+				expect(() => parse({ ...required, endDate: educationInput.endDate })).not.toThrow()
+				expect(parse({ ...required, endDate: educationInput.endDate }).endDate).toBe(
+					'2020-01-01T00:00:00.000Z',
+				)
 			})
 
 			test('start date before end date', () => {
 				const input: S.Schema.Encoded<typeof Education> = {
+					...required,
 					startDate: '1989-01-01',
 					endDate: '1988-01-01',
 				}
@@ -76,21 +86,21 @@ describe('Education', () => {
 		})
 
 		test('studyType', () => {
-			expect(() => parse({ studyType: '' })).toThrow()
-			expect(() => parse({ studyType: '  ' })).toThrow()
-			expect(() => parse({ studyType: educationInput.studyType })).not.toThrow()
+			expect(() => parse({ ...required, studyType: '' })).toThrow()
+			expect(() => parse({ ...required, studyType: '  ' })).toThrow()
+			expect(() => parse({ ...required, studyType: educationInput.studyType })).not.toThrow()
 		})
 
 		test('url', () => {
-			expect(() => parse({ url: '' })).toThrow()
-			expect(() => parse({ url: '  ' })).toThrow()
-			expect(() => parse({ url: educationInput.url })).not.toThrow()
+			expect(() => parse({ ...required, url: '' })).toThrow()
+			expect(() => parse({ ...required, url: '  ' })).toThrow()
+			expect(() => parse({ ...required, url: educationInput.url })).not.toThrow()
 		})
 
 		test('location', () => {
-			expect(() => parse({ location: '' })).toThrow()
-			expect(() => parse({ location: '  ' })).toThrow()
-			expect(() => parse({ location: educationInput.location })).not.toThrow()
+			expect(() => parse({ ...required, location: '' })).toThrow()
+			expect(() => parse({ ...required, location: '  ' })).toThrow()
+			expect(() => parse({ ...required, location: educationInput.location })).not.toThrow()
 		})
 	})
 })

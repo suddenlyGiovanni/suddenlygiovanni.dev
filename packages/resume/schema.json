@@ -197,7 +197,6 @@
 			"type": "array",
 			"additionalItems": false,
 			"items": {
-				"type": "object",
 				"additionalProperties": true,
 				"properties": {
 					"institution": {
@@ -236,7 +235,9 @@
 							"description": "e.g. H1302 - Introduction to American history"
 						}
 					}
-				}
+				},
+				"required": ["institution", "area", "studyType", "startDate"],
+				"type": "object"
 			}
 		},
 		"awards": {
@@ -498,6 +499,12 @@
 			}
 		}
 	},
+	"required": [
+		"$schema",
+		"basics",
+		"education",
+		"work"
+	],
 	"title": "Resume Schema",
 	"type": "object"
 }

@@ -47,6 +47,7 @@ export function loader(_: LoaderFunctionArgs) {
 	const maybeResume = parse(resumeAssetUrl)
 
 	if (Either.isLeft(maybeResume)) {
+		// eslint-disable-next-line @typescript-eslint/no-throw-literal -- we want to throw here
 		throw new Response(formatError(maybeResume.left), {
 			// find the correct response code and message for this error caused by parsing issue....
 			status: 500,
@@ -74,7 +75,7 @@ export default function Resume(): ReactElement {
 
 			<Experiences work={work} />
 
-			{education ? <Education educations={education} /> : null}
+			<Education educations={education} />
 
 			{interests ? <Interests interests={interests} /> : null}
 

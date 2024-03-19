@@ -4,16 +4,11 @@ import { ISO8601Date } from './iso8601-date.ts'
 import { UrlString } from './url-string.ts'
 
 export const Education = S.struct({
-	area: S.optional(
-		S.compose(S.Trim, S.NonEmpty).annotations({
-			title: 'area',
-			description: 'e.g. Arts',
-			examples: ['Arts', 'Computer Science'],
-		}),
-		{
-			exact: true,
-		},
-	),
+	area: S.compose(S.Trim, S.NonEmpty).annotations({
+		title: 'area',
+		description: 'e.g. Arts',
+		examples: ['Arts', 'Computer Science'],
+	}),
 
 	courses: S.optional(
 		S.array(
@@ -49,36 +44,25 @@ export const Education = S.struct({
 		},
 	),
 
-	institution: S.optional(
-		S.compose(S.Trim, S.NonEmpty).annotations({
-			title: 'institution',
-			description: 'name of the institution',
-			examples: ['Massachusetts Institute of Technology'],
-		}),
-		{ exact: true },
-	),
+	institution: S.compose(S.Trim, S.NonEmpty).annotations({
+		title: 'institution',
+		description: 'name of the institution',
+		examples: ['Massachusetts Institute of Technology'],
+	}),
 
 	location: S.optional(S.compose(S.Trim, S.NonEmpty), { exact: true }),
 
-	startDate: S.optional(
-		ISO8601Date.annotations({
-			title: 'startDate',
-			description: 'start date of education',
-			examples: ['1970-01-01T00:00'],
-		}),
-		{ exact: true },
-	),
+	startDate: ISO8601Date.annotations({
+		title: 'startDate',
+		description: 'start date of education',
+		examples: ['1970-01-01T00:00'],
+	}),
 
-	studyType: S.optional(
-		S.compose(S.Trim, S.NonEmpty).annotations({
-			title: 'studyType',
-			description: 'the type of study',
-			examples: ['Bachelor', 'Master', 'Doctorate'],
-		}),
-		{
-			exact: true,
-		},
-	),
+	studyType: S.compose(S.Trim, S.NonEmpty).annotations({
+		title: 'studyType',
+		description: 'the type of study',
+		examples: ['Bachelor', 'Master', 'Doctorate'],
+	}),
 
 	url: S.optional(
 		UrlString.annotations({

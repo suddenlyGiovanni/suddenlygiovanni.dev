@@ -40,7 +40,7 @@ export const Resume = S.struct({
 		{ exact: true },
 	),
 
-	education: S.optional(S.array(Education), { exact: true }),
+	education: S.array(Education),
 
 	interests: S.optional(S.array(Interest), { exact: true }),
 
