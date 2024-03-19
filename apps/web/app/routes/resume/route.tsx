@@ -1,3 +1,5 @@
+import * as Schema from '@effect/schema/Schema'
+import { formatError } from '@effect/schema/TreeFormatter'
 import {
 	type LinksFunction,
 	type LoaderFunctionArgs,
@@ -5,17 +7,17 @@ import {
 	json,
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
-import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json'
+import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import * as Either from 'effect/Either'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
-import { Contacts } from './contacts.tsx'
+import { Languages } from '~/routes/resume/languages.tsx'
+import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
-import { Header } from './header.tsx'
 import { Interests } from './interests.tsx'
-import { Languages } from './languages.tsx'
-import { mapToResume } from './mapper.ts'
+import { Resume as ResumeSchema } from './schema/resume.ts'
 import { Skills } from './skills.tsx'
 
 export const meta: MetaFunction = () => {
@@ -40,12 +42,24 @@ export const links: LinksFunction = () => {
 }
 
 export function loader(_: LoaderFunctionArgs) {
-	return json({ resume: resumeAssetUrl })
+	const schema = Schema.parseJson(ResumeSchema)
+	const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
+	const maybeResume = parse(resumeAssetUrl)
+
+	if (Either.isLeft(maybeResume)) {
+		// eslint-disable-next-line @typescript-eslint/no-throw-literal -- we want to throw here
+		throw new Response(formatError(maybeResume.left), {
+			// find the correct response code and message for this error caused by parsing issue....
+			status: 500,
+			statusText: 'Internal Server Error',
+		})
+	}
+	return json({ resume: maybeResume.right })
 }
 
 export default function Resume(): ReactElement {
 	const { resume } = useLoaderData<typeof loader>()
-	const { basics, skills, work, education, interests, languages } = mapToResume(resume)
+	const { basics, skills, work, education, interests, languages } = resume
 
 	return (
 		<article
@@ -55,25 +69,17 @@ export default function Resume(): ReactElement {
 				'prose prose-blue dark:prose-invert',
 			)}
 		>
-			<Header label={basics.label} name={basics.name} summary={basics.summary}>
-				<Contacts
-					email={basics.email}
-					location={basics.location}
-					phone={basics.phone}
-					profiles={basics.profiles}
-					url={basics.url}
-				/>
-			</Header>
+			<Basics basics={basics} />
 
 			<Skills skills={skills} />
 
-			<Experiences works={work} />
+			<Experiences work={work} />
 
 			<Education educations={education} />
 
-			<Interests interests={interests} />
+			{interests ? <Interests interests={interests} /> : null}
 
-			<Languages languages={languages} />
+			{languages ? <Languages languages={languages} /> : null}
 
 			<footer className="flex w-full items-center justify-between">
 				<Link className="inline-block" to={routesRecord['about-me'].url}>

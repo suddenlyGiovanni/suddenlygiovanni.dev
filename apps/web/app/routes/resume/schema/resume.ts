@@ -30,7 +30,7 @@ export const Resume = S.struct({
 		{ exact: true },
 	),
 
-	basics: S.optional(Basics, { exact: true }),
+	basics: Basics,
 
 	certificates: S.optional(
 		S.array(Certificate).annotations({
@@ -40,7 +40,7 @@ export const Resume = S.struct({
 		{ exact: true },
 	),
 
-	education: S.optional(S.array(Education), { exact: true }),
+	education: S.array(Education),
 
 	interests: S.optional(S.array(Interest), { exact: true }),
 
@@ -84,17 +84,15 @@ export const Resume = S.struct({
 		{ exact: true },
 	),
 
-	skills: S.optional(
-		S.array(Skill).annotations({
-			title: 'skills',
-			description: 'List out your professional skill-set',
-		}),
-		{ exact: true },
-	),
+	skills: S.array(Skill).annotations({
+		title: 'skills',
+		description: 'List out your professional skill-set',
+	}),
 
 	volunteer: S.optional(S.array(Volunteer), { exact: true }),
 
-	work: S.optional(S.array(Work), { exact: true }),
+	work: S.array(Work),
 })
 
 export type Resume = S.Schema.Encoded<typeof Resume>
+export type ResumeType = S.Schema.Type<typeof Resume>

@@ -8,21 +8,18 @@ import {
 	Trigger,
 } from '@suddenly-giovanni/ui/ui/accordion.tsx'
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
+import * as Either from 'effect/Either'
+import { pipe } from 'effect/Function'
 import type { ReactElement } from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
-import type { Education as IEducation } from '~/routes/resume/interfaces/education.ts'
-
-function formatDateLocaleShort(date: Date): string {
-	return date.toLocaleDateString('en-US', {
-		month: 'short',
-		year: 'numeric',
-	})
-}
+import { formatDateLocaleShort } from './format-date-locale-short.ts'
+import { generateDjb2Hash } from './generate-djb2-hash.ts'
+import type { EducationType } from './schema/education.ts'
 
 export const Education = memo(function Education({
 	educations,
 }: {
-	readonly educations: readonly IEducation[]
+	readonly educations: readonly EducationType[]
 }): ReactElement {
 	const all = useMemo(() => {
 		return educations.map((_, idx) => `education-${idx}`)
@@ -64,8 +61,10 @@ export const Education = memo(function Education({
 						startDate={education.startDate}
 						studyType={education.studyType}
 						url={education.url}
-						// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non-null assertion
-						value={all[idx]!}
+						value={
+							// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non-null assertion
+							all.at(idx)!
+						}
 					/>
 				))}
 			</Accordion>
@@ -84,14 +83,14 @@ const Edu = memo(function Edu({
 	location,
 	value,
 }: {
-	area: IEducation['area']
-	courses: IEducation['courses']
-	endDate: IEducation['endDate']
-	startDate: IEducation['startDate']
-	institution: IEducation['institution']
-	studyType: IEducation['studyType']
-	url: IEducation['url']
-	location: IEducation['location']
+	area: EducationType['area']
+	courses: EducationType['courses']
+	endDate: EducationType['endDate']
+	startDate: EducationType['startDate']
+	institution: EducationType['institution']
+	studyType: EducationType['studyType']
+	url: EducationType['url']
+	location: EducationType['location']
 	value: string
 }): ReactElement {
 	return (
@@ -110,8 +109,11 @@ const Edu = memo(function Edu({
 				<AccordionContent asChild>
 					<dd>
 						<ul aria-label="highlights" className="mb-0 ml-0 list-none">
-							{courses?.map((highlight, i) => (
-								<li className="pl-0" key={`${i}${highlight[0]}`}>
+							{courses?.map(highlight => (
+								<li
+									className="pl-0"
+									key={pipe(highlight, s => s.slice(0, s.length / 2), generateDjb2Hash)}
+								>
 									{highlight}
 								</li>
 							))}
@@ -136,13 +138,13 @@ const EduHeader = memo(function EduHeader({
 	location,
 	studyType,
 }: {
-	area: IEducation['area']
-	endDate: IEducation['endDate']
-	institution: IEducation['institution']
-	location: IEducation['location']
-	startDate: IEducation['startDate']
-	studyType: IEducation['studyType']
-	url: IEducation['url']
+	area: EducationType['area']
+	endDate: EducationType['endDate']
+	institution: EducationType['institution']
+	location: EducationType['location']
+	startDate: EducationType['startDate']
+	studyType: EducationType['studyType']
+	url: EducationType['url']
 }): ReactElement {
 	return (
 		<dt className="relative my-4 flex w-full flex-col">
@@ -168,14 +170,14 @@ const EduHeader = memo(function EduHeader({
 			<span className={clsx(styles.span, 'justify-between')}>
 				{!startDate ? null : (
 					<span aria-label="start date / end date">
-						<time className="mr-2" dateTime={startDate.toISOString()}>
-							{formatDateLocaleShort(startDate)}
+						<time className="mr-2" dateTime={startDate}>
+							{Either.getOrNull(formatDateLocaleShort(startDate))}
 						</time>
 						{endDate ? (
 							<>
 								-
-								<time className="ml-2" dateTime={endDate.toISOString()}>
-									{formatDateLocaleShort(endDate)}
+								<time className="ml-2" dateTime={endDate}>
+									{Either.getOrNull(formatDateLocaleShort(endDate))}
 								</time>
 							</>
 						) : null}

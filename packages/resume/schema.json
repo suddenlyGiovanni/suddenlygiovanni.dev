@@ -16,6 +16,7 @@
 		},
 		"basics": {
 			"type": "object",
+			"required": ["name", "label", "email", "summary", "location", "profiles"],
 			"additionalProperties": true,
 			"properties": {
 				"name": {
@@ -50,6 +51,7 @@
 				"location": {
 					"type": "object",
 					"additionalProperties": true,
+					"required": ["city", "countryCode"],
 					"properties": {
 						"address": {
 							"type": "string",
@@ -78,6 +80,7 @@
 					"items": {
 						"type": "object",
 						"additionalProperties": true,
+						"required": ["network", "url", "username"],
 						"properties": {
 							"network": {
 								"type": "string",
@@ -103,6 +106,7 @@
 			"items": {
 				"type": "object",
 				"additionalProperties": true,
+				"required": ["name", "position", "description", "summary", "highlights", "startDate"],
 				"properties": {
 					"name": {
 						"type": "string",
@@ -193,7 +197,6 @@
 			"type": "array",
 			"additionalItems": false,
 			"items": {
-				"type": "object",
 				"additionalProperties": true,
 				"properties": {
 					"institution": {
@@ -232,7 +235,9 @@
 							"description": "e.g. H1302 - Introduction to American history"
 						}
 					}
-				}
+				},
+				"required": ["institution", "area", "studyType", "startDate"],
+				"type": "object"
 			}
 		},
 		"awards": {
@@ -326,6 +331,7 @@
 			"items": {
 				"type": "object",
 				"additionalProperties": true,
+				"required": ["name", "keywords"],
 				"properties": {
 					"name": {
 						"type": "string",
@@ -493,6 +499,7 @@
 			}
 		}
 	},
+	"required": ["$schema", "basics", "education", "work"],
 	"title": "Resume Schema",
 	"type": "object"
 }
