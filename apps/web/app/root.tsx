@@ -10,6 +10,7 @@ import { Header } from './header.tsx'
 import { Main } from './main.tsx'
 import { themeSessionResolver } from './sessions.server'
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
+import fontsStyleSheetUrl from './styles/fonts.css?url'
 
 export async function loader({ request }: LoaderFunctionArgs): Promise<{
 	theme: null | Theme
@@ -25,7 +26,8 @@ export const links: LinksFunction = () => {
 			type: 'image/svg+xml',
 			href: faviconAssertUrl,
 		},
-		{ rel: 'stylesheet', href: tailwindStyleSheetUrl },
+		{ rel: 'stylesheet', href: fontsStyleSheetUrl, type: 'text/css' },
+		{ rel: 'stylesheet', href: tailwindStyleSheetUrl, type: 'text/css' },
 	]
 }
 
