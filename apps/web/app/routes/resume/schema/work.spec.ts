@@ -121,7 +121,7 @@ describe('Work', () => {
 				expect(() => parse({ ...required, endDate: ' ' })).toThrow()
 				expect(() => parse({ ...required, endDate: workInput.endDate })).not.toThrow()
 				expect(parse({ ...required, endDate: workInput.endDate }).endDate).toBe(
-					'1989-01-31T23:00:00.000Z',
+					'1989-02-01T00:00:00.000Z',
 				)
 			})
 

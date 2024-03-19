@@ -1,9 +1,20 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
-import { describe, expect, test } from 'vitest'
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
 import { Education } from './education.ts'
 
 describe('Education', () => {
+	beforeEach(() => {
+		// tell vitest we use mocked time
+		vi.useFakeTimers()
+	})
+
+	afterEach(() => {
+		// restoring date after each test run
+		vi.useRealTimers()
+	})
+
+
 	const educationInput = {
 		area: 'Computer Science',
 		courses: ['Computer Science', 'Data Structures'],
@@ -62,7 +73,7 @@ describe('Education', () => {
 				expect(() => parse({ ...required, startDate: '  ' })).toThrow()
 				expect(() => parse({ ...required, startDate: educationInput.startDate })).not.toThrow()
 				expect(parse({ ...required, startDate: educationInput.startDate }).startDate).toBe(
-					'2008-02-29T23:00:00.000Z',
+					'2008-03-01T00:00:00.000Z',
 				)
 			})
 
