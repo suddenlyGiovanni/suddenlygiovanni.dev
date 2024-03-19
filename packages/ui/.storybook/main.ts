@@ -27,6 +27,10 @@ const config: StorybookConfig = {
 	docs: {
 		autodocs: 'tag',
 	},
+	staticDirs: [
+		// make sure we are serving the same assets as the Remix app
+		'../../../apps/web/public',
+	],
 }
 
 // biome-ignore lint/style/noDefaultExport: <explanation>
