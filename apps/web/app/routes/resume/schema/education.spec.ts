@@ -14,7 +14,6 @@ describe('Education', () => {
 		vi.useRealTimers()
 	})
 
-
 	const educationInput = {
 		area: 'Computer Science',
 		courses: ['Computer Science', 'Data Structures'],
