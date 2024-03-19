@@ -169,8 +169,8 @@ importers:
         specifier: 1.12.5
         version: 1.12.5(eslint@8.57.0)
       eslint-plugin-n:
-        specifier: 17.0.0-4
-        version: 17.0.0-4(eslint@8.57.0)
+        specifier: 17.0.0-5
+        version: 17.0.0-5(eslint@8.57.0)
       eslint-plugin-only-warn:
         specifier: 1.1.0
         version: 1.1.0
@@ -9836,11 +9836,11 @@ packages:
       object.fromentries: 2.0.7
     dev: true
 
-  /eslint-plugin-n@17.0.0-4(eslint@8.57.0):
-    resolution: {integrity: sha512-G87XXxyuyNGknJx1p8Us3G2iQ1b/rG2dCt6oMEcILRO1cgk69t8ARX+dGX5ahY8EHG1ETE1Eq0AXw/i0O8wH9Q==}
+  /eslint-plugin-n@17.0.0-5(eslint@8.57.0):
+    resolution: {integrity: sha512-hlsrWHVDwosipdiUG2QGjEjrDpeGRHSxZEZFtgI6sTY63YHzqezzak7iF67b00nEdK+mT9aTZmsWaJqxivT3Qw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
-      eslint: '>=8.23.0'
+      eslint: ^8.23.0 || >=9.0.0-0
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.0)
       enhanced-resolve: 5.15.0
@@ -10857,6 +10857,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       function-bind: 1.1.2
+    dev: true
 
   /hasown@2.0.2:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
@@ -11182,7 +11183,7 @@ packages:
   /is-core-module@2.13.1:
     resolution: {integrity: sha512-hHrIjvZsftOsvKSn2TRYl63zvxsgE0K+0mYMoH6gD4omR5IWB2KynivBQczo3+wF1cCkjzvptnI9Q0sPU66ilw==}
     dependencies:
-      hasown: 2.0.1
+      hasown: 2.0.2
 
   /is-data-view@1.0.1:
     resolution: {integrity: sha512-AHkaJrsUVW6wq6JS8y3JnM/GJF/9cf+k20+iDzlSaJrinEo5+7vRiteOSwBhHRiAyQATN1AmY4hwzxJKPmYf+w==}
