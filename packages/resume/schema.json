@@ -499,12 +499,7 @@
 			}
 		}
 	},
-	"required": [
-		"$schema",
-		"basics",
-		"education",
-		"work"
-	],
+	"required": ["$schema", "basics", "education", "work"],
 	"title": "Resume Schema",
 	"type": "object"
 }
