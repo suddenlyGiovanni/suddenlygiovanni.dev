@@ -17,6 +17,7 @@ import { Experiences } from './experiences.tsx'
 import { Resume as ResumeSchema } from './schema/resume.ts'
 import { Skills } from './skills.tsx'
 import { Education } from './education.tsx'
+import { Interests } from './interests.tsx'
 
 export const meta: MetaFunction = () => {
 	return [
@@ -74,7 +75,7 @@ export default function Resume(): ReactElement {
 
 			{education ? <Education educations={education} /> : null}
 
-			{/*<Interests interests={interests} />*/}
+			{interests ? <Interests interests={interests} /> : null}
 
 			{/*<Languages languages={languages} />*/}
 
