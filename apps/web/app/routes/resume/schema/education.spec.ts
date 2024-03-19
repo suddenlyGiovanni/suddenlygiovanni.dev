@@ -7,10 +7,10 @@ describe('Education', () => {
 	const educationInput = {
 		area: 'Computer Science',
 		courses: ['Computer Science', 'Data Structures'],
-		endDate: '2020-01-01',
+		endDate: '2020-02-01',
 		score: '3.67/4.0',
 		institution: 'Massachusetts Institute of Technology',
-		startDate: '2008-01-01T00:00',
+		startDate: '2008-03-01T00:00',
 		studyType: 'Bachelor',
 		url: 'https://mit.com',
 		location: 'Cambridge, MA',
@@ -62,7 +62,7 @@ describe('Education', () => {
 				expect(() => parse({ ...required, startDate: '  ' })).toThrow()
 				expect(() => parse({ ...required, startDate: educationInput.startDate })).not.toThrow()
 				expect(parse({ ...required, startDate: educationInput.startDate }).startDate).toBe(
-					'2007-12-31T23:00:00.000Z',
+					'2008-02-29T23:00:00.000Z',
 				)
 			})
 
@@ -71,7 +71,7 @@ describe('Education', () => {
 				expect(() => parse({ ...required, endDate: '  ' })).toThrow()
 				expect(() => parse({ ...required, endDate: educationInput.endDate })).not.toThrow()
 				expect(parse({ ...required, endDate: educationInput.endDate }).endDate).toBe(
-					'2020-01-01T00:00:00.000Z',
+					'2020-02-01T00:00:00.000Z',
 				)
 			})
 

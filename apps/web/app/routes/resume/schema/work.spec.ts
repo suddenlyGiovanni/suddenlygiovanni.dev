@@ -6,12 +6,12 @@ import { Work } from './work.ts'
 describe('Work', () => {
 	const workInput = {
 		description: 'Social Media Company',
-		endDate: '1989-01-01T00:00:00',
+		endDate: '1989-02-01T00:00',
 		highlights: ['Founded the company', 'Wrote a new algorithm'],
 		location: 'Menlo Park, CA',
 		name: 'Facebook',
 		position: 'Software Engineer',
-		startDate: '1988-01-01',
+		startDate: '1988-02-01',
 		summary: 'My day-to-day activities involved designing and building web applications...',
 		url: 'https://facebook.example.com',
 		contact: {
@@ -112,7 +112,7 @@ describe('Work', () => {
 				expect(() => parse({ ...required, startDate: ' ' })).toThrow()
 				expect(() => parse({ ...required, startDate: workInput.startDate })).not.toThrow()
 				expect(parse({ ...required, startDate: workInput.startDate }).startDate).toBe(
-					'1988-01-01T00:00:00.000Z',
+					'1988-02-01T00:00:00.000Z',
 				)
 			})
 
@@ -121,15 +121,15 @@ describe('Work', () => {
 				expect(() => parse({ ...required, endDate: ' ' })).toThrow()
 				expect(() => parse({ ...required, endDate: workInput.endDate })).not.toThrow()
 				expect(parse({ ...required, endDate: workInput.endDate }).endDate).toBe(
-					'1988-12-31T23:00:00.000Z',
+					'1989-01-31T23:00:00.000Z',
 				)
 			})
 
 			test('start date before end date', () => {
 				const input: S.Schema.Encoded<typeof Work> = {
 					...required,
-					endDate: '1968-01-01',
-					startDate: '1969-01-01',
+					endDate: '1968-02-01',
+					startDate: '1969-05-01',
 				}
 				expect(() => parse(input)).toThrow()
 			})
