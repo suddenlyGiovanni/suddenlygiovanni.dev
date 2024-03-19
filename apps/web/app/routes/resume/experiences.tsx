@@ -1,7 +1,6 @@
 import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-
 import {
 	Accordion,
 	AccordionContent,
@@ -9,18 +8,13 @@ import {
 	Trigger,
 } from '@suddenly-giovanni/ui/ui/accordion.tsx'
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
+import * as Either from 'effect/Either'
 import { pipe } from 'effect/Function'
-import { memo, type ReactElement, useCallback, useMemo, useState } from 'react'
+import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
+import { formatDateLocaleShort } from './format-date-locale-short.ts'
 import { generateDjb2Hash } from './generate-djb2-hash.ts'
 import type { ResumeType } from './schema/resume.ts'
 import type { WorkType } from './schema/work.ts'
-
-function formatDateLocaleShort(date: string): string {
-	return new Date(date).toLocaleDateString('en-US', {
-		month: 'short',
-		year: 'numeric',
-	})
-}
 
 export const Experiences = memo(function Experiences({
 	work,
@@ -171,36 +165,36 @@ const ExperienceHeader = memo(function ExperienceHeader({
 
 			<span aria-label="company" className={clsx(styles.span, 'font-medium text-base not-italic')}>
 				{name}
-				{!url ? null : (
-					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
-						<Icons.link2 aria-label={`link to ${name} company`} className="size-4" />
-					</a>
-				)}
+				{!url
+					? null
+					: <a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
+							<Icons.link2 aria-label={`link to ${name} company`} className="size-4" />
+					  </a>}
 			</span>
 
 			<span className={clsx(styles.span, 'justify-between')}>
 				<span aria-label="start date / end date">
 					<time className="mr-1" dateTime={startDate}>
-						{formatDateLocaleShort(startDate)}
+						{Either.getOrNull(formatDateLocaleShort(startDate))}
 					</time>
-					{!endDate ? null : (
-						<>
-							-
-							<time className="ml-1" dateTime={endDate}>
-								{formatDateLocaleShort(endDate)}
-							</time>
-						</>
-					)}
+					{!endDate
+						? null
+						: <>
+								-
+								<time className="ml-1" dateTime={endDate}>
+									{Either.getOrNull(formatDateLocaleShort(endDate))}
+								</time>
+						  </>}
 				</span>
 
 				{!location ? null : <span aria-label="location">{location}</span>}
 			</span>
 
-			{!description ? null : (
-				<span aria-label="description" className={styles.span}>
-					{description}
-				</span>
-			)}
+			{!description
+				? null
+				: <span aria-label="description" className={styles.span}>
+						{description}
+				  </span>}
 			<Trigger asChild>
 				<Button
 					className={clsx(
@@ -225,11 +219,11 @@ function ExperienceSummary({
 }: {
 	readonly summary: WorkType['summary']
 }): null | ReactElement {
-	return !summary ? null : (
-		<dd>
-			<T.muted>{summary}</T.muted>
-		</dd>
-	)
+	return !summary
+		? null
+		: <dd>
+				<T.muted>{summary}</T.muted>
+		  </dd>
 }
 
 function ExperienceHighlights({
