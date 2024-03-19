@@ -9,8 +9,8 @@ import { Footer } from './footer.tsx'
 import { Header } from './header.tsx'
 import { Main } from './main.tsx'
 import { themeSessionResolver } from './sessions.server'
-
-import './styles/tailwind.css'
+import fontsStyleSheetUrl from './styles/fonts.css?url'
+import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
 export async function loader({ request }: LoaderFunctionArgs): Promise<{
 	theme: null | Theme
@@ -26,15 +26,8 @@ export const links: LinksFunction = () => {
 			type: 'image/svg+xml',
 			href: faviconAssertUrl,
 		},
-		{
-			rel: 'preconnect',
-			href: 'https://fonts.googleapis.com',
-		},
-		{ rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'use-credentials' },
-		{
-			href: 'https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght,BNCE,INFM,SPAC@0,300..800,-100..100,0..100,0..100;1,300..800,-100..100,0..100,0..100&display=swap',
-			rel: 'stylesheet',
-		},
+		{ rel: 'stylesheet', href: fontsStyleSheetUrl, type: 'text/css' },
+		{ rel: 'stylesheet', href: tailwindStyleSheetUrl, type: 'text/css' },
 	]
 }
 

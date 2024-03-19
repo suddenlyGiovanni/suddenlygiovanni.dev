@@ -39,6 +39,7 @@ export function SuddenlyGiovanni({
 					'text-base',
 					'lg:text-base',
 					'text-foreground',
+					'font-comic',
 					'font-comic-hero',
 				)}
 			>
