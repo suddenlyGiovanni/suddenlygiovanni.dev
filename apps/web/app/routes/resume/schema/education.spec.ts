@@ -1,19 +1,9 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
-import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { Education } from './education.ts'
 
 describe('Education', () => {
-	beforeEach(() => {
-		// tell vitest we use mocked time
-		vi.useFakeTimers()
-	})
-
-	afterEach(() => {
-		// restoring date after each test run
-		vi.useRealTimers()
-	})
-
 	const educationInput = {
 		area: 'Computer Science',
 		courses: ['Computer Science', 'Data Structures'],
