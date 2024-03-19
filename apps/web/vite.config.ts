@@ -6,6 +6,7 @@ import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import { remixDevTools } from "remix-development-tools";
 
 installGlobals()
 
@@ -15,6 +16,7 @@ export default defineConfig({
 		mdx({
 			remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
 		}),
+		remixDevTools(),
 		remix({
 			appDirectory: 'app',
 			serverModuleFormat: 'esm',
