@@ -165,11 +165,11 @@ const ExperienceHeader = memo(function ExperienceHeader({
 
 			<span aria-label="company" className={clsx(styles.span, 'font-medium text-base not-italic')}>
 				{name}
-				{!url
-					? null
-					: <a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
-							<Icons.link2 aria-label={`link to ${name} company`} className="size-4" />
-					  </a>}
+				{!url ? null : (
+					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
+						<Icons.link2 aria-label={`link to ${name} company`} className="size-4" />
+					</a>
+				)}
 			</span>
 
 			<span className={clsx(styles.span, 'justify-between')}>
@@ -177,24 +177,24 @@ const ExperienceHeader = memo(function ExperienceHeader({
 					<time className="mr-1" dateTime={startDate}>
 						{Either.getOrNull(formatDateLocaleShort(startDate))}
 					</time>
-					{!endDate
-						? null
-						: <>
-								-
-								<time className="ml-1" dateTime={endDate}>
-									{Either.getOrNull(formatDateLocaleShort(endDate))}
-								</time>
-						  </>}
+					{!endDate ? null : (
+						<>
+							-
+							<time className="ml-1" dateTime={endDate}>
+								{Either.getOrNull(formatDateLocaleShort(endDate))}
+							</time>
+						</>
+					)}
 				</span>
 
 				{!location ? null : <span aria-label="location">{location}</span>}
 			</span>
 
-			{!description
-				? null
-				: <span aria-label="description" className={styles.span}>
-						{description}
-				  </span>}
+			{!description ? null : (
+				<span aria-label="description" className={styles.span}>
+					{description}
+				</span>
+			)}
 			<Trigger asChild>
 				<Button
 					className={clsx(
@@ -219,11 +219,11 @@ function ExperienceSummary({
 }: {
 	readonly summary: WorkType['summary']
 }): null | ReactElement {
-	return !summary
-		? null
-		: <dd>
-				<T.muted>{summary}</T.muted>
-		  </dd>
+	return !summary ? null : (
+		<dd>
+			<T.muted>{summary}</T.muted>
+		</dd>
+	)
 }
 
 function ExperienceHighlights({

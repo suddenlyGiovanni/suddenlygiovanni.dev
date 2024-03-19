@@ -40,7 +40,7 @@ export const Education = memo(function Education({
 			<T.h2 className="mb-0">Education</T.h2>
 
 			<Button
-				className='absolute top-0 right-0 rounded-full'
+				className="absolute top-0 right-0 rounded-full"
 				onClick={toggleEducation}
 				size="icon"
 				variant="ghost"
@@ -160,42 +160,42 @@ const EduHeader = memo(function EduHeader({
 				className={clsx(styles.span, 'font-medium text-base not-italic')}
 			>
 				{institution}
-				{url
-					? <a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
-							<Icons.link2 aria-label={`link to ${institution} institution`} className="size-4" />
-					  </a>
-					: null}
+				{url ? (
+					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
+						<Icons.link2 aria-label={`link to ${institution} institution`} className="size-4" />
+					</a>
+				) : null}
 			</span>
 
 			<span className={clsx(styles.span, 'justify-between')}>
-				{!startDate
-					? null
-					: <span aria-label="start date / end date">
-							<time className="mr-2" dateTime={startDate}>
-								{Either.getOrNull(formatDateLocaleShort(startDate))}
-							</time>
-							{endDate
-								? <>
-										-
-										<time className="ml-2" dateTime={endDate}>
-											{Either.getOrNull(formatDateLocaleShort(endDate))}
-										</time>
-								  </>
-								: null}
-					  </span>}
+				{!startDate ? null : (
+					<span aria-label="start date / end date">
+						<time className="mr-2" dateTime={startDate}>
+							{Either.getOrNull(formatDateLocaleShort(startDate))}
+						</time>
+						{endDate ? (
+							<>
+								-
+								<time className="ml-2" dateTime={endDate}>
+									{Either.getOrNull(formatDateLocaleShort(endDate))}
+								</time>
+							</>
+						) : null}
+					</span>
+				)}
 
-				{!location
-					? null
-					: <span aria-label="location" className={styles.span}>
-							{location}
-					  </span>}
+				{!location ? null : (
+					<span aria-label="location" className={styles.span}>
+						{location}
+					</span>
+				)}
 			</span>
 
-			{!studyType
-				? null
-				: <span aria-label="description" className={styles.span}>
-						{studyType}
-				  </span>}
+			{!studyType ? null : (
+				<span aria-label="description" className={styles.span}>
+					{studyType}
+				</span>
+			)}
 			<Trigger asChild>
 				<Button
 					className={clsx(

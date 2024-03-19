@@ -13,11 +13,11 @@ import * as Either from 'effect/Either'
 import type { ReactElement } from 'react'
 import { routesRecord } from '~/routes-record.ts'
 import { Basics } from './basics.tsx'
+import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
+import { Interests } from './interests.tsx'
 import { Resume as ResumeSchema } from './schema/resume.ts'
 import { Skills } from './skills.tsx'
-import { Education } from './education.tsx'
-import { Interests } from './interests.tsx'
 
 export const meta: MetaFunction = () => {
 	return [

@@ -1,5 +1,5 @@
 import type { ParseError } from '@effect/schema/ParseResult'
-import { transform, string, Date as $Date, decodeEither } from '@effect/schema/Schema'
+import { Date as $Date, decodeEither, string, transform } from '@effect/schema/Schema'
 import type { Either } from 'effect/Either'
 import { pipe } from 'effect/Function'
 

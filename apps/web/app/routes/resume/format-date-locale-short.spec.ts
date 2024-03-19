@@ -1,6 +1,6 @@
-import { describe, expect, test } from 'vitest'
-import { isLeft, getOrThrow } from 'effect/Either'
 import { ParseError } from '@effect/schema/ParseResult'
+import { getOrThrow, isLeft } from 'effect/Either'
+import { describe, expect, test } from 'vitest'
 import { formatDateLocaleShort } from './format-date-locale-short'
 
 describe('formatDateLocaleShort', () => {

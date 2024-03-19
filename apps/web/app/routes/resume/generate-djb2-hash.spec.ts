@@ -1,4 +1,4 @@
-import { test, describe, expect } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { generateDjb2Hash } from './generate-djb2-hash'
 
 describe('generateDjb2Hash', () => {
