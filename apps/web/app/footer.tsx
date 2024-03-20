@@ -8,9 +8,7 @@ import {
 } from '@suddenly-giovanni/ui/components/social/social.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
-import {config} from '~/config.ts'
-
-
+import { config } from '~/config.ts'
 
 const copyrightYear = new Date().getFullYear().toString()
 
