@@ -1,9 +1,11 @@
 /* eslint-disable react/no-unescaped-entities -- TODO: need to validate the rule  */
 import type { MetaFunction } from '@remix-run/node'
 import { Link as RLink } from '@remix-run/react'
+import type { ComponentPropsWithoutRef, JSX, ReactElement } from 'react'
+
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import type { ComponentPropsWithoutRef, JSX, ReactElement } from 'react'
+
 import hero200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
 import hero811wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
 import hero1200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp'
@@ -16,6 +18,7 @@ import hero1826wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4c
 import hero2314wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2314.webp'
 import hero2670wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp'
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
 
 export const meta: MetaFunction = () => {
@@ -154,16 +157,16 @@ export default function Index(): JSX.Element {
 
 			<T.p>
 				You can <strong>find me on</strong>{' '}
-				<T.a href="https://twitter.com/suddenlyGio/" target="_blank" rel="noreferrer">
+				<T.a href={config.socials.Twitter.url} target="_blank" rel="noreferrer">
 					🐦 Twitter
 				</T.a>
 				,{' '}
-				<T.a href="https://github.com/suddenlyGiovanni/" target="_blank" rel="noreferrer">
+				<T.a href={config.socials.GitHub.url} target="_blank" rel="noreferrer">
 					🐙 GitHub
-				</T.a>{' '}
-				and
-				<T.a href="https://www.linkedin.com/in/giovanni-ravalico/" target="_blank" rel="noreferrer">
-					LinkedIn
+				</T.a>
+				, and{' '}
+				<T.a href={config.socials.LinkedIn.url} target="_blank" rel="noreferrer">
+					🦵 LinkedIn
 				</T.a>
 				.
 			</T.p>

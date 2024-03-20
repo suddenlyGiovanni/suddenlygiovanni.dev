@@ -32,6 +32,7 @@ export function TwitterIconLink({ href, className, ...props }: Props): ReactElem
 				<SocialIcon
 					aria-label="Twitter icon"
 					network="twitter"
+					className={clsx('size-5 fill-foreground')}
 					// size={24}
 				/>
 			</AccessibleIcon>
@@ -52,6 +53,7 @@ export function LinkedInIconLink({ href, className, ...props }: Props): ReactEle
 				<SocialIcon
 					aria-label="LinkedIn icon"
 					network="linkedin"
+					className={clsx('size-5 fill-foreground')}
 					// size={24}
 				/>
 			</AccessibleIcon>
@@ -72,6 +74,7 @@ export function GitHubIconLink({ className, href, ...props }: Props): ReactEleme
 				<SocialIcon
 					aria-label="GitHub icon"
 					network="github"
+					className={clsx('size-5 fill-foreground')}
 					// size={24}
 				/>
 			</AccessibleIcon>

@@ -1,3 +1,5 @@
+import type { JSX } from 'react'
+
 import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
 import {
 	GitHubIconLink,
@@ -5,11 +7,8 @@ import {
 	TwitterIconLink,
 } from '@suddenly-giovanni/ui/components/social/social.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import type { JSX } from 'react'
 
-export const twitter = { url: '', handle: '', user: '' },
-	linkedin = { url: '', handle: '', user: '' },
-	github = { url: '', handle: '', user: '' }
+import { config } from '~/config.ts'
 
 const copyrightYear = new Date().getFullYear().toString()
 
@@ -45,9 +44,9 @@ export function Footer(): JSX.Element {
 			>
 				<span className="mb-0 flex-auto">© {copyrightYear} Giovanni Ravalico</span>
 				<address className="flex items-center justify-between gap-4 md:min-w-32">
-					<TwitterIconLink href={twitter.url + twitter.handle} />
-					<GitHubIconLink href={github.url + github.user} />
-					<LinkedInIconLink href={linkedin.url + linkedin.user} />
+					<TwitterIconLink href={config.socials.Twitter.url} />
+					<GitHubIconLink href={config.socials.GitHub.url} />
+					<LinkedInIconLink href={config.socials.LinkedIn.url} />
 				</address>
 			</div>
 		</Layout.Footer>
