@@ -8,7 +8,7 @@ import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
 import { Footer } from './footer.tsx'
 import { Header } from './header.tsx'
 import { Main } from './main.tsx'
-import { themeSessionResolver } from './sessions.server'
+import { themeSessionResolver } from './sessions.server.tsx'
 import fontsStyleSheetUrl from './styles/fonts.css?url'
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
@@ -48,6 +48,7 @@ function Document({ children }: { children: ReactNode }): ReactElement {
 		<html className={clsx(theme, 'min-h-screen')} data-theme={clsx(theme)} lang="en">
 			<head>
 				<meta charSet="utf-8" />
+				<meta httpEquiv="Content-Type" content="text/html;charset=utf-8" />
 				<meta content="width=device-width, initial-scale=1" name="viewport" />
 				<Meta />
 				<PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
