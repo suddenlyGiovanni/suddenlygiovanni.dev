@@ -136,8 +136,8 @@ importers:
         specifier: 4.0.0
         version: 4.0.0
       remix-development-tools:
-        specifier: 4.0.9
-        version: 4.0.9(@remix-run/node@2.8.1)(@remix-run/react@2.8.1)(@types/react-dom@18.2.22)(@types/react@18.2.67)(react-dom@18.3.0-next-fecc288b7-20221025)(react@18.3.0-next-fecc288b7-20221025)(vite@5.2.2)
+        specifier: 4.0.10
+        version: 4.0.10(@remix-run/node@2.8.1)(@remix-run/react@2.8.1)(@types/react-dom@18.2.22)(@types/react@18.2.67)(react-dom@18.3.0-next-fecc288b7-20221025)(react@18.3.0-next-fecc288b7-20221025)(vite@5.2.2)
       tailwindcss:
         specifier: 3.4.1
         version: 3.4.1
@@ -3029,7 +3029,7 @@ packages:
       '@types/react-dom':
         optional: true
     dependencies:
-      '@babel/runtime': 7.23.9
+      '@babel/runtime': 7.24.0
       '@radix-ui/primitive': 1.0.1
       '@radix-ui/react-collapsible': 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.67)(react-dom@18.3.0-next-fecc288b7-20221025)(react@18.3.0-next-fecc288b7-20221025)
       '@radix-ui/react-collection': 1.0.3(@types/react-dom@18.2.22)(@types/react@18.2.67)(react-dom@18.3.0-next-fecc288b7-20221025)(react@18.3.0-next-fecc288b7-20221025)
@@ -13933,6 +13933,7 @@ packages:
   /react-remove-scroll-bar@2.3.5(@types/react@18.2.67)(react@18.3.0-next-fecc288b7-20221025):
     resolution: {integrity: sha512-3cqjOqg6s0XbOjWvmasmqHch+RLxIEk2r/70rzGXuz3iIGQsQheEQyqYCBb5EECoD01Vo2SIbDqW4paLeLTASw==}
     engines: {node: '>=10'}
+    deprecated: please update to the following version as this contains a bug (https://github.com/theKashey/react-remove-scroll-bar/issues/57)
     peerDependencies:
       '@types/react': ^16.8.0 || ^17.0.0 || ^18.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
@@ -14320,8 +14321,8 @@ packages:
       vfile: 6.0.1
     dev: true
 
-  /remix-development-tools@4.0.9(@remix-run/node@2.8.1)(@remix-run/react@2.8.1)(@types/react-dom@18.2.22)(@types/react@18.2.67)(react-dom@18.3.0-next-fecc288b7-20221025)(react@18.3.0-next-fecc288b7-20221025)(vite@5.2.2):
-    resolution: {integrity: sha512-Vo63pnyyOyhAEFQ4YwoYvRc3AsfYI7jedm/NjrkltMslxf59gVFlROs0XEQ5A12OdyU2qW0k8N4KBnFpYw+hQQ==}
+  /remix-development-tools@4.0.10(@remix-run/node@2.8.1)(@remix-run/react@2.8.1)(@types/react-dom@18.2.22)(@types/react@18.2.67)(react-dom@18.3.0-next-fecc288b7-20221025)(react@18.3.0-next-fecc288b7-20221025)(vite@5.2.2):
+    resolution: {integrity: sha512-0N5IX2R2hd34azFu0FB9ffpd/LZ0Es9T45yzrw/j9tmHKwNGQREkDnV8IGF9ATpXXP0A/UkJv5stPlIg1B2peg==}
     peerDependencies:
       '@remix-run/react': '>=1.15'
       react: '>=17'
