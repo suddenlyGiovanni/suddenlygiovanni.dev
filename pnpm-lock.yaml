@@ -31,7 +31,7 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: 0.64.8
-        version: 0.64.8(effect@2.4.9)(fast-check@3.16.0)
+        version: 0.64.8(effect@2.4.10)(fast-check@3.16.0)
       '@remix-run/node':
         specifier: 2.8.1
         version: 2.8.1(typescript@5.4.2)
@@ -48,8 +48,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       effect:
-        specifier: 2.4.9
-        version: 2.4.9
+        specifier: 2.4.10
+        version: 2.4.10
       isbot:
         specifier: 5.1.2
         version: 5.1.2
@@ -1834,13 +1834,13 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
-  /@effect/schema@0.64.8(effect@2.4.9)(fast-check@3.16.0):
+  /@effect/schema@0.64.8(effect@2.4.10)(fast-check@3.16.0):
     resolution: {integrity: sha512-SKhFcc6qEDWMa2OCdwxh4a23Brrpy/uZT2CriTgF8DcnB0kxzEXVLfi2Zt7GOcO+SizKQw2eYjTNT8JceZvG6A==}
     peerDependencies:
       effect: ^2.4.9
       fast-check: ^3.13.2
     dependencies:
-      effect: 2.4.9
+      effect: 2.4.10
       fast-check: 3.16.0
     dev: false
 
@@ -9080,8 +9080,8 @@ packages:
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  /effect@2.4.9:
-    resolution: {integrity: sha512-hRTy37jVylIYOC4k/VKfgmGkIMEOjR8MOurLzr1J0AD7ufagbcoO7voygZkT2B1STXfBXEsKNWj8yDAzUcPpAA==}
+  /effect@2.4.10:
+    resolution: {integrity: sha512-gWymyTJRCB1tZvwDkMhB3maHEMSddwl84yiB9kZfY+VEK0qL7B9lAUAij5rmBgGfeoZWpdEc5ycnf9VWXOtQRw==}
     dev: false
 
   /ejs@3.1.9:
