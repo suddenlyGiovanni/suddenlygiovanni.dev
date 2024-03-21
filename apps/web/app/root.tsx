@@ -48,6 +48,7 @@ function Document({ children }: { children: ReactNode }): ReactElement {
 		<html className={clsx(theme, 'min-h-screen')} data-theme={clsx(theme)} lang="en">
 			<head>
 				<meta charSet="utf-8" />
+				<meta httpEquiv="Content-Type" content="text/html;charset=utf-8" />
 				<meta content="width=device-width, initial-scale=1" name="viewport" />
 				<Meta />
 				<PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
