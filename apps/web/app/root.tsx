@@ -8,7 +8,7 @@ import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
 import { Footer } from './footer.tsx'
 import { Header } from './header.tsx'
 import { Main } from './main.tsx'
-import { themeSessionResolver } from './sessions.server'
+import { themeSessionResolver } from './sessions.server.tsx'
 import fontsStyleSheetUrl from './styles/fonts.css?url'
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
