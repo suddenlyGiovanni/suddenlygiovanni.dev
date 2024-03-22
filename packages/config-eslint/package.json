@@ -17,7 +17,7 @@
 		"@types/eslint": "8.56.6",
 		"@types/node": "20.11.30",
 		"@vercel/style-guide": "6.0.0",
-		"eslint-config-turbo": "1.12.5",
+		"eslint-config-turbo": "1.13.0",
 		"eslint-plugin-n": "17.0.0-5",
 		"eslint-plugin-only-warn": "1.1.0",
 		"eslint-plugin-storybook": "0.8.0",
