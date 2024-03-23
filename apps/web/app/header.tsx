@@ -137,7 +137,7 @@ function ThemeSwitch({
 					className={clsx('flex h-8 w-8 cursor-pointer items-center justify-center')}
 					size="icon"
 					variant="ghost"
-					data-testid='ThemeSwitch'
+					data-testid="ThemeSwitch"
 					type="submit"
 				>
 					{modeLabel[mode]}
