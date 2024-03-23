@@ -32,9 +32,6 @@ importers:
       '@conform-to/react':
         specifier: 1.0.5
         version: 1.0.5(react@18.3.0-canary-a4939017f-20240320)
-      '@conform-to/zod':
-        specifier: 1.0.5
-        version: 1.0.5(zod@3.22.4)
       '@effect/schema':
         specifier: 0.64.13
         version: 0.64.13(effect@2.4.13)(fast-check@3.16.0)
@@ -74,9 +71,6 @@ importers:
       react-dom:
         specifier: canary
         version: 18.3.0-canary-a4939017f-20240320(react@18.3.0-canary-a4939017f-20240320)
-      zod:
-        specifier: 3.22.4
-        version: 3.22.4
     devDependencies:
       '@codecov/vite-plugin':
         specifier: 0.0.1-beta.5
@@ -1855,15 +1849,6 @@ packages:
     dependencies:
       '@conform-to/dom': 1.0.5
       react: 18.3.0-canary-a4939017f-20240320
-    dev: false
-
-  /@conform-to/zod@1.0.5(zod@3.22.4):
-    resolution: {integrity: sha512-rtz+gsRecCbY4hPC7AfBEknFWpvSMGYrQ+0AKH+jB3lzpxz/2ib5LSFLGTXg4/FVCBOhbgOxy/zmYixaf6Q1xQ==}
-    peerDependencies:
-      zod: ^3.21.0
-    dependencies:
-      '@conform-to/dom': 1.0.5
-      zod: 3.22.4
     dev: false
 
   /@discoveryjs/json-ext@0.5.7:
@@ -16340,6 +16325,7 @@ packages:
 
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+    dev: true
 
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}

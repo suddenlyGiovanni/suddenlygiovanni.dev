@@ -96,7 +96,7 @@ function ThemeSwitch({
 }: {
 	readonly userPreference?: 'light' | 'dark' | null
 	readonly className?: string
-}) {
+}): ReactElement {
 	const fetcher = useFetcher<typeof action>()
 	const [form] = useForm({
 		id: 'theme-switch',
@@ -105,7 +105,12 @@ function ThemeSwitch({
 
 	const optimisticMode = useOptimisticThemeMode()
 	const mode = optimisticMode ?? userPreference ?? 'system'
-	const nextMode = mode === 'system' ? 'light' : mode === 'light' ? 'dark' : 'system'
+	const nextMode =
+		mode === 'system' //
+			? 'light'
+			: mode === 'light'
+				? 'dark'
+				: 'system'
 	const modeLabel = {
 		light: (
 			<Icons.sun className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
@@ -132,7 +137,7 @@ function ThemeSwitch({
 					className={clsx('flex h-8 w-8 cursor-pointer items-center justify-center')}
 					size="icon"
 					variant="ghost"
-					data-testid={'ThemeSwitch'}
+					data-testid='ThemeSwitch'
 					type="submit"
 				>
 					{modeLabel[mode]}
@@ -277,7 +282,7 @@ export const Header = memo(function Header({
 						role="menu"
 					>
 						{renderLi}
-						<ThemeSwitch userPreference={theme} className={'ml-16 aspect-square'} />
+						<ThemeSwitch userPreference={theme} className="ml-16 aspect-square" />
 					</menu>
 				</nav>
 			</div>

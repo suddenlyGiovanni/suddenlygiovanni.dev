@@ -1,11 +1,20 @@
-import { parseWithZod } from '@conform-to/zod'
 import { useFetchers } from '@remix-run/react'
-import { z } from 'zod'
+import * as Schema from '@effect/schema/Schema'
+import * as Either from 'effect/Either'
+
 import { useHints } from './client-hints.tsx'
 import { useRequestInfo } from './request-info.ts'
 
-export const ThemeFormSchema = z.object({
-	theme: z.enum(['system', 'light', 'dark']),
+export const ThemeFormSchema = Schema.struct({
+	theme: Schema.union(
+		Schema.literal('light'),
+		Schema.literal('dark'),
+		Schema.literal('system'),
+	).annotations({
+		title: 'Theme',
+		description: 'The theme to set',
+		examples: ['light', 'dark', 'system'],
+	}),
 })
 
 export function useOptimisticThemeMode(): 'light' | 'dark' | 'system' | undefined {
@@ -13,12 +22,13 @@ export function useOptimisticThemeMode(): 'light' | 'dark' | 'system' | undefine
 	const themeFetcher = fetchers.find(f => f.formAction === '/')
 
 	if (themeFetcher?.formData) {
-		const submission = parseWithZod(themeFetcher.formData, {
-			schema: ThemeFormSchema,
-		})
+		const formData = themeFetcher.formData
+		const payload = Object.fromEntries(formData)
+		const parse = Schema.decodeUnknownEither(ThemeFormSchema, { errors: 'all' })
+		const result = parse(payload)
 
-		if (submission.status === 'success') {
-			return submission.value.theme
+		if (Either.isRight(result)) {
+			return result.right.theme
 		}
 	}
 	return undefined

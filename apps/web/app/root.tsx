@@ -1,5 +1,5 @@
-import { parseWithZod } from '@conform-to/zod'
-import { invariantResponse } from '@epic-web/invariant'
+import type { SubmissionResult } from '@conform-to/react'
+import * as Schema from '@effect/schema/Schema'
 import type {
 	ActionFunctionArgs,
 	LinksFunction,
@@ -7,9 +7,12 @@ import type {
 	MetaFunction,
 } from '@remix-run/node'
 import { Links, Meta, Scripts, ScrollRestoration, json, useLoaderData } from '@remix-run/react'
+import * as Either from 'effect/Either'
+import type { ReactElement, ReactNode } from 'react'
+
 import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import type { ReactElement, ReactNode } from 'react'
+
 import { getHints } from '~/utils/client-hints.tsx'
 import { getEnv } from '~/utils/env.server.ts'
 import { getDomainUrl } from '~/utils/misc.ts'
@@ -19,6 +22,7 @@ import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
 import { Footer } from './footer.tsx'
 import { Header } from './header.tsx'
 import { Main } from './main.tsx'
+
 import fontsStyleSheetUrl from './styles/fonts.css?url'
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
@@ -58,18 +62,25 @@ export function loader({ request }: LoaderFunctionArgs) {
 
 export async function action({ request }: ActionFunctionArgs) {
 	const formData = await request.formData()
-	const submission = parseWithZod(formData, {
-		schema: ThemeFormSchema,
-	})
-
-	invariantResponse(submission.status === 'success', 'Invalid theme received')
-
-	const { theme } = submission.value
-
-	const responseInit = {
-		headers: { 'set-cookie': setTheme(theme) },
+	const payload = Object.fromEntries(formData)
+	const parse = Schema.decodeUnknownEither(ThemeFormSchema, { errors: 'all' })
+	const result = parse(payload)
+	if (Either.isLeft(result)) {
+		// eslint-disable-next-line @typescript-eslint/no-throw-literal -- This is how remix likes it
+		throw new Response('Invalid theme received', { status: 400 })
 	}
-	return json({ result: submission.reply() }, responseInit)
+	const { theme } = result.right
+	const responseInit = { headers: { 'set-cookie': setTheme(theme) } }
+	return json(
+		{
+			result: {
+				status: 'success',
+				initialValue: payload,
+				fields: Object.keys(payload),
+			} satisfies SubmissionResult,
+		},
+		responseInit,
+	)
 }
 
 function Document({
