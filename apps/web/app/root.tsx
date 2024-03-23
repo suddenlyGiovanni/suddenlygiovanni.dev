@@ -1,23 +1,26 @@
-import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
-import { Links, Meta, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
+import { parseWithZod } from '@conform-to/zod'
+import { invariantResponse } from '@epic-web/invariant'
+import type {
+	ActionFunctionArgs,
+	LinksFunction,
+	LoaderFunctionArgs,
+	MetaFunction,
+} from '@remix-run/node'
+import { Links, Meta, Scripts, ScrollRestoration, json, useLoaderData } from '@remix-run/react'
 import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement, ReactNode } from 'react'
-import { PreventFlashOnWrongTheme, type Theme, ThemeProvider, useTheme } from 'remix-themes'
+import { getHints } from '~/utils/client-hints.tsx'
+import { getEnv } from '~/utils/env.server.ts'
+import { getDomainUrl } from '~/utils/misc.ts'
+import { getTheme, setTheme } from '~/utils/theme.server.ts'
+import { ThemeFormSchema, useTheme } from '~/utils/theme.tsx'
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
 import { Footer } from './footer.tsx'
 import { Header } from './header.tsx'
 import { Main } from './main.tsx'
-import { themeSessionResolver } from './sessions.server.tsx'
 import fontsStyleSheetUrl from './styles/fonts.css?url'
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
-
-export async function loader({ request }: LoaderFunctionArgs): Promise<{
-	theme: null | Theme
-}> {
-	const { getTheme } = await themeSessionResolver(request)
-	return { theme: getTheme() }
-}
 
 export const links: LinksFunction = () => {
 	return [
@@ -41,9 +44,44 @@ export const meta: MetaFunction = () => {
 	]
 }
 
-function Document({ children }: { children: ReactNode }): ReactElement {
-	const data = useLoaderData<typeof loader>()
-	const [theme] = useTheme()
+export function loader({ request }: LoaderFunctionArgs) {
+	return {
+		requestInfo: {
+			hints: getHints(request),
+			origin: getDomainUrl(request),
+			path: new URL(request.url).pathname,
+			userPrefs: { theme: getTheme(request) },
+		},
+		ENV: getEnv(),
+	}
+}
+
+export async function action({ request }: ActionFunctionArgs) {
+	const formData = await request.formData()
+	const submission = parseWithZod(formData, {
+		schema: ThemeFormSchema,
+	})
+
+	invariantResponse(submission.status === 'success', 'Invalid theme received')
+
+	const { theme } = submission.value
+
+	const responseInit = {
+		headers: { 'set-cookie': setTheme(theme) },
+	}
+	return json({ result: submission.reply() }, responseInit)
+}
+
+function Document({
+	children,
+	env,
+	theme,
+}: {
+	children: ReactNode
+	// nonce: string
+	theme?: 'light' | 'dark' | null // TODO: address this prop
+	env?: Record<string, string>
+}): ReactElement {
 	return (
 		<html className={clsx(theme, 'min-h-screen')} data-theme={clsx(theme)} lang="en">
 			<head>
@@ -51,7 +89,6 @@ function Document({ children }: { children: ReactNode }): ReactElement {
 				<meta httpEquiv="Content-Type" content="text/html;charset=utf-8" />
 				<meta content="width=device-width, initial-scale=1" name="viewport" />
 				<Meta />
-				<PreventFlashOnWrongTheme ssrTheme={Boolean(data.theme)} />
 				<Links />
 			</head>
 			<Layout.Body
@@ -71,21 +108,14 @@ function Document({ children }: { children: ReactNode }): ReactElement {
 	)
 }
 
-function App(): ReactElement {
+export default function App(): ReactElement {
+	const data = useLoaderData<typeof loader>()
+	const theme = useTheme()
 	return (
-		<Document>
-			<Header />
+		<Document env={data.ENV} theme={theme}>
+			<Header theme={data.requestInfo.userPrefs.theme} />
 			<Main />
 			<Footer />
 		</Document>
-	)
-}
-
-export default function AppWithProviders(): ReactElement {
-	const data = useLoaderData<typeof loader>()
-	return (
-		<ThemeProvider specifiedTheme={data.theme} themeAction="/action/set-theme">
-			<App />
-		</ThemeProvider>
 	)
 }
