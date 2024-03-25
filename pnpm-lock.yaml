@@ -220,8 +220,8 @@ importers:
   packages/config-typescript:
     dependencies:
       '@tsconfig/node21':
-        specifier: 21.0.1
-        version: 21.0.1
+        specifier: 21.0.2
+        version: 21.0.2
       '@tsconfig/remix':
         specifier: 2.0.3
         version: 2.0.3
@@ -6690,8 +6690,8 @@ packages:
     resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
     dev: true
 
-  /@tsconfig/node21@21.0.1:
-    resolution: {integrity: sha512-2Khg79N+z2Qkb9SjLzOi8cz2PSa/oUpHIeQm1YWzmWXkoFcPXFZSHgs+Z8iPCDjIoXFqMNYntiTXxfLYQMcRhw==}
+  /@tsconfig/node21@21.0.2:
+    resolution: {integrity: sha512-+4Da0moyrhHXfp0Ejjw4UPT4XsIvMGHA5nk0K3qp5Xph5P4VVeuLqS/SQBZE+VOi/1v6JNaLC8u7jWo8mRmovw==}
     dev: false
 
   /@tsconfig/remix@2.0.3:
