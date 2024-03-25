@@ -2,9 +2,10 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"extends": "@suddenly-giovanni/config-typescript/react-library.json",
 	"compilerOptions": {
+		"baseUrl": ".",
 		"noEmit": true,
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["src/*"]
 		},
 		"types": ["@total-typescript/ts-reset", "vite/client", "react", "react-dom"],
 		"useDefineForClassFields": true

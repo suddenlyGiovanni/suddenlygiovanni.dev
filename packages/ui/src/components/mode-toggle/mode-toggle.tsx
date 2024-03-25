@@ -12,7 +12,8 @@ import {
 	react/jsx-boolean-value  -- Reason biome is conflicting with this rule,
 	*/
 import { type ReactNode, memo, useMemo } from 'react'
-import { Theme } from 'remix-themes'
+
+export type Theme = 'dark' | 'light'
 
 interface ModeToggleProps {
 	readonly setTheme: (theme: Theme) => void
@@ -26,8 +27,8 @@ const ModeToggle = memo(function ModeToggle({
 	theme,
 	className,
 }: ModeToggleProps): ReactNode {
-	const isLight = useMemo<boolean>(() => theme === Theme.LIGHT, [theme])
-	const isDark = useMemo<boolean>(() => theme === Theme.DARK, [theme])
+	const isLight = useMemo<boolean>(() => theme === 'light', [theme])
+	const isDark = useMemo<boolean>(() => theme === 'dark', [theme])
 
 	return (
 		<DropdownMenu>
@@ -46,7 +47,7 @@ const ModeToggle = memo(function ModeToggle({
 				<DropdownMenuItem
 					disabled={isLight}
 					onClick={() => {
-						setTheme(Theme.LIGHT)
+						setTheme('light')
 					}}
 				>
 					Light
@@ -54,7 +55,7 @@ const ModeToggle = memo(function ModeToggle({
 				<DropdownMenuItem
 					disabled={isDark}
 					onClick={() => {
-						setTheme(Theme.DARK)
+						setTheme('dark')
 					}}
 				>
 					Dark
@@ -65,4 +66,4 @@ const ModeToggle = memo(function ModeToggle({
 })
 ModeToggle.displayName = NAME
 
-export { ModeToggle, Theme }
+export { ModeToggle }

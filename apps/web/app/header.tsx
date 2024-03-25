@@ -1,13 +1,18 @@
-import { type NavLinkProps, NavLink as UnstyledNavLink } from '@remix-run/react'
+import { type NavLinkProps, NavLink as UnstyledNavLink, useFetcher } from '@remix-run/react'
+import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
+
+import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.js'
 import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
-import { ModeToggle } from '@suddenly-giovanni/ui/components/mode-toggle/mode-toggle.tsx'
 import { NavigationMenuToggle } from '@suddenly-giovanni/ui/components/navigation-menu-toggle/navigation-menu-toggle.tsx'
 import { SuddenlyGiovanni } from '@suddenly-giovanni/ui/components/suddenly-giovanni/suddenly-giovanni.tsx'
 import { useToggle } from '@suddenly-giovanni/ui/hooks/use-toggle.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
-import { type Theme, useTheme } from 'remix-themes'
+import { Button } from '@suddenly-giovanni/ui/ui/button.js'
+
+import type { action } from '~/root.tsx'
+import { useOptimisticThemeMode } from '~/utils/theme.tsx'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
+
 import { routesRecord } from './routes-record'
 
 /**
@@ -85,9 +90,65 @@ const routes = (
 
 const PRIMARY_NAVIGATION = 'primary-navigation'
 
-export const Header = memo(function Header(): ReactElement {
+function ThemeSwitch({
+	userPreference,
+	className,
+}: {
+	readonly userPreference?: 'light' | 'dark' | null
+	readonly className?: string
+}): ReactElement {
+	const fetcher = useFetcher<typeof action>()
+
+	const optimisticMode = useOptimisticThemeMode()
+	const mode = optimisticMode ?? userPreference ?? 'system'
+	const nextMode =
+		mode === 'system' //
+			? 'light'
+			: mode === 'light'
+				? 'dark'
+				: 'system'
+	const modeLabel = {
+		light: (
+			<Icons.sun className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
+				<span className="sr-only">Light</span>
+			</Icons.sun>
+		),
+		dark: (
+			<Icons.moon className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
+				<span className="sr-only">Dark</span>
+			</Icons.moon>
+		),
+		system: (
+			<Icons.laptop name="laptop" className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
+				<span className="sr-only">System</span>
+			</Icons.laptop>
+		),
+	}
+
+	return (
+		<fetcher.Form method="POST" className={className}>
+			<input type="hidden" name="theme" value={nextMode} />
+			<div className="flex gap-2">
+				<Button
+					className={clsx('flex h-8 w-8 cursor-pointer items-center justify-center')}
+					size="icon"
+					variant="ghost"
+					data-testid="ThemeSwitch"
+					type="submit"
+				>
+					{modeLabel[mode]}
+				</Button>
+			</div>
+		</fetcher.Form>
+	)
+}
+
+export const Header = memo(function Header({
+	theme,
+}: {
+	theme: 'light' | 'dark' | null
+}): ReactElement {
 	const [isMobileNavigationVisible, toggleMobileNavigationVisibility] = useToggle(false)
-	const [theme, setTheme] = useTheme()
 
 	const handleMobileNavigationClick = useCallback(
 		<T extends HTMLElement>(event: SyntheticEvent<T>) => {
@@ -95,14 +156,6 @@ export const Header = memo(function Header(): ReactElement {
 			toggleMobileNavigationVisibility()
 		},
 		[toggleMobileNavigationVisibility],
-	)
-
-	const handleThemeChange = useCallback(
-		(t: Theme.DARK | Theme.LIGHT): void => {
-			setTheme(t)
-			toggleMobileNavigationVisibility()
-		},
-		[setTheme, toggleMobileNavigationVisibility],
 	)
 
 	const renderLi = useMemo(
@@ -225,11 +278,7 @@ export const Header = memo(function Header(): ReactElement {
 						role="menu"
 					>
 						{renderLi}
-						<ModeToggle
-							className="ml-16 aspect-square"
-							setTheme={handleThemeChange}
-							theme={theme}
-						/>
+						<ThemeSwitch userPreference={theme} className="ml-16 aspect-square" />
 					</menu>
 				</nav>
 			</div>
