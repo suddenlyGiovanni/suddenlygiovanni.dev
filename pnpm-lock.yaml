@@ -29,9 +29,6 @@ importers:
 
   apps/web:
     dependencies:
-      '@conform-to/react':
-        specifier: 1.0.5
-        version: 1.0.5(react@18.3.0-canary-a4939017f-20240320)
       '@effect/schema':
         specifier: 0.64.13
         version: 0.64.13(effect@2.4.13)(fast-check@3.16.0)
@@ -1837,19 +1834,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@conform-to/dom@1.0.5:
-    resolution: {integrity: sha512-d+85Z8w5z8gO5mtHGKP5JORHLmcgo2bTmdzRk8lhqUkye9hyM2nt801wE6C6U9zq/s7rnlX7kN5x0A6QBhvk3A==}
-    dev: false
-
-  /@conform-to/react@1.0.5(react@18.3.0-canary-a4939017f-20240320):
-    resolution: {integrity: sha512-LyhbN0oVoL7xQg8NXoeG7jqH9JCLsI10clQ0iwwdQDMA+W7OFAL70FFYjq7yjHJBrkj7QqcmO5xMV4jfWTvJJw==}
-    peerDependencies:
-      react: '>=18'
-    dependencies:
-      '@conform-to/dom': 1.0.5
-      react: 18.3.0-canary-a4939017f-20240320
-    dev: false
 
   /@discoveryjs/json-ext@0.5.7:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}

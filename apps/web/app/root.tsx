@@ -1,4 +1,3 @@
-import type { SubmissionResult } from '@conform-to/react'
 import * as Schema from '@effect/schema/Schema'
 import type {
 	ActionFunctionArgs,
@@ -77,7 +76,7 @@ export async function action({ request }: ActionFunctionArgs) {
 				status: 'success',
 				initialValue: payload,
 				fields: Object.keys(payload),
-			} satisfies SubmissionResult,
+			},
 		},
 		responseInit,
 	)

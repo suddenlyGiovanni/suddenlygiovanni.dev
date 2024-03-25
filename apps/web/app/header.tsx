@@ -1,4 +1,3 @@
-import { getFormProps, useForm } from '@conform-to/react'
 import { type NavLinkProps, NavLink as UnstyledNavLink, useFetcher } from '@remix-run/react'
 import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
 
@@ -13,6 +12,7 @@ import { Button } from '@suddenly-giovanni/ui/ui/button.js'
 import type { action } from '~/root.tsx'
 import { useOptimisticThemeMode } from '~/utils/theme.tsx'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
+
 import { routesRecord } from './routes-record'
 
 /**
@@ -98,10 +98,6 @@ function ThemeSwitch({
 	readonly className?: string
 }): ReactElement {
 	const fetcher = useFetcher<typeof action>()
-	const [form] = useForm({
-		id: 'theme-switch',
-		lastResult: fetcher.data?.result,
-	})
 
 	const optimisticMode = useOptimisticThemeMode()
 	const mode = optimisticMode ?? userPreference ?? 'system'
@@ -130,7 +126,7 @@ function ThemeSwitch({
 	}
 
 	return (
-		<fetcher.Form method="POST" {...getFormProps(form)} className={className}>
+		<fetcher.Form method="POST" className={className}>
 			<input type="hidden" name="theme" value={nextMode} />
 			<div className="flex gap-2">
 				<Button

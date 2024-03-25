@@ -13,7 +13,7 @@ import {
 	*/
 import { type ReactNode, memo, useMemo } from 'react'
 
-type Theme = 'dark' | 'light'
+export type Theme = 'dark' | 'light'
 
 interface ModeToggleProps {
 	readonly setTheme: (theme: Theme) => void
