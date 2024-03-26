@@ -178,8 +178,8 @@ importers:
         specifier: 1.13.0
         version: 1.13.0(eslint@8.57.0)
       eslint-plugin-n:
-        specifier: 17.0.0-5
-        version: 17.0.0-5(eslint@8.57.0)
+        specifier: 17.0.0-6
+        version: 17.0.0-6(eslint@8.57.0)
       eslint-plugin-only-warn:
         specifier: 1.1.0
         version: 1.1.0
@@ -9652,7 +9652,7 @@ packages:
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@7.1.1)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.0)
-      hasown: 2.0.1
+      hasown: 2.0.2
       is-core-module: 2.13.1
       is-glob: 4.0.3
       minimatch: 3.1.2
@@ -9748,8 +9748,8 @@ packages:
       object.fromentries: 2.0.7
     dev: true
 
-  /eslint-plugin-n@17.0.0-5(eslint@8.57.0):
-    resolution: {integrity: sha512-hlsrWHVDwosipdiUG2QGjEjrDpeGRHSxZEZFtgI6sTY63YHzqezzak7iF67b00nEdK+mT9aTZmsWaJqxivT3Qw==}
+  /eslint-plugin-n@17.0.0-6(eslint@8.57.0):
+    resolution: {integrity: sha512-rJO668C2XGBugWCyQfdgQtWj/hxd8ZVnylpsJfgbtDycwrqpsjd2O0W1n95UNUXwdlJOVzczsqrwdQ5fp9W5NA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.23.0 || >=9.0.0-0
