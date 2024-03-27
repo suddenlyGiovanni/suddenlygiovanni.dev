@@ -14,7 +14,7 @@
 	},
 	"devDependencies": {
 		"@suddenly-giovanni/config-typescript": "workspace:*",
-		"prettier-plugin-tailwindcss": "0.5.12"
+		"prettier-plugin-tailwindcss": "0.5.13"
 	},
 	"config": {
 		"scripty": {
