@@ -20,7 +20,7 @@
 	"dependencies": {
 		"@tsconfig/node21": "21.0.2",
 		"@tsconfig/remix": "2.0.4",
-		"@tsconfig/strictest": "2.0.4",
+		"@tsconfig/strictest": "2.0.5",
 		"@tsconfig/vite-react": "3.0.1"
 	},
 	"config": {
