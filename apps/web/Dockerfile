@@ -30,7 +30,7 @@ COPY .gitignore .gitignore
 
 COPY --from=builder /home/node/builder/out/json/ .
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod=false
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile=false --prod=false
 
 # Build the project
 COPY --from=builder /home/node/builder/out/full/ .
