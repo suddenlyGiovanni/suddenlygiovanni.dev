@@ -232,8 +232,8 @@ importers:
         specifier: 21.0.3
         version: 21.0.3
       '@tsconfig/remix':
-        specifier: 2.0.4
-        version: 2.0.4
+        specifier: 2.0.5
+        version: 2.0.5
       '@tsconfig/strictest':
         specifier: 2.0.5
         version: 2.0.5
@@ -6722,8 +6722,8 @@ packages:
     resolution: {integrity: sha512-qTX4pGNfnRTutaiRPx+c4GFL1DB1u6GHkwfoYSNn/KelE9m86Mkn3RpFBhhxDh6yHeqaVuAx0tz+n7LrjBUEpw==}
     dev: false
 
-  /@tsconfig/remix@2.0.4:
-    resolution: {integrity: sha512-kBqOWVTBOpJPekPpzCeA/KofNzWMewSBiT+LNXP4ChzalYYfmGnCyxuXgJdMeXRAVg8Eon8D8CVtl4i0l9NRVg==}
+  /@tsconfig/remix@2.0.5:
+    resolution: {integrity: sha512-KawY0Z2oylbBsGbHZFE11O2kXuHF/LfT7NzwPl5CCfgmFy4jsMkVgMfnPQnsPe6Wdu2pNQMRzNoyRHU2PBAO1w==}
     dev: false
 
   /@tsconfig/strictest@2.0.5:
