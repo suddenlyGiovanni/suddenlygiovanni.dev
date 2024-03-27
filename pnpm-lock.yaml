@@ -235,8 +235,8 @@ importers:
         specifier: 2.0.4
         version: 2.0.4
       '@tsconfig/strictest':
-        specifier: 2.0.4
-        version: 2.0.4
+        specifier: 2.0.5
+        version: 2.0.5
       '@tsconfig/vite-react':
         specifier: 3.0.1
         version: 3.0.1
@@ -6726,8 +6726,8 @@ packages:
     resolution: {integrity: sha512-kBqOWVTBOpJPekPpzCeA/KofNzWMewSBiT+LNXP4ChzalYYfmGnCyxuXgJdMeXRAVg8Eon8D8CVtl4i0l9NRVg==}
     dev: false
 
-  /@tsconfig/strictest@2.0.4:
-    resolution: {integrity: sha512-/VKO/oufDOvAE48KGzZOEXFBKtR3PnGlb4cJoRtw3Ax5tYwaWnaNgyTJDviIbvjlnn82WMfTNvhegFkj5Xt2UA==}
+  /@tsconfig/strictest@2.0.5:
+    resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
     dev: false
 
   /@tsconfig/vite-react@3.0.1:
