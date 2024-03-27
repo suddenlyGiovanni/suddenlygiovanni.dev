@@ -238,8 +238,8 @@ importers:
         specifier: 2.0.5
         version: 2.0.5
       '@tsconfig/vite-react':
-        specifier: 3.0.1
-        version: 3.0.1
+        specifier: 3.0.2
+        version: 3.0.2
       typescript:
         specifier: 5.4.2
         version: 5.4.2
@@ -6730,8 +6730,8 @@ packages:
     resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
     dev: false
 
-  /@tsconfig/vite-react@3.0.1:
-    resolution: {integrity: sha512-yrAEQWgWZdbfNt/11TrvUPkh0AJrJy+DP9qc4c5zPt8POGwYfEp8dB2LnBC9DBm/zpycsasRJh8Z9uVB17yxCw==}
+  /@tsconfig/vite-react@3.0.2:
+    resolution: {integrity: sha512-AFynAtE1Un3Rko20Ghe2mVC/QWD4rStJ2PnyIZU2kzC4UyWpf1YhAEY87GojH/XPZCY8Mdt27gsYyy+6l6HV+w==}
     dev: false
 
   /@types/acorn@4.0.6:
