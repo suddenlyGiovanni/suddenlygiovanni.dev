@@ -1,5 +1,4 @@
-import { insertIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
-
+import { insertIf, isArray, type ValueOf } from './utils'
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,
@@ -14,7 +13,7 @@ import {
   type OgType,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
-} from './open-graph-base'
+} from './open-graph-base.ts'
 
 export type book<T extends string = ''> = BaseOrExtended<'book', T>
 

@@ -5,8 +5,7 @@
     "url": "https://suddenlyGiovanni.dev"
   },
   "dependencies": {
-    "ts-brand": "0.0.2",
-    "@suddenlygiovanni/open-graph-protocol-utils": "workspace:*"
+    "ts-brand": "0.0.2"
   },
   "description": "A high-level utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner.",
   "devDependencies": {

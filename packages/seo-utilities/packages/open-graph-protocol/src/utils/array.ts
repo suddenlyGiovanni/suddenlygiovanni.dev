@@ -1,4 +1,4 @@
-import { isNotFalsy, NotFalsy } from './type-guards'
+import { isNotFalsy, NotFalsy } from './type-guards.ts'
 
 /*
  * Returns the provided elements wrap in an array if the given condition turns to be truthy.

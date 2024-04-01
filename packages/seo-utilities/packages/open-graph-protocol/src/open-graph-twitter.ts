@@ -1,5 +1,4 @@
-import { insertIf, maxLength, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
-
+import { insertIf, maxLength, type ValueOf } from './utils'
 import { type BaseOrExtended, type MetaBase, Types } from './open-graph'
 
 type twitter<T extends string = ''> = BaseOrExtended<'twitter', T>

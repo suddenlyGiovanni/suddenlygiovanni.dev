@@ -1,4 +1,4 @@
-export { insertIf } from '@suddenlygiovanni/open-graph-protocol-utils'
+export { insertIf } from './utils'
 export {
   Types,
   makeOpenGraphMetaAttributesRecord,

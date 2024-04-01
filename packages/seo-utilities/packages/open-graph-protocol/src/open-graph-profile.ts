@@ -1,5 +1,4 @@
-import { insertIf, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
-
+import { insertIf, type ValueOf } from './utils'
 import {
   type BaseOrExtended,
   makeOpenGraphMeta,

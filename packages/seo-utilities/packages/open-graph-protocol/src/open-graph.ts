@@ -1,6 +1,6 @@
 import { type BaseOf, type Brand, make } from 'ts-brand'
-import type { ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
 
+import type { ValueOf } from './utils'
 import type { ArticleRecord } from './open-graph-article'
 import type { BasicRecord, OptionalRecord } from './open-graph-base'
 import type { BookRecord } from './open-graph-book'

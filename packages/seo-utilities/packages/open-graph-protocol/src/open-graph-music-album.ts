@@ -1,5 +1,4 @@
-import { insertIf, isArray, type ValueOf } from '@suddenlygiovanni/open-graph-protocol-utils'
-
+import { insertIf, isArray, type ValueOf } from './utils'
 import { makeOpenGraphMeta, type MetaBase, type og, PropertyMusicAlbum, Types } from './open-graph'
 import {
   type BasicRecord,

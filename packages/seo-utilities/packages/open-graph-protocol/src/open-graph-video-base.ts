@@ -1,5 +1,4 @@
-import { insertIf, isArray } from '@suddenlygiovanni/open-graph-protocol-utils'
-
+import { insertIf, isArray } from './utils'
 import { makeOpenGraphMeta, PropertyVideoBase, Types } from './open-graph'
 import { makeOpenGraphBase, type OpenGraphBaseWithOptional } from './open-graph-base'
 
