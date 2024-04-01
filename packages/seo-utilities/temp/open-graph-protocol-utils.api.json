@@ -1,0 +1,880 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.19.2",
+    "schemaVersion": 1004,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      }
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!",
+  "docComment": "",
+  "name": "@suddenlygiovanni/open-graph-protocol-utils",
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!",
+      "name": "",
+      "members": [
+        {
+          "kind": "Function",
+          "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!assert:function(1)",
+          "docComment": "/**\n * Throw an error if the condition fails. Also known as `invariant`.\n *\n * @param condition - A boolean value to assert\n *\n * @param message - An optional message to customize the assertion failure message. It could be a simple string or a lazy string for cases where the message takes a fair amount of effort to compute.\n *\n * @returns void\n *\n * @throws\n *\n * Throws if the condition is not `true`, with either a default message or a customized one if provided\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function assert(condition: "
+            },
+            {
+              "kind": "Content",
+              "text": "boolean"
+            },
+            {
+              "kind": "Content",
+              "text": ", message?: "
+            },
+            {
+              "kind": "Content",
+              "text": "string | (() => string)"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "asserts "
+            },
+            {
+              "kind": "Reference",
+              "text": "condition",
+              "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!~condition"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 7
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "condition",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "parameterName": "message",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "name": "assert"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!assert:function(2)",
+          "docComment": "/**\n * Asserts that the condition is of a specific type. Throw an error if the condition fails. Also known as `invariant`.\n *\n * @param condition - A value of any type to assert by mean of truthy coercion.\n *\n * @param message - An optional message to customize the assertion failure message. It could be a simple string or a lazy string for cases where the message takes a fair amount of effort to compute.\n *\n * @returns void\n *\n * @throws\n *\n * Throws if the condition is not truthy, with either a default message or a customized one if provided\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function assert<T>(condition: "
+            },
+            {
+              "kind": "Content",
+              "text": "T | null | undefined"
+            },
+            {
+              "kind": "Content",
+              "text": ", message?: "
+            },
+            {
+              "kind": "Content",
+              "text": "string | (() => string)"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "asserts "
+            },
+            {
+              "kind": "Reference",
+              "text": "condition",
+              "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!~condition"
+            },
+            {
+              "kind": "Content",
+              "text": " is T"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 2,
+          "parameters": [
+            {
+              "parameterName": "condition",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "parameterName": "message",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "assert"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!insertIf:function(1)",
+          "docComment": "/**\n * Returns the provided elements wrap in an array if the given condition turns to be truthy. It is meant as immutable alternative of the method push on the Array structure. The consumer should then unwrap the boxed elements by mean on spreading operation. Since the JS spread operator disregards the empty array, it won't modify the original structure in case of falsy condition.\n *\n * @param condition - A whatsoever value that will be checked for truthiness by mean of boolean type coercion!\n *\n * @param elements - The elements to conditionally returns if the `condition` is truthy\n *\n * @returns The provided elements boxed in an array or an empty array\n *\n * @example\n * ```ts\n * const array = [\n *     ...insertIf(false, -2, -1, 0),\n *     1,\n *     2,\n *     ...insertIf(true, 3, 4, 5, 6),\n * ] as const;\n * console.log(array); // => [1, 2, 3, 4, 5, 6]\n * ```\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function insertIf<Condition, Elements extends "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown[]"
+            },
+            {
+              "kind": "Content",
+              "text": ">(condition: "
+            },
+            {
+              "kind": "Content",
+              "text": "Condition"
+            },
+            {
+              "kind": "Content",
+              "text": ", ...elements: "
+            },
+            {
+              "kind": "Content",
+              "text": "readonly [...Elements]"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "readonly [...Elements] | readonly []"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "condition",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            },
+            {
+              "parameterName": "elements",
+              "parameterTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              }
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "Condition",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "Elements",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "insertIf"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!insertLazilyIf:function(1)",
+          "docComment": "/**\n * Returns the result of invoking the provided callback boxed in an immutable array if the given condition turns to be truthy. The condition itself is passed in as an argument to the lazy callback to be used at the discretion of the caller. It is meant as immutable alternative of the method push on the Array structure. The consumer should then unwrap the boxed elements by mean on spreading operation. Since the JS spread operator disregards the empty array, it won't modify the original structure in case of falsy condition.\n *\n * @param condition - A whatsoever value that will be checked for truthiness by mean of boolean type coercion!\n *\n * @param lazyElement - An lazy unary function (also known as a thunk) who's return value will be the boxed return of the whole expression if the condition turned to be truthy. The condition itself is passed in as an argument to this callback in case of truthiness. This enables the consumer to directly operate on the checked condition in a typesafe manner.\n *\n * @returns An empty array or the return value of the lazyElement boxed in an array.\n *\n * @example\n * ```ts\n * declare function identity<T>(x: T): T\n * declare function upperCase<T extends string>(srt: T): Uppercase<T>\n * declare const undefinedOrBar: undefined | { bar: 'bar' }\n * declare const undefinedOrBaz: undefined | 'BAZ'\n *\n * const array = [\n *   'FOO',\n *   ...insertLazilyIf(undefinedOrBar, (obj: NotFalsy<typeof undefinedOrBar>) => upperCase(obj.bar)),\n *   ...insertLazilyIf(undefinedOrBaz, identity),\n * ] as const\n *\n * // the resulting array will be a disjoint union of all the possible cases\n * type Array =\n *   | readonly ['FOO']                // when both `undefinedOrBar` and  `undefinedOrBaz` are falsy (in this case `undefined`)\n *   | readonly ['FOO', 'BAR']         // when only `undefinedOrBaz` is falsy\n *   | readonly ['FOO', 'BAZ']         // when only `undefinedOrBar` is falsy\n *   | readonly ['FOO', 'BAR', 'BAZ']  // when none are falsy\n * ```\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function insertLazilyIf<Condition, T>(condition: "
+            },
+            {
+              "kind": "Content",
+              "text": "Condition"
+            },
+            {
+              "kind": "Content",
+              "text": ", lazyElement: "
+            },
+            {
+              "kind": "Content",
+              "text": "(condition: "
+            },
+            {
+              "kind": "Reference",
+              "text": "NotFalsy",
+              "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!NotFalsy:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<Condition>) => T"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Content",
+              "text": "readonly [element: T] | readonly []"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 8
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "condition",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "parameterName": "lazyElement",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 6
+              }
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "Condition",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "insertLazilyIf"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!isArray:function(1)",
+          "docComment": "/**\n * Patch for Array.isArray `isArray(arg: any): arg is any[];`\n *\n * @remarks\n *\n * since it loses the type information of the array type solution by `laughinghan`\n *\n * @mentions https://github.com/laughinghan\n *\n * @see\n *\n * https://github.com/microsoft/TypeScript/pull/28916\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isArray<T>(arg: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "arg",
+              "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!~arg"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "Extract",
+              "canonicalReference": "!Extract:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<any[], T> | "
+            },
+            {
+              "kind": "Reference",
+              "text": "Extract",
+              "canonicalReference": "!Extract:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<[any], T> | (unknown extends T ? never : "
+            },
+            {
+              "kind": "Reference",
+              "text": "Extract",
+              "canonicalReference": "!Extract:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T, readonly any[]>)"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 3,
+            "endIndex": 11
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "arg",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "isArray"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!isNotFalsy:function(1)",
+          "docComment": "/**\n * A not falsy type-guard.\n *\n * @returns A boolean value defining if the provided argument is falsy or not\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isNotFalsy<T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ">(value: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "value",
+              "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!~value"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "NotFalsy",
+              "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!NotFalsy:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "isNotFalsy"
+        },
+        {
+          "kind": "Function",
+          "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!isNotNullish:function(1)",
+          "docComment": "/**\n * A not nullish type-guard, where nullish is either `null` or `undefined`\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function isNotNullish<T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "unknown"
+            },
+            {
+              "kind": "Content",
+              "text": ">(value: "
+            },
+            {
+              "kind": "Content",
+              "text": "T"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "value",
+              "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!~value"
+            },
+            {
+              "kind": "Content",
+              "text": " is "
+            },
+            {
+              "kind": "Reference",
+              "text": "NonNullable",
+              "canonicalReference": "!NonNullable:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 5,
+            "endIndex": 9
+          },
+          "releaseTag": "Public",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "value",
+              "parameterTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              }
+            }
+          ],
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "name": "isNotNullish"
+        },
+        {
+          "kind": "Variable",
+          "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!maxLength:var",
+          "docComment": "/**\n * A curry helper function that operates on string to trim them at a given length\n *\n * @param upperBound - An Integer defining the upper bound to which the string should be trimmed.\n *\n * @returns A function that accepts a sting as argument and returns said string trimmed at the previously defined upper bound.\n *\n * @example\n * ```ts\n * // lets imagine it having a length greater than 100 chars\n * declare const loremIpsum: string\n *\n * const trimTo100 = maxLength(100)\n * console.log(trimTo100(loremIpsum)) // => only the first 100 chars\n * ```\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "maxLength: "
+            },
+            {
+              "kind": "Content",
+              "text": "<UpperBound extends number>(upperBound: UpperBound) => <String_1 extends string>(string: String_1) => string"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "maxLength",
+          "variableTypeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 2
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!NotFalsy:type",
+          "docComment": "/**\n * Removes from a given T all possible instance value JavaScript deems Falsy\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type NotFalsy<T> = "
+            },
+            {
+              "kind": "Reference",
+              "text": "Exclude",
+              "canonicalReference": "!Exclude:type"
+            },
+            {
+              "kind": "Content",
+              "text": "<T, null | undefined | false | 0 | -0 | ''>"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "NotFalsy",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          }
+        },
+        {
+          "kind": "TypeAlias",
+          "canonicalReference": "@suddenlygiovanni/open-graph-protocol-utils!ValueOf:type",
+          "docComment": "/**\n * A generic utility type that operates on ObjectType and will return codomain of all its values as a disjoint union. Optionally it accepts the union type some assignable keys to narrow down the codomain.\n *\n * @example\n * ```ts\n * type Dictionary = Record<string, number>\n * ValueOf<Dictionary>\n * // ^^^ number\n * ```\n *\n * ```ts\n * interface ObjectType {\n *   foo: 'FOO';\n *   ultimateQuestionOfLifeTheUniverseAndEverything: 42;\n *   greet: <T extends string>(name: T) => `Hi ${T}!`\n * }\n * ValueOf<ObjectType, 'ultimateQuestionOfLifeTheUniverseAndEverything' | 'greet'>\n * // ^^^ 42 | <T extends string>(name: T) => `Hi ${T}!`\n * ```\n *\n * @public\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare type ValueOf<T extends "
+            },
+            {
+              "kind": "Content",
+              "text": "object"
+            },
+            {
+              "kind": "Content",
+              "text": ", K extends "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof T "
+            },
+            {
+              "kind": "Content",
+              "text": "= "
+            },
+            {
+              "kind": "Content",
+              "text": "keyof T"
+            },
+            {
+              "kind": "Content",
+              "text": "> = "
+            },
+            {
+              "kind": "Content",
+              "text": "T[K]"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "ValueOf",
+          "typeParameters": [
+            {
+              "typeParameterName": "T",
+              "constraintTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 0,
+                "endIndex": 0
+              }
+            },
+            {
+              "typeParameterName": "K",
+              "constraintTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "defaultTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              }
+            }
+          ],
+          "typeTokenRange": {
+            "startIndex": 7,
+            "endIndex": 8
+          }
+        }
+      ]
+    }
+  ]
+}

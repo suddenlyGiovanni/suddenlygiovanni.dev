@@ -1,0 +1,52 @@
+{
+  "author": {
+    "email": "15946771+suddenlyGiovanni@users.noreply.github.com",
+    "name": "Giovanni Ravalico",
+    "url": "https://suddenlyGiovanni.dev"
+  },
+  "description": "Internal private utils module of @seo-utilities packages.",
+  "devDependencies": {
+    "typescript": "4.5.4"
+  },
+  "engines": {
+    "node": ">=17",
+    "pnpm": ">=6"
+  },
+  "exports": "./src/index.ts",
+  "files": [
+    "dist/**/*",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "imports": "./src/**.ts",
+  "license": "MIT",
+  "main": "./src/index.ts",
+  "name": "@suddenlygiovanni/open-graph-protocol-utils",
+  "packageManager": "pnpm@6.32.2",
+  "private": false,
+  "publishConfig": {
+    "exports": "./dist/index.js",
+    "imports": "./dist/**.js",
+    "main": "./dist/index.js",
+    "registry": "https://npm.pkg.github.com",
+    "types": "./dist/index.d.ts"
+  },
+  "repository": {
+    "directory": "packages/utils",
+    "type": "git",
+    "url": "https://github.com/suddenlyGiovanni/seo-utilities"
+  },
+  "scripts": {
+    "api-report": "scripty",
+    "build": "scripty",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "lint": "scripty",
+    "test": "scripty"
+  },
+  "scripty": {
+    "path": "../../scripts/packages"
+  },
+  "type": "module",
+  "version": "0.4.0"
+}

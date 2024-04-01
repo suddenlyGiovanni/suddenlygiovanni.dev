@@ -1,0 +1,21 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@1.6.3/schema.json",
+  "changelog": [
+    "@changesets/changelog-github",
+    {
+      "repo": "suddenlygiovanni/seo-utilities"
+    }
+  ],
+  "commit": false,
+  "linked": [
+    [
+      "@suddenlygiovanni/open-graph-protocol",
+      "@suddenlygiovanni/open-graph-protocol-react",
+      "@suddenlygiovanni/open-graph-protocol-utils"
+    ]
+  ],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": []
+}

@@ -1,0 +1,74 @@
+{
+  "author": {
+    "name": "Giovanni Ravalico",
+    "email": "15946771+suddenlyGiovanni@users.noreply.github.com",
+    "url": "https://suddenlyGiovanni.dev"
+  },
+  "dependencies": {
+    "@suddenlygiovanni/open-graph-protocol": "workspace:*"
+  },
+  "description": "A high-level React utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner. It leverages the work of `@seo-utilities/open-graph-protocol` package.",
+  "devDependencies": {
+    "@types/react": "17.0.37",
+    "@typescript/lib-dom": "npm:@types/web",
+    "react": "17.0.2",
+    "typescript": "4.5.4"
+  },
+  "engines": {
+    "node": ">=17",
+    "pnpm": ">=6"
+  },
+  "exports": "./src/index.ts",
+  "files": [
+    "dist/**/*",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "imports": "./src/**.ts",
+  "keywords": [
+    "Open Graph Protocol",
+    "OpenGraphProtocol",
+    "graph object",
+    "social graph",
+    "Twitter Card",
+    "TwitterCard",
+    "Twitter Summary Card",
+    "TwitterSummaryCard",
+    "Twitter App Card",
+    "TwitterAppCard",
+    "Twitter Player Card",
+    "TwitterPlayerCard"
+  ],
+  "license": "MIT",
+  "main": "./src/**.ts",
+  "name": "@suddenlygiovanni/open-graph-protocol-react",
+  "packageManager": "pnpm@6.32.2",
+  "peerDependencies": {
+    "react": "^17.0.0"
+  },
+  "publishConfig": {
+    "exports": "./dist/index.js",
+    "imports": "./dist/**.js",
+    "main": "./dist/**.js",
+    "registry": "https://npm.pkg.github.com",
+    "types": "./dist/index.d.ts"
+  },
+  "repository": {
+    "directory": "packages/open-graph-protocol-react",
+    "type": "git",
+    "url": "https://github.com/suddenlyGiovanni/seo-utilities"
+  },
+  "scripts": {
+    "api-report": "scripty",
+    "build": "scripty",
+    "clean": "rm -rf dist *.tsbuildinfo",
+    "lint": "scripty",
+    "test": "scripty"
+  },
+  "scripty": {
+    "path": "../../scripts/packages"
+  },
+  "type": "module",
+  "version": "0.4.0"
+}
