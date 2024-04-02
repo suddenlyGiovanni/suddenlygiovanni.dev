@@ -1,4 +1,5 @@
-export { insertIf } from './utils'
+// biome-ignore lint/nursery/noBarrelFile: this is a barrel file
+export { insertIf } from './utils/array.ts'
 export {
   Types,
   makeOpenGraphMetaAttributesRecord,

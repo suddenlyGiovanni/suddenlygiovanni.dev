@@ -1,19 +1,21 @@
-import { insertIf, isArray, type ValueOf } from './utils'
 import {
   makeOpenGraphMeta,
   type MetaBase,
   type og,
   PropertyMusicRadioStation,
-  Types,
-} from './open-graph'
+  type Types,
+} from './open-graph.ts'
 import {
   type BasicRecord,
   makeOpenGraphBase,
   type OgType,
   type OpenGraphBaseWithOptional,
   type OptionalRecord,
-} from './open-graph-base'
-import type { music } from './open-graph-music'
+} from './open-graph-base.ts'
+import type { music } from './open-graph-music.ts'
+import type { ValueOf } from './utils/types.ts'
+import { insertIf } from './utils/array.ts'
+import { isArray } from './utils/type-guards.ts'
 
 export type IPropertyMusicRadioStation = ValueOf<typeof PropertyMusicRadioStation>
 

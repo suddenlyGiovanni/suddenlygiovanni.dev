@@ -1,14 +1,15 @@
-import { insertIf, type ValueOf } from './utils'
-import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base'
+import type { BasicRecord, OgType, OptionalRecord } from './open-graph-base.ts'
+import { type OpenGraphVideoBase, _makeOpenGraphVideoBase } from './open-graph-video-base.ts'
+import type { video } from './open-graph-video.ts'
 import {
-  makeOpenGraphMeta,
   type MetaBase,
-  type og,
   PropertyVideoEpisode,
   type Types,
-} from './open-graph'
-import type { BasicRecord, OgType, OptionalRecord } from './open-graph-base'
-import { type video } from './open-graph-video'
+  makeOpenGraphMeta,
+  type og,
+} from './open-graph.ts'
+import { insertIf } from './utils/array.ts'
+import type { ValueOf } from './utils/types.ts'
 
 export type IPropertyVideoEpisode = ValueOf<typeof PropertyVideoEpisode>
 

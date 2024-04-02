@@ -1,8 +1,8 @@
-import type { ValueOf } from './utils'
-import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base'
-import { type MetaBase, type og, PropertyVideoMovie, type Types } from './open-graph'
-import type { BasicRecord, OgType, OptionalRecord } from './open-graph-base'
-import type { video } from './open-graph-video'
+import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base.ts'
+import type { MetaBase, og, PropertyVideoMovie, Types } from './open-graph.ts'
+import type { BasicRecord, OgType, OptionalRecord } from './open-graph-base.ts'
+import type { video } from './open-graph-video.ts'
+import type { ValueOf } from './utils/types.ts'
 
 export type IPropertyVideoMovie = ValueOf<typeof PropertyVideoMovie>
 

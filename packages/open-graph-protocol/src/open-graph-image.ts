@@ -1,14 +1,15 @@
-import { insertIf, isArray, type ValueOf } from './utils'
-
 import {
   type BaseOrExtended,
-  makeOpenGraphMeta,
-  type MetaBase,
   type MIMEContent,
-  type og,
+  type MetaBase,
   PropertyImage,
   type Types,
-} from './open-graph'
+  makeOpenGraphMeta,
+  type og,
+} from './open-graph.ts'
+import { insertIf } from './utils/array.ts'
+import { isArray } from './utils/type-guards.ts'
+import type { ValueOf } from './utils/types.ts'
 
 export type image<T extends string = ''> = BaseOrExtended<'image', T>
 

@@ -1,6 +1,7 @@
-import { insertIf, isArray } from './utils'
-import { makeOpenGraphMeta, PropertyVideoBase, Types } from './open-graph'
-import { makeOpenGraphBase, type OpenGraphBaseWithOptional } from './open-graph-base'
+import { makeOpenGraphMeta, PropertyVideoBase, Types } from './open-graph.ts'
+import { makeOpenGraphBase, type OpenGraphBaseWithOptional } from './open-graph-base.ts'
+import { insertIf } from './utils/array.ts';
+import { isArray } from './utils/type-guards.ts';
 
 export interface OpenGraphVideoBase extends OpenGraphBaseWithOptional {
   ogType: Types.Enum<'video.movie' | 'video.episode' | 'video.tv_show' | 'video.other'>

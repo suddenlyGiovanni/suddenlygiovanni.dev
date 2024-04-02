@@ -1,11 +1,11 @@
-import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base'
-import type { MetaBase, og, Types } from './open-graph'
-import type { video } from './open-graph-video'
+import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base.ts'
+import type { MetaBase, og, Types } from './open-graph.ts'
+import type { video } from './open-graph-video.ts'
 import type {
   IPropertyVideoMovie,
   OgTypeVideoMovie,
   VideoMovieRecord,
-} from './open-graph-video-movie'
+} from './open-graph-video-movie.ts'
 
 export type IPropertyVideoTvShow = IPropertyVideoMovie
 export type VideoTvShowRecord = Exclude<VideoMovieRecord, OgTypeVideoMovie> | OgTypeVideoTvShow

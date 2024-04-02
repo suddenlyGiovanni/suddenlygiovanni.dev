@@ -1,25 +1,25 @@
 import { type BaseOf, type Brand, make } from 'ts-brand'
 
-import type { ValueOf } from './utils'
-import type { ArticleRecord } from './open-graph-article'
-import type { BasicRecord, OptionalRecord } from './open-graph-base'
-import type { BookRecord } from './open-graph-book'
-import type { MusicAlbumRecord } from './open-graph-music-album'
-import type { MusicPlaylistRecord } from './open-graph-music-playlist'
-import type { RadioStationRecord } from './open-graph-music-radio-station'
-import type { MusicSongRecord } from './open-graph-music-song'
-import type { ProfileRecord } from './open-graph-profile'
+import type { ArticleRecord } from './open-graph-article.ts'
+import type { BasicRecord, OptionalRecord } from './open-graph-base.ts'
+import type { BookRecord } from './open-graph-book.ts'
+import type { MusicAlbumRecord } from './open-graph-music-album.ts'
+import type { MusicPlaylistRecord } from './open-graph-music-playlist.ts'
+import type { RadioStationRecord } from './open-graph-music-radio-station.ts'
+import type { MusicSongRecord } from './open-graph-music-song.ts'
+import type { ProfileRecord } from './open-graph-profile.ts'
 import {
   type IPropertyTwitter,
-  makeTwitterCardMeta,
   type TwitterCardMeta,
   type TwitterRecord,
-} from './open-graph-twitter'
-import type { VideoEpisodeRecord } from './open-graph-video-episode'
-import type { VideoMovieRecord } from './open-graph-video-movie'
-import type { VideoOtherRecord } from './open-graph-video-other'
-import type { VideoTvShowRecord } from './open-graph-video-tvshow'
-import type { WebsiteRecord } from './open-graph-website'
+  makeTwitterCardMeta,
+} from './open-graph-twitter.ts'
+import type { VideoEpisodeRecord } from './open-graph-video-episode.ts'
+import type { VideoMovieRecord } from './open-graph-video-movie.ts'
+import type { VideoOtherRecord } from './open-graph-video-other.ts'
+import type { VideoTvShowRecord } from './open-graph-video-tvshow.ts'
+import type { WebsiteRecord } from './open-graph-website.ts'
+import type { ValueOf } from './utils/types.ts'
 
 /**
  * A namespace holding the type definitions and the type constructors used by the Open Graph protocol.
