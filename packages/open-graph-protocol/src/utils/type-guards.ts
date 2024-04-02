@@ -23,7 +23,7 @@ export function isNotFalsy<T>(value: T): value is NotFalsy<T> {
 			return value !== false
 		}
 		case 'number': {
-			return !isNaN(value) && value !== 0
+			return !Number.isNaN(value) && value !== 0
 		}
 		case 'string': {
 			return value !== ''
@@ -48,9 +48,9 @@ export function isNotFalsy<T>(value: T): value is NotFalsy<T> {
 export function isArray<T>(
 	arg: T,
 ): arg is
-	| Extract<any[], T>
-	| Extract<[any], T>
-	| (unknown extends T ? never : Extract<T, readonly any[]>) {
+	| Extract<unknown[], T>
+	| Extract<[unknown], T>
+	| (unknown extends T ? never : Extract<T, readonly unknown[]>) {
 	/*
    the first two clauses, `Extract<any[], T>` and `Extract<[any], T>`,
    ensure that the type predicate will extract `B[]` out of `A | B[]`
@@ -115,9 +115,9 @@ export function assert<T>(
  *
  * @public
  */
-export function assert(condition: any, message?: string | (() => string)) {
+export function assert(condition: unknown, message?: string | (() => string)) {
 	if (
-		typeof condition === undefined ||
+		typeof condition === 'undefined' ||
 		condition === null ||
 		condition === false ||
 		!Boolean(condition)

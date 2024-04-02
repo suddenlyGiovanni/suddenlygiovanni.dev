@@ -8,6 +8,7 @@ import {
 import {
 	type BaseOrExtended,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyProfile,
 	type Types,
 	makeOpenGraphMeta,
@@ -29,34 +30,35 @@ export type ProfileRecord =
 	| OgProfileUsername
 	| OgProfileGender
 
-interface ProfileMetaBase<Property extends IPropertyProfile, Content extends Types.Type>
-	extends MetaBase<Property, Content> {}
+type ProfileMetaBase<Property extends IPropertyProfile, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
-interface OgTypeProfile extends MetaBase<og<'type'>, Types.Enum<'profile'>> {}
+type OgTypeProfile = MetaBase<og<'type'>, Types.Enum<'profile'>>
 
 /**
  * A name normally given to an individual by a parent or self-chosen.
  * string
  */
-interface OgProfileFirstName extends ProfileMetaBase<og<Profile<'first_name'>>, Types.String> {}
+type OgProfileFirstName = ProfileMetaBase<og<Profile<'first_name'>>, Types.String>
 
 /**
  * A name inherited from a family or marriage and by which the individual is commonly known.
  * string
  */
-interface OgProfileLastName extends ProfileMetaBase<og<Profile<'last_name'>>, Types.String> {}
+type OgProfileLastName = ProfileMetaBase<og<Profile<'last_name'>>, Types.String>
 
 /**
  * A short unique string to identify them.
  * string
  */
-interface OgProfileUsername extends ProfileMetaBase<og<Profile<'username'>>, Types.String> {}
+type OgProfileUsername = ProfileMetaBase<og<Profile<'username'>>, Types.String>
 
 /**
  * Gender
  */
-interface OgProfileGender
-	extends ProfileMetaBase<og<Profile<'gender'>>, Types.Enum<'male' | 'female'>> {}
+type OgProfileGender = ProfileMetaBase<og<Profile<'gender'>>, Types.Enum<'male' | 'female'>>
 
 export interface OpenGraphProfile extends OpenGraphBaseWithOptional {
 	ogType: Types.Enum<'profile'>
@@ -83,7 +85,7 @@ export interface OpenGraphProfile extends OpenGraphBaseWithOptional {
 	ogProfileGender?: Types.Enum<'male' | 'female'>
 }
 
-export function makeOpenGraphProfile(openGraphProfile: OpenGraphProfile) {
+export function makeOpenGraphProfile(openGraphProfile: OpenGraphProfile): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphProfile),

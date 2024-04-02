@@ -9,6 +9,7 @@ import { type OpenGraphVideo, type VideoRecord, makeOpenGraphVideo } from './ope
 import {
 	type IOGType,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyBasic,
 	type Types,
 	makeOpenGraphMeta,
@@ -71,23 +72,23 @@ export type OptionalRecord =
 /**
  * The title of your object as it should appear within the graph, e.g., "The Rock".
  */
-interface OgTitle extends MetaBase<og<'title'>, Types.String> {}
+type OgTitle = MetaBase<og<'title'>, Types.String>
 
 /**
  * The type of your object, e.g., "video.movie".
  * Depending on the type you specify, other properties may also be required.
  */
-export interface OgType extends MetaBase<og<'type'>, Types.Enum<IOGType>> {}
+export type OgType = MetaBase<og<'type'>, Types.Enum<IOGType>>
 
 /**
  * The canonical URL of your object that will be used as its permanent ID in the graph, e.g., "https://www.imdb.com/title/tt0117500/".
  */
-interface OgUrl extends MetaBase<og<'url'>, Types.URL> {}
+type OgUrl = MetaBase<og<'url'>, Types.URL>
 
 /**
  * A one to two sentence description of your object.
  */
-interface OgDescription extends MetaBase<og<'description'>, Types.String> {}
+type OgDescription = MetaBase<og<'description'>, Types.String>
 
 /**
  * The word that appears before this object's title in a sentence.
@@ -95,24 +96,24 @@ interface OgDescription extends MetaBase<og<'description'>, Types.String> {}
  * If auto is chosen, the consumer of your data should chose between "a" or "an".
  * Default is "" (blank).
  */
-interface OgDeterminer extends MetaBase<og<'determiner'>, DelimiterContent> {}
+type OgDeterminer = MetaBase<og<'determiner'>, DelimiterContent>
 
 /**
  * The locale these tags are marked up in. Of the format language_TERRITORY.
  * Default is en_US.
  */
-interface OgLocale extends MetaBase<og<'locale'>, Types.String> {}
+type OgLocale = MetaBase<og<'locale'>, Types.String>
 
 /**
  * An array of other locales this page is available in.
  */
-interface OgLocaleAlternate extends MetaBase<og<'locale:alternate'>, Types.String> {}
+type OgLocaleAlternate = MetaBase<og<'locale:alternate'>, Types.String>
 
 /**
  * If your object is part of a larger website, the name which should be displayed for the overall site.
  * e.g., "IMDb".
  */
-interface OgSiteName extends MetaBase<og<'site_name'>, Types.String> {}
+type OgSiteName = MetaBase<og<'site_name'>, Types.String>
 
 /**
  * To turn your web pages into graph objects, you need to add basic metadata to your page.
@@ -188,7 +189,7 @@ export function makeOpenGraphBase({
 	ogImage,
 	ogUrl,
 	...optionalMetadata
-}: OpenGraphBaseWithOptional) {
+}: OpenGraphBaseWithOptional): readonly OpenGraphMeta[] {
 	return [
 		// TITLE!
 		makeOpenGraphMeta(PropertyBasic.OG_TITLE, ogTitle),

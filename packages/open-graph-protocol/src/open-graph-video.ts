@@ -2,6 +2,7 @@ import {
 	type BaseOrExtended,
 	type MIMEContent,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyVideo,
 	type Types,
 	makeOpenGraphMeta,
@@ -24,51 +25,53 @@ export type VideoRecord =
 	| OgVideoHeight
 	| OgVideoAlt
 
-export interface VideoMetaBase<Property extends IPropertyVideo, Content extends Types.Type>
-	extends MetaBase<Property, Content> {}
+export type VideoMetaBase<Property extends IPropertyVideo, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 /**
  * A URL to a video file that complements this object.
  */
-export interface OgVideo extends VideoMetaBase<og<video>, Types.URL> {}
+export type OgVideo = VideoMetaBase<og<video>, Types.URL>
 
 /**
  * Identical to og:video.
  */
-interface OgVideoUrl extends VideoMetaBase<og<video<'url'>>, Types.URL> {}
+type OgVideoUrl = VideoMetaBase<og<video<'url'>>, Types.URL>
 
 /**
  * An alternate url to use if the webpage requires HTTPS.
  */
-interface OgVideoSecureUrl extends VideoMetaBase<og<video<'secure_url'>>, Types.URL> {}
+type OgVideoSecureUrl = VideoMetaBase<og<video<'secure_url'>>, Types.URL>
 
 /**
  * A MIME type for this video.
  */
-interface OgVideoType extends VideoMetaBase<og<video<'type'>>, MIMEContent> {}
+type OgVideoType = VideoMetaBase<og<video<'type'>>, MIMEContent>
 
 /**
  * The number of pixels wide.
  */
-interface OgVideoWidth extends VideoMetaBase<og<video<'width'>>, Types.Integer> {}
+type OgVideoWidth = VideoMetaBase<og<video<'width'>>, Types.Integer>
 
 /**
  * The number of pixels high.
  */
-interface OgVideoHeight extends VideoMetaBase<og<video<'height'>>, Types.Integer> {}
+type OgVideoHeight = VideoMetaBase<og<video<'height'>>, Types.Integer>
 
 /**
  * A description of what is in the image (not a caption).
  * If the page specifies an og:video it should specify og:video:alt.
  */
-interface OgVideoAlt extends VideoMetaBase<og<video<'alt'>>, Types.String> {}
+type OgVideoAlt = VideoMetaBase<og<video<'alt'>>, Types.String>
 
 export interface OpenGraphVideo {
 	/** An video URL which should represent your object within the graph */
 	ogVideo: Types.URL
 
 	/** Identical to og:video */
-	ogVideoURL?: Types.URL
+	ogVideoUrl?: Types.URL
 
 	/** An alternate url to use if the webpage requires HTTPS. */
 	ogVideoSecureUrl?: Types.URL
@@ -88,7 +91,7 @@ export interface OpenGraphVideo {
 
 export function makeOpenGraphVideo(
 	openGraphVideo: Types.URL | OpenGraphVideo | readonly OpenGraphVideo[],
-) {
+): readonly OpenGraphMeta[] {
 	function _makeOpenGraphVideo({
 		ogVideo,
 		ogVideoAlt,
@@ -124,9 +127,9 @@ export function makeOpenGraphVideo(
 
 	if (typeof openGraphVideo === 'string') {
 		return [makeOpenGraphMeta(PropertyVideo.OG_VIDEO, openGraphVideo)]
-	} else if (isArray(openGraphVideo)) {
-		return openGraphVideo.flatMap(_makeOpenGraphVideo)
-	} else {
-		return _makeOpenGraphVideo(openGraphVideo)
 	}
+	if (isArray(openGraphVideo)) {
+		return openGraphVideo.flatMap(_makeOpenGraphVideo)
+	}
+	return _makeOpenGraphVideo(openGraphVideo)
 }

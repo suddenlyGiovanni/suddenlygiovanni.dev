@@ -2,6 +2,7 @@ import {
 	type BaseOrExtended,
 	type MIMEContent,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyImage,
 	type Types,
 	makeOpenGraphMeta,
@@ -35,45 +36,47 @@ export type ImageRecord =
 	| OgImageHeight
 	| OgImageAlt
 
-export interface ImageMetaBase<Property extends IPropertyImage, Content extends Types.Type>
-	extends MetaBase<Property, Content> {}
+export type ImageMetaBase<Property extends IPropertyImage, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 /**
  * An image URL which should represent your object within the graph.
  */
-export interface OgImage extends ImageMetaBase<og<image>, Types.URL> {}
+export type OgImage = ImageMetaBase<og<image>, Types.URL>
 
 /**
  * Identical to og:image
  * @link OgImage
  */
-interface OgImageUrl extends ImageMetaBase<og<image<'url'>>, Types.URL> {}
+type OgImageUrl = ImageMetaBase<og<image<'url'>>, Types.URL>
 
 /**
  * An alternate url to use if the webpage requires HTTPS.
  */
-interface OgImageSecureUrl extends ImageMetaBase<og<image<'secure_url'>>, Types.URL> {}
+type OgImageSecureUrl = ImageMetaBase<og<image<'secure_url'>>, Types.URL>
 
 /**
  * A MIME type for this image.
  */
-interface OgImageType extends ImageMetaBase<og<image<'type'>>, MIMEContent> {}
+type OgImageType = ImageMetaBase<og<image<'type'>>, MIMEContent>
 
 /**
  * The number of pixels wide.
  */
-interface OgImageWidth extends ImageMetaBase<og<image<'width'>>, Types.Integer> {}
+type OgImageWidth = ImageMetaBase<og<image<'width'>>, Types.Integer>
 
 /**
  * The number of pixels high.
  */
-interface OgImageHeight extends ImageMetaBase<og<image<'height'>>, Types.Integer> {}
+type OgImageHeight = ImageMetaBase<og<image<'height'>>, Types.Integer>
 
 /**
  * A description of what is in the image (not a caption).
  * If the page specifies an og:image it should specify og:image:alt.
  */
-interface OgImageAlt extends ImageMetaBase<og<image<'alt'>>, Types.String> {}
+type OgImageAlt = ImageMetaBase<og<image<'alt'>>, Types.String>
 
 export interface OpenGraphImage {
 	/**
@@ -82,7 +85,7 @@ export interface OpenGraphImage {
 	ogImage: Types.URL
 
 	/** Identical to og:image */
-	ogImageURL?: Types.URL
+	ogImageUrl?: Types.URL
 
 	/** An alternate url to use if the webpage requires HTTPS. */
 	ogImageSecureUrl?: Types.URL
@@ -102,7 +105,7 @@ export interface OpenGraphImage {
 
 export function makeOpenGraphImage(
 	openGraphImage: Types.URL | OpenGraphImage | readonly OpenGraphImage[],
-) {
+): readonly OpenGraphMeta[] {
 	function _makeOpenGraphImage({
 		ogImage,
 		ogImageAlt,

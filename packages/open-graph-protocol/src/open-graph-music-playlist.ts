@@ -8,6 +8,7 @@ import {
 import type { music } from './open-graph-music.ts'
 import {
 	type MetaBase,
+	type OpenGraphMeta,
 	type PropertyMusicPlaylist,
 	type Types,
 	makeOpenGraphMeta,
@@ -28,39 +29,39 @@ export type MusicPlaylistRecord =
 	| OgMusicPlaylistSongTrack
 	| OgMusicPlaylistCreator
 
-interface MusicPlaylistMetaBase<Property extends IPropertyMusicPlaylist, Content extends Types.Type>
-	extends MetaBase<Property, Content> {}
+type MusicPlaylistMetaBase<
+	Property extends IPropertyMusicPlaylist,
+	Content extends Types.Type,
+> = MetaBase<Property, Content>
 
-interface OgTypeMusicPlaylist extends MetaBase<og<'type'>, Types.Enum<music<'playlist'>>> {}
+type OgTypeMusicPlaylist = MetaBase<og<'type'>, Types.Enum<music<'playlist'>>>
 
 /**
  * The song on this playlist.
  * music.song
  * @link MusicSongRecord
  */
-interface OgMusicPlaylistSong extends MusicPlaylistMetaBase<og<music<'song'>>, Types.URL> {}
+type OgMusicPlaylistSong = MusicPlaylistMetaBase<og<music<'song'>>, Types.URL>
 
 /**
  * The same as music:album:disc but in reverse.
  * integer >=1
  * @link MusicSongAlbumDisc
  */
-interface OgMusicPlaylistSongDisc
-	extends MusicPlaylistMetaBase<og<music<'song:disc'>>, Types.Integer> {}
+type OgMusicPlaylistSongDisc = MusicPlaylistMetaBase<og<music<'song:disc'>>, Types.Integer>
 
 /**
  * The same as music:album:track but in reverse.
  * integer >=1
  * @link MusicSongAlbumTrack
  */
-interface OgMusicPlaylistSongTrack
-	extends MusicPlaylistMetaBase<og<music<'song:track'>>, Types.Integer> {}
+type OgMusicPlaylistSongTrack = MusicPlaylistMetaBase<og<music<'song:track'>>, Types.Integer>
 
 /**
  * The creator of this playlist.
  * profile
  */
-interface OgMusicPlaylistCreator extends MusicPlaylistMetaBase<og<music<'creator'>>, Types.URL> {}
+type OgMusicPlaylistCreator = MusicPlaylistMetaBase<og<music<'creator'>>, Types.URL>
 
 interface OpenGraphMusicPlaylist extends OpenGraphBaseWithOptional {
 	/** 'music.playlist' */
@@ -84,7 +85,9 @@ interface OpenGraphMusicPlaylist extends OpenGraphBaseWithOptional {
 	ogMusicCreator?: Types.URL | readonly Types.URL[]
 }
 
-export function makeOpenGraphMusicPlaylist(openGraphMusicPlaylist: OpenGraphMusicPlaylist) {
+export function makeOpenGraphMusicPlaylist(
+	openGraphMusicPlaylist: OpenGraphMusicPlaylist,
+): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphMusicPlaylist),

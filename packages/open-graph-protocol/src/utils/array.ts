@@ -33,7 +33,11 @@ export function insertIf<Condition, Element>(
 	? readonly [element: Element] //
 	: readonly [] //
 
-export function insertIf<Condition, Element extends any[], Elements extends readonly [...Element]>(
+export function insertIf<
+	Condition,
+	Element extends unknown[],
+	Elements extends readonly [...Element],
+>(
 	condition: Condition,
 	...elements: Elements
 ): Condition extends NotFalsy<Condition>
@@ -43,7 +47,7 @@ export function insertIf<Condition, Element extends any[], Elements extends read
 export function insertIf<
 	Condition,
 	Element,
-	Elements extends any[],
+	Elements extends unknown[],
 	LazyElement extends (condition: NotFalsy<Condition>) => Element,
 	Args extends [lazyElement: LazyElement] | [...Exclude<Elements, LazyElement>],
 >(
@@ -54,15 +58,19 @@ export function insertIf<
 		? readonly [element: Element]
 		: readonly [...Elements]
 	: readonly [] {
+	/**
+	 * Checks if an array is a lazy element tuple.
+	 *
+	 * @param xs - The array to check.
+	 * @returns - Returns true if the array is a lazy element tuple, false otherwise.
+	 */
 	function isLazyElementTuple(
 		xs: [lazyElement: LazyElement] | [...Exclude<Elements, LazyElement>],
 	): xs is [lazyElement: LazyElement] {
 		const [maybeLazyElement, ...tail] = xs
-		if (tail) {
-			return false
-		} else {
-			return typeof maybeLazyElement === 'function'
-		}
+		return tail //
+			? false
+			: typeof maybeLazyElement === 'function'
 	}
 
 	if (args.length < 1) {
@@ -77,15 +85,15 @@ export function insertIf<
 			if (isLazyElementTuple(args)) {
 				const [lazyElement] = args
 				const element: Element = lazyElement(condition)
-				// @ts-ignore
+				// @ts-expect-error case it is 1 argument and of type fn
 				return [element] as const
 			}
 
-			// @ts-ignore: case it is 1 or more arguments but not of type fn
+			// @ts-expect-error: case it is 1 or more arguments but not of type fn
 			return [...args] as const
 		}
 	}
-	// @ts-ignore: condition turned to be falsy
+	// @ts-expect-error: condition turned to be falsy
 	return [] as const
 }
 

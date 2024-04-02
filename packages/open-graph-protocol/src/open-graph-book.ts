@@ -8,6 +8,7 @@ import {
 import {
 	type BaseOrExtended,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyBook,
 	type Types,
 	makeOpenGraphMeta,
@@ -30,36 +31,38 @@ export type BookRecord =
 	| OgBookReleaseDate
 	| OgBookTag
 
-interface BookMetaBase<Property extends IPropertyBook, Content extends Types.Type>
-	extends MetaBase<Property, Content> {}
+type BookMetaBase<Property extends IPropertyBook, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 /**
  * This object type represents a book or publication. This is an appropriate type for ebooks, as well as traditional paperback or hardback books. Do not use this type to represent magazines
  */
-interface OgTypeBook extends MetaBase<og<'type'>, Types.Enum<book>> {}
+type OgTypeBook = MetaBase<og<'type'>, Types.Enum<book>>
 
 /**
  * Who wrote this book.
  * profile array
  */
-interface OgBookAuthor extends BookMetaBase<og<book<'author'>>, Types.URL> {}
+type OgBookAuthor = BookMetaBase<og<book<'author'>>, Types.URL>
 
 /**
  * The [ISBN](https://en.wikipedia.org/wiki/International_Standard_Book_Number)
  */
-interface OgBookIsbn extends BookMetaBase<og<book<'isbn'>>, Types.String> {}
+type OgBookIsbn = BookMetaBase<og<book<'isbn'>>, Types.String>
 
 /**
  * The date the book was released.
  * datetime
  */
-interface OgBookReleaseDate extends BookMetaBase<og<book<'release_date'>>, Types.DateTime> {}
+type OgBookReleaseDate = BookMetaBase<og<book<'release_date'>>, Types.DateTime>
 
 /**
  * Tag words associated with this book.
  * string array
  */
-interface OgBookTag extends BookMetaBase<og<book<'tag'>>, Types.String> {}
+type OgBookTag = BookMetaBase<og<book<'tag'>>, Types.String>
 
 interface OpenGraphBook extends OpenGraphBaseWithOptional {
 	ogType: Types.Enum<'book'>
@@ -88,7 +91,7 @@ interface OpenGraphBook extends OpenGraphBaseWithOptional {
 	ogBookTag?: Types.String | readonly Types.String[]
 }
 
-export function makeOpenGraphBook(openGraphBook: OpenGraphBook) {
+export function makeOpenGraphBook(openGraphBook: OpenGraphBook): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphBook),
