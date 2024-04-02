@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities -- TODO: need to validate the rule  */
 import type { MetaFunction } from '@remix-run/node'
-import { Link as RLink } from '@remix-run/react'
+import type { Link as rLink } from '@remix-run/react'
 import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
@@ -55,7 +55,7 @@ const imgSrcSet = [
 	`${hero2800wAssetUrl} 2800w`,
 ].join(', ')
 
-function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RLink>): ReactElement {
+function Link({ className, ...props }: ComponentPropsWithoutRef<typeof rLink>): ReactElement {
 	return (
 		<RLink
 			className={clsx(
