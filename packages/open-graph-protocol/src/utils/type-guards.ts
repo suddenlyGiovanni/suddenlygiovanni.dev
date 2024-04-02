@@ -48,9 +48,9 @@ export function isNotFalsy<T>(value: T): value is NotFalsy<T> {
 export function isArray<T>(
 	arg: T,
 ): arg is
-	| Extract<any[], T>
-	| Extract<[any], T>
-	| (unknown extends T ? never : Extract<T, readonly any[]>) {
+	| Extract<unknown[], T>
+	| Extract<[unknown], T>
+	| (unknown extends T ? never : Extract<T, readonly unknown[]>) {
 	/*
    the first two clauses, `Extract<any[], T>` and `Extract<[any], T>`,
    ensure that the type predicate will extract `B[]` out of `A | B[]`
