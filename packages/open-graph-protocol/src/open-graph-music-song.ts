@@ -11,7 +11,7 @@ import {
 	PropertyMusicSong,
 	Types,
 	makeOpenGraphMeta,
-	type og,
+	type og, type OpenGraphMeta,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
@@ -29,42 +29,39 @@ export type MusicSongRecord =
 	| OgMusicSongAlbumTrack
 	| OgMusicSongMusician
 
-interface MusicSongMetaBase<Property extends IPropertyMusicSong, Content extends Types.Type>
-	extends MetaBase<Property, Content> {}
+type MusicSongMetaBase<Property extends IPropertyMusicSong, Content extends Types.Type> = MetaBase<Property, Content>
 
-interface OgTypeMusicSong extends MetaBase<og<'type'>, Types.Enum<music<'song'>>> {}
+type OgTypeMusicSong = MetaBase<og<'type'>, Types.Enum<music<'song'>>>
 
 /**
  * The song's length in seconds.
  * integer >=1
  */
-interface OgMusicSongDuration extends MusicSongMetaBase<og<music<'duration'>>, Types.Integer> {}
+type OgMusicSongDuration = MusicSongMetaBase<og<music<'duration'>>, Types.Integer>
 
 /**
  * The album this song is from.
  * music.album array
  */
-interface OgMusicSongAlbum extends MusicSongMetaBase<og<music<'album'>>, Types.URL> {}
+type OgMusicSongAlbum = MusicSongMetaBase<og<music<'album'>>, Types.URL>
 
 /**
  * Which disc of the album this song is on.
  * integer >=1
  */
-export interface OgMusicSongAlbumDisc
-	extends MusicSongMetaBase<og<music<'album:disc'>>, Types.Integer> {}
+export type OgMusicSongAlbumDisc = MusicSongMetaBase<og<music<'album:disc'>>, Types.Integer>
 
 /**
  * Which track this song is.
  * integer >=1
  */
-export interface OgMusicSongAlbumTrack
-	extends MusicSongMetaBase<og<music<'album:track'>>, Types.Integer> {}
+export type OgMusicSongAlbumTrack = MusicSongMetaBase<og<music<'album:track'>>, Types.Integer>
 
 /**
  * The musician that made this song.
  * profile array
  */
-interface OgMusicSongMusician extends MusicSongMetaBase<og<music<'musician'>>, Types.String> {}
+type OgMusicSongMusician = MusicSongMetaBase<og<music<'musician'>>, Types.String>
 
 interface OpenGraphMusicSong extends OpenGraphBaseWithOptional {
 	/**
@@ -89,7 +86,7 @@ interface OpenGraphMusicSong extends OpenGraphBaseWithOptional {
 	ogMusicMusician?: Types.URL | Types.URL[]
 }
 
-export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong) {
+export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphMusicSong),

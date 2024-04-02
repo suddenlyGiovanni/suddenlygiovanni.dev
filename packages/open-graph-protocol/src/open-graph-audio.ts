@@ -5,7 +5,7 @@ import {
 	PropertyAudio,
 	type Types,
 	makeOpenGraphMeta,
-	type og,
+	type og, type OpenGraphMeta,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
@@ -15,17 +15,16 @@ type Audio<T extends string = ''> = BaseOrExtended<'audio', T>
 
 export type IPropertyAudio = ValueOf<typeof PropertyAudio>
 
-interface AudioMetaBase<Property extends IPropertyAudio, Content extends Types.Type>
-	extends MetaBase<Property, Content> {}
+type AudioMetaBase<Property extends IPropertyAudio, Content extends Types.Type> = MetaBase<Property, Content>
 
 /** A URL to an audio file to accompany this object. */
-export interface OgAudio extends AudioMetaBase<og<Audio>, Types.URL> {}
+export type OgAudio = AudioMetaBase<og<Audio>, Types.URL>
 
 /** An alternate url to use if the webpage requires HTTPS. */
-interface OgAudioSecureUrl extends AudioMetaBase<og<Audio<'secure_url'>>, Types.URL> {}
+type OgAudioSecureUrl = AudioMetaBase<og<Audio<'secure_url'>>, Types.URL>
 
 /** A MIME type for this audio. */
-interface OgAudioType extends AudioMetaBase<og<Audio<'type'>>, MIMEContent> {}
+type OgAudioType = AudioMetaBase<og<Audio<'type'>>, MIMEContent>
 
 /**
  * The og:audio tag only has the first 3 properties available (since size doesn't make sense for sound):
@@ -51,7 +50,7 @@ export interface OpenGraphAudio {
 
 export function makeOpenGraphAudio(
 	openGraphAudio: Types.URL | OpenGraphAudio | readonly OpenGraphAudio[],
-) {
+): readonly OpenGraphMeta[] {
 	function _makeOpenGraphAudio({ ogAudio, ogAudioSecureUrl, ogAudioType }: OpenGraphAudio) {
 		return [
 			// AUDIO!
@@ -66,9 +65,11 @@ export function makeOpenGraphAudio(
 
 	if (typeof openGraphAudio === 'string') {
 		return [makeOpenGraphMeta(PropertyAudio.OG_AUDIO, openGraphAudio)]
-	} else if (isArray(openGraphAudio)) {
-		return openGraphAudio.flatMap(_makeOpenGraphAudio)
-	} else {
-		return _makeOpenGraphAudio(openGraphAudio)
 	}
+
+	if (isArray(openGraphAudio)) {
+		return openGraphAudio.flatMap(_makeOpenGraphAudio)
+	}
+
+	return _makeOpenGraphAudio(openGraphAudio)
 }

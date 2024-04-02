@@ -54,15 +54,14 @@ export function insertIf<
 		? readonly [element: Element]
 		: readonly [...Elements]
 	: readonly [] {
+
 	function isLazyElementTuple(
 		xs: [lazyElement: LazyElement] | [...Exclude<Elements, LazyElement>],
 	): xs is [lazyElement: LazyElement] {
 		const [maybeLazyElement, ...tail] = xs
-		if (tail) {
-			return false
-		} else {
-			return typeof maybeLazyElement === 'function'
-		}
+		return tail //
+			? false
+			: typeof maybeLazyElement === 'function'
 	}
 
 	if (args.length < 1) {

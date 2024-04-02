@@ -5,9 +5,9 @@ import {
 	type OptionalRecord,
 	makeOpenGraphBase,
 } from './open-graph-base.ts'
-import type { MetaBase, Types, og } from './open-graph.ts'
+import type { MetaBase, Types, og, OpenGraphMeta } from './open-graph.ts'
 
-interface OgTypeWebsite extends MetaBase<og<'type'>, Types.Enum<'website'>> {}
+type OgTypeWebsite = MetaBase<og<'type'>, Types.Enum<'website'>>
 
 export type WebsiteRecord = Exclude<BasicRecord, OgType> | OgTypeWebsite | OptionalRecord
 
@@ -15,6 +15,6 @@ interface OpenGraphWebsite extends OpenGraphBaseWithOptional {
 	ogType: Types.Enum<'website'>
 }
 
-export function makeOpenGraphWebsite(openGraphWebsite: OpenGraphWebsite) {
+export function makeOpenGraphWebsite(openGraphWebsite: OpenGraphWebsite): readonly OpenGraphMeta[] {
 	return makeOpenGraphBase(openGraphWebsite)
 }

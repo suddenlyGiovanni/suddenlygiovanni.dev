@@ -11,7 +11,7 @@ import {
 	PropertyMusicRadioStation,
 	type Types,
 	makeOpenGraphMeta,
-	type og,
+	type og, type OpenGraphMeta,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
@@ -25,20 +25,18 @@ export type RadioStationRecord =
 	| OptionalRecord
 	| OgMusicRadioStationCreator
 
-interface MusicRadioStationMetaBase<
+type MusicRadioStationMetaBase<
 	Property extends IPropertyMusicRadioStation,
 	Content extends Types.Type,
-> extends MetaBase<Property, Content> {}
+> = MetaBase<Property, Content>
 
-interface OgTypeMusicRadioStation
-	extends MetaBase<og<'type'>, Types.Enum<music<'radio_station'>>> {}
+type OgTypeMusicRadioStation = MetaBase<og<'type'>, Types.Enum<music<'radio_station'>>>
 
 /**
  * The creator of this station.
  * profile
  */
-interface OgMusicRadioStationCreator
-	extends MusicRadioStationMetaBase<og<music<'creator'>>, Types.String> {}
+type OgMusicRadioStationCreator = MusicRadioStationMetaBase<og<music<'creator'>>, Types.String>
 
 interface OpenGraphMusicRadioStation extends OpenGraphBaseWithOptional {
 	/** 'music.radio_station */
@@ -59,7 +57,7 @@ interface OpenGraphMusicRadioStation extends OpenGraphBaseWithOptional {
 
 export function makeOpenGraphMusicRadioStation(
 	openGraphMusicRadioStation: OpenGraphMusicRadioStation,
-) {
+): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA! + AUDIO!
 		...makeOpenGraphBase(openGraphMusicRadioStation),

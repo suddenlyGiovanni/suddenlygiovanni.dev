@@ -5,7 +5,7 @@ import {
 	PropertyVideo,
 	type Types,
 	makeOpenGraphMeta,
-	type og,
+	type og, type OpenGraphMeta,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
@@ -88,14 +88,14 @@ export interface OpenGraphVideo {
 
 export function makeOpenGraphVideo(
 	openGraphVideo: Types.URL | OpenGraphVideo | readonly OpenGraphVideo[],
-) {
+): readonly OpenGraphMeta[] {
 	function _makeOpenGraphVideo({
 		ogVideo,
 		ogVideoAlt,
 		ogVideoHeight,
 		ogVideoSecureUrl,
 		ogVideoType,
-		ogVideoUrl,
+		ogVideoURL,
 		ogVideoWidth,
 	}: OpenGraphVideo) {
 		return [
@@ -103,7 +103,7 @@ export function makeOpenGraphVideo(
 			makeOpenGraphMeta(PropertyVideo.OG_VIDEO, ogVideo),
 
 			// VIDEO_URL?
-			...insertIf(ogVideoUrl, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_URL)),
+			...insertIf(ogVideoURL, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_URL)),
 
 			// VIDEO_SECURE_URL?
 			...insertIf(ogVideoSecureUrl, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_SECURE_URL)),
@@ -124,9 +124,9 @@ export function makeOpenGraphVideo(
 
 	if (typeof openGraphVideo === 'string') {
 		return [makeOpenGraphMeta(PropertyVideo.OG_VIDEO, openGraphVideo)]
-	} else if (isArray(openGraphVideo)) {
-		return openGraphVideo.flatMap(_makeOpenGraphVideo)
-	} else {
-		return _makeOpenGraphVideo(openGraphVideo)
 	}
+	if (isArray(openGraphVideo)) {
+		return openGraphVideo.flatMap(_makeOpenGraphVideo)
+	}
+	return _makeOpenGraphVideo(openGraphVideo)
 }

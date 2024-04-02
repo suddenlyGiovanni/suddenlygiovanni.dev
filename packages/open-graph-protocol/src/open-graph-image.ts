@@ -5,7 +5,7 @@ import {
 	PropertyImage,
 	type Types,
 	makeOpenGraphMeta,
-	type og,
+	type og, type OpenGraphMeta,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
@@ -82,7 +82,8 @@ export interface OpenGraphImage {
 	ogImage: Types.URL
 
 	/** Identical to og:image */
-	ogImageURL?: Types.URL
+	// biome-ignore lint/style/useNamingConvention: <explanation>
+		ogImageURL?: Types.URL
 
 	/** An alternate url to use if the webpage requires HTTPS. */
 	ogImageSecureUrl?: Types.URL
@@ -102,14 +103,14 @@ export interface OpenGraphImage {
 
 export function makeOpenGraphImage(
 	openGraphImage: Types.URL | OpenGraphImage | readonly OpenGraphImage[],
-) {
+): readonly OpenGraphMeta[] {
 	function _makeOpenGraphImage({
 		ogImage,
 		ogImageAlt,
 		ogImageHeight,
 		ogImageSecureUrl,
 		ogImageType,
-		ogImageUrl,
+		ogImageURL,
 		ogImageWidth,
 	}: OpenGraphImage) {
 		return [
@@ -117,7 +118,7 @@ export function makeOpenGraphImage(
 			makeOpenGraphMeta(PropertyImage.OG_IMAGE, ogImage),
 
 			// IMAGE_URL?
-			...insertIf(ogImageUrl, makeOpenGraphMeta(PropertyImage.OG_IMAGE_URL)),
+			...insertIf(ogImageURL, makeOpenGraphMeta(PropertyImage.OG_IMAGE_URL)),
 
 			// IMAGE_SECURE_URL?
 			...insertIf(ogImageSecureUrl, makeOpenGraphMeta(PropertyImage.OG_IMAGE_SECURE_URL)),

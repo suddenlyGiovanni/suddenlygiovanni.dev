@@ -37,48 +37,44 @@ export type ArticleRecord =
 	| OgArticleSection
 	| OgArticleTag
 
-interface ArticleMetaBase<Property extends IPropertyArticle, Content extends Types.Type>
-	extends MetaBase<Property, Content> {}
+type ArticleMetaBase<Property extends IPropertyArticle, Content extends Types.Type> = MetaBase<Property, Content>
 
 /**
  * This object represents an article on a website. It is the preferred type for blog posts and news stories.
  */
-interface OgTypeArticle extends MetaBase<og<'type'>, Types.Enum<Article>> {}
+type OgTypeArticle = MetaBase<og<'type'>, Types.Enum<Article>>
 
 /**
  * When the article was first published.
  */
-interface OgArticlePublishedTime
-	extends ArticleMetaBase<og<Article<'published_time'>>, Types.DateTime> {}
+type OgArticlePublishedTime = ArticleMetaBase<og<Article<'published_time'>>, Types.DateTime>
 
 /**
  * When the article was last changed.
  */
-interface OgArticleModifiedTime
-	extends ArticleMetaBase<og<Article<'modified_time'>>, Types.DateTime> {}
+type OgArticleModifiedTime = ArticleMetaBase<og<Article<'modified_time'>>, Types.DateTime>
 
 /**
  * When the article is out of date after.
  */
-interface OgArticleExpirationTime
-	extends ArticleMetaBase<og<Article<'expiration_time'>>, Types.DateTime> {}
+type OgArticleExpirationTime = ArticleMetaBase<og<Article<'expiration_time'>>, Types.DateTime>
 
 /**
  * Writers of the article.
  * array of profile
  */
-interface OgArticleAuthor extends ArticleMetaBase<og<Article<'author'>>, Types.URL> {}
+type OgArticleAuthor = ArticleMetaBase<og<Article<'author'>>, Types.URL>
 
 /**
  * A high-level section name. E.g. Technology
  */
-interface OgArticleSection extends ArticleMetaBase<og<Article<'section'>>, Types.String> {}
+type OgArticleSection = ArticleMetaBase<og<Article<'section'>>, Types.String>
 
 /**
  * Tag words associated with this article
  * array of article:tag
  */
-interface OgArticleTag extends ArticleMetaBase<og<Article<'tag'>>, Types.String> {}
+type OgArticleTag = ArticleMetaBase<og<Article<'tag'>>, Types.String>
 
 interface OpenGraphArticle extends OpenGraphBaseWithOptional {
 	ogType: Types.Enum<'article'>

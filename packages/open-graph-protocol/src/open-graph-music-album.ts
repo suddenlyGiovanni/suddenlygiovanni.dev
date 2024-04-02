@@ -11,7 +11,7 @@ import {
 	PropertyMusicAlbum,
 	Types,
 	makeOpenGraphMeta,
-	type og,
+	type og, type OpenGraphMeta,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
@@ -29,45 +29,42 @@ export type MusicAlbumRecord =
 	| OgMusicAlbumMusician
 	| OgMusicAlbumReleaseDate
 
-interface MusicAlbumMetaBase<Property extends IPropertyMusicAlbum, Content extends Types.Type>
-	extends MetaBase<Property, Content> {}
+type MusicAlbumMetaBase<Property extends IPropertyMusicAlbum, Content extends Types.Type> = MetaBase<Property, Content>
 
-interface OgTypeMusicAlbum extends MetaBase<og<'type'>, Types.Enum<music<'album'>>> {}
+type OgTypeMusicAlbum = MetaBase<og<'type'>, Types.Enum<music<'album'>>>
 
 /**
  * The song on this album.
  * music.song
  * @link MusicSongRecord
  */
-interface OgMusicAlbumSong extends MusicAlbumMetaBase<og<music<'song'>>, Types.URL> {}
+type OgMusicAlbumSong = MusicAlbumMetaBase<og<music<'song'>>, Types.URL>
 
 /**
  * The same as music:album:disc but in reverse.
  * integer >=1
  * @link MusicSongAlbumDisc
  */
-interface OgMusicAlbumSongDisc extends MusicAlbumMetaBase<og<music<'song:disc'>>, Types.Integer> {}
+type OgMusicAlbumSongDisc = MusicAlbumMetaBase<og<music<'song:disc'>>, Types.Integer>
 
 /**
  * The same as music:album:track but in reverse.
  * integer >=1
  * @link MusicSongAlbumTrack
  */
-interface OgMusicAlbumSongTrack
-	extends MusicAlbumMetaBase<og<music<'song:track'>>, Types.Integer> {}
+type OgMusicAlbumSongTrack = MusicAlbumMetaBase<og<music<'song:track'>>, Types.Integer>
 
 /**
  * The musician that made this song.
  * profile
  */
-interface OgMusicAlbumMusician extends MusicAlbumMetaBase<og<music<'musician'>>, Types.URL> {}
+type OgMusicAlbumMusician = MusicAlbumMetaBase<og<music<'musician'>>, Types.URL>
 
 /**
  * The date the album was released.
  * datetime
  */
-interface OgMusicAlbumReleaseDate
-	extends MusicAlbumMetaBase<og<music<'release_date'>>, Types.DateTime> {}
+type OgMusicAlbumReleaseDate = MusicAlbumMetaBase<og<music<'release_date'>>, Types.DateTime>
 
 interface OpenGraphMusicAlbum extends OpenGraphBaseWithOptional {
 	/**
@@ -105,7 +102,7 @@ interface OpenGraphMusicAlbum extends OpenGraphBaseWithOptional {
 	ogMusicReleaseData?: Types.DateTime
 }
 
-export function makeOpenGraphMusicAlbum(openGraphMusicAlbum: OpenGraphMusicAlbum) {
+export function makeOpenGraphMusicAlbum(openGraphMusicAlbum: OpenGraphMusicAlbum): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphMusicAlbum),
