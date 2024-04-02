@@ -33,7 +33,11 @@ export function insertIf<Condition, Element>(
 	? readonly [element: Element] //
 	: readonly [] //
 
-export function insertIf<Condition, Element extends unknown[], Elements extends readonly [...Element]>(
+export function insertIf<
+	Condition,
+	Element extends unknown[],
+	Elements extends readonly [...Element],
+>(
 	condition: Condition,
 	...elements: Elements
 ): Condition extends NotFalsy<Condition>
@@ -54,7 +58,6 @@ export function insertIf<
 		? readonly [element: Element]
 		: readonly [...Elements]
 	: readonly [] {
-
 	/**
 	 * Checks if an array is a lazy element tuple.
 	 *
