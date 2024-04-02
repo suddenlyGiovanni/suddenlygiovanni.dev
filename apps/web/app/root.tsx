@@ -1,4 +1,5 @@
 import * as Schema from '@effect/schema/Schema'
+import { invariantResponse } from '@epic-web/invariant'
 import type {
 	ActionFunctionArgs,
 	LinksFunction,
@@ -6,12 +7,15 @@ import type {
 	MetaFunction,
 } from '@remix-run/node'
 import { Links, Meta, Scripts, ScrollRestoration, json, useLoaderData } from '@remix-run/react'
+import { makeOpenGraphWebsite, Types } from '@suddenly-giovanni/open-graph-protocol'
 import * as Either from 'effect/Either'
 import type { ReactElement, ReactNode } from 'react'
 
 import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
+import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import { config } from '~/config.ts'
 import { getHints } from '~/utils/client-hints.tsx'
 import { getEnv } from '~/utils/env.server.ts'
 import { getDomainUrl } from '~/utils/misc.ts'
@@ -37,13 +41,24 @@ export const links: LinksFunction = () => {
 	]
 }
 
-export const meta: MetaFunction = () => {
+export function meta({ location }: Parameters<MetaFunction>[number]) {
+	const description = "@suddenlyGiovanni's personal website"
+	const title = config.siteName
 	return [
-		{ title: 'suddenlyGiovanni' },
+		{ title },
 		{
 			name: 'description',
-			content: "@suddenlyGiovanni's personal website",
+			content: description,
 		},
+		makeOpenGraphWebsite({
+			ogDescription: Types.String(description),
+			ogImage: Types.URL(config.siteUrl + hero2800wAssetUrl),
+			ogLocale: Types.String('en_US'),
+			ogSiteName: Types.String(config.siteName),
+			ogTitle: Types.String(title),
+			ogType: Types.Enum('website'),
+			ogUrl: Types.URL(config.siteUrl + location.pathname),
+		}),
 	]
 }
 
@@ -64,10 +79,7 @@ export async function action({ request }: ActionFunctionArgs) {
 	const payload = Object.fromEntries(formData)
 	const parse = Schema.decodeUnknownEither(ThemeFormSchema, { errors: 'all' })
 	const result = parse(payload)
-	if (Either.isLeft(result)) {
-		// eslint-disable-next-line @typescript-eslint/no-throw-literal -- This is how remix likes it
-		throw new Response('Invalid theme received', { status: 400 })
-	}
+	invariantResponse(Either.isRight(result), 'Invalid theme received', { status: 400 })
 	const { theme } = result.right
 	const responseInit = { headers: { 'set-cookie': setTheme(theme) } }
 	return json(
@@ -112,6 +124,12 @@ function Document({
 			>
 				{children}
 				<ScrollRestoration />
+				<script
+					// biome-ignore lint/security/noDangerouslySetInnerHtml: we need to set the ENV variable
+					dangerouslySetInnerHTML={{
+						__html: `window.ENV = ${JSON.stringify(env, null, 2)};`,
+					}}
+				/>
 				<Scripts />
 			</Layout.Body>
 		</html>

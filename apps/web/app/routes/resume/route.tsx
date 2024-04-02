@@ -7,12 +7,18 @@ import {
 	json,
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
-import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import * as Either from 'effect/Either'
 import type { ReactElement } from 'react'
+
+import { makeOpenGraphWebsite, Types } from '@suddenly-giovanni/open-graph-protocol'
+import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+
+import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
 import { Languages } from '~/routes/resume/languages.tsx'
+
 import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
@@ -20,14 +26,20 @@ import { Interests } from './interests.tsx'
 import { Resume as ResumeSchema } from './schema/resume.ts'
 import { Skills } from './skills.tsx'
 
-export const meta: MetaFunction = () => {
+export function meta({ location }: Parameters<MetaFunction>[number]) {
+	const title = `${config.siteName} | Résumé`
+	const description =
+		"Giovanni Ravalico's Résumé. A place where I showcase my professional experience and skills."
 	return [
-		{ title: 'Résumé' },
-		{
-			name: 'description',
-			content:
-				"Giovanni Ravalico's Résumé. A place where I showcase my professional experience and skills.",
-		},
+		{ title },
+		{ name: 'description', content: description },
+		makeOpenGraphWebsite({
+			ogDescription: Types.String(description),
+			ogImage: Types.URL(config.siteUrl + hero2800wAssetUrl),
+			ogTitle: Types.String(title),
+			ogType: Types.Enum('website'),
+			ogUrl: Types.URL(config.siteUrl + location.pathname),
+		}),
 	]
 }
 

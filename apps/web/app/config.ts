@@ -20,4 +20,6 @@ export const config = {
 			handle: 'giovanni-ravalico',
 		},
 	} as const satisfies Socials,
+	siteUrl: 'https://www.suddenlygiovanni.dev',
+	siteName:	'suddenlyGiovanni'
 } as const

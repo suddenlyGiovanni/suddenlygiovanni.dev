@@ -138,9 +138,10 @@ export function makeOpenGraphImage(
 
 	if (typeof openGraphImage === 'string') {
 		return [makeOpenGraphMeta('og:image', openGraphImage)]
-	} else if (isArray(openGraphImage)) {
-		return openGraphImage.flatMap(image => _makeOpenGraphImage(image))
-	} else {
-		return _makeOpenGraphImage(openGraphImage)
 	}
+
+	if (isArray(openGraphImage)) {
+		return openGraphImage.flatMap(image => _makeOpenGraphImage(image))
+	}
+	return _makeOpenGraphImage(openGraphImage)
 }
