@@ -1,4 +1,4 @@
-import { isNotFalsy, type NotFalsy } from './type-guards.ts'
+import { type NotFalsy, isNotFalsy } from './type-guards.ts'
 
 /*
  * Returns the provided elements wrap in an array if the given condition turns to be truthy.
@@ -27,66 +27,66 @@ import { isNotFalsy, type NotFalsy } from './type-guards.ts'
  * @public
  */
 export function insertIf<Condition, Element>(
-  condition: Condition,
-  lazyElement: (condition: NotFalsy<Condition>) => Element
+	condition: Condition,
+	lazyElement: (condition: NotFalsy<Condition>) => Element,
 ): Condition extends NotFalsy<Condition>
-  ? readonly [element: Element] //
-  : readonly [] //
+	? readonly [element: Element] //
+	: readonly [] //
 
 export function insertIf<Condition, Element extends any[], Elements extends readonly [...Element]>(
-  condition: Condition,
-  ...elements: Elements
+	condition: Condition,
+	...elements: Elements
 ): Condition extends NotFalsy<Condition>
-  ? Elements //
-  : readonly [] //
+	? Elements //
+	: readonly [] //
 
 export function insertIf<
-  Condition,
-  Element,
-  Elements extends any[],
-  LazyElement extends (condition: NotFalsy<Condition>) => Element,
-  Args extends [lazyElement: LazyElement] | [...Exclude<Elements, LazyElement>]
+	Condition,
+	Element,
+	Elements extends any[],
+	LazyElement extends (condition: NotFalsy<Condition>) => Element,
+	Args extends [lazyElement: LazyElement] | [...Exclude<Elements, LazyElement>],
 >(
-  condition: Condition,
-  ...args: Args
+	condition: Condition,
+	...args: Args
 ): Condition extends NotFalsy<Condition>
-  ? Args extends [lazyElement: LazyElement]
-    ? readonly [element: Element]
-    : readonly [...Elements]
-  : readonly [] {
-  function isLazyElementTuple(
-    xs: [lazyElement: LazyElement] | [...Exclude<Elements, LazyElement>]
-  ): xs is [lazyElement: LazyElement] {
-    const [maybeLazyElement, ...tail] = xs
-    if (tail) {
-      return false
-    } else {
-      return typeof maybeLazyElement === 'function'
-    }
-  }
+	? Args extends [lazyElement: LazyElement]
+		? readonly [element: Element]
+		: readonly [...Elements]
+	: readonly [] {
+	function isLazyElementTuple(
+		xs: [lazyElement: LazyElement] | [...Exclude<Elements, LazyElement>],
+	): xs is [lazyElement: LazyElement] {
+		const [maybeLazyElement, ...tail] = xs
+		if (tail) {
+			return false
+		} else {
+			return typeof maybeLazyElement === 'function'
+		}
+	}
 
-  if (args.length < 1) {
-    throw new Error(
-      '_insertIf is a variadic function that requires at least 2 arguments: first is the condition to check, second or more are the elements to insert to the array'
-    )
-  }
+	if (args.length < 1) {
+		throw new Error(
+			'_insertIf is a variadic function that requires at least 2 arguments: first is the condition to check, second or more are the elements to insert to the array',
+		)
+	}
 
-  if (isNotFalsy(condition)) {
-    if (args.length >= 1) {
-      // case it is 1 and the argument type is a fn
-      if (isLazyElementTuple(args)) {
-        const [lazyElement] = args
-        const element: Element = lazyElement(condition)
-        // @ts-ignore
-        return [element] as const
-      }
+	if (isNotFalsy(condition)) {
+		if (args.length >= 1) {
+			// case it is 1 and the argument type is a fn
+			if (isLazyElementTuple(args)) {
+				const [lazyElement] = args
+				const element: Element = lazyElement(condition)
+				// @ts-ignore
+				return [element] as const
+			}
 
-      // @ts-ignore: case it is 1 or more arguments but not of type fn
-      return [...args] as const
-    }
-  }
-  // @ts-ignore: condition turned to be falsy
-  return [] as const
+			// @ts-ignore: case it is 1 or more arguments but not of type fn
+			return [...args] as const
+		}
+	}
+	// @ts-ignore: condition turned to be falsy
+	return [] as const
 }
 
 /**
@@ -128,10 +128,10 @@ export function insertIf<
  * @public
  */
 export function insertLazilyIf<Condition, T>(
-  condition: Condition,
-  lazyElement: (condition: NotFalsy<Condition>) => T
+	condition: Condition,
+	lazyElement: (condition: NotFalsy<Condition>) => T,
 ): readonly [element: T] | readonly [] {
-  return isNotFalsy(condition)
-    ? ([lazyElement(condition)] as const) //
-    : ([] as const) //
+	return isNotFalsy(condition)
+		? ([lazyElement(condition)] as const) //
+		: ([] as const) //
 }

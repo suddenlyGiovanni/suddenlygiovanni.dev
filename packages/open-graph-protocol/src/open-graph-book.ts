@@ -1,18 +1,18 @@
 import {
-	type BaseOrExtended,
-	makeOpenGraphMeta,
-	type MetaBase,
-	type og,
-	PropertyBook,
-	type Types,
-} from './open-graph.ts'
-import {
 	type BasicRecord,
-	makeOpenGraphBase,
 	type OgType,
 	type OpenGraphBaseWithOptional,
 	type OptionalRecord,
+	makeOpenGraphBase,
 } from './open-graph-base.ts'
+import {
+	type BaseOrExtended,
+	type MetaBase,
+	PropertyBook,
+	type Types,
+	makeOpenGraphMeta,
+	type og,
+} from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
 import type { ValueOf } from './utils/types.ts'

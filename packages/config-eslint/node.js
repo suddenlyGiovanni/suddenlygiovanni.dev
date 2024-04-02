@@ -17,20 +17,20 @@ module.exports = {
 	extends: [
 		'@vercel/style-guide/eslint/node',
 		'@vercel/style-guide/eslint/typescript',
-		'@vercel/style-guide/eslint/vitest'
+		'@vercel/style-guide/eslint/vitest',
 	].map(extendConfig => require.resolve(extendConfig)),
 	parserOptions: {
 		project,
 		ecmaVersion: 'latest',
 		sourceType: 'module',
 	},
-	env: { node: true, },
+	env: { node: true },
 	plugins: ['only-warn'],
 	settings: {
 		'import/resolver': {
-			typescript: { project, },
-		}
+			typescript: { project },
+		},
 	},
-	ignorePatterns: ['node_modules/', 'dist/', '.eslintrc.js',],
+	ignorePatterns: ['node_modules/', 'dist/', '.eslintrc.js'],
 	// add rules configurations here
 }

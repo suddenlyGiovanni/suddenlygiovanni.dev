@@ -9,7 +9,7 @@ export type NotFalsy<T> = Exclude<T, null | undefined | false | 0 | -0 | ''>
  * @public
  */
 export function isNotNullish<T>(value: T): value is NonNullable<T> {
-  return value !== undefined && value !== null
+	return value !== undefined && value !== null
 }
 
 /**
@@ -18,20 +18,20 @@ export function isNotNullish<T>(value: T): value is NonNullable<T> {
  * @public
  */
 export function isNotFalsy<T>(value: T): value is NotFalsy<T> {
-  switch (typeof value) {
-    case 'boolean': {
-      return value !== false
-    }
-    case 'number': {
-      return !isNaN(value) && value !== 0
-    }
-    case 'string': {
-      return value !== ''
-    }
-    default: {
-      return isNotNullish(value)
-    }
-  }
+	switch (typeof value) {
+		case 'boolean': {
+			return value !== false
+		}
+		case 'number': {
+			return !isNaN(value) && value !== 0
+		}
+		case 'string': {
+			return value !== ''
+		}
+		default: {
+			return isNotNullish(value)
+		}
+	}
 }
 
 /**
@@ -46,12 +46,12 @@ export function isNotFalsy<T>(value: T): value is NotFalsy<T> {
  * @public
  */
 export function isArray<T>(
-  arg: T
+	arg: T,
 ): arg is
-  | Extract<any[], T>
-  | Extract<[any], T>
-  | (unknown extends T ? never : Extract<T, readonly any[]>) {
-  /*
+	| Extract<any[], T>
+	| Extract<[any], T>
+	| (unknown extends T ? never : Extract<T, readonly any[]>) {
+	/*
    the first two clauses, `Extract<any[], T>` and `Extract<[any], T>`,
    ensure that the type predicate will extract `B[]` out of `A | B[]`
    and `[B]` out of `A | [B]`, just like a naive predicate `arg is any[]`
@@ -61,7 +61,7 @@ export function isArray<T>(
    it needs to ignore the case of T = any, because `any` is an ill-behaved
    type. See https://github.com/microsoft/TypeScript/pull/28916#issuecomment-573217751
    */
-  return Array.isArray(arg)
+	return Array.isArray(arg)
 }
 
 /**
@@ -96,8 +96,8 @@ export function assert(condition: boolean, message?: string | (() => string)): a
  * @public
  */
 export function assert<T>(
-  condition: T | null | undefined,
-  message?: string | (() => string)
+	condition: T | null | undefined,
+	message?: string | (() => string),
 ): asserts condition is T
 
 /**
@@ -116,21 +116,21 @@ export function assert<T>(
  * @public
  */
 export function assert(condition: any, message?: string | (() => string)) {
-  if (
-    typeof condition === undefined ||
-    condition === null ||
-    condition === false ||
-    !Boolean(condition)
-  ) {
-    const prefix: string = 'Assertion failed'
-    const provided: string | undefined = typeof message === 'function' ? message() : message
+	if (
+		typeof condition === undefined ||
+		condition === null ||
+		condition === false ||
+		!Boolean(condition)
+	) {
+		const prefix: string = 'Assertion failed'
+		const provided: string | undefined = typeof message === 'function' ? message() : message
 
-    /**
-     * Options:
-     * 1. message provided: `${prefix}: ${provided}`
-     * 2. message not provided: prefix
-     */
-    const value: string = provided ? `${prefix}: ${provided}` : prefix
-    throw new Error(value)
-  }
+		/**
+		 * Options:
+		 * 1. message provided: `${prefix}: ${provided}`
+		 * 2. message not provided: prefix
+		 */
+		const value: string = provided ? `${prefix}: ${provided}` : prefix
+		throw new Error(value)
+	}
 }

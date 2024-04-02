@@ -1,25 +1,25 @@
-import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base.ts'
-import type { MetaBase, og, PropertyVideoMovie, Types } from './open-graph.ts'
 import type { BasicRecord, OgType, OptionalRecord } from './open-graph-base.ts'
+import { type OpenGraphVideoBase, _makeOpenGraphVideoBase } from './open-graph-video-base.ts'
 import type { video } from './open-graph-video.ts'
+import type { MetaBase, PropertyVideoMovie, Types, og } from './open-graph.ts'
 import type { ValueOf } from './utils/types.ts'
 
 export type IPropertyVideoMovie = ValueOf<typeof PropertyVideoMovie>
 
 export type VideoMovieRecord =
-  | Exclude<BasicRecord, OgType>
-  | OgTypeVideoMovie
-  | OptionalRecord
-  | OgVideoMovieActor
-  | OgVideoMovieActorRole
-  | OgVideoMovieDirector
-  | OgVideoMovieWriter
-  | OgVideoMovieDuration
-  | OgVideoMovieReleaseDate
-  | OgVideoMovieTag
+	| Exclude<BasicRecord, OgType>
+	| OgTypeVideoMovie
+	| OptionalRecord
+	| OgVideoMovieActor
+	| OgVideoMovieActorRole
+	| OgVideoMovieDirector
+	| OgVideoMovieWriter
+	| OgVideoMovieDuration
+	| OgVideoMovieReleaseDate
+	| OgVideoMovieTag
 
 interface VideoMovieMetaBase<Property extends IPropertyVideoMovie, Content extends Types.Type>
-  extends MetaBase<Property, Content> {}
+	extends MetaBase<Property, Content> {}
 
 export interface OgTypeVideoMovie extends MetaBase<og<'type'>, Types.Enum<video<'movie'>>> {}
 
@@ -58,7 +58,7 @@ interface OgVideoMovieDuration extends VideoMovieMetaBase<og<video<'duration'>>,
  * datetime
  */
 interface OgVideoMovieReleaseDate
-  extends VideoMovieMetaBase<og<video<'release_date'>>, Types.DateTime> {}
+	extends VideoMovieMetaBase<og<video<'release_date'>>, Types.DateTime> {}
 
 /**
  * Tag words associated with this movie.
@@ -67,9 +67,9 @@ interface OgVideoMovieReleaseDate
 interface OgVideoMovieTag extends VideoMovieMetaBase<og<video<'tag'>>, Types.String> {}
 
 interface OpenGraphVideoMovie extends OpenGraphVideoBase {
-  ogType: Types.Enum<'video.movie'>
+	ogType: Types.Enum<'video.movie'>
 }
 
 export function makeOpenGraphVideoMovie(openGraphVideoMovie: OpenGraphVideoMovie) {
-  return _makeOpenGraphVideoBase(openGraphVideoMovie)
+	return _makeOpenGraphVideoBase(openGraphVideoMovie)
 }

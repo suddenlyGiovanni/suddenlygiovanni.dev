@@ -6,10 +6,6 @@
 		"noEmit": true,
 		"useDefineForClassFields": true
 	},
-	"include": [
-		".prettierrc.js",
-		".eslintrc.cjs",
-		"./src/**/*"
-	],
+	"include": [".prettierrc.js", ".eslintrc.cjs", "./src/**/*"],
 	"exclude": ["node_modules", "./~"]
 }

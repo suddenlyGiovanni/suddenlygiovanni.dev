@@ -1,22 +1,22 @@
-import {
-	type IOGType,
-	makeOpenGraphMeta,
-	type MetaBase,
-	type og,
-	PropertyBasic,
-	type Types,
-} from './open-graph.ts'
-import { type AudioRecord, makeOpenGraphAudio, type OpenGraphAudio } from './open-graph-audio.ts'
+import { type AudioRecord, type OpenGraphAudio, makeOpenGraphAudio } from './open-graph-audio.ts'
 import {
 	type ImageRecord,
-	makeOpenGraphImage,
 	type OgImage,
 	type OpenGraphImage,
+	makeOpenGraphImage,
 } from './open-graph-image.ts'
-import { makeOpenGraphVideo, type OpenGraphVideo, type VideoRecord } from './open-graph-video.ts'
-import type { ValueOf } from './utils/types.ts'
+import { type OpenGraphVideo, type VideoRecord, makeOpenGraphVideo } from './open-graph-video.ts'
+import {
+	type IOGType,
+	type MetaBase,
+	PropertyBasic,
+	type Types,
+	makeOpenGraphMeta,
+	type og,
+} from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
+import type { ValueOf } from './utils/types.ts'
 
 export type DelimiterContent = Types.Enum<'' | 'a' | 'an' | 'the' | 'auto'>
 
