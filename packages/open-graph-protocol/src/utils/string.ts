@@ -18,5 +18,5 @@
  */
 export const maxLength =
 	<UpperBound extends number>(upperBound: UpperBound) =>
-	<String extends string>(string: String) =>
+	<S extends string>(string: S) =>
 		string.slice(0, upperBound)
