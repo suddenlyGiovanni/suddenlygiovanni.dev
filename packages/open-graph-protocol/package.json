@@ -8,6 +8,18 @@
     "url": "https://www.suddenlyGiovanni.dev"
   },
   "description": "A high-level utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner.",
+	"keywords": [
+		"Open Graph Protocol",
+		"graph object",
+		"social graph",
+		"Twitter Card",
+		"Twitter Summary Card",
+		"Twitter App Card",
+		"Twitter Player Card"
+	],
+	"exports": {
+		".": "./index.ts"
+	},
   "dependencies": {
     "ts-brand": "0.0.2"
   },
@@ -17,14 +29,5 @@
 		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"@suddenly-giovanni/eslint-config": "workspace:*",
 		"typescript": "5.4.3"
-	},
-  "keywords": [
-    "Open Graph Protocol",
-    "graph object",
-    "social graph",
-    "Twitter Card",
-    "Twitter Summary Card",
-    "Twitter App Card",
-    "Twitter Player Card"
-  ]
+	}
 }
