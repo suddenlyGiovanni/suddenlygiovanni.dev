@@ -23,7 +23,7 @@ export function isNotFalsy<T>(value: T): value is NotFalsy<T> {
 			return value !== false
 		}
 		case 'number': {
-			return !isNaN(value) && value !== 0
+			return !Number.isNaN(value) && value !== 0
 		}
 		case 'string': {
 			return value !== ''
@@ -115,9 +115,9 @@ export function assert<T>(
  *
  * @public
  */
-export function assert(condition: any, message?: string | (() => string)) {
+export function assert(condition: unknown, message?: string | (() => string)) {
 	if (
-		typeof condition === undefined ||
+		typeof condition === 'undefined' ||
 		condition === null ||
 		condition === false ||
 		!Boolean(condition)
