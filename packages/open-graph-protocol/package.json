@@ -1,0 +1,46 @@
+{
+	"license": "MIT",
+	"name": "@suddenly-giovanni/open-graph-protocol",
+	"version": "0.4.0",
+	"author": {
+		"name": "Giovanni Ravalico",
+		"email": "15946771+suddenlyGiovanni@users.noreply.github.com",
+		"url": "https://www.suddenlyGiovanni.dev"
+	},
+	"description": "A high-level utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner.",
+	"keywords": [
+		"Open Graph Protocol",
+		"graph object",
+		"social graph",
+		"Twitter Card",
+		"Twitter Summary Card",
+		"Twitter App Card",
+		"Twitter Player Card"
+	],
+	"type": "module",
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"dependencies": {
+		"ts-brand": "0.0.2"
+	},
+	"devDependencies": {
+		"@suddenly-giovanni/config-prettier": "workspace:*",
+		"@suddenly-giovanni/config-tailwind": "workspace:*",
+		"@suddenly-giovanni/config-typescript": "workspace:*",
+		"@suddenly-giovanni/eslint-config": "workspace:*",
+		"typescript": "5.4.3"
+	},
+	"scripts": {
+		"clean": "scripty",
+		"format": "scripty",
+		"lint": "scripty src/",
+		"typecheck": "scripty"
+	},
+	"packageManager": "pnpm@8.15.6",
+	"config": {
+		"scripty": {
+			"path": "../../scripts"
+		}
+	}
+}
