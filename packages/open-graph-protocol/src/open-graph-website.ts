@@ -1,4 +1,4 @@
-import type * as  Types from './types.ts'
+import type * as Types from './types.ts'
 import {
 	type BasicRecord,
 	type OgType,
