@@ -5,10 +5,10 @@ import {
 	type MetaBase,
 	type OpenGraphMeta,
 	PropertyVideoEpisode,
-	type Types,
 	makeOpenGraphMeta,
 	type og,
 } from './open-graph.ts'
+import type * as Types from './types.ts'
 import { insertIf } from './utils/array.ts'
 import type { ValueOf } from './utils/types.ts'
 

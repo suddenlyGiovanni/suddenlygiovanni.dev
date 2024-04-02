@@ -1,10 +1,10 @@
+import type * as Types from './types.ts'
 import {
 	type BaseOrExtended,
 	type MIMEContent,
 	type MetaBase,
 	type OpenGraphMeta,
 	PropertyImage,
-	type Types,
 	makeOpenGraphMeta,
 	type og,
 } from './open-graph.ts'

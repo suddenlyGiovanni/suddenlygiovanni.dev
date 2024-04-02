@@ -1,3 +1,4 @@
+import type * as Types from './types.ts'
 import { type AudioRecord, type OpenGraphAudio, makeOpenGraphAudio } from './open-graph-audio.ts'
 import {
 	type ImageRecord,
@@ -11,7 +12,6 @@ import {
 	type MetaBase,
 	type OpenGraphMeta,
 	PropertyBasic,
-	type Types,
 	makeOpenGraphMeta,
 	type og,
 } from './open-graph.ts'

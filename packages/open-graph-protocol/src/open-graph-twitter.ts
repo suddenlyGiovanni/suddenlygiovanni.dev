@@ -1,4 +1,5 @@
-import { type BaseOrExtended, type MetaBase, Types } from './open-graph.ts'
+import type { BaseOrExtended, MetaBase } from './open-graph.ts'
+import * as Types from './types.ts'
 import { insertIf } from './utils/array.ts'
 import { maxLength } from './utils/string.ts'
 import type { ValueOf } from './utils/types.ts'

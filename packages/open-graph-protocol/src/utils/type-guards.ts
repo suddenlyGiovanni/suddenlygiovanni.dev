@@ -120,6 +120,7 @@ export function assert(condition: unknown, message?: string | (() => string)) {
 		typeof condition === 'undefined' ||
 		condition === null ||
 		condition === false ||
+		// biome-ignore lint/complexity/noExtraBooleanCast: we want to make the type coercion explicit
 		!Boolean(condition)
 	) {
 		const prefix: string = 'Assertion failed'

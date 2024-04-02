@@ -1,3 +1,4 @@
+import {Types} from 'src/types.js'
 import {
 	type BasicRecord,
 	type OgType,
@@ -10,7 +11,6 @@ import {
 	type MetaBase,
 	type OpenGraphMeta,
 	PropertyMusicAlbum,
-	Types,
 	makeOpenGraphMeta,
 	type og,
 } from './open-graph.ts'

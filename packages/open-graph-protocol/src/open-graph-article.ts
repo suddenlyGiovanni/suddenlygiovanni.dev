@@ -1,3 +1,4 @@
+import type * as Types from './types.ts'
 import {
 	type BasicRecord,
 	type OgType,
@@ -11,7 +12,6 @@ import {
 	type MetaBase,
 	type OpenGraphMeta,
 	PropertyArticle,
-	type Types,
 	makeOpenGraphMeta,
 	type og,
 } from './open-graph.ts'
