@@ -1,4 +1,3 @@
-import type * as Types from './types.ts'
 import type { ArticleRecord } from './open-graph-article.ts'
 import type { BasicRecord, OptionalRecord } from './open-graph-base.ts'
 import type { BookRecord } from './open-graph-book.ts'
@@ -9,15 +8,16 @@ import type { MusicSongRecord } from './open-graph-music-song.ts'
 import type { ProfileRecord } from './open-graph-profile.ts'
 import {
 	type IPropertyTwitter,
-	makeTwitterCardMeta,
 	type TwitterCardMeta,
 	type TwitterRecord,
+	makeTwitterCardMeta,
 } from './open-graph-twitter.ts'
 import type { VideoEpisodeRecord } from './open-graph-video-episode.ts'
 import type { VideoMovieRecord } from './open-graph-video-movie.ts'
 import type { VideoOtherRecord } from './open-graph-video-other.ts'
 import type { VideoTvShowRecord } from './open-graph-video-tvshow.ts'
 import type { WebsiteRecord } from './open-graph-website.ts'
+import type * as Types from './types.ts'
 import type { ValueOf } from './utils/types.ts'
 
 export const OGType = {

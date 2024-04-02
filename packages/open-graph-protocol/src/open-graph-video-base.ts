@@ -1,6 +1,6 @@
-import * as Types from './types.ts'
 import { type OpenGraphBaseWithOptional, makeOpenGraphBase } from './open-graph-base.ts'
 import { type OpenGraphMeta, PropertyVideoBase, makeOpenGraphMeta } from './open-graph.ts'
+import * as Types from './types.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
 
