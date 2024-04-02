@@ -449,13 +449,12 @@ export function makeOpenGraphMeta<
       property,
       content: String(content),
     }
-  } else {
+  }
     const [property] = args
     return (content: Content): OpenGraphMeta => ({
       property,
       content: String(content),
     })
-  }
 }
 
 /**

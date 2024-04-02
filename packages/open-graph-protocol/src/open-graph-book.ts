@@ -5,7 +5,7 @@ import {
 	type og,
 	PropertyBook,
 	type Types,
-} from './open-graph'
+} from './open-graph.ts'
 import {
 	type BasicRecord,
 	makeOpenGraphBase,
