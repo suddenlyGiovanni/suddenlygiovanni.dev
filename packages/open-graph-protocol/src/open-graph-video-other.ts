@@ -5,7 +5,7 @@ import type {
 	VideoMovieRecord,
 } from './open-graph-video-movie.ts'
 import type { video } from './open-graph-video.ts'
-import type {MetaBase, Types, og, OpenGraphMeta} from './open-graph.ts'
+import type { MetaBase, OpenGraphMeta, Types, og } from './open-graph.ts'
 
 export type IPropertyVideoOther = IPropertyVideoMovie
 
@@ -17,6 +17,8 @@ interface OpenGraphVideoOther extends OpenGraphVideoBase {
 	ogType: Types.Enum<'video.other'>
 }
 
-export function makeOpenGraphVideoOther(openGraphVideoOther: OpenGraphVideoOther): readonly OpenGraphMeta[] {
+export function makeOpenGraphVideoOther(
+	openGraphVideoOther: OpenGraphVideoOther,
+): readonly OpenGraphMeta[] {
 	return _makeOpenGraphVideoBase(openGraphVideoOther)
 }

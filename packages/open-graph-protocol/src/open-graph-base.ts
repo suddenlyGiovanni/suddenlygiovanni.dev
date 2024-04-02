@@ -9,11 +9,11 @@ import { type OpenGraphVideo, type VideoRecord, makeOpenGraphVideo } from './ope
 import {
 	type IOGType,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyBasic,
 	type Types,
 	makeOpenGraphMeta,
 	type og,
-	type OpenGraphMeta,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'

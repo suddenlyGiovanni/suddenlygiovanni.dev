@@ -8,10 +8,11 @@ import {
 import type { music } from './open-graph-music.ts'
 import {
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyMusicRadioStation,
 	type Types,
 	makeOpenGraphMeta,
-	type og, type OpenGraphMeta,
+	type og,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'

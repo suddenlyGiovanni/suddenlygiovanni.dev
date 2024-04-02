@@ -2,10 +2,11 @@ import {
 	type BaseOrExtended,
 	type MIMEContent,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyVideo,
 	type Types,
 	makeOpenGraphMeta,
-	type og, type OpenGraphMeta,
+	type og,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
@@ -24,7 +25,10 @@ export type VideoRecord =
 	| OgVideoHeight
 	| OgVideoAlt
 
-export type VideoMetaBase<Property extends IPropertyVideo, Content extends Types.Type> = MetaBase<Property, Content>
+export type VideoMetaBase<Property extends IPropertyVideo, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 /**
  * A URL to a video file that complements this object.

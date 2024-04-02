@@ -37,7 +37,10 @@ export type ArticleRecord =
 	| OgArticleSection
 	| OgArticleTag
 
-type ArticleMetaBase<Property extends IPropertyArticle, Content extends Types.Type> = MetaBase<Property, Content>
+type ArticleMetaBase<Property extends IPropertyArticle, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 /**
  * This object represents an article on a website. It is the preferred type for blog posts and news stories.

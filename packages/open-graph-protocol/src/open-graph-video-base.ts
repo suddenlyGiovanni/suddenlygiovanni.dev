@@ -1,5 +1,5 @@
 import { type OpenGraphBaseWithOptional, makeOpenGraphBase } from './open-graph-base.ts'
-import {PropertyVideoBase, Types, makeOpenGraphMeta, type OpenGraphMeta} from './open-graph.ts'
+import { type OpenGraphMeta, PropertyVideoBase, Types, makeOpenGraphMeta } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
 
@@ -42,7 +42,9 @@ export interface OpenGraphVideoBase extends OpenGraphBaseWithOptional {
 	ogVideoTag?: Types.String | readonly Types.String[]
 }
 
-export function _makeOpenGraphVideoBase(openGraphVideoBase: OpenGraphVideoBase): readonly OpenGraphMeta[] {
+export function _makeOpenGraphVideoBase(
+	openGraphVideoBase: OpenGraphVideoBase,
+): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphVideoBase),

@@ -2,11 +2,11 @@ import {
 	type BaseOrExtended,
 	type MIMEContent,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyImage,
 	type Types,
 	makeOpenGraphMeta,
 	type og,
-	type OpenGraphMeta,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'

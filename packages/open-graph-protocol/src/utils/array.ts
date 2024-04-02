@@ -54,7 +54,6 @@ export function insertIf<
 		? readonly [element: Element]
 		: readonly [...Elements]
 	: readonly [] {
-
 	function isLazyElementTuple(
 		xs: [lazyElement: LazyElement] | [...Exclude<Elements, LazyElement>],
 	): xs is [lazyElement: LazyElement] {

@@ -55,7 +55,10 @@ export type TwitterRecord =
 	| TwitterAppIdGooglePlay
 	| TwitterAppUrlGooglePlay
 
-type TwitterMetaBase<Property extends IPropertyTwitter, Content extends Types.Type> = MetaBase<Property, Content>
+type TwitterMetaBase<Property extends IPropertyTwitter, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 /**
  * The card type

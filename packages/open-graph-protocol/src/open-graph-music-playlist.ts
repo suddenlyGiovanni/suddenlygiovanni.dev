@@ -8,10 +8,11 @@ import {
 import type { music } from './open-graph-music.ts'
 import {
 	type MetaBase,
+	type OpenGraphMeta,
 	type PropertyMusicPlaylist,
 	type Types,
 	makeOpenGraphMeta,
-	type og, type OpenGraphMeta,
+	type og,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
@@ -28,7 +29,10 @@ export type MusicPlaylistRecord =
 	| OgMusicPlaylistSongTrack
 	| OgMusicPlaylistCreator
 
-type MusicPlaylistMetaBase<Property extends IPropertyMusicPlaylist, Content extends Types.Type> = MetaBase<Property, Content>
+type MusicPlaylistMetaBase<
+	Property extends IPropertyMusicPlaylist,
+	Content extends Types.Type,
+> = MetaBase<Property, Content>
 
 type OgTypeMusicPlaylist = MetaBase<og<'type'>, Types.Enum<music<'playlist'>>>
 
@@ -81,7 +85,9 @@ interface OpenGraphMusicPlaylist extends OpenGraphBaseWithOptional {
 	ogMusicCreator?: Types.URL | readonly Types.URL[]
 }
 
-export function makeOpenGraphMusicPlaylist(openGraphMusicPlaylist: OpenGraphMusicPlaylist): readonly OpenGraphMeta[] {
+export function makeOpenGraphMusicPlaylist(
+	openGraphMusicPlaylist: OpenGraphMusicPlaylist,
+): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphMusicPlaylist),

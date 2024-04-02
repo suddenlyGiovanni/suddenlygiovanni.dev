@@ -2,10 +2,11 @@ import {
 	type BaseOrExtended,
 	type MIMEContent,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyAudio,
 	type Types,
 	makeOpenGraphMeta,
-	type og, type OpenGraphMeta,
+	type og,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
@@ -15,7 +16,10 @@ type Audio<T extends string = ''> = BaseOrExtended<'audio', T>
 
 export type IPropertyAudio = ValueOf<typeof PropertyAudio>
 
-type AudioMetaBase<Property extends IPropertyAudio, Content extends Types.Type> = MetaBase<Property, Content>
+type AudioMetaBase<Property extends IPropertyAudio, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 /** A URL to an audio file to accompany this object. */
 export type OgAudio = AudioMetaBase<og<Audio>, Types.URL>

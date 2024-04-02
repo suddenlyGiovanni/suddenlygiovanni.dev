@@ -8,10 +8,11 @@ import {
 import {
 	type BaseOrExtended,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyProfile,
 	type Types,
 	makeOpenGraphMeta,
-	type og, type OpenGraphMeta,
+	type og,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import type { ValueOf } from './utils/types.ts'
@@ -29,7 +30,10 @@ export type ProfileRecord =
 	| OgProfileUsername
 	| OgProfileGender
 
-type ProfileMetaBase<Property extends IPropertyProfile, Content extends Types.Type> = MetaBase<Property, Content>
+type ProfileMetaBase<Property extends IPropertyProfile, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 type OgTypeProfile = MetaBase<og<'type'>, Types.Enum<'profile'>>
 

@@ -8,10 +8,11 @@ import {
 import {
 	type BaseOrExtended,
 	type MetaBase,
+	type OpenGraphMeta,
 	PropertyBook,
 	type Types,
 	makeOpenGraphMeta,
-	type og, type OpenGraphMeta,
+	type og,
 } from './open-graph.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
@@ -30,7 +31,10 @@ export type BookRecord =
 	| OgBookReleaseDate
 	| OgBookTag
 
-type BookMetaBase<Property extends IPropertyBook, Content extends Types.Type> = MetaBase<Property, Content>
+type BookMetaBase<Property extends IPropertyBook, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 /**
  * This object type represents a book or publication. This is an appropriate type for ebooks, as well as traditional paperback or hardback books. Do not use this type to represent magazines
