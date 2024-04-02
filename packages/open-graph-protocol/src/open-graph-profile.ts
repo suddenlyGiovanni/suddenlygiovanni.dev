@@ -16,7 +16,7 @@ import {
 import { insertIf } from './utils/array.ts'
 import type { ValueOf } from './utils/types.ts'
 
-type profile<T extends string = ''> = BaseOrExtended<'profile', T>
+type Profile<T extends string = ''> = BaseOrExtended<'profile', T>
 
 export type IPropertyProfile = ValueOf<typeof PropertyProfile>
 
@@ -38,25 +38,25 @@ interface OgTypeProfile extends MetaBase<og<'type'>, Types.Enum<'profile'>> {}
  * A name normally given to an individual by a parent or self-chosen.
  * string
  */
-interface OgProfileFirstName extends ProfileMetaBase<og<profile<'first_name'>>, Types.String> {}
+interface OgProfileFirstName extends ProfileMetaBase<og<Profile<'first_name'>>, Types.String> {}
 
 /**
  * A name inherited from a family or marriage and by which the individual is commonly known.
  * string
  */
-interface OgProfileLastName extends ProfileMetaBase<og<profile<'last_name'>>, Types.String> {}
+interface OgProfileLastName extends ProfileMetaBase<og<Profile<'last_name'>>, Types.String> {}
 
 /**
  * A short unique string to identify them.
  * string
  */
-interface OgProfileUsername extends ProfileMetaBase<og<profile<'username'>>, Types.String> {}
+interface OgProfileUsername extends ProfileMetaBase<og<Profile<'username'>>, Types.String> {}
 
 /**
  * Gender
  */
 interface OgProfileGender
-  extends ProfileMetaBase<og<profile<'gender'>>, Types.Enum<'male' | 'female'>> {}
+  extends ProfileMetaBase<og<Profile<'gender'>>, Types.Enum<'male' | 'female'>> {}
 
 export interface OpenGraphProfile extends OpenGraphBaseWithOptional {
   ogType: Types.Enum<'profile'>

@@ -3,7 +3,7 @@ import { insertIf } from './utils/array.ts'
 import { maxLength } from './utils/string.ts'
 import type { ValueOf } from './utils/types.ts'
 
-type twitter<T extends string = ''> = BaseOrExtended<'twitter', T>
+type Twitter<T extends string = ''> = BaseOrExtended<'twitter', T>
 export type TwitterCardType = 'summary_large_image' | 'summary' | 'app' | 'player'
 export type IPropertyTwitter = ValueOf<typeof PropertyTwitter>
 export const PropertyTwitter = {
@@ -34,9 +34,9 @@ export const PropertyTwitter = {
 export type TwitterRecord =
   | TwitterCard
   | TwitterSite
-  | TwitterSiteID
+  | TwitterSiteId
   | TwitterCreator
-  | TwitterCreatorID
+  | TwitterCreatorId
   | TwitterDescription
   | TwitterTitle
   | TwitterImage
@@ -46,14 +46,14 @@ export type TwitterRecord =
   | TwitterPlayerHeight
   | TwitterPlayerStream
   | TwitterAppNameIphone
-  | TwitterAppIDIphone
-  | TwitterAppURLIphone
+  | TwitterAppIdIphone
+  | TwitterAppUrlIphone
   | TwitterAppNameIpad
-  | TwitterAppIDIpad
-  | TwitterAppURLIpad
+  | TwitterAppIdIpad
+  | TwitterAppUrlIpad
   | TwitterAppNameGooglePlay
-  | TwitterAppIDGooglePlay
-  | TwitterAppURLGooglePlay
+  | TwitterAppIdGooglePlay
+  | TwitterAppUrlGooglePlay
 
 interface TwitterMetaBase<Property extends IPropertyTwitter, Content extends Types.Type>
   extends MetaBase<Property, Content> {}
@@ -63,7 +63,7 @@ interface TwitterMetaBase<Property extends IPropertyTwitter, Content extends Typ
  *
  * Used with all cards
  */
-interface TwitterCard extends TwitterMetaBase<twitter<'card'>, Types.Enum<TwitterCardType>> {}
+interface TwitterCard extends TwitterMetaBase<Twitter<'card'>, Types.Enum<TwitterCardType>> {}
 
 /**
  * @username of website. Either twitter:site or twitter:site:id is required.
@@ -71,7 +71,7 @@ interface TwitterCard extends TwitterMetaBase<twitter<'card'>, Types.Enum<Twitte
  * Used with summary, summary_large_image, app, player cards
  * @link TwitterSiteID
  */
-interface TwitterSite extends TwitterMetaBase<twitter<'site'>, Types.String> {}
+interface TwitterSite extends TwitterMetaBase<Twitter<'site'>, Types.String> {}
 
 /**
  * Same as twitter:site, but the user’s Twitter ID. Either twitter:site or twitter:site:id is required.
@@ -79,118 +79,118 @@ interface TwitterSite extends TwitterMetaBase<twitter<'site'>, Types.String> {}
  * Used with summary, summary_large_image, player cards
  * @link TwitterSite
  */
-interface TwitterSiteID extends TwitterMetaBase<twitter<'site:id'>, Types.String> {}
+interface TwitterSiteId extends TwitterMetaBase<Twitter<'site:id'>, Types.String> {}
 
 /**
  * @username of content creator
  *
  * Used with summary_large_image cards
  */
-interface TwitterCreator extends TwitterMetaBase<twitter<'creator'>, Types.String> {}
+interface TwitterCreator extends TwitterMetaBase<Twitter<'creator'>, Types.String> {}
 
 /**
  * Twitter user ID of content creator
  *
  * Used with summary, summary_large_image card
  */
-interface TwitterCreatorID extends TwitterMetaBase<twitter<'creator:id'>, Types.String> {}
+interface TwitterCreatorId extends TwitterMetaBase<Twitter<'creator:id'>, Types.String> {}
 
 /**
  * Description of content (maximum 200 characters)
  *
  * Used with summary, summary_large_image, player cards
  */
-interface TwitterDescription extends TwitterMetaBase<twitter<'description'>, Types.String> {}
+interface TwitterDescription extends TwitterMetaBase<Twitter<'description'>, Types.String> {}
 
 /**
  * Title of content (max 70 characters)
  *
  * Used with summary, summary_large_image, player cards
  */
-interface TwitterTitle extends TwitterMetaBase<twitter<'title'>, Types.String> {}
+interface TwitterTitle extends TwitterMetaBase<Twitter<'title'>, Types.String> {}
 
 /**
  * URL of image to use in the card. Images must be less than 5MB in size. JPG, PNG, WEBP and GIF formats are supported. Only the first frame of an animated GIF will be used. SVG is not supported.
  *
  * Used with summary, summary_large_image, player cards
  */
-interface TwitterImage extends TwitterMetaBase<twitter<'image'>, Types.URL> {}
+interface TwitterImage extends TwitterMetaBase<Twitter<'image'>, Types.URL> {}
 
 /**
  * A text description of the image conveying the essential nature of an image to users who are visually impaired. Maximum 420 characters.
  *
  * Used with summary, summary_large_image, player cards
  */
-interface TwitterImageAlt extends TwitterMetaBase<twitter<'image:alt'>, Types.String> {}
+interface TwitterImageAlt extends TwitterMetaBase<Twitter<'image:alt'>, Types.String> {}
 
 /**
  * HTTPS URL of player iframe
  *
  * Used with player card
  */
-interface TwitterPlayer extends TwitterMetaBase<twitter<'player'>, Types.URL> {}
+interface TwitterPlayer extends TwitterMetaBase<Twitter<'player'>, Types.URL> {}
 
 /**
  * Width of iframe in pixels
  *
  * Used with player card
  */
-interface TwitterPlayerWidth extends TwitterMetaBase<twitter<'player:width'>, Types.Integer> {}
+interface TwitterPlayerWidth extends TwitterMetaBase<Twitter<'player:width'>, Types.Integer> {}
 
 /**
  * Height of iframe in pixels
  *
  * Used with player card
  */
-interface TwitterPlayerHeight extends TwitterMetaBase<twitter<'player:height'>, Types.Integer> {}
+interface TwitterPlayerHeight extends TwitterMetaBase<Twitter<'player:height'>, Types.Integer> {}
 
 /**
  * URL to raw video or audio stream
  *
  * Used with player card
  */
-interface TwitterPlayerStream extends TwitterMetaBase<twitter<'player:stream'>, Types.URL> {}
+interface TwitterPlayerStream extends TwitterMetaBase<Twitter<'player:stream'>, Types.URL> {}
 
 /**
  * Name of your iPhone app
  *
  * Used with app card
  */
-interface TwitterAppNameIphone extends TwitterMetaBase<twitter<'app:name:iphone'>, Types.String> {}
+interface TwitterAppNameIphone extends TwitterMetaBase<Twitter<'app:name:iphone'>, Types.String> {}
 
 /**
  * Your app ID in the iTunes App Store (Note: NOT your bundle ID)
  *
  * Used with app card
  */
-interface TwitterAppIDIphone extends TwitterMetaBase<twitter<'app:id:iphone'>, Types.String> {}
+interface TwitterAppIdIphone extends TwitterMetaBase<Twitter<'app:id:iphone'>, Types.String> {}
 
 /**
  * Your app’s custom URL scheme (you must include ”://” after your scheme name)
  *
  * Used with app card
  */
-interface TwitterAppURLIphone extends TwitterMetaBase<twitter<'app:url:iphone'>, Types.URL> {}
+interface TwitterAppUrlIphone extends TwitterMetaBase<Twitter<'app:url:iphone'>, Types.URL> {}
 
 /**
  * Name of your iPad optimized app.
  * Used with app card
  */
-interface TwitterAppNameIpad extends TwitterMetaBase<twitter<'app:name:ipad'>, Types.String> {}
+interface TwitterAppNameIpad extends TwitterMetaBase<Twitter<'app:name:ipad'>, Types.String> {}
 
 /**
  * Your app ID in the iTunes App Store
  *
  * Used with app card
  */
-interface TwitterAppIDIpad extends TwitterMetaBase<twitter<'app:id:ipad'>, Types.String> {}
+interface TwitterAppIdIpad extends TwitterMetaBase<Twitter<'app:id:ipad'>, Types.String> {}
 
 /**
  * Your app’s custom URL scheme
  *
  * Used with app card
  */
-interface TwitterAppURLIpad extends TwitterMetaBase<twitter<'app:url:ipad'>, Types.URL> {}
+interface TwitterAppUrlIpad extends TwitterMetaBase<Twitter<'app:url:ipad'>, Types.URL> {}
 
 /**
  * Name of your Android app
@@ -198,23 +198,23 @@ interface TwitterAppURLIpad extends TwitterMetaBase<twitter<'app:url:ipad'>, Typ
  * Used with app card
  */
 interface TwitterAppNameGooglePlay
-  extends TwitterMetaBase<twitter<'app:name:googleplay'>, Types.String> {}
+  extends TwitterMetaBase<Twitter<'app:name:googleplay'>, Types.String> {}
 
 /**
  * Your app ID in the Google Play Store
  *
  * Used with app card
  */
-interface TwitterAppIDGooglePlay
-  extends TwitterMetaBase<twitter<'app:id:googleplay'>, Types.String> {}
+interface TwitterAppIdGooglePlay
+  extends TwitterMetaBase<Twitter<'app:id:googleplay'>, Types.String> {}
 
 /**
  * Your app’s custom URL scheme
  *
  * Used with app card
  */
-interface TwitterAppURLGooglePlay
-  extends TwitterMetaBase<twitter<'app:url:googleplay'>, Types.URL> {}
+interface TwitterAppUrlGooglePlay
+  extends TwitterMetaBase<Twitter<'app:url:googleplay'>, Types.URL> {}
 
 export interface TwitterCardMeta {
   readonly name: TwitterRecord['property']

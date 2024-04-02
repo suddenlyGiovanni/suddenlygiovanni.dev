@@ -11,7 +11,7 @@ import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
 import type { ValueOf } from './utils/types.ts'
 
-type audio<T extends string = ''> = BaseOrExtended<'audio', T>
+type Audio<T extends string = ''> = BaseOrExtended<'audio', T>
 
 export type IPropertyAudio = ValueOf<typeof PropertyAudio>
 
@@ -19,13 +19,13 @@ interface AudioMetaBase<Property extends IPropertyAudio, Content extends Types.T
   extends MetaBase<Property, Content> {}
 
 /** A URL to an audio file to accompany this object. */
-export interface OgAudio extends AudioMetaBase<og<audio>, Types.URL> {}
+export interface OgAudio extends AudioMetaBase<og<Audio>, Types.URL> {}
 
 /** An alternate url to use if the webpage requires HTTPS. */
-interface OgAudioSecureURL extends AudioMetaBase<og<audio<'secure_url'>>, Types.URL> {}
+interface OgAudioSecureUrl extends AudioMetaBase<og<Audio<'secure_url'>>, Types.URL> {}
 
 /** A MIME type for this audio. */
-interface OgAudioType extends AudioMetaBase<og<audio<'type'>>, MIMEContent> {}
+interface OgAudioType extends AudioMetaBase<og<Audio<'type'>>, MIMEContent> {}
 
 /**
  * The og:audio tag only has the first 3 properties available (since size doesn't make sense for sound):
@@ -36,7 +36,7 @@ interface OgAudioType extends AudioMetaBase<og<audio<'type'>>, MIMEContent> {}
  * <meta property="og:audio:type" content="audio/mpeg" />
  * ```
  */
-export type AudioRecord = OgAudio | OgAudioSecureURL | OgAudioType
+export type AudioRecord = OgAudio | OgAudioSecureUrl | OgAudioType
 
 export interface OpenGraphAudio {
   /** An audio URL which should represent your object within the graph */
@@ -67,7 +67,7 @@ export function makeOpenGraphAudio(
   if (typeof openGraphAudio === 'string') {
     return [makeOpenGraphMeta(PropertyAudio.OG_AUDIO, openGraphAudio)]
   } else if (isArray(openGraphAudio)) {
-    return openGraphAudio.map(_makeOpenGraphAudio).flat()
+    return openGraphAudio.flatMap(_makeOpenGraphAudio)
   } else {
     return _makeOpenGraphAudio(openGraphAudio)
   }

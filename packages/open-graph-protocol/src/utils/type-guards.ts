@@ -8,7 +8,7 @@ export type NotFalsy<T> = Exclude<T, null | undefined | false | 0 | -0 | ''>
  * A not nullish type-guard, where nullish is either `null` or `undefined`
  * @public
  */
-export function isNotNullish<T extends unknown>(value: T): value is NonNullable<T> {
+export function isNotNullish<T>(value: T): value is NonNullable<T> {
   return value !== undefined && value !== null
 }
 
@@ -17,7 +17,7 @@ export function isNotNullish<T extends unknown>(value: T): value is NonNullable<
  * @returns A boolean value defining if the provided argument is falsy or not
  * @public
  */
-export function isNotFalsy<T extends unknown>(value: T): value is NotFalsy<T> {
+export function isNotFalsy<T>(value: T): value is NotFalsy<T> {
   switch (typeof value) {
     case 'boolean': {
       return value !== false

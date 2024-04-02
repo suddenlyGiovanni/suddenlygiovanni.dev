@@ -17,8 +17,8 @@ export type IPropertyVideo = ValueOf<typeof PropertyVideo>
 
 export type VideoRecord =
   | OgVideo
-  | OgVideoURL
-  | OgVideoSecureURL
+  | OgVideoUrl
+  | OgVideoSecureUrl
   | OgVideoType
   | OgVideoWidth
   | OgVideoHeight
@@ -35,12 +35,12 @@ export interface OgVideo extends VideoMetaBase<og<video>, Types.URL> {}
 /**
  * Identical to og:video.
  */
-interface OgVideoURL extends VideoMetaBase<og<video<'url'>>, Types.URL> {}
+interface OgVideoUrl extends VideoMetaBase<og<video<'url'>>, Types.URL> {}
 
 /**
  * An alternate url to use if the webpage requires HTTPS.
  */
-interface OgVideoSecureURL extends VideoMetaBase<og<video<'secure_url'>>, Types.URL> {}
+interface OgVideoSecureUrl extends VideoMetaBase<og<video<'secure_url'>>, Types.URL> {}
 
 /**
  * A MIME type for this video.
@@ -95,7 +95,7 @@ export function makeOpenGraphVideo(
     ogVideoHeight,
     ogVideoSecureUrl,
     ogVideoType,
-    ogVideoURL,
+    ogVideoUrl,
     ogVideoWidth,
   }: OpenGraphVideo) {
     return [
@@ -103,7 +103,7 @@ export function makeOpenGraphVideo(
       makeOpenGraphMeta(PropertyVideo.OG_VIDEO, ogVideo),
 
       // VIDEO_URL?
-      ...insertIf(ogVideoURL, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_URL)),
+      ...insertIf(ogVideoUrl, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_URL)),
 
       // VIDEO_SECURE_URL?
       ...insertIf(ogVideoSecureUrl, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_SECURE_URL)),
@@ -125,7 +125,7 @@ export function makeOpenGraphVideo(
   if (typeof openGraphVideo === 'string') {
     return [makeOpenGraphMeta(PropertyVideo.OG_VIDEO, openGraphVideo)]
   } else if (isArray(openGraphVideo)) {
-    return openGraphVideo.map(_makeOpenGraphVideo).flat()
+    return openGraphVideo.flatMap(_makeOpenGraphVideo)
   } else {
     return _makeOpenGraphVideo(openGraphVideo)
   }

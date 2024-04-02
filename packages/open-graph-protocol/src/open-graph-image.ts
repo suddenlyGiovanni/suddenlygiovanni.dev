@@ -28,8 +28,8 @@ export type IPropertyImage = ValueOf<typeof PropertyImage>
  */
 export type ImageRecord =
   | OgImage
-  | OgImageURL
-  | OgImageSecureURL
+  | OgImageUrl
+  | OgImageSecureUrl
   | OgImageType
   | OgImageWidth
   | OgImageHeight
@@ -47,12 +47,12 @@ export interface OgImage extends ImageMetaBase<og<image>, Types.URL> {}
  * Identical to og:image
  * @link OgImage
  */
-interface OgImageURL extends ImageMetaBase<og<image<'url'>>, Types.URL> {}
+interface OgImageUrl extends ImageMetaBase<og<image<'url'>>, Types.URL> {}
 
 /**
  * An alternate url to use if the webpage requires HTTPS.
  */
-interface OgImageSecureURL extends ImageMetaBase<og<image<'secure_url'>>, Types.URL> {}
+interface OgImageSecureUrl extends ImageMetaBase<og<image<'secure_url'>>, Types.URL> {}
 
 /**
  * A MIME type for this image.
@@ -109,7 +109,7 @@ export function makeOpenGraphImage(
     ogImageHeight,
     ogImageSecureUrl,
     ogImageType,
-    ogImageURL,
+    ogImageUrl,
     ogImageWidth,
   }: OpenGraphImage) {
     return [
@@ -117,7 +117,7 @@ export function makeOpenGraphImage(
       makeOpenGraphMeta(PropertyImage.OG_IMAGE, ogImage),
 
       // IMAGE_URL?
-      ...insertIf(ogImageURL, makeOpenGraphMeta(PropertyImage.OG_IMAGE_URL)),
+      ...insertIf(ogImageUrl, makeOpenGraphMeta(PropertyImage.OG_IMAGE_URL)),
 
       // IMAGE_SECURE_URL?
       ...insertIf(ogImageSecureUrl, makeOpenGraphMeta(PropertyImage.OG_IMAGE_SECURE_URL)),
@@ -139,7 +139,7 @@ export function makeOpenGraphImage(
   if (typeof openGraphImage === 'string') {
     return [makeOpenGraphMeta('og:image', openGraphImage)]
   } else if (isArray(openGraphImage)) {
-    return openGraphImage.map((image) => _makeOpenGraphImage(image)).flat()
+    return openGraphImage.flatMap((image) => _makeOpenGraphImage(image))
   } else {
     return _makeOpenGraphImage(openGraphImage)
   }
