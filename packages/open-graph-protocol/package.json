@@ -17,6 +17,7 @@
 		"Twitter App Card",
 		"Twitter Player Card"
 	],
+	"type": "module",
 	"exports": {
 		".": "./index.ts"
 	},
@@ -29,5 +30,17 @@
 		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"@suddenly-giovanni/eslint-config": "workspace:*",
 		"typescript": "5.4.3"
+	},
+	"scripts": {
+		"clean": "scripty",
+		"format": "scripty",
+		"lint": "scripty src/",
+		"typecheck": "scripty"
+	},
+	"packageManager": "pnpm@8.15.5",
+	"config": {
+		"scripty": {
+			"path": "../../scripts"
+		}
 	}
 }
