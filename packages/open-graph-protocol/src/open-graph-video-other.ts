@@ -5,7 +5,8 @@ import type {
 	VideoMovieRecord,
 } from './open-graph-video-movie.ts'
 import type { video } from './open-graph-video.ts'
-import type { MetaBase, OpenGraphMeta, Types, og } from './open-graph.ts'
+import type { MetaBase, OpenGraphMeta, og } from './open-graph.ts'
+import type * as Types from './types.ts'
 
 export type IPropertyVideoOther = IPropertyVideoMovie
 
