@@ -22,7 +22,7 @@
 		".": "./src/index.ts"
 	},
 	"dependencies": {
-		"ts-brand": "0.0.2"
+		"ts-brand": "0.1.0"
 	},
 	"devDependencies": {
 		"@suddenly-giovanni/config-prettier": "workspace:*",

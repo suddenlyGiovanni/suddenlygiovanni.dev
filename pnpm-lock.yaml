@@ -250,8 +250,8 @@ importers:
   packages/open-graph-protocol:
     dependencies:
       ts-brand:
-        specifier: 0.0.2
-        version: 0.0.2
+        specifier: 0.1.0
+        version: 0.1.0
     devDependencies:
       '@suddenly-giovanni/config-prettier':
         specifier: workspace:*
@@ -14724,8 +14724,8 @@ packages:
       typescript: 5.4.3
     dev: true
 
-  /ts-brand@0.0.2:
-    resolution: {integrity: sha512-UhSzWY4On9ZHIj6DKkRYVN/8OaprbLAZ3b/Y2AJwdl6oozSABsQ0PvwDh4vOVdkvOtWQOkIrjctZ1kj8YfF3jA==}
+  /ts-brand@0.1.0:
+    resolution: {integrity: sha512-DDPY7vBCCAMC9nN4STBSF3s4+aay/jZFTVmISngAoTsYRG/drdzAXPr8npKah0AhwjHspys3/+DyR2QwyZ3JgA==}
     dev: false
 
   /ts-dedent@2.2.0:
