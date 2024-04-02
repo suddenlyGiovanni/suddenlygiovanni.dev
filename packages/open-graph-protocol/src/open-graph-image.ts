@@ -110,7 +110,7 @@ export function makeOpenGraphImage(
 		ogImageHeight,
 		ogImageSecureUrl,
 		ogImageType,
-		ogImageURL,
+		ogImageUrl,
 		ogImageWidth,
 	}: OpenGraphImage) {
 		return [
@@ -118,7 +118,7 @@ export function makeOpenGraphImage(
 			makeOpenGraphMeta(PropertyImage.OG_IMAGE, ogImage),
 
 			// IMAGE_URL?
-			...insertIf(ogImageURL, makeOpenGraphMeta(PropertyImage.OG_IMAGE_URL)),
+			...insertIf(ogImageUrl, makeOpenGraphMeta(PropertyImage.OG_IMAGE_URL)),
 
 			// IMAGE_SECURE_URL?
 			...insertIf(ogImageSecureUrl, makeOpenGraphMeta(PropertyImage.OG_IMAGE_SECURE_URL)),

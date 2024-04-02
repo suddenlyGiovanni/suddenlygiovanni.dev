@@ -95,7 +95,7 @@ export function makeOpenGraphVideo(
 		ogVideoHeight,
 		ogVideoSecureUrl,
 		ogVideoType,
-		ogVideoURL,
+		ogVideoUrl,
 		ogVideoWidth,
 	}: OpenGraphVideo) {
 		return [
@@ -103,7 +103,7 @@ export function makeOpenGraphVideo(
 			makeOpenGraphMeta(PropertyVideo.OG_VIDEO, ogVideo),
 
 			// VIDEO_URL?
-			...insertIf(ogVideoURL, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_URL)),
+			...insertIf(ogVideoUrl, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_URL)),
 
 			// VIDEO_SECURE_URL?
 			...insertIf(ogVideoSecureUrl, makeOpenGraphMeta(PropertyVideo.OG_VIDEO_SECURE_URL)),
