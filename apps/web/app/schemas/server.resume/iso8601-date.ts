@@ -10,6 +10,6 @@ export const ISO8601Date: S.Schema<string> = S.Date.pipe(
 	S.transform(
 		S.string,
 		fromDate => fromDate.toISOString(),
-		fromISOString => new Date(fromISOString),
+		fromIsoString => new Date(fromIsoString),
 	),
 )

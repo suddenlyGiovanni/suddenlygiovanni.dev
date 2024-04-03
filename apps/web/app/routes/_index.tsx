@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities -- TODO: need to validate the rule  */
 import type { MetaFunction } from '@remix-run/node'
-import type { Link as rLink } from '@remix-run/react'
+import { Link as RemixLink } from '@remix-run/react'
 import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
@@ -55,9 +55,9 @@ const imgSrcSet = [
 	`${hero2800wAssetUrl} 2800w`,
 ].join(', ')
 
-function Link({ className, ...props }: ComponentPropsWithoutRef<typeof rLink>): ReactElement {
+function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RemixLink>): ReactElement {
 	return (
-		<RLink
+		<RemixLink
 			className={clsx(
 				'decoration-wavy',
 				'underline-offset-4',
@@ -99,13 +99,13 @@ export default function Index(): JSX.Element {
 
 			<T.p>
 				At the university, I <strong>📚 studied Modern History</strong>, but I never actually
-				graduated. There I <strong>met the ❤️ love of my life</strong>, 👱🏻‍♀️ Morena, with whom I have
-				been together ever since.
+				graduated. There I <strong>met the ❤️ love of my life</strong>, 👱🏻‍♀️ Morena, with whom I
+				have been together ever since.
 			</T.p>
 			<T.p>
 				Soon after college, we <strong>got 💍 married and started</strong> our own 👩‍❤️‍👨
-				<strong>family</strong>. In 2014 our hearts became soo much bigger when 👶🏻 Enea come about.
-				Four years later, 👶🏻 Elai managed to have the same effect on us.
+				<strong>family</strong>. In 2014 our hearts became soo much bigger when 👶🏻 Enea come
+				about. Four years later, 👶🏻 Elai managed to have the same effect on us.
 			</T.p>
 
 			<T.p>
@@ -158,8 +158,8 @@ export default function Index(): JSX.Element {
 			<T.p>
 				<strong>Making stuff is really fulfilling for me</strong>.{' '}
 				<strong>I just happened to choose to use code to do so</strong>, but I could definitely see
-				myself as a 🪓 carpenter, working with wood, or as a 🧑🏻‍🍳 chef preparing some elaborate recipe
-				or...
+				myself as a 🪓 carpenter, working with wood, or as a 🧑🏻‍🍳 chef preparing some elaborate
+				recipe or...
 			</T.p>
 
 			<T.p>

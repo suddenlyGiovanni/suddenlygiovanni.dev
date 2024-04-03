@@ -1,4 +1,3 @@
-import type * as Types from 'src/types.ts'
 import {
 	type BasicRecord,
 	type OgType,
@@ -14,6 +13,7 @@ import {
 	makeOpenGraphMeta,
 	type og,
 } from './open-graph.ts'
+import type * as Types from './types.ts'
 import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
 import type { ValueOf } from './utils/types.ts'

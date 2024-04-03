@@ -11,10 +11,10 @@ import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import * as Either from 'effect/Either'
 import { pipe } from 'effect/Function'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
+import type { ResumeType } from '~/schemas/server.resume/resume.ts'
+import type { WorkType } from '~/schemas/server.resume/work.ts'
 import { formatDateLocaleShort } from './format-date-locale-short.ts'
 import { generateDjb2Hash } from './generate-djb2-hash.ts'
-import type { ResumeType } from './schema/resume.ts'
-import type { WorkType } from './schema/work.ts'
 
 export const Experiences = memo(function Experiences({
 	work,
@@ -115,7 +115,7 @@ const Experience = memo(function Experience({
 	value: string
 }): ReactElement {
 	return (
-		<AccordionItem asChild value={value}>
+		<AccordionItem asChild={true} value={value}>
 			<dl>
 				<ExperienceHeader
 					description={description}
@@ -165,11 +165,11 @@ const ExperienceHeader = memo(function ExperienceHeader({
 
 			<span aria-label="company" className={clsx(styles.span, 'font-medium text-base not-italic')}>
 				{name}
-				{!url ? null : (
+				{url ? (
 					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
 						<Icons.link2 aria-label={`link to ${name} company`} className="size-4" />
 					</a>
-				)}
+				) : null}
 			</span>
 
 			<span className={clsx(styles.span, 'justify-between')}>
@@ -177,25 +177,25 @@ const ExperienceHeader = memo(function ExperienceHeader({
 					<time className="mr-1" dateTime={startDate}>
 						{Either.getOrNull(formatDateLocaleShort(startDate))}
 					</time>
-					{!endDate ? null : (
+					{endDate ? (
 						<>
 							-
 							<time className="ml-1" dateTime={endDate}>
 								{Either.getOrNull(formatDateLocaleShort(endDate))}
 							</time>
 						</>
-					)}
+					) : null}
 				</span>
 
-				{!location ? null : <span aria-label="location">{location}</span>}
+				{location ? <span aria-label="location">{location}</span> : null}
 			</span>
 
-			{!description ? null : (
+			{description ? (
 				<span aria-label="description" className={styles.span}>
 					{description}
 				</span>
-			)}
-			<Trigger asChild>
+			) : null}
+			<Trigger asChild={true}>
 				<Button
 					className={clsx(
 						'rounded-full',
@@ -219,11 +219,11 @@ function ExperienceSummary({
 }: {
 	readonly summary: WorkType['summary']
 }): null | ReactElement {
-	return !summary ? null : (
+	return summary ? (
 		<dd>
 			<T.muted>{summary}</T.muted>
 		</dd>
-	)
+	) : null
 }
 
 function ExperienceHighlights({
@@ -261,7 +261,7 @@ function ExperienceContact({
 				<address className={clsx('flex flex-row flex-wrap items-baseline justify-between')}>
 					<span>{name}</span>
 					<a href={`mailto:${email}`}>{email}</a>
-					{!phone ? null : <a href={`tel:${phone}`}>{phone}</a>}
+					{phone ? <a href={`tel:${phone}`}>{phone}</a> : null}
 				</address>
 			</dd>
 		</>
