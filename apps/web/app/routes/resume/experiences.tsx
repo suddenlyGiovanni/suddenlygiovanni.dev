@@ -11,10 +11,10 @@ import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import * as Either from 'effect/Either'
 import { pipe } from 'effect/Function'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
-import { formatDateLocaleShort } from './format-date-locale-short.ts'
-import { generateDjb2Hash } from './generate-djb2-hash.ts'
 import type { ResumeType } from '~/schemas/server.resume/resume.ts'
 import type { WorkType } from '~/schemas/server.resume/work.ts'
+import { formatDateLocaleShort } from './format-date-locale-short.ts'
+import { generateDjb2Hash } from './generate-djb2-hash.ts'
 
 export const Experiences = memo(function Experiences({
 	work,

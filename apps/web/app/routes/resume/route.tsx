@@ -10,7 +10,7 @@ import { Link, useLoaderData } from '@remix-run/react'
 import * as Either from 'effect/Either'
 import type { ReactElement } from 'react'
 
-import { makeOpenGraphWebsite, Types } from '@suddenly-giovanni/open-graph-protocol'
+import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
 import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
