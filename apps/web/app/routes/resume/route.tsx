@@ -18,7 +18,7 @@ import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4c
 import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
 import { Languages } from '~/routes/resume/languages.tsx'
-import { Resume as ResumeSchema } from '~/schemas/server.schema/resume.ts'
+import { Resume as ResumeSchema } from '~/schemas/server.resume/resume.ts'
 
 import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'

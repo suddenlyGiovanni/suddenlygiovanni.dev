@@ -10,8 +10,8 @@ import {
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 import { Option } from 'effect'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
-import type { ResumeType } from '~/schemas/server.schema/resume.ts'
-import type { SkillType } from '~/schemas/server.schema/skill.ts'
+import type { ResumeType } from '~/schemas/server.resume/resume.ts'
+import type { SkillType } from '~/schemas/server.resume/skill.ts'
 import { getDevIconComponent } from './dev-icons.tsx'
 
 export const Skills = memo(function Skills({

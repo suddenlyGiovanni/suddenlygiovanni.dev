@@ -14,7 +14,7 @@ import type { ReactElement } from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
 import { formatDateLocaleShort } from './format-date-locale-short.ts'
 import { generateDjb2Hash } from './generate-djb2-hash.ts'
-import type { EducationType } from '~/schemas/server.schema/education.ts'
+import type { EducationType } from '~/schemas/server.resume/education.ts'
 
 export const Education = memo(function Education({
 	educations,
