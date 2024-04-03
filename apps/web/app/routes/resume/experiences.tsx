@@ -13,8 +13,8 @@ import { pipe } from 'effect/Function'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 import { formatDateLocaleShort } from './format-date-locale-short.ts'
 import { generateDjb2Hash } from './generate-djb2-hash.ts'
-import type { ResumeType } from '~/routes/resume/server.schema/resume.ts'
-import type { WorkType } from '~/routes/resume/server.schema/work.ts'
+import type { ResumeType } from '~/schemas/server.schema/resume.ts'
+import type { WorkType } from '~/schemas/server.schema/work.ts'
 
 export const Experiences = memo(function Experiences({
 	work,
