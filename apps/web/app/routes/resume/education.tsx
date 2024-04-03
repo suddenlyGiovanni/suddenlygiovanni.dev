@@ -94,7 +94,7 @@ const Edu = memo(function Edu({
 	value: string
 }): ReactElement {
 	return (
-		<AccordionItem asChild value={value}>
+		<AccordionItem asChild={true} value={value}>
 			<dl>
 				<EduHeader
 					area={area}
@@ -106,7 +106,7 @@ const Edu = memo(function Edu({
 					url={url}
 				/>
 
-				<AccordionContent asChild>
+				<AccordionContent asChild={true}>
 					<dd>
 						<ul aria-label="highlights" className="mb-0 ml-0 list-none">
 							{courses?.map(highlight => (
@@ -168,7 +168,7 @@ const EduHeader = memo(function EduHeader({
 			</span>
 
 			<span className={clsx(styles.span, 'justify-between')}>
-				{!startDate ? null : (
+				{startDate ? (
 					<span aria-label="start date / end date">
 						<time className="mr-2" dateTime={startDate}>
 							{Either.getOrNull(formatDateLocaleShort(startDate))}
@@ -182,21 +182,21 @@ const EduHeader = memo(function EduHeader({
 							</>
 						) : null}
 					</span>
-				)}
+				) : null}
 
-				{!location ? null : (
+				{location ? (
 					<span aria-label="location" className={styles.span}>
 						{location}
 					</span>
-				)}
+				) : null}
 			</span>
 
-			{!studyType ? null : (
+			{studyType ? (
 				<span aria-label="description" className={styles.span}>
 					{studyType}
 				</span>
-			)}
-			<Trigger asChild>
+			) : null}
+			<Trigger asChild={true}>
 				<Button
 					className={clsx(
 						'rounded-full',

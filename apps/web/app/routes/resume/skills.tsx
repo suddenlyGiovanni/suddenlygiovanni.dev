@@ -62,11 +62,11 @@ const Skill = memo(function Skill({
 	value,
 }: SkillType & { readonly value: string }): ReactElement {
 	return (
-		<AccordionItem asChild value={value}>
+		<AccordionItem asChild={true} value={value}>
 			<dl key={name}>
 				<dt className="relative flex flex-row items-center justify-between">
 					<span>{name}</span>
-					<Trigger asChild>
+					<Trigger asChild={true}>
 						<Button
 							className={clsx('rounded-full', 'transition-all [&[data-state=open]>svg]:rotate-180')}
 							size="icon"
@@ -92,7 +92,7 @@ const KeywordsList = memo(function KeywordsList({
 	readonly keywords: SkillType['keywords']
 }): ReactElement {
 	return (
-		<AccordionContent asChild>
+		<AccordionContent asChild={true}>
 			<T.ul
 				className={clsx(
 					'my-0 ml-0 flex list-none flex-row flex-wrap items-start justify-start gap-x-4',
@@ -120,9 +120,9 @@ const Keyword = memo(function Keyword({
 				{keyword}
 			</li>
 		),
-		onSome: Icon => (
+		onSome: icon => (
 			<li className={classname} key={keyword}>
-				<Icon className="size-4 fill-accent-foreground/80" />
+				<icon className="size-4 fill-accent-foreground/80" />
 				{keyword}
 			</li>
 		),

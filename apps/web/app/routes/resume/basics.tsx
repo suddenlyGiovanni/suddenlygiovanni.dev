@@ -54,7 +54,7 @@ function Header({
 				<span aria-label="pdf" role="img">
 					📜
 				</span>{' '}
-				<T.a download href={resumePdfAssetUrl} rel="noopener">
+				<T.a download={true} href={resumePdfAssetUrl} rel="noopener">
 					giovanni-ravalico-resume.pdf
 				</T.a>
 			</T.muted>
