@@ -120,9 +120,10 @@ const Keyword = memo(function Keyword({
 				{keyword}
 			</li>
 		),
-		onSome: icon => (
+		// biome-ignore lint/style/useNamingConvention: A react component needs to be capitalized
+		onSome: Icon => (
 			<li className={classname} key={keyword}>
-				<icon className="size-4 fill-accent-foreground/80" />
+				<Icon className="size-4 fill-accent-foreground/80" />
 				{keyword}
 			</li>
 		),
