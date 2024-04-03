@@ -23,7 +23,7 @@ import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
 import { Interests } from './interests.tsx'
-import { Resume as ResumeSchema } from './schema/resume.ts'
+import { Resume as ResumeSchema } from '~/routes/resume/server.schema/resume.ts'
 import { Skills } from './skills.tsx'
 
 export function meta({ location }: Parameters<MetaFunction>[number]) {
