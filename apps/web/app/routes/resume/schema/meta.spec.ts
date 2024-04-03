@@ -8,7 +8,7 @@ describe('Meta', () => {
 		canonical: 'https://example.com',
 		lastModified: '2012-04-05T10:00:00.000Z',
 		version: 'v6.9',
-	} satisfies S.Schema.Type<typeof Meta>
+	} satisfies S.Schema.Encoded<typeof Meta>
 
 	describe('decode', () => {
 		const parse = S.decodeUnknownSync(Meta)
