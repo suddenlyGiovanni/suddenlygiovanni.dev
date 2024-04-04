@@ -44,14 +44,14 @@ const itemClass = clsx(
 
 const headerClass = clsx('m-0', 'data-[orientation=horizontal]:h-full')
 
-const RECOMMENDED_CSS__ACCORDION__TRIGGER = clsx(
+const recommendedCssAccordionTrigger = clsx(
 	'align-inherit',
 	'data-[orientation=horizontal]:h-full',
 	'data-[orientation=vertical]:w-full',
 )
 
 const triggerClass = clsx(
-	RECOMMENDED_CSS__ACCORDION__TRIGGER,
+	recommendedCssAccordionTrigger,
 	['box-border border-0 bg-black p-2.5 text-lg text-white'],
 	'focus:text-red-500 focus:shadow-inner focus:outline-none',
 	'data-[disabled]:text-gray-300',

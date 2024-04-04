@@ -11,13 +11,13 @@ type Story = StoryObj<typeof meta>
 
 export const Main: Story = {
 	decorators: [
-		Story => (
+		story => (
 			<Layout.Body
 				as="div"
 				className="border-violet-500 border-dashed bg-violet-200 text-center text-violet-500 text-xl"
 			>
 				Body
-				<Story />
+				<story />
 			</Layout.Body>
 		),
 	],
