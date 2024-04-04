@@ -1,7 +1,8 @@
-import { clsx } from '@/lib/utils'
 import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
 import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from 'react'
+
+import { clsx } from '../lib/utils.ts'
 
 const Accordion = Root
 Accordion.displayName = Root.displayName
@@ -54,7 +55,7 @@ const AccordionContent = forwardRef<
 		ref={ref}
 		{...props}
 	>
-		<div className={clsx('pt-0 pb-4', className)}>{children}</div>
+		<div className={clsx('pb-4 pt-0', className)}>{children}</div>
 	</Content>
 ))
 AccordionContent.displayName = Content.displayName

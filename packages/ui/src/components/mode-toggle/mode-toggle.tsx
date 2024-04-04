@@ -1,17 +1,18 @@
-import { Icons } from '@/components/icons/icons.tsx'
-import { clsx } from '@/lib/utils.ts'
-import { Button } from '@/ui/button.tsx'
-import {
-	DropdownMenu,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuTrigger,
-} from '@/ui/dropdown-menu.tsx'
 /* eslint-disable
 	react/jsx-pascal-case -- Reason need to modify the Icons component,
 	react/jsx-boolean-value  -- Reason biome is conflicting with this rule,
 	*/
 import { type ReactNode, memo, useMemo } from 'react'
+
+import { clsx } from '../../lib/utils.ts'
+import { Button } from '../../ui/button.tsx'
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from '../../ui/dropdown-menu.tsx'
+import { Icons } from '../icons/icons.tsx'
 
 export type Theme = 'dark' | 'light'
 

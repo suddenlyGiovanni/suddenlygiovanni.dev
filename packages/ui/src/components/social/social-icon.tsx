@@ -1,5 +1,6 @@
-import { Icons } from '@/components/icons/icons.tsx'
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
+
+import { Icons } from '../icons/icons.tsx'
 
 export const IconMap = new Map([
 	['twitter', Icons.twitter],

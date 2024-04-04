@@ -1,4 +1,8 @@
-import { Button } from '@/ui/button.tsx'
+import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu'
+import type { Meta, StoryFn } from '@storybook/react'
+import { useCallback, useState } from 'react'
+
+import { Button } from '../../ui/button.tsx'
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -15,10 +19,7 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from '@/ui/dropdown-menu'
-import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu'
-import type { Meta, StoryFn } from '@storybook/react'
-import { useCallback, useState } from 'react'
+} from '../../ui/dropdown-menu.tsx'
 
 const meta: Meta = {
 	component: DropdownMenu,
@@ -35,7 +36,7 @@ export const Checkboxes: StoryFn = () => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
+			<DropdownMenuTrigger asChild={true}>
 				<Button variant="outline">Open</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56">
@@ -46,7 +47,7 @@ export const Checkboxes: StoryFn = () => {
 				</DropdownMenuCheckboxItem>
 				<DropdownMenuCheckboxItem
 					checked={showActivityBar}
-					disabled
+					disabled={true}
 					onCheckedChange={setShowActivityBar}
 				>
 					Activity Bar
@@ -79,7 +80,7 @@ export const RadioGroup: StoryFn = () => {
 
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
+			<DropdownMenuTrigger asChild={true}>
 				<Button variant="outline">Open</Button>
 			</DropdownMenuTrigger>
 			<DropdownMenuContent className="w-56">
@@ -97,7 +98,7 @@ export const RadioGroup: StoryFn = () => {
 
 export const KitchenSink: StoryFn = () => (
 	<DropdownMenu>
-		<DropdownMenuTrigger asChild>
+		<DropdownMenuTrigger asChild={true}>
 			<Button variant="outline">Open</Button>
 		</DropdownMenuTrigger>
 		<DropdownMenuContent className="w-56">
@@ -143,7 +144,7 @@ export const KitchenSink: StoryFn = () => (
 			<DropdownMenuSeparator />
 			<DropdownMenuItem>GitHub</DropdownMenuItem>
 			<DropdownMenuItem>Support</DropdownMenuItem>
-			<DropdownMenuItem disabled>API</DropdownMenuItem>
+			<DropdownMenuItem disabled={true}>API</DropdownMenuItem>
 			<DropdownMenuSeparator />
 			<DropdownMenuItem>
 				Log out

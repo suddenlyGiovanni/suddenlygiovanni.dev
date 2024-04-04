@@ -1,5 +1,6 @@
-import { clsx } from '@/lib/utils.ts'
 import { type JSX, forwardRef } from 'react'
+
+import { clsx } from '../../lib/utils.ts'
 
 const name = 'Placeholder'
 export const Placeholder = forwardRef<HTMLDivElement, JSX.IntrinsicElements['div']>(

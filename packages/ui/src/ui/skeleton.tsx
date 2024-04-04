@@ -1,9 +1,10 @@
+import { type ElementType, forwardRef } from 'react'
+
 import type {
 	PolymorphicComponentPropWithRef,
 	PolymorphicRef,
-} from '@/lib/polymorphic-component-prop.tsx'
-import { clsx } from '@/lib/utils.ts'
-import { type ElementType, forwardRef } from 'react'
+} from '../lib/polymorphic-component-prop.tsx'
+import { clsx } from '../lib/utils.ts'
 
 export const Skeleton = forwardRef(
 	<C extends ElementType = 'div'>(

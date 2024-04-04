@@ -1,5 +1,6 @@
-import { clsx } from '@/lib/utils.ts'
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
+
+import { clsx } from '../../lib/utils.ts'
 
 export const Small = forwardRef<HTMLElement, ComponentPropsWithoutRef<'small'>>(
 	({ className, children, ...props }, ref) => (

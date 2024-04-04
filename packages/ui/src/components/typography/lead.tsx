@@ -1,5 +1,6 @@
-import { clsx } from '@/lib/utils.ts'
 import { type ComponentPropsWithoutRef, forwardRef } from 'react'
+
+import { clsx } from '../../lib/utils.ts'
 
 export const Lead = forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<'p'>>(
 	({ className, children, ...props }, ref) => (
