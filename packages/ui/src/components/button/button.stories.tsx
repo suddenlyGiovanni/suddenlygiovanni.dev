@@ -1,7 +1,8 @@
-import { T } from '@/components/typography/typography.tsx'
-import { Button } from '@/ui/button.tsx'
 import { ChevronRightIcon, EnvelopeOpenIcon, ReloadIcon } from '@radix-ui/react-icons'
 import type { Meta, StoryObj } from '@storybook/react'
+
+import { Button } from '../../ui/button.tsx'
+import { T } from '../typography/typography'
 
 const meta = {
 	component: Button,
@@ -65,7 +66,7 @@ export const WithIcon: Story = {
 
 export const Loading: Story = {
 	render: args => (
-		<Button {...args} disabled>
+		<Button {...args} disabled={true}>
 			<ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
 			Please wait
 		</Button>
@@ -74,7 +75,7 @@ export const Loading: Story = {
 
 export const AsChild: Story = {
 	render: args => (
-		<Button {...args} asChild>
+		<Button {...args} asChild={true}>
 			<T.a href="#1">Login</T.a>
 		</Button>
 	),

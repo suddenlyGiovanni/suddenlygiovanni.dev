@@ -1,4 +1,3 @@
-import { clsx } from '@/lib/utils.ts'
 import {
 	CheckboxItem,
 	Content,
@@ -24,6 +23,8 @@ import {
 	type ReactElement,
 	forwardRef,
 } from 'react'
+
+import { clsx } from '../lib/utils.ts'
 
 const DropdownMenu = Root
 const DropdownMenuTrigger = Trigger

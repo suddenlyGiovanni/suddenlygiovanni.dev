@@ -1,5 +1,9 @@
-import { Icons } from '@/components/icons/icons.tsx'
-import { clsx } from '@/lib/utils.ts'
+import { Link } from '@remix-run/react'
+import type { Meta } from '@storybook/react'
+import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react'
+import { forwardRef } from 'react'
+
+import { clsx } from '../../lib/utils.ts'
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -8,11 +12,8 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
-} from '@/ui/navigation-menu.tsx'
-import { Link } from '@remix-run/react'
-import type { Meta } from '@storybook/react'
-import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react'
-import { forwardRef } from 'react'
+} from '../../ui/navigation-menu.tsx'
+import { Icons } from '../icons/icons'
 
 const meta: Meta = {
 	component: NavigationMenu,
@@ -73,7 +74,7 @@ export function Default(): ReactElement {
 							)}
 						>
 							<li className="row-span-3">
-								<NavigationMenuLink asChild>
+								<NavigationMenuLink asChild={true}>
 									<a
 										className={clsx(
 											'flex',
@@ -151,7 +152,7 @@ const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(
 	({ className, title, children, ...props }, ref) => {
 		return (
 			<li>
-				<NavigationMenuLink asChild>
+				<NavigationMenuLink asChild={true}>
 					<a
 						className={clsx(
 							'block',

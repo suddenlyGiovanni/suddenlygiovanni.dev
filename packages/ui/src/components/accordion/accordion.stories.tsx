@@ -2,17 +2,17 @@
 	eslint-disable react/no-array-index-key,
 		react/no-unescaped-entities -- Reason: This rule is disabled because...
 */
+import type { Meta } from '@storybook/react'
+import { type ReactElement, useEffect, useRef, useState } from 'react'
 
-import { clsx } from '@/lib/utils.ts'
+import { clsx } from '../../lib/utils.ts'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionHeader,
 	AccordionItem,
 	AccordionTrigger,
-} from '@/ui/accordion.tsx'
-import type { Meta } from '@storybook/react'
-import { type ReactElement, useEffect, useRef, useState } from 'react'
+} from '../../ui/accordion.tsx'
 
 const meta = {
 	component: Accordion,
@@ -44,14 +44,14 @@ const itemClass = clsx(
 
 const headerClass = clsx('m-0', 'data-[orientation=horizontal]:h-full')
 
-const RECOMMENDED_CSS__ACCORDION__TRIGGER = clsx(
+const recommendedCssAccordionTrigger = clsx(
 	'align-inherit',
 	'data-[orientation=horizontal]:h-full',
 	'data-[orientation=vertical]:w-full',
 )
 
 const triggerClass = clsx(
-	RECOMMENDED_CSS__ACCORDION__TRIGGER,
+	recommendedCssAccordionTrigger,
 	['box-border border-0 bg-black p-2.5 text-lg text-white'],
 	'focus:text-red-500 focus:shadow-inner focus:outline-none',
 	'data-[disabled]:text-gray-300',
@@ -92,7 +92,7 @@ const contentAttrClass = clsx('block', styles)
 
 export function _Accordion(): ReactElement {
 	return (
-		<Accordion className="w-full" collapsible type="single">
+		<Accordion className="w-full" collapsible={true} type="single">
 			<AccordionItem value="item-1">
 				<AccordionTrigger>Is it accessible?</AccordionTrigger>
 				<AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
@@ -137,7 +137,7 @@ export function SingleUncontrolled(): ReactElement {
 					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem className={itemClass} disabled value="three">
+			<AccordionItem className={itemClass} disabled={true} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
@@ -187,7 +187,7 @@ export function SingleControlled(): ReactElement {
 					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem className={itemClass} disabled value="three">
+			<AccordionItem className={itemClass} disabled={true} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
@@ -212,7 +212,7 @@ export function SingleControlled(): ReactElement {
 
 export function SingleCollapsible(): ReactElement {
 	return (
-		<Accordion className={rootClass} collapsible defaultValue="one" type="single">
+		<Accordion className={rootClass} collapsible={true} defaultValue="one" type="single">
 			<AccordionItem className={itemClass} value="one">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
@@ -232,7 +232,7 @@ export function SingleCollapsible(): ReactElement {
 					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem className={itemClass} disabled value="three">
+			<AccordionItem className={itemClass} disabled={true} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
@@ -277,7 +277,7 @@ export function MultipleUncontrolled(): ReactElement {
 					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem className={itemClass} disabled value="three">
+			<AccordionItem className={itemClass} disabled={true} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
@@ -330,7 +330,7 @@ export function MultipleControlled(): ReactElement {
 					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
-			<AccordionItem className={itemClass} disabled value="three">
+			<AccordionItem className={itemClass} disabled={true} value="three">
 				<AccordionHeader className={headerClass}>
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
@@ -542,7 +542,7 @@ export function OutsideViewport(): ReactElement {
 						porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 					</AccordionContent>
 				</AccordionItem>
-				<AccordionItem className={itemClass} disabled value="three">
+				<AccordionItem className={itemClass} disabled={true} value="three">
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 					</AccordionHeader>
@@ -592,7 +592,7 @@ export function Horizontal(): ReactElement {
 						porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
 					</AccordionContent>
 				</AccordionItem>
-				<AccordionItem className={itemClass} disabled value="three">
+				<AccordionItem className={itemClass} disabled={true} value="three">
 					<AccordionHeader className={headerClass}>
 						<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 					</AccordionHeader>
@@ -719,7 +719,7 @@ export function Chromatic(): ReactElement {
 			</Accordion>
 
 			<h1>Disabled (whole)</h1>
-			<Accordion className={rootClass} disabled type="single">
+			<Accordion className={rootClass} disabled={true} type="single">
 				{items.map(item => (
 					<AccordionItem className={itemClass} key={item} value={item}>
 						<AccordionHeader className={headerClass}>
@@ -774,7 +774,7 @@ export function Chromatic(): ReactElement {
 						<AccordionHeader className={headerClass}>
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
-						<AccordionContent className={contentClass} forceMount>
+						<AccordionContent className={contentClass} forceMount={true}>
 							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
 							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
 							suscipit habitant sed.
@@ -785,7 +785,7 @@ export function Chromatic(): ReactElement {
 
 			<h1>State attributes</h1>
 			<h2>Accordion disabled</h2>
-			<Accordion className={rootAttrClass} defaultValue="Two" disabled type="single">
+			<Accordion className={rootAttrClass} defaultValue="Two" disabled={true} type="single">
 				{items.map(item => (
 					<AccordionItem className={itemAttrClass} key={item} value={item}>
 						<AccordionHeader className={headerAttrClass}>
@@ -822,7 +822,7 @@ export function Chromatic(): ReactElement {
 			</Accordion>
 
 			<h2>Accordion disabled with item override</h2>
-			<Accordion className={rootAttrClass} defaultValue="Two" disabled type="single">
+			<Accordion className={rootAttrClass} defaultValue="Two" disabled={true} type="single">
 				{items.map(item => (
 					<AccordionItem
 						className={itemAttrClass}
