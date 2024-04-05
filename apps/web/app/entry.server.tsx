@@ -5,7 +5,12 @@ import { RemixServer } from '@remix-run/react'
 import { isbot } from 'isbot'
 import { renderToPipeableStream } from 'react-dom/server'
 
+import { getEnv, init } from '~/utils/env.server.ts'
+
 const ABORT_DELAY = 5_000
+
+init()
+global.ENV = getEnv()
 
 export default function handleRequest(
 	request: Request,
