@@ -1,3 +1,6 @@
+import { Option } from 'effect'
+import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
+
 import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
@@ -8,10 +11,10 @@ import {
 	Trigger,
 } from '@suddenly-giovanni/ui/ui/accordion.tsx'
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
-import { Option } from 'effect'
-import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
-import type { ResumeType } from '~/schemas/server.resume/resume.ts'
-import type { SkillType } from '~/schemas/server.resume/skill.ts'
+
+import type { ResumeType } from '~/.server/schemas/resume/resume.ts'
+import type { SkillType } from '~/.server/schemas/resume/skill.ts'
+
 import { getDevIconComponent } from './dev-icons.tsx'
 
 export const Skills = memo(function Skills({
