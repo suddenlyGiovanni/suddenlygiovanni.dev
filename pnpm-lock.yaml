@@ -30,8 +30,8 @@ importers:
   apps/web:
     dependencies:
       '@effect/schema':
-        specifier: 0.64.18
-        version: 0.64.18(effect@2.4.18)(fast-check@3.17.0)
+        specifier: 0.64.19
+        version: 0.64.19(effect@2.4.18)(fast-check@3.17.0)
       '@epic-web/client-hints':
         specifier: 1.3.0
         version: 1.3.0
@@ -1859,10 +1859,10 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
-  /@effect/schema@0.64.18(effect@2.4.18)(fast-check@3.17.0):
-    resolution: {integrity: sha512-utMVAjcKqmNlkJ8hzdXf3FWBOsekKbe3xhYzWLLLFCpdbTMkCFeN52l1QRXTk7rla87sNTYdMA+xcES9maOEog==}
+  /@effect/schema@0.64.19(effect@2.4.18)(fast-check@3.17.0):
+    resolution: {integrity: sha512-mV/qexSXdY6S62wO+SW7ASxwnjclmtIupmObu7nbcTzVPkgy/9Elgsd3xIXIcEByJVXvtl9ReBHOL+0IwiJU5A==}
     peerDependencies:
-      effect: ^2.4.17
+      effect: ^2.4.18
       fast-check: ^3.13.2
     dependencies:
       effect: 2.4.18
