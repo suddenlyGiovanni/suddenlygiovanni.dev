@@ -1,5 +1,3 @@
-import * as Schema from '@effect/schema/Schema'
-import { formatError } from '@effect/schema/TreeFormatter'
 import {
 	type LinksFunction,
 	type LoaderFunctionArgs,
@@ -7,18 +5,16 @@ import {
 	json,
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
-import * as Either from 'effect/Either'
 import type { ReactElement } from 'react'
 
 import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
-import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
 import { Languages } from '~/routes/resume/languages.tsx'
-import { Resume as ResumeSchema } from '~/.server/schemas/resume/resume.ts'
+import * as repository from '~/.server/repositories/github'
 
 import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'
@@ -54,20 +50,18 @@ export const links: LinksFunction = () => {
 	]
 }
 
-export function loader(_: LoaderFunctionArgs) {
-	const schema = Schema.parseJson(ResumeSchema)
-	const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
-	const maybeResume = parse(resumeAssetUrl)
-
-	if (Either.isLeft(maybeResume)) {
-		// eslint-disable-next-line @typescript-eslint/no-throw-literal -- we want to throw here
-		throw new Response(formatError(maybeResume.left), {
+export async function loader(_: LoaderFunctionArgs) {
+	try {
+		const resume = await repository.github.getResume()
+		return json({ resume })
+	} catch (error) {
+		console.error(error)
+		throw new Response('Some error !!!', {
 			// find the correct response code and message for this error caused by parsing issue....
 			status: 500,
 			statusText: 'Internal Server Error',
 		})
 	}
-	return json({ resume: maybeResume.right })
 }
 
 export default function Resume(): ReactElement {
