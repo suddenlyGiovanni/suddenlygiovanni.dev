@@ -10,18 +10,17 @@ import type { ReactElement } from 'react'
 import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
+import * as repository from '~/.server/repositories/github'
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
 import { Languages } from '~/routes/resume/languages.tsx'
-import * as repository from '~/.server/repositories/github'
 
 import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
 import { Interests } from './interests.tsx'
 import { Skills } from './skills.tsx'
-
 
 export function meta({ location }: Parameters<MetaFunction>[number]) {
 	const title = `${config.siteName} | Résumé`

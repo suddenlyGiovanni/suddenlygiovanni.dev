@@ -12,8 +12,8 @@ import {
 } from '@suddenly-giovanni/ui/ui/accordion.tsx'
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 
-import type {ResumeType} from "~/.server/schemas/resume/resume.ts";
-import type {SkillType} from "~/.server/schemas/resume/skill.ts";
+import type { ResumeType } from '~/.server/schemas/resume/resume.ts'
+import type { SkillType } from '~/.server/schemas/resume/skill.ts'
 
 import { getDevIconComponent } from './dev-icons.tsx'
 

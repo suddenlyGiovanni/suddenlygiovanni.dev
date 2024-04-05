@@ -13,7 +13,7 @@ import { pipe } from 'effect/Function'
 import type { ReactElement } from 'react'
 import { memo, useCallback, useMemo, useState } from 'react'
 
-import type {EducationType} from "~/.server/schemas/resume/education.ts";
+import type { EducationType } from '~/.server/schemas/resume/education.ts'
 
 import { formatDateLocaleShort } from './format-date-locale-short.ts'
 import { generateDjb2Hash } from './generate-djb2-hash.ts'

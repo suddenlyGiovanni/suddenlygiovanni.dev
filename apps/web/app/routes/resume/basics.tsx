@@ -5,9 +5,9 @@ import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import type { ReactElement, ReactNode } from 'react'
 
-import { routesRecord } from '~/routes-record.ts'
-import type { ResumeType } from '~/.server/schemas/resume/resume.ts'
 import type { BasicsType } from '~/.server/schemas/resume/basics.ts'
+import type { ResumeType } from '~/.server/schemas/resume/resume.ts'
+import { routesRecord } from '~/routes-record.ts'
 
 import resumePdfAssetUrl from '/giovanni-ravalico-resume-2021.pdf?url'
 

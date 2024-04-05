@@ -2,8 +2,7 @@ import type { ReactElement } from 'react'
 
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 
-import type {Language} from "~/.server/schemas/resume/language.ts";
-
+import type { Language } from '~/.server/schemas/resume/language.ts'
 
 export function Languages({
 	languages,
