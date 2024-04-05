@@ -1,7 +1,10 @@
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import type { ReactElement } from 'react'
+
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+
 import { generateDjb2Hash } from '~/routes/resume/generate-djb2-hash.ts'
-import type { Interest } from '~/schemas/server.resume/interest.ts'
+import type {Interest} from "~/.server/schemas/resume/interest.ts";
+
 
 export function Interests({
 	interests,

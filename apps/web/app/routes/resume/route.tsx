@@ -18,13 +18,14 @@ import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4c
 import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
 import { Languages } from '~/routes/resume/languages.tsx'
-import { Resume as ResumeSchema } from '~/schemas/server.resume/resume.ts'
+import { Resume as ResumeSchema } from '~/.server/schemas/resume/resume.ts'
 
 import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
 import { Interests } from './interests.tsx'
 import { Skills } from './skills.tsx'
+
 
 export function meta({ location }: Parameters<MetaFunction>[number]) {
 	const title = `${config.siteName} | Résumé`

@@ -1,5 +1,6 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
+
 import { UrlString } from './url-string.ts'
 
 export const Profile = S.struct({

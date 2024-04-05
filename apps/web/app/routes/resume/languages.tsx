@@ -1,6 +1,9 @@
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import type { ReactElement } from 'react'
-import type { Language } from '~/schemas/server.resume/language.ts'
+
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+
+import type {Language} from "~/.server/schemas/resume/language.ts";
+
 
 export function Languages({
 	languages,

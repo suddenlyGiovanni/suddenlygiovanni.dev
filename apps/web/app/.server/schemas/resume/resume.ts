@@ -1,5 +1,6 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
+
 import { Award } from './award.ts'
 import { Basics } from './basics.ts'
 import { Certificate } from './certificates.ts'
@@ -11,12 +12,11 @@ import { Project } from './project.ts'
 import { Publication } from './publication.ts'
 import { Reference } from './reference.ts'
 import { Skill } from './skill.ts'
-import { UrlString } from './url-string.ts'
 import { Volunteer } from './volunteer.ts'
 import { Work } from './work.ts'
 
 export const Resume = S.struct({
-	$schema: UrlString.annotations({
+	$schema: S.string.annotations({
 		title: '$schema',
 		description: 'link to the version of the schema that can validate the resume',
 		examples: ['http://jsonresume.org/schema'],
