@@ -5,8 +5,8 @@ import {
 	json,
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
-import type { ReactElement } from 'react'
 import { Effect } from 'effect'
+import type { ReactElement } from 'react'
 
 import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
