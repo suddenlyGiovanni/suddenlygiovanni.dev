@@ -5,6 +5,7 @@ import {
 	json,
 } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
+import { Effect } from 'effect'
 import type { ReactElement } from 'react'
 
 import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
@@ -51,8 +52,8 @@ export const links: LinksFunction = () => {
 
 export async function loader(_: LoaderFunctionArgs) {
 	try {
-		const resume = await repository.github.getResume()
-		return json({ resume })
+		const maybeResume = await Effect.runPromise(repository.github.getResume())
+		return json({ resume: maybeResume })
 	} catch (error) {
 		console.error(error)
 		throw new Response('Some error !!!', {
