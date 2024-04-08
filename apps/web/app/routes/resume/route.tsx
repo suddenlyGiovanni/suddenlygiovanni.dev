@@ -52,8 +52,8 @@ export const links: LinksFunction = () => {
 
 export async function loader(_: LoaderFunctionArgs) {
 	try {
-		const maybeResume = await Effect.runPromise(repository.github.getResume())
-		return json({ resume: maybeResume })
+		const { resume, meta } = await Effect.runPromise(repository.github.getResume())
+		return json({ resume, meta })
 	} catch (error) {
 		console.error(error)
 		throw new Response('Some error !!!', {
@@ -65,7 +65,7 @@ export async function loader(_: LoaderFunctionArgs) {
 }
 
 export default function Resume(): ReactElement {
-	const { resume } = useLoaderData<typeof loader>()
+	const { resume, meta } = useLoaderData<typeof loader>()
 	const { basics, skills, work, education, interests, languages } = resume
 
 	return (
