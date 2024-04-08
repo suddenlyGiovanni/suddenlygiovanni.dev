@@ -160,7 +160,14 @@ export function getResume(): Effect.Effect<
 								message: 'failed to parse data content',
 								encoding: data.encoding,
 							}),
-					}).pipe(Effect.zip(Effect.sync(() => headers['last-modified'])))
+					}).pipe(
+						Effect.zip(
+							Effect.sync(() => ({
+								lastModified: headers['last-modified'],
+								canonical: data._links.html,
+							})),
+						),
+					)
 				}
 				default:
 					return Effect.fail(
@@ -172,7 +179,7 @@ export function getResume(): Effect.Effect<
 			}
 		}),
 
-		Effect.flatMap(([maybeContentString, lastModified]) => {
+		Effect.flatMap(([maybeContentString, { lastModified, canonical }]) => {
 			/**
 			 * The content may not be valid JSON, and/or may not conform to the schema
 			 * This signals a problem with the data returned from the API, and the program should fail if it cannot process the data.
@@ -185,6 +192,7 @@ export function getResume(): Effect.Effect<
 				Schema.decode(Schema.parseJson(ResumeSchema))(maybeContentString),
 				Schema.decode(Meta)({
 					...(lastModified ? { lastModified } : {}),
+					...(canonical ? { canonical } : {}),
 				}),
 			])
 		}),
