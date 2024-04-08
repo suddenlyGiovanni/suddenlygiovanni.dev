@@ -38,3 +38,4 @@ export const Meta = S.struct({
  * The schema version and any other tooling configuration lives here
  */
 export type Meta = S.Schema.Encoded<typeof Meta>
+export type MetaType = S.Schema.Type<typeof Meta>
