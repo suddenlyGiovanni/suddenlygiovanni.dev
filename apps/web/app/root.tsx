@@ -102,7 +102,7 @@ function Document({
 	children: ReactNode
 	// nonce: string
 	theme?: 'light' | 'dark' | null // TODO: address this prop
-	env?: Record<string, string>
+	env?: typeof  ENV
 }): ReactElement {
 	return (
 		<html className={clsx(theme, 'min-h-screen')} data-theme={clsx(theme)} lang="en">
