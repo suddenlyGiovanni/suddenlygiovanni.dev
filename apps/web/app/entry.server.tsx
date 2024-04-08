@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign  -- Reason: This is how Remix defied the default entry.server */
 import { PassThrough } from 'node:stream'
 import type { AppLoadContext, EntryContext } from '@remix-run/node'
 import { createReadableStreamFromReadable } from '@remix-run/node'
@@ -55,6 +56,7 @@ function handleBotRequest(
 					reject(error)
 				},
 				onError(error: unknown) {
+					// biome-ignore lint/style/noParameterAssign: this is how Remix defined the default entry.server
 					responseStatusCode = 500
 					// Log streaming rendering errors from inside the shell.  Don't log
 					// errors encountered during initial shell rendering since they'll
@@ -101,6 +103,7 @@ function handleBrowserRequest(
 					reject(error)
 				},
 				onError(error: unknown) {
+					// biome-ignore lint/style/noParameterAssign: this is how Remix defined the default entry.server
 					responseStatusCode = 500
 					// Log streaming rendering errors from inside the shell.  Don't log
 					// errors encountered during initial shell rendering since they'll
