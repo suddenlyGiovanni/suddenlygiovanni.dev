@@ -92,6 +92,21 @@ export default function Resume(): ReactElement {
 				<Link className="inline-block" to={routesRecord['about-me'].url}>
 					&larr; back to my About Me
 				</Link>
+				<small>
+					{meta.lastModified ? (
+						<span>
+							last modified:{' '}
+							<time dateTime={new Date(meta.lastModified).toISOString()}>
+								{new Date(meta.lastModified).toLocaleDateString('en-US', {
+									day: 'numeric',
+									month: 'long',
+									year: 'numeric',
+								})}
+							</time>
+						</span>
+					) : null}
+					{meta.version ? <span className="ml-4">version {meta.version}</span> : null}
+				</small>
 			</footer>
 		</article>
 	)
