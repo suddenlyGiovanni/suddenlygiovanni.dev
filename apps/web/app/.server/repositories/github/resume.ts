@@ -1,7 +1,7 @@
 import { env } from 'node:process'
 import { Schema } from '@effect/schema'
 import type { ParseError } from '@effect/schema/ParseResult'
-import { Data, Effect, pipe, Option, Console } from 'effect'
+import { Console, Data, Effect, Option, pipe } from 'effect'
 import { Octokit, RequestError } from 'octokit'
 import { Meta, type MetaType } from '~/.server/schemas/resume/meta.ts'
 import { Resume as ResumeSchema, type ResumeType } from '~/.server/schemas/resume/resume.ts'
