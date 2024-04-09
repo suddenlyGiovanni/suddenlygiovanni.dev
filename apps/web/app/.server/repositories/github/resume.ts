@@ -3,7 +3,7 @@ import { Schema } from '@effect/schema'
 import type { ParseError } from '@effect/schema/ParseResult'
 import { Data, Effect, pipe } from 'effect'
 import { Octokit, RequestError } from 'octokit'
-
+import { Meta, type MetaType } from '~/.server/schemas/resume/meta.ts'
 import { Resume as ResumeSchema, type ResumeType } from '~/.server/schemas/resume/resume.ts'
 
 /**
@@ -19,9 +19,6 @@ import { Resume as ResumeSchema, type ResumeType } from '~/.server/schemas/resum
  * file... but where?
  */
 const octokit = new Octokit({ auth: env.GITHUB_TOKEN })
-
-const schema = Schema.parseJson(ResumeSchema)
-const decode = Schema.decode(schema)
 
 /**
  * This error can be thrown when the GITHUB_TOKEN is not set in the environment variables.
@@ -62,8 +59,11 @@ class DecodingError extends Data.TaggedError('DecodingError')<{
 }> {}
 
 export function getResume(): Effect.Effect<
-	ResumeType,
-	RequestError | DecodingError | InvalidDataError | ParseError,
+	{
+		meta: MetaType
+		resume: ResumeType
+	},
+	RequestError | InvalidDataError | DecodingError | ParseError,
 	never
 > {
 	const path = 'resume.json'
@@ -100,7 +100,13 @@ export function getResume(): Effect.Effect<
 			},
 		}),
 
-		Effect.flatMap(({ data }) => {
+		Effect.tap(octokitResponse => Effect.log(octokitResponse)),
+
+		Effect.tap(octokitResponse =>
+			Effect.log(`last-modified ${octokitResponse.headers['last-modified']}`),
+		),
+
+		Effect.flatMap(({ data, headers }) => {
 			/**
 			 * the api returns data in different formats depending on the parameters passed to the getContent request.
 			 * We have asked for a single file, not a directory, therefore we expect a single object to be returned.
@@ -113,13 +119,13 @@ export function getResume(): Effect.Effect<
 			 * - notify
 			 */
 			return typeof data === 'object' && !Array.isArray(data)
-				? Effect.succeed(data)
+				? Effect.succeed({ data, headers })
 				: Effect.fail(
 						new InvalidDataError({ message: `Expected an object, but got: ${typeof data}` }),
 					)
 		}),
 
-		Effect.flatMap(data => {
+		Effect.flatMap(({ data, headers }) => {
 			/**
 			 * The data returned from the getContent request not being an object or being an array,
 			 * or not having the correct type, name, or path. These are issues with the data returned
@@ -129,7 +135,7 @@ export function getResume(): Effect.Effect<
 			 * - notify
 			 */
 			return data.type === 'file' && data.name === path && data.path === path
-				? Effect.succeed(data)
+				? Effect.succeed({ data, headers })
 				: Effect.fail(
 						new InvalidDataError({
 							message: `Expected a file matching the correct path and name; got ${data.type}`,
@@ -137,7 +143,7 @@ export function getResume(): Effect.Effect<
 					)
 		}),
 
-		Effect.flatMap(data => {
+		Effect.flatMap(({ data, headers }) => {
 			switch (data.encoding) {
 				case 'base64': {
 					/**
@@ -154,7 +160,14 @@ export function getResume(): Effect.Effect<
 								message: 'failed to parse data content',
 								encoding: data.encoding,
 							}),
-					})
+					}).pipe(
+						Effect.zip(
+							Effect.sync(() => ({
+								lastModified: headers['last-modified'],
+								canonical: data._links.html,
+							})),
+						),
+					)
 				}
 				default:
 					return Effect.fail(
@@ -166,7 +179,7 @@ export function getResume(): Effect.Effect<
 			}
 		}),
 
-		Effect.flatMap(maybeContentString => {
+		Effect.flatMap(([maybeContentString, { lastModified, canonical }]) => {
 			/**
 			 * The content may not be valid JSON, and/or may not conform to the schema
 			 * This signals a problem with the data returned from the API, and the program should fail if it cannot process the data.
@@ -175,7 +188,20 @@ export function getResume(): Effect.Effect<
 			 * - notify
 			 */
 
-			return decode(maybeContentString)
+			return Effect.all([
+				Schema.decode(Schema.parseJson(ResumeSchema))(maybeContentString),
+				Schema.decode(Meta)({
+					...(lastModified ? { lastModified } : {}),
+					...(canonical ? { canonical } : {}),
+				}),
+			])
 		}),
+
+		Effect.map(([resume, meta]) => ({
+			resume,
+			meta,
+		})),
+
+		Effect.withLogSpan('getResume'),
 	)
 }

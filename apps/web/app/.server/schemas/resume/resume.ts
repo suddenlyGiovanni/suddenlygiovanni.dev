@@ -7,7 +7,6 @@ import { Certificate } from './certificates.ts'
 import { Education } from './education.ts'
 import { Interest } from './interest.ts'
 import { Language } from './language.ts'
-import { Meta } from './meta.ts'
 import { Project } from './project.ts'
 import { Publication } from './publication.ts'
 import { Reference } from './reference.ts'
@@ -48,14 +47,6 @@ export const Resume = S.struct({
 		S.array(Language).annotations({
 			title: 'languages',
 			description: 'List any other languages you speak',
-		}),
-		{ exact: true },
-	),
-
-	meta: S.optional(
-		Meta.annotations({
-			title: 'meta',
-			description: 'The schema version and any other tooling configuration lives here',
 		}),
 		{ exact: true },
 	),
