@@ -102,7 +102,11 @@ function getResumeFile({
 
 		yield* _(Console.debug(octokitResponse))
 
-		const { content, encoding } = yield* _(
+		const {
+			content,
+			encoding,
+			_links: { html: maybeCanonical },
+		} = yield* _(
 			Effect.succeed(octokitResponse).pipe(
 				Effect.flatMap(({ data }) => {
 					/**
@@ -156,6 +160,7 @@ function getResumeFile({
 
 		return {
 			decodedContent,
+			canonical: Option.fromNullable(maybeCanonical),
 			lastModified: Option.fromNullable(octokitResponse.headers['last-modified']),
 		}
 	}).pipe(Effect.withLogSpan('getResumeFile'))
@@ -197,6 +202,7 @@ export function getResume(): Effect.Effect<
 				...(Option.isSome(resumeFile.lastModified)
 					? { lastModified: resumeFile.lastModified.value }
 					: {}),
+				...(Option.isSome(resumeFile.canonical) ? { canonical: resumeFile.canonical.value } : {}),
 				version: packageJson.version,
 			}),
 		)
