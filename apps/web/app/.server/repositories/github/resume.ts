@@ -67,110 +67,98 @@ function getResumeFile({
 	readonly repo: string
 	readonly path: string
 }) {
-	return pipe(
-		Effect.tryPromise({
-			try: () =>
-				octokit.rest.repos.getContent({
-					owner: owner,
-					repo: repo,
-					path: path,
-				}),
-			catch: error => {
-				/**
-				 * The getContent request to the GitHub API fails. This could be due to a number of reasons
-				 * such as network issues, incorrect repository details, or the file not existing in the repository.
-				 *
-				 * ~if the error is due to network issues, we could retry the request after a delay~
-				 * retray capabilities ara alredy backed in the octokit lib.
-				 *
-				 * According to the docs, only 200 status code will not throw an error
-				 */
-				if (error instanceof RequestError) {
-					// handle Octokit error
-					// error.message; // Oops
-					// error.status; // 500
-					// error.request; // { method, url, headers, body }
-					// error.response; // { url, status, headers, data }
-					return error
-				}
-				throw error
-			},
-		}),
-
-		Effect.tap(octokitResponse => Console.debug(octokitResponse)),
-
-		Effect.tap(octokitResponse =>
-			Effect.log(`last-modified ${octokitResponse.headers['last-modified']}`),
-		),
-
-		Effect.flatMap(({ data, headers }) => {
-			/**
-			 * the api returns data in different formats depending on the parameters passed to the getContent request.
-			 * We have asked for a single file, not a directory, therefore we expect a single object to be returned.
-			 * We need to type guard the data to ensure it is the correct type.
-			 *
-			 * If the data differs from our expectations, we should throw an error.
-			 * This could be due to the file not existing, or the path being incorrect.
-			 * Not recoverable at runtime, strategy:
-			 * - fail
-			 * - notify
-			 */
-			return typeof data === 'object' && !Array.isArray(data)
-				? Effect.succeed({ data, headers })
-				: Effect.fail(
-						new InvalidDataError({ message: `Expected an object, but got: ${typeof data}` }),
-					)
-		}),
-
-		Effect.flatMap(({ data, headers }) => {
-			/**
-			 * The data returned from the getContent request not being an object or being an array,
-			 * or not having the correct type, name, or path. These are issues with the data returned
-			 * from the API and the program should fail if it cannot process the data.
-			 * Strategy:
-			 * - fail
-			 * - notify
-			 */
-			return data.type === 'file' && data.name === path && data.path === path
-				? Effect.succeed({ data, headers })
-				: Effect.fail(
-						new InvalidDataError({
-							message: `Expected a file matching the correct path and name; got ${data.type}`,
-						}),
-					)
-		}),
-
-		Effect.flatMap(({ data, headers }) => {
-			switch (data.encoding) {
-				case 'base64': {
+	return Effect.gen(function* (_) {
+		const octokitResponse = yield* _(
+			Effect.tryPromise({
+				try: () =>
+					octokit.rest.repos.getContent({
+						owner: owner,
+						repo: repo,
+						path: path,
+					}),
+				catch: error => {
 					/**
-					 * The content of the file cannot be correctly decoded from base64
-					 * This could be due to the file being corrupted, or the encoding being incorrect.
+					 * The getContent request to the GitHub API fails. This could be due to a number of reasons
+					 * such as network issues, incorrect repository details, or the file not existing in the repository.
+					 *
+					 * ~if the error is due to network issues, we could retry the request after a delay~
+					 * retray capabilities ara alredy backed in the octokit lib.
+					 *
+					 * According to the docs, only 200 status code will not throw an error
+					 */
+					if (error instanceof RequestError) {
+						// handle Octokit error
+						// error.message; // Oops
+						// error.status; // 500
+						// error.request; // { method, url, headers, body }
+						// error.response; // { url, status, headers, data }
+
+						return error
+					}
+					throw error
+				},
+			}),
+		)
+
+		yield* _(Console.debug(octokitResponse))
+
+		const { content, encoding } = yield* _(
+			Effect.succeed(octokitResponse).pipe(
+				Effect.flatMap(({ data }) => {
+					/**
+					 * the api returns data in different formats depending on the parameters passed to the getContent request.
+					 * We have asked for a single file, not a directory, therefore we expect a single object to be returned.
+					 * We need to type guard the data to ensure it is the correct type.
+					 *
+					 * If the data differs from our expectations, we should throw an error.
+					 * This could be due to the file not existing, or the path being incorrect.
+					 * Not recoverable at runtime, strategy:
+					 * - fail
+					 * - notify
+					 */
+					return typeof data === 'object' && !Array.isArray(data)
+						? Effect.succeed(data)
+						: Effect.fail(
+								new InvalidDataError({ message: `Expected an object, but got: ${typeof data}` }),
+							)
+				}),
+
+				Effect.flatMap(data => {
+					/**
+					 * The data returned from the getContent request not being an object or being an array,
+					 * or not having the correct type, name, or path. These are issues with the data returned
+					 * from the API and the program should fail if it cannot process the data.
 					 * Strategy:
 					 * - fail
 					 * - notify
 					 */
-					return Effect.try({
-						try: () => Buffer.from(data.content, 'base64').toString('utf8'),
-						catch: _error =>
-							new DecodingError({
-								message: 'failed to parse data content',
-								encoding: data.encoding,
-							}),
-					}).pipe(Effect.zip(Effect.succeed(headers)))
-				}
-				default:
-					return Effect.fail(
-						new DecodingError({
-							message: 'missing strategy to decode encoded content',
-							encoding: data.encoding,
-						}),
-					)
-			}
-		}),
+					return data.type === 'file' && data.name === path && data.path === path
+						? Effect.succeed(data)
+						: Effect.fail(
+								new InvalidDataError({
+									message: `Expected a file matching the correct path and name; got ${data.type}`,
+								}),
+							)
+				}),
+			),
+		)
 
-		Effect.withLogSpan('getResumeFile'),
-	)
+		const decodedContent = yield* _(
+			Effect.try({
+				try: () => Buffer.from(content, 'base64').toString('utf8'),
+				catch: _error =>
+					new DecodingError({
+						message: 'failed to parse data content',
+						encoding: encoding,
+					}),
+			}),
+		)
+
+		return {
+			decodedContent,
+			lastModified: Option.fromNullable(octokitResponse.headers['last-modified']),
+		}
+	}).pipe(Effect.withLogSpan('getResumeFile'))
 }
 
 export function getResume(): Effect.Effect<
@@ -194,20 +182,21 @@ export function getResume(): Effect.Effect<
 				{ concurrency: 2 },
 			),
 		)
-		const [resumeFileContentString, resumeFileResponseHeaders] = resumeFile
-		const lastModified = Option.fromNullable(resumeFileResponseHeaders['last-modified'])
-		const [packageFileContentString] = packageFile
 
-		const resume = yield* _(Schema.decode(Schema.parseJson(ResumeSchema))(resumeFileContentString))
+		const resume = yield* _(
+			Schema.decode(Schema.parseJson(ResumeSchema))(resumeFile.decodedContent),
+		)
 		const packageJson = yield* _(
 			Schema.decode(Schema.parseJson(Schema.struct({ version: Schema.string })))(
-				packageFileContentString,
+				packageFile.decodedContent,
 			),
 		)
 
 		const meta = yield* _(
 			Schema.decode(Meta)({
-				...(Option.isSome(lastModified) ? { lastModified: lastModified.value } : {}),
+				...(Option.isSome(resumeFile.lastModified)
+					? { lastModified: resumeFile.lastModified.value }
+					: {}),
 				version: packageJson.version,
 			}),
 		)
