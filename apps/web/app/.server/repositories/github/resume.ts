@@ -1,7 +1,7 @@
 import { env } from 'node:process'
 import { Schema } from '@effect/schema'
 import type { ParseError } from '@effect/schema/ParseResult'
-import { Data, Effect, pipe } from 'effect'
+import { Data, Effect, pipe, Option, Console } from 'effect'
 import { Octokit, RequestError } from 'octokit'
 import { Meta, type MetaType } from '~/.server/schemas/resume/meta.ts'
 import { Resume as ResumeSchema, type ResumeType } from '~/.server/schemas/resume/resume.ts'
@@ -58,18 +58,15 @@ class DecodingError extends Data.TaggedError('DecodingError')<{
 	readonly encoding?: string
 }> {}
 
-export function getResume(): Effect.Effect<
-	{
-		meta: MetaType
-		resume: ResumeType
-	},
-	RequestError | InvalidDataError | DecodingError | ParseError,
-	never
-> {
-	const path = 'resume.json'
-	const repo = 'resume'
-	const owner = 'suddenlyGiovanni'
-
+function getResumeFile({
+	owner,
+	repo,
+	path,
+}: {
+	readonly owner: string
+	readonly repo: string
+	readonly path: string
+}) {
 	return pipe(
 		Effect.tryPromise({
 			try: () =>
@@ -100,7 +97,7 @@ export function getResume(): Effect.Effect<
 			},
 		}),
 
-		Effect.tap(octokitResponse => Effect.log(octokitResponse)),
+		Effect.tap(octokitResponse => Console.debug(octokitResponse)),
 
 		Effect.tap(octokitResponse =>
 			Effect.log(`last-modified ${octokitResponse.headers['last-modified']}`),
@@ -160,14 +157,7 @@ export function getResume(): Effect.Effect<
 								message: 'failed to parse data content',
 								encoding: data.encoding,
 							}),
-					}).pipe(
-						Effect.zip(
-							Effect.sync(() => ({
-								lastModified: headers['last-modified'],
-								canonical: data._links.html,
-							})),
-						),
-					)
+					}).pipe(Effect.zip(Effect.succeed(headers)))
 				}
 				default:
 					return Effect.fail(
@@ -179,29 +169,49 @@ export function getResume(): Effect.Effect<
 			}
 		}),
 
-		Effect.flatMap(([maybeContentString, { lastModified, canonical }]) => {
-			/**
-			 * The content may not be valid JSON, and/or may not conform to the schema
-			 * This signals a problem with the data returned from the API, and the program should fail if it cannot process the data.
-			 * Strategy:
-			 * - fail
-			 * - notify
-			 */
-
-			return Effect.all([
-				Schema.decode(Schema.parseJson(ResumeSchema))(maybeContentString),
-				Schema.decode(Meta)({
-					...(lastModified ? { lastModified } : {}),
-					...(canonical ? { canonical } : {}),
-				}),
-			])
-		}),
-
-		Effect.map(([resume, meta]) => ({
-			resume,
-			meta,
-		})),
-
-		Effect.withLogSpan('getResume'),
+		Effect.withLogSpan('getResumeFile'),
 	)
+}
+
+export function getResume(): Effect.Effect<
+	{
+		meta: MetaType
+		resume: ResumeType
+	},
+	RequestError | InvalidDataError | DecodingError | ParseError,
+	never
+> {
+	const repo = 'resume'
+	const owner = 'suddenlyGiovanni'
+
+	return Effect.gen(function* (_) {
+		const { resumeFile, packageFile } = yield* _(
+			Effect.all(
+				{
+					resumeFile: getResumeFile({ owner, repo, path: 'resume.json' }),
+					packageFile: getResumeFile({ owner, repo, path: 'package.json' }),
+				},
+				{ concurrency: 2 },
+			),
+		)
+		const [resumeFileContentString, resumeFileResponseHeaders] = resumeFile
+		const lastModified = Option.fromNullable(resumeFileResponseHeaders['last-modified'])
+		const [packageFileContentString] = packageFile
+
+		const resume = yield* _(Schema.decode(Schema.parseJson(ResumeSchema))(resumeFileContentString))
+		const packageJson = yield* _(
+			Schema.decode(Schema.parseJson(Schema.struct({ version: Schema.string })))(
+				packageFileContentString,
+			),
+		)
+
+		const meta = yield* _(
+			Schema.decode(Meta)({
+				...(Option.isSome(lastModified) ? { lastModified: lastModified.value } : {}),
+				version: packageJson.version,
+			}),
+		)
+
+		return { meta, resume }
+	}).pipe(Effect.withLogSpan('getResume'))
 }
