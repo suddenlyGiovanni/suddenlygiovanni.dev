@@ -1,7 +1,6 @@
 import { AST, ParseResult, Schema } from '@effect/schema'
 // biome-ignore lint/style/useNamingConvention: I want to have the same style of using JSON.<method>
 import * as YAML from '@std/yaml'
-import type { YAMLError } from '@std/yaml/_error'
 
 export const YmlString = Schema.string.annotations({
 	[AST.IdentifierAnnotationId]: 'YmlString',
@@ -44,13 +43,12 @@ export function parseYml<A, I, R>(schema?: Schema.Schema<A, I, R>) {
 		(string, _, ast) =>
 			ParseResult.try({
 				try: () => YAML.parse(string),
-				catch: (e: YAMLError) => new ParseResult.Type(ast, string, e.message),
+				catch: e => new ParseResult.Type(ast, string, e instanceof Error ? e?.message : undefined),
 			}),
 		(unknown, _, ast) =>
 			ParseResult.try({
 				try: () => YAML.stringify(unknown),
-				// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-				catch: (e: any) => new ParseResult.Type(ast, unknown, e?.message),
+				catch: e => new ParseResult.Type(ast, unknown, e instanceof Error ? e?.message : undefined),
 			}),
 	)
 }
