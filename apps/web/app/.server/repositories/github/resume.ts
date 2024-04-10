@@ -1,6 +1,7 @@
 import { AST, ParseResult, Schema } from '@effect/schema'
 import type { ParseError } from '@effect/schema/ParseResult'
-import * as yaml from '@std/yaml'
+// biome-ignore lint/style/useNamingConvention: I want to have the same style of using JSON.<method>
+import * as YAML from '@std/yaml'
 import type { YAMLError } from '@std/yaml/_error'
 import { Console, Data, Effect, Option } from 'effect'
 import { env } from 'node:process'
@@ -244,16 +245,16 @@ export function parseYml<A, I, R>(schema?: Schema.Schema<A, I, R>) {
 	return Schema.transformOrFail(
 		YmlString,
 		Schema.unknown,
-		(s, _, ast) =>
+		(string, _, ast) =>
 			ParseResult.try({
-				try: () => yaml.parse(s),
-				catch: (e: YAMLError) => new ParseResult.Type(ast, s, e.message),
+				try: () => YAML.parse(string),
+				catch: (e: YAMLError) => new ParseResult.Type(ast, string, e.message),
 			}),
-		(u, _, ast) =>
+		(unknown, _, ast) =>
 			ParseResult.try({
-				try: () => yaml.stringify(u),
+				try: () => YAML.stringify(unknown),
 				// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-				catch: (e: any) => new ParseResult.Type(ast, u, e?.message),
+				catch: (e: any) => new ParseResult.Type(ast, unknown, e?.message),
 			}),
 	)
 }
