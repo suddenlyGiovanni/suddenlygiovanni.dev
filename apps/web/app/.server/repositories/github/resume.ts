@@ -1,11 +1,9 @@
-import { AST, ParseResult, Schema } from '@effect/schema'
+import { Schema } from '@effect/schema'
 import type { ParseError } from '@effect/schema/ParseResult'
-// biome-ignore lint/style/useNamingConvention: I want to have the same style of using JSON.<method>
-import * as YAML from '@std/yaml'
-import type { YAMLError } from '@std/yaml/_error'
 import { Console, Data, Effect, Option } from 'effect'
 import { env } from 'node:process'
 import { Octokit, RequestError } from 'octokit'
+import { parseYml } from '~/.server/schemas/parse-yml.ts'
 
 import { Meta, type MetaType } from '~/.server/schemas/resume/meta.ts'
 import { Resume as ResumeSchema, type ResumeType } from '~/.server/schemas/resume/resume.ts'
@@ -212,49 +210,4 @@ export function getResume(): Effect.Effect<
 
 		return { meta, resume }
 	}).pipe(Effect.withLogSpan('getResume'))
-}
-
-const YmlString = Schema.string.annotations({
-	[AST.IdentifierAnnotationId]: 'YmlString',
-	[AST.TitleAnnotationId]: 'YmlString',
-	[AST.DescriptionAnnotationId]: 'a YML string',
-})
-
-/**
- * The `parseYml` combinator provides a method to convert YML strings into the `unknown` type using the underlying
- * functionality of `YML.parse`. It also utilizes `YML.stringify` for encoding.
- *
- * You can optionally provide a `ParseJsonOptions` to configure both `JSON.parse` and `JSON.stringify` executions.
- *
- * You must pass a schema `Schema<A, I, R>` to obtain an `A` type instead of `unknown`.
- *
- * @example
- * import * as S from "@effect/schema/Schema"
- *
- * assert.deepStrictEqual(S.decodeUnknownSync(S.parseJson(S.struct({ a: S.NumberFromString })))(`{"a":"1"}`), { a: 1 })
- *
- * @category string transformations
- * @since 1.0.0
- */
-export function parseYml(): Schema.Schema<unknown, string>
-export function parseYml<A, I, R>(schema: Schema.Schema<A, I, R>): Schema.Schema<A, string, R>
-export function parseYml<A, I, R>(schema?: Schema.Schema<A, I, R>) {
-	if (Schema.isSchema(schema)) {
-		return Schema.compose(parseYml(), schema)
-	}
-	return Schema.transformOrFail(
-		YmlString,
-		Schema.unknown,
-		(string, _, ast) =>
-			ParseResult.try({
-				try: () => YAML.parse(string),
-				catch: (e: YAMLError) => new ParseResult.Type(ast, string, e.message),
-			}),
-		(unknown, _, ast) =>
-			ParseResult.try({
-				try: () => YAML.stringify(unknown),
-				// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-				catch: (e: any) => new ParseResult.Type(ast, unknown, e?.message),
-			}),
-	)
 }
