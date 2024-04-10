@@ -77,7 +77,6 @@ function getResumeFile({
 						owner: owner,
 						repo: repo,
 						path: path,
-						ref: 'refactor/resume.yml',
 					}),
 				catch: error => {
 					/**
