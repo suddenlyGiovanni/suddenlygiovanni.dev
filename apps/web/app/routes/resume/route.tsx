@@ -105,7 +105,13 @@ export default function Resume(): ReactElement {
 							</time>
 						</span>
 					) : null}
-					{meta.version ? <span className="ml-4">version {meta.version}</span> : null}
+					{meta.version ? (
+						<span className="ml-4">
+							<a href={meta.canonical} target="_blank" rel="noreferrer">
+								version {meta.version}
+							</a>
+						</span>
+					) : null}
 				</small>
 			</footer>
 		</article>
