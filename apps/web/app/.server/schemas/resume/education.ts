@@ -1,7 +1,7 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
 
-import { ISO8601Date } from './iso8601-date.ts'
+import { ISO8601Date } from '../iso8601-date.ts'
 import { UrlString } from './url-string.ts'
 
 export const Education = S.struct({
