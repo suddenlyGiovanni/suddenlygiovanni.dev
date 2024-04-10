@@ -1,10 +1,10 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
 
-import { Email } from './email.ts'
 import { ISO8601Date } from '../iso8601-date.ts'
-import { Phone } from './phone.ts'
 import { UrlString } from '../url-string.ts'
+import { Email } from './email.ts'
+import { Phone } from './phone.ts'
 
 export const Work = S.struct({
 	contact: S.optional(

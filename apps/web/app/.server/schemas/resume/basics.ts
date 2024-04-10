@@ -1,11 +1,11 @@
 // biome-ignore lint/nursery/noNamespaceImport: this is how we import from schema
 import * as S from '@effect/schema/Schema'
 
+import { UrlString } from '../url-string.ts'
 import { Email } from './email.ts'
 import { Location } from './location.ts'
 import { Phone } from './phone.ts'
 import { Profile } from './profile.ts'
-import { UrlString } from '../url-string.ts'
 
 export const Basics = S.struct({
 	email: Email.annotations({
