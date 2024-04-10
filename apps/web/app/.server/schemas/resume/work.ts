@@ -4,7 +4,7 @@ import * as S from '@effect/schema/Schema'
 import { Email } from './email.ts'
 import { ISO8601Date } from '../iso8601-date.ts'
 import { Phone } from './phone.ts'
-import { UrlString } from './url-string.ts'
+import { UrlString } from '../url-string.ts'
 
 export const Work = S.struct({
 	contact: S.optional(

@@ -1,6 +1,6 @@
 import * as S from '@effect/schema/Schema'
 
-import { UrlString } from './url-string.ts'
+import { UrlString } from '../url-string.ts'
 
 export const Certificate = S.struct({
 	name: S.optional(

@@ -2,7 +2,7 @@
 import * as S from '@effect/schema/Schema'
 
 import { ISODateString } from '../iso-date-string.ts'
-import { UrlString } from './url-string.ts'
+import { UrlString } from '../url-string.ts'
 
 export const Volunteer = S.struct({
 	endDate: S.optional(ISODateString, { exact: true }),

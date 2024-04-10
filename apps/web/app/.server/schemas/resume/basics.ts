@@ -5,7 +5,7 @@ import { Email } from './email.ts'
 import { Location } from './location.ts'
 import { Phone } from './phone.ts'
 import { Profile } from './profile.ts'
-import { UrlString } from './url-string.ts'
+import { UrlString } from '../url-string.ts'
 
 export const Basics = S.struct({
 	email: Email.annotations({
