@@ -31,10 +31,9 @@ export const YmlString = Schema.string.annotations({
  * @category string transformations
  * @since 1.0.0
  */
-export const parseYml: {
-	<A, I, R>(schema: Schema.Schema<A, I, R>): Schema.Schema<A, string, R>
-	(): Schema.Schema<unknown, string, never>
-} = <A, I, R>(schema?: Schema.Schema<A, I, R>) => {
+export function parseYml(): Schema.Schema<unknown, string>
+export function parseYml<A, I, R>(schema: Schema.Schema<A, I, R>): Schema.Schema<A, string, R>
+export function parseYml<A, I, R>(schema?: Schema.Schema<A, I, R>) {
 	if (Schema.isSchema(schema)) {
 		// biome-ignore lint/suspicious/noExplicitAny: can't infer the type of `schema` with generics
 		return Schema.compose(parseYml(), schema as any) as any
