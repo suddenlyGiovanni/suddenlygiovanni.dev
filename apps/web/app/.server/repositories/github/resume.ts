@@ -1,7 +1,7 @@
+import { env } from 'node:process'
 import { Schema } from '@effect/schema'
 import type { ParseError } from '@effect/schema/ParseResult'
 import { Console, Data, Effect, Option } from 'effect'
-import { env } from 'node:process'
 import { Octokit, RequestError } from 'octokit'
 import { parseYml } from '~/.server/schemas/parse-yml.ts'
 
