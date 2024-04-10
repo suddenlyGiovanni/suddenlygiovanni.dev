@@ -1,6 +1,6 @@
 import { AST, ParseResult, Schema } from '@effect/schema'
 import type { ParseError } from '@effect/schema/ParseResult'
-import * as YAML from '@std/yaml'
+import * as yaml from '@std/yaml'
 import type { YAMLError } from '@std/yaml/_error'
 import { Console, Data, Effect, Option } from 'effect'
 import { env } from 'node:process'
@@ -246,12 +246,12 @@ export function parseYml<A, I, R>(schema?: Schema.Schema<A, I, R>) {
 		Schema.unknown,
 		(s, _, ast) =>
 			ParseResult.try({
-				try: () => YAML.parse(s),
+				try: () => yaml.parse(s),
 				catch: (e: YAMLError) => new ParseResult.Type(ast, s, e.message),
 			}),
 		(u, _, ast) =>
 			ParseResult.try({
-				try: () => YAML.stringify(u),
+				try: () => yaml.stringify(u),
 				// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 				catch: (e: any) => new ParseResult.Type(ast, u, e?.message),
 			}),
