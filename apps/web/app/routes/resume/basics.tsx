@@ -37,7 +37,17 @@ function Header({
 				<T.h1>{name}</T.h1>
 				<T.h2>{label}</T.h2>
 			</hgroup>
-			<T.blockquote>{summary.split('\n').map((p,i) => <p key={i}>{p}</p>)}</T.blockquote>
+			<T.blockquote>
+				{summary.split('\n').map((p, i) => (
+					<p
+						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						key={i}
+						className="my-0"
+					>
+						{p}
+					</p>
+				))}
+			</T.blockquote>
 			<T.p>
 				<em>
 					If you consider me for a role, read through{' '}

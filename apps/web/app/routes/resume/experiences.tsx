@@ -225,7 +225,13 @@ function ExperienceSummary({
 		<dd>
 			<T.muted>
 				{summary.split('\n').map((p, i) => (
-					<p key={i}>{p}</p>
+					<p
+						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						key={i}
+						className="my-0"
+					>
+						{p}
+					</p>
 				))}
 			</T.muted>
 		</dd>
@@ -245,7 +251,15 @@ function ExperienceHighlights({
 						className="pl-0"
 						key={pipe(highlight, s => s.slice(0, highlight.length / 2), generateDjb2Hash)}
 					>
-						{highlight.split('\n').map((p, i) => (<p key={i}>{p}</p>))}
+						{highlight.split('\n').map((p, i) => (
+							<p
+								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+								key={i}
+								className="my-0"
+							>
+								{p}
+							</p>
+						))}
 					</li>
 				))}
 			</T.ul>
