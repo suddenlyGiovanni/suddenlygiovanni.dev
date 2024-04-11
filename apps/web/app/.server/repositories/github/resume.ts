@@ -1,26 +1,12 @@
-import { env } from 'node:process'
 import { Schema } from '@effect/schema'
 import type { ParseError } from '@effect/schema/ParseResult'
 import { Console, Data, Effect, Option } from 'effect'
-import { Octokit, RequestError } from 'octokit'
+import { RequestError } from 'octokit'
 import { parseYml } from '~/.server/schemas/parse-yml.ts'
+import { GitHub, octokit } from '~/.server/services/octokit.ts'
 
 import { Meta, type MetaType } from '~/.server/schemas/resume/meta.ts'
 import { Resume as ResumeSchema, type ResumeType } from '~/.server/schemas/resume/resume.ts'
-
-/**
- * Could throw if GITHUB_TOKEN is invalid or expired;
- * Not recoverable at runtime, strategy:
- * - fail
- * - notify
- *
- * @remarks
- * what is it?
- * a github api client singleton?
- * or just an object with a method? in-any case it needs to moved to a separate
- * file... but where?
- */
-const octokit = new Octokit({ auth: env.GITHUB_TOKEN })
 
 /**
  * This error can be thrown when the GITHUB_TOKEN is not set in the environment variables.
@@ -87,6 +73,8 @@ function getResumeFile({
 	readonly ref?: string
 }) {
 	return Effect.gen(function* (_) {
+		const { octokit } = yield* _(GitHub)
+
 		const octokitResponse = yield* _(
 			Effect.tryPromise({
 				try: () =>
@@ -227,5 +215,7 @@ export function getResume(): Effect.Effect<
 		)
 
 		return { meta, resume }
-	}).pipe(Effect.withLogSpan('getResume'))
+	})
+		.pipe(Effect.withLogSpan('getResume'))
+		.pipe(Effect.provideService(GitHub, { octokit }))
 }
