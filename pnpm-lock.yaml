@@ -48,8 +48,8 @@ importers:
         specifier: 2.8.1
         version: 2.8.1(typescript@5.4.3)
       '@std/yaml':
-        specifier: npm:@jsr/std__yaml@0.221.0
-        version: /@jsr/std__yaml@0.221.0
+        specifier: npm:@jsr/std__yaml@0.222.1
+        version: /@jsr/std__yaml@0.222.1
       '@suddenly-giovanni/open-graph-protocol':
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
@@ -2642,8 +2642,8 @@ packages:
     resolution: {integrity: sha512-Lg3PnLp0QXpxwLIAuuJboLeRaIhrgJjeuh797QADg3xz8wGLugQOS5DpsE8A6i6Adgzf+bacllkKZG3J0tGfDw==}
     dev: true
 
-  /@jsr/std__yaml@0.221.0:
-    resolution: {integrity: sha512-CKSAKtir6INPzN07qlSkSjJgQzKSkFdYbA/TAoLXxgts6QqeledzAHK6AYTu+hb7uBl93UXDcea8ayk7Re3FIQ==, tarball: https://npm.jsr.io/~/7/@jsr/std__yaml/0.221.0.tgz}
+  /@jsr/std__yaml@0.222.1:
+    resolution: {integrity: sha512-1YOad3AeYmXUpH71V9hlheIFAM2rdkECRwAmp7GKZEk8Hf30OCucV9eh9uixVjcENPGzJZPrwCITAgsPvfvCyA==, tarball: https://npm.jsr.io/~/7/@jsr/std__yaml/0.222.1.tgz}
     dev: false
 
   /@mdx-js/mdx@2.3.0:
