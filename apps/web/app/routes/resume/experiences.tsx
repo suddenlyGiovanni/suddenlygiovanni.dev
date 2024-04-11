@@ -223,7 +223,17 @@ function ExperienceSummary({
 }): null | ReactElement {
 	return summary ? (
 		<dd>
-			<T.muted>{summary}</T.muted>
+			<T.muted>
+				{summary.split('\n').map((p, i) => (
+					<p
+						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+						key={i}
+						className="my-0"
+					>
+						{p}
+					</p>
+				))}
+			</T.muted>
 		</dd>
 	) : null
 }
@@ -241,7 +251,15 @@ function ExperienceHighlights({
 						className="pl-0"
 						key={pipe(highlight, s => s.slice(0, highlight.length / 2), generateDjb2Hash)}
 					>
-						{highlight}
+						{highlight.split('\n').map((p, i) => (
+							<p
+								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+								key={i}
+								className="my-0"
+							>
+								{p}
+							</p>
+						))}
 					</li>
 				))}
 			</T.ul>
