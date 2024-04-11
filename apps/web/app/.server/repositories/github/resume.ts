@@ -3,6 +3,8 @@ import { Schema } from '@effect/schema'
 import type { ParseError } from '@effect/schema/ParseResult'
 import { Console, Data, Effect, Option } from 'effect'
 import { Octokit, RequestError } from 'octokit'
+import { parseYml } from '~/.server/schemas/parse-yml.ts'
+
 import { Meta, type MetaType } from '~/.server/schemas/resume/meta.ts'
 import { Resume as ResumeSchema, type ResumeType } from '~/.server/schemas/resume/resume.ts'
 
@@ -181,16 +183,14 @@ export function getResume(): Effect.Effect<
 		const { resumeFile, packageFile } = yield* _(
 			Effect.all(
 				{
-					resumeFile: getResumeFile({ owner, repo, path: 'resume.json' }),
+					resumeFile: getResumeFile({ owner, repo, path: 'resume.yml' }),
 					packageFile: getResumeFile({ owner, repo, path: 'package.json' }),
 				},
 				{ concurrency: 2 },
 			),
 		)
 
-		const resume = yield* _(
-			Schema.decode(Schema.parseJson(ResumeSchema))(resumeFile.decodedContent),
-		)
+		const resume = yield* _(Schema.decode(parseYml(ResumeSchema))(resumeFile.decodedContent))
 		const packageJson = yield* _(
 			Schema.decode(Schema.parseJson(Schema.struct({ version: Schema.string })))(
 				packageFile.decodedContent,
