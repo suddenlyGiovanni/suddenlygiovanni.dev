@@ -20,7 +20,7 @@ import { Resume as ResumeSchema, type ResumeType } from '~/.server/schemas/resum
  * or just an object with a method? in-any case it needs to moved to a separate
  * file... but where?
  */
-const octokit = new Octokit({ auth: env['GITHUB_TOKEN'] })
+const octokit = new Octokit({ auth: env.GITHUB_TOKEN })
 
 /**
  * This error can be thrown when the GITHUB_TOKEN is not set in the environment variables.
