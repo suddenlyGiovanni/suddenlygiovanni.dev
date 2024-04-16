@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.6.3/schema.json",
+	"$schema": "https://biomejs.dev/schemas/1.7.0/schema.json",
 	"files": {
 		"include": ["./apps/**/*", "./packages/**/*"],
 		"ignore": ["node_modules", "**/node_modules", "./~"]
@@ -26,6 +26,19 @@
 			"nursery": {
 				"all": true,
 				"noUndeclaredDependencies": "off"
+			},
+			"style": {
+				"noNamespaceImport": {
+					"level": "off"
+				}
+			},
+			"performance": {
+				"noBarrelFile": {
+					"level": "warn"
+				},
+				"noReExportAll": {
+					"level": "warn"
+				}
 			}
 		}
 	},
