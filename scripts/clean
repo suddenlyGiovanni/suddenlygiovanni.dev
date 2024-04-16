@@ -2,20 +2,23 @@
 
 log_message="🏗️ Cleaning up node_modules directory..."
 
-echo $log_message
+echo "$log_message"
 
+# List of directories and files to remove
+items_to_clean=("node_modules" ".turbo" "dist" "build" "storybook-static" "tsconfig.tsbuildinfo")
 
-# List of directories to remove
-directories=("node_modules" ".turbo" "dist" "build" "storybook-static" )
-
-for dir in "${directories[@]}"
+for item in "${items_to_clean[@]}"
 do
-  if [ -d "$dir" ]
+  if [ -d "$item" ]
   then
-    rm -rf "$dir"
-    echo "✅ Removed '$dir'"
+    rm -rf "$item"
+    echo "✅ Removed directory '$item'"
+  elif [ -f "$item" ]
+  then
+    rm "$item"
+    echo "✅ Removed file '$item'"
   else
-    echo "🔍'$dir' does not exist; ✅ moving on..."
+    echo "🔍'$item' does not exist; ✅ moving on..."
   fi
 done
 
