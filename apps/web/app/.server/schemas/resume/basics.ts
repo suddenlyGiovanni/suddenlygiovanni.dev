@@ -6,7 +6,7 @@ import { Location } from './location.ts'
 import { Phone } from './phone.ts'
 import { Profile } from './profile.ts'
 
-export const Basics = S.struct({
+export const Basics = S.Struct({
 	email: Email.annotations({
 		title: 'email',
 		description: 'Email address',
@@ -45,7 +45,7 @@ export const Basics = S.struct({
 		{ exact: true },
 	),
 
-	profiles: S.array(Profile).annotations({
+	profiles: S.Array(Profile).annotations({
 		title: 'profiles',
 		description: 'Specify any number of social networks that you participate in',
 	}),

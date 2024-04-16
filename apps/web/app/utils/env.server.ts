@@ -3,8 +3,8 @@ import * as Schema from '@effect/schema/Schema'
 import { formatError } from '@effect/schema/TreeFormatter'
 import * as Either from 'effect/Either'
 
-const envSchema = Schema.struct({
-	NODE_ENV: Schema.literal('production', 'development', 'test'),
+const envSchema = Schema.Struct({
+	NODE_ENV: Schema.Literal('production', 'development', 'test'),
 	GITHUB_TOKEN: Schema.optional(
 		Schema.NonEmpty.annotations({
 			description: 'GitHub token',
@@ -16,12 +16,10 @@ const envSchema = Schema.struct({
 		},
 	),
 	ALLOW_INDEXING: Schema.optional(
-		Schema.transform(
-			Schema.literal('true', 'false'),
-			Schema.boolean,
-			Boolean,
-			bool => String(bool) as 'true' | 'false',
-		),
+		Schema.transform(Schema.Literal('true', 'false'), Schema.Boolean, {
+			decode: string => string === 'true',
+			encode: boolean => (boolean ? 'true' : 'false'),
+		}),
 		{
 			exact: true,
 			default: () => false,

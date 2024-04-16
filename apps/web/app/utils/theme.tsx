@@ -5,19 +5,17 @@ import * as Either from 'effect/Either'
 import { useHints } from './client-hints.tsx'
 import { useRequestInfo } from './request-info.ts'
 
-export const ThemeFormSchema = Schema.struct({
-	theme: Schema.union(
-		Schema.literal('light'),
-		Schema.literal('dark'),
-		Schema.literal('system'),
-	).annotations({
+export const ThemeFormSchema = Schema.Struct({
+	theme: Schema.Literal('light', 'dark', 'system').annotations({
 		title: 'Theme',
 		description: 'The theme to set',
 		examples: ['light', 'dark', 'system'],
 	}),
 })
 
-export function useOptimisticThemeMode(): 'light' | 'dark' | 'system' | undefined {
+export type Theme = Schema.Schema.Type<typeof ThemeFormSchema>['theme']
+
+export function useOptimisticThemeMode(): Theme | undefined {
 	const fetchers = useFetchers()
 	const themeFetcher = fetchers.find(f => f.formAction === '/')
 
@@ -38,7 +36,7 @@ export function useOptimisticThemeMode(): 'light' | 'dark' | 'system' | undefine
  * Returns the theme mode based on the user's preferences and system hints.
  * If the user's preference is not set, it falls back to the system hints.
  */
-export function useTheme(): 'light' | 'dark' | null {
+export function useTheme(): Exclude<Theme, 'system'> | null {
 	const hints = useHints()
 	const requestInfo = useRequestInfo()
 	const optimisticMode = useOptimisticThemeMode()

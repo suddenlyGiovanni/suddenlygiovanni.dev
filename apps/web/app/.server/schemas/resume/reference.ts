@@ -1,6 +1,6 @@
 import * as S from '@effect/schema/Schema'
 
-export const Reference = S.struct({
+export const Reference = S.Struct({
 	name: S.compose(S.Trim, S.NonEmpty).annotations({
 		title: 'name',
 		description: 'The name of the reference',

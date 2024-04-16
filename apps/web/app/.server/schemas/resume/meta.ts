@@ -2,7 +2,7 @@ import * as S from '@effect/schema/Schema'
 
 import { UrlString } from '../url-string.ts'
 
-export const Meta = S.struct({
+export const Meta = S.Struct({
 	/**
 	 * URL (as per RFC 3986) to latest version of this document
 	 */

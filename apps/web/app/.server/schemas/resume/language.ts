@@ -1,6 +1,6 @@
 import * as S from '@effect/schema/Schema'
 
-export const Language = S.struct({
+export const Language = S.Struct({
 	fluency: S.optional(
 		S.compose(S.Trim, S.NonEmpty).annotations({
 			title: 'fluency',

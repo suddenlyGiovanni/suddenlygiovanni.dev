@@ -2,7 +2,7 @@ import * as S from '@effect/schema/Schema'
 
 import { UrlString } from '../url-string.ts'
 
-export const Project = S.struct({
+export const Project = S.Struct({
 	description: S.optional(
 		S.compose(S.Trim, S.NonEmpty).annotations({
 			title: 'description',
@@ -24,7 +24,7 @@ export const Project = S.struct({
 	),
 
 	highlights: S.optional(
-		S.array(
+		S.Array(
 			S.compose(S.Trim, S.NonEmpty).annotations({
 				title: 'highlight',
 				description: 'Specify multiple features',
@@ -38,7 +38,7 @@ export const Project = S.struct({
 	),
 
 	keywords: S.optional(
-		S.array(
+		S.Array(
 			S.compose(S.Trim, S.NonEmpty).annotations({
 				title: 'keyword',
 				examples: ['AngularJS', 'elements'],
@@ -60,7 +60,7 @@ export const Project = S.struct({
 	),
 
 	roles: S.optional(
-		S.array(
+		S.Array(
 			S.compose(S.Trim, S.NonEmpty).annotations({
 				title: 'role',
 				examples: ['Team Lead', 'Speaker', 'Writer'],

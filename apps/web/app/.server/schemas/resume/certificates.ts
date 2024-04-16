@@ -2,7 +2,7 @@ import * as S from '@effect/schema/Schema'
 
 import { UrlString } from '../url-string.ts'
 
-export const Certificate = S.struct({
+export const Certificate = S.Struct({
 	name: S.optional(
 		S.compose(S.Trim, S.NonEmpty).annotations({
 			title: 'Name',

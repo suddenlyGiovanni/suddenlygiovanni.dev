@@ -1,6 +1,6 @@
 import * as S from '@effect/schema/Schema'
 
-export const Award = S.struct({
+export const Award = S.Struct({
 	awarder: S.optional(
 		S.compose(S.Trim, S.NonEmpty).annotations({
 			title: 'awarder',

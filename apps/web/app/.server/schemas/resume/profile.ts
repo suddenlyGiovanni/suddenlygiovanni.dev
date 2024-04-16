@@ -2,7 +2,7 @@ import * as S from '@effect/schema/Schema'
 
 import { UrlString } from '../url-string.ts'
 
-export const Profile = S.struct({
+export const Profile = S.Struct({
 	network: S.compose(S.Trim, S.NonEmpty).annotations({
 		title: 'network',
 		description: 'The name of the social network',

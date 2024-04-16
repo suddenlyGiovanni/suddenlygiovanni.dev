@@ -13,15 +13,15 @@ import { Skill } from './skill.ts'
 import { Volunteer } from './volunteer.ts'
 import { Work } from './work.ts'
 
-export const Resume = S.struct({
-	$schema: S.string.annotations({
+export const Resume = S.Struct({
+	$schema: S.String.annotations({
 		title: '$schema',
 		description: 'link to the version of the schema that can validate the resume',
 		examples: ['http://jsonresume.org/schema'],
 	}),
 
 	awards: S.optional(
-		S.array(Award).annotations({
+		S.Array(Award).annotations({
 			title: 'awards',
 			description: 'Specify any awards you have received throughout your professional career',
 		}),
@@ -31,19 +31,19 @@ export const Resume = S.struct({
 	basics: Basics,
 
 	certificates: S.optional(
-		S.array(Certificate).annotations({
+		S.Array(Certificate).annotations({
 			title: 'certificates',
 			description: 'Specify any certificates you have received throughout your professional career',
 		}),
 		{ exact: true },
 	),
 
-	education: S.array(Education),
+	education: S.Array(Education),
 
-	interests: S.optional(S.array(Interest), { exact: true }),
+	interests: S.optional(S.Array(Interest), { exact: true }),
 
 	languages: S.optional(
-		S.array(Language).annotations({
+		S.Array(Language).annotations({
 			title: 'languages',
 			description: 'List any other languages you speak',
 		}),
@@ -51,7 +51,7 @@ export const Resume = S.struct({
 	),
 
 	projects: S.optional(
-		S.array(Project).annotations({
+		S.Array(Project).annotations({
 			title: 'projects',
 			description: 'Specify career projects',
 		}),
@@ -59,7 +59,7 @@ export const Resume = S.struct({
 	),
 
 	publications: S.optional(
-		S.array(Publication).annotations({
+		S.Array(Publication).annotations({
 			title: 'publications',
 			description: 'Specify your publications through your career',
 		}),
@@ -67,21 +67,21 @@ export const Resume = S.struct({
 	),
 
 	references: S.optional(
-		S.array(Reference).annotations({
+		S.Array(Reference).annotations({
 			title: 'references',
 			description: 'List references you have received',
 		}),
 		{ exact: true },
 	),
 
-	skills: S.array(Skill).annotations({
+	skills: S.Array(Skill).annotations({
 		title: 'skills',
 		description: 'List out your professional skill-set',
 	}),
 
-	volunteer: S.optional(S.array(Volunteer), { exact: true }),
+	volunteer: S.optional(S.Array(Volunteer), { exact: true }),
 
-	work: S.array(Work),
+	work: S.Array(Work),
 })
 
 export type Resume = S.Schema.Encoded<typeof Resume>

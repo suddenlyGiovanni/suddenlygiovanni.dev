@@ -5,9 +5,9 @@ import { UrlString } from '../url-string.ts'
 import { Email } from './email.ts'
 import { Phone } from './phone.ts'
 
-export const Work = S.struct({
+export const Work = S.Struct({
 	contact: S.optional(
-		S.struct({
+		S.Struct({
 			name: S.compose(S.Trim, S.NonEmpty).annotations({
 				title: 'name',
 				description: 'The name and role of the contact person',
@@ -36,7 +36,7 @@ export const Work = S.struct({
 		{ exact: true },
 	),
 
-	highlights: S.array(
+	highlights: S.Array(
 		S.compose(S.Trim, S.NonEmpty).annotations({
 			title: 'highlight',
 			description: 'A specific accomplishment',
