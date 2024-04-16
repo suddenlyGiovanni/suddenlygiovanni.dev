@@ -1,7 +1,6 @@
 import type { ParseError } from '@effect/schema/ParseResult'
-import { Date as $Date, decodeEither, string, transform } from '@effect/schema/Schema'
+import * as Schema from '@effect/schema/Schema'
 import type { Either } from 'effect/Either'
-import { pipe } from 'effect/Function'
 
 /**
  * Given a string date, this function validates and transforms it to a US locale short date format.
@@ -10,20 +9,13 @@ import { pipe } from 'effect/Function'
  * @returns Either the formatted US locale short date or a parse error.
  */
 export function formatDateLocaleShort(isoString: string): Either<string, ParseError> {
-	return pipe(
-		$Date
-			.pipe(
-				transform(
-					string,
-					fromDate => fromDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-					fromLocaleDateString => new Date(fromLocaleDateString),
-				),
-			)
-			.annotations({
-				title: 'localDate',
-				description: 'a short US locale date format',
-				examples: ['Apr 2022'],
-			}),
-		decodeEither,
-	)(isoString)
+	const schema = Schema.transform(Schema.Date, Schema.String, {
+		decode: fromDate => fromDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+		encode: fromLocaleDateString => new Date(fromLocaleDateString),
+	}).annotations({
+		title: 'localDate',
+		description: 'a short US locale date format',
+		examples: ['Apr 2022'],
+	})
+	return Schema.decodeEither(schema)(isoString)
 }

@@ -2,7 +2,7 @@ import { AST, ParseResult, Schema } from '@effect/schema'
 // biome-ignore lint/style/useNamingConvention: I want to have the same style of using JSON.<method>
 import * as YAML from '@std/yaml'
 
-export const YmlString = Schema.string.annotations({
+export const YmlString = Schema.String.annotations({
 	[AST.IdentifierAnnotationId]: 'YmlString',
 	[AST.TitleAnnotationId]: 'YmlString',
 	[AST.DescriptionAnnotationId]: 'a YML string',
@@ -37,18 +37,16 @@ export function parseYml<A, I, R>(schema?: Schema.Schema<A, I, R>) {
 		// biome-ignore lint/suspicious/noExplicitAny: can't infer the type of `schema` with generics
 		return Schema.compose(parseYml(), schema as any) as any
 	}
-	return Schema.transformOrFail(
-		YmlString,
-		Schema.unknown,
-		(string, _, ast) =>
+	return Schema.transformOrFail(YmlString, Schema.Unknown, {
+		decode: (string, _, ast) =>
 			ParseResult.try({
 				try: () => YAML.parse(string),
 				catch: e => new ParseResult.Type(ast, string, e instanceof Error ? e?.message : undefined),
 			}),
-		(unknown, _, ast) =>
+		encode: (unknown, _, ast) =>
 			ParseResult.try({
 				try: () => YAML.stringify(unknown),
 				catch: e => new ParseResult.Type(ast, unknown, e instanceof Error ? e?.message : undefined),
 			}),
-	)
+	})
 }

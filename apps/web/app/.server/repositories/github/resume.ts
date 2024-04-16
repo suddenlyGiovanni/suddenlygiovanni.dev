@@ -192,7 +192,7 @@ export function getResume(): Effect.Effect<
 
 		const resume = yield* _(Schema.decode(parseYml(ResumeSchema))(resumeFile.decodedContent))
 		const packageJson = yield* _(
-			Schema.decode(Schema.parseJson(Schema.struct({ version: Schema.string })))(
+			Schema.decode(Schema.parseJson(Schema.Struct({ version: Schema.String })))(
 				packageFile.decodedContent,
 			),
 		)

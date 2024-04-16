@@ -1,8 +1,8 @@
 import * as S from '@effect/schema/Schema'
 
-export const Interest = S.struct({
+export const Interest = S.Struct({
 	keywords: S.optional(
-		S.array(
+		S.Array(
 			S.compose(S.Trim, S.NonEmpty).annotations({
 				title: 'keyword',
 				examples: ['philosophy'],

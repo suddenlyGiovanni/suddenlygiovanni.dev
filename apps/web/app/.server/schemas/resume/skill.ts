@@ -1,7 +1,7 @@
 import * as S from '@effect/schema/Schema'
 
-export const Skill = S.struct({
-	keywords: S.array(
+export const Skill = S.Struct({
+	keywords: S.Array(
 		S.compose(S.Trim, S.NonEmpty).annotations({
 			title: 'keyword',
 			examples: ['Rust'],

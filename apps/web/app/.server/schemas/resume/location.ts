@@ -1,6 +1,6 @@
 import * as S from '@effect/schema/Schema'
 
-export const Location = S.struct({
+export const Location = S.Struct({
 	address: S.optional(
 		S.compose(S.Trim, S.NonEmpty).annotations({
 			title: 'address',

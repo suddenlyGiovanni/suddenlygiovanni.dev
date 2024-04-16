@@ -3,7 +3,7 @@ import * as S from '@effect/schema/Schema'
 import { ISO8601Date } from '../iso8601-date.ts'
 import { UrlString } from '../url-string.ts'
 
-export const Education = S.struct({
+export const Education = S.Struct({
 	area: S.compose(S.Trim, S.NonEmpty).annotations({
 		title: 'area',
 		description: 'e.g. Arts',
@@ -11,7 +11,7 @@ export const Education = S.struct({
 	}),
 
 	courses: S.optional(
-		S.array(
+		S.Array(
 			S.compose(S.Trim, S.NonEmpty).annotations({
 				title: 'course',
 				examples: ['H1302 - Introduction to American history'],

@@ -3,11 +3,11 @@ import * as S from '@effect/schema/Schema'
 import { ISODateString } from '../iso-date-string.ts'
 import { UrlString } from '../url-string.ts'
 
-export const Volunteer = S.struct({
+export const Volunteer = S.Struct({
 	endDate: S.optional(ISODateString, { exact: true }),
 
 	highlights: S.optional(
-		S.array(
+		S.Array(
 			S.compose(S.Trim, S.NonEmpty).pipe(
 				S.title('highlight'),
 				S.examples(['Increased profits by 20% from 2011-2012 through viral advertising']),
