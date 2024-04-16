@@ -36,7 +36,7 @@
 		"react-dom": "canary"
 	},
 	"devDependencies": {
-		"@codecov/vite-plugin": "0.0.1-beta.5",
+		"@codecov/vite-plugin": "0.0.1-beta.6",
 		"@mdx-js/rollup": "3.0.1",
 		"@remix-run/dev": "2.8.1",
 		"@remix-run/testing": "2.8.1",
