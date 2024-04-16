@@ -1,4 +1,3 @@
-// biome-ignore lint/nursery/noBarrelFile: this is a barrel file
 export { insertIf } from './utils/array.ts'
 export {
 	makeOpenGraphMetaAttributesRecord,
@@ -24,5 +23,4 @@ export { makeOpenGraphVideoMovie } from './open-graph-video-movie.ts'
 export { makeOpenGraphVideoOther } from './open-graph-video-other.ts'
 export { makeOpenGraphVideoTvShow } from './open-graph-video-tvshow.ts'
 export { makeOpenGraphWebsite } from './open-graph-website.ts'
-// biome-ignore lint/nursery/noReExportAll: we need to provide a namespace for the types
 export * as Types from './types.ts'
