@@ -32,8 +32,8 @@
 		"effect": "2.4.19",
 		"isbot": "5.1.4",
 		"octokit": "3.2.0",
-		"react": "canary",
-		"react-dom": "canary"
+		"react": "18.3.0-canary-c3048aab4-20240326",
+		"react-dom": "18.3.0-canary-c3048aab4-20240326"
 	},
 	"devDependencies": {
 		"@codecov/vite-plugin": "0.0.1-beta.6",
