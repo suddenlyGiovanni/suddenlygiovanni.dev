@@ -2,7 +2,7 @@
 
 log_message="🏗️ Cleaning up node_modules directory..."
 
-echo $log_message
+echo "$log_message"
 
 # List of directories and files to remove
 items_to_clean=("node_modules" ".turbo" "dist" "build" "storybook-static" "tsconfig.tsbuildinfo")
