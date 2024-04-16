@@ -21,5 +21,5 @@ export const config = {
 		},
 	} as const satisfies Socials,
 	siteUrl: 'https://www.suddenlygiovanni.dev',
-	siteName:	'suddenlyGiovanni'
+	siteName: 'suddenlyGiovanni',
 } as const
