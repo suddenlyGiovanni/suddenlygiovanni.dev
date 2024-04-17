@@ -7,6 +7,9 @@
 	"scripts": {
 		"clean": "scripty"
 	},
+	"peerDependencies": {
+		"prettier": "^3.2.5"
+	},
 	"peerDependenciesMeta": {
 		"prettier": {
 			"optional": false
