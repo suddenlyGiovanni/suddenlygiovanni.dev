@@ -1,6 +1,6 @@
 import { AST, ParseResult, Schema } from '@effect/schema'
 // biome-ignore lint/style/useNamingConvention: I want to have the same style of using JSON.<method>
-import * as YAML from '@std/yaml'
+import * as YAML from '@jsr/std__yaml'
 
 export const YmlString = Schema.String.annotations({
 	[AST.IdentifierAnnotationId]: 'YmlString',

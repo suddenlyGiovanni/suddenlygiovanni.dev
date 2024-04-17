@@ -30,6 +30,8 @@ WORKDIR /home/node/build
 
 COPY .gitignore .gitignore
 
+COPY .npmrc .npmrc
+
 COPY --from=builder /home/node/builder/out/json/ .
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile=false --prod=false
