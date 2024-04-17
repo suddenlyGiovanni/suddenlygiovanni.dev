@@ -29,7 +29,7 @@
 		"@suddenly-giovanni/resume": "workspace:*",
 		"@suddenly-giovanni/ui": "workspace:*",
 		"cookie": "0.6.0",
-		"effect": "2.4.19",
+		"effect": "3.0.0",
 		"isbot": "5.1.4",
 		"octokit": "3.2.0",
 		"react": "18.3.0-canary-c3048aab4-20240326",
