@@ -7,6 +7,9 @@
 	"scripts": {
 		"clean": "scripty"
 	},
+	"peerDependencies": {
+		"prettier": "^3.2.5"
+	},
 	"peerDependenciesMeta": {
 		"prettier": {
 			"optional": false
@@ -14,7 +17,7 @@
 	},
 	"devDependencies": {
 		"@suddenly-giovanni/config-typescript": "workspace:*",
-		"prettier-plugin-tailwindcss": "0.5.13"
+		"prettier-plugin-tailwindcss": "0.5.14"
 	},
 	"config": {
 		"scripty": {
