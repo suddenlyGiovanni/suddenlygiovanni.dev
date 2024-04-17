@@ -47,9 +47,6 @@ importers:
       '@remix-run/serve':
         specifier: 2.8.1
         version: 2.8.1(typescript@5.4.3)
-      '@std/yaml':
-        specifier: npm:@jsr/std__yaml@0.223.0
-        version: '@jsr/std__yaml@0.223.0'
       '@suddenly-giovanni/open-graph-protocol':
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
@@ -1581,9 +1578,6 @@ packages:
 
   '@jspm/core@2.0.1':
     resolution: {integrity: sha512-Lg3PnLp0QXpxwLIAuuJboLeRaIhrgJjeuh797QADg3xz8wGLugQOS5DpsE8A6i6Adgzf+bacllkKZG3J0tGfDw==}
-
-  '@jsr/std__yaml@0.223.0':
-    resolution: {integrity: sha512-CsGoPTsLbarNvWrsnEvtIlIHBOj+pAU7950ih07uNOYmlMAb3YHmPO/bJKUHuz5UiXvph27hNCho3s/dj+/UaQ==, tarball: https://npm.jsr.io/~/7/@jsr/std__yaml/0.223.0.tgz}
 
   '@mdx-js/mdx@2.3.0':
     resolution: {integrity: sha512-jLuwRlz8DQfQNiUCJR50Y09CGPq3fLtmtUQfVrj79E0JWu3dvsVcxVIcfhR5h0iXu+/z++zDrYeiJqifRynJkA==}
@@ -9177,8 +9171,6 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.4.15
 
   '@jspm/core@2.0.1': {}
-
-  '@jsr/std__yaml@0.223.0': {}
 
   '@mdx-js/mdx@2.3.0':
     dependencies:
