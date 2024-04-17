@@ -8,6 +8,8 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 RUN corepack enable
 
+RUN corepack use pnpm@latest
+
 WORKDIR /home/node/
 
 FROM base AS builder
