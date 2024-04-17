@@ -25,7 +25,7 @@
 		"typecheck": "scripty"
 	},
 	"peerDependencies": {
-		"react": "canary"
+		"react": "18.3.0-canary-c3048aab4-20240326"
 	},
 	"dependencies": {
 		"@radix-ui/react-accessible-icon": "1.0.3",
@@ -38,7 +38,7 @@
 		"@radix-ui/react-separator": "1.0.3",
 		"@radix-ui/react-slot": "1.0.2",
 		"@remix-run/react": "2.8.1",
-		"react": "canary",
+		"react": "18.3.0-canary-c3048aab4-20240326",
 		"react-aria-components": "1.1.1",
 		"tailwind-variants": "0.2.1"
 	},
@@ -77,7 +77,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"packageManager": "pnpm@8.15.7",
+	"packageManager": "pnpm@9.0.1+sha256.46d50ee2afecb42b185ebbd662dc7bdd52ef5be56bf035bb615cab81a75345df",
 	"config": {
 		"scripty": {
 			"path": "../../scripts"

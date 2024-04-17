@@ -25,13 +25,13 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.0",
-    "eslint": "9.0.0",
+    "eslint": "^8.57.0",
     "prettier": "3.2.5",
     "scripty": "2.1.1",
     "turbo": "1.13.2",
     "typescript": "5.4.3"
   },
-  "packageManager": "pnpm@8.15.7",
+  "packageManager": "pnpm@9.0.1+sha256.46d50ee2afecb42b185ebbd662dc7bdd52ef5be56bf035bb615cab81a75345df",
   "engines": {
     "node": ">=21"
   }
