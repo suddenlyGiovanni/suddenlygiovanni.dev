@@ -15,6 +15,7 @@ jobs:
   review_app:
     name: 🚀 Deploy app to Fly.io
     runs-on: ubuntu-latest
+    continue-on-error: true
     outputs:
       url: ${{ steps.deploy.outputs.url }}
     # Only run one deployment at a time per PR.
