@@ -36,8 +36,9 @@ jobs:
         id: deploy
         uses: superfly/fly-pr-review-apps@1.2.0
         with:
-          config: ./apps/web/fly.toml
+          config: ./apps/web/fly.review.toml
           image: ./apps/web/Dockerfile
+          name: suddenlygiovanni_dev-pr-${{ github.event.number }}
 
       - name: Clean up GitHub environment
         uses: strumwolf/delete-deployment-environment@v2
