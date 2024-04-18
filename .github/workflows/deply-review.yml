@@ -39,3 +39,4 @@ jobs:
         with:
           config: ./apps/web/fly.review.toml
           image: ./apps/web/Dockerfile
+          name: suddenlygiovanni-dev-pr-${{ github.event.number }}
