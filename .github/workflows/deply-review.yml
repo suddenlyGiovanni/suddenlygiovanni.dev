@@ -38,5 +38,4 @@ jobs:
         uses: superfly/fly-pr-review-apps@1.2.0
         with:
           config: ./apps/web/fly.review.toml
-          image: ./apps/web/Dockerfile
           name: suddenlygiovanni-dev-pr-${{ github.event.number }}
