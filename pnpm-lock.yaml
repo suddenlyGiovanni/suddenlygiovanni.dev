@@ -31,7 +31,7 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: 0.66.1
-        version: 0.66.1(effect@3.0.1)(fast-check@3.17.1)
+        version: 0.66.1(effect@3.0.3)(fast-check@3.17.1)
       '@epic-web/client-hints':
         specifier: 1.3.0
         version: 1.3.0
@@ -63,8 +63,8 @@ importers:
         specifier: 0.6.0
         version: 0.6.0
       effect:
-        specifier: 3.0.1
-        version: 3.0.1
+        specifier: 3.0.3
+        version: 3.0.3
       isbot:
         specifier: 5.1.4
         version: 5.1.4
@@ -1891,13 +1891,13 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
-  /@effect/schema@0.66.1(effect@3.0.1)(fast-check@3.17.1):
+  /@effect/schema@0.66.1(effect@3.0.3)(fast-check@3.17.1):
     resolution: {integrity: sha512-SvBlCMfVeavB4kOQGwFzvqdvSI8uXBpbvsB/xHoDJy4+xD/nrbZBjaH1Dn/U+1Or0s9duNPazNACJw1netQ4Xg==}
     peerDependencies:
       effect: ^3.0.1
       fast-check: ^3.13.2
     dependencies:
-      effect: 3.0.1
+      effect: 3.0.3
       fast-check: 3.17.1
     dev: false
 
@@ -8941,8 +8941,8 @@ packages:
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  /effect@3.0.1:
-    resolution: {integrity: sha512-xAwL1mVVHuTxcGCTfJWi5OOZfw3sMtPc2UdaOnj3NWWAAh2hUr46ZE9WMdZtpbsgL4xYENy+De/TbhF1ThCkcg==}
+  /effect@3.0.3:
+    resolution: {integrity: sha512-mgG+FoWrM4sny8OxDFWCpq+6LwGf9cK/JztVhxZQeZM9ZMXY+lKbdMEQmemNYce0QVAz2+YqUKwhKzOidwbZzg==}
     dev: false
 
   /ejs@3.1.10:
