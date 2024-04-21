@@ -1,3 +1,15 @@
+# Extract pnpm version from package.json
+FROM alpine:3.19 AS pnpm-version
+
+WORKDIR /tmp
+
+COPY package.json .
+
+RUN apk add --no-cache jq
+
+RUN jq -r .packageManager package.json > pnpm-version.txt
+
+
 FROM node:21-alpine3.19 AS base
 
 LABEL authors="suddenlyGiovanni"
@@ -6,11 +18,15 @@ ENV PNPM_HOME="/pnpm"
 
 ENV PATH="$PNPM_HOME:$PATH"
 
+WORKDIR /home/node/
+
+COPY --from=pnpm-version /tmp/pnpm-version.txt .
+
 RUN corepack enable
 
-RUN corepack use pnpm@latest
+RUN corepack prepare $(cat pnpm-version.txt) --activate
 
-WORKDIR /home/node/
+ENTRYPOINT ["sh"]
 
 FROM base AS builder
 
