@@ -54,7 +54,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 # Build the project
 COPY --from=builder /home/node/out/full/ .
 
-ENV NODE_ENV production
+ENV NODE_ENV="production"
 
 RUN pnpm turbo build --filter=@suddenly-giovanni/web
 
@@ -64,9 +64,9 @@ ENTRYPOINT ["sh"]
 
 FROM base AS production
 
-ENV NODE_ENV production
-ENV HOST=0.0.0.0
-ENV PORT=8080
+ENV NODE_ENV="production"
+ENV PORT="8080"
+#ENV HOST="0.0.0.0"
 
 COPY --from=build --chown=node:node /home/node/pruned .
 COPY --from=build --chown=node:node /home/node/apps/web/build ./build

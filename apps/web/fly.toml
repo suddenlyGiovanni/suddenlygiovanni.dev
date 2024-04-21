@@ -13,6 +13,11 @@ memory = '1gb'
 cpu_kind = 'shared'
 cpus = 1
 
+[build]
+dockerfile = "Dockerfile"
+ignorefile = ".dockerignore"
+build-target = "production"
+
 [[services]]
 internal_port = 8080
 processes = ['app']
