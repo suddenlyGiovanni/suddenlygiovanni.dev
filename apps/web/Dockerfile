@@ -65,12 +65,14 @@ ENTRYPOINT ["sh"]
 FROM base AS production
 
 ENV NODE_ENV production
+ENV HOST=0.0.0.0
+ENV PORT=8080
 
 COPY --from=build --chown=node:node /home/node/pruned .
 COPY --from=build --chown=node:node /home/node/apps/web/build ./build
 
 USER node
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["./node_modules/.bin/remix-serve", "./build/server/index.js"]

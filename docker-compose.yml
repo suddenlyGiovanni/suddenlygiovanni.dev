@@ -1,4 +1,4 @@
-name: suddenlygiovanni
+name: suddenlygiovannidev
 
 services:
   web:
@@ -7,5 +7,5 @@ services:
       dockerfile: apps/web/Dockerfile
       target: production
     ports:
-      - "3000:3000"
+      - "8080:8080"
     init: true
