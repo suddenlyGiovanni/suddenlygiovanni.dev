@@ -75,7 +75,7 @@ RUN apk add --no-cache dumb-init
 COPY --from=build --chown=node:node /home/node/build/pruned .
 COPY --from=build --chown=node:node /home/node/build/apps/web/build ./build
 
-USER node
+# USER node
 
 EXPOSE 3000
 
