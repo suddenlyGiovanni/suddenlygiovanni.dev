@@ -20,7 +20,7 @@ build-target = "production"
 
 
 [[services]]
-internal_port = 3000
+internal_port = 8080
 processes = ['app']
 protocol = "tcp"
 
