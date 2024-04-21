@@ -66,7 +66,7 @@ FROM base AS production
 
 ENV NODE_ENV="production"
 ENV PORT="8080"
-#ENV HOST="0.0.0.0"
+ENV HOST="0.0.0.0"
 
 COPY --from=build --chown=node:node /home/node/pruned .
 COPY --from=build --chown=node:node /home/node/apps/web/build ./build
