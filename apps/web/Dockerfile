@@ -26,6 +26,8 @@ RUN corepack enable
 
 RUN corepack prepare $(cat pnpm-version.txt) --activate
 
+RUN rm pnpm-version.txt
+
 ENTRYPOINT ["sh"]
 
 FROM base AS builder
