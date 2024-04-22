@@ -67,7 +67,8 @@ ENV NODE_ENV="production"
 ENV PORT="5173"
 ENV HOST="0.0.0.0"
 
-COPY --from=build --chown=node:node /home/node/pruned .
+COPY --from=build --chown=node:node /home/node/pruned/package.json .
+COPY --from=build --chown=node:node /home/node/pruned/node_modules ./node_modules
 COPY --from=build --chown=node:node /home/node/apps/web/build ./build
 
 USER node
