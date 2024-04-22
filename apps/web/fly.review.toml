@@ -19,7 +19,7 @@ ignorefile = ".dockerignore"
 build-target = "production"
 
 [[services]]
-internal_port = 8080
+internal_port = '5173'
 processes = ['app']
 protocol = "tcp"
 
