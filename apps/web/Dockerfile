@@ -57,7 +57,7 @@ ENV NODE_ENV="production"
 
 RUN pnpm turbo build --filter=@suddenly-giovanni/web
 
-RUN pnpm --filter @suddenly-giovanni/web --prod deploy pruned
+RUN pnpm --filter @suddenly-giovanni/web --prod --no-optional deploy pruned
 
 ENTRYPOINT ["sh"]
 
