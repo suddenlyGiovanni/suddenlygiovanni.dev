@@ -51,7 +51,7 @@ RUN pnpm fetch
 # Build the project
 COPY --from=builder /home/node/out/full/ .
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --offline --prod=false
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm --filter @suddenly-giovanni/web install --prod=false
 
 ENV NODE_ENV="production"
 
