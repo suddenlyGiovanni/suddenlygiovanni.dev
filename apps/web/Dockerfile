@@ -23,11 +23,9 @@ WORKDIR /home/node/
 
 COPY --from=pnpm-version /tmp/pnpm-version.txt .
 
-RUN corepack enable
-
-RUN corepack prepare $(cat pnpm-version.txt) --activate
-
-RUN rm pnpm-version.txt
+RUN corepack enable \
+    && corepack prepare $(cat pnpm-version.txt) --activate \
+    && rm pnpm-version.txt
 
 ENTRYPOINT ["sh"]
 
