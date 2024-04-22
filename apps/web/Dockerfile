@@ -41,9 +41,7 @@ ENTRYPOINT ["sh"]
 
 FROM base AS build
 
-COPY .gitignore .gitignore
-
-COPY .npmrc .npmrc
+COPY .gitignore .npmrc ./
 
 COPY --from=builder /home/node/out/json/ .
 
