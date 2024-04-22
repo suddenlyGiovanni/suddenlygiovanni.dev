@@ -23,11 +23,9 @@ WORKDIR /home/node/
 
 COPY --from=pnpm-version /tmp/pnpm-version.txt .
 
-RUN corepack enable
-
-RUN corepack prepare $(cat pnpm-version.txt) --activate
-
-RUN rm pnpm-version.txt
+RUN corepack enable \
+    && corepack prepare $(cat pnpm-version.txt) --activate \
+    && rm pnpm-version.txt
 
 ENTRYPOINT ["sh"]
 
@@ -43,22 +41,23 @@ ENTRYPOINT ["sh"]
 
 FROM base AS build
 
-COPY .gitignore .gitignore
+# pnpm fetch does require only lockfile + .npmrc
+COPY --from=builder /home/node/out/json/pnpm-lock.yaml .
+COPY --from=builder /home/node/out/json/.npmrc .
 
-COPY .npmrc .npmrc
-
-COPY --from=builder /home/node/out/json/ .
-
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod=false
+# Fetch packages from a lockfile into virtual store, package manifest is ignored.
+RUN pnpm fetch
 
 # Build the project
 COPY --from=builder /home/node/out/full/ .
+
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --offline --prod=false
 
 ENV NODE_ENV="production"
 
 RUN pnpm turbo build --filter=@suddenly-giovanni/web
 
-RUN pnpm --filter @suddenly-giovanni/web --prod deploy pruned
+RUN pnpm --filter @suddenly-giovanni/web --prod --no-optional deploy pruned
 
 ENTRYPOINT ["sh"]
 
@@ -68,7 +67,8 @@ ENV NODE_ENV="production"
 ENV PORT="5173"
 ENV HOST="0.0.0.0"
 
-COPY --from=build --chown=node:node /home/node/pruned .
+COPY --from=build --chown=node:node /home/node/pruned/package.json .
+COPY --from=build --chown=node:node /home/node/pruned/node_modules ./node_modules
 COPY --from=build --chown=node:node /home/node/apps/web/build ./build
 
 USER node
