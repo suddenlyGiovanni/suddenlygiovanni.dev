@@ -41,14 +41,17 @@ ENTRYPOINT ["sh"]
 
 FROM base AS build
 
-COPY .gitignore .npmrc ./
+# pnpm fetch does require only lockfile + .npmrc
+COPY --from=builder /home/node/out/json/pnpm-lock.yaml .
+COPY --from=builder /home/node/out/json/.npmrc .
 
-COPY --from=builder /home/node/out/json/ .
-
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod=false
+# Fetch packages from a lockfile into virtual store, package manifest is ignored.
+RUN pnpm fetch
 
 # Build the project
 COPY --from=builder /home/node/out/full/ .
+
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --offline --prod=false
 
 ENV NODE_ENV="production"
 
