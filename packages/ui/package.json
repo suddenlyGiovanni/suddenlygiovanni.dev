@@ -77,7 +77,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"packageManager": "pnpm@9.0.5",
+	"packageManager": "pnpm@9.0.6",
 	"config": {
 		"scripty": {
 			"path": "../../scripts"

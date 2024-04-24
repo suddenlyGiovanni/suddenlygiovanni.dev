@@ -37,7 +37,7 @@
 		"lint": "scripty src/",
 		"typecheck": "scripty"
 	},
-	"packageManager": "pnpm@9.0.5",
+	"packageManager": "pnpm@9.0.6",
 	"config": {
 		"scripty": {
 			"path": "../../scripts"
