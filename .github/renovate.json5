@@ -17,4 +17,10 @@
 	dockerfile: {
 		enabled: true,
 	},
+	packageRules: [
+		{
+			packagePatterns: ["^effect$", "^@effect/"],
+			groupName: "effect packages",
+		},
+	]
 }
