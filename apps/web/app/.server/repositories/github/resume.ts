@@ -64,10 +64,27 @@ function getResumeFile({
 	owner,
 	repo,
 	path,
+	ref,
 }: {
+	/**
+	 * The owner of a resource.
+	 */
 	readonly owner: string
+
+	/**
+	 * Repository variable.
+	 */
 	readonly repo: string
+
+	/**
+	 * The path variable represents a string that stores a file path.
+	 */
 	readonly path: string
+
+	/**
+	 * the branch, tag, or commit sha to get the file from
+	 */
+	readonly ref?: string
 }) {
 	return Effect.gen(function* (_) {
 		const octokitResponse = yield* _(
@@ -77,6 +94,7 @@ function getResumeFile({
 						owner: owner,
 						repo: repo,
 						path: path,
+						...(ref ? { ref } : {}),
 					}),
 				catch: error => {
 					/**
@@ -178,13 +196,14 @@ export function getResume(): Effect.Effect<
 > {
 	const repo = 'resume'
 	const owner = 'suddenlyGiovanni'
+	const ref = '427a35d95bbfe147dd45c5fa0f0f0b22916a5c4d'
 
 	return Effect.gen(function* (_) {
 		const { resumeFile, packageFile } = yield* _(
 			Effect.all(
 				{
-					resumeFile: getResumeFile({ owner, repo, path: 'resume.yml' }),
-					packageFile: getResumeFile({ owner, repo, path: 'package.json' }),
+					resumeFile: getResumeFile({ owner, path: 'resume.yml', ref, repo }),
+					packageFile: getResumeFile({ owner, path: 'package.json', ref, repo }),
 				},
 				{ concurrency: 2 },
 			),
