@@ -25,7 +25,7 @@
 		"ts-brand": "0.1.0"
 	},
 	"devDependencies": {
-		"@suddenly-giovanni/config-prettier": "workspace:*",
+		"@suddenlygiovanni/config-prettier": "workspace:*",
 		"@suddenly-giovanni/config-tailwind": "workspace:*",
 		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",

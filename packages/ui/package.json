@@ -54,7 +54,7 @@
 		"@storybook/react": "8.0.8",
 		"@storybook/react-vite": "8.0.8",
 		"@storybook/test": "8.0.8",
-		"@suddenly-giovanni/config-prettier": "workspace:*",
+		"@suddenlygiovanni/config-prettier": "workspace:*",
 		"@suddenly-giovanni/config-tailwind": "workspace:*",
 		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",

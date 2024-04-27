@@ -40,7 +40,7 @@
 		"@mdx-js/rollup": "3.0.1",
 		"@remix-run/dev": "2.8.1",
 		"@remix-run/testing": "2.8.1",
-		"@suddenly-giovanni/config-prettier": "workspace:*",
+		"@suddenlygiovanni/config-prettier": "workspace:*",
 		"@suddenly-giovanni/config-tailwind": "workspace:*",
 		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",
