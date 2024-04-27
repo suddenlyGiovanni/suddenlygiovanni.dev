@@ -35,7 +35,7 @@ RUN pnpm add --global turbo
 
 COPY . .
 
-RUN turbo prune --docker @suddenly-giovanni/web
+RUN turbo prune --docker @suddenlygiovanni/web
 
 ENTRYPOINT ["sh"]
 
@@ -51,13 +51,13 @@ RUN pnpm fetch
 # Build the project
 COPY --from=builder /home/node/out/full/ .
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm --filter @suddenly-giovanni/web install --prod=false
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm --filter @suddenlygiovanni/web install --prod=false
 
 ENV NODE_ENV="production"
 
-RUN pnpm turbo build --filter=@suddenly-giovanni/web
+RUN pnpm turbo build --filter=@suddenlygiovanni/web
 
-RUN pnpm --filter @suddenly-giovanni/web --prod --no-optional deploy pruned
+RUN pnpm --filter @suddenlygiovanni/web --prod --no-optional deploy pruned
 
 ENTRYPOINT ["sh"]
 

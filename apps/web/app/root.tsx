@@ -7,12 +7,12 @@ import type {
 	MetaFunction,
 } from '@remix-run/node'
 import { Links, Meta, Scripts, ScrollRestoration, json, useLoaderData } from '@remix-run/react'
-import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
+import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import * as Either from 'effect/Either'
 import type { ReactElement, ReactNode } from 'react'
 
-import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
+import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'

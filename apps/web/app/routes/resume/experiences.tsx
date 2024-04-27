@@ -1,13 +1,13 @@
-import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
+import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	Trigger,
-} from '@suddenly-giovanni/ui/ui/accordion.tsx'
-import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
+} from '@suddenlygiovanni/ui/ui/accordion.tsx'
+import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
 import * as Either from 'effect/Either'
 import { pipe } from 'effect/Function'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'

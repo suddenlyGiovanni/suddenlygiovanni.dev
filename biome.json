@@ -1,5 +1,5 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.7.0/schema.json",
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
 		"include": ["./apps/**/*", "./packages/**/*"],
 		"ignore": ["node_modules", "**/node_modules", "./~"]
@@ -25,7 +25,8 @@
 			"all": true,
 			"nursery": {
 				"all": true,
-				"noUndeclaredDependencies": "off"
+				"noUndeclaredDependencies": "off",
+				"noReactSpecificProps": "off"
 			},
 			"style": {
 				"noNamespaceImport": {
@@ -62,6 +63,12 @@
 		}
 	},
 	"overrides": [
+		{
+			"include": ["**/*.snapshot.json"],
+			"formatter": {
+				"enabled": false
+			}
+		},
 		{
 			"include": ["**/*.stories.tsx"],
 			"linter": {

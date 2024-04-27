@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"name": "@suddenly-giovanni/eslint-config",
+	"name": "@suddenlygiovanni/eslint-config",
 	"version": "0.0.1",
 	"private": true,
 	"type": "commonjs",
@@ -16,7 +16,7 @@
 		"clean": "scripty"
 	},
 	"devDependencies": {
-		"@suddenly-giovanni/config-typescript": "workspace:*",
+		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"@types/eslint": "8.56.10",
 		"@types/node": "20.12.7",
 		"@vercel/style-guide": "6.0.0",

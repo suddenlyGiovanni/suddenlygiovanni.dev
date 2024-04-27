@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"name": "@suddenly-giovanni/config-typescript",
+	"name": "@suddenlygiovanni/config-typescript",
 	"version": "0.0.1",
 	"private": true,
 	"publishConfig": {

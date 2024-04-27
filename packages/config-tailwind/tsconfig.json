@@ -1,5 +1,5 @@
 {
-	"extends": "@suddenly-giovanni/config-typescript/base.json",
+	"extends": "@suddenlygiovanni/config-typescript/base.json",
 	"compilerOptions": {
 		"allowJs": true,
 		"checkJs": true,

@@ -1,5 +1,5 @@
 {
-	"name": "@suddenly-giovanni/config-prettier",
+	"name": "@suddenlygiovanni/config-prettier",
 	"version": "0.0.1",
 	"private": true,
 	"type": "module",
@@ -16,7 +16,7 @@
 		}
 	},
 	"devDependencies": {
-		"@suddenly-giovanni/config-typescript": "workspace:*",
+		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"prettier-plugin-tailwindcss": "0.5.14"
 	},
 	"config": {

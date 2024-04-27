@@ -8,8 +8,8 @@ import { Link, useLoaderData } from '@remix-run/react'
 import { Effect } from 'effect'
 import type { ReactElement } from 'react'
 
-import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
+import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
 import * as repository from '~/.server/repositories/github'
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'

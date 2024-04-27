@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"name": "@suddenly-giovanni/ui",
+	"name": "@suddenlygiovanni/ui",
 	"private": true,
 	"version": "0.0.1",
 	"exports": {
@@ -54,10 +54,10 @@
 		"@storybook/react": "8.0.8",
 		"@storybook/react-vite": "8.0.8",
 		"@storybook/test": "8.0.8",
-		"@suddenly-giovanni/config-prettier": "workspace:*",
-		"@suddenly-giovanni/config-tailwind": "workspace:*",
-		"@suddenly-giovanni/config-typescript": "workspace:*",
-		"@suddenly-giovanni/eslint-config": "workspace:*",
+		"@suddenlygiovanni/config-prettier": "workspace:*",
+		"@suddenlygiovanni/config-tailwind": "workspace:*",
+		"@suddenlygiovanni/config-typescript": "workspace:*",
+		"@suddenlygiovanni/eslint-config": "workspace:*",
 		"@total-typescript/ts-reset": "0.5.1",
 		"@types/react": "18.2.79",
 		"@types/react-dom": "18.2.25",
