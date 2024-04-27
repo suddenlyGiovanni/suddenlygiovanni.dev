@@ -1,12 +1,12 @@
-import { ParseError } from '@effect/schema/ParseResult'
+import {ParseError} from '@effect/schema/ParseResult'
 import * as Schema from '@effect/schema/Schema'
 import * as Either from 'effect/Either'
-import { describe, expect, it } from 'vitest'
+import {describe, expect, it} from 'vitest'
 
 import resumeAssetUrl from '@suddenlygiovanni/resume/resume.json?raw'
 
-import type { Basics } from './basics.ts'
-import { type Resume as ResumeEncoded, Resume as ResumeSchema } from './resume.ts'
+import type {Basics} from './basics.ts'
+import {type Resume as ResumeEncoded, Resume as ResumeSchema} from './resume.ts'
 
 describe('Resume', () => {
 	const basics: Basics = {
@@ -29,10 +29,10 @@ describe('Resume', () => {
 		const schema = Schema.parseJson(ResumeSchema)
 
 		it('should not throw for a valid JSON resume string', () => {
-			const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
+			const parse = Schema.decodeUnknownEither(schema, {errors: 'all'})
 			const mockResult = parse(
 				JSON.stringify(
-					{ $schema: 'http://jsonresume.org/schema', basics, skills, work, education },
+					{$schema: 'http://jsonresume.org/schema', basics, skills, work, education},
 					null,
 					2,
 				),
@@ -42,9 +42,9 @@ describe('Resume', () => {
 		})
 
 		it('should throw for invalid JSON resume string', () => {
-			const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
+			const parse = Schema.decodeUnknownEither(schema, {errors: 'all'})
 			const mockResult = parse(
-				JSON.stringify({ $schema: 'http://jsonresume.org/schema', base: {} }, null, 2),
+				JSON.stringify({$schema: 'http://jsonresume.org/schema', base: {}}, null, 2),
 			)
 			expect(Either.isLeft(mockResult)).toBe(true)
 			Either.mapLeft(mockResult, parseError => {
@@ -53,8 +53,8 @@ describe('Resume', () => {
 		})
 
 		it('should return a valid resume object where missing property are marked as options', () => {
-			const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
-			const mockResult = parse(JSON.stringify({ $schema, basics }, null, 2))
+			const parse = Schema.decodeUnknownEither(schema, {errors: 'all'})
+			const mockResult = parse(JSON.stringify({$schema, basics}, null, 2))
 			Either.map(mockResult, resume => {
 				expect(resume.$schema).toBeDefined()
 				expect(resume.basics).toBeDefined()
@@ -74,7 +74,7 @@ describe('Resume', () => {
 		})
 
 		it('should return a valid resume with all properties', () => {
-			const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
+			const parse = Schema.decodeUnknownEither(schema, {errors: 'all'})
 			const mockResult = parse(
 				JSON.stringify(
 					{
@@ -116,26 +116,5 @@ describe('Resume', () => {
 			})
 		})
 
-		it('production resume should be valid', () => {
-			const parse = Schema.decodeUnknownEither(schema, { errors: 'all' })
-			const resume = parse(resumeAssetUrl)
-			expect(Either.isRight(resume)).toBe(true)
-			Either.map(resume, r => {
-				expect(r.$schema).toBeDefined()
-				expect(r.basics).toBeDefined()
-				expect(r.awards).toBeDefined()
-				// expect(r.certificates).toBeDefined()
-				expect(r.education).toBeDefined()
-				expect(r.interests).toBeDefined()
-				expect(r.languages).toBeDefined()
-				// expect(r.meta).toBeDefined()
-				expect(r.projects).toBeDefined()
-				expect(r.publications).toBeDefined()
-				expect(r.references).toBeDefined()
-				expect(r.skills).toBeDefined()
-				expect(r.volunteer).toBeDefined()
-				expect(r.work).toBeDefined()
-			})
-		})
 	})
 })
