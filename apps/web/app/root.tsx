@@ -114,13 +114,7 @@ function Document({
 				<Links />
 			</head>
 			<Layout.Body
-				class={clsx(
-					'min-h-full',
-					'bg-background',
-					'text-foreground',
-					'font-sans',
-					'antialiased',
-				)}
+				class={clsx('min-h-full', 'bg-background', 'text-foreground', 'font-sans', 'antialiased')}
 			>
 				{children}
 				<ScrollRestoration />

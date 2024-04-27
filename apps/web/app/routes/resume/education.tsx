@@ -150,17 +150,11 @@ const EduHeader = memo(function EduHeader({
 }): ReactElement {
 	return (
 		<dt class="relative my-4 flex w-full flex-col">
-			<h3
-				aria-label="area of education"
-				class={clsx('mt-0 mb-0 font-bold text-base leading-none')}
-			>
+			<h3 aria-label="area of education" class={clsx('mt-0 mb-0 font-bold text-base leading-none')}>
 				{area}
 			</h3>
 
-			<span
-				aria-label="institution"
-				class={clsx(styles.span, 'font-medium text-base not-italic')}
-			>
+			<span aria-label="institution" class={clsx(styles.span, 'font-medium text-base not-italic')}>
 				{institution}
 				{url ? (
 					<a class="ml-2" href={url} rel="noopener noreferrer" target="_blank">
