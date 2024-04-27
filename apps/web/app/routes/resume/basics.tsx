@@ -1,8 +1,8 @@
 import { Link } from '@remix-run/react'
-import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
-import { SocialIcon } from '@suddenly-giovanni/ui/components/social/social-icon.tsx'
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
+import { SocialIcon } from '@suddenlygiovanni/ui/components/social/social-icon.tsx'
+import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import type { ReactElement, ReactNode } from 'react'
 
 import type { BasicsType } from '~/.server/schemas/resume/basics.ts'

@@ -3,7 +3,7 @@ import * as Schema from '@effect/schema/Schema'
 import * as Either from 'effect/Either'
 import { describe, expect, it } from 'vitest'
 
-import resumeAssetUrl from '@suddenly-giovanni/resume/resume.json?raw'
+import resumeAssetUrl from '@suddenlygiovanni/resume/resume.json?raw'
 
 import type { Basics } from './basics.ts'
 import { type Resume as ResumeEncoded, Resume as ResumeSchema } from './resume.ts'

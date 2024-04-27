@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unescaped-entities -- TODO: need to validate the rule  */
 import type { MetaFunction } from '@remix-run/node'
 import { Link as RemixLink } from '@remix-run/react'
-import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
+import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import type { ComponentPropsWithoutRef, JSX, ReactElement } from 'react'
 
 import hero200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'

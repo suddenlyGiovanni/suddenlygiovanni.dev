@@ -1,4 +1,4 @@
-import basePrettier from '@suddenly-giovanni/config-prettier'
+import basePrettier from '@suddenlygiovanni/config-prettier'
 
 /** @type {import('prettier').Config} */
 const config = {

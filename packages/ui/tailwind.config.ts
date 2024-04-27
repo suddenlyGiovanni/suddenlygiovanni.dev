@@ -1,4 +1,4 @@
-import sharedConfig, { type Config } from '@suddenly-giovanni/config-tailwind/tailwind.config.ts'
+import sharedConfig, { type Config } from '@suddenlygiovanni/config-tailwind/tailwind.config.ts'
 
 const config: Config = {
 	content: ['./src/**/*.tsx'],

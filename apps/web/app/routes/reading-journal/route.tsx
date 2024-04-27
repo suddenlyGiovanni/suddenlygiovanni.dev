@@ -1,5 +1,5 @@
 import type { MetaFunction } from '@remix-run/node'
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import type { JSX } from 'react'
 
 export const meta: MetaFunction = () => {

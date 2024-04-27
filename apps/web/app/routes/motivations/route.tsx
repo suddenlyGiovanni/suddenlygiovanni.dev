@@ -3,7 +3,7 @@ import type { MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
 import type { ReactElement } from 'react'
 
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
 import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'

@@ -1,6 +1,6 @@
 import type { MetaFunction } from '@remix-run/node'
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import type { JSX } from 'react'
 import { routesRecord } from '~/routes-record.ts'
 
