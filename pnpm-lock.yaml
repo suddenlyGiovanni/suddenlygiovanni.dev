@@ -50,15 +50,15 @@ importers:
       '@remix-run/serve':
         specifier: 2.8.1
         version: 2.8.1(typescript@5.4.5)
-      '@suddenly-giovanni/open-graph-protocol':
-        specifier: workspace:*
-        version: link:../../packages/open-graph-protocol
       '@suddenly-giovanni/resume':
         specifier: workspace:*
         version: link:../../packages/resume
       '@suddenly-giovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
+      '@suddenlygiovanni/open-graph-protocol':
+        specifier: workspace:*
+        version: link:../../packages/open-graph-protocol
       cookie:
         specifier: 0.6.0
         version: 0.6.0
