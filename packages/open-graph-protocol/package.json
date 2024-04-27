@@ -27,7 +27,7 @@
 	"devDependencies": {
 		"@suddenlygiovanni/config-prettier": "workspace:*",
 		"@suddenlygiovanni/config-tailwind": "workspace:*",
-		"@suddenly-giovanni/config-typescript": "workspace:*",
+		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",
 		"typescript": "5.4.5"
 	},

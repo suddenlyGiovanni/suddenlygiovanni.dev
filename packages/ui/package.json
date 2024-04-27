@@ -56,7 +56,7 @@
 		"@storybook/test": "8.0.8",
 		"@suddenlygiovanni/config-prettier": "workspace:*",
 		"@suddenlygiovanni/config-tailwind": "workspace:*",
-		"@suddenly-giovanni/config-typescript": "workspace:*",
+		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",
 		"@total-typescript/ts-reset": "0.5.1",
 		"@types/react": "18.2.79",
