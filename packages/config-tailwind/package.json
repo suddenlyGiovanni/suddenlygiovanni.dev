@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"name": "@suddenly-giovanni/config-tailwind",
+	"name": "@suddenlygiovanni/config-tailwind",
 	"version": "0.0.1",
 	"private": true,
 	"type": "module",
