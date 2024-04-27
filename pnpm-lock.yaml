@@ -99,7 +99,7 @@ importers:
       '@suddenly-giovanni/config-typescript':
         specifier: workspace:*
         version: link:../../packages/config-typescript
-      '@suddenly-giovanni/eslint-config':
+      '@suddenlygiovanni/eslint-config':
         specifier: workspace:*
         version: link:../../packages/config-eslint
       '@total-typescript/ts-reset':
@@ -283,7 +283,7 @@ importers:
       '@suddenly-giovanni/config-typescript':
         specifier: workspace:*
         version: link:../config-typescript
-      '@suddenly-giovanni/eslint-config':
+      '@suddenlygiovanni/eslint-config':
         specifier: workspace:*
         version: link:../config-eslint
       typescript:
@@ -376,7 +376,7 @@ importers:
       '@suddenly-giovanni/config-typescript':
         specifier: workspace:*
         version: link:../config-typescript
-      '@suddenly-giovanni/eslint-config':
+      '@suddenlygiovanni/eslint-config':
         specifier: workspace:*
         version: link:../config-eslint
       '@total-typescript/ts-reset':

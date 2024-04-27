@@ -28,7 +28,7 @@
 		"@suddenly-giovanni/config-prettier": "workspace:*",
 		"@suddenly-giovanni/config-tailwind": "workspace:*",
 		"@suddenly-giovanni/config-typescript": "workspace:*",
-		"@suddenly-giovanni/eslint-config": "workspace:*",
+		"@suddenlygiovanni/eslint-config": "workspace:*",
 		"typescript": "5.4.5"
 	},
 	"scripts": {
