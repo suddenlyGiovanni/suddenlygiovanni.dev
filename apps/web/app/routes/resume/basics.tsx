@@ -42,7 +42,7 @@ function Header({
 					<p
 						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 						key={i}
-						className="my-0"
+						class="my-0"
 					>
 						{p}
 					</p>
@@ -52,7 +52,7 @@ function Header({
 				<em>
 					If you consider me for a role, read through{' '}
 					<Link
-						className={clsx('font-medium', 'text-primary', 'underline', 'underline-offset-4')}
+						class={clsx('font-medium', 'text-primary', 'underline', 'underline-offset-4')}
 						to={routesRecord.motivations.url}
 					>
 						my motivations
@@ -119,10 +119,10 @@ interface ContactsProps {
 
 function Contacts({ email, location, phone, profiles, url }: ContactsProps): ReactElement {
 	return (
-		<address className={addressClasses.address}>
-			<T.ul className={addressClasses.ul}>
-				<li className={addressClasses.li}>
-					<Icons.globe aria-label="location icon" className="size-4" />
+		<address class={addressClasses.address}>
+			<T.ul class={addressClasses.ul}>
+				<li class={addressClasses.li}>
+					<Icons.globe aria-label="location icon" class="size-4" />
 					<T.a
 						href="https://www.openstreetmap.org/search?query=berlin#map=11/52.5072/13.4249"
 						target="_blank"
@@ -130,28 +130,28 @@ function Contacts({ email, location, phone, profiles, url }: ContactsProps): Rea
 					>{`${location.city}, ${location.countryCode}`}</T.a>
 				</li>
 
-				<li className={addressClasses.li}>
+				<li class={addressClasses.li}>
 					<Icons.envelope aria-label="mail icon" />
 					<T.a aria-label="email" href={`mailto:${email}`} rel="noreferrer" target="_blank">
 						{email}
 					</T.a>
 				</li>
 
-				<li className={addressClasses.li}>
+				<li class={addressClasses.li}>
 					<Icons.desktop aria-label="mail icon" />
 					<T.a aria-label="link to my website" href={url} rel="noreferrer" target="_blank">
 						{url}
 					</T.a>
 				</li>
 
-				<li className={addressClasses.li}>
+				<li class={addressClasses.li}>
 					<Icons.mobile aria-label="phone icon" />
 					<T.a aria-label="phone number" href={`tel:${phone ?? ''}`}>
 						{phone}
 					</T.a>
 				</li>
 				{profiles.map(profile => (
-					<li className={addressClasses.li} key={profile.network}>
+					<li class={addressClasses.li} key={profile.network}>
 						<SocialIcon
 							aria-label={`${profile.network} icon`}
 							network={profile.network.toLowerCase()}

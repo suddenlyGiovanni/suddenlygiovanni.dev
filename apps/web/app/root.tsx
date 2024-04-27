@@ -105,7 +105,7 @@ function Document({
 	env?: typeof ENV
 }): ReactElement {
 	return (
-		<html className={clsx(theme, 'min-h-screen')} data-theme={clsx(theme)} lang="en">
+		<html class={clsx(theme, 'min-h-screen')} data-theme={clsx(theme)} lang="en">
 			<head>
 				<meta charSet="utf-8" />
 				<meta httpEquiv="Content-Type" content="text/html;charset=utf-8" />
@@ -114,7 +114,7 @@ function Document({
 				<Links />
 			</head>
 			<Layout.Body
-				className={clsx(
+				class={clsx(
 					'min-h-full',
 					'bg-background',
 					'text-foreground',

@@ -17,7 +17,7 @@ export const meta: MetaFunction = () => {
 
 export default function BrainDump(): JSX.Element {
 	return (
-		<article className={clsx('prose dark:prose-invert w-full max-w-none bg-background font-comic')}>
+		<article class={clsx('prose dark:prose-invert w-full max-w-none bg-background font-comic')}>
 			<T.h2>BrainDump</T.h2>
 		</article>
 	)
