@@ -58,7 +58,7 @@ const imgSrcSet = [
 function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RemixLink>): ReactElement {
 	return (
 		<RemixLink
-			class={clsx(
+			className={clsx(
 				'decoration-wavy',
 				'underline-offset-4',
 				'underline',
@@ -72,7 +72,7 @@ function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RemixLink
 
 export default function Index(): JSX.Element {
 	return (
-		<article class={clsx('flex', 'w-full', 'flex-col', 'justify-start', 'font-comic')}>
+		<article className={clsx('flex', 'w-full', 'flex-col', 'justify-start', 'font-comic')}>
 			<T.h2>Hi! I'm Giovanni 👋</T.h2>
 			<picture>
 				<source
@@ -82,7 +82,7 @@ export default function Index(): JSX.Element {
 				/>
 				<img
 					alt="Giovanni Ravalico"
-					class="w-full"
+					className="w-full"
 					sizes="(max-width: 4667px) 60vw, 2800px"
 					src={hero2800wAssetUrl}
 					srcSet={imgSrcSet}

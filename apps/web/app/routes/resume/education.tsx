@@ -38,20 +38,20 @@ export const Education = memo(function Education({
 	}, [all, none])
 
 	return (
-		<section class="relative w-full">
-			<T.h2 class="mb-0">Education</T.h2>
+		<section className="relative w-full">
+			<T.h2 className="mb-0">Education</T.h2>
 
 			<Button
-				class="absolute top-0 right-0 rounded-full"
+				className="absolute top-0 right-0 rounded-full"
 				onClick={toggleEducation}
 				size="icon"
 				variant="ghost"
 			>
 				{value.length === 0 ? <Icons.rowSpacing /> : <Icons.cross2 />}
-				<span class="sr-only">Toggle education accordion</span>
+				<span className="sr-only">Toggle education accordion</span>
 			</Button>
 
-			<Accordion class="w-full" onValueChange={setValue} type="multiple" value={value}>
+			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
 				{educations.map((education, idx) => (
 					<Edu
 						area={education.area}
@@ -110,10 +110,10 @@ const Edu = memo(function Edu({
 
 				<AccordionContent asChild={true}>
 					<dd>
-						<ul aria-label="highlights" class="mb-0 ml-0 list-none">
+						<ul aria-label="highlights" className="mb-0 ml-0 list-none">
 							{courses?.map(highlight => (
 								<li
-									class="pl-0"
+									className="pl-0"
 									key={pipe(highlight, s => s.slice(0, s.length / 2), generateDjb2Hash)}
 								>
 									{highlight}
@@ -149,30 +149,36 @@ const EduHeader = memo(function EduHeader({
 	url: EducationType['url']
 }): ReactElement {
 	return (
-		<dt class="relative my-4 flex w-full flex-col">
-			<h3 aria-label="area of education" class={clsx('mt-0 mb-0 font-bold text-base leading-none')}>
+		<dt className="relative my-4 flex w-full flex-col">
+			<h3
+				aria-label="area of education"
+				className={clsx('mt-0 mb-0 font-bold text-base leading-none')}
+			>
 				{area}
 			</h3>
 
-			<span aria-label="institution" class={clsx(styles.span, 'font-medium text-base not-italic')}>
+			<span
+				aria-label="institution"
+				className={clsx(styles.span, 'font-medium text-base not-italic')}
+			>
 				{institution}
 				{url ? (
-					<a class="ml-2" href={url} rel="noopener noreferrer" target="_blank">
-						<Icons.link2 aria-label={`link to ${institution} institution`} class="size-4" />
+					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
+						<Icons.link2 aria-label={`link to ${institution} institution`} className="size-4" />
 					</a>
 				) : null}
 			</span>
 
-			<span class={clsx(styles.span, 'justify-between')}>
+			<span className={clsx(styles.span, 'justify-between')}>
 				{startDate ? (
 					<span aria-label="start date / end date">
-						<time class="mr-2" dateTime={startDate}>
+						<time className="mr-2" dateTime={startDate}>
 							{Either.getOrNull(formatDateLocaleShort(startDate))}
 						</time>
 						{endDate ? (
 							<>
 								-
-								<time class="ml-2" dateTime={endDate}>
+								<time className="ml-2" dateTime={endDate}>
 									{Either.getOrNull(formatDateLocaleShort(endDate))}
 								</time>
 							</>
@@ -181,20 +187,20 @@ const EduHeader = memo(function EduHeader({
 				) : null}
 
 				{location ? (
-					<span aria-label="location" class={styles.span}>
+					<span aria-label="location" className={styles.span}>
 						{location}
 					</span>
 				) : null}
 			</span>
 
 			{studyType ? (
-				<span aria-label="description" class={styles.span}>
+				<span aria-label="description" className={styles.span}>
 					{studyType}
 				</span>
 			) : null}
 			<Trigger asChild={true}>
 				<Button
-					class={clsx(
+					className={clsx(
 						'rounded-full',
 						'transition-all [&[data-state=open]>svg]:rotate-180',
 						'absolute top-0 right-0',
@@ -203,8 +209,8 @@ const EduHeader = memo(function EduHeader({
 					type="button"
 					variant="ghost"
 				>
-					<Icons.chevronDown class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
-					<span class="sr-only">Toggle {institution} accordion</span>
+					<Icons.chevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+					<span className="sr-only">Toggle {institution} accordion</span>
 				</Button>
 			</Trigger>
 		</dt>

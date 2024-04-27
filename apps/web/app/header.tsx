@@ -71,7 +71,7 @@ function NavLink({
 	return (
 		<UnstyledNavLink
 			{...props}
-			class={({ isActive }) => calculateClassName({ isActive, className })}
+			className={({ isActive }) => calculateClassName({ isActive, className })}
 		>
 			{children}
 		</UnstyledNavLink>
@@ -109,28 +109,28 @@ function ThemeSwitch({
 				: 'system'
 	const modeLabel = {
 		light: (
-			<Icons.sun class={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
-				<span class="sr-only">Light</span>
+			<Icons.sun className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
+				<span className="sr-only">Light</span>
 			</Icons.sun>
 		),
 		dark: (
-			<Icons.moon class={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
-				<span class="sr-only">Dark</span>
+			<Icons.moon className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
+				<span className="sr-only">Dark</span>
 			</Icons.moon>
 		),
 		system: (
-			<Icons.laptop name="laptop" class={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
-				<span class="sr-only">System</span>
+			<Icons.laptop name="laptop" className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
+				<span className="sr-only">System</span>
 			</Icons.laptop>
 		),
 	}
 
 	return (
-		<fetcher.Form method="POST" class={className}>
+		<fetcher.Form method="POST" className={className}>
 			<input type="hidden" name="theme" value={nextMode} />
-			<div class="flex gap-2">
+			<div className="flex gap-2">
 				<Button
-					class={clsx('flex h-8 w-8 cursor-pointer items-center justify-center')}
+					className={clsx('flex h-8 w-8 cursor-pointer items-center justify-center')}
 					size="icon"
 					variant="ghost"
 					data-testid="ThemeSwitch"
@@ -162,7 +162,7 @@ export const Header = memo(function Header({
 		() =>
 			routes.map(({ title, url, uri, description, disabled }) => (
 				<li
-					class={clsx(
+					className={clsx(
 						'flex min-h-16 min-w-32 items-center justify-end',
 						'md:min-h-fit md:min-w-fit',
 						'outline-none',
@@ -189,7 +189,7 @@ export const Header = memo(function Header({
 
 	return (
 		<Layout.Header
-			class={clsx([
+			className={clsx([
 				'sticky',
 				'top-0',
 				'w-full',
@@ -205,7 +205,7 @@ export const Header = memo(function Header({
 			])}
 		>
 			<div
-				class={clsx([
+				className={clsx([
 					'container',
 					'flex',
 					'flex-row',
@@ -224,14 +224,14 @@ export const Header = memo(function Header({
 				<NavigationMenuToggle
 					aria-controls={PRIMARY_NAVIGATION}
 					aria-expanded={isMobileNavigationVisible}
-					class={clsx('absolute', 'block', 'md:hidden', 'right-8', 'top-3', 'z-50')}
+					className={clsx('absolute', 'block', 'md:hidden', 'right-8', 'top-3', 'z-50')}
 					isSelected={isMobileNavigationVisible}
 					onPress={toggleMobileNavigationVisibility}
 				/>
 
 				<nav aria-label="mobile navigation">
 					<menu
-						class={clsx(
+						className={clsx(
 							// Base styles
 							['fixed', 'flex', 'px-8', 'py-12'],
 							// Mobile navigation
@@ -278,7 +278,7 @@ export const Header = memo(function Header({
 						role="menu"
 					>
 						{renderLi}
-						<ThemeSwitch userPreference={theme} class="ml-16 aspect-square" />
+						<ThemeSwitch userPreference={theme} className="ml-16 aspect-square" />
 					</menu>
 				</nav>
 			</div>

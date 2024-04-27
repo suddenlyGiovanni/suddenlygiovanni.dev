@@ -16,9 +16,9 @@ export const meta: MetaFunction = () => {
 
 export default function Motivation(): ReactElement {
 	return (
-		<article class={clsx('prose dark:prose-invert w-full max-w-none bg-background font-comic')}>
+		<article className={clsx('prose dark:prose-invert w-full max-w-none bg-background font-comic')}>
 			<h1>My Motivations</h1>
-			<p class="lead">
+			<p className="lead">
 				Over the years, I have learned how and under which conditions I like to work, what drives
 				me, and which criteria enhance my productivity and happiness.
 			</p>

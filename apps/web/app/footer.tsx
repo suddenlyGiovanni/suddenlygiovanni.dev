@@ -15,7 +15,7 @@ const copyrightYear = new Date().getFullYear().toString()
 export function Footer(): JSX.Element {
 	return (
 		<Layout.Footer
-			class={clsx([
+			className={clsx([
 				'sticky',
 				'bottom-0',
 				'w-full',
@@ -29,7 +29,7 @@ export function Footer(): JSX.Element {
 			])}
 		>
 			<div
-				class={clsx([
+				className={clsx([
 					'container',
 					'relative',
 					'mx-auto',
@@ -42,8 +42,8 @@ export function Footer(): JSX.Element {
 					'justify-between',
 				])}
 			>
-				<span class="mb-0 flex-auto">© {copyrightYear} Giovanni Ravalico</span>
-				<address class="flex items-center justify-between gap-4 md:min-w-32">
+				<span className="mb-0 flex-auto">© {copyrightYear} Giovanni Ravalico</span>
+				<address className="flex items-center justify-between gap-4 md:min-w-32">
 					<TwitterIconLink href={config.socials.Twitter.url} />
 					<GitHubIconLink href={config.socials.GitHub.url} />
 					<LinkedInIconLink href={config.socials.LinkedIn.url} />

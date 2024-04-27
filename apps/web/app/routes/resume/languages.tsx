@@ -10,9 +10,9 @@ export function Languages({
 	readonly languages: readonly Language[]
 }): ReactElement {
 	return (
-		<section class="w-full">
+		<section className="w-full">
 			<T.h2>Languages</T.h2>
-			<table class="w-full">
+			<table className="w-full">
 				<thead>
 					<T.tr>
 						<th>Language</th>

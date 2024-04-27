@@ -25,7 +25,8 @@
 			"all": true,
 			"nursery": {
 				"all": true,
-				"noUndeclaredDependencies": "off"
+				"noUndeclaredDependencies": "off",
+				"noReactSpecificProps": "off"
 			},
 			"style": {
 				"noNamespaceImport": {
@@ -62,6 +63,12 @@
 		}
 	},
 	"overrides": [
+		{
+			"include": ["**/*.snapshot.json"],
+			"formatter": {
+				"enabled": false
+			}
+		},
 		{
 			"include": ["**/*.stories.tsx"],
 			"linter": {

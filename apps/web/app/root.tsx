@@ -105,7 +105,7 @@ function Document({
 	env?: typeof ENV
 }): ReactElement {
 	return (
-		<html class={clsx(theme, 'min-h-screen')} data-theme={clsx(theme)} lang="en">
+		<html className={clsx(theme, 'min-h-screen')} data-theme={clsx(theme)} lang="en">
 			<head>
 				<meta charSet="utf-8" />
 				<meta httpEquiv="Content-Type" content="text/html;charset=utf-8" />
@@ -114,7 +114,13 @@ function Document({
 				<Links />
 			</head>
 			<Layout.Body
-				class={clsx('min-h-full', 'bg-background', 'text-foreground', 'font-sans', 'antialiased')}
+				className={clsx(
+					'min-h-full',
+					'bg-background',
+					'text-foreground',
+					'font-sans',
+					'antialiased',
+				)}
 			>
 				{children}
 				<ScrollRestoration />

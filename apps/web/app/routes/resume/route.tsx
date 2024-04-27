@@ -70,7 +70,7 @@ export default function Resume(): ReactElement {
 
 	return (
 		<article
-			class={clsx(
+			className={clsx(
 				'flex flex-col items-center justify-start gap-y-8',
 				'w-full max-w-none',
 				'prose prose-blue dark:prose-invert',
@@ -88,8 +88,8 @@ export default function Resume(): ReactElement {
 
 			{languages ? <Languages languages={languages} /> : null}
 
-			<footer class="flex w-full items-center justify-between">
-				<Link class="inline-block" to={routesRecord['about-me'].url}>
+			<footer className="flex w-full items-center justify-between">
+				<Link className="inline-block" to={routesRecord['about-me'].url}>
 					&larr; back to my About Me
 				</Link>
 				<small>
@@ -106,7 +106,7 @@ export default function Resume(): ReactElement {
 						</span>
 					) : null}
 					{meta.version ? (
-						<span class="ml-4">
+						<span className="ml-4">
 							<a href={meta.canonical} target="_blank" rel="noreferrer">
 								version {meta.version}
 							</a>

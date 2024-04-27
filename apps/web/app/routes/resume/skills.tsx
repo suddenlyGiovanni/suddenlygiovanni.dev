@@ -36,20 +36,20 @@ export const Skills = memo(function Skills({
 	}, [all, none])
 
 	return (
-		<section class="relative w-full">
+		<section className="relative w-full">
 			<T.h2>Skills</T.h2>
 
 			<Button
-				class="absolute right-0 top-0 rounded-full"
+				className="absolute right-0 top-0 rounded-full"
 				onClick={toggleSkillsAccordion}
 				size="icon"
 				variant="ghost"
 			>
 				{value.length === 0 ? <Icons.rowSpacing /> : <Icons.cross2 />}
-				<span class="sr-only">Toggle skills accordion</span>
+				<span className="sr-only">Toggle skills accordion</span>
 			</Button>
 
-			<Accordion class="w-full" onValueChange={setValue} type="multiple" value={value}>
+			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
 				{skills.map(({ name, keywords }, idx) => (
 					// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non null assertions
 					<Skill key={name} keywords={keywords} name={name} value={all.at(idx)!} />
@@ -67,17 +67,17 @@ const Skill = memo(function Skill({
 	return (
 		<AccordionItem asChild={true} value={value}>
 			<dl key={name}>
-				<dt class="relative flex flex-row items-center justify-between">
+				<dt className="relative flex flex-row items-center justify-between">
 					<span>{name}</span>
 					<Trigger asChild={true}>
 						<Button
-							class={clsx('rounded-full', 'transition-all [&[data-state=open]>svg]:rotate-180')}
+							className={clsx('rounded-full', 'transition-all [&[data-state=open]>svg]:rotate-180')}
 							size="icon"
 							type="button"
 							variant="ghost"
 						>
-							<Icons.chevronDown class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
-							<span class="sr-only">Toggle {name} accordion</span>
+							<Icons.chevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+							<span className="sr-only">Toggle {name} accordion</span>
 						</Button>
 					</Trigger>
 				</dt>
@@ -97,7 +97,7 @@ const KeywordsList = memo(function KeywordsList({
 	return (
 		<AccordionContent asChild={true}>
 			<T.ul
-				class={clsx(
+				className={clsx(
 					'my-0 ml-0 flex list-none flex-row flex-wrap items-start justify-start gap-x-4',
 				)}
 			>
@@ -119,14 +119,14 @@ const Keyword = memo(function Keyword({
 
 	return Option.match(maybeIcon, {
 		onNone: () => (
-			<li class={classname} key={keyword}>
+			<li className={classname} key={keyword}>
 				{keyword}
 			</li>
 		),
 		// biome-ignore lint/style/useNamingConvention: A react component needs to be capitalized
 		onSome: Icon => (
-			<li class={classname} key={keyword}>
-				<Icon class="size-4 fill-accent-foreground/80" />
+			<li className={classname} key={keyword}>
+				<Icon className="size-4 fill-accent-foreground/80" />
 				{keyword}
 			</li>
 		),

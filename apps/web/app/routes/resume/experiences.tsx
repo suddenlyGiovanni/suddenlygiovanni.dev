@@ -38,19 +38,19 @@ export const Experiences = memo(function Experiences({
 	}, [all, none])
 
 	return (
-		<section class="relative w-full">
-			<T.h2 class="mb-0">Experience</T.h2>
+		<section className="relative w-full">
+			<T.h2 className="mb-0">Experience</T.h2>
 			<Button
-				class="absolute top-0 right-0 rounded-full"
+				className="absolute top-0 right-0 rounded-full"
 				onClick={toggleExperiences}
 				size="icon"
 				variant="ghost"
 			>
 				{value.length === 0 ? <Icons.rowSpacing /> : <Icons.cross2 />}
-				<span class="sr-only">Toggle experiences accordion</span>
+				<span className="sr-only">Toggle experiences accordion</span>
 			</Button>
 
-			<Accordion class="w-full" onValueChange={setValue} type="multiple" value={value}>
+			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
 				{work.map(
 					(
 						{
@@ -160,29 +160,29 @@ const ExperienceHeader = memo(function ExperienceHeader({
 	readonly description: WorkType['description']
 }): ReactElement {
 	return (
-		<dt class="relative my-4 flex w-full flex-col">
-			<h3 aria-label="job title" class={clsx('mt-0 mb-0 font-bold text-base leading-none')}>
+		<dt className="relative my-4 flex w-full flex-col">
+			<h3 aria-label="job title" className={clsx('mt-0 mb-0 font-bold text-base leading-none')}>
 				{position}
 			</h3>
 
-			<span aria-label="company" class={clsx(styles.span, 'font-medium text-base not-italic')}>
+			<span aria-label="company" className={clsx(styles.span, 'font-medium text-base not-italic')}>
 				{name}
 				{url ? (
-					<a class="ml-2" href={url} rel="noopener noreferrer" target="_blank">
-						<Icons.link2 aria-label={`link to ${name} company`} class="size-4" />
+					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
+						<Icons.link2 aria-label={`link to ${name} company`} className="size-4" />
 					</a>
 				) : null}
 			</span>
 
-			<span class={clsx(styles.span, 'justify-between')}>
+			<span className={clsx(styles.span, 'justify-between')}>
 				<span aria-label="start date / end date">
-					<time class="mr-1" dateTime={startDate}>
+					<time className="mr-1" dateTime={startDate}>
 						{Either.getOrNull(formatDateLocaleShort(startDate))}
 					</time>
 					{endDate ? (
 						<>
 							-
-							<time class="ml-1" dateTime={endDate}>
+							<time className="ml-1" dateTime={endDate}>
 								{Either.getOrNull(formatDateLocaleShort(endDate))}
 							</time>
 						</>
@@ -193,13 +193,13 @@ const ExperienceHeader = memo(function ExperienceHeader({
 			</span>
 
 			{description ? (
-				<span aria-label="description" class={styles.span}>
+				<span aria-label="description" className={styles.span}>
 					{description}
 				</span>
 			) : null}
 			<Trigger asChild={true}>
 				<Button
-					class={clsx(
+					className={clsx(
 						'rounded-full',
 						'transition-all [&[data-state=open]>svg]:rotate-180',
 						'absolute top-0 right-0',
@@ -208,8 +208,8 @@ const ExperienceHeader = memo(function ExperienceHeader({
 					type="button"
 					variant="ghost"
 				>
-					<Icons.chevronDown class="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
-					<span class="sr-only">Toggle {name} accordion</span>
+					<Icons.chevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+					<span className="sr-only">Toggle {name} accordion</span>
 				</Button>
 			</Trigger>
 		</dt>
@@ -228,7 +228,7 @@ function ExperienceSummary({
 					<p
 						// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 						key={i}
-						class="my-0"
+						className="my-0"
 					>
 						{p}
 					</p>
@@ -245,17 +245,17 @@ function ExperienceHighlights({
 }): ReactElement {
 	return (
 		<dd>
-			<T.ul aria-label="highlights" class={clsx('mb-0 ml-0 list-none')}>
+			<T.ul aria-label="highlights" className={clsx('mb-0 ml-0 list-none')}>
 				{highlights.map(highlight => (
 					<li
-						class="pl-0"
+						className="pl-0"
 						key={pipe(highlight, s => s.slice(0, highlight.length / 2), generateDjb2Hash)}
 					>
 						{highlight.split('\n').map((p, i) => (
 							<p
 								// biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
 								key={i}
-								class="my-0"
+								className="my-0"
 							>
 								{p}
 							</p>
@@ -278,7 +278,7 @@ function ExperienceContact({
 		<>
 			<dt>Contacts:</dt>
 			<dd>
-				<address class={clsx('flex flex-row flex-wrap items-baseline justify-between')}>
+				<address className={clsx('flex flex-row flex-wrap items-baseline justify-between')}>
 					<span>{name}</span>
 					<a href={`mailto:${email}`}>{email}</a>
 					{phone ? <a href={`tel:${phone}`}>{phone}</a> : null}
