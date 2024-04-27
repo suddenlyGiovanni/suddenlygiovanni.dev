@@ -1,5 +1,5 @@
 {
-	"name": "@suddenly-giovanni/web",
+	"name": "@suddenlygiovanni/web",
 	"private": true,
 	"sideEffects": false,
 	"type": "module",
