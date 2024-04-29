@@ -1,9 +1,4 @@
-import {
-	type LinksFunction,
-	type LoaderFunctionArgs,
-	type MetaFunction,
-	json,
-} from '@remix-run/node'
+import { type LinksFunction, type MetaFunction, json } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
 import { Effect } from 'effect'
 import type { ReactElement } from 'react'
@@ -14,6 +9,7 @@ import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import * as repository from '~/.server/repositories/github'
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'
+
 import { routesRecord } from '~/routes-record.ts'
 import { Languages } from '~/routes/resume/languages.tsx'
 
@@ -22,6 +18,7 @@ import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
 import { Interests } from './interests.tsx'
 import { Skills } from './skills.tsx'
+import { loaderFunction } from '~/services'
 
 export function meta({ location }: Parameters<MetaFunction>[number]) {
 	const title = `${config.siteName} | Résumé`
@@ -50,19 +47,27 @@ export const links: LinksFunction = () => {
 	]
 }
 
-export async function loader(_: LoaderFunctionArgs) {
-	try {
-		const { resume, meta } = await Effect.runPromise(repository.github.getResume())
-		return json({ resume, meta })
-	} catch (error) {
-		console.error(error)
-		throw new Response('Some error !!!', {
-			// find the correct response code and message for this error caused by parsing issue....
-			status: 500,
-			statusText: 'Internal Server Error',
-		})
-	}
-}
+export const loader = loaderFunction(
+	() =>
+		Effect.gen(function* () {
+			const { resume, meta } = yield* repository.github.getResume()
+			return json({ resume, meta })
+		}), // still need to handle the error cases here!!
+)
+
+// const _loader = async (_: LoaderFunctionArgs) => {
+// 	try {
+// 		const { resume, meta } = await Effect.runPromise(repository.github.getResume())
+// 		return json({ resume, meta })
+// 	} catch (error) {
+// 		console.error(error)
+// 		throw new Response('Some error !!!', {
+// 			// find the correct response code and message for this error caused by parsing issue....
+// 			status: 500,
+// 			statusText: 'Internal Server Error',
+// 		})
+// 	}
+// }
 
 export default function Resume(): ReactElement {
 	const { resume, meta } = useLoaderData<typeof loader>()
