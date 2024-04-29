@@ -1,4 +1,4 @@
-import { getResume } from './resume.ts'
+import { getResume } from './queries.ts'
 
 export const github = {
 	getResume,
