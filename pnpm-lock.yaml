@@ -408,8 +408,8 @@ importers:
         specifier: 8.0.9
         version: 8.0.9(@babel/preset-env@7.24.4(@babel/core@7.24.4))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tailwind-merge:
-        specifier: 2.2.2
-        version: 2.2.2
+        specifier: 2.3.0
+        version: 2.3.0
       tailwindcss:
         specifier: 3.4.3
         version: 3.4.3
@@ -7342,6 +7342,9 @@ packages:
 
   tailwind-merge@2.2.2:
     resolution: {integrity: sha512-tWANXsnmJzgw6mQ07nE3aCDkCK4QdT3ThPMCzawoYA2Pws7vSTCvz3Vrjg61jVUGfFZPJzxEP+NimbcW+EdaDw==}
+
+  tailwind-merge@2.3.0:
+    resolution: {integrity: sha512-vkYrLpIP+lgR0tQCG6AP7zZXCTLc1Lnv/CCRT3BqJ9CZ3ui2++GPaGb1x/ILsINIMSYqqvrpqjUFsMNLlW99EA==}
 
   tailwind-variants@0.2.1:
     resolution: {integrity: sha512-2xmhAf4UIc3PijOUcJPA1LP4AbxhpcHuHM2C26xM0k81r0maAO6uoUSHl3APmvHZcY5cZCY/bYuJdfFa4eGoaw==}
@@ -16915,6 +16918,10 @@ snapshots:
   tailwind-merge@1.14.0: {}
 
   tailwind-merge@2.2.2:
+    dependencies:
+      '@babel/runtime': 7.24.4
+
+  tailwind-merge@2.3.0:
     dependencies:
       '@babel/runtime': 7.24.4
 
