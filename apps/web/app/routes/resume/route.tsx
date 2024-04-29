@@ -13,12 +13,12 @@ import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
 import { Languages } from '~/routes/resume/languages.tsx'
 
+import { loaderFunction } from '~/services'
 import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
 import { Interests } from './interests.tsx'
 import { Skills } from './skills.tsx'
-import { loaderFunction } from '~/services'
 
 export function meta({ location }: Parameters<MetaFunction>[number]) {
 	const title = `${config.siteName} | Résumé`
