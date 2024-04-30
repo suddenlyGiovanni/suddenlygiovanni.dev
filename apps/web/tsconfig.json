@@ -27,7 +27,8 @@
 		".prettierrc.js",
 		".eslintrc.cjs",
 		"postcss.config.mjs",
-		"app/**/*"
+		"app/**/*",
+		"app/.server/**/*"
 	],
 	"exclude": ["build", "node_modules", "./~"]
 }
