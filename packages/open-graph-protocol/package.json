@@ -29,7 +29,7 @@
 		"@suddenlygiovanni/config-tailwind": "workspace:*",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",
-		"typescript": "5.4.5"
+		"typescript": "5.5.0-beta"
 	},
 	"scripts": {
 		"clean": "scripty",
