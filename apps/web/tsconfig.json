@@ -13,7 +13,7 @@
 		"target": "ES2022",
 		"types": [
 			"@total-typescript/ts-reset",
-			"@octokit",
+			"@octokit/core",
 			"react",
 			"react-dom",
 			"vite/client",
