@@ -1,59 +1,60 @@
 import { Schema } from '@effect/schema'
 import { Console, Effect, Option, RequestResolver } from 'effect'
-import { RequestError } from 'octokit'
 
 import { getResumeFile } from '~/.server/repositories/github/queries.ts'
 import { parseYml } from '~/.server/schemas/parse-yml.ts'
 import { Resume as ResumeSchema } from '~/.server/schemas/resume'
 import { Meta } from '~/.server/schemas/resume/meta.ts'
-import { OctokitService } from '~/.server/services/octokit.ts'
+import { OctokitService, RequestError } from '~/services/octokit.ts'
 
 import * as Model from './model.ts'
 import type * as RequestModel from './request-model'
 
-export const GetResumeResolver = RequestResolver.fromEffect((request: RequestModel.GetResume) => {
-	const repo = 'resume'
-	const owner = 'suddenlyGiovanni'
+export const GetResumeResolver = RequestResolver.fromEffect(
+	// @ts-expect-error - TS doesn't like the type of the request parameter
+	(request: RequestModel.GetResume) => {
+		const repo = 'resume'
+		const owner = 'suddenlyGiovanni'
 
-	return Effect.gen(function* (_) {
-		const { resumeFile, packageFile } = yield* _(
-			Effect.all(
-				{
-					resumeFile: getResumeFile(owner, repo, 'resume.yml'),
-					packageFile: getResumeFile(owner, repo, 'package.json'),
-				},
-				{ concurrency: 2 },
-			),
-		)
+		return Effect.gen(function* (_) {
+			const { resumeFile, packageFile } = yield* _(
+				Effect.all(
+					{
+						resumeFile: getResumeFile(owner, repo, 'resume.yml'),
+						packageFile: getResumeFile(owner, repo, 'package.json'),
+					},
+					{ concurrency: 2 },
+				),
+			)
 
-		const resume = yield* _(Schema.decode(parseYml(ResumeSchema))(resumeFile.decodedContent))
-		const packageJson = yield* _(
-			Schema.decode(Schema.parseJson(Schema.struct({ version: Schema.string })))(
-				packageFile.decodedContent,
-			),
-		)
+			const resume = yield* _(Schema.decode(parseYml(ResumeSchema))(resumeFile.decodedContent))
+			const packageJson = yield* _(
+				Schema.decode(Schema.parseJson(Schema.Struct({ version: Schema.String })))(
+					packageFile.decodedContent,
+				),
+			)
 
-		const meta = yield* _(
-			Schema.decode(Meta)({
-				...(Option.isSome(resumeFile.lastModified)
-					? { lastModified: resumeFile.lastModified.value }
-					: {}),
-				...(Option.isSome(resumeFile.canonical) ? { canonical: resumeFile.canonical.value } : {}),
-				version: packageJson.version,
-			}),
-		)
+			const meta = yield* _(
+				Schema.decode(Meta)({
+					...(Option.isSome(resumeFile.lastModified)
+						? { lastModified: resumeFile.lastModified.value }
+						: {}),
+					...(Option.isSome(resumeFile.canonical) ? { canonical: resumeFile.canonical.value } : {}),
+					version: packageJson.version,
+				}),
+			)
 
-		return { meta, resume }
-	}).pipe(Effect.withLogSpan('getResume'))
-}).pipe(RequestResolver.contextFromServices(OctokitService))
+			return { meta, resume }
+		}).pipe(Effect.withLogSpan('getResume'))
+	},
+).pipe(RequestResolver.contextFromServices(OctokitService))
 
 export const GetResumeFileResolver = RequestResolver.fromEffect(
+	// @ts-expect-error - TS doesn't like the type of the request parameter
 	(request: RequestModel.GetResumeFile) => {
 		return Effect.gen(function* (_) {
-			const { getOctokit } = yield* _(OctokitService)
+			const { octokit } = yield* _(OctokitService)
 			const { path, repo, owner } = request
-
-			const octokit = yield* _(getOctokit())
 
 			const octokitResponse = yield* _(
 				Effect.tryPromise({
@@ -105,7 +106,7 @@ export const GetResumeFileResolver = RequestResolver.fromEffect(
 						return typeof data === 'object' && !Array.isArray(data)
 							? Effect.succeed(data)
 							: Effect.fail(
-									new Model.InvalidDataError({
+									new Model.ResumeFileInvalidDataError({
 										message: `Expected an object, but got: ${typeof data}`,
 									}),
 								)
@@ -123,7 +124,7 @@ export const GetResumeFileResolver = RequestResolver.fromEffect(
 						return data.type === 'file' && data.name === path && data.path === path
 							? Effect.succeed(data)
 							: Effect.fail(
-									new Model.InvalidDataError({
+									new Model.ResumeFileInvalidDataError({
 										message: `Expected a file matching the correct path and name; got ${data.type}`,
 									}),
 								)
@@ -135,7 +136,7 @@ export const GetResumeFileResolver = RequestResolver.fromEffect(
 				Effect.try({
 					try: () => Buffer.from(content, 'base64').toString('utf8'),
 					catch: _error =>
-						new Model.DecodingError({
+						new Model.ResumeFileDecodingError({
 							message: 'failed to parse data content',
 							encoding: encoding,
 						}),

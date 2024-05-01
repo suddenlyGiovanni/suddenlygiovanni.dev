@@ -1,5 +1,4 @@
 import { Request } from 'effect'
-// biome-ignore lint/nursery/noNamespaceImport: <explanation>
 import type * as Model from './model.ts'
 
 export interface GetResume extends Request.Request<Model.Resume, Model.GetUserError> {
