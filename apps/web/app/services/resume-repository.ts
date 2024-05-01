@@ -1,10 +1,9 @@
 import { Schema } from '@effect/schema'
-import type { ParseError } from '@effect/schema/ParseResult'
-import { Console, Data, Effect, Option } from 'effect'
+import { Console, Data, Effect, Layer, Option } from 'effect'
 
 import { parseYml } from '~/.server/schemas/parse-yml.ts'
-import { Meta, type MetaType } from '~/.server/schemas/resume/meta.ts'
-import { Resume as ResumeSchema, type ResumeType } from '~/.server/schemas/resume/resume.ts'
+import { Meta } from '~/.server/schemas/resume/meta.ts'
+import { Resume as ResumeSchema } from '~/.server/schemas/resume/resume.ts'
 import { OctokitService, RequestError } from '~/services/octokit.ts'
 
 /**
@@ -19,6 +18,7 @@ import { OctokitService, RequestError } from '~/services/octokit.ts'
  * or just an object with a method? in-any case it needs to moved to a separate
  * file... but where?
  */
+
 // const octokit = new Octokit({ auth: env.GITHUB_TOKEN })
 
 /**
@@ -185,21 +185,17 @@ const decodeResume = Schema.decode(parseYml(ResumeSchema))
 const packageJsonSchema = Schema.Struct({ version: Schema.String })
 const decodePackageJson = Schema.decode(Schema.parseJson(packageJsonSchema))
 
-export function getResume(): Effect.Effect<
-	{ meta: MetaType; resume: ResumeType },
-	RequestError | InvalidDataError | DecodingError | ParseError,
-	never
-> {
+function getResume() {
 	const repo = 'resume'
 	const owner = 'suddenlyGiovanni'
 	const ref = '427a35d95bbfe147dd45c5fa0f0f0b22916a5c4d'
 
 	return Effect.gen(function* () {
-		const { resumeFile, packageFile } = yield* Effect.all(
-			{
-				resumeFile: getResumeFile({ owner, path: 'resume.yml', ref, repo }),
-				packageFile: getResumeFile({ owner, path: 'package.json', ref, repo }),
-			},
+		const [resumeFile, packageFile] = yield* Effect.all(
+			[
+				getResumeFile({ owner, path: 'resume.yml', ref, repo }),
+				getResumeFile({ owner, path: 'package.json', ref, repo }),
+			],
 			{ concurrency: 2 },
 		)
 
@@ -218,5 +214,13 @@ export function getResume(): Effect.Effect<
 	}).pipe(Effect.withLogSpan('getResume'))
 }
 
+const makeResumeRepository = Effect.sync(() => {
+	return { getResume }
+})
 
-
+export class ResumeRepository extends Effect.Tag('@services/ResumeRepository')<
+	ResumeRepository,
+	Effect.Effect.Success<typeof makeResumeRepository>
+>() {
+	static Live = Layer.effect(this, makeResumeRepository)
+}
