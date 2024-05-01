@@ -1,7 +1,5 @@
 import { Effect } from 'effect'
 import { OctokitService } from '~/services/octokit.ts'
-
-import type * as Model from './model.ts'
 import * as RequestModel from './request-model.ts'
 import * as Resolvers from './resolvers.ts'
 
