@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.7.2",
+    "@types/eslint": "8.56.10",
     "eslint": "8.57.0",
     "prettier": "3.2.5",
     "scripty": "2.1.1",
