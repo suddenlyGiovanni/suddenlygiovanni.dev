@@ -6,14 +6,12 @@ import type { ReactElement } from 'react'
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
-import * as repository from '~/.server/repositories/github'
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'
-
 import { routesRecord } from '~/routes-record.ts'
 import { Languages } from '~/routes/resume/languages.tsx'
-
 import { loaderFunction } from '~/services'
+import { ResumeRepository } from '~/services/resume-repository.ts'
 import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
@@ -50,9 +48,10 @@ export const links: LinksFunction = () => {
 export const loader = loaderFunction(
 	() =>
 		Effect.gen(function* () {
-			const { resume, meta } = yield* repository.github.getResume()
+			const { resume, meta } = yield* ResumeRepository.getResume()
 			return json({ resume, meta })
-		}), // still need to handle the error cases here!!
+		}),
+	// still need to handle the error cases here!!
 )
 
 // const _loader = async (_: LoaderFunctionArgs) => {

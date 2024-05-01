@@ -13,6 +13,7 @@
 		"target": "ES2022",
 		"types": [
 			"@total-typescript/ts-reset",
+			"@octokit/core",
 			"react",
 			"react-dom",
 			"vite/client",
@@ -27,7 +28,8 @@
 		".prettierrc.js",
 		".eslintrc.cjs",
 		"postcss.config.mjs",
-		"app/**/*"
+		"app/**/*",
+		"app/.server/**/*"
 	],
 	"exclude": ["build", "node_modules", "./~"]
 }

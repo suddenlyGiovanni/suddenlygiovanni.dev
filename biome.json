@@ -29,17 +29,15 @@
 				"noReactSpecificProps": "off"
 			},
 			"style": {
-				"noNamespaceImport": {
-					"level": "off"
-				}
+				"noNamespaceImport": "off",
+				"useNamingConvention": "warn"
+			},
+			"complexity": {
+				"noStaticOnlyClass": "off"
 			},
 			"performance": {
-				"noBarrelFile": {
-					"level": "warn"
-				},
-				"noReExportAll": {
-					"level": "warn"
-				}
+				"noBarrelFile": "warn",
+				"noReExportAll": "warn"
 			}
 		}
 	},
