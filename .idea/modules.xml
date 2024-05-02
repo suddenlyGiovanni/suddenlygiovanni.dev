@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/packages/config-eslint/config-eslint.iml" filepath="$PROJECT_DIR$/packages/config-eslint/config-eslint.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/config-prettier/config-prettier.iml" filepath="$PROJECT_DIR$/packages/config-prettier/config-prettier.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/config-tailwind/config-tailwind.iml" filepath="$PROJECT_DIR$/packages/config-tailwind/config-tailwind.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/config-typescript/config-typescript.iml" filepath="$PROJECT_DIR$/packages/config-typescript/config-typescript.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/open-graph-protocol/open-graph-protocol.iml" filepath="$PROJECT_DIR$/packages/open-graph-protocol/open-graph-protocol.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/resume/resume.iml" filepath="$PROJECT_DIR$/packages/resume/resume.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/suddenlygiovanni.dev.iml" filepath="$PROJECT_DIR$/.idea/suddenlygiovanni.dev.iml" />
-      <module fileurl="file://$PROJECT_DIR$/packages/ui/ui.iml" filepath="$PROJECT_DIR$/packages/ui/ui.iml" />
-      <module fileurl="file://$PROJECT_DIR$/apps/web/web.iml" filepath="$PROJECT_DIR$/apps/web/web.iml" />
-    </modules>
+			<module fileurl="file://$PROJECT_DIR$/.idea/suddenlygiovanni.dev.iml" filepath="$PROJECT_DIR$/.idea/suddenlygiovanni.dev.iml" />
+		</modules>
   </component>
 </project>
