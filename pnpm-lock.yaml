@@ -41,9 +41,6 @@ importers:
       '@epic-web/invariant':
         specifier: 1.0.0
         version: 1.0.0
-      '@jsr/std__yaml':
-        specifier: 0.223.0
-        version: 0.223.0
       '@octokit/core':
         specifier: 6.1.2
         version: 6.1.2
@@ -62,9 +59,15 @@ importers:
       '@remix-run/serve':
         specifier: 2.8.1
         version: 2.8.1(typescript@5.5.0-beta)
+      '@std/yaml':
+        specifier: npm:@jsr/std__yaml@0.223.0
+        version: '@jsr/std__yaml@0.223.0'
       '@suddenlygiovanni/open-graph-protocol':
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
+      '@suddenlygiovanni/resume':
+        specifier: 11.0.3
+        version: 11.0.3(@effect/schema@0.66.14(effect@3.1.2)(fast-check@3.17.1))(effect@3.1.2)
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -86,13 +89,13 @@ importers:
     devDependencies:
       '@codecov/vite-plugin':
         specifier: 0.0.1-beta.6
-        version: 0.0.1-beta.6(vite@5.2.11(@types/node@20.12.8))
+        version: 0.0.1-beta.6(vite@5.2.11(@types/node@20.12.7))
       '@mdx-js/rollup':
         specifier: 3.0.1
         version: 3.0.1(rollup@4.14.3)
       '@remix-run/dev':
         specifier: 2.8.1
-        version: 2.8.1(@remix-run/serve@2.8.1(typescript@5.5.0-beta))(@types/node@20.12.8)(typescript@5.5.0-beta)(vite@5.2.11(@types/node@20.12.8))
+        version: 2.8.1(@remix-run/serve@2.8.1(typescript@5.5.0-beta))(@types/node@20.12.7)(typescript@5.5.0-beta)(vite@5.2.11(@types/node@20.12.7))
       '@remix-run/testing':
         specifier: 2.8.1
         version: 2.8.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.0-beta)
@@ -114,6 +117,9 @@ importers:
       '@types/cookie':
         specifier: 0.6.0
         version: 0.6.0
+      '@types/node':
+        specifier: 20.12.7
+        version: 20.12.7
       '@types/react':
         specifier: 18.3.1
         version: 18.3.1
@@ -125,7 +131,7 @@ importers:
         version: 7.8.0(@typescript-eslint/parser@7.7.0(eslint@8.57.0)(typescript@5.5.0-beta))(eslint@8.57.0)(typescript@5.5.0-beta)
       '@vitest/coverage-v8':
         specifier: 1.6.0
-        version: 1.6.0(vitest@1.6.0(@types/node@20.12.8)(@vitest/ui@1.6.0))
+        version: 1.6.0(vitest@1.6.0(@types/node@20.12.7)(@vitest/ui@1.6.0))
       '@vitest/ui':
         specifier: 1.6.0
         version: 1.6.0(vitest@1.6.0)
@@ -161,19 +167,19 @@ importers:
         version: 4.0.0
       remix-development-tools:
         specifier: 4.1.4
-        version: 4.1.4(@remix-run/react@2.8.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.0-beta))(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.2.11(@types/node@20.12.8))
+        version: 4.1.4(@remix-run/react@2.8.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.0-beta))(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.2.11(@types/node@20.12.7))
       tailwindcss:
         specifier: 3.4.3
         version: 3.4.3
       vite:
         specifier: 5.2.11
-        version: 5.2.11(@types/node@20.12.8)
+        version: 5.2.11(@types/node@20.12.7)
       vite-tsconfig-paths:
         specifier: 4.3.2
-        version: 4.3.2(typescript@5.5.0-beta)(vite@5.2.11(@types/node@20.12.8))
+        version: 4.3.2(typescript@5.5.0-beta)(vite@5.2.11(@types/node@20.12.7))
       vitest:
         specifier: 1.6.0
-        version: 1.6.0(@types/node@20.12.8)(@vitest/ui@1.6.0)
+        version: 1.6.0(@types/node@20.12.7)(@vitest/ui@1.6.0)
 
   packages/config-eslint:
     dependencies:
@@ -325,6 +331,9 @@ importers:
       '@radix-ui/react-slot':
         specifier: 1.0.2
         version: 1.0.2(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-switch':
+        specifier: 1.0.3
+        version: 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@remix-run/react':
         specifier: 2.8.1
         version: 2.8.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.0-beta)
@@ -2068,6 +2077,19 @@ packages:
       '@types/react':
         optional: true
 
+  '@radix-ui/react-switch@1.0.3':
+    resolution: {integrity: sha512-mxm87F88HyHztsI7N+ZUmEoARGkC22YVW5CaC+Byc+HRpuvCrOBPTAnXgf+tZ/7i0Sg/eOePGdMhUKhPaQEqow==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0
+      react-dom: ^16.8 || ^17.0 || ^18.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
   '@radix-ui/react-use-callback-ref@1.0.1':
     resolution: {integrity: sha512-D94LjX4Sp0xJFVaoQOd3OO9k7tpBYNOXdVhkltUbGv2Qb9OXdrg/CpsjlZv7ia14Sylv398LswWBVVu5nqKzAQ==}
     peerDependencies:
@@ -3038,6 +3060,12 @@ packages:
   '@storybook/types@8.0.9':
     resolution: {integrity: sha512-ew0EXzk9k4B557P1qIWYrnvUcgaE0WWA5qQS0AU8l+fRTp5nvl9O3SP/zNIB0SN1qDFO7dXr3idTNTyIikTcEQ==}
 
+  '@suddenlygiovanni/resume@11.0.3':
+    resolution: {integrity: sha512-q0DGZPco5Shi74bUolgFCEh75CUYrNTZLE4OUr0hm8gmH9YiDFOJpJc2kP5p8QHnY2h4SS5oXBiU37jlI/bLzQ==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/11.0.3/39b84cfc3f40169b7930d7255b00f9c6f88e5669}
+    peerDependencies:
+      '@effect/schema': ~0.66.13
+      effect: ^3.1.1
+
   '@swc/core-darwin-arm64@1.4.15':
     resolution: {integrity: sha512-m1D89yN82QTp8AcSm3p9YgcfbdOqc9WmhvnMwoS0lUs6RIIFekI2tEboc9Rp9gre/1lkgzPYI+KGge1BaQzScA==}
     engines: {node: '>=10'}
@@ -3286,6 +3314,9 @@ packages:
 
   '@types/node@18.19.31':
     resolution: {integrity: sha512-ArgCD39YpyyrtFKIqMDvjz79jto5fcI/SVUs2HwB+f0dAzq68yqOdyaSivLiLugSziTpNXLQrVb7RZFmdZzbhA==}
+
+  '@types/node@20.12.7':
+    resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==}
 
   '@types/node@20.12.8':
     resolution: {integrity: sha512-NU0rJLJnshZWdE/097cdCBbyW1h4hEg0xpovcoAQYHl8dnEyp/NAOiE45pvc+Bd1Dt+2r94v2eGFpQJ4R7g+2w==}
@@ -8767,10 +8798,10 @@ snapshots:
       unplugin: 1.10.1
       zod: 3.22.4
 
-  '@codecov/vite-plugin@0.0.1-beta.6(vite@5.2.11(@types/node@20.12.8))':
+  '@codecov/vite-plugin@0.0.1-beta.6(vite@5.2.11(@types/node@20.12.7))':
     dependencies:
       '@codecov/bundler-plugin-core': 0.0.1-beta.6
-      vite: 5.2.11(@types/node@20.12.8)
+      vite: 5.2.11(@types/node@20.12.7)
 
   '@colors/colors@1.5.0':
     optional: true
@@ -9697,6 +9728,22 @@ snapshots:
       react: 18.3.1
     optionalDependencies:
       '@types/react': 18.3.1
+
+  '@radix-ui/react-switch@1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@babel/runtime': 7.24.4
+      '@radix-ui/primitive': 1.0.1
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-context': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-primitive': 1.0.3(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@radix-ui/react-use-controllable-state': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      '@radix-ui/react-use-size': 1.0.1(@types/react@18.3.1)(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+    optionalDependencies:
+      '@types/react': 18.3.1
+      '@types/react-dom': 18.3.0
 
   '@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.3.1)(react@18.3.1)':
     dependencies:
@@ -10673,7 +10720,7 @@ snapshots:
       '@react-types/shared': 3.23.0(react@18.3.1)
       react: 18.3.1
 
-  '@remix-run/dev@2.8.1(@remix-run/serve@2.8.1(typescript@5.5.0-beta))(@types/node@20.12.8)(typescript@5.5.0-beta)(vite@5.2.11(@types/node@20.12.8))':
+  '@remix-run/dev@2.8.1(@remix-run/serve@2.8.1(typescript@5.5.0-beta))(@types/node@20.12.7)(typescript@5.5.0-beta)(vite@5.2.11(@types/node@20.12.7))':
     dependencies:
       '@babel/core': 7.24.4
       '@babel/generator': 7.24.4
@@ -10689,7 +10736,7 @@ snapshots:
       '@remix-run/router': 1.15.3-pre.0
       '@remix-run/server-runtime': 2.8.1(typescript@5.5.0-beta)
       '@types/mdx': 2.0.13
-      '@vanilla-extract/integration': 6.5.0(@types/node@20.12.8)
+      '@vanilla-extract/integration': 6.5.0(@types/node@20.12.7)
       arg: 5.0.2
       cacache: 17.1.4
       chalk: 4.1.2
@@ -10731,7 +10778,7 @@ snapshots:
     optionalDependencies:
       '@remix-run/serve': 2.8.1(typescript@5.5.0-beta)
       typescript: 5.5.0-beta
-      vite: 5.2.11(@types/node@20.12.8)
+      vite: 5.2.11(@types/node@20.12.7)
     transitivePeerDependencies:
       - '@types/node'
       - bluebird
@@ -11517,6 +11564,11 @@ snapshots:
       '@types/express': 4.17.21
       file-system-cache: 2.3.0
 
+  '@suddenlygiovanni/resume@11.0.3(@effect/schema@0.66.14(effect@3.1.2)(fast-check@3.17.1))(effect@3.1.2)':
+    dependencies:
+      '@effect/schema': 0.66.14(effect@3.1.2)(fast-check@3.17.1)
+      effect: 3.1.2
+
   '@swc/core-darwin-arm64@1.4.15':
     optional: true
 
@@ -11757,6 +11809,10 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
+  '@types/node@20.12.7':
+    dependencies:
+      undici-types: 5.26.5
+
   '@types/node@20.12.8':
     dependencies:
       undici-types: 5.26.5
@@ -11993,7 +12049,7 @@ snapshots:
       modern-ahocorasick: 1.0.1
       outdent: 0.8.0
 
-  '@vanilla-extract/integration@6.5.0(@types/node@20.12.8)':
+  '@vanilla-extract/integration@6.5.0(@types/node@20.12.7)':
     dependencies:
       '@babel/core': 7.24.4
       '@babel/plugin-syntax-typescript': 7.24.1(@babel/core@7.24.4)
@@ -12006,8 +12062,8 @@ snapshots:
       lodash: 4.17.21
       mlly: 1.6.1
       outdent: 0.8.0
-      vite: 5.2.11(@types/node@20.12.8)
-      vite-node: 1.5.0(@types/node@20.12.8)
+      vite: 5.2.11(@types/node@20.12.7)
+      vite-node: 1.5.0(@types/node@20.12.7)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -12060,7 +12116,7 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitest/coverage-v8@1.6.0(vitest@1.6.0(@types/node@20.12.8)(@vitest/ui@1.6.0))':
+  '@vitest/coverage-v8@1.6.0(vitest@1.6.0(@types/node@20.12.7)(@vitest/ui@1.6.0))':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -12075,7 +12131,7 @@ snapshots:
       std-env: 3.7.0
       strip-literal: 2.1.0
       test-exclude: 6.0.0
-      vitest: 1.6.0(@types/node@20.12.8)(@vitest/ui@1.6.0)
+      vitest: 1.6.0(@types/node@20.12.7)(@vitest/ui@1.6.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -16280,7 +16336,7 @@ snapshots:
       unified: 11.0.4
       vfile: 6.0.1
 
-  remix-development-tools@4.1.4(@remix-run/react@2.8.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.0-beta))(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.2.11(@types/node@20.12.8)):
+  remix-development-tools@4.1.4(@remix-run/react@2.8.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.0-beta))(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.2.11(@types/node@20.12.7)):
     dependencies:
       '@radix-ui/react-accordion': 1.1.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@radix-ui/react-select': 1.2.2(@types/react-dom@18.3.0)(@types/react@18.3.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -16300,7 +16356,7 @@ snapshots:
       react-dom: 18.3.1(react@18.3.1)
       tailwind-merge: 1.14.0
       uuid: 9.0.1
-      vite: 5.2.11(@types/node@20.12.8)
+      vite: 5.2.11(@types/node@20.12.7)
       zod: 3.22.4
     transitivePeerDependencies:
       - '@types/react'
@@ -17205,13 +17261,30 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite-node@1.5.0(@types/node@20.12.8):
+  vite-node@1.5.0(@types/node@20.12.7):
     dependencies:
       cac: 6.7.14
       debug: 4.3.4
       pathe: 1.1.2
       picocolors: 1.0.0
-      vite: 5.2.11(@types/node@20.12.8)
+      vite: 5.2.11(@types/node@20.12.7)
+    transitivePeerDependencies:
+      - '@types/node'
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
+
+  vite-node@1.6.0(@types/node@20.12.7):
+    dependencies:
+      cac: 6.7.14
+      debug: 4.3.4
+      pathe: 1.1.2
+      picocolors: 1.0.0
+      vite: 5.2.11(@types/node@20.12.7)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -17239,6 +17312,17 @@ snapshots:
       - supports-color
       - terser
 
+  vite-tsconfig-paths@4.3.2(typescript@5.5.0-beta)(vite@5.2.11(@types/node@20.12.7)):
+    dependencies:
+      debug: 4.3.4
+      globrex: 0.1.2
+      tsconfck: 3.0.3(typescript@5.5.0-beta)
+    optionalDependencies:
+      vite: 5.2.11(@types/node@20.12.7)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
+
   vite-tsconfig-paths@4.3.2(typescript@5.5.0-beta)(vite@5.2.11(@types/node@20.12.8)):
     dependencies:
       debug: 4.3.4
@@ -17250,6 +17334,15 @@ snapshots:
       - supports-color
       - typescript
 
+  vite@5.2.11(@types/node@20.12.7):
+    dependencies:
+      esbuild: 0.20.2
+      postcss: 8.4.38
+      rollup: 4.14.3
+    optionalDependencies:
+      '@types/node': 20.12.7
+      fsevents: 2.3.3
+
   vite@5.2.11(@types/node@20.12.8):
     dependencies:
       esbuild: 0.20.2
@@ -17258,6 +17351,40 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.12.8
       fsevents: 2.3.3
+
+  vitest@1.6.0(@types/node@20.12.7)(@vitest/ui@1.6.0):
+    dependencies:
+      '@vitest/expect': 1.6.0
+      '@vitest/runner': 1.6.0
+      '@vitest/snapshot': 1.6.0
+      '@vitest/spy': 1.6.0
+      '@vitest/utils': 1.6.0
+      acorn-walk: 8.3.2
+      chai: 4.4.1
+      debug: 4.3.4
+      execa: 8.0.1
+      local-pkg: 0.5.0
+      magic-string: 0.30.10
+      pathe: 1.1.2
+      picocolors: 1.0.0
+      std-env: 3.7.0
+      strip-literal: 2.1.0
+      tinybench: 2.7.0
+      tinypool: 0.8.4
+      vite: 5.2.11(@types/node@20.12.7)
+      vite-node: 1.6.0(@types/node@20.12.7)
+      why-is-node-running: 2.2.2
+    optionalDependencies:
+      '@types/node': 20.12.7
+      '@vitest/ui': 1.6.0(vitest@1.6.0)
+    transitivePeerDependencies:
+      - less
+      - lightningcss
+      - sass
+      - stylus
+      - sugarss
+      - supports-color
+      - terser
 
   vitest@1.6.0(@types/node@20.12.8)(@vitest/ui@1.6.0):
     dependencies:
