@@ -145,9 +145,7 @@ function ThemeSwitch({
 
 export const Header = memo(function Header({
 	theme,
-}: {
-	theme: 'light' | 'dark' | null
-}): ReactElement {
+}: { theme: 'light' | 'dark' | null }): ReactElement {
 	const [isMobileNavigationVisible, toggleMobileNavigationVisibility] = useToggle(false)
 
 	const handleMobileNavigationClick = useCallback(

@@ -1,3 +1,8 @@
+import * as Either from 'effect/Either'
+import { pipe } from 'effect/Function'
+import { memo, useCallback, useMemo, useState, type ReactElement } from 'react'
+
+import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
@@ -8,12 +13,6 @@ import {
 	Trigger,
 } from '@suddenlygiovanni/ui/ui/accordion.tsx'
 import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
-import * as Either from 'effect/Either'
-import { pipe } from 'effect/Function'
-import type { ReactElement } from 'react'
-import { memo, useCallback, useMemo, useState } from 'react'
-
-import type { EducationType } from '~/.server/schemas/resume/education.ts'
 
 import { formatDateLocaleShort } from './format-date-locale-short.ts'
 import { generateDjb2Hash } from './generate-djb2-hash.ts'
@@ -21,7 +20,7 @@ import { generateDjb2Hash } from './generate-djb2-hash.ts'
 export const Education = memo(function Education({
 	educations,
 }: {
-	readonly educations: readonly EducationType[]
+	readonly educations: readonly Model.Education[]
 }): ReactElement {
 	const all = useMemo(() => {
 		return educations.map((_, idx) => `education-${idx}`)
@@ -85,14 +84,14 @@ const Edu = memo(function Edu({
 	location,
 	value,
 }: {
-	area: EducationType['area']
-	courses: EducationType['courses']
-	endDate: EducationType['endDate']
-	startDate: EducationType['startDate']
-	institution: EducationType['institution']
-	studyType: EducationType['studyType']
-	url: EducationType['url']
-	location: EducationType['location']
+	area: Model.Education['area']
+	courses: Model.Education['courses']
+	endDate: Model.Education['endDate']
+	startDate: Model.Education['startDate']
+	institution: Model.Education['institution']
+	studyType: Model.Education['studyType']
+	url: Model.Education['url']
+	location: Model.Education['location']
 	value: string
 }): ReactElement {
 	return (
@@ -140,13 +139,13 @@ const EduHeader = memo(function EduHeader({
 	location,
 	studyType,
 }: {
-	area: EducationType['area']
-	endDate: EducationType['endDate']
-	institution: EducationType['institution']
-	location: EducationType['location']
-	startDate: EducationType['startDate']
-	studyType: EducationType['studyType']
-	url: EducationType['url']
+	area: Model.Education['area']
+	endDate: Model.Education['endDate']
+	institution: Model.Education['institution']
+	location: Model.Education['location']
+	startDate: Model.Education['startDate']
+	studyType: Model.Education['studyType']
+	url: Model.Education['url']
 }): ReactElement {
 	return (
 		<dt className="relative my-4 flex w-full flex-col">
