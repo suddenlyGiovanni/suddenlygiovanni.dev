@@ -22,6 +22,7 @@ export const allErrors: ParseOptions = {
 export const expectDecodeUnknownSuccess = async <A, I>(
 	schema: S.Schema<A, I, never>,
 	input: unknown,
+	// biome-ignore lint/suspicious/noExplicitAny: ok here
 	expected: A = input as any,
 	options?: ParseOptions,
 ) => expectSuccess(S.decodeUnknown(schema)(input, options), expected)

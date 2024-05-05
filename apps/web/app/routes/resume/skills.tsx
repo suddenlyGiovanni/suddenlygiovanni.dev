@@ -38,7 +38,7 @@ export const Skills = memo(function Skills({
 			<T.h2>Skills</T.h2>
 
 			<Button
-				className="absolute right-0 top-0 rounded-full"
+				className="absolute·top-0·right-0·rounded-full"
 				onClick={toggleSkillsAccordion}
 				size="icon"
 				variant="ghost"
@@ -121,7 +121,6 @@ const Keyword = memo(function Keyword({
 				{keyword}
 			</li>
 		),
-		// biome-ignore lint/style/useNamingConvention: A react component needs to be capitalized
 		onSome: Icon => (
 			<li className={classname} key={keyword}>
 				<Icon className="size-4 fill-accent-foreground/80" />

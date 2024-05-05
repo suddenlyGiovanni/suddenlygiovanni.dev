@@ -1,4 +1,4 @@
-import * as JSONSchema from '@effect/schema/JSONSchema'
+import * as jsonSchema from '@effect/schema/JSONSchema'
 import type * as S from '@effect/schema/Schema'
 import { describe, expect, test } from 'vitest'
 
@@ -95,7 +95,7 @@ describe('Meta', () => {
 	})
 
 	test('JSONSchema', () => {
-		expect(JSON.stringify(JSONSchema.make(Meta), null, '\t')).toMatchFileSnapshot(
+		expect(JSON.stringify(jsonSchema.make(Meta), null, '\t')).toMatchFileSnapshot(
 			'meta-schema.snapshot.json',
 		)
 	})
