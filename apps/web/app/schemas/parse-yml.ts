@@ -1,6 +1,6 @@
 import { AST, ParseResult, Schema } from '@effect/schema'
 // biome-ignore lint/style/useNamingConvention: I want to have the same style of using JSON.<method>
-import * as YAML from '@jsr/std__yaml'
+import * as YAML from '@std/yaml'
 
 export const YmlString = Schema.String.annotations({
 	[AST.IdentifierAnnotationId]: 'YmlString',
@@ -9,10 +9,8 @@ export const YmlString = Schema.String.annotations({
 })
 
 /**
- * The `parseYml` combinator provides a method to convert JSON strings into the `unknown` type using the underlying
+ * The `parseYml` combinator provides a method to convert YAML strings into the `unknown` type using the underlying
  * functionality of `YAML.parse`. It also utilizes `YAML.stringify` for encoding.
- *
- * You can optionally provide a `ParseJsonOptions` to configure both `YAML.parse` and `YAML.stringify` executions.
  *
  * Optionally, you can pass a schema `Schema<A, I, R>` to obtain an `A` type instead of `unknown`.
  *

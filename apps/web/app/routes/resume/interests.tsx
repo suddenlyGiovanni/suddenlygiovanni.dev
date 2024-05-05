@@ -1,13 +1,13 @@
 import type { ReactElement } from 'react'
 
+import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 
-import type { Interest } from '~/.server/schemas/resume/interest.ts'
 import { generateDjb2Hash } from '~/routes/resume/generate-djb2-hash.ts'
 
 export function Interests({
 	interests,
-}: { readonly interests: readonly Interest[] }): ReactElement {
+}: { readonly interests: readonly Model.Interest[] }): ReactElement {
 	return (
 		<section className="w-full">
 			<T.h2 className="mb-0">Interests</T.h2>

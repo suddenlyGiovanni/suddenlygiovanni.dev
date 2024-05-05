@@ -1,13 +1,12 @@
 import type { ReactElement } from 'react'
 
+import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
-
-import type { Language } from '~/.server/schemas/resume/language.ts'
 
 export function Languages({
 	languages,
 }: {
-	readonly languages: readonly Language[]
+	readonly languages: readonly Model.Language[]
 }): ReactElement {
 	return (
 		<section className="w-full">

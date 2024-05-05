@@ -1,9 +1,9 @@
 import { Schema } from '@effect/schema'
+import { Resume } from '@suddenlygiovanni/resume/schema-resume'
 import { Console, Data, Effect, Layer, Option } from 'effect'
 
-import { parseYml } from '~/.server/schemas/parse-yml.ts'
-import { Meta } from '~/.server/schemas/resume/meta.ts'
-import { Resume as ResumeSchema } from '~/.server/schemas/resume/resume.ts'
+import { Meta } from '~/models/resume/meta/meta.ts'
+import { parseYml } from '~/schemas/parse-yml.ts'
 import { OctokitService, RequestError } from '~/services/octokit.ts'
 
 /**
@@ -181,14 +181,14 @@ function getResumeFile({
 	}).pipe(Effect.withLogSpan('getResumeFile'))
 }
 
-const decodeResume = Schema.decode(parseYml(ResumeSchema))
+const decodeResume = Schema.decode(parseYml(Resume))
 const packageJsonSchema = Schema.Struct({ version: Schema.String })
 const decodePackageJson = Schema.decode(Schema.parseJson(packageJsonSchema))
 
 function getResume() {
 	const repo = 'resume'
 	const owner = 'suddenlyGiovanni'
-	const ref = '427a35d95bbfe147dd45c5fa0f0f0b22916a5c4d'
+	const ref = 'main'
 
 	return Effect.gen(function* () {
 		const [resumeFile, packageFile] = yield* Effect.all(
@@ -202,7 +202,7 @@ function getResume() {
 		const resume = yield* decodeResume(resumeFile.decodedContent)
 		const packageJson = yield* decodePackageJson(packageFile.decodedContent)
 
-		const meta = yield* Schema.decode(Meta)({
+		const meta = yield* Meta.decode({
 			...(Option.isSome(resumeFile.lastModified)
 				? { lastModified: resumeFile.lastModified.value }
 				: {}),

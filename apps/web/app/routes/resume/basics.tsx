@@ -1,17 +1,17 @@
 import { Link } from '@remix-run/react'
+import type { ReactElement, ReactNode } from 'react'
+
+import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
 import { SocialIcon } from '@suddenlygiovanni/ui/components/social/social-icon.tsx'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
-import type { ReactElement, ReactNode } from 'react'
 
-import type { BasicsType } from '~/.server/schemas/resume/basics.ts'
-import type { ResumeType } from '~/.server/schemas/resume/resume.ts'
 import { routesRecord } from '~/routes-record.ts'
 
 import resumePdfAssetUrl from '/giovanni-ravalico-resume-2021.pdf?url'
 
-export function Basics({ basics }: { basics: ResumeType['basics'] }): ReactElement {
+export function Basics({ basics }: { basics: Model.Basics }): ReactElement {
 	return (
 		<Header label={basics.label} name={basics.name} summary={basics.summary}>
 			<Contacts
@@ -30,7 +30,7 @@ function Header({
 	label,
 	children,
 	summary,
-}: Pick<BasicsType, 'name' | 'label' | 'summary'> & { children: ReactNode }): ReactElement {
+}: Pick<Model.Basics, 'name' | 'label' | 'summary'> & { children: ReactNode }): ReactElement {
 	return (
 		<header>
 			<hgroup>
@@ -110,11 +110,11 @@ const addressClasses = {
 }
 
 interface ContactsProps {
-	readonly email: BasicsType['email']
-	readonly location: BasicsType['location']
-	readonly phone: BasicsType['phone']
-	readonly profiles: BasicsType['profiles']
-	readonly url: BasicsType['url']
+	readonly email: Model.Basics['email']
+	readonly location: Model.Basics['location']
+	readonly phone: Model.Basics['phone']
+	readonly profiles: Model.Basics['profiles']
+	readonly url: Model.Basics['url']
 }
 
 function Contacts({ email, location, phone, profiles, url }: ContactsProps): ReactElement {

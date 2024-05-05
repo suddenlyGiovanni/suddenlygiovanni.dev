@@ -1,6 +1,7 @@
 import { Option } from 'effect'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 
+import type { Skill as ResumeSkill } from '@suddenlygiovanni/resume/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
@@ -12,15 +13,12 @@ import {
 } from '@suddenlygiovanni/ui/ui/accordion.tsx'
 import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
 
-import type { ResumeType } from '~/.server/schemas/resume/resume.ts'
-import type { SkillType } from '~/.server/schemas/resume/skill.ts'
-
 import { getDevIconComponent } from './dev-icons.tsx'
 
 export const Skills = memo(function Skills({
 	skills,
 }: {
-	readonly skills: ResumeType['skills']
+	readonly skills: ResumeSkill[]
 }): ReactElement {
 	const all = useMemo(() => skills.map((_, idx) => `skill-${idx}`), [skills])
 
@@ -40,7 +38,7 @@ export const Skills = memo(function Skills({
 			<T.h2>Skills</T.h2>
 
 			<Button
-				className="absolute right-0 top-0 rounded-full"
+				className="absolute·top-0·right-0·rounded-full"
 				onClick={toggleSkillsAccordion}
 				size="icon"
 				variant="ghost"
@@ -63,7 +61,7 @@ const Skill = memo(function Skill({
 	name,
 	keywords,
 	value,
-}: SkillType & { readonly value: string }): ReactElement {
+}: ResumeSkill & { readonly value: string }): ReactElement {
 	return (
 		<AccordionItem asChild={true} value={value}>
 			<dl key={name}>
@@ -92,7 +90,7 @@ const Skill = memo(function Skill({
 const KeywordsList = memo(function KeywordsList({
 	keywords,
 }: {
-	readonly keywords: SkillType['keywords']
+	readonly keywords: ResumeSkill['keywords']
 }): ReactElement {
 	return (
 		<AccordionContent asChild={true}>
@@ -112,7 +110,7 @@ const KeywordsList = memo(function KeywordsList({
 const Keyword = memo(function Keyword({
 	keyword,
 }: {
-	readonly keyword: SkillType['keywords'][number]
+	readonly keyword: ResumeSkill['keywords'][number]
 }): ReactElement {
 	const maybeIcon = getDevIconComponent(keyword)
 	const classname = clsx('my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle')
@@ -123,7 +121,6 @@ const Keyword = memo(function Keyword({
 				{keyword}
 			</li>
 		),
-		// biome-ignore lint/style/useNamingConvention: A react component needs to be capitalized
 		onSome: Icon => (
 			<li className={classname} key={keyword}>
 				<Icon className="size-4 fill-accent-foreground/80" />
