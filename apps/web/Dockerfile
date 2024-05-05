@@ -31,9 +31,14 @@ ENTRYPOINT ["sh"]
 
 FROM base AS builder
 
-RUN pnpm add --global turbo
+# Add build argument for GitHub token
+ARG GH_PACKAGES_TOKEN
 
 COPY . .
+
+RUN pnpm add --global turbo
+
+RUN echo "//npm.pkg.github.com/:_authToken=${GH_PACKAGES_TOKEN}" >> .npmrc
 
 RUN turbo prune --docker @suddenlygiovanni/web
 
