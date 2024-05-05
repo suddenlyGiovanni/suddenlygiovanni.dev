@@ -30,6 +30,7 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: "pnpm"
+          registry-url: 'https://npm.pkg.github.com'
 
       - name: 🗄️ Setup pnpm cache
         uses: actions/cache@v4
@@ -40,6 +41,8 @@ jobs:
             ${{ runner.os }}-pnpm-store-
 
       - name: 🧩 Install dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm install --frozen-lockfile --prod=false
 
       - name: 🧬 check code for errors (with Biome)
