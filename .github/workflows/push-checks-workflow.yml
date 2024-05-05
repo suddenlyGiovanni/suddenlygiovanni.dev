@@ -27,8 +27,12 @@ jobs:
         with:
           node-version-file: '.nvmrc'
           cache: "pnpm"
+          registry-url: 'https://npm.pkg.github.com'
+
 
       - name: 🧩 Install dependencies
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm install --frozen-lockfile --prod=false
 
       - name: 👣 Retrieve Git REF
