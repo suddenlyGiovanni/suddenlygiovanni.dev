@@ -1,6 +1,6 @@
 import * as Either from 'effect/Either'
 import { pipe } from 'effect/Function'
-import { memo, useCallback, useMemo, useState, type ReactElement } from 'react'
+import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 
 import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'

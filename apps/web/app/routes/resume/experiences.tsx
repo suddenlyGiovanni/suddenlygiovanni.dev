@@ -1,10 +1,10 @@
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 
+import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { Accordion } from '@suddenlygiovanni/ui/ui/accordion.tsx'
 import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
-import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 
 import { Experience } from './experience.tsx'
 

@@ -1,6 +1,6 @@
 import { Schema } from '@effect/schema'
-import { Console, Data, Effect, Layer, Option } from 'effect'
 import { Resume } from '@suddenlygiovanni/resume/schema-resume'
+import { Console, Data, Effect, Layer, Option } from 'effect'
 
 import { Meta } from '~/models/resume/meta/meta.ts'
 import { parseYml } from '~/schemas/parse-yml.ts'

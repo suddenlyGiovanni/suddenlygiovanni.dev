@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
-import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import type * as Model from '@suddenlygiovanni/resume/schema-resume'
+import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 
 export function Languages({
 	languages,
