@@ -35,7 +35,9 @@ jobs:
 
       - name: Deploy PR app to Fly.io
         id: deploy
-        uses: superfly/fly-pr-review-apps@1.2.0
+        uses: ./.github/actions/fly-pr-review-apps
         with:
           config: ./apps/web/fly.review.toml
           name: suddenlygiovanni-dev-${{ github.event.number }}
+          secrets:  GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }} GITHUB_TOKEN= ${{ secrets.GITHUB_TOKEN }}
+          build_args: GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
