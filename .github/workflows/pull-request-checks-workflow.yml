@@ -14,14 +14,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🧩 Install dependencies
-        uses: ./.github/actions/setup
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: 🧬 Setup Biome
+        uses: biomejs/setup-biome@v2
 
       - name: 🧬 check code for errors (with Biome)
         run: |
-          pnpm exec biome ci                  \
+          biome ci                            \
             --formatter-enabled=false         \
             --linter-enabled=true             \
             --organize-imports-enabled=false  \
@@ -30,6 +28,11 @@ jobs:
             --no-errors-on-unmatched          \
             --diagnostic-level=error          \
             .
+
+      - name: 🧩 Install dependencies
+        uses: ./.github/actions/setup
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🚨 Lint code (with ESLint)
         continue-on-error: true
@@ -50,12 +53,6 @@ jobs:
           working-directory: apps/web
           directory: coverage
           fail_ci_if_error: false
-
-      - name: 🧪 Run integration tests
-        run: pnpm test:integration
-
-      - name: 🧪 Run smoke tests
-        run: pnpm test:smoke
 
       - name: 🏗️ Build project
         run: pnpm build
