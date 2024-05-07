@@ -36,11 +36,9 @@ ARG GH_PACKAGES_TOKEN
 
 COPY . .
 
-RUN pnpm add --global turbo
-
 RUN echo "//npm.pkg.github.com/:_authToken=${GH_PACKAGES_TOKEN}" >> .npmrc
 
-RUN turbo prune --docker @suddenlygiovanni/web
+RUN pnpm dlx turbo prune --docker "@suddenlygiovanni/web"
 
 ENTRYPOINT ["sh"]
 
@@ -60,7 +58,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm --filter @suddenlygiovann
 
 ENV NODE_ENV="production"
 
-RUN pnpm turbo build --filter=@suddenlygiovanni/web
+RUN pnpm exec turbo build --filter=@suddenlygiovanni/web
 
 RUN pnpm --filter @suddenlygiovanni/web --prod --no-optional deploy pruned
 

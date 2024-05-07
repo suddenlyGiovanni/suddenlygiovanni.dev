@@ -3,14 +3,13 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'suddenlygiovanni-dev'
-primary_region = 'ams'
-kill_signal = 'SIGINT'
+primary_region = "ams"
+kill_signal = "SIGINT"
 kill_timeout = 5
 
 [[vm]]
-memory = '1gb'
-cpu_kind = 'shared'
+memory = "1gb"
+cpu_kind = "shared"
 cpus = 1
 
 [build]
@@ -19,8 +18,8 @@ ignorefile = ".dockerignore"
 build-target = "production"
 
 [[services]]
-internal_port = '5173'
-processes = ['app']
+internal_port = "5173"
+processes = ["app"]
 protocol = "tcp"
 
 	[services.concurrency]

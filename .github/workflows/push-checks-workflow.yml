@@ -16,35 +16,19 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 📦 Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-          run_install: false
-
-      - name: 🛠️ Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: "pnpm"
-          registry-url: 'https://npm.pkg.github.com'
-
-
-      - name: 🧩 Install dependencies
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm install --frozen-lockfile --prod=false
+      - name: 🧬 Setup Biome
+        uses: biomejs/setup-biome@v2
 
       - name: 👣 Retrieve Git REF
         run: echo "GIT_REF=$(git rev-parse origin/main)" >> $GITHUB_ENV
 
-      - name: 🐛 Debug Git REF
-        run: echo "${{ env.GIT_REF }}"
+#      - name: 🐛 Debug Git REF
+#        run: echo "${{ env.GIT_REF }}"
 
       - name: 🧬 Lint code (with Biome)
         continue-on-error: true
         run: |
-          pnpm exec biome check               \
+          biome check                         \
             --apply                           \
             --changed                         \
             --since=${{ env.GIT_REF }}        \
@@ -68,7 +52,7 @@ jobs:
       - name: 💅 Format code (with Biome)
         continue-on-error: true
         run: |
-          pnpm exec biome check               \
+          biome check                         \
             --apply                           \
             --changed                         \
             --since=${{ env.GIT_REF }}        \
@@ -87,6 +71,10 @@ jobs:
         with:
           commit_message: "chore: lint code with Biome [skip ci]"
 
+      - name: 🧩 Install dependencies
+        uses: ./.github/actions/setup
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🔍 Typecheck code
         continue-on-error: true
