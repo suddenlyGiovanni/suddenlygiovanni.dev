@@ -1,0 +1,27 @@
+name: 💉Setup the project
+description: Perform standard setup and install dependencies using pnpm.
+inputs:
+  github_token:
+    description: 'GitHub token'
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: 🗂️ Install pnpm
+      uses: pnpm/action-setup@v3
+      with:
+        package_json_file: 'package.json'
+        run_install: false
+
+    - name: 🛠️ Install node
+      uses: actions/setup-node@v4
+      with:
+        cache: 'pnpm'
+        node-version-file: '.nvmrc'
+        registry-url: 'https://npm.pkg.github.com'
+
+    - name: 🧩 Install dependencies
+      shell: bash
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.github_token }}
+      run: pnpm install --frozen-lockfile --prod=false
