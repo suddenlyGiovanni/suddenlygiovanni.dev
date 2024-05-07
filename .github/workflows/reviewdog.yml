@@ -98,19 +98,10 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: 📦 Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - name: 🛠️ Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: "pnpm"
-
       - name: 🧩 Install dependencies
-        run: pnpm install --frozen-lockfile --prod=false
+        uses: ./.github/actions/setup
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🐶 reviewdog with tsc (TypeScript) - packages/ui
         uses: EPMatt/reviewdog-action-tsc@v1
@@ -194,19 +185,10 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: 📦 Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-
-      - name: 🛠️ Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: "pnpm"
-
       - name: 🧩 Install dependencies
-        run: pnpm install --frozen-lockfile
+        uses: ./.github/actions/setup
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🐶 reviewdog with ESLint (TypeScript) - apps/web
         uses: reviewdog/action-eslint@v1

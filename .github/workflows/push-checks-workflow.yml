@@ -16,24 +16,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 📦 Install pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 9
-          run_install: false
-
-      - name: 🛠️ Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
-          cache: "pnpm"
-          registry-url: 'https://npm.pkg.github.com'
-
-
       - name: 🧩 Install dependencies
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm install --frozen-lockfile --prod=false
+        uses: ./.github/actions/setup
+        with:
+         github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 👣 Retrieve Git REF
         run: echo "GIT_REF=$(git rev-parse origin/main)" >> $GITHUB_ENV
