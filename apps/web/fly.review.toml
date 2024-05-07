@@ -3,7 +3,6 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "suddenlygiovanni-dev"
 primary_region = "ams"
 kill_signal = "SIGINT"
 kill_timeout = 5
