@@ -2,10 +2,13 @@ name: suddenlygiovannidev
 
 services:
   web:
+    env_file: apps/web/.env
     build:
       context: .
       dockerfile: apps/web/Dockerfile
       target: production
+      args:
+        GH_PACKAGES_TOKEN: ${GH_PACKAGES_TOKEN}
     ports:
       - "5173:5173"
     init: true
