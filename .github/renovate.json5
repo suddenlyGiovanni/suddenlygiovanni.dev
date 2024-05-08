@@ -17,15 +17,6 @@
 	dockerfile: {
 		enabled: true
 	},
-	hostRules: [
-		{
-			"matchHost": "https://npm.pkg.github.com/",
-			"hostType": "npm",
-			"encrypted": {
-				"token": "wcFMA/xDdHCJBTolARAAhGeyZLuQfQtZ8ugHhgRGUrzB48Njf47/XwpZRIK1mY3LMcolcxi/PjSRXG7HGdxhYu36oGP+HwksDYEdEB8t8LuKZ40sWm3Mb+wDtmLHuiBq5T22dityEg3zRxGDWawEJbpLLkguGIwoIFrOHOWn6zQ0MzZl3mfVoDCSxjUDKdlchP4qCpqiSPI/+DstsWXrVkcGA9CWHXV8+RJ17DkqmHJ80W0uLzanHH2qq38xwHiU21b9dM5OaabUx/Ob7zCJCoQsrkuojClW6401zWc6CHaOoINZajQ+XBv+tYei22Xbvpl8huqvm8VfNKCul1TZwF29W8TkoTodK6DRPmFmNcgI16W0EypcsNQuoAc9K2O2IhTqEplyHBUF0mq7WnBsJrKLz8+BzHBnFr82ww2VjL+B9h7AF2YztfbhlDEerjQEdGdnXaurBUc9RhUU/HFhbpQeVP9QziPZDEAnrQtODjk7Yd52AVCasiovofVNrzrikstWWHfmCVWHApuvBFgiiEDDMDbvg2bIUcFAbI9iheydFlBX4l+f9mNn/w4nyIN/RjiMgoqH9vdw8DFersQ7e1bdne/k5n8Ff4a3kBPEtFGgl+/EmrelJlnnZl2KMyseP6OPNSys5Cejdit4zZPBkboE3I95vXCysqiGGEhpBLv3NgSPpvWzqe8pXV7OBevSkgFFqG0A33zhIa6ogNZ6In2d7MUlWaXyNSVc2k+VEJmsCmopOR3ToqzzS1gQ4v14u7iJNA/YwEF6GQgP24gvYpKkuy7sfEDE3bNwHyk8koHTlxLScg/mgFPeajBFMMQQwwQRny22YPoRrZFAhHSqjLQzBEPp59cuawn6EPYJCVDbQ+/CEWoxDDtsvivx898X1qsM"
-			}
-		}
-	],
 	packageRules: [
 		{
 			matchPackagePatterns: [
