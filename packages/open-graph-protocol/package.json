@@ -37,6 +37,9 @@
 		"lint": "scripty src/",
 		"typecheck": "scripty"
 	},
+	"engines": {
+		"node": ">=22"
+	},
 	"packageManager": "pnpm@9.1.0",
 	"config": {
 		"scripty": {

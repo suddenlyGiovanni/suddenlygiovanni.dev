@@ -29,6 +29,9 @@
 		"eslint-plugin-testing-library": "6.2.2",
 		"eslint-plugin-vitest": "0.4.1"
 	},
+	"engines": {
+		"node": ">=22"
+	},
 	"config": {
 		"scripty": {
 			"path": "../../scripts"

@@ -19,6 +19,9 @@
 		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"prettier-plugin-tailwindcss": "0.5.14"
 	},
+	"engines": {
+		"node": ">=22"
+	},
 	"config": {
 		"scripty": {
 			"path": "../../scripts"
