@@ -1,6 +1,10 @@
 {
 	$schema: 'https://docs.renovatebot.com/renovate-schema.json',
 	configMigration: true,
+	dockerfile: {
+		enabled: true
+	},
+	,
 	extends: [
 		'config:recommended',
 		':pinDevDependencies',
@@ -11,12 +15,19 @@
 		':followTag(typescript, rc)',
 		'schedule:earlyMondays'
 	],
+	npmrcMerge: true,
+	"hostRules": [
+		{
+			"matchHost": "https://npm.pkg.github.com/",
+			"hostType": "npm",
+			"encrypted": {
+				"token": "wcFMA/xDdHCJBTolARAAgxruPoWKhJ6NKOKSAKEJ46qP1ugFcOMA5Zer3J2DRYzcley4tzBO6WiFrQlwpZVJJPVUrE1uxyTz5X4LfYcQ1nV/S/rJwTYvyaNHgaGjn2hVuSSblgAyhtYe/2Um0/steL6z3f8e7i4YqbPhuD2OCWYWvehdBzr9NAF/gegKta14i4hudWx5iL3//TTV/mzGLRdvTz8lNNqlB1IIOcD9lk2IHkwvTl/oatkvIarg5d2Cw+UyVkHAEEfMVkdHlrpPR8jTWsp38zSkZuZ6mkyzWSQjbQaqaxSSOt7HwWjk1SU44/lxHrl/cTFEcBRy6E1uyjnBtp0uqbURBG7817NbE50mRYg68lGC+XUAnrPs9VY++iKR3F+KFSS99U3zzC030wqF0hVCkq4fFQEwK2jbOh2QoeHLv63QHCnPK6HJl31rVkSVpRdJYFXIrLKhQMcXwiFJvcbnCtDmNLwxKVPAoODuxrR+I33v8wSdcoCKyoFFyh6mUTYPVxHWL5/Iun74l9rTFON8UhJzaYiqazIpCWB6eGPGi889fYj8UwioiLlv9GM5qvSkQx94YAoErf1FY79NNW0/8K42kA+9wXjpNl09O82WS3xfSHFL+6iBpXGZqhb+2NQcy3z8LWrFJaaV1T3fjjNxMD9/nagzNqQXFnMfGfQQ6JEfQmPhR9iEUSfSfwHsbE75WHyIdBg/lzP0kqshRj3z3SrzNKRVuKoU2wziSQ6alm7eblX3ZPV0Pk28XhgQu8PSFujf+GBQqsOC3VxeQpKKT9IFjLZG07OQ+xHNh/uazPxMpsR9swJXTan7qVmFpH2ciBLpuRtvkmTaDN5yZX5Es+4VNDqoTlej4J4"
+			}
+		}
+	],
 	labels: [
 		'dependencies'
 	],
-	dockerfile: {
-		enabled: true
-	},
 	packageRules: [
 		{
 			matchPackagePatterns: [
