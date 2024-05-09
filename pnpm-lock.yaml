@@ -33,8 +33,8 @@ importers:
   apps/web:
     dependencies:
       '@effect/schema':
-        specifier: 0.66.14
-        version: 0.66.14(effect@3.1.2)(fast-check@3.17.1)
+        specifier: 0.66.16
+        version: 0.66.16(effect@3.1.3)(fast-check@3.17.1)
       '@epic-web/client-hints':
         specifier: 1.3.2
         version: 1.3.2
@@ -67,7 +67,7 @@ importers:
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/resume':
         specifier: 11.0.3
-        version: 11.0.3(@effect/schema@0.66.14(effect@3.1.2)(fast-check@3.17.1))(effect@3.1.2)
+        version: 11.0.3(@effect/schema@0.66.16(effect@3.1.3)(fast-check@3.17.1))(effect@3.1.3)
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -75,8 +75,8 @@ importers:
         specifier: 0.6.0
         version: 0.6.0
       effect:
-        specifier: 3.1.2
-        version: 3.1.2
+        specifier: 3.1.3
+        version: 3.1.3
       isbot:
         specifier: 5.1.6
         version: 5.1.6
@@ -1177,10 +1177,10 @@ packages:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
 
-  '@effect/schema@0.66.14':
-    resolution: {integrity: sha512-2Yc6gnXpcMmwQnbU2JUwDl0ckeOJmFZzteXn2jjVWuNi9PGv+jp2yK7jxv0pALcieuYwdR5tKkCRI7STuhEwfg==}
+  '@effect/schema@0.66.16':
+    resolution: {integrity: sha512-sT/k5NOgKslGPzs3DUaCFuM6g2JQoIIT8jpwEorAZooplPIMK2xIspr7ECz6pp6Dc7Wz/ppXGk7HVyGZQsIYEQ==}
     peerDependencies:
-      effect: ^3.1.2
+      effect: ^3.1.3
       fast-check: ^3.13.2
 
   '@emotion/babel-plugin@11.11.0':
@@ -4359,8 +4359,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect@3.1.2:
-    resolution: {integrity: sha512-XakSWck6w6ROqKyEys0tKE9K6Gx2p8W/09u2ZTEZZrneO5Z3QEdPhXzWTyC73kD5zUvfJinZLVIas8I1xoHaTg==}
+  effect@3.1.3:
+    resolution: {integrity: sha512-afL9sbn4m9fCERYMLgUgtJC8+JvHb62zh0Q3v0O56z4aMAEdrrd+DKvLtlTbonQjgdOB37frE9LJuwUO7DV0ww==}
 
   ejs@3.1.10:
     resolution: {integrity: sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==}
@@ -8794,9 +8794,9 @@ snapshots:
 
   '@discoveryjs/json-ext@0.5.7': {}
 
-  '@effect/schema@0.66.14(effect@3.1.2)(fast-check@3.17.1)':
+  '@effect/schema@0.66.16(effect@3.1.3)(fast-check@3.17.1)':
     dependencies:
-      effect: 3.1.2
+      effect: 3.1.3
       fast-check: 3.17.1
 
   '@emotion/babel-plugin@11.11.0':
@@ -11550,10 +11550,10 @@ snapshots:
       '@types/express': 4.17.21
       file-system-cache: 2.3.0
 
-  '@suddenlygiovanni/resume@11.0.3(@effect/schema@0.66.14(effect@3.1.2)(fast-check@3.17.1))(effect@3.1.2)':
+  '@suddenlygiovanni/resume@11.0.3(@effect/schema@0.66.16(effect@3.1.3)(fast-check@3.17.1))(effect@3.1.3)':
     dependencies:
-      '@effect/schema': 0.66.14(effect@3.1.2)(fast-check@3.17.1)
-      effect: 3.1.2
+      '@effect/schema': 0.66.16(effect@3.1.3)(fast-check@3.17.1)
+      effect: 3.1.3
 
   '@swc/core-darwin-arm64@1.4.15':
     optional: true
@@ -13015,7 +13015,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect@3.1.2: {}
+  effect@3.1.3: {}
 
   ejs@3.1.10:
     dependencies:
