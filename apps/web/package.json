@@ -27,7 +27,7 @@
 		"@remix-run/node": "2.9.1",
 		"@remix-run/react": "2.9.1",
 		"@remix-run/serve": "2.9.1",
-		"@std/yaml": "npm:@jsr/std__yaml@0.223.0",
+		"@std/yaml": "npm:@jsr/std__yaml@0.224.0",
 		"@suddenlygiovanni/open-graph-protocol": "workspace:*",
 		"@suddenlygiovanni/ui": "workspace:*",
 		"@suddenlygiovanni/resume": "11.0.4",
