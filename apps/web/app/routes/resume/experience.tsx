@@ -17,7 +17,7 @@ import { formatDateLocaleShort } from '~/routes/resume/format-date-locale-short.
 export const Experience = memo(function Experience(
 	work: Pick<
 		Model.Work,
-		'contact' | 'description' | 'location' | 'name' | 'summary' | 'url' | 'roles' | 'techStack'
+		'contact' | 'description' | 'location' | 'name' | 'summary' | 'url' | 'roles'
 	> & { value: string },
 ): ReactElement {
 	return (
