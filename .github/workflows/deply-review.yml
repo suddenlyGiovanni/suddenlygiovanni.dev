@@ -42,3 +42,11 @@ jobs:
           name: suddenlygiovanni-dev-${{ github.event.number }}
           secrets: GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }} GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
           build_args: GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
+
+      - name: 🗑 Delete deployment environment
+        uses: strumwolf/delete-deployment-environment@v3
+        if: ${{ github.event.action == 'closed' }}
+        with:
+          # ⚠️ The provided token needs permission for admin write:org
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: suddenlygiovanni-dev-${{ github.event.number }}
