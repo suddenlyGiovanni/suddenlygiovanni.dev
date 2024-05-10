@@ -34,6 +34,8 @@ FROM base AS builder
 # Add build argument for GitHub token
 ARG GH_PACKAGES_TOKEN
 ENV TURBO_FORCE=true
+ENV TURBO_TELEMETRY_DISABLED=1
+ENV DO_NOT_TRACK=1
 
 COPY . .
 
