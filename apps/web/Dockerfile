@@ -33,6 +33,7 @@ FROM base AS builder
 
 # Add build argument for GitHub token
 ARG GH_PACKAGES_TOKEN
+ENV TURBO_FORCE=true
 
 COPY . .
 
