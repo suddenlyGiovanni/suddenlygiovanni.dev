@@ -20,8 +20,6 @@
 		"components-add": "pnpm dlx shadcn-ui@latest add",
 		"components-diff": "pnpm dlx shadcn-ui@latest diff",
 		"dev": "storybook dev -p 6006",
-		"format": "scripty",
-		"lint": "scripty src/",
 		"typecheck": "scripty"
 	},
 	"peerDependencies": {
@@ -55,10 +53,8 @@
 		"@storybook/react": "8.0.10",
 		"@storybook/react-vite": "8.0.10",
 		"@storybook/test": "8.0.10",
-		"@suddenlygiovanni/config-prettier": "workspace:*",
 		"@suddenlygiovanni/config-tailwind": "workspace:*",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
-		"@suddenlygiovanni/eslint-config": "workspace:*",
 		"@total-typescript/ts-reset": "0.5.1",
 		"@types/react": "18.3.1",
 		"@types/react-dom": "18.3.0",
@@ -67,7 +63,6 @@
 		"class-variance-authority": "0.7.0",
 		"clsx": "2.1.1",
 		"concurrently": "8.2.2",
-		"eslint-plugin-react-refresh": "0.4.6",
 		"postcss": "8.4.38",
 		"storybook": "8.0.10",
 		"tailwind-merge": "2.3.0",
