@@ -17,7 +17,6 @@
 			"format": "uri"
 		},
 		"lastModified": {
-			"description": "a valid Date",
 			"format": "date-time",
 			"type": "string"
 		},
