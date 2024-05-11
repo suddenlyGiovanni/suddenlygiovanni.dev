@@ -1,8 +1,0 @@
-node_modules
-
-/.cache
-.env
-prettier.config.mjs
-postcss.config.mjs
-.eslintrc.cjs
-.prettierrc.js

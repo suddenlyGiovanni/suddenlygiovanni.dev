@@ -160,7 +160,7 @@ importers:
   packages/config-eslint:
     dependencies:
       eslint:
-        specifier: ^8.57.0
+        specifier: <9
         version: 8.57.0
     devDependencies:
       '@suddenlygiovanni/config-typescript':
@@ -262,18 +262,12 @@ importers:
         specifier: 0.1.0
         version: 0.1.0
     devDependencies:
-      '@suddenlygiovanni/config-prettier':
-        specifier: workspace:*
-        version: link:../config-prettier
       '@suddenlygiovanni/config-tailwind':
         specifier: workspace:*
         version: link:../config-tailwind
       '@suddenlygiovanni/config-typescript':
         specifier: workspace:*
         version: link:../config-typescript
-      '@suddenlygiovanni/eslint-config':
-        specifier: workspace:*
-        version: link:../config-eslint
       typescript:
         specifier: 5.5.0-beta
         version: 5.5.0-beta
