@@ -135,7 +135,7 @@ function ExperienceSummary({
 
 function Roles({ roles }: { readonly roles: Model.Work['roles'] }): ReactElement {
 	return (
-		<ul className="mt-0 flex list-none flex-col gap-2">
+		<ul className="mt-0 pl-0 sm:pl-3     md:pl-6   flex list-none flex-col gap-2">
 			{roles.map(role => (
 				<li key={role.startDate}>
 					<Role
