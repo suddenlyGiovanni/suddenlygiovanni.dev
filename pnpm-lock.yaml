@@ -175,9 +175,9 @@ importers:
 
   packages/config-typescript:
     dependencies:
-      '@tsconfig/node21':
-        specifier: 21.0.3
-        version: 21.0.3
+      '@tsconfig/node22':
+        specifier: 22.0.0
+        version: 22.0.0
       '@tsconfig/remix':
         specifier: 2.0.5
         version: 2.0.5
@@ -3016,8 +3016,8 @@ packages:
   '@total-typescript/ts-reset@0.5.1':
     resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
 
-  '@tsconfig/node21@21.0.3':
-    resolution: {integrity: sha512-qTX4pGNfnRTutaiRPx+c4GFL1DB1u6GHkwfoYSNn/KelE9m86Mkn3RpFBhhxDh6yHeqaVuAx0tz+n7LrjBUEpw==}
+  '@tsconfig/node22@22.0.0':
+    resolution: {integrity: sha512-twLQ77zevtxobBOD4ToAtVmuYrpeYUh3qh+TEp+08IWhpsrIflVHqQ1F1CiPxQGL7doCdBIOOCF+1Tm833faNg==}
 
   '@tsconfig/remix@2.0.5':
     resolution: {integrity: sha512-KawY0Z2oylbBsGbHZFE11O2kXuHF/LfT7NzwPl5CCfgmFy4jsMkVgMfnPQnsPe6Wdu2pNQMRzNoyRHU2PBAO1w==}
@@ -10589,7 +10589,7 @@ snapshots:
 
   '@total-typescript/ts-reset@0.5.1': {}
 
-  '@tsconfig/node21@21.0.3': {}
+  '@tsconfig/node22@22.0.0': {}
 
   '@tsconfig/remix@2.0.5': {}
 
