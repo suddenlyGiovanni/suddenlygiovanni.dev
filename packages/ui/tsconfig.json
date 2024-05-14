@@ -11,8 +11,6 @@
 		"tailwind.config.ts",
 		"vite.config.ts",
 		"postcss.config.mjs",
-		".prettierrc.js",
-		".eslintrc.cjs",
 		"./.storybook/**/*",
 		"./src/**/*"
 	],
