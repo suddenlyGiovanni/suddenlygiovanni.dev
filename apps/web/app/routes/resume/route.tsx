@@ -48,7 +48,7 @@ export const links: LinksFunction = () => {
 export const loader = loaderFunction(
 	() =>
 		Effect.gen(function* () {
-			const { resume, meta } = yield* ResumeRepository.getResume('schema-resume/add-caya')
+			const { resume, meta } = yield* ResumeRepository.getResume()
 			return json({ resume, meta })
 		}),
 	// still need to handle the error cases here!!
