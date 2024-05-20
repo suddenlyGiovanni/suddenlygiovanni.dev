@@ -57,8 +57,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/resume':
-        specifier: 11.2.0
-        version: 11.2.0(@effect/schema@0.67.9(effect@3.2.1))
+        specifier: 12.1.1
+        version: 12.1.1(@effect/schema@0.67.9(effect@3.2.1))
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -2909,11 +2909,11 @@ packages:
   '@storybook/types@8.1.1':
     resolution: {integrity: sha512-QSQ63aKr2IXrGjX2/Fg1oiGWk+2Nuf+TplaHRC2NKBMgvyn+M0BHUgMTDHQVrFaH4bpl2PkE0r0tzOKP4JI43A==}
 
-  '@suddenlygiovanni/resume@11.2.0':
-    resolution: {integrity: sha512-HFjlBnnXqaN1/Npxyo2ytGt2txt2GObET5B3eobwm9MK4mWIAveDoC+lPegeXuZoD40S6kCwd0EvEDXGhTAPVA==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/11.2.0/76ecfc47878417f870c182ee2ac7997c3e2d662a}
+  '@suddenlygiovanni/resume@12.1.1':
+    resolution: {integrity: sha512-PE8knVd25lwsPtg/oGlvMccKo9EDChkHARlMC7C69utiuc3RTkS6u1M8iUSwhcJZ04Oq2A1yniGCp12f+SLBmg==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/12.1.1/8eb5af10e116fef53f919850e0a72c7a5326be75}
     engines: {node: '>=22'}
     peerDependencies:
-      '@effect/schema': ~0.67.0
+      '@effect/schema': ~0.67.9
 
   '@swc/core-darwin-arm64@1.5.5':
     resolution: {integrity: sha512-Ol5ZwZYdTOZsv2NwjcT/qVVALKzVFeh+IJ4GNarr3P99+38Dkwi81OqCI1o/WaDXQYKAQC/V+CzMbkEuJJfq9Q==}
@@ -10574,7 +10574,7 @@ snapshots:
       '@types/express': 4.17.21
       file-system-cache: 2.3.0
 
-  '@suddenlygiovanni/resume@11.2.0(@effect/schema@0.67.9(effect@3.2.1))':
+  '@suddenlygiovanni/resume@12.1.1(@effect/schema@0.67.9(effect@3.2.1))':
     dependencies:
       '@effect/schema': 0.67.9(effect@3.2.1)
 
