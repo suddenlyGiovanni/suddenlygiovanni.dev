@@ -185,10 +185,9 @@ const decodeResume = Schema.decode(parseYml(Resume))
 const packageJsonSchema = Schema.Struct({ version: Schema.String })
 const decodePackageJson = Schema.decode(Schema.parseJson(packageJsonSchema))
 
-function getResume() {
+function getResume(ref = 'main') {
 	const repo = 'resume'
 	const owner = 'suddenlyGiovanni'
-	const ref = 'main'
 
 	return Effect.gen(function* () {
 		const [resumeFile, packageFile] = yield* Effect.all(

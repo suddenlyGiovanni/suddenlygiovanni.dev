@@ -12,7 +12,6 @@ import { Card } from '@suddenlygiovanni/ui/ui/card.tsx'
 
 import { getDevIconComponent } from '~/routes/resume/dev-icons.tsx'
 import { formatDateLocaleShort } from '~/routes/resume/format-date-locale-short.ts'
-// import { generateDjb2Hash } from '~/routes/resume/generate-djb2-hash.ts'
 
 export const Experience = memo(function Experience(
 	work: Pick<
@@ -44,6 +43,22 @@ const styles = {
 	span: clsx('flex flex-row items-center text-sm font-normal italic accent-muted'),
 } as const
 
+function getDates(roles: Model.Work['roles']): {
+	readonly startDate: string
+	readonly endDate: string
+} {
+	const dates = roles
+		.flatMap(role => [role.startDate, role.endDate].filter(Boolean))
+		.sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
+
+	return {
+		// biome-ignore lint/style/noNonNullAssertion: we know it has a tail!
+		endDate: dates.at(-1)!,
+		// biome-ignore lint/style/noNonNullAssertion: we know it has a head!
+		startDate: dates.at(0)!,
+	}
+}
+
 const ExperienceHeader = memo(function ExperienceHeader(work: {
 	readonly name: Model.Work['name']
 	readonly url: undefined | Model.Work['url']
@@ -51,9 +66,10 @@ const ExperienceHeader = memo(function ExperienceHeader(work: {
 	readonly location: undefined | Model.Work['location']
 	readonly roles: Model.Work['roles']
 }): ReactElement {
-	const [firstRole, ...restOfRoles] = work.roles
-	const startDate = firstRole.startDate
-	const endDate = restOfRoles.length === 0 ? firstRole.endDate : restOfRoles.at(-1)?.endDate
+	const { startDate, endDate } = getDates(work.roles)
+
+	// biome-ignore lint/style/noNonNullAssertion: this is a tuple with known size!
+	const firstRole = work.roles.at(0)!
 
 	return (
 		<div className="relative my-4 flex w-full flex-col">
@@ -135,7 +151,7 @@ function ExperienceSummary({
 
 function Roles({ roles }: { readonly roles: Model.Work['roles'] }): ReactElement {
 	return (
-		<ul className="mt-0 flex list-none flex-col gap-2">
+		<ul className="mt-0 pl-0 sm:pl-3     md:pl-6   flex list-none flex-col gap-2">
 			{roles.map(role => (
 				<li key={role.startDate}>
 					<Role
