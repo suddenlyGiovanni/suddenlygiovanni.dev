@@ -38,7 +38,7 @@ export const Skills = memo(function Skills({
 			<T.h2>Skills</T.h2>
 
 			<Button
-				className="absolute·top-0·right-0·rounded-full"
+				className="absolute top-0 right-0 rounded-full"
 				onClick={toggleSkillsAccordion}
 				size="icon"
 				variant="ghost"
