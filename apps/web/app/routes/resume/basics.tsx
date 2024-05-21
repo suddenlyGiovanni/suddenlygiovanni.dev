@@ -153,6 +153,7 @@ function Contacts({ email, location, phone, profiles, url }: ContactsProps): Rea
 				{profiles.map(profile => (
 					<li className={addressClasses.li} key={profile.network}>
 						<SocialIcon
+							className={clsx('size-5 fill-foreground')}
 							aria-label={`${profile.network} icon`}
 							network={profile.network.toLowerCase()}
 						/>
