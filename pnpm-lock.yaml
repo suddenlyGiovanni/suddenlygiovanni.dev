@@ -24,8 +24,8 @@ importers:
   apps/web:
     dependencies:
       '@effect/schema':
-        specifier: 0.67.11
-        version: 0.67.11(effect@3.2.3)
+        specifier: 0.67.12
+        version: 0.67.12(effect@3.2.4)
       '@epic-web/client-hints':
         specifier: 1.3.2
         version: 1.3.2
@@ -58,7 +58,7 @@ importers:
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/resume':
         specifier: 12.1.1
-        version: 12.1.1(@effect/schema@0.67.11(effect@3.2.3))
+        version: 12.1.1(@effect/schema@0.67.12(effect@3.2.4))
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -66,8 +66,8 @@ importers:
         specifier: 0.6.0
         version: 0.6.0
       effect:
-        specifier: 3.2.3
-        version: 3.2.3
+        specifier: 3.2.4
+        version: 3.2.4
       isbot:
         specifier: 5.1.6
         version: 5.1.6
@@ -1053,10 +1053,10 @@ packages:
     resolution: {integrity: sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==}
     engines: {node: '>=10.0.0'}
 
-  '@effect/schema@0.67.11':
-    resolution: {integrity: sha512-khpzzYpsnIIGfI4Ac+EsUF+E6uZ78eJ+EatKHyfFOLGDEZMX2w5/z0R4bHISzFqiwObcuZEUT7KwFZdFZWrDJA==}
+  '@effect/schema@0.67.12':
+    resolution: {integrity: sha512-kQ+VJi/oAqfV+R/UU8KbA/2NRhjOsqfIhVFQ4H4Xo7vgWxJ8w284OT9ujJ66/HpjGdooXrSemv3HHjATtJbzPg==}
     peerDependencies:
-      effect: ^3.2.3
+      effect: ^3.2.4
 
   '@emotion/babel-plugin@11.11.0':
     resolution: {integrity: sha512-m4HEDZleaaCH+XgDDsPF15Ht6wTLsgDTeR3WYj9Q/k76JtWhrJjcP4+/XlG8LGT/Rol9qUfOIztXeA84ATpqPQ==}
@@ -3955,8 +3955,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect@3.2.3:
-    resolution: {integrity: sha512-tI0pzouV9BnZFHXNDoMCn9L76RFr23FMyzQ8syl+hxNtkn5aRdcQLeapv8acix+O4sQjQA4MpT8H3X9jfTs6hg==}
+  effect@3.2.4:
+    resolution: {integrity: sha512-w7MvlKBKs0oHeoe+S+xyXVzFpR+g3abY5KmjZksTAMgTTpJx8XZ0Tz0Pv+LWlGyD9R1dJNAsSc+RE0+NMl9JSw==}
 
   ejs@3.1.10:
     resolution: {integrity: sha512-UeJmFfOrAQS8OJWPZ4qtgHyWExa088/MtK5UEyoJGFH67cDEXkZSviOiKRCZ4Xij0zxI3JECgYs3oKx+AizQBA==}
@@ -7599,9 +7599,9 @@ snapshots:
 
   '@discoveryjs/json-ext@0.5.7': {}
 
-  '@effect/schema@0.67.11(effect@3.2.3)':
+  '@effect/schema@0.67.12(effect@3.2.4)':
     dependencies:
-      effect: 3.2.3
+      effect: 3.2.4
       fast-check: 3.18.0
 
   '@emotion/babel-plugin@11.11.0':
@@ -10311,9 +10311,9 @@ snapshots:
       '@types/express': 4.17.21
       file-system-cache: 2.3.0
 
-  '@suddenlygiovanni/resume@12.1.1(@effect/schema@0.67.11(effect@3.2.3))':
+  '@suddenlygiovanni/resume@12.1.1(@effect/schema@0.67.12(effect@3.2.4))':
     dependencies:
-      '@effect/schema': 0.67.11(effect@3.2.3)
+      '@effect/schema': 0.67.12(effect@3.2.4)
 
   '@swc/core-darwin-arm64@1.5.7':
     optional: true
@@ -11427,7 +11427,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect@3.2.3: {}
+  effect@3.2.4: {}
 
   ejs@3.1.10:
     dependencies:
