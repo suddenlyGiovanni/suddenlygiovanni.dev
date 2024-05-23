@@ -1,5 +1,5 @@
 # Extract pnpm version from package.json
-FROM alpine:3.19 AS pnpm-version
+FROM alpine:3.20 AS pnpm-version
 
 WORKDIR /tmp
 
