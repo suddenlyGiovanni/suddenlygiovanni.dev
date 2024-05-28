@@ -79,8 +79,8 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@codecov/vite-plugin':
-        specifier: 0.0.1-beta.6
-        version: 0.0.1-beta.6(vite@5.2.11(@types/node@20.12.12))
+        specifier: 0.0.1-beta.8
+        version: 0.0.1-beta.8(vite@5.2.11(@types/node@20.12.12))
       '@remix-run/dev':
         specifier: 2.9.2
         version: 2.9.2(@remix-run/react@2.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.0-beta))(@remix-run/serve@2.9.2(typescript@5.5.0-beta))(@types/node@20.12.12)(babel-plugin-macros@3.1.0)(typescript@5.5.0-beta)(vite@5.2.11(@types/node@20.12.12))
@@ -1035,12 +1035,12 @@ packages:
     resolution: {integrity: sha512-CpskwN1RsgaDMSe7mnwrmst9XeLfvrSbCJOc/eaHIDzhSiKhdbbEF83cYjMYnvODPMW8QNVdw9gWMh+yzBQtSw==}
     engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
 
-  '@codecov/bundler-plugin-core@0.0.1-beta.6':
-    resolution: {integrity: sha512-dGk/s90fZm7D1O00gRtuE2gqM/CW9nglaPzcIT0v10VOV2tj+aHRrdB+yjas+RW8QP8Qf/sMqSmjkufP1iqggw==}
+  '@codecov/bundler-plugin-core@0.0.1-beta.8':
+    resolution: {integrity: sha512-3yxNa4N+pZxqU60XQxJ10sDKUWcDf/YaQSvODrgxLfKG/peZhSdbd92uRc7PYi73szu7lr1CVZIvVerod9C4Uw==}
     engines: {node: '>=18.0.0'}
 
-  '@codecov/vite-plugin@0.0.1-beta.6':
-    resolution: {integrity: sha512-eIi3M9R1om/T+6FoZGaffWMmwSZ0nx1fIGgidFRFkQdXtKAwHU0//YjCXOg17vJsPXlaSatM81EQBU/qmSXQ1Q==}
+  '@codecov/vite-plugin@0.0.1-beta.8':
+    resolution: {integrity: sha512-bMpn2k4w0HUnmbzQmaE8nzsVKqX72eUQVB5VlU7j+Pr225cCqj3DxWQpYibC+LAUzytZKxVEMZnrYOMTQSXHDA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       vite: 4.x || 5.x
@@ -4316,6 +4316,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -5895,10 +5896,12 @@ packages:
 
   rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@3.0.2:
     resolution: {integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rollup@4.17.2:
@@ -7582,16 +7585,17 @@ snapshots:
       - '@chromatic-com/playwright'
       - react
 
-  '@codecov/bundler-plugin-core@0.0.1-beta.6':
+  '@codecov/bundler-plugin-core@0.0.1-beta.8':
     dependencies:
       chalk: 4.1.2
       semver: 7.6.2
       unplugin: 1.10.1
       zod: 3.23.8
 
-  '@codecov/vite-plugin@0.0.1-beta.6(vite@5.2.11(@types/node@20.12.12))':
+  '@codecov/vite-plugin@0.0.1-beta.8(vite@5.2.11(@types/node@20.12.12))':
     dependencies:
-      '@codecov/bundler-plugin-core': 0.0.1-beta.6
+      '@codecov/bundler-plugin-core': 0.0.1-beta.8
+      unplugin: 1.10.1
       vite: 5.2.11(@types/node@20.12.12)
 
   '@colors/colors@1.5.0':
