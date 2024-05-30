@@ -29,7 +29,7 @@
     "turbo": "1.13.3",
     "typescript": "5.5.0-beta"
   },
-  "packageManager": "pnpm@9.1.2",
+  "packageManager": "pnpm@9.1.4",
   "engines": {
     "node": ">=22"
   }
