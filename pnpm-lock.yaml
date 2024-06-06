@@ -51,8 +51,8 @@ importers:
         specifier: 2.9.2
         version: 2.9.2(typescript@5.5.0-beta)
       '@std/yaml':
-        specifier: npm:@jsr/std__yaml@0.224.0
-        version: '@jsr/std__yaml@0.224.0'
+        specifier: npm:@jsr/std__yaml@0.224.1
+        version: '@jsr/std__yaml@0.224.1'
       '@suddenlygiovanni/open-graph-protocol':
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
@@ -1456,8 +1456,8 @@ packages:
   '@jspm/core@2.0.1':
     resolution: {integrity: sha512-Lg3PnLp0QXpxwLIAuuJboLeRaIhrgJjeuh797QADg3xz8wGLugQOS5DpsE8A6i6Adgzf+bacllkKZG3J0tGfDw==}
 
-  '@jsr/std__yaml@0.224.0':
-    resolution: {integrity: sha512-1EC3mZ53YbyF2fASqCSGmPqnraot4p1Z2p3HF/WkmqkFiRacWhwH4pIdydcU9Limr108uv3jgmqFifceobW8yA==, tarball: https://npm.jsr.io/~/11/@jsr/std__yaml/0.224.0.tgz}
+  '@jsr/std__yaml@0.224.1':
+    resolution: {integrity: sha512-G0GB/nFmK2PXq++7ufjIBY5u9KNpt5fgcpcS017TJKwS1jHzKv+f3U29JUXOfC1mGdU3tmFk4z9K7mqVQyWLkQ==, tarball: https://npm.jsr.io/~/11/@jsr/std__yaml/0.224.1.tgz}
 
   '@mdx-js/mdx@2.3.0':
     resolution: {integrity: sha512-jLuwRlz8DQfQNiUCJR50Y09CGPq3fLtmtUQfVrj79E0JWu3dvsVcxVIcfhR5h0iXu+/z++zDrYeiJqifRynJkA==}
@@ -7869,7 +7869,7 @@ snapshots:
 
   '@jspm/core@2.0.1': {}
 
-  '@jsr/std__yaml@0.224.0': {}
+  '@jsr/std__yaml@0.224.1': {}
 
   '@mdx-js/mdx@2.3.0':
     dependencies:
