@@ -12,7 +12,7 @@
   },
   "scripts": {
     "build": "turbo build --log-order=grouped",
-    "check": "biome check --apply .",
+    "check": "biome check --write .",
     "clean": "turbo run clean && scripty clean",
     "dev": "turbo dev",
     "format": "turbo format --log-order=grouped",
