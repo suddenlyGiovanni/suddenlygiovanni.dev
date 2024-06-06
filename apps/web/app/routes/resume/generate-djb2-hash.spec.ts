@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { generateDjb2Hash } from './generate-djb2-hash'
+import { generateDjb2Hash } from './generate-djb2-hash.ts'
 
 describe('generateDjb2Hash', () => {
 	// Description: This test ensures the function calculates the DJB2 hash correctly for a given input string

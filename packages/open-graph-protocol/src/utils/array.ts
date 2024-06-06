@@ -73,14 +73,14 @@ export function insertIf<
 			: typeof maybeLazyElement === 'function'
 	}
 
-	if (args.length < 1) {
+	if (args.length === 0) {
 		throw new Error(
 			'_insertIf is a variadic function that requires at least 2 arguments: first is the condition to check, second or more are the elements to insert to the array',
 		)
 	}
 
 	if (isNotFalsy(condition)) {
-		if (args.length >= 1) {
+		if (args.length > 0) {
 			// case it is 1 and the argument type is a fn
 			if (isLazyElementTuple(args)) {
 				const [lazyElement] = args
