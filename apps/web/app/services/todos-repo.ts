@@ -13,10 +13,11 @@ const makeTodoRepo = Effect.sync(() => {
 	}
 })
 
-// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
+
 export class TodoRepo extends Effect.Tag('@services/TodoRepo')<
 	TodoRepo,
 	Effect.Effect.Success<typeof makeTodoRepo>
 >() {
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	static Live = Layer.effect(this, makeTodoRepo)
 }
