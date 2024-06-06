@@ -70,6 +70,7 @@ export function loader({ request }: LoaderFunctionArgs) {
 			path: new URL(request.url).pathname,
 			userPrefs: { theme: getTheme(request) },
 		},
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ENV: getEnv(),
 	}
 }
