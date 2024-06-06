@@ -25,7 +25,6 @@ const preview: Preview = {
 	},
 	decorators: [
 		story => {
-			// biome-ignore lint/style/useNamingConvention: <explanation>
 			const RemixStub = createRemixStub([
 				{
 					path: '/',
