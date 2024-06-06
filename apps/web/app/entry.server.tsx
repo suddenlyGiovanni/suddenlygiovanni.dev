@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign  -- Reason: This is how Remix defied the default entry.server */
+// biome-ignore lint/correctness/noNodejsModules: <explanation>
 import { PassThrough } from 'node:stream'
 import type { AppLoadContext, EntryContext } from '@remix-run/node'
 import { createReadableStreamFromReadable } from '@remix-run/node'
@@ -18,7 +18,7 @@ export default function handleRequest(
 	responseStatusCode: number,
 	responseHeaders: Headers,
 	remixContext: EntryContext,
-	loadContext: AppLoadContext,
+	_loadContext: AppLoadContext,
 ) {
 	return isbot(request.headers.get('user-agent'))
 		? handleBotRequest(request, responseStatusCode, responseHeaders, remixContext)
@@ -62,6 +62,7 @@ function handleBotRequest(
 					// errors encountered during initial shell rendering since they'll
 					// reject and get logged in handleDocumentRequest.
 					if (shellRendered) {
+						// biome-ignore lint/nursery/noConsole: <explanation>
 						console.error(error)
 					}
 				},
@@ -109,6 +110,7 @@ function handleBrowserRequest(
 					// errors encountered during initial shell rendering since they'll
 					// reject and get logged in handleDocumentRequest.
 					if (shellRendered) {
+						// biome-ignore lint/nursery/noConsole: <explanation>
 						console.error(error)
 					}
 				},

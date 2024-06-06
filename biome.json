@@ -26,7 +26,8 @@
 			"nursery": {
 				"all": true,
 				"noUndeclaredDependencies": "off",
-				"noReactSpecificProps": "off"
+				"noReactSpecificProps": "off",
+				"useImportRestrictions": "off"
 			},
 			"style": {
 				"noNamespaceImport": "off",
@@ -68,6 +69,24 @@
 		}
 	},
 	"overrides": [
+		{
+			"include": ["packages/open-graph-protocol/**/*.ts"],
+			"linter": {
+				"rules": {
+					"nursery": {
+						"useImportRestrictions": "off"
+					},
+					"style": {
+						"useNamingConvention": {
+							"level": "warn",
+							"options": {
+								"strictCase": false
+							}
+						}
+					}
+				}
+			}
+		},
 		{
 			"include": ["**/*.snapshot.json"],
 			"formatter": {

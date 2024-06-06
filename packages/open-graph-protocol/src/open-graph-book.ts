@@ -18,6 +18,7 @@ import { insertIf } from './utils/array.ts'
 import { isArray } from './utils/type-guards.ts'
 import type { ValueOf } from './utils/types.ts'
 
+// biome-ignore lint/style/useNamingConvention: <explanation>
 export type book<T extends string = ''> = BaseOrExtended<'book', T>
 
 export type IPropertyBook = ValueOf<typeof PropertyBook>

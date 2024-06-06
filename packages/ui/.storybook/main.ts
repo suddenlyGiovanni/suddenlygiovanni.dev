@@ -1,5 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-vite'
 
+// biome-ignore lint/correctness/noNodejsModules: <explanation>
 import { dirname, join } from 'node:path'
 
 /**
