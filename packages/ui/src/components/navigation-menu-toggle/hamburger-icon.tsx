@@ -35,7 +35,7 @@ export function HamburgerIcon({
 			/>
 			<div
 				className={clsx([baseClasses, 'translate-y-2', 'transform', 'bg-foreground'], {
-					'translate-y-0 -rotate-45': isSelected,
+					'-rotate-45 translate-y-0': isSelected,
 				})}
 			/>
 		</div>

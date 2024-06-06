@@ -55,7 +55,7 @@ const AccordionContent = forwardRef<
 		ref={ref}
 		{...props}
 	>
-		<div className={clsx('pb-4 pt-0', className)}>{children}</div>
+		<div className={clsx('pt-0 pb-4', className)}>{children}</div>
 	</Content>
 ))
 AccordionContent.displayName = Content.displayName

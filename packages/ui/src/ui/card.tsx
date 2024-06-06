@@ -44,7 +44,7 @@ Title.displayName = 'Card.Title'
 
 const Description = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
 	({ className, ...props }, ref) => (
-		<p ref={ref} className={clsx('text-sm text-muted-foreground', className)} {...props} />
+		<p ref={ref} className={clsx('text-muted-foreground text-sm', className)} {...props} />
 	),
 )
 Description.displayName = 'Card.Description'
