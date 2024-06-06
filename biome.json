@@ -11,6 +11,10 @@
 		"useIgnoreFile": true,
 		"root": "."
 	},
+	"organizeImports": {
+		"enabled": true,
+		"include": ["./apps/**/*", "./packages/**/*"]
+	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab",
@@ -27,7 +31,8 @@
 				"all": true,
 				"noUndeclaredDependencies": "off",
 				"noReactSpecificProps": "off",
-				"useImportRestrictions": "off"
+				"useImportRestrictions": "off",
+				"useSemanticElements": "off"
 			},
 			"style": {
 				"noNamespaceImport": "off",
@@ -68,6 +73,7 @@
 			"enabled": false
 		}
 	},
+
 	"overrides": [
 		{
 			"include": ["packages/open-graph-protocol/**/*.ts"],
@@ -75,6 +81,10 @@
 				"rules": {
 					"nursery": {
 						"useImportRestrictions": "off"
+					},
+					"performance": {
+						"noBarrelFile": "off",
+						"noReExportAll": "off"
 					},
 					"style": {
 						"useNamingConvention": {

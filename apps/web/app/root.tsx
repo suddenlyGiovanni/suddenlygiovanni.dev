@@ -102,6 +102,7 @@ function Document({
 	children: ReactNode
 	// nonce: string
 	theme?: 'light' | 'dark' | null // TODO: address this prop
+	// biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
 	env?: typeof ENV
 }): ReactElement {
 	return (

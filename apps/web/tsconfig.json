@@ -17,12 +17,10 @@
 			"react",
 			"react-dom",
 			"vite/client",
-			"vitest",
-			"./env.d.ts"
+			"vitest"
 		]
 	},
 	"include": [
-		"env.d.ts",
 		"tailwind.config.ts",
 		"vite.config.ts",
 		"postcss.config.mjs",
