@@ -31,8 +31,6 @@
 	},
 	"scripts": {
 		"clean": "scripty",
-		"format": "scripty",
-		"lint": "scripty src/",
 		"typecheck": "scripty"
 	},
 	"engines": {
