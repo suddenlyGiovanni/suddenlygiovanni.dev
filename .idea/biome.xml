@@ -3,7 +3,7 @@
   <component name="BiomeSettings">
     <option name="configPath" value="$PROJECT_DIR$" />
     <option name="configurationMode" value="MANUAL" />
-    <option name="executablePath" value="$PROJECT_DIR$/node_modules/@biomejs/biome/bin/biome" />
+    <option name="executablePath" value="/opt/homebrew/bin/biome" />
     <option name="formatOnSave" value="true" />
   </component>
 </project>
