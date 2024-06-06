@@ -68,7 +68,9 @@ export function init(): void {
  */
 export function getEnv() {
 	return {
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		MODE: process.env.NODE_ENV,
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ALLOW_INDEXING: process.env.ALLOW_INDEXING,
 	} as const
 }

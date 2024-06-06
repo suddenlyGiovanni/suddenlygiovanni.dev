@@ -12,7 +12,6 @@ const Body = forwardRef(
 		{ className, children, as, ...rest }: PolymorphicComponentPropWithRef<C>,
 		ref: PolymorphicRef<C>,
 	) => {
-		// biome-ignore lint/style/useNamingConvention: This si a case of a PolymorphicComponentPropWithRef
 		const Component = as ?? 'body'
 		return (
 			<Component
