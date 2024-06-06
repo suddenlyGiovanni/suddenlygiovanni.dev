@@ -19,14 +19,15 @@ jobs:
 
       - name: 🧬 check code for errors (with Biome)
         run: |
-          biome ci                            \
-            --formatter-enabled=false         \
-            --linter-enabled=true             \
+          biome ci  \
+            --formatter-enabled=false \
+            --linter-enabled=true \
             --organize-imports-enabled=false  \
-            --vcs-enabled=true                \
-            --vcs-use-ignore-file=true        \
-            --no-errors-on-unmatched          \
-            --diagnostic-level=error          \
+            --vcs-enabled=true  \
+            --vcs-use-ignore-file=true  \
+            --no-errors-on-unmatched  \
+            --diagnostic-level=error  \
+            --reporter=github \
             .
 
       - name: 🧩 Install dependencies
