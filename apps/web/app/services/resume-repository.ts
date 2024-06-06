@@ -26,7 +26,7 @@ import { OctokitService, RequestError } from '~/services/octokit.ts'
  */
 
 // biome-ignore lint/correctness/noUnusedVariables: <explanation>
-class  AuthenticationError extends Data.TaggedError('AuthenticationError')<{
+class AuthenticationError extends Data.TaggedError('AuthenticationError')<{
 	readonly message?: string
 }> {}
 
@@ -36,7 +36,7 @@ class  AuthenticationError extends Data.TaggedError('AuthenticationError')<{
  */
 
 // biome-ignore lint/correctness/noUnusedVariables: <explanation>
-class  NetworkError extends Data.TaggedError('NetworkError')<{ readonly message?: string }> {}
+class NetworkError extends Data.TaggedError('NetworkError')<{ readonly message?: string }> {}
 
 /**
  * This error can be thrown when the status code of the response from the getContent request is
@@ -44,7 +44,7 @@ class  NetworkError extends Data.TaggedError('NetworkError')<{ readonly message?
  */
 
 // biome-ignore lint/correctness/noUnusedVariables: <explanation>
-class  ApiResponseError extends Data.TaggedError('ApiResponseError')<{
+class ApiResponseError extends Data.TaggedError('ApiResponseError')<{
 	readonly message?: string
 }> {}
 

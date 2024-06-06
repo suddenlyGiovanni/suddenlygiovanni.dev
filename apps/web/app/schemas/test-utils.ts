@@ -52,7 +52,7 @@ export const expectEncodeFailure = async <A, I>(
 export const printAST = <A, I, R>(schema: S.Schema<A, I, R>) => {
 	// biome-ignore lint/suspicious/noConsoleLog: <explanation>
 	// biome-ignore lint/nursery/noConsole: <explanation>
-		console.log('%o', schema.ast)
+	console.log('%o', schema.ast)
 }
 
 // biome-ignore lint/suspicious/useAwait: <explanation>

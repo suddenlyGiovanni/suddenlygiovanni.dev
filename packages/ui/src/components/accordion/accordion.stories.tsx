@@ -365,7 +365,9 @@ export function Animated(): ReactElement {
 			timerRef.current = window.setTimeout(() => {
 				setCount(prevCount => {
 					const nextCount = prevCount < 5 ? prevCount + 1 : prevCount
-					if (nextCount === 5) { setHasDynamicContent(false) }
+					if (nextCount === 5) {
+						setHasDynamicContent(false)
+					}
 					return nextCount
 				})
 			}, 3000)
@@ -382,7 +384,9 @@ export function Animated(): ReactElement {
 					checked={hasDynamicContent}
 					onChange={event => {
 						const checked = event.target.checked
-						if (checked) { setCount(1) }
+						if (checked) {
+							setCount(1)
+						}
 						setHasDynamicContent(checked)
 					}}
 					type="checkbox"

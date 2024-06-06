@@ -13,7 +13,6 @@ const makeTodoRepo = Effect.sync(() => {
 	}
 })
 
-
 export class TodoRepo extends Effect.Tag('@services/TodoRepo')<
 	TodoRepo,
 	Effect.Effect.Success<typeof makeTodoRepo>
