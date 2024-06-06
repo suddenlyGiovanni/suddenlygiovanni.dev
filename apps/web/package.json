@@ -27,7 +27,7 @@
 		"@remix-run/serve": "2.9.2",
 		"@std/yaml": "npm:@jsr/std__yaml@0.224.1",
 		"@suddenlygiovanni/open-graph-protocol": "workspace:*",
-		"@suddenlygiovanni/resume": "12.1.1",
+		"@suddenlygiovanni/resume": "12.1.4",
 		"@suddenlygiovanni/ui": "workspace:*",
 		"cookie": "0.6.0",
 		"effect": "3.3.0",
