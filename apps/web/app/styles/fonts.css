@@ -3,6 +3,5 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: local(''),
-		url('/fonts/ShantellSans.woff2') format('woff2');
+	src: local(""), url("/fonts/ShantellSans.woff2") format("woff2");
 }

@@ -159,7 +159,11 @@ function Contacts({ email, location, phone, profiles, url }: ContactsProps): Rea
 						/>
 
 						<T.a aria-label={`link to ${profile.network}`} href={profile.url}>
-							{profile.url.replace(/(?:https:\/\/www\.)|(?:https:\/\/)/i, '')}
+							{profile.url.replace(
+								/* biome-ignore lint/nursery/useTopLevelRegex: <explanation> */
+								/(?:https:\/\/www\.)|(?:https:\/\/)/i,
+								'',
+							)}
 						</T.a>
 					</li>
 				))}

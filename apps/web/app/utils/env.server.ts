@@ -1,10 +1,13 @@
+// biome-ignore lint/correctness/noNodejsModules: <explanation>
 import * as process from 'node:process'
 import * as Schema from '@effect/schema/Schema'
 import { formatError } from '@effect/schema/TreeFormatter'
 import * as Either from 'effect/Either'
 
 const envSchema = Schema.Struct({
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	NODE_ENV: Schema.Literal('production', 'development', 'test'),
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	GITHUB_TOKEN: Schema.optional(
 		Schema.NonEmpty.annotations({
 			description: 'GitHub token',
@@ -15,6 +18,7 @@ const envSchema = Schema.Struct({
 			default: () => 'MOCK_GITHUB_TOKEN',
 		},
 	),
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	ALLOW_INDEXING: Schema.optional(
 		Schema.transform(Schema.Literal('true', 'false'), Schema.Boolean, {
 			decode: string => string === 'true',
@@ -64,7 +68,9 @@ export function init(): void {
  */
 export function getEnv() {
 	return {
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		MODE: process.env.NODE_ENV,
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ALLOW_INDEXING: process.env.ALLOW_INDEXING,
 	} as const
 }

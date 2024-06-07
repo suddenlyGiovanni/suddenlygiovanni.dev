@@ -43,7 +43,6 @@ export interface ButtonProps
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 	({ className, variant, size, asChild = false, ...props }, ref) => {
-		// biome-ignore lint/style/useNamingConvention: This is a valid use case for a asChild prop
 		const Comp = asChild ? Slot : 'button'
 		return (
 			<Comp className={clsx(buttonVariants({ variant, size, className }))} ref={ref} {...props} />

@@ -16,7 +16,6 @@ interface SocialIconProps extends ComponentPropsWithoutRef<'svg'> {
 const NAME = 'SocialIcon'
 export const SocialIcon = forwardRef<SVGSVGElement, SocialIconProps>(
 	({ network, ...props }: SocialIconProps, ref) => {
-		// biome-ignore lint/style/useNamingConvention: this is a valid use case for a Map
 		const Icon = IconMap.get(network)
 		if (!Icon) {
 			throw new Error(

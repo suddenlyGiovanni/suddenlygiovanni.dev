@@ -2,8 +2,8 @@ import { BellIcon, CheckIcon } from '@radix-ui/react-icons'
 import type { Meta } from '@storybook/react'
 import { type ComponentProps, useRef } from 'react'
 import { clsx } from 'src/lib/utils.ts'
-import { Button } from '../../ui/button'
-import { Card } from '../../ui/card'
+import { Button } from '../../ui/button.tsx'
+import { Card } from '../../ui/card.tsx'
 import { Switch } from '../../ui/switch.tsx'
 
 const meta = {

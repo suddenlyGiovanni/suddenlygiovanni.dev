@@ -8,6 +8,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 installGlobals()
 
 /// <reference types="vitest" />
+
 export default defineConfig({
 	plugins: [
 		remixDevTools(),
@@ -17,7 +18,9 @@ export default defineConfig({
 			buildDirectory: 'build',
 			ssr: true,
 			future: {
+				// biome-ignore lint/style/useNamingConvention: <explanation>
 				v3_throwAbortReason: true,
+				// biome-ignore lint/style/useNamingConvention: <explanation>
 				v3_relativeSplatPath: true,
 			},
 		}),

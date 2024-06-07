@@ -49,6 +49,7 @@ function getDates(roles: Model.Work['roles']): {
 } {
 	const dates = roles
 		.flatMap(role => [role.startDate, role.endDate].filter(Boolean))
+		// biome-ignore lint/nursery/useDateNow: <explanation>
 		.sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
 
 	return {
@@ -151,7 +152,7 @@ function ExperienceSummary({
 
 function Roles({ roles }: { readonly roles: Model.Work['roles'] }): ReactElement {
 	return (
-		<ul className="mt-0 pl-0 sm:pl-3     md:pl-6   flex list-none flex-col gap-2">
+		<ul className="mt-0 flex list-none flex-col gap-2 pl-0 md:pl-6 sm:pl-3">
 			{roles.map(role => (
 				<li key={role.startDate}>
 					<Role

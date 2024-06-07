@@ -70,6 +70,7 @@ export function loader({ request }: LoaderFunctionArgs) {
 			path: new URL(request.url).pathname,
 			userPrefs: { theme: getTheme(request) },
 		},
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ENV: getEnv(),
 	}
 }
@@ -102,6 +103,7 @@ function Document({
 	children: ReactNode
 	// nonce: string
 	theme?: 'light' | 'dark' | null // TODO: address this prop
+	// biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
 	env?: typeof ENV
 }): ReactElement {
 	return (

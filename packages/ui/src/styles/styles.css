@@ -1,7 +1,6 @@
-@import '@suddenlygiovanni/config-tailwind/styles.css';
+@import "@suddenlygiovanni/config-tailwind/styles.css";
 
 @font-face {
 	font-family: "Shantell Sans";
-	src: local(''),
-		url('/fonts/ShantellSans.woff2') format('woff2');
+	src: local(""), url("/fonts/ShantellSans.woff2") format("woff2");
 }

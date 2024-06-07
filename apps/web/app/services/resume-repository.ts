@@ -24,6 +24,8 @@ import { OctokitService, RequestError } from '~/services/octokit.ts'
 /**
  * This error can be thrown when the GITHUB_TOKEN is not set in the environment variables.
  */
+
+// biome-ignore lint/correctness/noUnusedVariables: <explanation>
 class AuthenticationError extends Data.TaggedError('AuthenticationError')<{
 	readonly message?: string
 }> {}
@@ -32,12 +34,16 @@ class AuthenticationError extends Data.TaggedError('AuthenticationError')<{
  * This error can be thrown when the getContent request to the GitHub API fails due to network
  * issues.
  */
+
+// biome-ignore lint/correctness/noUnusedVariables: <explanation>
 class NetworkError extends Data.TaggedError('NetworkError')<{ readonly message?: string }> {}
 
 /**
  * This error can be thrown when the status code of the response from the getContent request is
  * not 200.
  */
+
+// biome-ignore lint/correctness/noUnusedVariables: <explanation>
 class ApiResponseError extends Data.TaggedError('ApiResponseError')<{
 	readonly message?: string
 }> {}
@@ -221,5 +227,6 @@ export class ResumeRepository extends Effect.Tag('@services/ResumeRepository')<
 	ResumeRepository,
 	Effect.Effect.Success<typeof makeResumeRepository>
 >() {
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	static Live = Layer.effect(this, makeResumeRepository)
 }

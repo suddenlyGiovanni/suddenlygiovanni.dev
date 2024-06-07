@@ -2,7 +2,7 @@ import { ChevronRightIcon, EnvelopeOpenIcon, ReloadIcon } from '@radix-ui/react-
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Button } from '../../ui/button.tsx'
-import { T } from '../typography/typography'
+import { T } from '../typography/typography.tsx'
 
 const meta = {
 	component: Button,

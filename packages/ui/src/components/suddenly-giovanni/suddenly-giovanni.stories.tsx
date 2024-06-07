@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { SuddenlyGiovanni } from './suddenly-giovanni'
+import { SuddenlyGiovanni } from './suddenly-giovanni.tsx'
 
 const meta = {
 	component: SuddenlyGiovanni,

@@ -1,7 +1,7 @@
 import { ParseError } from '@effect/schema/ParseResult'
 import { getOrThrow, isLeft } from 'effect/Either'
 import { describe, expect, test } from 'vitest'
-import { formatDateLocaleShort } from './format-date-locale-short'
+import { formatDateLocaleShort } from './format-date-locale-short.ts'
 
 describe('formatDateLocaleShort', () => {
 	test('should return an error for an empty string', () => {

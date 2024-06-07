@@ -11,7 +11,6 @@ import { type BaseOf, type Brand, make } from 'ts-brand'
  * @example
  * 'true', 'false', '1', '0'
  */
-// biome-ignore lint/suspicious/noShadowRestrictedNames: It's fine as its wrapped in a namespace
 export type Boolean = Brand<true | false | 1 | 0, 'Boolean'>
 /**
  * a `Open Graph protocol` Boolean type constructor.

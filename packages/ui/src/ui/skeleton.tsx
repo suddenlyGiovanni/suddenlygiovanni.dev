@@ -11,7 +11,6 @@ export const Skeleton = forwardRef(
 		{ className, as, ...props }: PolymorphicComponentPropWithRef<C>,
 		ref: PolymorphicRef<C>,
 	) => {
-		// biome-ignore lint/style/useNamingConvention: <explanation>
 		const Component = as ?? 'div'
 		return (
 			<Component

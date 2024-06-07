@@ -267,7 +267,7 @@ export function getDevIconComponent<T extends string>(
 		}
 	}
 	let longestMatchingKey: Option.Option<IconKey> = Option.none()
-	if (matchingKeys.size) {
+	if (matchingKeys.size > 0) {
 		longestMatchingKey = Option.some(
 			Array.from(matchingKeys).reduce((a, b) => (a.length > b.length ? a : b)),
 		)

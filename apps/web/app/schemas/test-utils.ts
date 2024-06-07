@@ -48,10 +48,14 @@ export const expectEncodeFailure = async <A, I>(
 	options?: ParseOptions,
 ) => expectFailure(S.encode(schema)(a, options), message)
 
+// biome-ignore lint/style/useNamingConvention: <explanation>
 export const printAST = <A, I, R>(schema: S.Schema<A, I, R>) => {
+	// biome-ignore lint/suspicious/noConsoleLog: <explanation>
+	// biome-ignore lint/nursery/noConsole: <explanation>
 	console.log('%o', schema.ast)
 }
 
+// biome-ignore lint/suspicious/useAwait: <explanation>
 export const expectFailure = async <A>(
 	effect: Either.Either<A, ParseResult.ParseError> | Effect.Effect<A, ParseResult.ParseError>,
 	message: string,
@@ -63,6 +67,7 @@ export const expectFailure = async <A>(
 	}
 }
 
+// biome-ignore lint/suspicious/useAwait: <explanation>
 export const expectSuccess = async <E, A>(
 	effect: Either.Either<A, E> | Effect.Effect<A, E>,
 	a: A,
@@ -78,12 +83,14 @@ export const expectEffectFailure = async <A>(
 	effect: Effect.Effect<A, ParseResult.ParseError>,
 	message: string,
 ) => {
+	// biome-ignore lint/nursery/noMisplacedAssertion: <explanation>
 	expect(
 		await Effect.runPromise(Effect.either(Effect.mapError(effect, formatErrorSync))),
 	).toStrictEqual(Either.left(message))
 }
 
 export const expectEffectSuccess = async <E, A>(effect: Effect.Effect<A, E>, a: A) => {
+	// biome-ignore lint/nursery/noMisplacedAssertion: <explanation>
 	expect(await Effect.runPromise(Effect.either(effect))).toStrictEqual(Either.right(a))
 }
 
@@ -91,17 +98,21 @@ export const expectEitherLeft = <A>(
 	e: Either.Either<A, ParseResult.ParseError>,
 	message: string,
 ) => {
+	// biome-ignore lint/nursery/noMisplacedAssertion: <explanation>
 	expect(Either.mapLeft(e, formatErrorSync)).toStrictEqual(Either.left(message))
 }
 
 export const expectEitherRight = <E, A>(e: Either.Either<A, E>, a: A) => {
+	// biome-ignore lint/nursery/noMisplacedAssertion: <explanation>
 	expect(e).toStrictEqual(Either.right(a))
 }
 
 export const expectNone = <A>(o: Option.Option<A>) => {
+	// biome-ignore lint/nursery/noMisplacedAssertion: <explanation>
 	expect(o).toStrictEqual(Option.none())
 }
 
 export const expectSome = <A>(o: Option.Option<A>, a: A) => {
+	// biome-ignore lint/nursery/noMisplacedAssertion: <explanation>
 	expect(o).toStrictEqual(Option.some(a))
 }
