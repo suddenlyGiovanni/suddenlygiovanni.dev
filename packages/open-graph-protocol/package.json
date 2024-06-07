@@ -27,7 +27,7 @@
 	"devDependencies": {
 		"@suddenlygiovanni/config-tailwind": "workspace:*",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
-		"typescript": "5.5.0-beta"
+		"typescript": "5.5.1-rc"
 	},
 	"scripts": {
 		"clean": "scripty",
