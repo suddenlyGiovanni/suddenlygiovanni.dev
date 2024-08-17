@@ -47,6 +47,9 @@ ENTRYPOINT ["sh"]
 
 FROM base AS build
 
+ENV TURBO_TELEMETRY_DISABLED=1
+ENV DO_NOT_TRACK=1
+
 # pnpm fetch does require only lockfile + .npmrc
 COPY --from=builder /home/node/out/json/pnpm-lock.yaml .
 COPY --from=builder /home/node/out/json/.npmrc .
