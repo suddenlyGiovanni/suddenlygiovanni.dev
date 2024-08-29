@@ -1,20 +1,8 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"name": "@suddenlygiovanni/config-typescript",
-	"version": "0.0.1",
-	"private": true,
-	"publishConfig": {
-		"access": "public"
-	},
-	"scripts": {
-		"clean": "scripty"
-	},
-	"peerDependencies": {
-		"typescript": "~5.5.0-beta || ~5.5.1-rc"
-	},
-	"peerDependenciesMeta": {
-		"typescript": {
-			"optional": false
+	"config": {
+		"scripty": {
+			"path": "../../scripts"
 		}
 	},
 	"dependencies": {
@@ -23,9 +11,22 @@
 		"@tsconfig/strictest": "2.0.5",
 		"@tsconfig/vite-react": "3.0.2"
 	},
-	"config": {
-		"scripty": {
-			"path": "../../scripts"
+	"name": "@suddenlygiovanni/config-typescript",
+	"packageManager": "pnpm@9.3.0+sha512.ee7b93e0c2bd11409c6424f92b866f31d3ea1bef5fbe47d3c7500cdc3c9668833d2e55681ad66df5b640c61fa9dc25d546efa54d76d7f8bf54b13614ac293631",
+	"peerDependencies": {
+		"typescript": "~5.5.0-beta || ~5.5.1-rc"
+	},
+	"peerDependenciesMeta": {
+		"typescript": {
+			"optional": false
 		}
-	}
+	},
+	"private": true,
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"clean": "scripty"
+	},
+	"version": "0.0.1"
 }

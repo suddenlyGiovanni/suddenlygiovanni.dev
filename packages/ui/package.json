@@ -1,29 +1,9 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"name": "@suddenlygiovanni/ui",
-	"private": true,
-	"version": "0.0.1",
-	"exports": {
-		"./tailwind.config.ts": "./tailwind.config.ts",
-		"./lib/*": "./src/lib/*",
-		"./components/*": "./src/components/*",
-		"./ui/*": "./src/ui/*",
-		"./hooks/*": "./src/hooks/*"
-	},
-	"type": "module",
-	"scripts": {
-		"build-storybook": "storybook build",
-		"check": "biome check .",
-		"check:fix": "biome check --apply .",
-		"chromatic": "npx chromatic",
-		"clean": "scripty",
-		"components-add": "pnpm dlx shadcn-ui@latest add",
-		"components-diff": "pnpm dlx shadcn-ui@latest diff",
-		"dev": "storybook dev -p 6006",
-		"typecheck": "scripty"
-	},
-	"peerDependencies": {
-		"react": "18.3.1"
+	"config": {
+		"scripty": {
+			"path": "../../scripts"
+		}
 	},
 	"dependencies": {
 		"@radix-ui/react-accessible-icon": "1.0.3",
@@ -70,16 +50,36 @@
 		"vite": "5.2.13",
 		"vite-tsconfig-paths": "4.3.2"
 	},
-	"publishConfig": {
-		"access": "public"
-	},
 	"engines": {
 		"node": ">=22"
 	},
-	"packageManager": "pnpm@9.2.0",
-	"config": {
-		"scripty": {
-			"path": "../../scripts"
-		}
-	}
+	"exports": {
+		"./tailwind.config.ts": "./tailwind.config.ts",
+		"./lib/*": "./src/lib/*",
+		"./components/*": "./src/components/*",
+		"./ui/*": "./src/ui/*",
+		"./hooks/*": "./src/hooks/*"
+	},
+	"name": "@suddenlygiovanni/ui",
+	"packageManager": "pnpm@9.3.0+sha512.ee7b93e0c2bd11409c6424f92b866f31d3ea1bef5fbe47d3c7500cdc3c9668833d2e55681ad66df5b640c61fa9dc25d546efa54d76d7f8bf54b13614ac293631",
+	"peerDependencies": {
+		"react": "18.3.1"
+	},
+	"private": true,
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"build-storybook": "storybook build",
+		"check": "biome check .",
+		"check:fix": "biome check --apply .",
+		"chromatic": "npx chromatic",
+		"clean": "scripty",
+		"components-add": "pnpm dlx shadcn-ui@latest add",
+		"components-diff": "pnpm dlx shadcn-ui@latest diff",
+		"dev": "storybook dev -p 6006",
+		"typecheck": "scripty"
+	},
+	"type": "module",
+	"version": "0.0.1"
 }
