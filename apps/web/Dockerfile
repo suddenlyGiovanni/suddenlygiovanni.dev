@@ -60,7 +60,9 @@ RUN pnpm fetch
 # Build the project
 COPY --from=builder /home/node/out/full/ .
 
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm --filter @suddenlygiovanni/web install --prod=false
+RUN cd ./apps/web
+
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod=false
 
 ENV NODE_ENV="production"
 

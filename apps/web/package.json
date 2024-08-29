@@ -1,19 +1,8 @@
 {
-	"name": "@suddenlygiovanni/web",
-	"private": true,
-	"sideEffects": false,
-	"type": "module",
-	"scripts": {
-		"build": "remix vite:build",
-		"check": "biome check .",
-		"check:fix": "biome check --apply .",
-		"clean": "scripty",
-		"dev": "remix vite:dev --profile",
-		"inspect-router": "remix routes | bat --language TypeScriptReact",
-		"start": "remix-serve ./build/server/index.js",
-		"test": "vitest",
-		"test:unit": "vitest run --coverage",
-		"typecheck": "scripty"
+	"config": {
+		"scripty": {
+			"path": "../../scripts"
+		}
 	},
 	"dependencies": {
 		"@effect/schema": "0.67.22",
@@ -59,10 +48,21 @@
 	"engines": {
 		"node": ">=22.6"
 	},
-	"packageManager": "pnpm@9.7.1+sha512.faf344af2d6ca65c4c5c8c2224ea77a81a5e8859cbc4e06b1511ddce2f0151512431dd19e6aff31f2c6a8f5f2aced9bd2273e1fed7dd4de1868984059d2c4247",
-	"config": {
-		"scripty": {
-			"path": "../../scripts"
-		}
-	}
+	"name": "@suddenlygiovanni/web",
+	"packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1",
+	"private": true,
+	"scripts": {
+		"build": "remix vite:build",
+		"check": "biome check .",
+		"check:fix": "biome check --apply .",
+		"clean": "scripty",
+		"dev": "remix vite:dev --profile",
+		"inspect-router": "remix routes | bat --language TypeScriptReact",
+		"start": "remix-serve ./build/server/index.js",
+		"test": "vitest",
+		"test:unit": "vitest run --coverage",
+		"typecheck": "scripty"
+	},
+	"sideEffects": false,
+	"type": "module"
 }
