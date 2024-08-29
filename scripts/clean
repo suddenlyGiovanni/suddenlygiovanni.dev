@@ -5,7 +5,8 @@ log_message="🏗️ Cleaning up node_modules directory..."
 echo "$log_message"
 
 # List of directories and files to remove
-directories_and_files_to_remove=("dist" "build" "storybook-static" "coverage" "tsconfig.tsbuildinfo" ".turbo" "node_modules" ".pnpm" )
+directories_and_files_to_remove=("dist" "out" "pruned" "build" "storybook-static" "coverage"
+"tsconfig" ".tsbuildinfo" ".turbo" "node_modules" ".pnpm")
 
 for item in "${directories_and_files_to_remove[@]}"
 do
