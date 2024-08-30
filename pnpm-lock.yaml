@@ -79,8 +79,8 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@codecov/vite-plugin':
-        specifier: 0.0.1-beta.8
-        version: 0.0.1-beta.8(vite@5.2.13(@types/node@20.16.2))
+        specifier: 0.0.1-beta.10
+        version: 0.0.1-beta.10(vite@5.2.13(@types/node@20.16.2))
       '@remix-run/dev':
         specifier: 2.9.2
         version: 2.9.2(@remix-run/react@2.9.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.9.2(typescript@5.5.4))(@types/node@20.16.2)(babel-plugin-macros@3.1.0)(typescript@5.5.4)(vite@5.2.13(@types/node@20.16.2))
@@ -1031,12 +1031,12 @@ packages:
     resolution: {integrity: sha512-vkB9dPVmM2Yvqc/0DJ4MYwOGY1MOjd/KbB9TXTMGN+qshaEyiZtSOgbz9u0ExFALEgDKLmtUnWyUtoGb0pCzUg==}
     engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
 
-  '@codecov/bundler-plugin-core@0.0.1-beta.8':
-    resolution: {integrity: sha512-3yxNa4N+pZxqU60XQxJ10sDKUWcDf/YaQSvODrgxLfKG/peZhSdbd92uRc7PYi73szu7lr1CVZIvVerod9C4Uw==}
+  '@codecov/bundler-plugin-core@0.0.1-beta.10':
+    resolution: {integrity: sha512-fOgy02gc0Z0ipKVe8QqN7mcmzQYjHb2UzT6RtHR+tqyYwpe1r1Kg5E/pbIOXKLaJGXK+AaOX23qtgp6kvUn+iA==}
     engines: {node: '>=18.0.0'}
 
-  '@codecov/vite-plugin@0.0.1-beta.8':
-    resolution: {integrity: sha512-bMpn2k4w0HUnmbzQmaE8nzsVKqX72eUQVB5VlU7j+Pr225cCqj3DxWQpYibC+LAUzytZKxVEMZnrYOMTQSXHDA==}
+  '@codecov/vite-plugin@0.0.1-beta.10':
+    resolution: {integrity: sha512-ZoNKEGTMUIwQbwjxu/YUMaGlBUw24c2rZG0E0Lsa2SjZ+DBL+yTe2Kz+7vB6rzW+2Y/EpxxqVWCVjjK03Z7l1w==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       vite: 4.x || 5.x
@@ -4123,6 +4123,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -4245,6 +4246,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -5542,6 +5544,7 @@ packages:
 
   rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rollup@4.17.2:
@@ -7169,16 +7172,16 @@ snapshots:
       - '@chromatic-com/playwright'
       - react
 
-  '@codecov/bundler-plugin-core@0.0.1-beta.8':
+  '@codecov/bundler-plugin-core@0.0.1-beta.10':
     dependencies:
       chalk: 4.1.2
       semver: 7.6.2
       unplugin: 1.10.1
       zod: 3.23.8
 
-  '@codecov/vite-plugin@0.0.1-beta.8(vite@5.2.13(@types/node@20.16.2))':
+  '@codecov/vite-plugin@0.0.1-beta.10(vite@5.2.13(@types/node@20.16.2))':
     dependencies:
-      '@codecov/bundler-plugin-core': 0.0.1-beta.8
+      '@codecov/bundler-plugin-core': 0.0.1-beta.10
       unplugin: 1.10.1
       vite: 5.2.13(@types/node@20.16.2)
 
