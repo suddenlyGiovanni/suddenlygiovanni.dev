@@ -35,15 +35,15 @@
 		"@types/node": "20.16.2",
 		"@types/react": "18.3.3",
 		"@types/react-dom": "18.3.0",
-		"@vitest/coverage-v8": "1.6.0",
-		"@vitest/ui": "1.6.0",
+		"@vitest/coverage-v8": "2.0.5",
+		"@vitest/ui": "2.0.5",
 		"autoprefixer": "10.4.20",
 		"postcss": "8.4.41",
 		"remix-development-tools": "4.1.6",
 		"tailwindcss": "3.4.10",
 		"vite": "5.4.2",
 		"vite-tsconfig-paths": "5.0.1",
-		"vitest": "1.6.0"
+		"vitest": "2.0.5"
 	},
 	"engines": {
 		"node": ">=22.6"
