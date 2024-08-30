@@ -24,9 +24,7 @@ const config: StorybookConfig = {
 		name: getAbsolutePath('@storybook/react-vite') as '@storybook/react-vite',
 		options: {},
 	},
-	docs: {
-		autodocs: 'tag',
-	},
+	docs: {},
 	staticDirs: [
 		// make sure we are serving the same assets as the Remix app
 		'../../../apps/web/public',

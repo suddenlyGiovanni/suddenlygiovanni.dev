@@ -23,6 +23,7 @@ const preview: Preview = {
 			},
 		},
 	},
+
 	decorators: [
 		story => {
 			const RemixStub = createRemixStub([
@@ -44,6 +45,8 @@ const preview: Preview = {
 			attributeName: 'data-theme',
 		}),
 	],
+
+	tags: ['autodocs'],
 }
 
 // biome-ignore lint/style/noDefaultExport: it is part of the api
