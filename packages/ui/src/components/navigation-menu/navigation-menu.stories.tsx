@@ -13,7 +13,7 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from '../../ui/navigation-menu.tsx'
-import { Icons } from '../icons/icons.ts'
+import { Icons } from '../icons/icons.tsx'
 
 const meta: Meta = {
 	component: NavigationMenu,
