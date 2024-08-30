@@ -14,7 +14,7 @@ const themeConfig = {
 } as const
 
 const preview: Preview = {
-	parameters: {
+    parameters: {
 		actions: { argTypesRegex: '^on.*' },
 		controls: {
 			matchers: {
@@ -23,7 +23,8 @@ const preview: Preview = {
 			},
 		},
 	},
-	decorators: [
+
+    decorators: [
 		story => {
 			const RemixStub = createRemixStub([
 				{
@@ -44,6 +45,8 @@ const preview: Preview = {
 			attributeName: 'data-theme',
 		}),
 	],
+
+    tags: ['autodocs']
 }
 
 // biome-ignore lint/style/noDefaultExport: it is part of the api
