@@ -94,8 +94,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/config-typescript
       '@total-typescript/ts-reset':
-        specifier: 0.5.1
-        version: 0.5.1
+        specifier: 0.6.0
+        version: 0.6.0
       '@types/cookie':
         specifier: 0.6.0
         version: 0.6.0
@@ -283,8 +283,8 @@ importers:
         specifier: workspace:*
         version: link:../config-typescript
       '@total-typescript/ts-reset':
-        specifier: 0.5.1
-        version: 0.5.1
+        specifier: 0.6.0
+        version: 0.6.0
       '@types/react':
         specifier: 18.3.5
         version: 18.3.5
@@ -3329,8 +3329,8 @@ packages:
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
 
-  '@total-typescript/ts-reset@0.5.1':
-    resolution: {integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==}
+  '@total-typescript/ts-reset@0.6.0':
+    resolution: {integrity: sha512-HWZnkM+5z3INAUZMohVXvX8/vm9sjmfmV2NRAswvv5WsU2m+OZsHAVZ0fl8xf2QH9kyPkinghVW6g3DOQ2xt5Q==}
 
   '@tsconfig/node22@22.0.0':
     resolution: {integrity: sha512-twLQ77zevtxobBOD4ToAtVmuYrpeYUh3qh+TEp+08IWhpsrIflVHqQ1F1CiPxQGL7doCdBIOOCF+1Tm833faNg==}
@@ -10365,7 +10365,7 @@ snapshots:
     dependencies:
       '@testing-library/dom': 10.1.0
 
-  '@total-typescript/ts-reset@0.5.1': {}
+  '@total-typescript/ts-reset@0.6.0': {}
 
   '@tsconfig/node22@22.0.0': {}
 
