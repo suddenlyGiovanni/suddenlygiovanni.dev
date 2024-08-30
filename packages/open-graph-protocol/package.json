@@ -1,13 +1,29 @@
 {
-	"license": "MIT",
-	"name": "@suddenlygiovanni/open-graph-protocol",
-	"version": "0.4.0",
 	"author": {
 		"name": "Giovanni Ravalico",
 		"email": "15946771+suddenlyGiovanni@users.noreply.github.com",
 		"url": "https://www.suddenlyGiovanni.dev"
 	},
+	"config": {
+		"scripty": {
+			"path": "../../scripts"
+		}
+	},
+	"dependencies": {
+		"ts-brand": "0.1.0"
+	},
 	"description": "A high-level utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner.",
+	"devDependencies": {
+		"@suddenlygiovanni/config-tailwind": "workspace:*",
+		"@suddenlygiovanni/config-typescript": "workspace:*",
+		"typescript": "5.5.4"
+	},
+	"engines": {
+		"node": ">=22.6"
+	},
+	"exports": {
+		".": "./src/index.ts"
+	},
 	"keywords": [
 		"Open Graph Protocol",
 		"graph object",
@@ -17,29 +33,13 @@
 		"Twitter App Card",
 		"Twitter Player Card"
 	],
-	"type": "module",
-	"exports": {
-		".": "./src/index.ts"
-	},
-	"dependencies": {
-		"ts-brand": "0.1.0"
-	},
-	"devDependencies": {
-		"@suddenlygiovanni/config-tailwind": "workspace:*",
-		"@suddenlygiovanni/config-typescript": "workspace:*",
-		"typescript": "5.5.4"
-	},
+	"license": "MIT",
+	"name": "@suddenlygiovanni/open-graph-protocol",
+	"packageManager": "pnpm@9.9.0+sha512.60c18acd138bff695d339be6ad13f7e936eea6745660d4cc4a776d5247c540d0edee1a563695c183a66eb917ef88f2b4feb1fc25f32a7adcadc7aaf3438e99c1",
 	"scripts": {
 		"clean": "scripty",
 		"typecheck": "scripty"
 	},
-	"engines": {
-		"node": ">=22.6"
-	},
-	"packageManager": "pnpm@9.7.1+sha512.faf344af2d6ca65c4c5c8c2224ea77a81a5e8859cbc4e06b1511ddce2f0151512431dd19e6aff31f2c6a8f5f2aced9bd2273e1fed7dd4de1868984059d2c4247",
-	"config": {
-		"scripty": {
-			"path": "../../scripts"
-		}
-	}
+	"type": "module",
+	"version": "0.4.0"
 }
