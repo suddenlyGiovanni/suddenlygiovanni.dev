@@ -35,7 +35,7 @@ jobs:
 
       - name: Deploy PR app to Fly.io
         id: deploy
-        uses: ./.github/actions/fly-pr-review-apps
+        uses: suddenlyGiovanni/fly-pr-review-apps@ci/with-secrets
         with:
           config: ./apps/web/fly.review.toml
           name: suddenlygiovanni-dev-${{ github.event.number }}
