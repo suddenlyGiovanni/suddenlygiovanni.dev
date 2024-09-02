@@ -4,9 +4,10 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"noEmit": true,
-		"types": ["@total-typescript/ts-reset", "vite/client", "react", "react-dom"],
+		"types": ["@total-typescript/ts-reset", "vite/client", "react/canary", "react-dom"],
 		"useDefineForClassFields": true
 	},
+
 	"include": [
 		"tailwind.config.ts",
 		"vite.config.ts",
