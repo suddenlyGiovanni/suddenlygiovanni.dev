@@ -13,7 +13,7 @@ env:
 
 jobs:
   review_app:
-    name: 🚀 Deploy app to Fly.io
+    name: 🚀 Deploy Review app to Fly.io
     runs-on: ubuntu-latest
     continue-on-error: true
     outputs:
@@ -35,12 +35,11 @@ jobs:
 
       - name: Deploy PR app to Fly.io
         id: deploy
-        uses: ./.github/actions/fly-pr-review-apps
+        uses: suddenlyGiovanni/fly-pr-review-apps@ci/with-secrets
         with:
-          path: './apps/web'
-          config: ./fly.review.toml
+          config: ./apps/web/fly.review.toml
           name: suddenlygiovanni-dev-${{ github.event.number }}
-          secrets: GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }} GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
           build_args: GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
 
       - name: 🗑 Delete deployment environment
