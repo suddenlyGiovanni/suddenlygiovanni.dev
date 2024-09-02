@@ -10,7 +10,7 @@
 		"@biomejs/biome": "1.8.3",
 		"scripty": "2.1.1",
 		"turbo": "2.1.1",
-		"typescript": "5.5.4"
+		"typescript": "5.6.1-rc"
 	},
 	"engines": {
 		"node": ">=22.6"
