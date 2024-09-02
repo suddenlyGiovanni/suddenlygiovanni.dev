@@ -39,7 +39,7 @@ jobs:
         with:
           config: ./apps/web/fly.review.toml
           name: suddenlygiovanni-dev-${{ github.event.number }}
-          secrets: GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }} GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
+          secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
           build_args: GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }}
 
       - name: 🗑 Delete deployment environment
