@@ -13,10 +13,12 @@
 		"inlineSources": false,
 		"isolatedModules": true,
 		"noEmit": true,
+		"noUncheckedSideEffectImports": true,
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
 		"preserveWatchOutput": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"strictBuiltinIteratorReturn": true
 	},
 	"exclude": ["node_modules"]
 }
