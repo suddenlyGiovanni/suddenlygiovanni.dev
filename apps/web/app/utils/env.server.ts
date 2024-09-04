@@ -8,8 +8,8 @@ const envSchema = Schema.Struct({
 	// biome-ignore lint/style/useNamingConvention: <explanation>
 	NODE_ENV: Schema.Literal('production', 'development', 'test'),
 	// biome-ignore lint/style/useNamingConvention: <explanation>
-	GITHUB_TOKEN: Schema.optional(
-		Schema.NonEmpty.annotations({
+	GITHUB_TOKEN: Schema.optionalWith(
+		Schema.NonEmptyString.annotations({
 			description: 'GitHub token',
 			examples: ['github_pat_xxxxxxx_xxxxxx'],
 		}),
@@ -19,7 +19,7 @@ const envSchema = Schema.Struct({
 		},
 	),
 	// biome-ignore lint/style/useNamingConvention: <explanation>
-	ALLOW_INDEXING: Schema.optional(
+	ALLOW_INDEXING: Schema.optionalWith(
 		Schema.transform(Schema.Literal('true', 'false'), Schema.Boolean, {
 			decode: string => string === 'true',
 			encode: boolean => (boolean ? 'true' : 'false'),

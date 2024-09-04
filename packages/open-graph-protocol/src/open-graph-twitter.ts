@@ -262,7 +262,10 @@ export function makeTwitterCardMeta<
 	}
 	const [property] = args
 	return (content: Content): TwitterCardMeta =>
-		({ name: property, content: String(content) }) as const
+		({
+			name: property,
+			content: String(content),
+		}) as const
 }
 
 interface TwitterCardBase {
