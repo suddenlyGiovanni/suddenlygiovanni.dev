@@ -57,8 +57,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/resume':
-        specifier: 12.1.11
-        version: 12.1.11(@effect/schema@0.72.2(effect@3.7.2))
+        specifier: 12.1.12
+        version: 12.1.12(@effect/schema@0.72.2(effect@3.7.2))
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -3032,11 +3032,11 @@ packages:
     peerDependencies:
       storybook: ^8.2.9
 
-  '@suddenlygiovanni/resume@12.1.11':
-    resolution: {integrity: sha512-YVQkpJzgWqgpeiJEXfdqx37wPtyxqQGV03V61fwrw8+DqT3TyEmAdSZmqhnzMs/wBjEueQpnlZT9riBH2ONz+w==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/12.1.11/6426bce8b9616afda0470f668ee3f9eb58a3d2df}
+  '@suddenlygiovanni/resume@12.1.12':
+    resolution: {integrity: sha512-oODYc6d6s3LqvRSwXcwn8bFCb4CE04fM6V9TtnAKtCnIUGq7ZEja6tg+vaZ2DlHuyov4ijgJPxrRY1lctvMnVg==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/12.1.12/ad1993f3e5e4e6085c757789637eaf32123a7da5}
     engines: {node: '>=22'}
     peerDependencies:
-      '@effect/schema': ~0.72.0
+      '@effect/schema': ~0.72.2
 
   '@swc/core-darwin-arm64@1.5.7':
     resolution: {integrity: sha512-bZLVHPTpH3h6yhwVl395k0Mtx8v6CGhq5r4KQdAoPbADU974Mauz1b6ViHAJ74O0IVE5vyy7tD3OpkQxL/vMDQ==}
@@ -4370,6 +4370,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -4492,6 +4493,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -5822,6 +5824,7 @@ packages:
 
   rimraf@2.6.3:
     resolution: {integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rollup@4.21.2:
@@ -10030,7 +10033,7 @@ snapshots:
     dependencies:
       storybook: 8.2.9(@babel/preset-env@7.24.5(@babel/core@7.24.5))
 
-  '@suddenlygiovanni/resume@12.1.11(@effect/schema@0.72.2(effect@3.7.2))':
+  '@suddenlygiovanni/resume@12.1.12(@effect/schema@0.72.2(effect@3.7.2))':
     dependencies:
       '@effect/schema': 0.72.2(effect@3.7.2)
 
