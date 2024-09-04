@@ -25,7 +25,9 @@ describe('Meta', () => {
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
       └─ ["canonical"]
-         └─ Invalid URL string; got: ''`,
+         └─ UrlString | undefined
+            ├─ Invalid URL string; got: ''
+            └─ Expected undefined, actual ""`,
 			)
 
 			await expectEffectFailure(
@@ -34,7 +36,9 @@ describe('Meta', () => {
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
       └─ ["canonical"]
-         └─ Invalid URL string; got: '  '`,
+         └─ UrlString | undefined
+            ├─ Invalid URL string; got: '  '
+            └─ Expected undefined, actual "  "`,
 			)
 
 			await expectEffectSuccess(Meta.decode({ canonical: metaInput.canonical }), {
@@ -49,9 +53,11 @@ describe('Meta', () => {
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
       └─ ["lastModified"]
-         └─ Date
-            └─ Predicate refinement failure
-               └─ Expected Date, actual Invalid Date`,
+         └─ Date | undefined
+            ├─ Date
+            │  └─ Predicate refinement failure
+            │     └─ Expected Date, actual Invalid Date
+            └─ Expected undefined, actual ""`,
 			)
 			await expectEffectFailure(
 				Meta.decode({ lastModified: '  ' }),
@@ -59,9 +65,11 @@ describe('Meta', () => {
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
       └─ ["lastModified"]
-         └─ Date
-            └─ Predicate refinement failure
-               └─ Expected Date, actual Invalid Date`,
+         └─ Date | undefined
+            ├─ Date
+            │  └─ Predicate refinement failure
+            │     └─ Expected Date, actual Invalid Date
+            └─ Expected undefined, actual "  "`,
 			)
 
 			await expectEffectSuccess(Meta.decode({ lastModified: metaInput.lastModified }), {
@@ -76,7 +84,9 @@ describe('Meta', () => {
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
       └─ ["version"]
-         └─ expected a non-empty string with no leading or trailing whitespace, got ""`,
+         └─ TrimmedNonEmpty | undefined
+            ├─ expected a non-empty string with no leading or trailing whitespace, got ""
+            └─ Expected undefined, actual ""`,
 			)
 
 			await expectEffectFailure(
@@ -85,7 +95,9 @@ describe('Meta', () => {
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
       └─ ["version"]
-         └─ expected a non-empty string with no leading or trailing whitespace, got "  "`,
+         └─ TrimmedNonEmpty | undefined
+            ├─ expected a non-empty string with no leading or trailing whitespace, got "  "
+            └─ Expected undefined, actual "  "`,
 			)
 
 			await expectEffectSuccess(Meta.decode({ version: metaInput.version }), {
