@@ -79,8 +79,8 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@codecov/vite-plugin':
-        specifier: 0.0.1-beta.10
-        version: 0.0.1-beta.10(vite@5.4.3(@types/node@22.5.4))
+        specifier: 0.0.1-beta.12
+        version: 0.0.1-beta.12(vite@5.4.3(@types/node@22.5.4))
       '@remix-run/dev':
         specifier: 2.11.2
         version: 2.11.2(@remix-run/react@2.11.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.5.4))(@remix-run/serve@2.11.2(typescript@5.5.4))(@types/node@22.5.4)(babel-plugin-macros@3.1.0)(typescript@5.5.4)(vite@5.4.3(@types/node@22.5.4))
@@ -1031,12 +1031,12 @@ packages:
     resolution: {integrity: sha512-vYQ+TcfktEE3GHnLZXHCzXF/sN9dw+KivH8a5cmPyd9YtQs7fZtHrEgsIjWpYycXiweKMo1Lm1RZsjxk8DH3rA==}
     engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
 
-  '@codecov/bundler-plugin-core@0.0.1-beta.10':
-    resolution: {integrity: sha512-fOgy02gc0Z0ipKVe8QqN7mcmzQYjHb2UzT6RtHR+tqyYwpe1r1Kg5E/pbIOXKLaJGXK+AaOX23qtgp6kvUn+iA==}
+  '@codecov/bundler-plugin-core@0.0.1-beta.12':
+    resolution: {integrity: sha512-QZOVp90ZtSCj6p5AO8rnSzee7E4T6PeA5XXd8/miggK5Mi9OtcuB0N1zTPDp3ry5lLLbeWTcdxNVGGnqMHfz8w==}
     engines: {node: '>=18.0.0'}
 
-  '@codecov/vite-plugin@0.0.1-beta.10':
-    resolution: {integrity: sha512-ZoNKEGTMUIwQbwjxu/YUMaGlBUw24c2rZG0E0Lsa2SjZ+DBL+yTe2Kz+7vB6rzW+2Y/EpxxqVWCVjjK03Z7l1w==}
+  '@codecov/vite-plugin@0.0.1-beta.12':
+    resolution: {integrity: sha512-pV7sljJE7rz8Vg3nopXN47L5p5muJRFWmV6iBimW3tNB2OR+YwXl2OYCZopOlEAYurNFjq+WAhyc3lWelso4pA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       vite: 4.x || 5.x
@@ -7472,16 +7472,16 @@ snapshots:
       - '@chromatic-com/playwright'
       - react
 
-  '@codecov/bundler-plugin-core@0.0.1-beta.10':
+  '@codecov/bundler-plugin-core@0.0.1-beta.12':
     dependencies:
       chalk: 4.1.2
       semver: 7.6.2
       unplugin: 1.10.1
       zod: 3.23.8
 
-  '@codecov/vite-plugin@0.0.1-beta.10(vite@5.4.3(@types/node@22.5.4))':
+  '@codecov/vite-plugin@0.0.1-beta.12(vite@5.4.3(@types/node@22.5.4))':
     dependencies:
-      '@codecov/bundler-plugin-core': 0.0.1-beta.10
+      '@codecov/bundler-plugin-core': 0.0.1-beta.12
       unplugin: 1.10.1
       vite: 5.4.3(@types/node@22.5.4)
 
