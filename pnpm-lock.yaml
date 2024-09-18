@@ -244,8 +244,8 @@ importers:
         version: 0.2.1(tailwindcss@3.4.12)
     devDependencies:
       '@chromatic-com/storybook':
-        specifier: 2.0.1
-        version: 2.0.1(react@18.3.1)
+        specifier: 2.0.2
+        version: 2.0.2(react@18.3.1)
       '@remix-run/testing':
         specifier: 2.12.0
         version: 2.12.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.1-rc)
@@ -556,8 +556,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@chromatic-com/storybook@2.0.1':
-    resolution: {integrity: sha512-BWedsjGOMXsWIWqDmdV9VV1lx2GSauBISu0a2ZbwL2BPN4yrBypsOOuQ8hKvtEfFlYetGmTafi1N5W1oR1CW3A==}
+  '@chromatic-com/storybook@2.0.2':
+    resolution: {integrity: sha512-7bPIliISedeIpnVKbzktysFYW5n56bN91kxuOj1XXKixmjbUHRUMvcXd4K2liN6MiR5ZqJtmtcPsZ6CebbGlEA==}
     engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
 
   '@codecov/bundler-plugin-core@0.0.1-beta.12':
@@ -6075,7 +6075,7 @@ snapshots:
   '@biomejs/cli-win32-x64@1.8.3':
     optional: true
 
-  '@chromatic-com/storybook@2.0.1(react@18.3.1)':
+  '@chromatic-com/storybook@2.0.2(react@18.3.1)':
     dependencies:
       chromatic: 11.5.2
       filesize: 10.1.1
