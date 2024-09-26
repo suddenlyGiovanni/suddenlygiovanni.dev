@@ -10,7 +10,7 @@
 		"@epic-web/invariant": "1.0.0",
 		"@octokit/core": "6.1.2",
 		"@octokit/plugin-rest-endpoint-methods": "13.2.4",
-		"@octokit/request-error": "6.1.4",
+		"@octokit/request-error": "6.1.5",
 		"@remix-run/node": "2.12.1",
 		"@remix-run/react": "2.12.1",
 		"@remix-run/serve": "2.12.1",
