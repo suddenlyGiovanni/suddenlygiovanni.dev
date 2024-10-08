@@ -25,7 +25,6 @@ const meta: Meta = {
 	component: DropdownMenu,
 }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export default meta
 
 type Checked = NonNullable<DropdownMenuCheckboxItemProps['checked']>

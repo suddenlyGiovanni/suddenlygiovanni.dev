@@ -180,5 +180,4 @@ export function Chromatic(): ReactElement {
 }
 Chromatic.parameters = { chromatic: { disable: false } }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Storybook convention
 export default meta

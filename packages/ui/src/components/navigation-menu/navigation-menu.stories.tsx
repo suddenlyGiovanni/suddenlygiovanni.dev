@@ -198,5 +198,4 @@ const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(
 )
 ListItem.displayName = 'ListItem'
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Storybook convention
 export default meta

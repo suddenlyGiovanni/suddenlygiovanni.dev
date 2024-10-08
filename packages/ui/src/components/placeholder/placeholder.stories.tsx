@@ -26,5 +26,4 @@ export const LargeSize: Story = {
 	decorators: [story => <div className="w-full rounded bg-green-200 p-4">{story()}</div>],
 }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Storybook convention
 export default meta

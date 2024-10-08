@@ -18,5 +18,4 @@ export function Default(args: StoryObj<typeof ModeToggle>['args']): ReactElement
 	)
 }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Storybook convention
 export default meta

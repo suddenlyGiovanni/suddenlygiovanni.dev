@@ -9,7 +9,6 @@ const meta: Meta<typeof NavigationMenuToggle> = {
 	tags: ['autodocs'],
 }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Storybook convention
 export default meta
 
 export const Default: StoryObj<typeof meta> = {

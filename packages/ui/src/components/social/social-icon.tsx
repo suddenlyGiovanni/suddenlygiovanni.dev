@@ -14,7 +14,7 @@ interface SocialIconProps extends ComponentPropsWithoutRef<'svg'> {
 }
 
 const NAME = 'SocialIcon'
-export const SocialIcon = forwardRef<SVGSVGElement, SocialIconProps>(
+const SocialIcon = forwardRef<SVGSVGElement, SocialIconProps>(
 	({ network, ...props }: SocialIconProps, ref) => {
 		const Icon = IconMap.get(network)
 		if (!Icon) {
@@ -37,3 +37,5 @@ export const SocialIcon = forwardRef<SVGSVGElement, SocialIconProps>(
 	},
 )
 SocialIcon.displayName = NAME
+
+export { SocialIcon }

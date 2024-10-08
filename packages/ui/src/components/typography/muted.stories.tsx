@@ -15,5 +15,5 @@ export const Muted: StoryObj<typeof meta> = {
 		children: 'Enter your email address.',
 	},
 }
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Storybook convention
+
 export default meta

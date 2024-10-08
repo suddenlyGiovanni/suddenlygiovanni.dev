@@ -17,7 +17,6 @@ const meta = {
 
 type Story = StoryObj<typeof meta>
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export default meta
 
 export const Primary: Story = {

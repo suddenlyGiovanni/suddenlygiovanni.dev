@@ -7,7 +7,6 @@ const meta = {
 	component: Layout.Footer,
 } satisfies Meta<typeof Layout.Footer>
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export default meta
 
 type Story = StoryObj<typeof meta>

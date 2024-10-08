@@ -77,5 +77,4 @@ export function CardDemo({ className, ...props }: CardProps) {
 	)
 }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export default meta

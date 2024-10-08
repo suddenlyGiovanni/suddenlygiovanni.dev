@@ -28,5 +28,4 @@ export const Header: Story = {
 	),
 }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Storybook convention
 export default meta

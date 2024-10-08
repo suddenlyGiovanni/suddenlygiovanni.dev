@@ -501,9 +501,11 @@ export function Animated(): ReactElement {
 						</AccordionHeader>
 						<AccordionContent className={animatedContentClass}>
 							{[...new Array<unknown>(count)].map((_, index) => (
-								// biome-ignore lint/suspicious/noArrayIndexKey: This is a test component.
 								<div
-									key={index}
+									key={
+										// biome-ignore lint/suspicious/noArrayIndexKey: This is a test component.
+										index
+									}
 									style={{ padding: 10 }}
 								>
 									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
@@ -533,9 +535,11 @@ export function Animated(): ReactElement {
 						</AccordionHeader>
 						<AccordionContent className={animatedContentClass}>
 							{[...new Array<unknown>(count)].map((_, index) => (
-								// biome-ignore lint/suspicious/noArrayIndexKey: This is a test component.
 								<div
-									key={index}
+									key={
+										// biome-ignore lint/suspicious/noArrayIndexKey: This is a test component.
+										index
+									}
 									style={{ padding: 10 }}
 								>
 									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
@@ -1117,5 +1121,4 @@ export function Chromatic(): ReactElement {
 	)
 }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Storybook convention
 export default meta
