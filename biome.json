@@ -38,7 +38,7 @@
 			},
 			"nursery": {
 				"all": true,
-				"noSecrets": "info",
+				"noSecrets": "off",
 				"useExplicitFunctionReturnType": "off",
 				"useImportRestrictions": "off",
 				"useSortedClasses": {
@@ -123,6 +123,9 @@
 			"include": ["**/*.stories.tsx"],
 			"linter": {
 				"rules": {
+					"nursery": {
+						"useComponentExportOnlyModules": "off"
+					},
 					"style": {
 						"noDefaultExport": "off"
 					}
