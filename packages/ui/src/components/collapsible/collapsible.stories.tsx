@@ -10,7 +10,7 @@ const rootClass = clsx('sans max-w-[20em]')
 
 const triggerClass = clsx(
 	['w-full', 'text-center'],
-	'box-border border-0 bg-background p-2.5 text-xl text-foreground',
+	'box-border border-0 bg-background p-2.5 text-foreground text-xl',
 	'focus:text-red-500 focus:shadow-inner focus:outline-none',
 	'data-[disabled]:text-gray-300',
 	'data-[state=open]:bg-red-500 data-[state="open"]:text-white',

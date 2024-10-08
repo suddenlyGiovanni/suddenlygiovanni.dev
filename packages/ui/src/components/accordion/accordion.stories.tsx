@@ -65,7 +65,7 @@ const triggerClass = clsx(
 const contentClass = clsx('p-2.5 leading-6')
 
 const styles = clsx(
-	'border-2 border-solid border-blue-500 bg-blue-800 p-10',
+	'border-2 border-blue-500 border-solid bg-blue-800 p-10',
 	'data-[state=closed]:border-red-500',
 	'data-[state=open]:border-green-500',
 	'data-[disabled]:border-dashed',
