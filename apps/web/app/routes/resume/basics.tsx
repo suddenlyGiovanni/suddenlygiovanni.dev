@@ -13,7 +13,11 @@ import resumePdfAssetUrl from '/giovanni-ravalico-resume-2021.pdf?url'
 
 export function Basics({ basics }: { basics: Model.Basics }): ReactElement {
 	return (
-		<Header label={basics.label} name={basics.name} summary={basics.summary}>
+		<Header
+			label={basics.label}
+			name={basics.name}
+			summary={basics.summary}
+		>
 			<Contacts
 				email={basics.email}
 				location={basics.location}
@@ -63,10 +67,17 @@ function Header({
 			{children}
 			<T.muted>
 				click on this link to download the pdf version of my resume{' '}
-				<span aria-label="pdf" role="img">
+				<span
+					aria-label="pdf"
+					role="img"
+				>
 					📜
 				</span>{' '}
-				<T.a download={true} href={resumePdfAssetUrl} rel="noopener">
+				<T.a
+					download={true}
+					href={resumePdfAssetUrl}
+					rel="noopener"
+				>
 					giovanni-ravalico-resume.pdf
 				</T.a>
 			</T.muted>
@@ -117,12 +128,17 @@ interface ContactsProps {
 	readonly url: Model.Basics['url']
 }
 
+const httpsUrlPattern: RegExp = /(?:https:\/\/www\.)|(?:https:\/\/)/i
+
 function Contacts({ email, location, phone, profiles, url }: ContactsProps): ReactElement {
 	return (
 		<address className={addressClasses.address}>
 			<T.ul className={addressClasses.ul}>
 				<li className={addressClasses.li}>
-					<Icons.globe aria-label="location icon" className="size-4" />
+					<Icons.globe
+						aria-label="location icon"
+						className="size-4"
+					/>
 					<T.a
 						href="https://www.openstreetmap.org/search?query=berlin#map=11/52.5072/13.4249"
 						target="_blank"
@@ -132,38 +148,53 @@ function Contacts({ email, location, phone, profiles, url }: ContactsProps): Rea
 
 				<li className={addressClasses.li}>
 					<Icons.envelope aria-label="mail icon" />
-					<T.a aria-label="email" href={`mailto:${email}`} rel="noreferrer" target="_blank">
+					<T.a
+						aria-label="email"
+						href={`mailto:${email}`}
+						rel="noreferrer"
+						target="_blank"
+					>
 						{email}
 					</T.a>
 				</li>
 
 				<li className={addressClasses.li}>
 					<Icons.desktop aria-label="mail icon" />
-					<T.a aria-label="link to my website" href={url} rel="noreferrer" target="_blank">
+					<T.a
+						aria-label="link to my website"
+						href={url}
+						rel="noreferrer"
+						target="_blank"
+					>
 						{url}
 					</T.a>
 				</li>
 
 				<li className={addressClasses.li}>
 					<Icons.mobile aria-label="phone icon" />
-					<T.a aria-label="phone number" href={`tel:${phone ?? ''}`}>
+					<T.a
+						aria-label="phone number"
+						href={`tel:${phone ?? ''}`}
+					>
 						{phone}
 					</T.a>
 				</li>
 				{profiles.map(profile => (
-					<li className={addressClasses.li} key={profile.network}>
+					<li
+						className={addressClasses.li}
+						key={profile.network}
+					>
 						<SocialIcon
 							className={clsx('size-5 fill-foreground')}
 							aria-label={`${profile.network} icon`}
 							network={profile.network.toLowerCase()}
 						/>
 
-						<T.a aria-label={`link to ${profile.network}`} href={profile.url}>
-							{profile.url.replace(
-								/* biome-ignore lint/nursery/useTopLevelRegex: <explanation> */
-								/(?:https:\/\/www\.)|(?:https:\/\/)/i,
-								'',
-							)}
+						<T.a
+							aria-label={`link to ${profile.network}`}
+							href={profile.url}
+						>
+							{profile.url.replace(httpsUrlPattern, '')}
 						</T.a>
 					</li>
 				))}

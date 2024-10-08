@@ -42,7 +42,10 @@ export const Checkboxes: StoryFn = () => {
 			<DropdownMenuContent className="w-56">
 				<DropdownMenuLabel>Appearance</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				<DropdownMenuCheckboxItem checked={showStatusBar} onCheckedChange={setShowStatusBar}>
+				<DropdownMenuCheckboxItem
+					checked={showStatusBar}
+					onCheckedChange={setShowStatusBar}
+				>
 					Status Bar
 				</DropdownMenuCheckboxItem>
 				<DropdownMenuCheckboxItem
@@ -52,7 +55,10 @@ export const Checkboxes: StoryFn = () => {
 				>
 					Activity Bar
 				</DropdownMenuCheckboxItem>
-				<DropdownMenuCheckboxItem checked={showPanel} onCheckedChange={setShowPanel}>
+				<DropdownMenuCheckboxItem
+					checked={showPanel}
+					onCheckedChange={setShowPanel}
+				>
 					Panel
 				</DropdownMenuCheckboxItem>
 			</DropdownMenuContent>
@@ -86,7 +92,10 @@ export const RadioGroup: StoryFn = () => {
 			<DropdownMenuContent className="w-56">
 				<DropdownMenuLabel>Panel Position</DropdownMenuLabel>
 				<DropdownMenuSeparator />
-				<DropdownMenuRadioGroup onValueChange={onValueChange} value={position}>
+				<DropdownMenuRadioGroup
+					onValueChange={onValueChange}
+					value={position}
+				>
 					<DropdownMenuRadioItem value={Position.Top}>Top</DropdownMenuRadioItem>
 					<DropdownMenuRadioItem value={Position.Bottom}>Bottom</DropdownMenuRadioItem>
 					<DropdownMenuRadioItem value={Position.Right}>Right</DropdownMenuRadioItem>

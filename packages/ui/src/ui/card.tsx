@@ -25,7 +25,11 @@ Root.displayName = 'Card.Root'
 
 const Header = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 	({ className, ...props }, ref) => (
-		<div ref={ref} className={clsx('flex flex-col space-y-1.5 p-6', className)} {...props} />
+		<div
+			ref={ref}
+			className={clsx('flex flex-col space-y-1.5 p-6', className)}
+			{...props}
+		/>
 	),
 )
 Header.displayName = 'Card.Header'
@@ -43,21 +47,33 @@ Title.displayName = 'Card.Title'
 
 const Description = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
 	({ className, ...props }, ref) => (
-		<p ref={ref} className={clsx('text-muted-foreground text-sm', className)} {...props} />
+		<p
+			ref={ref}
+			className={clsx('text-muted-foreground text-sm', className)}
+			{...props}
+		/>
 	),
 )
 Description.displayName = 'Card.Description'
 
 const Content = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 	({ className, ...props }, ref) => (
-		<div ref={ref} className={clsx('p-6 pt-0', className)} {...props} />
+		<div
+			ref={ref}
+			className={clsx('p-6 pt-0', className)}
+			{...props}
+		/>
 	),
 )
 Content.displayName = 'Card.Content'
 
 const Footer = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
 	({ className, ...props }, ref) => (
-		<div ref={ref} className={clsx('flex items-center p-6 pt-0', className)} {...props} />
+		<div
+			ref={ref}
+			className={clsx('flex items-center p-6 pt-0', className)}
+			{...props}
+		/>
 	),
 )
 Footer.displayName = 'Card.Footer'

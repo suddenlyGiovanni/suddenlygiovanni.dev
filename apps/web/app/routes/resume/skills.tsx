@@ -47,10 +47,22 @@ export const Skills = memo(function Skills({
 				<span className="sr-only">Toggle skills accordion</span>
 			</Button>
 
-			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
+			<Accordion
+				className="w-full"
+				onValueChange={setValue}
+				type="multiple"
+				value={value}
+			>
 				{skills.map(({ name, keywords }, idx) => (
-					// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non null assertions
-					<Skill key={name} keywords={keywords} name={name} value={all.at(idx)!} />
+					<Skill
+						key={name}
+						keywords={keywords}
+						name={name}
+						value={
+							// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non null assertions
+							all.at(idx)!
+						}
+					/>
 				))}
 			</Accordion>
 		</section>
@@ -63,7 +75,10 @@ const Skill = memo(function Skill({
 	value,
 }: ResumeSkill & { readonly value: string }): ReactElement {
 	return (
-		<AccordionItem asChild={true} value={value}>
+		<AccordionItem
+			asChild={true}
+			value={value}
+		>
 			<dl key={name}>
 				<dt className="relative flex flex-row items-center justify-between">
 					<span>{name}</span>
@@ -100,7 +115,10 @@ const KeywordsList = memo(function KeywordsList({
 				)}
 			>
 				{keywords.map(keyword => (
-					<Keyword key={keyword} keyword={keyword} />
+					<Keyword
+						key={keyword}
+						keyword={keyword}
+					/>
 				))}
 			</T.ul>
 		</AccordionContent>
@@ -117,12 +135,18 @@ const Keyword = memo(function Keyword({
 
 	return Option.match(maybeIcon, {
 		onNone: () => (
-			<li className={classname} key={keyword}>
+			<li
+				className={classname}
+				key={keyword}
+			>
 				{keyword}
 			</li>
 		),
 		onSome: Icon => (
-			<li className={classname} key={keyword}>
+			<li
+				className={classname}
+				key={keyword}
+			>
 				<Icon className="size-4 fill-accent-foreground/80" />
 				{keyword}
 			</li>

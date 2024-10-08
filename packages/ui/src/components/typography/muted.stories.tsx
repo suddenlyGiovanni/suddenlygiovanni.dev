@@ -15,4 +15,5 @@ export const Muted: StoryObj<typeof meta> = {
 		children: 'Enter your email address.',
 	},
 }
+
 export default meta

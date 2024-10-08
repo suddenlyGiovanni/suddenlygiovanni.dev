@@ -17,14 +17,20 @@ export function Prose(): ReactElement {
 		>
 			<div
 				className={clsx(
-					'relative w-full px-6 py-12 md:mx-auto lg:max-w-4xl md:max-w-3xl lg:pt-16 lg:pb-28',
+					'relative w-full px-6 py-12 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pt-16 lg:pb-28',
 					'shadow-slate-700/10 shadow-xl',
 					'ring-1 ring-gray-900/5',
 					'bg-background',
 				)}
 			>
 				<div className={clsx('prose prose-slate lg:prose-lg', 'mx-auto mt-8')}>
-					<svg className="h-6" fill="none" viewBox="0 0 297 24" aria-label="foo???" role="img">
+					<svg
+						className="h-6"
+						fill="none"
+						viewBox="0 0 297 24"
+						aria-label="foo???"
+						role="img"
+					>
 						<path
 							className="fill-sky-400"
 							clipRule="evenodd"
@@ -82,7 +88,7 @@ export function Prose(): ReactElement {
 					<pre>
 						<code className="language-html">
 							{`
-<article class="prose">
+<article className="prose">
   <h1>Garlic bread with cheese: What the science tells us</h1>
   <p>
     For years parents have espoused the health benefits of eating garlic bread with cheese to their

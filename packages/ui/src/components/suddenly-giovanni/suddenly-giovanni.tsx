@@ -27,9 +27,15 @@ export function SuddenlyGiovanni({
 			to={to}
 		>
 			<Avatar>
-				<AvatarImage alt="Giovanni Ravalico" src={hrefUrl} />
+				<AvatarImage
+					alt="Giovanni Ravalico"
+					src={hrefUrl}
+				/>
 				<AvatarFallback>
-					<Skeleton className="h-full w-full rounded-xl" as="span" />
+					<Skeleton
+						className="h-full w-full rounded-xl"
+						as="span"
+					/>
 				</AvatarFallback>
 			</Avatar>
 			<h1

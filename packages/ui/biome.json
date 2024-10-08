@@ -5,5 +5,20 @@
 		"include": ["src/*"],
 		"ignoreUnknown": true,
 		"ignore": ["./~"]
-	}
+	},
+	"overrides": [
+		{
+			"include": ["**/*.stories.tsx"],
+			"linter": {
+				"rules": {
+					"nursery": {
+						"useComponentExportOnlyModules": "off"
+					},
+					"style": {
+						"noDefaultExport": "off"
+					}
+				}
+			}
+		}
+	]
 }

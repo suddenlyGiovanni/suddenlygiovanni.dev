@@ -1,6 +1,13 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
 	"extends": ["../../biome.json"],
+	"linter": {
+		"enabled": true,
+		"include": ["apps/web/**/*"],
+		"rules": {
+			"style": { "noDefaultExport": "off" }
+		}
+	},
 	"files": {
 		"include": ["app/*"],
 		"ignoreUnknown": true,
@@ -15,6 +22,12 @@
 						"noDefaultExport": "off"
 					}
 				}
+			}
+		},
+		{
+			"include": ["**/*.snapshot.json"],
+			"formatter": {
+				"enabled": false
 			}
 		}
 	]

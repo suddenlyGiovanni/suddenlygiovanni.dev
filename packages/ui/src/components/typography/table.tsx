@@ -4,7 +4,11 @@ import { clsx } from '../../lib/utils.ts'
 
 export const Tr = forwardRef<HTMLTableRowElement, ComponentPropsWithoutRef<'tr'>>(
 	({ className, children, ...props }, ref) => (
-		<tr className={clsx('m-0', 'border-t', 'p-0', 'even:bg-muted', className)} ref={ref} {...props}>
+		<tr
+			className={clsx('m-0', 'border-t', 'p-0', 'even:bg-muted', className)}
+			ref={ref}
+			{...props}
+		>
 			{children}
 		</tr>
 	),

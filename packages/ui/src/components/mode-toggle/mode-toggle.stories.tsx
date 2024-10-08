@@ -9,7 +9,13 @@ const meta: Meta<typeof ModeToggle> = {
 
 export function Default(args: StoryObj<typeof ModeToggle>['args']): ReactElement {
 	const [theme, setTheme] = useState<Theme>('light')
-	return <ModeToggle {...args} setTheme={setTheme} theme={theme} />
+	return (
+		<ModeToggle
+			{...args}
+			setTheme={setTheme}
+			theme={theme}
+		/>
+	)
 }
 
 export default meta

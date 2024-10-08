@@ -91,7 +91,11 @@ const NavigationMenuTrigger = forwardRef<
 	ElementRef<typeof Trigger>,
 	ComponentPropsWithoutRef<typeof Trigger>
 >(({ className, children, ...props }, ref) => (
-	<Trigger className={clsx(navigationMenuTriggerStyle(), 'group', className)} ref={ref} {...props}>
+	<Trigger
+		className={clsx(navigationMenuTriggerStyle(), 'group', className)}
+		ref={ref}
+		{...props}
+	>
 		{children}{' '}
 		<ChevronDownIcon
 			aria-hidden="true"

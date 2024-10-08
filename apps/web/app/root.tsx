@@ -9,7 +9,7 @@ import type {
 import { Links, Meta, Scripts, ScrollRestoration, json, useLoaderData } from '@remix-run/react'
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import * as Either from 'effect/Either'
-import type { ReactElement, ReactNode } from 'react'
+import type { JSX, ReactElement, ReactNode } from 'react'
 
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
@@ -105,13 +105,23 @@ function Document({
 	theme?: 'light' | 'dark' | null // TODO: address this prop
 	// biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
 	env?: typeof ENV
-}): ReactElement {
+}): JSX.Element {
 	return (
-		<html className={clsx(theme, 'min-h-screen')} data-theme={clsx(theme)} lang="en">
+		<html
+			className={clsx(theme, 'min-h-screen')}
+			data-theme={clsx(theme)}
+			lang="en"
+		>
 			<head>
 				<meta charSet="utf-8" />
-				<meta httpEquiv="Content-Type" content="text/html;charset=utf-8" />
-				<meta content="width=device-width, initial-scale=1" name="viewport" />
+				<meta
+					httpEquiv="Content-Type"
+					content="text/html;charset=utf-8"
+				/>
+				<meta
+					content="width=device-width, initial-scale=1"
+					name="viewport"
+				/>
 				<Meta />
 				<Links />
 			</head>
@@ -142,7 +152,10 @@ export default function App(): ReactElement {
 	const data = useLoaderData<typeof loader>()
 	const theme = useTheme()
 	return (
-		<Document env={data.ENV} theme={theme}>
+		<Document
+			env={data.ENV}
+			theme={theme}
+		>
 			<Header theme={data.requestInfo.userPrefs.theme} />
 			<Main />
 			<Footer />

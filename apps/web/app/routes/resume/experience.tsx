@@ -20,7 +20,10 @@ export const Experience = memo(function Experience(
 	> & { value: string },
 ): ReactElement {
 	return (
-		<AccordionItem asChild={true} value={work.value}>
+		<AccordionItem
+			asChild={true}
+			value={work.value}
+		>
 			<article aria-label={`experience as ${work.roles[0].title} at ${work.name}`}>
 				<ExperienceHeader
 					description={work.description}
@@ -40,7 +43,7 @@ export const Experience = memo(function Experience(
 })
 
 const styles = {
-	span: clsx('flex flex-row items-center text-sm font-normal italic accent-muted'),
+	span: clsx('flex flex-row items-center font-normal text-sm italic accent-muted'),
 } as const
 
 function getDates(roles: Model.Work['roles']): {
@@ -49,7 +52,6 @@ function getDates(roles: Model.Work['roles']): {
 } {
 	const dates = roles
 		.flatMap(role => [role.startDate, role.endDate].filter(Boolean))
-		// biome-ignore lint/nursery/useDateNow: <explanation>
 		.sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
 
 	return {
@@ -74,8 +76,11 @@ const ExperienceHeader = memo(function ExperienceHeader(work: {
 
 	return (
 		<div className="relative my-4 flex w-full flex-col">
-			<hgroup className={'space-y-1'}>
-				<h2 aria-label="job title" className={clsx('mt-0 mb-0 font-bold text-base leading-none')}>
+			<hgroup className="space-y-1">
+				<h2
+					aria-label="job title"
+					className={clsx('mt-0 mb-0 font-bold text-base leading-none')}
+				>
 					{firstRole.title}
 				</h2>
 
@@ -87,8 +92,16 @@ const ExperienceHeader = memo(function ExperienceHeader(work: {
 				>
 					{work.name}
 					{work.url ? (
-						<a className="ml-2" href={work.url} rel="noopener noreferrer" target="_blank">
-							<Icons.link2 aria-label={`link to ${work.name} company`} className="size-4" />
+						<a
+							className="ml-2"
+							href={work.url}
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							<Icons.link2
+								aria-label={`link to ${work.name} company`}
+								className="size-4"
+							/>
 						</a>
 					) : null}
 				</h3>
@@ -96,13 +109,19 @@ const ExperienceHeader = memo(function ExperienceHeader(work: {
 
 			<span className={clsx(styles.span, 'justify-between')}>
 				<span aria-label="start date / end date">
-					<time className="mr-1" dateTime={startDate}>
+					<time
+						className="mr-1"
+						dateTime={startDate}
+					>
 						{Either.getOrNull(formatDateLocaleShort(startDate))}
 					</time>
 					{endDate ? (
 						<>
 							-
-							<time className="ml-1" dateTime={endDate}>
+							<time
+								className="ml-1"
+								dateTime={endDate}
+							>
 								{Either.getOrNull(formatDateLocaleShort(endDate))}
 							</time>
 						</>
@@ -113,7 +132,10 @@ const ExperienceHeader = memo(function ExperienceHeader(work: {
 			</span>
 
 			{work.description ? (
-				<span aria-label="description" className={styles.span}>
+				<span
+					aria-label="description"
+					className={styles.span}
+				>
 					{work.description}
 				</span>
 			) : null}
@@ -140,9 +162,12 @@ function ExperienceSummary({
 	summary,
 }: { readonly summary: Model.Work['summary'] }): null | ReactElement {
 	return summary ? (
-		<div className={'mb-4'}>
+		<div className="mb-4">
 			{summary.split('\n').map(p => (
-				<T.blockquote key={p} className="my-0 text-muted-foreground text-sm">
+				<T.blockquote
+					key={p}
+					className="my-0 text-muted-foreground text-sm"
+				>
 					{p}
 				</T.blockquote>
 			))}
@@ -152,7 +177,7 @@ function ExperienceSummary({
 
 function Roles({ roles }: { readonly roles: Model.Work['roles'] }): ReactElement {
 	return (
-		<ul className="mt-0 flex list-none flex-col gap-2 pl-0 md:pl-6 sm:pl-3">
+		<ul className="mt-0 flex list-none flex-col gap-2 pl-0 sm:pl-3 md:pl-6">
 			{roles.map(role => (
 				<li key={role.startDate}>
 					<Role
@@ -186,7 +211,10 @@ function Role(
 		  },
 ): ReactElement {
 	return (
-		<Card.Root as="article" className="ml-0 p-6">
+		<Card.Root
+			as="article"
+			className="ml-0 p-6"
+		>
 			{'title' in role && (
 				<Card.Header className="px-0 pt-0">
 					<Card.Title
@@ -198,13 +226,19 @@ function Role(
 					{'startDate' in role && (
 						<Card.Description>
 							<span aria-label="start date / end date">
-								<time className="mr-1" dateTime={role.startDate}>
+								<time
+									className="mr-1"
+									dateTime={role.startDate}
+								>
 									{Either.getOrNull(formatDateLocaleShort(role.startDate))}
 								</time>
 								{role.endDate ? (
 									<>
 										-
-										<time className="ml-1" dateTime={role.endDate}>
+										<time
+											className="ml-1"
+											dateTime={role.endDate}
+										>
 											{Either.getOrNull(formatDateLocaleShort(role.endDate))}
 										</time>
 									</>
@@ -221,9 +255,16 @@ function Role(
 						<dt className="mt-0">Responsibilities</dt>
 
 						{role.responsibilities.map(resp => (
-							<dd key={resp} role="listitem" className="text-gray-600 dark:text-gray-400">
+							<dd
+								key={resp}
+								role="listitem"
+								className="text-gray-600 dark:text-gray-400"
+							>
 								{resp.split('\n').map(resP => (
-									<p className="my-0" key={resp}>
+									<p
+										className="my-0"
+										key={resp}
+									>
 										{resP}
 									</p>
 								))}
@@ -235,9 +276,16 @@ function Role(
 						<div>
 							<dt className="mt-0">Highlights</dt>
 							{role.highlights.map(highlight => (
-								<dd key={highlight} role="listitem" className="text-gray-600 dark:text-gray-400">
+								<dd
+									key={highlight}
+									role="listitem"
+									className="text-gray-600 dark:text-gray-400"
+								>
 									{highlight.split('\n').map(hP => (
-										<p className="my-0" key={hP}>
+										<p
+											className="my-0"
+											key={hP}
+										>
 											{hP}
 										</p>
 									))}
@@ -251,7 +299,10 @@ function Role(
 							<dt className="mb-2">Technologies</dt>
 							<dd className="flex flex-wrap gap-2">
 								{role.technologies.map(tech => (
-									<Tech key={tech} tech={tech} />
+									<Tech
+										key={tech}
+										tech={tech}
+									/>
 								))}
 							</dd>
 						</div>
@@ -288,18 +339,26 @@ function Tech({
 }): ReactElement {
 	const maybeIcon = getDevIconComponent(tech)
 	const classname = clsx(
-		'my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle select-none',
+		'my-0 flex w-fit select-none flex-row items-center justify-start gap-1 align-middle',
 	)
 
 	return maybeIcon.pipe(
 		Option.match({
 			onNone: () => (
-				<Badge className={classname} key={tech} variant="outline">
+				<Badge
+					className={classname}
+					key={tech}
+					variant="outline"
+				>
 					<span>{tech}</span>
 				</Badge>
 			),
 			onSome: Icon => (
-				<Badge className={classname} key={tech} variant="outline">
+				<Badge
+					className={classname}
+					key={tech}
+					variant="outline"
+				>
 					<Icon className="size-4 fill-accent-foreground/80" />
 					<span>{tech}</span>
 				</Badge>
