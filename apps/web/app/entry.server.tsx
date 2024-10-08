@@ -34,7 +34,11 @@ function handleBotRequest(
 	return new Promise((resolve, reject) => {
 		let shellRendered = false
 		const { pipe, abort } = renderToPipeableStream(
-			<RemixServer context={remixContext} url={request.url} abortDelay={ABORT_DELAY} />,
+			<RemixServer
+				context={remixContext}
+				url={request.url}
+				abortDelay={ABORT_DELAY}
+			/>,
 			{
 				onAllReady() {
 					shellRendered = true
@@ -58,11 +62,13 @@ function handleBotRequest(
 				onError(error: unknown) {
 					// biome-ignore lint/style/noParameterAssign: this is how Remix defined the default entry.server
 					responseStatusCode = 500
-					// Log streaming rendering errors from inside the shell.  Don't log
-					// errors encountered during initial shell rendering since they'll
-					// reject and get logged in handleDocumentRequest.
+					/*
+					 Log streaming rendering errors from inside the shell.  Don't log
+					 errors encountered during initial shell rendering since they'll
+					 reject and get logged in handleDocumentRequest.
+					*/
 					if (shellRendered) {
-						// biome-ignore lint/nursery/noConsole: <explanation>
+						// biome-ignore lint/suspicious/noConsole: legit console error statement.
 						console.error(error)
 					}
 				},
@@ -82,7 +88,11 @@ function handleBrowserRequest(
 	return new Promise((resolve, reject) => {
 		let shellRendered = false
 		const { pipe, abort } = renderToPipeableStream(
-			<RemixServer context={remixContext} url={request.url} abortDelay={ABORT_DELAY} />,
+			<RemixServer
+				context={remixContext}
+				url={request.url}
+				abortDelay={ABORT_DELAY}
+			/>,
 			{
 				onShellReady() {
 					shellRendered = true
@@ -106,11 +116,13 @@ function handleBrowserRequest(
 				onError(error: unknown) {
 					// biome-ignore lint/style/noParameterAssign: this is how Remix defined the default entry.server
 					responseStatusCode = 500
-					// Log streaming rendering errors from inside the shell.  Don't log
-					// errors encountered during initial shell rendering since they'll
-					// reject and get logged in handleDocumentRequest.
+					/*
+					 Log streaming rendering errors from inside the shell.  Don't log
+					 errors encountered during initial shell rendering since they'll
+					 reject and get logged in handleDocumentRequest.
+					*/
 					if (shellRendered) {
-						// biome-ignore lint/nursery/noConsole: <explanation>
+						// biome-ignore lint/suspicious/noConsole: legit console error statement.
 						console.error(error)
 					}
 				},

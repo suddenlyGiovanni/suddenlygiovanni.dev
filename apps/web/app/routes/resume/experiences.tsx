@@ -40,7 +40,12 @@ export const Experiences = memo(function Experiences({
 				<span className="sr-only">Toggle experiences accordion</span>
 			</Button>
 
-			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
+			<Accordion
+				className="w-full"
+				onValueChange={setValue}
+				type="multiple"
+				value={value}
+			>
 				{work.map((work, idx) => (
 					<Experience
 						key={work.name}

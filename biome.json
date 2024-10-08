@@ -38,8 +38,9 @@
 			},
 			"nursery": {
 				"all": true,
-				"useImportRestrictions": "off",
-				"useExplicitFunctionReturnType": "off"
+				"noSecrets": "info",
+				"useExplicitFunctionReturnType": "off",
+				"useImportRestrictions": "off"
 			},
 			"performance": {
 				"noBarrelFile": "warn",

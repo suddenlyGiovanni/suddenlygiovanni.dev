@@ -11,4 +11,5 @@ export const GitHub: StoryObj<typeof meta> = {
 	},
 }
 
+// biome-ignore lint/nursery/useComponentExportOnlyModules: Storybook convention
 export default meta

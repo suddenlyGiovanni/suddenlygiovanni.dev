@@ -119,15 +119,25 @@ function ThemeSwitch({
 			</Icons.moon>
 		),
 		system: (
-			<Icons.laptop name="laptop" className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
+			<Icons.laptop
+				name="laptop"
+				className={clsx('h-[1.2rem]', 'w-[1.2rem]')}
+			>
 				<span className="sr-only">System</span>
 			</Icons.laptop>
 		),
 	}
 
 	return (
-		<fetcher.Form method="POST" className={className}>
-			<input type="hidden" name="theme" value={nextMode} />
+		<fetcher.Form
+			method="POST"
+			className={className}
+		>
+			<input
+				type="hidden"
+				name="theme"
+				value={nextMode}
+			/>
 			<div className="flex gap-2">
 				<Button
 					className={clsx('flex h-8 w-8 cursor-pointer items-center justify-center')}
@@ -276,7 +286,10 @@ export const Header = memo(function Header({
 						role="menu"
 					>
 						{renderLi}
-						<ThemeSwitch userPreference={theme} className="ml-16 aspect-square" />
+						<ThemeSwitch
+							userPreference={theme}
+							className="ml-16 aspect-square"
+						/>
 					</menu>
 				</nav>
 			</div>

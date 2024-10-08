@@ -4,6 +4,7 @@ import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import type { JSX } from 'react'
 import { routesRecord } from '~/routes-record.ts'
 
+// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export const meta: MetaFunction = () => {
 	return [
 		{ title: routesRecord['brain-dump'].title },

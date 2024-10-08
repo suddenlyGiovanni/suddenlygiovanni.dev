@@ -16,7 +16,11 @@ Avatar.displayName = Root.displayName
 
 const AvatarImage = forwardRef<ElementRef<typeof Image>, ComponentPropsWithoutRef<typeof Image>>(
 	({ className, ...props }, ref) => (
-		<Image className={clsx('aspect-square h-full w-full', className)} ref={ref} {...props} />
+		<Image
+			className={clsx('aspect-square h-full w-full', className)}
+			ref={ref}
+			{...props}
+		/>
 	),
 )
 AvatarImage.displayName = Image.displayName

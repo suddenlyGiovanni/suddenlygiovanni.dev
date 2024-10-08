@@ -27,7 +27,13 @@ export const SocialIcon = forwardRef<SVGSVGElement, SocialIconProps>(
 			)
 		}
 
-		return <Icon data-testid={`${NAME}-${network}`} ref={ref} {...props} />
+		return (
+			<Icon
+				data-testid={`${NAME}-${network}`}
+				ref={ref}
+				{...props}
+			/>
+		)
 	},
 )
 SocialIcon.displayName = NAME

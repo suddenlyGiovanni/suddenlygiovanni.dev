@@ -93,7 +93,10 @@ export default function Resume(): ReactElement {
 			{languages ? <Languages languages={languages} /> : null}
 
 			<footer className="flex w-full items-center justify-between">
-				<Link className="inline-block" to={routesRecord['about-me'].url}>
+				<Link
+					className="inline-block"
+					to={routesRecord['about-me'].url}
+				>
 					&larr; back to my About Me
 				</Link>
 				<small>
@@ -111,7 +114,11 @@ export default function Resume(): ReactElement {
 					) : null}
 					{meta.version ? (
 						<span className="ml-4">
-							<a href={meta.canonical} target="_blank" rel="noreferrer">
+							<a
+								href={meta.canonical}
+								target="_blank"
+								rel="noreferrer"
+							>
 								version {meta.version}
 							</a>
 						</span>

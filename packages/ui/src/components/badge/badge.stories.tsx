@@ -49,4 +49,5 @@ export const WithIcon: Story = {
 	},
 }
 
+// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export default meta

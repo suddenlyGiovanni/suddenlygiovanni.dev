@@ -5,6 +5,7 @@ const meta = {
 	component: SuddenlyGiovanni,
 } satisfies Meta<typeof SuddenlyGiovanni>
 
+// biome-ignore lint/nursery/useComponentExportOnlyModules: Storybook convention
 export default meta
 
 type Story = StoryObj<typeof meta>

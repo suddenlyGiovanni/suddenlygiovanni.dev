@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities -- TODO: need to validate the rule  */
 import type { MetaFunction } from '@remix-run/node'
 import { Link as RemixLink } from '@remix-run/react'
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
@@ -21,6 +20,7 @@ import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4c
 import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
 
+// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export function meta({ location }: Parameters<MetaFunction>[number]) {
 	const description = 'All about Giovanni Ravalico'
 	const title = `${config.siteName} | About me`
@@ -169,15 +169,27 @@ export default function Index(): JSX.Element {
 
 			<T.p>
 				You can <strong>find me on</strong>{' '}
-				<T.a href={config.socials.Twitter.url} target="_blank" rel="noreferrer">
+				<T.a
+					href={config.socials.Twitter.url}
+					target="_blank"
+					rel="noreferrer"
+				>
 					🐦 Twitter
 				</T.a>
 				,{' '}
-				<T.a href={config.socials.GitHub.url} target="_blank" rel="noreferrer">
+				<T.a
+					href={config.socials.GitHub.url}
+					target="_blank"
+					rel="noreferrer"
+				>
 					🐙 GitHub
 				</T.a>
 				, and{' '}
-				<T.a href={config.socials.LinkedIn.url} target="_blank" rel="noreferrer">
+				<T.a
+					href={config.socials.LinkedIn.url}
+					target="_blank"
+					rel="noreferrer"
+				>
 					🦵 LinkedIn
 				</T.a>
 				.

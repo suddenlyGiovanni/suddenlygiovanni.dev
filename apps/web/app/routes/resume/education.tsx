@@ -50,7 +50,12 @@ export const Education = memo(function Education({
 				<span className="sr-only">Toggle education accordion</span>
 			</Button>
 
-			<Accordion className="w-full" onValueChange={setValue} type="multiple" value={value}>
+			<Accordion
+				className="w-full"
+				onValueChange={setValue}
+				type="multiple"
+				value={value}
+			>
 				{educations.map((education, idx) => (
 					<Edu
 						area={education.area}
@@ -95,7 +100,10 @@ const Edu = memo(function Edu({
 	value: string
 }): ReactElement {
 	return (
-		<AccordionItem asChild={true} value={value}>
+		<AccordionItem
+			asChild={true}
+			value={value}
+		>
 			<dl>
 				<EduHeader
 					area={area}
@@ -109,7 +117,10 @@ const Edu = memo(function Edu({
 
 				<AccordionContent asChild={true}>
 					<dd>
-						<ul aria-label="highlights" className="mb-0 ml-0 list-none">
+						<ul
+							aria-label="highlights"
+							className="mb-0 ml-0 list-none"
+						>
 							{courses?.map(highlight => (
 								<li
 									className="pl-0"
@@ -162,8 +173,16 @@ const EduHeader = memo(function EduHeader({
 			>
 				{institution}
 				{url ? (
-					<a className="ml-2" href={url} rel="noopener noreferrer" target="_blank">
-						<Icons.link2 aria-label={`link to ${institution} institution`} className="size-4" />
+					<a
+						className="ml-2"
+						href={url}
+						rel="noopener noreferrer"
+						target="_blank"
+					>
+						<Icons.link2
+							aria-label={`link to ${institution} institution`}
+							className="size-4"
+						/>
 					</a>
 				) : null}
 			</span>
@@ -171,13 +190,19 @@ const EduHeader = memo(function EduHeader({
 			<span className={clsx(styles.span, 'justify-between')}>
 				{startDate ? (
 					<span aria-label="start date / end date">
-						<time className="mr-2" dateTime={startDate}>
+						<time
+							className="mr-2"
+							dateTime={startDate}
+						>
 							{Either.getOrNull(formatDateLocaleShort(startDate))}
 						</time>
 						{endDate ? (
 							<>
 								-
-								<time className="ml-2" dateTime={endDate}>
+								<time
+									className="ml-2"
+									dateTime={endDate}
+								>
 									{Either.getOrNull(formatDateLocaleShort(endDate))}
 								</time>
 							</>
@@ -186,14 +211,20 @@ const EduHeader = memo(function EduHeader({
 				) : null}
 
 				{location ? (
-					<span aria-label="location" className={styles.span}>
+					<span
+						aria-label="location"
+						className={styles.span}
+					>
 						{location}
 					</span>
 				) : null}
 			</span>
 
 			{studyType ? (
-				<span aria-label="description" className={styles.span}>
+				<span
+					aria-label="description"
+					className={styles.span}
+				>
 					{studyType}
 				</span>
 			) : null}

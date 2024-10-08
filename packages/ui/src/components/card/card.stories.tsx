@@ -30,7 +30,10 @@ type CardProps = ComponentProps<typeof Card.Root>
 export function CardDemo({ className, ...props }: CardProps) {
 	const pRef = useRef(null)
 	return (
-		<Card.Root className={clsx('w-[380px]', className)} {...props}>
+		<Card.Root
+			className={clsx('w-[380px]', className)}
+			{...props}
+		>
 			<Card.Header>
 				<Card.Title>Notifications</Card.Title>
 				<Card.Description>You have 3 unread messages.</Card.Description>
@@ -54,7 +57,10 @@ export function CardDemo({ className, ...props }: CardProps) {
 							<span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
 							<div className="space-y-1">
 								<p className="font-medium text-sm leading-none">{notification.title}</p>
-								<p className="text-muted-foreground text-sm" ref={pRef}>
+								<p
+									className="text-muted-foreground text-sm"
+									ref={pRef}
+								>
 									{notification.description}
 								</p>
 							</div>
@@ -71,4 +77,5 @@ export function CardDemo({ className, ...props }: CardProps) {
 	)
 }
 
+// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export default meta
