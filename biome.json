@@ -40,7 +40,15 @@
 				"all": true,
 				"noSecrets": "info",
 				"useExplicitFunctionReturnType": "off",
-				"useImportRestrictions": "off"
+				"useImportRestrictions": "off",
+				"useSortedClasses": {
+					"fix": "safe",
+					"options": {
+						"attributes": ["class", "className"],
+						"functions": ["clsx", "cva", "tw"]
+					},
+					"level": "warn"
+				}
 			},
 			"performance": {
 				"noBarrelFile": "warn",
