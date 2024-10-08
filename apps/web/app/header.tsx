@@ -10,7 +10,7 @@ import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import { Button } from '@suddenlygiovanni/ui/ui/button.js'
 
 import type { action } from '~/root.tsx'
-import { useOptimisticThemeMode } from '~/utils/theme.tsx'
+import { type Theme, useOptimisticThemeMode } from '~/utils/theme.tsx'
 import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
 
 import { routesRecord } from './routes-record.ts'
@@ -90,6 +90,17 @@ const routes = (
 
 const PRIMARY_NAVIGATION = 'primary-navigation'
 
+function computeNextThemeMode(mode: Theme): Theme {
+	const nextMode =
+		mode === 'system' //
+			? 'light'
+			: // biome-ignore lint/nursery/noNestedTernary: FIXME: convert it to a State Machine obj
+				mode === 'light'
+				? 'dark'
+				: 'system'
+	return nextMode
+}
+
 function ThemeSwitch({
 	userPreference,
 	className,
@@ -101,12 +112,6 @@ function ThemeSwitch({
 
 	const optimisticMode = useOptimisticThemeMode()
 	const mode = optimisticMode ?? userPreference ?? 'system'
-	const nextMode =
-		mode === 'system' //
-			? 'light'
-			: mode === 'light'
-				? 'dark'
-				: 'system'
 	const modeLabel = {
 		light: (
 			<Icons.sun className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
@@ -136,7 +141,7 @@ function ThemeSwitch({
 			<input
 				type="hidden"
 				name="theme"
-				value={nextMode}
+				value={computeNextThemeMode(mode)}
 			/>
 			<div className="flex gap-2">
 				<Button

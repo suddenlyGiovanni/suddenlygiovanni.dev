@@ -1,7 +1,7 @@
 import type { MetaFunction } from '@remix-run/node'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import type { JSX } from 'react'
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
+
 export const meta: MetaFunction = () => {
 	return [
 		{ title: 'Reading Journal' },

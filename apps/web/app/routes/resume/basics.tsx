@@ -128,6 +128,8 @@ interface ContactsProps {
 	readonly url: Model.Basics['url']
 }
 
+const httpsUrlPattern: RegExp = /(?:https:\/\/www\.)|(?:https:\/\/)/i
+
 function Contacts({ email, location, phone, profiles, url }: ContactsProps): ReactElement {
 	return (
 		<address className={addressClasses.address}>
@@ -192,11 +194,7 @@ function Contacts({ email, location, phone, profiles, url }: ContactsProps): Rea
 							aria-label={`link to ${profile.network}`}
 							href={profile.url}
 						>
-							{profile.url.replace(
-								/* biome-ignore lint/nursery/useTopLevelRegex: <explanation> */
-								/(?:https:\/\/www\.)|(?:https:\/\/)/i,
-								'',
-							)}
+							{profile.url.replace(httpsUrlPattern, '')}
 						</T.a>
 					</li>
 				))}

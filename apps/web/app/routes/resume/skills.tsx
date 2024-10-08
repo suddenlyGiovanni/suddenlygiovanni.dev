@@ -54,12 +54,14 @@ export const Skills = memo(function Skills({
 				value={value}
 			>
 				{skills.map(({ name, keywords }, idx) => (
-					// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non null assertions
 					<Skill
 						key={name}
 						keywords={keywords}
 						name={name}
-						value={all.at(idx)!}
+						value={
+							// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non null assertions
+							all.at(idx)!
+						}
 					/>
 				))}
 			</Accordion>

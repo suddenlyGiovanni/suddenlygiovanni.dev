@@ -138,7 +138,7 @@ const Edu = memo(function Edu({
 })
 
 const styles = {
-	span: clsx('flex flex-row items-center text-sm font-normal  accent-muted'),
+	span: clsx('flex flex-row items-center font-normal text-sm accent-muted'),
 } as const
 
 const EduHeader = memo(function EduHeader({

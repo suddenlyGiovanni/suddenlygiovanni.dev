@@ -39,15 +39,16 @@
 			"nursery": {
 				"all": true,
 				"noSecrets": "off",
+				"useComponentExportOnlyModules": "off",
 				"useExplicitFunctionReturnType": "off",
 				"useImportRestrictions": "off",
 				"useSortedClasses": {
 					"fix": "safe",
+					"level": "warn",
 					"options": {
 						"attributes": ["class", "className"],
 						"functions": ["clsx", "cva", "tw"]
-					},
-					"level": "warn"
+					}
 				}
 			},
 			"performance": {
@@ -109,23 +110,6 @@
 								"strictCase": false
 							}
 						}
-					}
-				}
-			}
-		},
-		{
-			"include": ["**/*.snapshot.json"],
-			"formatter": {
-				"enabled": false
-			}
-		},
-
-		{
-			"include": ["apps/web/**/*"],
-			"linter": {
-				"rules": {
-					"style": {
-						"noDefaultExport": "off"
 					}
 				}
 			}

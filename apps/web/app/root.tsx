@@ -29,7 +29,6 @@ import { Main } from './main.tsx'
 import fontsStyleSheetUrl from './styles/fonts.css?url'
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export const links: LinksFunction = () => {
 	return [
 		{
@@ -42,7 +41,6 @@ export const links: LinksFunction = () => {
 	]
 }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export function meta({ location }: Parameters<MetaFunction>[number]) {
 	const description = "@suddenlyGiovanni's personal website"
 	const title = config.siteName
@@ -64,7 +62,6 @@ export function meta({ location }: Parameters<MetaFunction>[number]) {
 	]
 }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export function loader({ request }: LoaderFunctionArgs) {
 	return {
 		requestInfo: {
@@ -78,7 +75,6 @@ export function loader({ request }: LoaderFunctionArgs) {
 	}
 }
 
-// biome-ignore lint/nursery/useComponentExportOnlyModules: Remix convention
 export async function action({ request }: ActionFunctionArgs) {
 	const formData = await request.formData()
 	const payload = Object.fromEntries(formData)

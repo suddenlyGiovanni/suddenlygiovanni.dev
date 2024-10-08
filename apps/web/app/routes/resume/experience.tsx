@@ -43,7 +43,7 @@ export const Experience = memo(function Experience(
 })
 
 const styles = {
-	span: clsx('flex flex-row items-center text-sm font-normal italic accent-muted'),
+	span: clsx('flex flex-row items-center font-normal text-sm italic accent-muted'),
 } as const
 
 function getDates(roles: Model.Work['roles']): {
@@ -52,7 +52,6 @@ function getDates(roles: Model.Work['roles']): {
 } {
 	const dates = roles
 		.flatMap(role => [role.startDate, role.endDate].filter(Boolean))
-		// biome-ignore lint/nursery/useDateNow: <explanation>
 		.sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
 
 	return {
@@ -77,7 +76,7 @@ const ExperienceHeader = memo(function ExperienceHeader(work: {
 
 	return (
 		<div className="relative my-4 flex w-full flex-col">
-			<hgroup className={'space-y-1'}>
+			<hgroup className="space-y-1">
 				<h2
 					aria-label="job title"
 					className={clsx('mt-0 mb-0 font-bold text-base leading-none')}
@@ -163,7 +162,7 @@ function ExperienceSummary({
 	summary,
 }: { readonly summary: Model.Work['summary'] }): null | ReactElement {
 	return summary ? (
-		<div className={'mb-4'}>
+		<div className="mb-4">
 			{summary.split('\n').map(p => (
 				<T.blockquote
 					key={p}
@@ -178,7 +177,7 @@ function ExperienceSummary({
 
 function Roles({ roles }: { readonly roles: Model.Work['roles'] }): ReactElement {
 	return (
-		<ul className="mt-0 flex list-none flex-col gap-2 pl-0 md:pl-6 sm:pl-3">
+		<ul className="mt-0 flex list-none flex-col gap-2 pl-0 sm:pl-3 md:pl-6">
 			{roles.map(role => (
 				<li key={role.startDate}>
 					<Role
@@ -340,7 +339,7 @@ function Tech({
 }): ReactElement {
 	const maybeIcon = getDevIconComponent(tech)
 	const classname = clsx(
-		'my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle select-none',
+		'my-0 flex w-fit select-none flex-row items-center justify-start gap-1 align-middle',
 	)
 
 	return maybeIcon.pipe(

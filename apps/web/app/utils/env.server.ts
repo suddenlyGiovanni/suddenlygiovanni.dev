@@ -51,7 +51,6 @@ declare global {
 export function init(): void {
 	const maybeEnv = Schema.decodeUnknownEither(envSchema)(process.env, { errors: 'all' })
 	if (Either.isLeft(maybeEnv)) {
-		// biome-ignore lint/nursery/noConsole: this is a dev-only error message
 		console.error('❌ Invalid environment variables:', formatError(maybeEnv.left))
 		throw new Error('Invalid environment variables')
 	}
