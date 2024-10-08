@@ -26,24 +26,32 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
+			"a11y": {
+				"useSemanticElements": "off"
+			},
 			"all": true,
+			"complexity": {
+				"noStaticOnlyClass": "off"
+			},
+			"correctness": {
+				"noUndeclaredDependencies": "off"
+			},
 			"nursery": {
 				"all": true,
-				"noUndeclaredDependencies": "off",
-				"noReactSpecificProps": "off",
 				"useImportRestrictions": "off",
-				"useSemanticElements": "off"
+				"useExplicitFunctionReturnType": "off"
+			},
+			"performance": {
+				"noBarrelFile": "warn",
+				"noReExportAll": "warn"
 			},
 			"style": {
 				"noNamespaceImport": "off",
 				"useNamingConvention": "warn"
 			},
-			"complexity": {
-				"noStaticOnlyClass": "off"
-			},
-			"performance": {
-				"noBarrelFile": "warn",
-				"noReExportAll": "warn"
+			"suspicious": {
+				"noReactSpecificProps": "off",
+				"noConsole": "warn"
 			}
 		}
 	},
@@ -73,7 +81,6 @@
 			"enabled": false
 		}
 	},
-
 	"overrides": [
 		{
 			"include": ["packages/open-graph-protocol/**/*.ts"],
