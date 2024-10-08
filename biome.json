@@ -119,19 +119,7 @@
 				"enabled": false
 			}
 		},
-		{
-			"include": ["**/*.stories.tsx"],
-			"linter": {
-				"rules": {
-					"nursery": {
-						"useComponentExportOnlyModules": "off"
-					},
-					"style": {
-						"noDefaultExport": "off"
-					}
-				}
-			}
-		},
+
 		{
 			"include": ["apps/web/**/*"],
 			"linter": {
