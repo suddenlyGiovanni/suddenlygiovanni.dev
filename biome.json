@@ -40,7 +40,7 @@
 				"all": true,
 				"noSecrets": "off",
 				"useComponentExportOnlyModules": "off",
-				"useExplicitFunctionReturnType": "off",
+				"useExplicitType": "warn",
 				"useImportRestrictions": "off",
 				"useSortedClasses": {
 					"fix": "safe",
