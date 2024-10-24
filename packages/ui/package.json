@@ -51,7 +51,7 @@
 		"vite-tsconfig-paths": "5.0.1"
 	},
 	"engines": {
-		"node": ">=22.6"
+		"node": ">=22.10"
 	},
 	"exports": {
 		"./tailwind.config.ts": "./tailwind.config.ts",
