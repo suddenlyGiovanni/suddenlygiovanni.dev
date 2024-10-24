@@ -12,5 +12,4 @@ declare const config: {
 }
 // biome-ignore lint/style/noDefaultExport: This is a configuration file
 export default config
-export { type Config } from 'postcss-load-config'
-//# sourceMappingURL=postcss.config.d.ts.map
+export type { Config } from 'postcss-load-config'
