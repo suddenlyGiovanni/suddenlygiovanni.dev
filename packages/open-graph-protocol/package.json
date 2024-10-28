@@ -16,7 +16,7 @@
 	"devDependencies": {
 		"@suddenlygiovanni/config-tailwind": "workspace:*",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
-		"typescript": "5.6.2"
+		"typescript": "5.6.3"
 	},
 	"engines": {
 		"node": ">=22.10"
