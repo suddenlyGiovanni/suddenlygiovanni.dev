@@ -1,6 +1,6 @@
-import type { ParseError } from '@effect/schema/ParseResult'
-import * as Schema from '@effect/schema/Schema'
+import { Schema } from 'effect'
 import type { Either } from 'effect/Either'
+import type { ParseError } from 'effect/ParseResult'
 
 /**
  * Given a string date, this function validates and transforms it to a US locale short date format.

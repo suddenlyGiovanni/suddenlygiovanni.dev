@@ -1,11 +1,11 @@
-import * as S from '@effect/schema/Schema'
 import { TrimmedNonEmpty, UrlString } from '@suddenlygiovanni/resume/schema-primitive'
+import { Schema } from 'effect'
 
-export class Meta extends S.Class<Meta>('Meta')({
-	canonical: S.optionalWith(UrlString, { exact: true }),
+export class Meta extends Schema.Class<Meta>('Meta')({
+	canonical: Schema.optionalWith(UrlString, { exact: true }),
 
-	lastModified: S.optionalWith(
-		S.Date.annotations({
+	lastModified: Schema.optionalWith(
+		Schema.Date.annotations({
 			jsonSchema: {
 				format: 'date-time',
 				type: 'string',
@@ -14,7 +14,7 @@ export class Meta extends S.Class<Meta>('Meta')({
 		{ exact: true },
 	),
 
-	version: S.optionalWith(
+	version: Schema.optionalWith(
 		TrimmedNonEmpty.annotations({
 			title: 'version',
 			description: 'A version field which follows semver - e.g. v1.0.0',
@@ -23,7 +23,7 @@ export class Meta extends S.Class<Meta>('Meta')({
 		{ exact: true },
 	),
 }) {
-	static decode = S.decode(this)
+	static decode = Schema.decode(this)
 
-	static encode = S.encode(this)
+	static encode = Schema.encode(this)
 }

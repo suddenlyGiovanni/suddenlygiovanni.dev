@@ -1,9 +1,6 @@
-import * as jsonSchema from '@effect/schema/JSONSchema'
-import type * as S from '@effect/schema/Schema'
+import { JSONSchema } from 'effect'
 import { describe, expect, test } from 'vitest'
-
 import { expectEffectFailure, expectEffectSuccess } from '~/schemas/test-utils.ts'
-
 import { Meta } from './meta.ts'
 
 describe('Meta', () => {
@@ -11,7 +8,7 @@ describe('Meta', () => {
 		canonical: 'https://example.com',
 		lastModified: 'Thu, 02 May 2024 18:33:23 GMT',
 		version: 'v6.9',
-	} satisfies S.Schema.Encoded<typeof Meta>
+	}
 
 	describe('decode', () => {
 		test('handle all missing property', async () => {
@@ -95,7 +92,7 @@ describe('Meta', () => {
 	})
 
 	test('JSONSchema', () => {
-		expect(JSON.stringify(jsonSchema.make(Meta), null, '\t')).toMatchFileSnapshot(
+		expect(JSON.stringify(JSONSchema.make(Meta), null, '\t')).toMatchFileSnapshot(
 			'meta-schema.snapshot.json',
 		)
 	})
