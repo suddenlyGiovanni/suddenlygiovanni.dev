@@ -1,6 +1,5 @@
-import * as Schema from '@effect/schema/Schema'
 import { useFetchers } from '@remix-run/react'
-import * as Either from 'effect/Either'
+import { Either, Schema } from 'effect'
 
 import { useHints } from './client-hints.tsx'
 import { useRequestInfo } from './request-info.ts'

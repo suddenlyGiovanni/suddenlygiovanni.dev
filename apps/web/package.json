@@ -5,7 +5,6 @@
 		}
 	},
 	"dependencies": {
-		"@effect/schema": "0.72.2",
 		"@epic-web/client-hints": "1.3.5",
 		"@epic-web/invariant": "1.0.0",
 		"@octokit/core": "6.1.2",
@@ -16,10 +15,10 @@
 		"@remix-run/serve": "2.13.1",
 		"@std/yaml": "npm:@jsr/std__yaml@1.0.5",
 		"@suddenlygiovanni/open-graph-protocol": "workspace:*",
-		"@suddenlygiovanni/resume": "12.1.12",
+		"@suddenlygiovanni/resume": "13.0.0",
 		"@suddenlygiovanni/ui": "workspace:*",
 		"cookie": "1.0.1",
-		"effect": "3.9.2",
+		"effect": "3.10.4",
 		"isbot": "5.1.17",
 		"react": "18.3.1",
 		"react-dom": "18.3.1"

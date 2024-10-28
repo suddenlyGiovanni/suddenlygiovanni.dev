@@ -1,5 +1,5 @@
-import { Schema } from '@effect/schema'
 import { Resume } from '@suddenlygiovanni/resume/schema-resume'
+import { Schema } from 'effect'
 import { Console, Data, Effect, Layer, Option } from 'effect'
 
 import { Meta } from '~/models/resume/meta/meta.ts'

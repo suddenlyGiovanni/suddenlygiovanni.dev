@@ -1,4 +1,3 @@
-import * as Schema from '@effect/schema/Schema'
 import { invariantResponse } from '@epic-web/invariant'
 import type {
 	ActionFunctionArgs,
@@ -8,7 +7,8 @@ import type {
 } from '@remix-run/node'
 import { Links, Meta, Scripts, ScrollRestoration, json, useLoaderData } from '@remix-run/react'
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
-import * as Either from 'effect/Either'
+import { Either, Schema } from 'effect'
+
 import type { JSX, ReactElement, ReactNode } from 'react'
 
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'

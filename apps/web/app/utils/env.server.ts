@@ -1,8 +1,7 @@
 // biome-ignore lint/correctness/noNodejsModules: <explanation>
 import * as process from 'node:process'
-import * as Schema from '@effect/schema/Schema'
-import { formatError } from '@effect/schema/TreeFormatter'
-import * as Either from 'effect/Either'
+import { Either, Schema } from 'effect'
+import { TreeFormatter } from 'effect/ParseResult'
 
 const envSchema = Schema.Struct({
 	// biome-ignore lint/style/useNamingConvention: <explanation>
@@ -51,7 +50,7 @@ declare global {
 export function init(): void {
 	const maybeEnv = Schema.decodeUnknownEither(envSchema)(process.env, { errors: 'all' })
 	if (Either.isLeft(maybeEnv)) {
-		console.error('❌ Invalid environment variables:', formatError(maybeEnv.left))
+		console.error('❌ Invalid environment variables:', TreeFormatter.formatError(maybeEnv.left))
 		throw new Error('Invalid environment variables')
 	}
 }

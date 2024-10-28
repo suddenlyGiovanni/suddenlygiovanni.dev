@@ -23,9 +23,6 @@ importers:
 
   apps/web:
     dependencies:
-      '@effect/schema':
-        specifier: 0.72.2
-        version: 0.72.2(effect@3.9.2)
       '@epic-web/client-hints':
         specifier: 1.3.5
         version: 1.3.5
@@ -57,8 +54,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/resume':
-        specifier: 12.1.12
-        version: 12.1.12(@effect/schema@0.72.2(effect@3.9.2))
+        specifier: 13.0.0
+        version: 13.0.0
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -66,8 +63,8 @@ importers:
         specifier: 1.0.1
         version: 1.0.1
       effect:
-        specifier: 3.9.2
-        version: 3.9.2
+        specifier: 3.10.4
+        version: 3.10.4
       isbot:
         specifier: 5.1.17
         version: 5.1.17
@@ -590,11 +587,6 @@ packages:
     engines: {node: '>=18.0.0'}
     peerDependencies:
       vite: 4.x || 5.x
-
-  '@effect/schema@0.72.2':
-    resolution: {integrity: sha512-/x1BIA2pqcUidNrOMmwYe6Z58KtSgHSc5iJu7bNwIxi2LHMVuUao1BvpI5x6i7T/zkoi4dd1S6qasZzJIYDjdw==}
-    peerDependencies:
-      effect: ^3.7.2
 
   '@emotion/babel-plugin@11.11.0':
     resolution: {integrity: sha512-m4HEDZleaaCH+XgDDsPF15Ht6wTLsgDTeR3WYj9Q/k76JtWhrJjcP4+/XlG8LGT/Rol9qUfOIztXeA84ATpqPQ==}
@@ -2731,11 +2723,9 @@ packages:
     peerDependencies:
       storybook: ^8.3.5
 
-  '@suddenlygiovanni/resume@12.1.12':
-    resolution: {integrity: sha512-oODYc6d6s3LqvRSwXcwn8bFCb4CE04fM6V9TtnAKtCnIUGq7ZEja6tg+vaZ2DlHuyov4ijgJPxrRY1lctvMnVg==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/12.1.12/ad1993f3e5e4e6085c757789637eaf32123a7da5}
-    engines: {node: '>=22'}
-    peerDependencies:
-      '@effect/schema': ~0.72.2
+  '@suddenlygiovanni/resume@13.0.0':
+    resolution: {integrity: sha512-X/NtmpUPpaKtv2oACAJWQW6Wnt5NCwgGLHp+R42QHwUuQHN1ZyIsJlsoBklcB+twraYSzfVzCyc3ahk/Wa0U2Q==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/13.0.0/f0f8c6d737454b00867b0855e9775ba1525494e4}
+    engines: {node: '>=22.10'}
 
   '@swc/core-darwin-arm64@1.7.26':
     resolution: {integrity: sha512-FF3CRYTg6a7ZVW4yT9mesxoVVZTrcSWtmZhxKCYJX9brH4CS/7PRPjAKNk6kzWgWuRoglP7hkjQcd6EpMcZEAw==}
@@ -3684,8 +3674,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect@3.9.2:
-    resolution: {integrity: sha512-1sx/v1HTWHTodXfzWxAFg+SCF+ACgpJVruaAMIh/NmDVvrUsf0x9PzpXvkgJUbQ1fMdmKYK//FqxeHSQ+Zxv/Q==}
+  effect@3.10.4:
+    resolution: {integrity: sha512-D7Mryq8jylT0fIGrgXEn2TublO/BhduRwzlqV5z1l/QFY6grs7UOyyomlAOFMK9ArSYiLgrOSMQ/Cr/cIOeU2Q==}
 
   electron-to-chromium@1.4.763:
     resolution: {integrity: sha512-k4J8NrtJ9QrvHLRo8Q18OncqBCB7tIUyqxRcJnlonQ0ioHKYB988GcDFF3ZePmnb8eHEopDs/wPHR/iGAFgoUQ==}
@@ -6423,11 +6413,6 @@ snapshots:
       unplugin: 1.10.1
       vite: 5.4.8(@types/node@22.7.9)
 
-  '@effect/schema@0.72.2(effect@3.9.2)':
-    dependencies:
-      effect: 3.9.2
-      fast-check: 3.22.0
-
   '@emotion/babel-plugin@11.11.0':
     dependencies:
       '@babel/helper-module-imports': 7.24.3
@@ -9031,9 +9016,7 @@ snapshots:
     dependencies:
       storybook: 8.3.5
 
-  '@suddenlygiovanni/resume@12.1.12(@effect/schema@0.72.2(effect@3.9.2))':
-    dependencies:
-      '@effect/schema': 0.72.2(effect@3.9.2)
+  '@suddenlygiovanni/resume@13.0.0': {}
 
   '@swc/core-darwin-arm64@1.7.26':
     optional: true
@@ -10024,7 +10007,9 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect@3.9.2: {}
+  effect@3.10.4:
+    dependencies:
+      fast-check: 3.22.0
 
   electron-to-chromium@1.4.763: {}
 
