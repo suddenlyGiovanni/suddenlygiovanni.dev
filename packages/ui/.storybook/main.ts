@@ -29,6 +29,9 @@ const config: StorybookConfig = {
 		// make sure we are serving the same assets as the Remix app
 		'../../../apps/web/public',
 	],
+	typescript: {
+		reactDocgen: 'react-docgen-typescript',
+	},
 }
 
 // biome-ignore lint/style/noDefaultExport: <explanation>
