@@ -25,7 +25,7 @@ importers:
     dependencies:
       '@effect/schema':
         specifier: 0.72.2
-        version: 0.72.2(effect@3.8.5)
+        version: 0.72.2(effect@3.9.0)
       '@epic-web/client-hints':
         specifier: 1.3.5
         version: 1.3.5
@@ -58,7 +58,7 @@ importers:
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/resume':
         specifier: 12.1.12
-        version: 12.1.12(@effect/schema@0.72.2(effect@3.8.5))
+        version: 12.1.12(@effect/schema@0.72.2(effect@3.9.0))
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -66,8 +66,8 @@ importers:
         specifier: 1.0.1
         version: 1.0.1
       effect:
-        specifier: 3.8.5
-        version: 3.8.5
+        specifier: 3.9.0
+        version: 3.9.0
       isbot:
         specifier: 5.1.17
         version: 5.1.17
@@ -3684,8 +3684,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect@3.8.5:
-    resolution: {integrity: sha512-c7ZxwGBPZb11saVUUIfOtHRbRxgVYMWrLbln93JQLVn3UAA5C5xIwdYNSKODyBSNp2a60YREhLL6iQl3iPMECg==}
+  effect@3.9.0:
+    resolution: {integrity: sha512-KnbQNgPxd74cAHvAf0C7qv3+KLeuEVz9jUflCrB3gzVXrJQ0WTQzGF2DGg3frma1dFnPp1J4zJBonUVreAm1BQ==}
 
   electron-to-chromium@1.4.763:
     resolution: {integrity: sha512-k4J8NrtJ9QrvHLRo8Q18OncqBCB7tIUyqxRcJnlonQ0ioHKYB988GcDFF3ZePmnb8eHEopDs/wPHR/iGAFgoUQ==}
@@ -6423,9 +6423,9 @@ snapshots:
       unplugin: 1.10.1
       vite: 5.4.8(@types/node@22.7.9)
 
-  '@effect/schema@0.72.2(effect@3.8.5)':
+  '@effect/schema@0.72.2(effect@3.9.0)':
     dependencies:
-      effect: 3.8.5
+      effect: 3.9.0
       fast-check: 3.22.0
 
   '@emotion/babel-plugin@11.11.0':
@@ -9031,9 +9031,9 @@ snapshots:
     dependencies:
       storybook: 8.3.5
 
-  '@suddenlygiovanni/resume@12.1.12(@effect/schema@0.72.2(effect@3.8.5))':
+  '@suddenlygiovanni/resume@12.1.12(@effect/schema@0.72.2(effect@3.9.0))':
     dependencies:
-      '@effect/schema': 0.72.2(effect@3.8.5)
+      '@effect/schema': 0.72.2(effect@3.9.0)
 
   '@swc/core-darwin-arm64@1.7.26':
     optional: true
@@ -10024,7 +10024,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect@3.8.5: {}
+  effect@3.9.0: {}
 
   electron-to-chromium@1.4.763: {}
 
