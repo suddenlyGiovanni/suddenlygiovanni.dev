@@ -1,8 +1,8 @@
 name: 💉Setup the project
 description: Perform standard setup and install dependencies using pnpm.
 inputs:
-  github_token:
-    description: 'GitHub token'
+  github_packages_token:
+    description: 'GitHub token for accessing GitHub Packages registry'
     required: true
 runs:
   using: composite
@@ -20,8 +20,20 @@ runs:
         node-version-file: '.nvmrc'
         registry-url: 'https://npm.pkg.github.com'
 
+    - name:
+        "🐞 Debug: List repository contents"
+      shell: bash
+      run: ls -alt .
+
+    - name:
+        "🐞 Debug: cat .npmrc"
+      shell: bash
+      run: cat .npmrc
+
     - name: 🧩 Install dependencies
       shell: bash
       env:
-        NODE_AUTH_TOKEN: ${{ inputs.github_token }}
+        NPM_CONFIG_USERCONFIG: ${{ github.workspace }}/.npmrc
+        GH_PACKAGES_TOKEN: ${{ inputs.github_packages_token }}
+        NODE_AUTH_TOKEN: ${{ inputs.github_packages_token }}
       run: pnpm install --frozen-lockfile --prod=false

@@ -74,7 +74,7 @@ jobs:
       - name: 🧩 Install dependencies
         uses: ./.github/actions/setup
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_packages_token: ${{ secrets.GH_PACKAGES_TOKEN }}
 
       - name: 🔍 Typecheck code
         continue-on-error: true

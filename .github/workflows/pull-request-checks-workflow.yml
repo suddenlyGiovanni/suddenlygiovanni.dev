@@ -26,15 +26,15 @@ jobs:
             --vcs-enabled=true  \
             --vcs-use-ignore-file=true  \
             --no-errors-on-unmatched  \
-            --diagnostic-level=error  \
+            --reporter=github \
             .
 
       - name: 🧩 Install dependencies
         uses: ./.github/actions/setup
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_packages_token: ${{ secrets.GH_PACKAGES_TOKEN }}
 
-      - name: 🚨 Lint code (with ESLint)
+      - name: 🚨 Lint code (with Biome check)
         continue-on-error: true
         run: pnpm lint
 
