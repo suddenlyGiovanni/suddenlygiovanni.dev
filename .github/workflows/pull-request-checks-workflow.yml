@@ -26,7 +26,6 @@ jobs:
             --vcs-enabled=true  \
             --vcs-use-ignore-file=true  \
             --no-errors-on-unmatched  \
-            --diagnostic-level=error \
             --reporter=github \
             .
 
