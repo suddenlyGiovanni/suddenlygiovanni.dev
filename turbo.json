@@ -23,7 +23,7 @@
     "format": {
       "cache": false
     },
-    "lint": {},
+    "check": {},
     "test:unit": {
       "dependsOn": [
         "topo"
