@@ -34,7 +34,7 @@ jobs:
         with:
           github_packages_token: ${{ secrets.GH_PACKAGES_TOKEN }}
 
-      - name: 🚨 Lint code (with ESLint)
+      - name: 🚨 Lint code (with Biome check)
         continue-on-error: true
         run: pnpm lint
 
