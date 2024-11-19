@@ -24,7 +24,7 @@
 		"react-dom": "18.3.1"
 	},
 	"devDependencies": {
-		"@codecov/vite-plugin": "1.2.1",
+		"@codecov/vite-plugin": "1.4.0",
 		"@remix-run/dev": "2.13.1",
 		"@remix-run/testing": "2.13.1",
 		"@suddenlygiovanni/config-tailwind": "workspace:*",

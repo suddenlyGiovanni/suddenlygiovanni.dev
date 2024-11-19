@@ -76,8 +76,8 @@ importers:
         version: 18.3.1(react@18.3.1)
     devDependencies:
       '@codecov/vite-plugin':
-        specifier: 1.2.1
-        version: 1.2.1(vite@5.4.11(@types/node@22.9.0))
+        specifier: 1.4.0
+        version: 1.4.0(vite@5.4.11(@types/node@22.9.0))
       '@remix-run/dev':
         specifier: 2.13.1
         version: 2.13.1(@remix-run/react@2.13.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.6.3))(@remix-run/serve@2.13.1(typescript@5.6.3))(@types/node@22.9.0)(babel-plugin-macros@3.1.0)(typescript@5.6.3)(vite@5.4.11(@types/node@22.9.0))
@@ -318,8 +318,8 @@ importers:
 
 packages:
 
-  '@actions/core@1.11.0':
-    resolution: {integrity: sha512-I21jQUzEjbZolw3jFZ/0iHGCb+rePCww9MaA0SbVFae4FpBTQWP1GIvr/m5Y6GVaxrDz7p3RhBtpBzwkA3rPSA==}
+  '@actions/core@1.11.1':
+    resolution: {integrity: sha512-hXJCSrkwfA46Vd9Z3q4cpEpHB1rL5NG04+/rbqW9d3+CSvtB1tYe8UTpAlixa1vj0m/ULglfEK2UKxMGxCxv5A==}
 
   '@actions/exec@1.1.1':
     resolution: {integrity: sha512-+sCcHHbVdk93a0XT19ECtO/gIXoxvdsgQLzb2fE2/5sIZmWQuluYyjPQtrtTHdU1YzTZ7bAPN4sITq2xi1679w==}
@@ -591,12 +591,12 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@codecov/bundler-plugin-core@1.2.1':
-    resolution: {integrity: sha512-9Iqr+PAQ/QVEnvKr56W/Jo8IaWJDFQkbcffNgG8Oc5GIQ1NRWsPmL/jxhkGrnp2LMJnpG2gPtV3+fet1jy6gbA==}
+  '@codecov/bundler-plugin-core@1.4.0':
+    resolution: {integrity: sha512-/Rglx52KLdyqoZBW3DH2E/31c9/zWWZ4efTf+qxV0FSLb7oJ9/JZT3IBKL7f6fbVujR8PDMLIoG4Q0pmVY7LzA==}
     engines: {node: '>=18.0.0'}
 
-  '@codecov/vite-plugin@1.2.1':
-    resolution: {integrity: sha512-fxlSsRpilO593qzpZ+7gOij/adWJmfcGkuR+b68OaBZq/kAH1IDssZX1RO6/mKtxr+BcjByZ7mcKU59SFHVWIA==}
+  '@codecov/vite-plugin@1.4.0':
+    resolution: {integrity: sha512-4pf9rZJLR/eqeoY0QY1pgAJs/tdg1os9xjgBBWuhQ/iLYseQZ3q1qn3G8QGuaSUS7XB/Sje3BQ5qGBM1hzE8Sw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       vite: 4.x || 5.x
@@ -3162,11 +3162,6 @@ packages:
 
   acorn@7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-
-  acorn@8.11.3:
-    resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
     engines: {node: '>=0.4.0'}
     hasBin: true
 
@@ -5859,10 +5854,6 @@ packages:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
 
-  unplugin@1.10.1:
-    resolution: {integrity: sha512-d6Mhq8RJeGA8UfKCu54Um4lFA0eSaRa3XxdAJg8tIdxbu1ubW0hBCZUL7yI2uGyYCRndvbK8FLHzqy2XKfeMsg==}
-    engines: {node: '>=14.0.0'}
-
   unplugin@1.14.1:
     resolution: {integrity: sha512-lBlHbfSFPToDYp9pjXlUEFVxYLaue9f9T1HC+4OHlmj+HnMDdz9oZY+erXfoCe/5V/7gKUSY2jpXPb9S7f0f/w==}
     engines: {node: '>=14.0.0'}
@@ -5871,6 +5862,10 @@ packages:
     peerDependenciesMeta:
       webpack-sources:
         optional: true
+
+  unplugin@1.16.0:
+    resolution: {integrity: sha512-5liCNPuJW8dqh3+DM6uNM2EI3MLLpCKp/KY+9pB5M2S2SR2qvvDHhKgBOaTWEbZTAws3CXfB0rKTIolWKL05VQ==}
+    engines: {node: '>=14.0.0'}
 
   update-browserslist-db@1.1.1:
     resolution: {integrity: sha512-R8UzCaa9Az+38REPiJ1tXlImTJXlVfgHZsglwBD/k6nj76ctsH1E3q4doGrukiLQd3sGQYu56r5+lo5r94l29A==}
@@ -6034,9 +6029,6 @@ packages:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
 
-  webpack-virtual-modules@0.6.1:
-    resolution: {integrity: sha512-poXpCylU7ExuvZK8z+On3kX+S8o/2dQ/SVYueKA0D4WEMXROXgY8Ez50/bQEUmvoSMMrWcrJqCHuhAbsiwg7Dg==}
-
   webpack-virtual-modules@0.6.2:
     resolution: {integrity: sha512-66/V2i5hQanC51vBQKPH4aI8NMAcBW59FVBs+rC7eGHupMyfn34q7rZIE+ETlJ+XTevqfUhVVBgSUNSW2flEUQ==}
 
@@ -6125,7 +6117,7 @@ packages:
 
 snapshots:
 
-  '@actions/core@1.11.0':
+  '@actions/core@1.11.1':
     dependencies:
       '@actions/exec': 1.1.1
       '@actions/http-client': 2.2.3
@@ -6440,19 +6432,19 @@ snapshots:
       - '@chromatic-com/playwright'
       - react
 
-  '@codecov/bundler-plugin-core@1.2.1':
+  '@codecov/bundler-plugin-core@1.4.0':
     dependencies:
-      '@actions/core': 1.11.0
+      '@actions/core': 1.11.1
       '@actions/github': 6.0.0
       chalk: 4.1.2
       semver: 7.6.3
-      unplugin: 1.10.1
+      unplugin: 1.16.0
       zod: 3.23.8
 
-  '@codecov/vite-plugin@1.2.1(vite@5.4.11(@types/node@22.9.0))':
+  '@codecov/vite-plugin@1.4.0(vite@5.4.11(@types/node@22.9.0))':
     dependencies:
-      '@codecov/bundler-plugin-core': 1.2.1
-      unplugin: 1.10.1
+      '@codecov/bundler-plugin-core': 1.4.0
+      unplugin: 1.16.0
       vite: 5.4.11(@types/node@22.9.0)
 
   '@emotion/babel-plugin@11.11.0':
@@ -9529,8 +9521,6 @@ snapshots:
 
   acorn@7.4.1: {}
 
-  acorn@8.11.3: {}
-
   acorn@8.14.0: {}
 
   aggregate-error@3.1.0:
@@ -12563,19 +12553,17 @@ snapshots:
 
   unpipe@1.0.0: {}
 
-  unplugin@1.10.1:
-    dependencies:
-      acorn: 8.11.3
-      chokidar: 3.6.0
-      webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.6.1
-
   unplugin@1.14.1(webpack-sources@3.2.3):
     dependencies:
       acorn: 8.14.0
       webpack-virtual-modules: 0.6.2
     optionalDependencies:
       webpack-sources: 3.2.3
+
+  unplugin@1.16.0:
+    dependencies:
+      acorn: 8.14.0
+      webpack-virtual-modules: 0.6.2
 
   update-browserslist-db@1.1.1(browserslist@4.24.2):
     dependencies:
@@ -12753,9 +12741,8 @@ snapshots:
 
   web-streams-polyfill@3.3.3: {}
 
-  webpack-sources@3.2.3: {}
-
-  webpack-virtual-modules@0.6.1: {}
+  webpack-sources@3.2.3:
+    optional: true
 
   webpack-virtual-modules@0.6.2: {}
 
