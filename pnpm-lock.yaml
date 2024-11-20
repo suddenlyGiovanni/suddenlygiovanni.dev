@@ -54,8 +54,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/resume':
-        specifier: 13.0.0
-        version: 13.0.0
+        specifier: 13.1.0
+        version: 13.1.0
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -2844,9 +2844,9 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@suddenlygiovanni/resume@13.0.0':
-    resolution: {integrity: sha512-X/NtmpUPpaKtv2oACAJWQW6Wnt5NCwgGLHp+R42QHwUuQHN1ZyIsJlsoBklcB+twraYSzfVzCyc3ahk/Wa0U2Q==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/13.0.0/f0f8c6d737454b00867b0855e9775ba1525494e4}
-    engines: {node: '>=22.10'}
+  '@suddenlygiovanni/resume@13.1.0':
+    resolution: {integrity: sha512-CQRX0QRZFYjz0LK6/NBNufuq4Yezmfz4eNoaH/rQX18H0k/PFAvtJiwk1+LFcfJtLvcM6Bd6EYFpkOsYjOfzUw==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/13.1.0/5e51a55f124c7a07b2f423996223b37af2b33ae6}
+    engines: {node: '>=22.11'}
 
   '@swc/core-darwin-arm64@1.7.26':
     resolution: {integrity: sha512-FF3CRYTg6a7ZVW4yT9mesxoVVZTrcSWtmZhxKCYJX9brH4CS/7PRPjAKNk6kzWgWuRoglP7hkjQcd6EpMcZEAw==}
@@ -8926,7 +8926,7 @@ snapshots:
     dependencies:
       storybook: 8.4.4(prettier@2.8.8)
 
-  '@suddenlygiovanni/resume@13.0.0': {}
+  '@suddenlygiovanni/resume@13.1.0': {}
 
   '@swc/core-darwin-arm64@1.7.26':
     optional: true
