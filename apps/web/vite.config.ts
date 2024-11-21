@@ -19,6 +19,7 @@ export default defineConfig({
 				v3_throwAbortReason: true,
 				// biome-ignore lint/style/useNamingConvention: <explanation>
 				v3_relativeSplatPath: true,
+				unstable_optimizeDeps: true,
 			},
 		}),
 		tsconfigPaths(),
