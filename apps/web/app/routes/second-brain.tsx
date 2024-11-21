@@ -6,7 +6,7 @@ import { routesRecord } from '~/routes-record.ts'
 
 export const meta: MetaFunction = () => {
 	return [
-		{ title: routesRecord['brain-dump'].title },
+		{ title: routesRecord['second-brain'].title },
 		{
 			name: 'description',
 			content:
@@ -15,10 +15,10 @@ export const meta: MetaFunction = () => {
 	]
 }
 
-export default function BrainDump(): JSX.Element {
+export default function SecondBrain(): JSX.Element {
 	return (
 		<article className={clsx('prose dark:prose-invert w-full max-w-none bg-background font-comic')}>
-			<T.h2>BrainDump</T.h2>
+			<T.h2>Second Brain</T.h2>
 		</article>
 	)
 }

@@ -34,11 +34,11 @@ export const routesRecord = {
 		disabled: false,
 		hidden: false,
 	},
-	'brain-dump': {
-		uri: 'brain-dump',
-		url: '/brain-dump',
-		title: 'brain dump',
-		description: 'Go to brain dump page',
+	'second-brain': {
+		uri: 'second-brain',
+		url: '/second-brain',
+		title: 'second brain',
+		description: 'Go to second brain page',
 		disabled: true,
 		hidden: false,
 	},

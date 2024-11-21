@@ -81,7 +81,7 @@ function NavLink({
 const routes = (
 	[
 		routesRecord['about-me'],
-		routesRecord['brain-dump'],
+		routesRecord['second-brain'],
 		routesRecord['reading-journal'],
 		routesRecord.resume,
 		routesRecord.motivations,
