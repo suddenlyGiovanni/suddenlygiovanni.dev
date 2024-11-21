@@ -4,7 +4,7 @@ export const routes = [
 	index('routes/about-me.tsx'),
 	route('/motivations', 'routes/motivations/route.tsx'),
 	route('/second-brain', 'routes/second-brain.tsx'),
-	route('/reading-journal', 'routes/reading-journal/route.tsx'),
+	route('/reading-journal', 'routes/reading-journal.tsx'),
 	route('/resume', 'routes/resume/route.tsx'),
 	...prefix('/resources', [
 		//
