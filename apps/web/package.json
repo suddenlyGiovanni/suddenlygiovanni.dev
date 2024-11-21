@@ -26,6 +26,8 @@
 	"devDependencies": {
 		"@codecov/vite-plugin": "1.4.0",
 		"@remix-run/dev": "2.14.0",
+		"@remix-run/fs-routes": "2.14.0",
+		"@remix-run/route-config": "2.14.0",
 		"@remix-run/testing": "2.14.0",
 		"@suddenlygiovanni/config-tailwind": "workspace:*",
 		"@suddenlygiovanni/config-typescript": "workspace:*",

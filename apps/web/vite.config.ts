@@ -20,6 +20,7 @@ export default defineConfig({
 				// biome-ignore lint/style/useNamingConvention: <explanation>
 				v3_relativeSplatPath: true,
 				unstable_optimizeDeps: true,
+				unstable_routeConfig: true,
 			},
 		}),
 		tsconfigPaths(),
