@@ -57,7 +57,7 @@
 			},
 			"style": {
 				"noNamespaceImport": "off",
-				"useNamingConvention": "warn"
+				"useNamingConvention": "off"
 			},
 			"suspicious": {
 				"noReactSpecificProps": "off",

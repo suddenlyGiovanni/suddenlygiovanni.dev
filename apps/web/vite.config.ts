@@ -1,11 +1,8 @@
 import { codecovVitePlugin } from '@codecov/vite-plugin'
 import { vitePlugin as remix } from '@remix-run/dev'
-import { installGlobals } from '@remix-run/node'
 import { remixDevTools } from 'remix-development-tools'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
-
-installGlobals()
 
 /// <reference types="vitest" />
 
@@ -18,10 +15,10 @@ export default defineConfig({
 			buildDirectory: 'build',
 			ssr: true,
 			future: {
-				// biome-ignore lint/style/useNamingConvention: <explanation>
 				v3_throwAbortReason: true,
-				// biome-ignore lint/style/useNamingConvention: <explanation>
 				v3_relativeSplatPath: true,
+				unstable_optimizeDeps: true,
+				unstable_routeConfig: true,
 			},
 		}),
 		tsconfigPaths(),
