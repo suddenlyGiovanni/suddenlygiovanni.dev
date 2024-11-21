@@ -1,6 +1,6 @@
 import { type RouteConfig, index, prefix, route } from '@remix-run/route-config'
 
-export const routes = [
+export default [
 	index('routes/about-me.tsx'),
 	route('/motivations', 'routes/motivations.tsx'),
 	route('/second-brain', 'routes/second-brain.tsx'),
