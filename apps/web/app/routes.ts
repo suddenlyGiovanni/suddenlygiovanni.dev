@@ -1,4 +1,4 @@
-import { type RouteConfig, index, route } from '@remix-run/route-config'
+import { type RouteConfig, index, prefix, route } from '@remix-run/route-config'
 
 export const routes = [
 	index('routes/_index.tsx'),
@@ -6,5 +6,8 @@ export const routes = [
 	route('/brain-dump', 'routes/brain-dump/route.tsx'),
 	route('/reading-journal', 'routes/reading-journal/route.tsx'),
 	route('/resume', 'routes/resume/route.tsx'),
-	route('/resources/healthcheck', 'routes/resources.healthcheck.tsx'),
+	...prefix('/resources', [
+		//
+		route('/healthcheck', 'routes/resources.healthcheck.tsx'),
+	]),
 ] satisfies RouteConfig
