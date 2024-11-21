@@ -18,7 +18,7 @@
 		"@suddenlygiovanni/resume": "13.1.0",
 		"@suddenlygiovanni/ui": "workspace:*",
 		"cookie": "1.0.2",
-		"effect": "3.10.15",
+		"effect": "3.10.16",
 		"isbot": "5.1.17",
 		"react": "18.3.1",
 		"react-dom": "18.3.1"
