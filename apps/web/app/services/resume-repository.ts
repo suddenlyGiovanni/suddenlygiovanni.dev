@@ -1,6 +1,6 @@
 import { Resume } from '@suddenlygiovanni/resume/schema-resume'
-import { Schema } from 'effect'
-import { Console, Data, Effect, Layer, Option } from 'effect'
+import { Console, Data, Effect, Layer, Option, Schema } from 'effect'
+import type { ParseError } from 'effect/ParseResult'
 
 import { Meta } from '~/models/resume/meta/meta.ts'
 import { parseYml } from '~/schemas/parse-yml.ts'
@@ -65,6 +65,7 @@ class DecodingError extends Data.TaggedError('DecodingError')<{
 	readonly encoding?: string
 }> {}
 
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 function getResumeFile({
 	owner,
 	repo,
@@ -95,6 +96,7 @@ function getResumeFile({
 		const { octokit } = yield* OctokitService
 
 		const octokitResponse = yield* Effect.tryPromise({
+			// biome-ignore lint/nursery/useExplicitType: <explanation>
 			try: () =>
 				octokit.rest.repos.getContent({
 					owner: owner,
@@ -102,7 +104,7 @@ function getResumeFile({
 					path: path,
 					...(ref ? { ref } : {}),
 				}),
-			catch: error => {
+			catch: (error: unknown): RequestError => {
 				/**
 				 * The getContent request to the GitHub API fails. This could be due to a number of reasons
 				 * such as network issues, incorrect repository details, or the file not existing in the repository.
@@ -171,8 +173,8 @@ function getResumeFile({
 		)
 
 		const decodedContent = yield* Effect.try({
-			try: () => Buffer.from(content, 'base64').toString('utf8'),
-			catch: _error =>
+			try: (): string => Buffer.from(content, 'base64').toString('utf8'),
+			catch: (_error): DecodingError =>
 				new DecodingError({
 					message: 'failed to parse data content',
 					encoding: encoding,
@@ -187,11 +189,22 @@ function getResumeFile({
 	}).pipe(Effect.withLogSpan('getResumeFile'))
 }
 
-const decodeResume = Schema.decode(parseYml(Resume))
-const packageJsonSchema = Schema.Struct({ version: Schema.String })
-const decodePackageJson = Schema.decode(Schema.parseJson(packageJsonSchema))
+class Package extends Schema.Class<Package>('Package')({
+	version: Schema.String,
+}) {
+	static decode = Schema.decode(this)
+}
 
-function getResume(ref = 'main') {
+const decodeResume = Schema.decode(parseYml(Resume))
+const decodePackageJson = Schema.decode(Schema.parseJson(Package))
+
+function getResume(
+	ref = 'main',
+): Effect.Effect<
+	{ meta: typeof Meta.Type; resume: typeof Resume.Type },
+	DecodingError | RequestError | InvalidDataError | ParseError,
+	OctokitService
+> {
 	const repo = 'resume'
 	const owner = 'suddenlyGiovanni'
 
@@ -204,10 +217,10 @@ function getResume(ref = 'main') {
 			{ concurrency: 2 },
 		)
 
-		const resume = yield* decodeResume(resumeFile.decodedContent)
-		const packageJson = yield* decodePackageJson(packageFile.decodedContent)
+		const resume: typeof Resume.Type = yield* decodeResume(resumeFile.decodedContent)
+		const packageJson: typeof Package.Type = yield* decodePackageJson(packageFile.decodedContent)
 
-		const meta = yield* Meta.decode({
+		const meta: typeof Meta.Type = yield* Meta.decode({
 			...(Option.isSome(resumeFile.lastModified)
 				? { lastModified: resumeFile.lastModified.value }
 				: {}),
@@ -227,6 +240,5 @@ export class ResumeRepository extends Effect.Tag('@services/ResumeRepository')<
 	ResumeRepository,
 	Effect.Effect.Success<typeof makeResumeRepository>
 >() {
-	// biome-ignore lint/style/useNamingConvention: <explanation>
 	static Live = Layer.effect(this, makeResumeRepository)
 }
