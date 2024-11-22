@@ -3,14 +3,13 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'suddenlygiovanni-dev'
-primary_region = 'ams'
-kill_signal = 'SIGINT'
+primary_region = "ams"
+kill_signal = "SIGINT"
 kill_timeout = 5
 
 [[vm]]
-memory = '1gb'
-cpu_kind = 'shared'
+memory = "1gb"
+cpu_kind = "shared"
 cpus = 1
 
 [build]
@@ -20,7 +19,7 @@ build-target = "production"
 
 [[services]]
 internal_port = "5173"
-processes = ['app']
+processes = ["app"]
 protocol = "tcp"
 
 	[services.concurrency]
@@ -30,7 +29,7 @@ protocol = "tcp"
 
 	[http_service]
 	force_https = true
-	auto_stop_machines = "suspend"
+	auto_stop_machines = true
 	auto_start_machines = true
 	min_machines_running = 0
 
@@ -42,19 +41,3 @@ protocol = "tcp"
 	[[services.ports]]
 	handlers = [ "tls", "http" ]
 	port = 443
-
-	[[services.tcp_checks]]
-	grace_period = "1s"
-	interval = "15s"
-	restart_limit = 0
-	timeout = "2s"
-
-	[[services.http_checks]]
-	interval = "10s"
-	grace_period = "5s"
-	method = "get"
-	path = "/resources/healthcheck"
-	protocol = "http"
-	timeout = "2s"
-	tls_skip_verify = false
-	headers = { }
