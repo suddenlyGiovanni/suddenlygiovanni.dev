@@ -1,0 +1,46 @@
+# fly.yaml app configuration file generated for suddenlygiovanni-dev on 2024-11-22T21:16:09+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app: suddenlygiovanni-dev
+primary_region: ams
+kill_signal: SIGINT
+kill_timeout: 5s
+
+build:
+  dockerfile: Dockerfile
+  ignorefile: .dockerignore
+  build-target: production
+
+services:
+  machine_checks:
+    - image: curlimages/curl
+      entrypoint: [ /bin/sh, -c ]
+      command: [ "curl http://[$FLY_TEST_MACHINE_IP]/resources/healthcheck | grep 'OK'" ]
+      kill_signal: SIGKILL
+      kill_timeout: 10s
+
+http_service:
+  internal_port: 5173
+  force_https: true
+  auto_stop_machines: suspend
+  auto_start_machines: true
+  min_machines_running: 0
+  concurrency:
+    type: requests
+    hard_limit: 100
+    soft_limit: 80
+  checks:
+    - interval: 1h0m0s
+      timeout: 10s
+      grace_period: 10s
+      method: get
+      path: /resources/healthcheck
+      protocol: http
+      tls_skip_verify: false
+
+vm:
+  - memory: 1gb
+    cpu_kind: shared
+    cpus: 1

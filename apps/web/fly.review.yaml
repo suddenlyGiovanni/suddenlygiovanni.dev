@@ -1,0 +1,30 @@
+# fly.toml app configuration file generated for suddenlygiovanni-dev on 2024-03-03T02:43:25+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+primary_region: ams
+kill_signal: SIGINT
+kill_timeout: 5s
+
+
+build:
+  dockerfile: Dockerfile
+  ignorefile: .dockerignore
+  build-target: production
+
+http_service:
+  internal_port: 5173
+  force_https: true
+  auto_stop_machines: stop
+  auto_start_machines: true
+  min_machines_running: 0
+  concurrency:
+    hard_limit: 100
+    soft_limit: 80
+    type: requests
+
+vm:
+  - memory: 1gb
+    cpu_kind: shared
+    cpus: 1
