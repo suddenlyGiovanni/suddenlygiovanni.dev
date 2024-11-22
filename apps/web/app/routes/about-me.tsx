@@ -69,7 +69,7 @@ function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RemixLink
 	)
 }
 
-export default function Index(): JSX.Element {
+export default function AboutMe(): JSX.Element {
 	return (
 		<article className={clsx('flex', 'w-full', 'flex-col', 'justify-start', 'font-comic')}>
 			<T.h2>Hi! I'm Giovanni 👋</T.h2>
