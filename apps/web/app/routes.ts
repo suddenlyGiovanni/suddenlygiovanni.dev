@@ -8,6 +8,6 @@ export default [
 	route('/resume', 'routes/resume/resume.tsx'),
 	...prefix('/resources', [
 		//
-		route('/healthcheck', 'routes/resources.healthcheck.tsx'),
+		route('/healthcheck', 'routes/resources/healthcheck.tsx'),
 	]),
 ] satisfies RouteConfig

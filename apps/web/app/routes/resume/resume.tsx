@@ -1,4 +1,4 @@
-import { type LinksFunction, type MetaFunction, json } from '@remix-run/node'
+import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
 import { Effect } from 'effect'
 import type { ReactElement } from 'react'
@@ -18,6 +18,7 @@ import { Experiences } from './experiences.tsx'
 import { Interests } from './interests.tsx'
 import { Skills } from './skills.tsx'
 
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function meta({ location }: Parameters<MetaFunction>[number]) {
 	const title = `${config.siteName} | Résumé`
 	const description =
@@ -49,7 +50,7 @@ export const loader = loaderFunction(
 	() =>
 		Effect.gen(function* () {
 			const { resume, meta } = yield* ResumeRepository.getResume()
-			return json({ resume, meta })
+			return { resume, meta }
 		}),
 	// still need to handle the error cases here!!
 )

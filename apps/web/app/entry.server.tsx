@@ -19,7 +19,7 @@ export default function handleRequest(
 	responseHeaders: Headers,
 	remixContext: EntryContext,
 	_loadContext: AppLoadContext,
-) {
+): Promise<unknown> {
 	return isbot(request.headers.get('user-agent'))
 		? handleBotRequest(request, responseStatusCode, responseHeaders, remixContext)
 		: handleBrowserRequest(request, responseStatusCode, responseHeaders, remixContext)
@@ -30,7 +30,7 @@ function handleBotRequest(
 	responseStatusCode: number,
 	responseHeaders: Headers,
 	remixContext: EntryContext,
-) {
+): Promise<unknown> {
 	return new Promise((resolve, reject) => {
 		let shellRendered = false
 		const { pipe, abort } = renderToPipeableStream(
@@ -40,7 +40,7 @@ function handleBotRequest(
 				abortDelay={ABORT_DELAY}
 			/>,
 			{
-				onAllReady() {
+				onAllReady(): void {
 					shellRendered = true
 					const body = new PassThrough()
 					const stream = createReadableStreamFromReadable(body)
@@ -56,10 +56,10 @@ function handleBotRequest(
 
 					pipe(body)
 				},
-				onShellError(error: unknown) {
+				onShellError(error: unknown): void {
 					reject(error)
 				},
-				onError(error: unknown) {
+				onError(error: unknown): void {
 					// biome-ignore lint/style/noParameterAssign: this is how Remix defined the default entry.server
 					responseStatusCode = 500
 					/*
@@ -84,7 +84,7 @@ function handleBrowserRequest(
 	responseStatusCode: number,
 	responseHeaders: Headers,
 	remixContext: EntryContext,
-) {
+): Promise<unknown> {
 	return new Promise((resolve, reject) => {
 		let shellRendered = false
 		const { pipe, abort } = renderToPipeableStream(
@@ -94,7 +94,7 @@ function handleBrowserRequest(
 				abortDelay={ABORT_DELAY}
 			/>,
 			{
-				onShellReady() {
+				onShellReady(): void {
 					shellRendered = true
 					const body = new PassThrough()
 					const stream = createReadableStreamFromReadable(body)
@@ -110,10 +110,10 @@ function handleBrowserRequest(
 
 					pipe(body)
 				},
-				onShellError(error: unknown) {
+				onShellError(error: unknown): void {
 					reject(error)
 				},
-				onError(error: unknown) {
+				onError(error: unknown): void {
 					// biome-ignore lint/style/noParameterAssign: this is how Remix defined the default entry.server
 					responseStatusCode = 500
 					/*
