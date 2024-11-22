@@ -18,7 +18,7 @@ import { getDevIconComponent } from './dev-icons.tsx'
 export const Skills = memo(function Skills({
 	skills,
 }: {
-	readonly skills: ResumeSkill[]
+	readonly skills: readonly ResumeSkill[]
 }): ReactElement {
 	const all = useMemo(() => skills.map((_, idx) => `skill-${idx}`), [skills])
 
@@ -134,7 +134,7 @@ const Keyword = memo(function Keyword({
 	const classname = clsx('my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle')
 
 	return Option.match(maybeIcon, {
-		onNone: () => (
+		onNone: (): ReactElement => (
 			<li
 				className={classname}
 				key={keyword}
@@ -142,7 +142,7 @@ const Keyword = memo(function Keyword({
 				{keyword}
 			</li>
 		),
-		onSome: Icon => (
+		onSome: (Icon): ReactElement => (
 			<li
 				className={classname}
 				key={keyword}

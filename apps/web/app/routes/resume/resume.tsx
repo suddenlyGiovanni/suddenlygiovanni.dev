@@ -18,6 +18,7 @@ import { Experiences } from './experiences.tsx'
 import { Interests } from './interests.tsx'
 import { Skills } from './skills.tsx'
 
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function meta({ location }: Parameters<MetaFunction>[number]) {
 	const title = `${config.siteName} | Résumé`
 	const description =
