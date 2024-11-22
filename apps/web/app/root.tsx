@@ -5,7 +5,7 @@ import type {
 	LoaderFunctionArgs,
 	MetaFunction,
 } from '@remix-run/node'
-import { Links, Meta, Scripts, ScrollRestoration, json, useLoaderData } from '@remix-run/react'
+import { Links, Meta, Scripts, ScrollRestoration, useLoaderData } from '@remix-run/react'
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { Either, Schema } from 'effect'
 
@@ -81,17 +81,21 @@ export async function action({ request }: ActionFunctionArgs) {
 	const parse = Schema.decodeUnknownEither(ThemeFormSchema, { errors: 'all' })
 	const result = parse(payload)
 	invariantResponse(Either.isRight(result), 'Invalid theme received', { status: 400 })
-	const { theme } = result.right
-	const responseInit = { headers: { 'set-cookie': setTheme(theme) } }
-	return json(
-		{
+
+	return new Response(
+		JSON.stringify({
 			result: {
 				status: 'success',
 				initialValue: payload,
 				fields: Object.keys(payload),
 			},
+		}),
+		{
+			headers: new Headers({
+				'Content-Type': 'application/json; charset=utf-8',
+				'set-cookie': setTheme(result.right.theme),
+			}),
 		},
-		responseInit,
 	)
 }
 
