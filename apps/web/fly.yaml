@@ -13,22 +13,6 @@ build:
   ignorefile: .dockerignore
   build-target: production
 
-services:
-  internal_port: 5173
-  ports:
-    - handlers: [ http ]
-      port: 80
-      force_https: true
-    - handlers: [ tls, http ]
-      port: 443
-
-  machine_checks:
-    - image: curlimages/curl
-      entrypoint: [ /bin/sh, -c ]
-      command: [ "curl http://[$FLY_TEST_MACHINE_IP]/resources/healthcheck | grep 'OK'" ]
-      kill_signal: SIGKILL
-      kill_timeout: 10s
-
 http_service:
   internal_port: 5173
   force_https: true
@@ -39,14 +23,6 @@ http_service:
     type: requests
     hard_limit: 100
     soft_limit: 80
-  checks:
-    - interval: 1h0m0s
-      timeout: 10s
-      grace_period: 10s
-      method: get
-      path: /resources/healthcheck
-      protocol: http
-      tls_skip_verify: false
 
 vm:
   - memory: 1gb
