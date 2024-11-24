@@ -86,4 +86,4 @@ USER node
 
 EXPOSE 5173
 
-CMD ["./node_modules/.bin/remix-serve", "./build/server/index.js"]
+CMD ["./node_modules/.bin/react-router-serve", "./build/server/index.js"]
