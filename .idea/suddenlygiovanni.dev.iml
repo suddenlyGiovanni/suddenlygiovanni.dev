@@ -11,6 +11,7 @@
       <excludeFolder url="file://$MODULE_DIR$/packages/config-typescript/node_modules" />
       <excludeFolder url="file://$MODULE_DIR$/packages/open-graph-protocol/node_modules" />
       <excludeFolder url="file://$MODULE_DIR$/packages/ui/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/.pnpm" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
