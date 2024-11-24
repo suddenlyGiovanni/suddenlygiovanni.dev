@@ -4,7 +4,7 @@ export default {
 	appDirectory: 'app',
 	serverModuleFormat: 'esm',
 	buildDirectory: 'build',
-	prerender: ['/', '/reading-journal', '/resume', '/second-brain', '/motivations'],
+	prerender: ['/', '/reading-journal', '/second-brain', '/motivations'],
 	ssr: true,
 	future: {
 		unstable_optimizeDeps: true,
