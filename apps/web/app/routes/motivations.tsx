@@ -1,7 +1,6 @@
-/* eslint-disable react/no-unescaped-entities -- Reason: storybook story */
-import type { MetaFunction } from '@remix-run/node'
 import { Link } from '@remix-run/react'
 import type { ReactElement } from 'react'
+import type { MetaFunction } from 'react-router'
 
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 

@@ -1,4 +1,4 @@
-import type { LoaderFunctionArgs } from '@remix-run/node'
+import type { LoaderFunctionArgs } from 'react-router'
 
 export function loader(_: LoaderFunctionArgs): Response {
 	return new Response('OK', {

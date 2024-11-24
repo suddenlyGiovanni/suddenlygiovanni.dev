@@ -1,6 +1,6 @@
-import type { MetaFunction } from '@remix-run/node'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import type { JSX } from 'react'
+import type { MetaFunction } from 'react-router'
 
 export const meta: MetaFunction = () => {
 	return [

@@ -1,7 +1,7 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
 import { Link, useLoaderData } from '@remix-run/react'
 import { Effect } from 'effect'
 import type { ReactElement } from 'react'
+import type { LinksFunction, MetaFunction } from 'react-router'
 
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
