@@ -1,5 +1,5 @@
-import { Link } from 'react-router';
 import type { ReactElement, ReactNode } from 'react'
+import { Link } from 'react-router'
 
 import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'

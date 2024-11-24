@@ -1,5 +1,5 @@
-import { useFetchers } from 'react-router';
 import { Either, Schema } from 'effect'
+import { useFetchers } from 'react-router'
 
 import { useHints } from './client-hints.tsx'
 import { useRequestInfo } from './request-info.ts'

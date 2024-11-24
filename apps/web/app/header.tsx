@@ -1,5 +1,5 @@
-import { type NavLinkProps, NavLink as UnstyledNavLink, useFetcher } from 'react-router';
 import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
+import { type NavLinkProps, NavLink as UnstyledNavLink, useFetcher } from 'react-router'
 
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.js'
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
