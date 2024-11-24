@@ -1,4 +1,4 @@
-import { useFetchers } from '@remix-run/react'
+import { useFetchers } from 'react-router';
 import { Either, Schema } from 'effect'
 
 import { useHints } from './client-hints.tsx'

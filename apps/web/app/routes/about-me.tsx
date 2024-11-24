@@ -1,10 +1,8 @@
-import { Link as RemixLink } from '@remix-run/react'
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import type { ComponentPropsWithoutRef, JSX, ReactElement } from 'react'
-import type { MetaFunction } from 'react-router'
-
+import { type MetaFunction, Link as RouterLink } from 'react-router'
 import hero200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
 import hero811wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
 import hero1200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp'
@@ -54,9 +52,9 @@ const imgSrcSet = [
 	`${hero2800wAssetUrl} 2800w`,
 ].join(', ')
 
-function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RemixLink>): ReactElement {
+function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RouterLink>): ReactElement {
 	return (
-		<RemixLink
+		<RouterLink
 			className={clsx(
 				'decoration-wavy',
 				'underline-offset-4',
@@ -98,13 +96,13 @@ export default function AboutMe(): JSX.Element {
 
 			<T.p>
 				At the university, I <strong>📚 studied Modern History</strong>, but I never actually
-				graduated. There I <strong>met the ❤ love of my life</strong>, 👱 Morena, with whom I
-				have been together ever since.
+				graduated. There I <strong>met the ❤ love of my life</strong>, 👱 Morena, with whom I have
+				been together ever since.
 			</T.p>
 			<T.p>
 				Soon after college, we <strong>got 💍 married and started</strong> our own 👩
-				<strong>family</strong>. In 2014 our hearts became soo much bigger when 👶 Enea come
-				about. Four years later, 👶 Elai managed to have the same effect on us.
+				<strong>family</strong>. In 2014 our hearts became soo much bigger when 👶 Enea come about.
+				Four years later, 👶 Elai managed to have the same effect on us.
 			</T.p>
 
 			<T.p>
@@ -157,8 +155,8 @@ export default function AboutMe(): JSX.Element {
 			<T.p>
 				<strong>Making stuff is really fulfilling for me</strong>.{' '}
 				<strong>I just happened to choose to use code to do so</strong>, but I could definitely see
-				myself as a 🪓 carpenter, working with wood, or as a 🧑 chef preparing some elaborate
-				recipe or...
+				myself as a 🪓 carpenter, working with wood, or as a 🧑 chef preparing some elaborate recipe
+				or...
 			</T.p>
 
 			<T.p>

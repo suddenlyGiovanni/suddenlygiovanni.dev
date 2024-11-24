@@ -1,15 +1,19 @@
 import { invariantResponse } from '@epic-web/invariant'
-import type {
-	ActionFunctionArgs,
-	LinksFunction,
-	LoaderFunctionArgs,
-	MetaFunction,
-} from '@remix-run/node'
-import { Links, Meta, Scripts, ScrollRestoration, data, useLoaderData } from '@remix-run/react'
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { Either, Schema } from 'effect'
-
 import type { JSX, ReactElement, ReactNode } from 'react'
+import {
+	type ActionFunctionArgs,
+	Links,
+	type LinksFunction,
+	type LoaderFunctionArgs,
+	Meta,
+	type MetaFunction,
+	Scripts,
+	ScrollRestoration,
+	data,
+	useLoaderData,
+} from 'react-router'
 
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'

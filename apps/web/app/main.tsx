@@ -1,4 +1,4 @@
-import { Outlet } from '@remix-run/react'
+import { Outlet } from 'react-router';
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 import type { JSX } from 'react'
 
