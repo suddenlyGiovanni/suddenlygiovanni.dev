@@ -45,7 +45,6 @@ export const expectEncodeFailure = async <A, I>(
 	options?: ParseOptions,
 ): Promise<void> => expectFailure(Schema.encode(schema)(a, options), message)
 
-// biome-ignore lint/style/useNamingConvention: <explanation>
 export const printAST = <A, I, R>(schema: Schema.Schema<A, I, R>): void => {
 	console.log('%o', schema.ast)
 }

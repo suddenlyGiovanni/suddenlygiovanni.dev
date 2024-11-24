@@ -1,10 +1,10 @@
-import type { MetaFunction } from '@remix-run/node'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import type { JSX } from 'react'
 import { routesRecord } from '~/routes-record.ts'
+import type { Route } from './+types/second-brain.ts'
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = () => {
 	return [
 		{ title: routesRecord['second-brain'].title },
 		{

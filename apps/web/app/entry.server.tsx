@@ -1,10 +1,9 @@
 // biome-ignore lint/correctness/noNodejsModules: <explanation>
 import { PassThrough } from 'node:stream'
-import type { AppLoadContext, EntryContext } from '@remix-run/node'
-import { createReadableStreamFromReadable } from '@remix-run/node'
-import { RemixServer } from '@remix-run/react'
+import { createReadableStreamFromReadable } from '@react-router/node'
 import { isbot } from 'isbot'
 import { renderToPipeableStream } from 'react-dom/server'
+import { type AppLoadContext, type EntryContext, ServerRouter } from 'react-router'
 
 import { getEnv, init } from '~/utils/env.server.ts'
 
@@ -17,25 +16,25 @@ export default function handleRequest(
 	request: Request,
 	responseStatusCode: number,
 	responseHeaders: Headers,
-	remixContext: EntryContext,
+	reactRouterContext: EntryContext,
 	_loadContext: AppLoadContext,
 ): Promise<unknown> {
 	return isbot(request.headers.get('user-agent'))
-		? handleBotRequest(request, responseStatusCode, responseHeaders, remixContext)
-		: handleBrowserRequest(request, responseStatusCode, responseHeaders, remixContext)
+		? handleBotRequest(request, responseStatusCode, responseHeaders, reactRouterContext)
+		: handleBrowserRequest(request, responseStatusCode, responseHeaders, reactRouterContext)
 }
 
 function handleBotRequest(
 	request: Request,
 	responseStatusCode: number,
 	responseHeaders: Headers,
-	remixContext: EntryContext,
+	reactRouterContext: EntryContext,
 ): Promise<unknown> {
 	return new Promise((resolve, reject) => {
 		let shellRendered = false
 		const { pipe, abort } = renderToPipeableStream(
-			<RemixServer
-				context={remixContext}
+			<ServerRouter
+				context={reactRouterContext}
 				url={request.url}
 				abortDelay={ABORT_DELAY}
 			/>,
@@ -83,13 +82,13 @@ function handleBrowserRequest(
 	request: Request,
 	responseStatusCode: number,
 	responseHeaders: Headers,
-	remixContext: EntryContext,
+	reactRouterContext: EntryContext,
 ): Promise<unknown> {
 	return new Promise((resolve, reject) => {
 		let shellRendered = false
 		const { pipe, abort } = renderToPipeableStream(
-			<RemixServer
-				context={remixContext}
+			<ServerRouter
+				context={reactRouterContext}
 				url={request.url}
 				abortDelay={ABORT_DELAY}
 			/>,

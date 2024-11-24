@@ -1,7 +1,7 @@
-import { Link } from '@remix-run/react'
 import type { Meta } from '@storybook/react'
 import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react'
 import { forwardRef } from 'react'
+import { Link } from 'react-router'
 
 import { clsx } from '../../lib/utils.ts'
 import {

@@ -1,20 +1,18 @@
-/* eslint-disable react/no-unescaped-entities -- Reason: storybook story */
-import type { MetaFunction } from '@remix-run/node'
-import { Link } from '@remix-run/react'
 import type { ReactElement } from 'react'
+import { Link } from 'react-router'
 
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
-
 import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
+import type { Route } from './+types/motivations.ts'
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = () => {
 	const title = `${config.siteName} | My Motivations`
 	const description = 'What I value in a working environment'
 	return [{ title }, { name: 'description', content: description }]
 }
 
-export default function Motivation(): ReactElement {
+export default function Motivation(_: Route.ComponentProps): ReactElement {
 	return (
 		<article className={clsx('prose dark:prose-invert w-full max-w-none bg-background font-comic')}>
 			<h1>My Motivations</h1>

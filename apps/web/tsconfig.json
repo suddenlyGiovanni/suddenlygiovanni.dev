@@ -17,10 +17,13 @@
 			"react/canary",
 			"react-dom",
 			"vite/client",
-			"vitest"
-		]
+			"vitest",
+			"@react-router/node"
+		],
+		"rootDirs": [".", "./.react-router/types"]
 	},
 	"include": [
+		".react-router/types/**/*",
 		"tailwind.config.ts",
 		"vite.config.ts",
 		"postcss.config.mjs",

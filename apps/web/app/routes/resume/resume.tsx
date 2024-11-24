@@ -1,7 +1,6 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/node'
-import { Link, useLoaderData } from '@remix-run/react'
 import { Effect } from 'effect'
 import type { ReactElement } from 'react'
+import { Link, useLoaderData } from 'react-router'
 
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
@@ -18,8 +17,10 @@ import { Experiences } from './experiences.tsx'
 import { Interests } from './interests.tsx'
 import { Skills } from './skills.tsx'
 
+import type { Route } from './+types/resume.ts'
+
 // biome-ignore lint/nursery/useExplicitType: <explanation>
-export function meta({ location }: Parameters<MetaFunction>[number]) {
+export function meta({ location }: Route.MetaArgs) {
 	const title = `${config.siteName} | Résumé`
 	const description =
 		"Giovanni Ravalico's Résumé. A place where I showcase my professional experience and skills."
@@ -36,7 +37,7 @@ export function meta({ location }: Parameters<MetaFunction>[number]) {
 	]
 }
 
-export const links: LinksFunction = () => {
+export const links: Route.LinksFunction = () => {
 	return [
 		{
 			rel: 'stylesheet',
@@ -69,7 +70,7 @@ export const loader = loaderFunction(
 // 	}
 // }
 
-export default function Resume(): ReactElement {
+export default function Resume(_: Route.ComponentProps): ReactElement {
 	const { resume, meta } = useLoaderData<typeof loader>()
 	const { basics, skills, work, education, interests, languages } = resume
 

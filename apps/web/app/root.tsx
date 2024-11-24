@@ -1,15 +1,8 @@
 import { invariantResponse } from '@epic-web/invariant'
-import type {
-	ActionFunctionArgs,
-	LinksFunction,
-	LoaderFunctionArgs,
-	MetaFunction,
-} from '@remix-run/node'
-import { Links, Meta, Scripts, ScrollRestoration, data, useLoaderData } from '@remix-run/react'
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { Either, Schema } from 'effect'
-
-import type { JSX, ReactElement, ReactNode } from 'react'
+import type { ReactElement, ReactNode } from 'react'
+import { Links, Meta, Scripts, ScrollRestoration, data, useLoaderData } from 'react-router'
 
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
@@ -29,7 +22,9 @@ import { Main } from './main.tsx'
 import fontsStyleSheetUrl from './styles/fonts.css?url'
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
-export const links: LinksFunction = () => {
+import type { Route } from './+types/root.ts'
+
+export const links: Route.LinksFunction = () => {
 	return [
 		{
 			rel: 'icon',
@@ -41,7 +36,7 @@ export const links: LinksFunction = () => {
 	]
 }
 
-export function meta({ location }: Parameters<MetaFunction>[number]) {
+export function meta({ location }: Route.MetaArgs) {
 	const description = "@suddenlyGiovanni's personal website"
 	const title = config.siteName
 	return [
@@ -62,7 +57,7 @@ export function meta({ location }: Parameters<MetaFunction>[number]) {
 	]
 }
 
-export function loader({ request }: LoaderFunctionArgs) {
+export function loader({ request }: Route.LoaderArgs) {
 	return {
 		requestInfo: {
 			hints: getHints(request),
@@ -75,7 +70,7 @@ export function loader({ request }: LoaderFunctionArgs) {
 	}
 }
 
-export async function action({ request }: ActionFunctionArgs) {
+export async function action({ request }: Route.ActionArgs) {
 	const formData = await request.formData()
 	const payload = Object.fromEntries(formData)
 	const parse = Schema.decodeUnknownEither(ThemeFormSchema, { errors: 'all' })
@@ -108,7 +103,7 @@ function Document({
 	theme?: 'light' | 'dark' | null // TODO: address this prop
 	// biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
 	env?: typeof ENV
-}): JSX.Element {
+}): ReactElement {
 	return (
 		<html
 			className={clsx(theme, 'min-h-screen')}
@@ -151,15 +146,15 @@ function Document({
 	)
 }
 
-export default function App(): ReactElement {
-	const data = useLoaderData<typeof loader>()
+export default function App(_: Route.ComponentProps): ReactElement {
+	const { ENV, requestInfo } = useLoaderData<typeof loader>()
 	const theme = useTheme()
 	return (
 		<Document
-			env={data.ENV}
+			env={ENV}
 			theme={theme}
 		>
-			<Header theme={data.requestInfo.userPrefs.theme} />
+			<Header theme={requestInfo.userPrefs.theme} />
 			<Main />
 			<Footer />
 		</Document>

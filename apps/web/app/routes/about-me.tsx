@@ -1,9 +1,8 @@
-import type { MetaFunction } from '@remix-run/node'
-import { Link as RemixLink } from '@remix-run/react'
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
-import type { ComponentPropsWithoutRef, JSX, ReactElement } from 'react'
+import type { ComponentPropsWithoutRef, ReactElement } from 'react'
+import { Link as RouterLink } from 'react-router'
 
 import hero200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
 import hero811wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
@@ -19,8 +18,9 @@ import hero2670wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4c
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
+import type { Route } from './+types/about-me.ts'
 
-export function meta({ location }: Parameters<MetaFunction>[number]) {
+export function meta({ location }: Route.MetaArgs) {
 	const description = 'All about Giovanni Ravalico'
 	const title = `${config.siteName} | About me`
 	return [
@@ -54,9 +54,9 @@ const imgSrcSet = [
 	`${hero2800wAssetUrl} 2800w`,
 ].join(', ')
 
-function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RemixLink>): ReactElement {
+function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RouterLink>): ReactElement {
 	return (
-		<RemixLink
+		<RouterLink
 			className={clsx(
 				'decoration-wavy',
 				'underline-offset-4',
@@ -69,7 +69,7 @@ function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RemixLink
 	)
 }
 
-export default function AboutMe(): JSX.Element {
+export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
 		<article className={clsx('flex', 'w-full', 'flex-col', 'justify-start', 'font-comic')}>
 			<T.h2>Hi! I'm Giovanni 👋</T.h2>
