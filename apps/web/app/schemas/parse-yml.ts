@@ -1,4 +1,3 @@
-// biome-ignore lint/style/useNamingConvention: I want to have the same style of using JSON.<method>
 import * as YAML from '@std/yaml'
 import { ParseResult, Schema, SchemaAST } from 'effect'
 

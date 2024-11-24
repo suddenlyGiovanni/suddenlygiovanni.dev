@@ -1,10 +1,10 @@
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import type { JSX } from 'react'
-import type { MetaFunction } from 'react-router'
 import { routesRecord } from '~/routes-record.ts'
+import type { Route } from './+types/second-brain.ts'
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = () => {
 	return [
 		{ title: routesRecord['second-brain'].title },
 		{

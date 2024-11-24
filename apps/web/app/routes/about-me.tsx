@@ -1,8 +1,9 @@
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
-import type { ComponentPropsWithoutRef, JSX, ReactElement } from 'react'
-import { type MetaFunction, Link as RouterLink } from 'react-router'
+import type { ComponentPropsWithoutRef, ReactElement } from 'react'
+import { Link as RouterLink } from 'react-router'
+
 import hero200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
 import hero811wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
 import hero1200wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp'
@@ -17,8 +18,9 @@ import hero2670wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4c
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
+import type { Route } from './+types/about-me.ts'
 
-export function meta({ location }: Parameters<MetaFunction>[number]) {
+export function meta({ location }: Route.MetaArgs) {
 	const description = 'All about Giovanni Ravalico'
 	const title = `${config.siteName} | About me`
 	return [
@@ -67,7 +69,7 @@ function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RouterLin
 	)
 }
 
-export default function AboutMe(): JSX.Element {
+export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
 		<article className={clsx('flex', 'w-full', 'flex-col', 'justify-start', 'font-comic')}>
 			<T.h2>Hi! I'm Giovanni 👋</T.h2>

@@ -1,8 +1,8 @@
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import type { JSX } from 'react'
-import type { MetaFunction } from 'react-router'
+import type { Route } from './+types/reading-journal.ts'
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = () => {
 	return [
 		{ title: 'Reading Journal' },
 		{

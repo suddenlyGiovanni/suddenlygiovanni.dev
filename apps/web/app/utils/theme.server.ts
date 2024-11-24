@@ -3,7 +3,7 @@ import * as cookie from 'cookie'
 const cookieName = 'en_theme'
 export type Theme = 'light' | 'dark'
 
-export function setTheme(theme: Theme | 'system') {
+export function setTheme(theme: Theme | 'system'): string {
 	if (theme === 'system') {
 		return cookie.serialize(cookieName, '', { path: '/', maxAge: -1 })
 	}
