@@ -1,5 +1,5 @@
-import type { LoaderFunction } from '@remix-run/node'
 import { type Effect, type Layer, ManagedRuntime } from 'effect'
+import type { LoaderFunction } from 'react-router'
 
 export const makeRemixRuntime = <R, E>(layer: Layer.Layer<R, E, never>) => {
 	const runtime = ManagedRuntime.make(layer)
