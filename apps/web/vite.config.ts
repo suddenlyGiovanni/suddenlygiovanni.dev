@@ -1,5 +1,7 @@
+import { exec } from 'node:child_process'
 import { codecovVitePlugin } from '@codecov/vite-plugin'
 import { reactRouter } from '@react-router/dev/vite'
+import { reactRouterDevTools } from 'react-router-devtools'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
@@ -7,6 +9,59 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 
 export default defineConfig({
 	plugins: [
+		reactRouterDevTools({
+			server: {
+				silent: false,
+				logs: {
+					/**
+					 * Whether to log cookie headers in the console
+					 * @default true
+					 */
+					cookies: true,
+					/**
+					 * Whether to log deferred loaders  in the console
+					 * @default true
+					 */
+					defer: true,
+					/**
+					 * Whether to log action calls in the console
+					 * @default true
+					 * */
+					actions: true,
+					/**
+					 * Whether to log loader calls in the console
+					 * @default true
+					 */
+					loaders: true,
+					/**
+					 * Whether to log cache headers in the console
+					 * @default true
+					 */
+					cache: true,
+					/**
+					 * Whether to log site clear headers in the console
+					 * @default true
+					 */
+					siteClear: true,
+					/**
+					 * Whether to log server timings headers in the console
+					 * @default true
+					 */
+					serverTimings: true,
+				},
+			},
+			editor: {
+				name: 'WebStorm',
+				open(path, lineNumber): void {
+					exec(
+						`webstorm "${process.cwd()}/${path}" --line ${lineNumber ? `--line ${lineNumber}` : ''}`.replace(
+							/\$/g,
+							'\\$',
+						),
+					)
+				},
+			},
+		}),
 		reactRouter(),
 		tsconfigPaths(),
 		codecovVitePlugin({
