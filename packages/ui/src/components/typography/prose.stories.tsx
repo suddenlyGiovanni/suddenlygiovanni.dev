@@ -17,13 +17,10 @@ export function Prose(): ReactElement {
 		>
 			<div
 				className={clsx(
-					'relative w-full px-6 py-12 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pt-16 lg:pb-28',
-					'shadow-slate-700/10 shadow-xl',
-					'ring-1 ring-gray-900/5',
-					'bg-background',
+					'relative w-full bg-background px-6 py-12 shadow-slate-700/10 shadow-xl ring-1 ring-gray-900/5 md:mx-auto md:max-w-3xl lg:max-w-4xl lg:pt-16 lg:pb-28',
 				)}
 			>
-				<div className={clsx('prose prose-slate lg:prose-lg', 'mx-auto mt-8')}>
+				<div className={clsx('prose prose-slate lg:prose-lg mx-auto mt-8')}>
 					<svg
 						className="h-6"
 						fill="none"
@@ -47,7 +44,7 @@ export function Prose(): ReactElement {
 						/>
 					</svg>
 				</div>
-				<div className={clsx('prose prose-slate dark:prose-invert lg:prose-lg', 'mx-auto mt-8')}>
+				<div className={clsx('prose prose-slate dark:prose-invert lg:prose-lg mx-auto mt-8')}>
 					<p className="lead">
 						Until now, trying to style an article, document, or blog post with Tailwind has been a
 						tedious task that required a keen eye for typography and a lot of complex custom CSS.
