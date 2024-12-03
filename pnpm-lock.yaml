@@ -267,12 +267,12 @@ importers:
       '@storybook/test':
         specifier: 8.4.6
         version: 8.4.6(storybook@8.4.6(prettier@2.8.8))
-      '@suddenlygiovanni/config-tailwind':
-        specifier: workspace:*
-        version: link:../config-tailwind
       '@suddenlygiovanni/config-typescript':
         specifier: workspace:*
         version: link:../config-typescript
+      '@tailwindcss/typography':
+        specifier: 0.5.15
+        version: 0.5.15(tailwindcss@3.4.16)
       '@total-typescript/ts-reset':
         specifier: 0.6.1
         version: 0.6.1
@@ -303,6 +303,9 @@ importers:
       tailwindcss:
         specifier: 3.4.16
         version: 3.4.16
+      tailwindcss-animate:
+        specifier: 1.0.7
+        version: 1.0.7(tailwindcss@3.4.16)
       vite:
         specifier: 5.4.11
         version: 5.4.11(@types/node@22.10.1)
