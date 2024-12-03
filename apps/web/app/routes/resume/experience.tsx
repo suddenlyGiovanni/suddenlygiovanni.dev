@@ -212,103 +212,105 @@ function Role(
 ): ReactElement {
 	return (
 		<Card.Root
-			as="article"
+			asChild={true}
 			className="ml-0 p-6"
 		>
-			{'title' in role && (
-				<Card.Header className="px-0 pt-0">
-					<Card.Title
-						aria-label="job title"
-						className={clsx('mt-0 mb-0 font-bold text-base leading-none')}
-					>
-						{role.title}
-					</Card.Title>
-					{'startDate' in role && (
-						<Card.Description>
-							<span aria-label="start date / end date">
-								<time
-									className="mr-1"
-									dateTime={role.startDate}
-								>
-									{Either.getOrNull(formatDateLocaleShort(role.startDate))}
-								</time>
-								{role.endDate ? (
-									<>
-										-
-										<time
-											className="ml-1"
-											dateTime={role.endDate}
-										>
-											{Either.getOrNull(formatDateLocaleShort(role.endDate))}
-										</time>
-									</>
-								) : null}
-							</span>
-						</Card.Description>
-					)}
-				</Card.Header>
-			)}
-
-			<Card.Content className="p-0">
-				<dl className="my-0 flex flex-col gap-3">
-					<div>
-						<dt className="mt-0">Responsibilities</dt>
-
-						{role.responsibilities.map(resp => (
-							<dd
-								key={resp}
-								role="listitem"
-								className="text-gray-600 dark:text-gray-400"
-							>
-								{resp.split('\n').map(resP => (
-									<p
-										className="my-0"
-										key={resp}
+			<article>
+				{'title' in role && (
+					<Card.Header className="px-0 pt-0">
+						<Card.Title
+							aria-label="job title"
+							className={clsx('mt-0 mb-0 font-bold text-base leading-none')}
+						>
+							{role.title}
+						</Card.Title>
+						{'startDate' in role && (
+							<Card.Description>
+								<span aria-label="start date / end date">
+									<time
+										className="mr-1"
+										dateTime={role.startDate}
 									>
-										{resP}
-									</p>
-								))}
-							</dd>
-						))}
-					</div>
+										{Either.getOrNull(formatDateLocaleShort(role.startDate))}
+									</time>
+									{role.endDate ? (
+										<>
+											-
+											<time
+												className="ml-1"
+												dateTime={role.endDate}
+											>
+												{Either.getOrNull(formatDateLocaleShort(role.endDate))}
+											</time>
+										</>
+									) : null}
+								</span>
+							</Card.Description>
+						)}
+					</Card.Header>
+				)}
 
-					{role.highlights && (
+				<Card.Content className="p-0">
+					<dl className="my-0 flex flex-col gap-3">
 						<div>
-							<dt className="mt-0">Highlights</dt>
-							{role.highlights.map(highlight => (
+							<dt className="mt-0">Responsibilities</dt>
+
+							{role.responsibilities.map(resp => (
 								<dd
-									key={highlight}
+									key={resp}
 									role="listitem"
 									className="text-gray-600 dark:text-gray-400"
 								>
-									{highlight.split('\n').map(hP => (
+									{resp.split('\n').map(resP => (
 										<p
 											className="my-0"
-											key={hP}
+											key={resp}
 										>
-											{hP}
+											{resP}
 										</p>
 									))}
 								</dd>
 							))}
 						</div>
-					)}
 
-					{role.technologies && (
-						<div className="flex-col items-start p-0">
-							<dt className="mb-2">Technologies</dt>
-							<dd className="flex flex-wrap gap-2">
-								{role.technologies.map(tech => (
-									<Tech
-										key={tech}
-										tech={tech}
-									/>
+						{role.highlights && (
+							<div>
+								<dt className="mt-0">Highlights</dt>
+								{role.highlights.map(highlight => (
+									<dd
+										key={highlight}
+										role="listitem"
+										className="text-gray-600 dark:text-gray-400"
+									>
+										{highlight.split('\n').map(hP => (
+											<p
+												className="my-0"
+												key={hP}
+											>
+												{hP}
+											</p>
+										))}
+									</dd>
 								))}
-							</dd>
-						</div>
-					)}
-				</dl>
-			</Card.Content>
+							</div>
+						)}
+
+						{role.technologies && (
+							<div className="flex-col items-start p-0">
+								<dt className="mb-2">Technologies</dt>
+								<dd className="flex flex-wrap gap-2">
+									{role.technologies.map(tech => (
+										<Tech
+											key={tech}
+											tech={tech}
+										/>
+									))}
+								</dd>
+							</div>
+						)}
+					</dl>
+				</Card.Content>
+			</article>
 		</Card.Root>
 	)
 }

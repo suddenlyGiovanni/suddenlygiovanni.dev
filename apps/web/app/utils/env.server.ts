@@ -17,7 +17,16 @@ const envSchema = Schema.Struct({
 	),
 	ALLOW_INDEXING: Schema.optionalWith(
 		Schema.transform(Schema.Literal('true', 'false'), Schema.Boolean, {
-			decode: (string: 'true' | 'false'): boolean => string === 'true',
+			decode: (string: 'true' | 'false'): boolean => {
+				switch (string) {
+					case 'true':
+						return true
+					case 'false':
+						return false
+					default:
+						return false
+				}
+			},
 			encode: (boolean: boolean): 'true' | 'false' => (boolean ? 'true' : 'false'),
 		}),
 		{
@@ -27,13 +36,11 @@ const envSchema = Schema.Struct({
 	),
 })
 
-type EnvSchema = Schema.Schema.Type<typeof envSchema>
-
 declare global {
 	// biome-ignore lint/style/noNamespace: <explanation>
 	// biome-ignore lint/style/useNamingConvention: this is the correct overload
 	namespace NodeJS {
-		interface ProcessEnv extends EnvSchema {}
+		interface ProcessEnv extends Schema.Schema.Encoded<typeof envSchema> {}
 	}
 }
 
