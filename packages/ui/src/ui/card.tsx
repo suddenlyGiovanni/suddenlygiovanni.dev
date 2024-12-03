@@ -1,20 +1,13 @@
-import { type ElementType, type HTMLAttributes, forwardRef } from 'react'
-
-import type {
-	PolymorphicComponentPropWithRef,
-	PolymorphicRef,
-} from '../lib/polymorphic-component-prop.tsx'
+import { Slot } from '@radix-ui/react-slot'
+import { type ComponentProps, type ElementRef, type HTMLAttributes, forwardRef } from 'react'
 import { clsx } from '../lib/utils.ts'
 
-const Root = forwardRef(
-	<C extends ElementType = 'div'>(
-		{ className, as, ...props }: PolymorphicComponentPropWithRef<C>,
-		ref: PolymorphicRef<C>,
-	) => {
-		const Component = as ?? 'div'
+const Root = forwardRef<ElementRef<'div'>, ComponentProps<'div'> & { asChild?: boolean }>(
+	({ className, asChild = false, ...props }, forwardedRef) => {
+		const Component = asChild ? Slot : 'div'
 		return (
 			<Component
-				ref={ref}
+				ref={forwardedRef}
 				className={clsx('rounded-xl border bg-card text-card-foreground shadow', className)}
 				{...props}
 			/>
