@@ -41,14 +41,7 @@ export function SuddenlyGiovanni({
 			</Avatar>
 			<h1
 				className={clsx(
-					'my-auto',
-					'ml-4',
-					'select-none',
-					'text-base',
-					'lg:text-base',
-					'text-foreground',
-					'font-comic',
-					'font-comic-hero',
+					'my-auto ml-4 select-none font-comic font-comic-hero text-base text-foreground lg:text-base',
 				)}
 			>
 				suddenlyGiovanni
