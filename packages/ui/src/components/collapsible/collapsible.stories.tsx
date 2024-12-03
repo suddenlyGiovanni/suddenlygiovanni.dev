@@ -9,22 +9,13 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../../ui/co
 const rootClass = clsx('sans max-w-[20em]')
 
 const triggerClass = clsx(
-	['w-full', 'text-center'],
-	'box-border border-0 bg-background p-2.5 text-foreground text-xl',
-	'focus:text-red-500 focus:shadow-inner focus:outline-none',
-	'data-[disabled]:text-gray-300',
-	'data-[state=open]:bg-red-500 data-[state="open"]:text-white',
-	'focus:data-[state=open]:text-black',
+	'box-border w-full border-0 bg-background p-2.5 text-center text-foreground text-xl focus:text-red-500 focus:shadow-inner focus:outline-none data-[state=open]:bg-red-500 data-[disabled]:text-gray-300 data-[state="open"]:text-white focus:data-[state=open]:text-black',
 )
 
 const contentClass = clsx('p-2.5 leading-6')
 
 const styles = clsx(
-	'border-2 border-blue-500 bg-blue-300 p-2.5',
-	'data-[state=closed]:border-red-500',
-	'data-[state=open]:border-green-500',
-	'data-[disabled]:border-dashed',
-	':disabled:opacity-50',
+	'border-2 border-blue-500 bg-blue-300 p-2.5 :disabled:opacity-50 data-[state=closed]:border-red-500 data-[state=open]:border-green-500 data-[disabled]:border-dashed',
 )
 
 const rootAttrClass = clsx(styles)
