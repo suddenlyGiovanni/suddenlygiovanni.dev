@@ -1,21 +1,26 @@
-import { type ComponentProps, forwardRef } from 'react'
+import { Slot } from '@radix-ui/react-slot'
+import { type ComponentProps, type ElementRef, forwardRef } from 'react'
 import { clsx } from '../../lib/utils.ts'
 
 const bodyName = 'Body'
-const Body = forwardRef<HTMLBodyElement, ComponentProps<'body'>>(
-	({ className, children, ...rest }, ref) => {
-		return (
-			<body
-				className={clsx('grid w-full auto-rows-auto grid-cols-1', className)}
-				data-testid={bodyName}
-				ref={ref}
-				{...rest}
-			>
-				{children}
-			</body>
-		)
-	},
-)
+const Body = forwardRef<
+	ElementRef<'body'>,
+	ComponentProps<'body'> & {
+		asChild?: boolean
+	}
+>(({ className, asChild = false, children, ...rest }, forwardedRef) => {
+	const Comp = asChild ? Slot : 'body'
+	return (
+		<Comp
+			className={clsx('grid w-full auto-rows-auto grid-cols-1', className)}
+			data-testid={bodyName}
+			ref={forwardedRef}
+			{...rest}
+		>
+			{children}
+		</Comp>
+	)
+})
 Body.displayName = bodyName
 
 const headerName = 'Header'

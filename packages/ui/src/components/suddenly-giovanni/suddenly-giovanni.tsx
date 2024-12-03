@@ -33,8 +33,10 @@ export function SuddenlyGiovanni({
 				<AvatarFallback>
 					<Skeleton
 						className="h-full w-full rounded-xl"
-						as="span"
-					/>
+						asChild={true}
+					>
+						<span />
+					</Skeleton>
 				</AvatarFallback>
 			</Avatar>
 			<h1
