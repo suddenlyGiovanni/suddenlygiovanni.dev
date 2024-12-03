@@ -7,19 +7,7 @@ import { HamburgerIcon } from './hamburger-icon.tsx'
 
 const styles = tv({
 	base: clsx(
-		'relative',
-		'size-6',
-		'aspect-square',
-		'border-0',
-		'rounded',
-		'bg-transparent',
-		'flex',
-		'items-center',
-		'content-center',
-		'justify-center',
-		'outline',
-		'outline-offset-2',
-		'outline-blue-600',
+		'relative flex aspect-square size-6 content-center items-center justify-center rounded border-0 bg-transparent outline outline-blue-600 outline-offset-2',
 	),
 	variants: {
 		isFocusVisible: {
@@ -40,7 +28,7 @@ export function NavigationMenuToggle(
 			)}
 			type="button"
 		>
-			{({ isSelected }) => (
+			{({ isSelected }): ReactElement => (
 				<AccessibleIcon label="Navigation menu toggle">
 					<HamburgerIcon isSelected={isSelected} />
 				</AccessibleIcon>
