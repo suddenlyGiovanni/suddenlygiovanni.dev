@@ -24,7 +24,7 @@
 		"react-router": "7.0.1"
 	},
 	"devDependencies": {
-		"@codecov/vite-plugin": "1.4.0",
+		"@codecov/vite-plugin": "1.5.0",
 		"@react-router/dev": "7.0.1",
 		"@suddenlygiovanni/config-tailwind": "workspace:*",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
