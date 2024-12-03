@@ -19,69 +19,36 @@ const meta = {
 } satisfies Meta<typeof Accordion>
 
 const rootClass = clsx(
-	'font-sans',
-	[
-		'data-[orientation=horizontal]:flex',
-		'data-[orientation=horizontal]:max-w-[40em]',
-		'data-[orientation=horizontal]:h-[50vh]',
-	],
-	'data-[orientation=vertical]:max-w-[20em]',
+	'font-sans data-[orientation=horizontal]:flex data-[orientation=horizontal]:h-[50vh] data-[orientation=horizontal]:max-w-[40em] data-[orientation=vertical]:max-w-[20em]',
 )
 
 const itemClass = clsx(
-	[
-		'data-[orientation=horizontal]:flex',
-		'data-[orientation=horizontal]:border-r-2',
-		'data-[orientation=horizontal]:border-solid',
-		'data-[orientation=horizontal]:border-white',
-	],
-	[
-		'data-[orientation=vertical]:border-b-2',
-		'data-[orientation=vertical]:border-solid',
-		'data-[orientation=vertical]:border-white',
-	],
+	'data-[orientation=horizontal]:flex data-[orientation=horizontal]:border-white data-[orientation=vertical]:border-white data-[orientation=horizontal]:border-r-2 data-[orientation=vertical]:border-b-2 data-[orientation=horizontal]:border-solid data-[orientation=vertical]:border-solid',
 )
 
 const headerClass = clsx('m-0', 'data-[orientation=horizontal]:h-full')
 
 const recommendedCssAccordionTrigger = clsx(
-	'align-inherit',
-	'data-[orientation=horizontal]:h-full',
-	'data-[orientation=vertical]:w-full',
+	'align-inherit data-[orientation=horizontal]:h-full data-[orientation=vertical]:w-full',
 )
 
 const triggerClass = clsx(
 	recommendedCssAccordionTrigger,
-	['box-border border-0 bg-black p-2.5 text-lg text-white'],
-	'focus:text-red-500 focus:shadow-inner focus:outline-none',
-	'data-[disabled]:text-gray-300',
-	[
-		'data-[state=open]:bg-red-500',
-		'data-[state=open]:text-white',
-		['focus:data-[state=open]:text-black', 'focus:data-[state=open]:shadow-gray-950'],
-	],
+	'box-border border-0 bg-black p-2.5 text-lg text-white focus:text-red-500 focus:shadow-inner focus:outline-none data-[state=open]:bg-red-500 data-[disabled]:text-gray-300 data-[state=open]:text-white focus:data-[state=open]:text-black focus:data-[state=open]:shadow-gray-950',
 )
 
 const contentClass = clsx('p-2.5 leading-6')
 
 const styles = clsx(
-	'border-2 border-blue-500 border-solid bg-blue-800 p-10',
-	'data-[state=closed]:border-red-500',
-	'data-[state=open]:border-green-500',
-	'data-[disabled]:border-dashed',
-	'disabled:opacity-50',
+	'border-2 border-blue-500 border-solid bg-blue-800 p-10 disabled:opacity-50 data-[state=closed]:border-red-500 data-[state=open]:border-green-500 data-[disabled]:border-dashed',
 )
 
 const animatedContentClass = clsx(
-	'overflow-hidden',
-	'data-[state=open]:animate-accordion-up',
-	'data-[state=closed]:animate-accordion-down',
+	'overflow-hidden data-[state=closed]:animate-accordion-down data-[state=open]:animate-accordion-up',
 )
 
 const animated2dContentClass = clsx(
-	'overflow-hidden',
-	'data-[state=open]:animate-accordion-open',
-	'data-[state=closed]:animate-accordion-close',
+	'overflow-hidden data-[state=closed]:animate-accordion-close data-[state=open]:animate-accordion-open',
 )
 
 const rootAttrClass = clsx(styles)
