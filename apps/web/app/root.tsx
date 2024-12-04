@@ -1,27 +1,28 @@
-import { invariantResponse } from '@epic-web/invariant'
-import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
-import { Either, Schema } from 'effect'
-import type { ReactElement, ReactNode } from 'react'
-import { Links, Meta, Scripts, ScrollRestoration, data, useLoaderData } from 'react-router'
+import {invariantResponse} from '@epic-web/invariant'
+import {Types, makeOpenGraphWebsite} from '@suddenlygiovanni/open-graph-protocol'
+import {Either, Schema} from 'effect'
+import type {ReactElement, ReactNode} from 'react'
+import {Links, Meta, Scripts, ScrollRestoration, data, useLoaderData} from 'react-router'
 
-import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
-import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
+import {Layout} from '@suddenlygiovanni/ui/components/layout/layout.tsx'
+import {clsx} from '@suddenlygiovanni/ui/lib/utils.ts'
 
-import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
-import { config } from '~/config.ts'
-import { getHints } from '~/utils/client-hints.tsx'
-import { getEnv } from '~/utils/env.server.ts'
-import { getDomainUrl } from '~/utils/misc.ts'
-import { getTheme, setTheme } from '~/utils/theme.server.ts'
-import { ThemeFormSchema, useTheme } from '~/utils/theme.tsx'
+import hero2800wAssetUrl
+	from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import {config} from '~/config.ts'
+import {getHints} from '~/utils/client-hints.tsx'
+import {getEnv} from '~/utils/env.server.ts'
+import {getDomainUrl} from '~/utils/misc.ts'
+import {getTheme, setTheme} from '~/utils/theme.server.ts'
+import {ThemeFormSchema, useTheme} from '~/utils/theme.tsx'
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
-import { Footer } from './footer.tsx'
-import { Header } from './header.tsx'
-import { Main } from './main.tsx'
+import {Footer} from './footer.tsx'
+import {Header} from './header.tsx'
+import {Main} from './main.tsx'
 
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
-import type { Route } from './+types/root.ts'
+import type {Route} from './+types/root.ts'
 
 export const links: Route.LinksFunction = () => {
 	return [
@@ -30,15 +31,15 @@ export const links: Route.LinksFunction = () => {
 			type: 'image/svg+xml',
 			href: faviconAssertUrl,
 		},
-		{ rel: 'stylesheet', href: tailwindStyleSheetUrl, type: 'text/css' },
+		{rel: 'stylesheet', href: tailwindStyleSheetUrl, type: 'text/css'},
 	]
 }
 
-export function meta({ location }: Route.MetaArgs) {
+export function meta({location}: Route.MetaArgs) {
 	const description = "@suddenlyGiovanni's personal website"
 	const title = config.siteName
 	return [
-		{ title },
+		{title},
 		{
 			name: 'description',
 			content: description,
@@ -55,25 +56,25 @@ export function meta({ location }: Route.MetaArgs) {
 	]
 }
 
-export function loader({ request }: Route.LoaderArgs) {
+export function loader({request}: Route.LoaderArgs) {
 	return {
 		requestInfo: {
 			hints: getHints(request),
 			origin: getDomainUrl(request),
 			path: new URL(request.url).pathname,
-			userPrefs: { theme: getTheme(request) },
+			userPrefs: {theme: getTheme(request)},
 		},
 
 		ENV: getEnv(),
 	}
 }
 
-export async function action({ request }: Route.ActionArgs) {
+export async function action({request}: Route.ActionArgs) {
 	const formData = await request.formData()
 	const payload = Object.fromEntries(formData)
-	const parse = Schema.decodeUnknownEither(ThemeFormSchema, { errors: 'all' })
+	const parse = Schema.decodeUnknownEither(ThemeFormSchema, {errors: 'all'})
 	const result = parse(payload)
-	invariantResponse(Either.isRight(result), 'Invalid theme received', { status: 400 })
+	invariantResponse(Either.isRight(result), 'Invalid theme received', {status: 400})
 
 	return data(
 		{
@@ -92,63 +93,66 @@ export async function action({ request }: Route.ActionArgs) {
 }
 
 function Document({
-	children,
-	env,
-	theme,
-}: {
+	                  children,
+	                  env,
+	                  theme,
+                  }: {
 	children: ReactNode
-	// nonce: string
 	theme?: 'light' | 'dark' | null // TODO: address this prop
-	// biome-ignore lint/correctness/noUndeclaredVariables: <explanation>
 	env?: typeof ENV
 }): ReactElement {
+	const colorScheme = theme ?? 'light dark'
 	return (
 		<html
-			className={clsx(theme, 'min-h-screen')}
-			data-theme={clsx(theme)}
+			className="min-h-screen"
+			data-theme={theme}
 			lang="en"
 		>
-			<head>
-				<meta charSet="utf-8" />
-				<meta
-					httpEquiv="Content-Type"
-					content="text/html;charset=utf-8"
-				/>
-				<meta
-					content="width=device-width, initial-scale=1"
-					name="viewport"
-				/>
-				<Meta />
-				<Links />
-			</head>
-			<Layout.Body
-				className={clsx('min-h-full bg-background font-sans text-foreground antialiased')}
-			>
-				{children}
-				<ScrollRestoration />
-				<script
-					// biome-ignore lint/security/noDangerouslySetInnerHtml: we need to set the ENV variable
-					dangerouslySetInnerHTML={{
-						__html: `window.ENV = ${JSON.stringify(env, null, 2)};`,
-					}}
-				/>
-				<Scripts />
-			</Layout.Body>
+		<head>
+			<meta charSet="utf-8"/>
+			<meta
+				httpEquiv="Content-Type"
+				content="text/html;charset=utf-8"
+			/>
+			<meta
+				content="width=device-width, initial-scale=1"
+				name="viewport"
+			/>
+			<meta
+				name="color-scheme"
+				content={colorScheme}
+			/>
+			<Meta/>
+			<Links/>
+		</head>
+		<Layout.Body
+			className={clsx('min-h-full bg-background font-sans text-foreground antialiased')}
+		>
+			{children}
+			<ScrollRestoration/>
+			<script
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: we need to set the ENV variable
+				dangerouslySetInnerHTML={{
+					__html: `window.ENV = ${JSON.stringify(env, null, 2)};`,
+				}}
+			/>
+			<Scripts/>
+		</Layout.Body>
 		</html>
 	)
 }
 
 export default function App(_: Route.ComponentProps): ReactElement {
-	const { ENV, requestInfo } = useLoaderData<typeof loader>()
+	const {ENV, requestInfo} = useLoaderData<typeof loader>()
 	const theme = useTheme()
 	return (
 		<Document
 			env={ENV}
 			theme={theme}
 		>
-			<Header theme={requestInfo.userPrefs.theme} />
-			<Main />
-			<Footer />
+			<Header theme={requestInfo.userPrefs.theme}/>
+			<Main/>
+			<Footer/>
 		</Document>
 	)
 }
