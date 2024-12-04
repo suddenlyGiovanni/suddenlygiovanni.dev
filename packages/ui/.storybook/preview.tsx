@@ -1,9 +1,10 @@
-import {withThemeByDataAttribute} from '@storybook/addon-themes'
-import type {Preview, ReactRenderer} from '@storybook/react'
-import type {ReactNode} from 'react'
-import {createRoutesStub} from 'react-router'
+import { withThemeByDataAttribute } from '@storybook/addon-themes'
+import type { Preview, ReactRenderer } from '@storybook/react'
+import type { ReactNode } from 'react'
+import { createRoutesStub } from 'react-router'
 
-import {withThemeByColorScheme} from '.storybook/withThemeByColorScheme.tsx'
+import { withThemeByColorScheme } from './with_theme_by_color_scheme.tsx'
+
 import '../src/styles/styles.css'
 
 const themeConfig = {
@@ -16,7 +17,7 @@ const themeConfig = {
 
 const preview: Preview = {
 	parameters: {
-		actions: {argTypesRegex: '^on.*'},
+		actions: { argTypesRegex: '^on.*' },
 		controls: {
 			matchers: {
 				color: /(background|color)$/i,
@@ -33,7 +34,7 @@ const preview: Preview = {
 					Component: (): ReactNode => story(),
 				},
 			])
-			return <RemixStub/>
+			return <RemixStub />
 		},
 
 		withThemeByDataAttribute<ReactRenderer>({
