@@ -34,7 +34,7 @@ const recommendedCssAccordionTrigger = clsx(
 
 const triggerClass = clsx(
 	recommendedCssAccordionTrigger,
-	'box-border border-0 bg-black p-2.5 text-lg text-white focus:text-red-500 focus:shadow-inner focus:outline-hidden data-[state=open]:bg-red-500 data-disabled:text-gray-300 data-[state=open]:text-white focus:data-[state=open]:text-black focus:data-[state=open]:shadow-gray-950',
+	'box-border border-0 bg-black p-2.5 text-lg text-white focus:text-red-500 focus:shadow-inner focus:outline-hidden data-[state=open]:bg-red-500 data-[state=open]:text-white data-disabled:text-gray-300 focus:data-[state=open]:text-black focus:data-[state=open]:shadow-gray-950',
 )
 
 const contentClass = clsx('p-2.5 leading-6')

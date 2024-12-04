@@ -9,7 +9,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../../ui/co
 const rootClass = clsx('sans max-w-[20em]')
 
 const triggerClass = clsx(
-	'box-border w-full border-0 bg-background p-2.5 text-center text-foreground text-xl focus:text-red-500 focus:shadow-inner focus:outline-hidden data-[state=open]:bg-red-500 data-disabled:text-gray-300 data-[state="open"]:text-white focus:data-[state=open]:text-black',
+	'box-border w-full border-0 bg-background p-2.5 text-center text-foreground text-xl focus:text-red-500 focus:shadow-inner focus:outline-hidden data-[state=open]:bg-red-500 data-[state="open"]:text-white data-disabled:text-gray-300 focus:data-[state=open]:text-black',
 )
 
 const contentClass = clsx('p-2.5 leading-6')

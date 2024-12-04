@@ -5,7 +5,7 @@ import { clsx } from '../../lib/utils.ts'
 export const P = forwardRef<HTMLParagraphElement, ComponentPropsWithoutRef<'p'>>(
 	({ className, children, ...props }, ref) => (
 		<p
-			className={clsx('leading-7 not-first:mt-6', className)}
+			className={clsx('not-first:mt-6 leading-7', className)}
 			ref={ref}
 			{...props}
 		>
