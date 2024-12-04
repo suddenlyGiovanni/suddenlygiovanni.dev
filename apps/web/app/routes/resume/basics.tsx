@@ -56,7 +56,7 @@ function Header({
 				<em>
 					If you consider me for a role, read through{' '}
 					<Link
-						className={clsx('font-medium', 'text-primary', 'underline', 'underline-offset-4')}
+						className={clsx('font-medium text-primary underline underline-offset-4')}
 						to={routesRecord.motivations.url}
 					>
 						my motivations
@@ -87,37 +87,12 @@ function Header({
 
 const addressClasses = {
 	address: clsx(
-		[
-			'mx-auto',
-			'my-1',
-			'p-4',
-			'w-auto',
-			'max-w-max',
-			'rounded-md',
-			'bg-card-foreground/5',
-			'backdrop-blur-3xl',
-			'shadow-lg',
-			'ring-1',
-			'rounded-xl',
-			'ring-black/5',
-		],
-		['md:w-full', 'md:max-w-none', 'md:px-0', 'md:px-24'],
+		'mx-auto my-1 w-auto max-w-max rounded-md rounded-xl bg-card-foreground/5 p-4 shadow-lg ring-1 ring-black/5 backdrop-blur-3xl md:w-full md:max-w-none md:px-0 md:px-24',
 	),
 	ul: clsx(
-		'my-0 pl-0',
-		['ml-0', 'grid', 'grid-cols-1'],
-		['md:grid-cols-2', 'md:grid-flow-row-dense', 'md:justify-items-start'],
+		'my-0 ml-0 grid grid-cols-1 pl-0 md:grid-flow-row-dense md:grid-cols-2 md:justify-items-start',
 	),
-	li: clsx(
-		'flex',
-		'flex-row',
-		'items-center',
-		'gap-3',
-		'text-start',
-		'max-w-72',
-		'mx-auto',
-		'w-full',
-	),
+	li: clsx('mx-auto flex w-full max-w-72 flex-row items-center gap-3 text-start'),
 }
 
 interface ContactsProps {

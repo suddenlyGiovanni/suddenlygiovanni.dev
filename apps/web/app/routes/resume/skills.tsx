@@ -84,7 +84,7 @@ const Skill = memo(function Skill({
 					<span>{name}</span>
 					<Trigger asChild={true}>
 						<Button
-							className={clsx('rounded-full', 'transition-all [&[data-state=open]>svg]:rotate-180')}
+							className={clsx('rounded-full transition-all [&[data-state=open]>svg]:rotate-180')}
 							size="icon"
 							type="button"
 							variant="ghost"
