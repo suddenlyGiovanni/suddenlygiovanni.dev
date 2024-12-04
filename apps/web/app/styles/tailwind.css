@@ -1,1 +1,208 @@
-@import "@suddenlygiovanni/config-tailwind/styles.css";
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "tailwindcss-animate";
+
+@source '../../../../packages/ui/src/**/*.tsx';
+
+@variant dark (&:is([data-theme="dark"] *));
+
+@theme {
+	--font-comic: "Shantell Sans", cursive;
+	--font-comic--font-feature-settings: "cv11", "ss01";
+	--font-comic--font-variation-settings: "BNCE" 30, "INFM" 50, "SPAC" 0;
+
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+
+	--color-destructive: var(--destructive);
+	--color-destructive-foreground: var(--destructive-foreground);
+
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+
+	--radius-lg: var(--radius);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-sm: calc(var(--radius) - 4px);
+
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
+	--animate-accordion-open: accordion-open 1000ms ease-out;
+	--animate-accordion-close: accordion-close 1000ms ease-out;
+
+	@keyframes accordion-open {
+		from {
+			width: 0;
+			height: 0;
+		}
+		to {
+			width: var(--radix-accordion-content-width);
+			height: var(--radix-accordion-content-height);
+		}
+	}
+	@keyframes accordion-close {
+		from {
+			width: var(--radix-accordion-content-width);
+			height: var(--radix-accordion-content-height);
+		}
+		to {
+			width: 0;
+			height: 0;
+		}
+	}
+	@keyframes accordion-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--radix-accordion-content-height);
+		}
+	}
+	@keyframes accordion-up {
+		from {
+			height: var(--radix-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+}
+
+@utility container {
+	margin-inline: auto;
+	padding-inline: 2rem;
+	@media (width >= theme(--breakpoint-sm)) {
+		max-width: none;
+	}
+	@media (width >= 1400px) {
+		max-width: 1400px;
+	}
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentColor);
+	}
+}
+
+@layer utilities {
+	@font-face {
+		font-family: "Shantell Sans";
+		font-style: normal;
+		font-weight: 400;
+		font-display: swap;
+		src: local(""), url("/fonts/ShantellSans.woff2") format("woff2");
+	}
+}
+
+@layer base {
+	:root {
+		--background: hsl(0 0% 100%);
+		--foreground: hsl(0 0% 3.9%);
+
+		--card: hsl(0 0% 100%);
+		--card-foreground: hsl(0 0% 3.9%);
+
+		--popover: hsl(0 0% 100%);
+		--popover-foreground: hsl(0 0% 3.9%);
+
+		--primary: hsl(0 0% 9%);
+		--primary-foreground: hsl(0 0% 98%);
+
+		--secondary: hsl(0 0% 96.1%);
+		--secondary-foreground: hsl(0 0% 9%);
+
+		--muted: hsl(0 0% 96.1%);
+		--muted-foreground: hsl(0 0% 45.1%);
+
+		--accent: hsl(0 0% 96.1%);
+		--accent-foreground: hsl(0 0% 9%);
+
+		--destructive: hsl(0 84.2% 60.2%);
+		--destructive-foreground: hsl(0 0% 98%);
+
+		--border: hsl(0 0% 89.8%);
+		--input: hsl(0 0% 89.8%);
+		--ring: hsl(0 0% 3.9%);
+
+		--radius: 0.75rem;
+	}
+
+	.dark,
+	:root[class~="dark"] {
+		--background: hsl(0 0% 3.9%);
+		--foreground: hsl(0 0% 98%);
+
+		--card: hsl(0 0% 3.9%);
+		--card-foreground: hsl(0 0% 98%);
+
+		--popover: hsl(0 0% 3.9%);
+		--popover-foreground: hsl(0 0% 98%);
+
+		--primary: hsl(0 0% 98%);
+		--primary-foreground: hsl(0 0% 9%);
+
+		--secondary: hsl(0 0% 14.9%);
+		--secondary-foreground: hsl(0 0% 98%);
+
+		--muted: hsl(0 0% 14.9%);
+		--muted-foreground: hsl(0 0% 63.9%);
+
+		--accent: hsl(0 0% 14.9%);
+		--accent-foreground: hsl(0 0% 98%);
+
+		--destructive: hsl(0 62.8% 30.6%);
+		--destructive-foreground: hsl(0 0% 98%);
+
+		--border: hsl(0 0% 14.9%);
+		--input: hsl(0 0% 14.9%);
+		--ring: hsl(0 0% 83.1%);
+	}
+
+	* {
+		@apply border-border;
+	}
+
+	body {
+		@apply bg-background text-foreground;
+		font-synthesis-weight: none;
+		text-rendering: optimizeLegibility;
+	}
+}
+
+.font-comic-hero {
+	font-family: "Shantell Sans", cursive;
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-style: italic;
+	font-variation-settings: "BNCE" 40, "INFM" 75, "SPAC" 0;
+}

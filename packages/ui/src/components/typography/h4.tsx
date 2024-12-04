@@ -5,7 +5,7 @@ import { clsx } from '../../lib/utils.ts'
 export const H4 = forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<'h4'>>(
 	({ className, children, ...props }, ref) => (
 		<h4
-			className={clsx('scroll-m-20', 'text-xl', 'font-semibold', 'tracking-tight', className)}
+			className={clsx('scroll-m-20 font-semibold text-xl tracking-tight', className)}
 			ref={ref}
 			{...props}
 		>

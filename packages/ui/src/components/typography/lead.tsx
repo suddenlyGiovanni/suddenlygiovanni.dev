@@ -5,7 +5,7 @@ import { clsx } from '../../lib/utils.ts'
 export const Lead = forwardRef<HTMLHeadingElement, ComponentPropsWithoutRef<'p'>>(
 	({ className, children, ...props }, ref) => (
 		<h1
-			className={clsx('text-xl', 'text-muted-foreground', className)}
+			className={clsx('text-muted-foreground text-xl', className)}
 			ref={ref}
 			{...props}
 		>

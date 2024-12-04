@@ -19,7 +19,6 @@ import { Footer } from './footer.tsx'
 import { Header } from './header.tsx'
 import { Main } from './main.tsx'
 
-import fontsStyleSheetUrl from './styles/fonts.css?url'
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
 import type { Route } from './+types/root.ts'
@@ -31,7 +30,6 @@ export const links: Route.LinksFunction = () => {
 			type: 'image/svg+xml',
 			href: faviconAssertUrl,
 		},
-		{ rel: 'stylesheet', href: fontsStyleSheetUrl, type: 'text/css' },
 		{ rel: 'stylesheet', href: tailwindStyleSheetUrl, type: 'text/css' },
 	]
 }

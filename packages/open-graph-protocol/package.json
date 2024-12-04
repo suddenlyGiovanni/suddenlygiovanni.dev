@@ -14,7 +14,6 @@
 	},
 	"description": "A high-level utility library to construct `Open Graph Protocol` data structure correctly and in a type-safe manner.",
 	"devDependencies": {
-		"@suddenlygiovanni/config-tailwind": "workspace:*",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"typescript": "5.7.2"
 	},

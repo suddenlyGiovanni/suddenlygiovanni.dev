@@ -57,13 +57,7 @@ const imgSrcSet = [
 function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RouterLink>): ReactElement {
 	return (
 		<RouterLink
-			className={clsx(
-				'decoration-wavy',
-				'underline-offset-4',
-				'underline',
-				'decoration-auto',
-				className,
-			)}
+			className={clsx('underline decoration-auto decoration-wavy underline-offset-4', className)}
 			{...props}
 		/>
 	)
@@ -71,7 +65,7 @@ function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RouterLin
 
 export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
-		<article className={clsx('flex', 'w-full', 'flex-col', 'justify-start', 'font-comic')}>
+		<article className={clsx('flex w-full flex-col justify-start font-comic')}>
 			<T.h2>Hi! I'm Giovanni 👋</T.h2>
 			<picture>
 				<source

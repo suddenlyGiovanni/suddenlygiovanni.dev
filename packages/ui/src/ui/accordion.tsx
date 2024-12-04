@@ -27,10 +27,7 @@ const AccordionTrigger = forwardRef<
 	<Header className="flex">
 		<Trigger
 			className={clsx(
-				'flex flex-1 items-center justify-between',
-				'py-4',
-				'font-medium text-sm hover:underline',
-				'transition-all [&[data-state=open]>svg]:rotate-180',
+				'flex flex-1 items-center justify-between py-4 text-left font-medium text-sm transition-all hover:underline [&[data-state=open]>svg]:rotate-180',
 				className,
 			)}
 			ref={ref}
@@ -51,10 +48,7 @@ const AccordionContent = forwardRef<
 >(({ className, children, ...props }, ref) => (
 	<Content
 		className={clsx(
-			'overflow-hidden',
-			'text-sm',
-			'data-[state=closed]:animate-accordion-up',
-			'data-[state=open]:animate-accordion-down',
+			'overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
 		)}
 		ref={ref}
 		{...props}

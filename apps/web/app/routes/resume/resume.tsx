@@ -77,9 +77,7 @@ export default function Resume(_: Route.ComponentProps): ReactElement {
 	return (
 		<article
 			className={clsx(
-				'flex flex-col items-center justify-start gap-y-8',
-				'w-full max-w-none',
-				'prose prose-blue dark:prose-invert',
+				'prose prose-blue dark:prose-invert flex w-full max-w-none flex-col items-center justify-start gap-y-8',
 			)}
 		>
 			<Basics basics={basics} />

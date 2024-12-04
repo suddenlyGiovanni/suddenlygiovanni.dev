@@ -5,7 +5,7 @@ import { clsx } from '../../lib/utils.ts'
 export const Small = forwardRef<HTMLElement, ComponentPropsWithoutRef<'small'>>(
 	({ className, children, ...props }, ref) => (
 		<small
-			className={clsx('text-sm', 'font-medium', 'leading-none', className)}
+			className={clsx('font-medium text-sm leading-none', className)}
 			ref={ref}
 			{...props}
 		>

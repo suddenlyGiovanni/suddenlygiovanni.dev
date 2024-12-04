@@ -8,7 +8,7 @@ const Root = forwardRef<ElementRef<'div'>, ComponentProps<'div'> & { asChild?: b
 		return (
 			<Component
 				ref={forwardedRef}
-				className={clsx('rounded-xl border bg-card text-card-foreground shadow', className)}
+				className={clsx('rounded-xl border bg-card text-card-foreground shadow-sm', className)}
 				{...props}
 			/>
 		)

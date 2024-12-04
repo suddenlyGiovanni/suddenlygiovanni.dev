@@ -142,9 +142,7 @@ const ExperienceHeader = memo(function ExperienceHeader(work: {
 			<Trigger asChild={true}>
 				<Button
 					className={clsx(
-						'rounded-full',
-						'transition-all [&[data-state=open]>svg]:rotate-180',
-						'absolute top-0 right-0',
+						'absolute top-0 right-0 rounded-full transition-all [&[data-state=open]>svg]:rotate-180',
 					)}
 					size="icon"
 					type="button"

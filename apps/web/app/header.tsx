@@ -30,33 +30,14 @@ function calculateClassName({
 }): string {
 	return clsx(
 		// baseClasses
-		[
-			'select-none',
-			'p-1',
-			'font-medium',
-			'capitalize',
-			'md:text-sm',
-			'transition-colors',
-			'hover:text-foreground/80',
-			'text-foreground/60',
-		],
+		'select-none p-1 font-medium text-foreground/60 capitalize transition-colors hover:text-foreground/80 md:text-sm',
 		// disabledClasses
-		[
-			'aria-[disabled]:pointer-events-none',
-			'aria-[disabled]:cursor-not-allowed',
-			'aria-[disabled]:line-through',
-		],
+		'aria-[disabled]:pointer-events-none aria-[disabled]:cursor-not-allowed aria-[disabled]:line-through',
 		// isActiveClasses
-		isActive && [
-			'text-foreground',
-			'decoration-wavy',
-			'underline-offset-8',
-			'underline',
-			'decoration-auto',
-			'decoration-foreground',
-		],
+		isActive &&
+			'text-foreground underline decoration-auto decoration-foreground decoration-wavy underline-offset-8',
 		// Keyboard active classes
-		['focus-visible:outline-none', 'focus-visible:ring-1', 'focus-visible:ring-ring'],
+		'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring',
 		className,
 	)
 }
@@ -114,19 +95,19 @@ function ThemeSwitch({
 	const mode = optimisticMode ?? userPreference ?? 'system'
 	const modeLabel = {
 		light: (
-			<Icons.sun className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
+			<Icons.sun className={clsx('h-[1.2rem] w-[1.2rem]')}>
 				<span className="sr-only">Light</span>
 			</Icons.sun>
 		),
 		dark: (
-			<Icons.moon className={clsx('h-[1.2rem]', 'w-[1.2rem]')}>
+			<Icons.moon className={clsx('h-[1.2rem] w-[1.2rem]')}>
 				<span className="sr-only">Dark</span>
 			</Icons.moon>
 		),
 		system: (
 			<Icons.laptop
 				name="laptop"
-				className={clsx('h-[1.2rem]', 'w-[1.2rem]')}
+				className={clsx('h-[1.2rem] w-[1.2rem]')}
 			>
 				<span className="sr-only">System</span>
 			</Icons.laptop>
@@ -176,9 +157,7 @@ export const Header = memo(function Header({
 			routes.map(({ title, url, uri, description, disabled }) => (
 				<li
 					className={clsx(
-						'flex min-h-16 min-w-32 items-center justify-end',
-						'md:min-h-fit md:min-w-fit',
-						'outline-none',
+						'flex min-h-16 min-w-32 items-center justify-end outline-hidden md:min-h-fit md:min-w-fit',
 					)}
 					key={uri}
 					// onClick={stopPropagation}
@@ -203,29 +182,12 @@ export const Header = memo(function Header({
 	return (
 		<Layout.Header
 			className={clsx([
-				'sticky',
-				'top-0',
-				'w-full',
-				'z-10',
-				'border-b',
-				'py-2',
-				'border-border/40',
-				'bg-background/95',
-				'backdrop-blur',
-				'shadow',
-				'supports-[backdrop-filter]:bg-background/60',
-				'overflow-x-clip',
+				'sticky top-0 z-10 w-full overflow-x-clip border-border/40 border-b bg-background/95 py-2 shadow-sm backdrop-blur-sm supports-backdrop-filter:bg-background/60',
 			])}
 		>
 			<div
 				className={clsx([
-					'container',
-					'flex',
-					'flex-row',
-					'items-center',
-					'relative',
-					'max-w-4xl',
-					'justify-between',
+					'container relative flex max-w-4xl flex-row items-center justify-between',
 				])}
 			>
 				<SuddenlyGiovanni
@@ -237,7 +199,7 @@ export const Header = memo(function Header({
 				<NavigationMenuToggle
 					aria-controls={PRIMARY_NAVIGATION}
 					aria-expanded={isMobileNavigationVisible}
-					className={clsx('absolute', 'block', 'md:hidden', 'right-8', 'top-3', 'z-50')}
+					className={clsx('absolute top-3 right-8 z-50 block md:hidden')}
 					isSelected={isMobileNavigationVisible}
 					onPress={toggleMobileNavigationVisibility}
 				/>
@@ -246,42 +208,11 @@ export const Header = memo(function Header({
 					<menu
 						className={clsx(
 							// Base styles
-							['fixed', 'flex', 'px-8', 'py-12'],
+							'fixed flex px-8 py-12',
 							// Mobile navigation
-							[
-								'inset-0',
-								'z-40',
-								'h-screen',
-								'transform-gpu',
-								'flex-col',
-								'items-end',
-								'justify-start',
-								'gap-12',
-								'border-border/40',
-								'bg-background/95',
-								'backdrop-blur',
-								'supports-[backdrop-filter]:bg-background/60',
-								'transition-transform',
-								'delay-150',
-								'duration-300',
-								'ease-in-out',
-							],
+							'inset-0 z-40 h-screen transform-gpu flex-col items-end justify-start gap-12 border-border/40 bg-background/95 backdrop-blur-sm transition-transform delay-150 duration-300 ease-in-out supports-backdrop-filter:bg-background/60',
 							// Desktop navigation
-							[
-								'md:static',
-								'md:z-auto',
-								'md:h-full',
-								'md:translate-x-0',
-								'md:flex-row',
-								'md:items-center',
-								'md:justify-between',
-								'md:gap-2',
-								'md:bg-inherit',
-								'md:p-0',
-								'md:backdrop-filter-none',
-								'md:bg-transparent',
-								'md:transition-none',
-							],
+							'md:static md:z-auto md:h-full md:translate-x-0 md:flex-row md:items-center md:justify-between md:gap-2 md:bg-inherit md:bg-transparent md:p-0 md:backdrop-filter-none md:transition-none',
 							// Mobile navigation
 							isMobileNavigationVisible ? 'translate-x-0' : 'translate-x-full',
 						)}

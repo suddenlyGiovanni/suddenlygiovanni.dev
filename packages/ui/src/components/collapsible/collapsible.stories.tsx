@@ -9,22 +9,13 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../../ui/co
 const rootClass = clsx('sans max-w-[20em]')
 
 const triggerClass = clsx(
-	['w-full', 'text-center'],
-	'box-border border-0 bg-background p-2.5 text-foreground text-xl',
-	'focus:text-red-500 focus:shadow-inner focus:outline-none',
-	'data-[disabled]:text-gray-300',
-	'data-[state=open]:bg-red-500 data-[state="open"]:text-white',
-	'focus:data-[state=open]:text-black',
+	'box-border w-full border-0 bg-background p-2.5 text-center text-foreground text-xl focus:text-red-500 focus:shadow-inner focus:outline-hidden data-[state=open]:bg-red-500 data-[state="open"]:text-white data-disabled:text-gray-300 focus:data-[state=open]:text-black',
 )
 
 const contentClass = clsx('p-2.5 leading-6')
 
 const styles = clsx(
-	'border-2 border-blue-500 bg-blue-300 p-2.5',
-	'data-[state=closed]:border-red-500',
-	'data-[state=open]:border-green-500',
-	'data-[disabled]:border-dashed',
-	':disabled:opacity-50',
+	'border-2 border-blue-500 bg-blue-300 p-2.5 :disabled:opacity-50 data-[state=closed]:border-red-500 data-[state=open]:border-green-500 data-disabled:border-dashed',
 )
 
 const rootAttrClass = clsx(styles)
@@ -60,14 +51,14 @@ export function Default(): ReactElement {
 					</Button>
 				</CollapsibleTrigger>
 			</div>
-			<div className="rounded-md border px-4 py-2 font-mono text-sm shadow-sm">
+			<div className="rounded-md border px-4 py-2 font-mono text-sm shadow-xs">
 				@radix-ui/primitives
 			</div>
 			<CollapsibleContent className="space-y-2">
-				<div className="rounded-md border px-4 py-2 font-mono text-sm shadow-sm">
+				<div className="rounded-md border px-4 py-2 font-mono text-sm shadow-xs">
 					@radix-ui/colors
 				</div>
-				<div className="rounded-md border px-4 py-2 font-mono text-sm shadow-sm">
+				<div className="rounded-md border px-4 py-2 font-mono text-sm shadow-xs">
 					@stitches/react
 				</div>
 			</CollapsibleContent>
