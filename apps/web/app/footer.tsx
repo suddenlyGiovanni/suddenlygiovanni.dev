@@ -16,7 +16,7 @@ export function Footer(): JSX.Element {
 	return (
 		<Layout.Footer
 			className={clsx(
-				'sticky bottom-0 z-auto w-full border-border/40 border-t bg-background/95 shadow backdrop-blur supports-[backdrop-filter]:bg-background/60',
+				'sticky bottom-0 z-auto w-full border-border/40 border-t bg-background/95 shadow-sm backdrop-blur-sm supports-backdrop-filter:bg-background/60',
 			)}
 		>
 			<div
