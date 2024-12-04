@@ -34,13 +34,13 @@ const recommendedCssAccordionTrigger = clsx(
 
 const triggerClass = clsx(
 	recommendedCssAccordionTrigger,
-	'box-border border-0 bg-black p-2.5 text-lg text-white focus:text-red-500 focus:shadow-inner focus:outline-none data-[state=open]:bg-red-500 data-[disabled]:text-gray-300 data-[state=open]:text-white focus:data-[state=open]:text-black focus:data-[state=open]:shadow-gray-950',
+	'box-border border-0 bg-black p-2.5 text-lg text-white focus:text-red-500 focus:shadow-inner focus:outline-hidden data-[state=open]:bg-red-500 data-disabled:text-gray-300 data-[state=open]:text-white focus:data-[state=open]:text-black focus:data-[state=open]:shadow-gray-950',
 )
 
 const contentClass = clsx('p-2.5 leading-6')
 
 const styles = clsx(
-	'border-2 border-blue-500 border-solid bg-blue-800 p-10 disabled:opacity-50 data-[state=closed]:border-red-500 data-[state=open]:border-green-500 data-[disabled]:border-dashed',
+	'border-2 border-blue-500 border-solid bg-blue-800 p-10 disabled:opacity-50 data-[state=closed]:border-red-500 data-[state=open]:border-green-500 data-disabled:border-dashed',
 )
 
 const animatedContentClass = clsx(
