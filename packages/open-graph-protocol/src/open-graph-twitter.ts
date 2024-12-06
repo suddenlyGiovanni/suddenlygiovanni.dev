@@ -426,7 +426,9 @@ function isOpenGraphTwitterPlayerCard(
 	return openGraphTwitterCard.twitterCard === 'player'
 }
 
-export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterCard) {
+export function makeOpenGraphTwitterCard(
+	openGraphTwitterCard: OpenGraphTwitterCard,
+): TwitterCardMeta[] {
 	const cutAt420Characters = maxLength(420)
 	const cutAt200Characters = maxLength(200)
 	const cutAt70Characters = maxLength(70)

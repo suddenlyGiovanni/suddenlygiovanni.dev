@@ -114,7 +114,7 @@ export function makeOpenGraphImage(
 		ogImageType,
 		ogImageUrl,
 		ogImageWidth,
-	}: OpenGraphImage) {
+	}: OpenGraphImage): readonly OpenGraphMeta[] {
 		return [
 			// IMAGE!
 			makeOpenGraphMeta(PropertyImage.OG_IMAGE, ogImage),

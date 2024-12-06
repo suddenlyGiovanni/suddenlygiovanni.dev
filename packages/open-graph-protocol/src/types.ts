@@ -113,7 +113,7 @@ export type String<T extends string = string> = Brand<T, 'String'>
  * ```
  */
 // biome-ignore lint/suspicious/noShadowRestrictedNames: It's fine as its wrapped in a namespace
-export const String = <T extends string = string>(underlying: T) => {
+export const String = <T extends string = string>(underlying: T): String<T> => {
 	return make<String<T>>()(underlying as BaseOf<String<T>>)
 }
 
@@ -147,7 +147,7 @@ export type Enum<T extends string = string> = Brand<T, 'Enum'>
  * const instanceOfEnum:Types.Enum<'foo' | 'bar'> = Types.Enum<'foo', 'bar'>('foo')
  * ```
  */
-export const Enum = <T extends string = string>(underlying: T) =>
+export const Enum = <T extends string = string>(underlying: T): Enum<T> =>
 	make<Enum<T>>()(underlying as BaseOf<Enum<T>>)
 
 /**

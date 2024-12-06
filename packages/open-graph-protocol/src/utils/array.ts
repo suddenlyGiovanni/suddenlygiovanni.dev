@@ -79,19 +79,17 @@ export function insertIf<
 		)
 	}
 
-	if (isNotFalsy(condition)) {
-		if (args.length > 0) {
-			// case it is 1 and the argument type is a fn
-			if (isLazyElementTuple(args)) {
-				const [lazyElement] = args
-				const element: Element = lazyElement(condition)
-				// @ts-expect-error case it is 1 argument and of type fn
-				return [element] as const
-			}
-
-			// @ts-expect-error: case it is 1 or more arguments but not of type fn
-			return [...args] as const
+	if (isNotFalsy(condition) && args.length > 0) {
+		// case it is 1 and the argument type is a fn
+		if (isLazyElementTuple(args)) {
+			const [lazyElement] = args
+			const element: Element = lazyElement(condition)
+			// @ts-expect-error case it is 1 argument and of type fn
+			return [element] as const
 		}
+
+		// @ts-expect-error: case it is 1 or more arguments but not of type fn
+		return [...args] as const
 	}
 	// @ts-expect-error: condition turned to be falsy
 	return [] as const
