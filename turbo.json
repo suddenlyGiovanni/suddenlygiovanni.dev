@@ -24,6 +24,7 @@
       "cache": false
     },
     "check": {},
+    "lint:ci": {},
     "test:unit": {
       "dependsOn": [
         "topo"
