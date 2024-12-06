@@ -6,6 +6,13 @@
 		"ignoreUnknown": true,
 		"ignore": ["./~", ".react-router"]
 	},
+	"linter": {
+		"rules": {
+			"suspicious": {
+				"noReactSpecificProps": "off"
+			}
+		}
+	},
 	"overrides": [
 		{
 			"include": ["app/routes/**/*.tsx"],

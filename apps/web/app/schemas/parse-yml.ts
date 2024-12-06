@@ -1,4 +1,4 @@
-import * as YAML from '@std/yaml'
+import * as yaml from '@std/yaml'
 import { ParseResult, Schema, SchemaAST } from 'effect'
 
 export const YmlString = Schema.String.annotations({
@@ -37,12 +37,12 @@ export function parseYml<A, I, R>(schema?: Schema.Schema<A, I, R>) {
 	return Schema.transformOrFail(YmlString, Schema.Unknown, {
 		decode: (string, _, ast) =>
 			ParseResult.try({
-				try: () => YAML.parse(string),
+				try: () => yaml.parse(string),
 				catch: e => new ParseResult.Type(ast, string, e instanceof Error ? e?.message : undefined),
 			}),
 		encode: (unknown, _, ast) =>
 			ParseResult.try({
-				try: () => YAML.stringify(unknown),
+				try: () => yaml.stringify(unknown),
 				catch: e => new ParseResult.Type(ast, unknown, e instanceof Error ? e?.message : undefined),
 			}),
 	})

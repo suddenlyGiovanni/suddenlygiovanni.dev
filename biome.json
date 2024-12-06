@@ -1,9 +1,5 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"files": {
-		"include": ["./apps/**/*", "./packages/**/*"],
-		"ignore": ["node_modules", "**/node_modules", "./~"]
-	},
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
@@ -16,34 +12,17 @@
 	},
 	"formatter": {
 		"enabled": true,
+		"formatWithErrors": true,
 		"indentStyle": "tab",
-		"lineWidth": 100,
-		"lineEnding": "lf",
 		"indentWidth": 2,
-		"formatWithErrors": true
+		"lineEnding": "lf",
+		"lineWidth": 100,
+		"useEditorconfig": true
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"all": true,
-			"correctness": {
-				"noUndeclaredDependencies": "off"
-			},
-			"nursery": {
-				"all": true,
-				"noEnum": "info",
-				"noSecrets": "off",
-				"useExplicitType": "warn",
-				"useImportRestrictions": "off"
-			},
-			"performance": {},
-			"style": {
-				"noNamespaceImport": "off",
-				"useNamingConvention": "off"
-			},
-			"suspicious": {
-				"noConsole": "warn"
-			}
+			"all": true
 		}
 	},
 	"javascript": {

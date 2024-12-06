@@ -4,7 +4,9 @@ import { Either, Schema } from 'effect'
 import { TreeFormatter } from 'effect/ParseResult'
 
 const envSchema = Schema.Struct({
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	NODE_ENV: Schema.Literal('production', 'development', 'test'),
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	GITHUB_TOKEN: Schema.optionalWith(
 		Schema.NonEmptyString.annotations({
 			description: 'GitHub token',
@@ -15,6 +17,7 @@ const envSchema = Schema.Struct({
 			default: (): string => 'MOCK_GITHUB_TOKEN',
 		},
 	),
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	ALLOW_INDEXING: Schema.optionalWith(
 		Schema.transform(Schema.Literal('true', 'false'), Schema.Boolean, {
 			decode: (string: 'true' | 'false'): boolean => {
@@ -71,17 +74,20 @@ export function init(): void {
  */
 export function getEnv() {
 	return {
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		MODE: process.env.NODE_ENV,
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ALLOW_INDEXING: process.env.ALLOW_INDEXING,
 	} as const
 }
 
-type ENV = ReturnType<typeof getEnv>
+type Env = ReturnType<typeof getEnv>
 
 declare global {
 	// eslint-disable-next-line no-var -- We need it to be hoisted and editable
-	var ENV: ENV
+	var ENV: Env
 	interface Window {
-		ENV: ENV
+		// biome-ignore lint/style/useNamingConvention: <explanation>
+		ENV: Env
 	}
 }
