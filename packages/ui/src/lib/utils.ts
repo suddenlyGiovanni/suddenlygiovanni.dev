@@ -11,6 +11,5 @@ export function clsx(...classes: Clsx.ClassValues): string {
 	return twMerge(Clsx.clsx(classes))
 }
 
-// biome-ignore lint/performance/noBarrelFile: need a barrel file
 export { type VariantProps, cva } from 'class-variance-authority'
 export { tv } from 'tailwind-variants'

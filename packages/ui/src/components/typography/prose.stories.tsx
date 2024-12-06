@@ -141,7 +141,7 @@ export function Prose(): ReactElement {
 					<p>It's probably important that images look okay here by default as well:</p>
 					<figure>
 						<img
-							alt=""
+							alt="test alt text"
 							src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
 						/>
 						<figcaption>

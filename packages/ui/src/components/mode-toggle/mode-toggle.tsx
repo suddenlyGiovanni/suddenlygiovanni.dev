@@ -52,17 +52,13 @@ const ModeToggle = memo(function ModeToggle({
 			<DropdownMenuContent align="end">
 				<DropdownMenuItem
 					disabled={isLight}
-					onClick={() => {
-						setTheme('light')
-					}}
+					onClick={(): void => setTheme('light')}
 				>
 					Light
 				</DropdownMenuItem>
 				<DropdownMenuItem
 					disabled={isDark}
-					onClick={() => {
-						setTheme('dark')
-					}}
+					onClick={(): void => setTheme('dark')}
 				>
 					Dark
 				</DropdownMenuItem>

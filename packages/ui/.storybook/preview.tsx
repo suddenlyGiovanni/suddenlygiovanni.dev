@@ -47,5 +47,4 @@ const preview: Preview = {
 	tags: ['autodocs'],
 }
 
-// biome-ignore lint/style/noDefaultExport: it is part of the api
 export default preview
