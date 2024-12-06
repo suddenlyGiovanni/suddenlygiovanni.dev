@@ -25,6 +25,14 @@ jobs:
         continue-on-error: false
         run: pnpm run typecheck
 
+      - name: 🚨 Lint code
+        run: pnpm run lint:ci:write
+
+      - name: 🚦 Git Auto Commit Lint fixes (with Biome)
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
+        with:
+          commit_message: "chore: lint code with Biome [skip ci]"
+
       - name: 💅 Format code
         run: pnpm run format:ci:write
 
@@ -33,11 +41,4 @@ jobs:
         with:
           commit_message: "chore: format code with Biome [skip ci]"
 
-      - name: 🚨 Lint code
-        run: pnpm run lint:ci:write
-
-      - name: 🚦 Git Auto Commit Lint fixes (with Biome)
-        uses: stefanzweifel/git-auto-commit-action@v5.0.1
-        with:
-          commit_message: "chore: lint code with Biome [skip ci]"
 
