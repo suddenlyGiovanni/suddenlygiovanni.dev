@@ -14,5 +14,6 @@ export class OctokitService extends Effect.Tag('@services/OctokitService')<
 	OctokitService,
 	Effect.Effect.Success<typeof makeOctokitService>
 >() {
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	static Live = Layer.effect(this, makeOctokitService)
 }

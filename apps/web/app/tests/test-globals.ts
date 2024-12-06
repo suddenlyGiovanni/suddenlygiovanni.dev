@@ -1,6 +1,6 @@
 // biome-ignore lint/correctness/noNodejsModules: <explanation>
-import * as process from 'node:process'
+import { env } from 'node:process'
 
 export function setup() {
-	process.env.TZ = 'UTC'
+	env.TZ = 'UTC'
 }
