@@ -80,7 +80,7 @@
 		"format:ci": "pnpm run format --reporter=github --changed",
 		"format:ci:write": "pnpm run format --reporter=github --changed --write",
 		"format:write": "pnpm run format --write",
-		"lint": "biome ci --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=false --vcs-enabled=true --vcs-use-ignore-file=true --no-errors-on-unmatched .",
+		"lint": "biome ci --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=false --no-errors-on-unmatched .",
 		"lint:ci": "pnpm run lint --reporter=github",
 		"typecheck": "scripty"
 	},
