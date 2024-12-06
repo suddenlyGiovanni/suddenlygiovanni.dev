@@ -72,14 +72,11 @@ const routes = (
 const PRIMARY_NAVIGATION = 'primary-navigation'
 
 function computeNextThemeMode(mode: Theme): Theme {
-	const nextMode =
-		mode === 'system' //
-			? 'light'
-			: // biome-ignore lint/nursery/noNestedTernary: FIXME: convert it to a State Machine obj
-				mode === 'light'
-				? 'dark'
-				: 'system'
-	return nextMode
+	return mode === 'system' //
+		? 'light'
+		: mode === 'light'
+			? 'dark'
+			: 'system'
 }
 
 function ThemeSwitch({

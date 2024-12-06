@@ -1,3 +1,4 @@
+// biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as yaml from '@std/yaml'
 import { ParseResult, Schema, SchemaAST } from 'effect'
 

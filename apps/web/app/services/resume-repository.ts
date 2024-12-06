@@ -240,5 +240,6 @@ export class ResumeRepository extends Effect.Tag('@services/ResumeRepository')<
 	ResumeRepository,
 	Effect.Effect.Success<typeof makeResumeRepository>
 >() {
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	static Live = Layer.effect(this, makeResumeRepository)
 }
