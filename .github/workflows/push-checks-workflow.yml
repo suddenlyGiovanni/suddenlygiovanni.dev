@@ -26,7 +26,19 @@ jobs:
         run: pnpm run typecheck
 
       - name: 🚨 Lint code
-        run: pnpm run lint:ci:write
+        shell: sh
+        run: |
+          pnpm --recursive --shell-mode exec biome check \
+          --vcs-enabled=true \
+          --vcs-use-ignore-file=true \
+          --vcs-root='../../' \
+          --formatter-enabled=false \
+          --linter-enabled=true \
+          --organize-imports-enabled=true \
+          --no-errors-on-unmatched \
+          --reporter=github \
+          --changed \
+          --write .
 
       - name: 🚦 Git Auto Commit Lint fixes (with Biome)
         uses: stefanzweifel/git-auto-commit-action@v5.0.1
