@@ -1,0 +1,12 @@
+{
+	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"extends": ["../../biome.json"],
+	"files": {
+		"include": ["./base.json", "./library.json", "./react-library.json", "./remix.json"]
+	},
+	"json": {
+		"formatter": {
+			"enabled": true
+		}
+	}
+}
