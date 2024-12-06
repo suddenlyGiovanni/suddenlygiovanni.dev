@@ -66,7 +66,6 @@ export const Checkboxes: StoryFn = () => {
 	)
 }
 
-
 enum Position {
 	Top = 'top',
 	Bottom = 'bottom',
