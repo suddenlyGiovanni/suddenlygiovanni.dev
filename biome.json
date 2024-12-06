@@ -25,6 +25,9 @@
 			"all": true,
 			"correctness": {
 				"noUndeclaredDependencies": "off"
+			},
+			"nursery": {
+				"all": true
 			}
 		}
 	},

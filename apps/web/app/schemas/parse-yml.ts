@@ -1,6 +1,6 @@
 // biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as yaml from '@std/yaml'
-import { ParseResult, Schema, SchemaAST } from 'effect'
+import { type Either, ParseResult, Schema, SchemaAST } from 'effect'
 
 export const YmlString = Schema.String.annotations({
 	[SchemaAST.IdentifierAnnotationId]: 'YmlString',
@@ -30,21 +30,31 @@ export const YmlString = Schema.String.annotations({
  */
 export function parseYml(): Schema.Schema<unknown, string>
 export function parseYml<A, I, R>(schema: Schema.Schema<A, I, R>): Schema.Schema<A, string, R>
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function parseYml<A, I, R>(schema?: Schema.Schema<A, I, R>) {
 	if (Schema.isSchema(schema)) {
 		// biome-ignore lint/suspicious/noExplicitAny: can't infer the type of `schema` with generics
 		return Schema.compose(parseYml(), schema as any) as any
 	}
 	return Schema.transformOrFail(YmlString, Schema.Unknown, {
-		decode: (string, _, ast) =>
+		decode: (string, _, ast): Either.Either<unknown, ParseResult.ParseIssue> =>
 			ParseResult.try({
-				try: () => yaml.parse(string),
-				catch: e => new ParseResult.Type(ast, string, e instanceof Error ? e?.message : undefined),
+				try(): unknown {
+					return yaml.parse(string)
+				},
+				catch(e): ParseResult.Type {
+					return new ParseResult.Type(ast, string, e instanceof Error ? e?.message : undefined)
+				},
 			}),
-		encode: (unknown, _, ast) =>
-			ParseResult.try({
-				try: () => yaml.stringify(unknown),
-				catch: e => new ParseResult.Type(ast, unknown, e instanceof Error ? e?.message : undefined),
-			}),
+		encode(unknown, _, ast): Either.Either<string, ParseResult.ParseIssue> {
+			return ParseResult.try({
+				try(): string {
+					return yaml.stringify(unknown)
+				},
+				catch(e): ParseResult.Type {
+					return new ParseResult.Type(ast, unknown, e instanceof Error ? e?.message : undefined)
+				},
+			})
+		},
 	})
 }

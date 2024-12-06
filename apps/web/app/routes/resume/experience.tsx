@@ -344,7 +344,7 @@ function Tech({
 
 	return maybeIcon.pipe(
 		Option.match({
-			onNone: () => (
+			onNone: (): ReactElement => (
 				<Badge
 					className={classname}
 					key={tech}
@@ -353,7 +353,7 @@ function Tech({
 					<span>{tech}</span>
 				</Badge>
 			),
-			onSome: Icon => (
+			onSome: (Icon): ReactElement => (
 				<Badge
 					className={classname}
 					key={tech}

@@ -10,6 +10,13 @@
 		"rules": {
 			"suspicious": {
 				"noReactSpecificProps": "off"
+			},
+			"nursery": {
+				"noSecrets": "off",
+				"useComponentExportOnlyModules": "off"
+			},
+			"style": {
+				"noDefaultExport": "off"
 			}
 		}
 	},
