@@ -16,66 +16,28 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🧬 Setup Biome
-        uses: biomejs/setup-biome@v2
-
-      - name: 👣 Retrieve Git REF
-        run: echo "GIT_REF=$(git rev-parse origin/main)" >> $GITHUB_ENV
-
-#      - name: 🐛 Debug Git REF
-#        run: echo "${{ env.GIT_REF }}"
-
-      - name: 🧬 Lint code (with Biome)
-        continue-on-error: true
-        run: |
-          biome check                         \
-            --write                           \
-            --changed                         \
-            --since=${{ env.GIT_REF }}        \
-            --formatter-enabled=false         \
-            --linter-enabled=true             \
-            --organize-imports-enabled=false  \
-            --vcs-enabled=true                \
-            --vcs-use-ignore-file=true        \
-            --verbose                         \
-            --no-errors-on-unmatched          \
-            --diagnostic-level=info           \
-            --log-level=warn                  \
-            --max-diagnostics=100             \
-            .
-
-      - name: 🚦 Git Auto Commit Lint fixes (with Biome)
-        uses: stefanzweifel/git-auto-commit-action@v5.0.1
-        with:
-          commit_message: "chore: lint code with Biome [skip ci]"
-
-      - name: 💅 Format code (with Biome)
-        continue-on-error: true
-        run: |
-          biome check                         \
-            --write                           \
-            --changed                         \
-            --since=${{ env.GIT_REF }}        \
-            --formatter-enabled=true          \
-            --linter-enabled=false            \
-            --organize-imports-enabled=true   \
-            --vcs-enabled=true                \
-            --vcs-use-ignore-file=true        \
-            --no-errors-on-unmatched          \
-            --diagnostic-level=info           \
-            --log-level=warn                  \
-            .
-
-      - name: 🚦 Git Auto Commit Lint fixes (with Biome)
-        uses: stefanzweifel/git-auto-commit-action@v5.0.1
-        with:
-          commit_message: "chore: lint code with Biome [skip ci]"
-
       - name: 🧩 Install dependencies
         uses: ./.github/actions/setup
         with:
           github_packages_token: ${{ secrets.GH_PACKAGES_TOKEN }}
 
       - name: 🔍 Typecheck code
-        continue-on-error: true
-        run: pnpm typecheck
+        continue-on-error: false
+        run: pnpm run typecheck
+
+      - name: 💅 Format code
+        run: pnpm run format:ci:write
+
+      - name: 🚦 Git Auto Commit Format fixes (with Biome)
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
+        with:
+          commit_message: "chore: format code with Biome [skip ci]"
+
+      - name: 🚨 Lint code
+        run: pnpm run lint:ci:write
+
+      - name: 🚦 Git Auto Commit Lint fixes (with Biome)
+        uses: stefanzweifel/git-auto-commit-action@v5.0.1
+        with:
+          commit_message: "chore: lint code with Biome [skip ci]"
+
