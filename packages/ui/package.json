@@ -49,7 +49,7 @@
 		"vite-tsconfig-paths": "5.1.4"
 	},
 	"engines": {
-		"node": ">=22.11"
+		"node": ">=22.10"
 	},
 	"exports": {
 		"./lib/*": "./src/lib/*",
