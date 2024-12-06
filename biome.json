@@ -26,42 +26,23 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"a11y": {
-				"useSemanticElements": "off"
-			},
 			"all": true,
-			"complexity": {
-				"noStaticOnlyClass": "off"
-			},
 			"correctness": {
 				"noUndeclaredDependencies": "off"
 			},
 			"nursery": {
 				"all": true,
+				"noEnum": "info",
 				"noSecrets": "off",
-				"useComponentExportOnlyModules": "off",
 				"useExplicitType": "warn",
-				"useImportRestrictions": "off",
-				"useSortedClasses": {
-					"fix": "safe",
-					"level": "warn",
-					"options": {
-						"attributes": ["class", "className"],
-						"functions": ["clsx", "cva", "tw"]
-					}
-				}
+				"useImportRestrictions": "off"
 			},
-			"performance": {
-				"noBarrelFile": "warn",
-				"noReExportAll": "warn"
-			},
+			"performance": {},
 			"style": {
 				"noNamespaceImport": "off",
-				"useNamingConvention": "off",
-				"noDefaultExport": "off"
+				"useNamingConvention": "off"
 			},
 			"suspicious": {
-				"noReactSpecificProps": "off",
 				"noConsole": "warn"
 			}
 		}
