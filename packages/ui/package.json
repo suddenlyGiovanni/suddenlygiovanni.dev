@@ -76,6 +76,8 @@
 		"components-add": "pnpm dlx shadcn-ui@latest add",
 		"components-diff": "pnpm dlx shadcn-ui@latest diff",
 		"dev": "storybook dev -p 6006",
+		"lint": "biome ci --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=false --vcs-enabled=true --vcs-use-ignore-file=true --no-errors-on-unmatched .",
+		"lint:ci": "pnpm run lint --reporter=github",
 		"typecheck": "scripty"
 	},
 	"type": "module",
