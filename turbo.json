@@ -27,10 +27,9 @@
 		"format:ci": {},
 		"format:ci:write": {},
 		"format:write": {},
-		"lint": {
-			"cache": false
-		},
+		"lint": { "cache": false },
 		"lint:ci": {},
+		"lint:ci:write": {},
 		"test:unit": {
 			"dependsOn": [
 				"topo"
