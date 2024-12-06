@@ -52,7 +52,7 @@ function NavLink({
 	return (
 		<UnstyledNavLink
 			{...props}
-			className={({ isActive }) => calculateClassName({ isActive, className })}
+			className={({ isActive }): string => calculateClassName({ isActive, className })}
 		>
 			{children}
 		</UnstyledNavLink>
@@ -71,12 +71,13 @@ const routes = (
 
 const PRIMARY_NAVIGATION = 'primary-navigation'
 
-function computeNextThemeMode(mode: Theme): Theme {
-	return mode === 'system' //
-		? 'light'
-		: mode === 'light'
-			? 'dark'
-			: 'system'
+function computeNextThemeMode(currentTheme: Theme): Theme {
+	const nextTheme = {
+		light: 'dark',
+		dark: 'system',
+		system: 'light',
+	} as const
+	return nextTheme[currentTheme]
 }
 
 function ThemeSwitch({

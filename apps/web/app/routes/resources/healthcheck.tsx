@@ -1,4 +1,5 @@
-import type { Route } from './+types/healthcheck'
+// biome-ignore lint/nursery/useImportRestrictions: <explanation>
+import type { Route } from './+types/healthcheck.ts'
 
 export function loader(_: Route.LoaderArgs): Response {
 	return new Response('OK', {

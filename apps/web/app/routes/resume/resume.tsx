@@ -17,6 +17,7 @@ import { Experiences } from './experiences.tsx'
 import { Interests } from './interests.tsx'
 import { Skills } from './skills.tsx'
 
+// biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/resume.ts'
 
 // biome-ignore lint/nursery/useExplicitType: <explanation>

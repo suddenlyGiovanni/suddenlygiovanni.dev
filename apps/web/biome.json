@@ -13,7 +13,8 @@
 			},
 			"nursery": {
 				"noSecrets": "off",
-				"useComponentExportOnlyModules": "off"
+				"useComponentExportOnlyModules": "off",
+				"useConsistentCurlyBraces": "off"
 			},
 			"style": {
 				"noDefaultExport": "off"

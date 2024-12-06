@@ -1,5 +1,4 @@
-import * as Either from 'effect/Either'
-import { pipe } from 'effect/Function'
+import { Either, pipe } from 'effect'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 
 import type * as Model from '@suddenlygiovanni/resume/schema-resume'
