@@ -25,7 +25,10 @@
 	);
 
 	--color-secondary: light-dark(oklch(0.97 0 89.876), oklch(0.269 0 89.876));
-	--color-secondary-foreground: light-dark(hsl(0 0% 9%), hsl(0 0% 98%));
+	--color-secondary-foreground: light-dark(
+		oklch(0.205 0 89.876),
+		oklch(0.985 0 89.876)
+	);
 
 	--color-destructive: light-dark(
 		oklch(0.637 0.208 25.331),
