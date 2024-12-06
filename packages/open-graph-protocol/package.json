@@ -39,7 +39,11 @@
 		"clean": "scripty",
 		"typecheck": "scripty",
 		"lint": "biome ci --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=false --vcs-enabled=true --vcs-use-ignore-file=true --no-errors-on-unmatched .",
-		"lint:ci": "pnpm run lint --reporter=github"
+		"lint:ci": "pnpm run lint --reporter=github",
+		"format": "biome check --vcs-enabled=true --vcs-root='../../' --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true .",
+		"format:write": "pnpm run format --write",
+		"format:ci": "pnpm run format --reporter=github --changed",
+		"format:ci:write": "pnpm run format --reporter=github --changed --write"
 	},
 	"type": "module",
 	"version": "0.4.0"
