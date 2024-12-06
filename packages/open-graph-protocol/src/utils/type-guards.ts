@@ -115,7 +115,7 @@ export function assert<T>(
  *
  * @public
  */
-export function assert(condition: unknown, message?: string | (() => string)) {
+export function assert(condition: unknown, message?: string | (() => string)): void {
 	if (
 		typeof condition === 'undefined' ||
 		condition === null ||

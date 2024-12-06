@@ -5,5 +5,13 @@
 		"include": ["src/*"],
 		"ignoreUnknown": true,
 		"ignore": ["./~"]
+	},
+	"linter": {
+		"rules": {
+			"performance": {
+				"noBarrelFile": "off",
+				"noReExportAll": "off"
+			}
+		}
 	}
 }

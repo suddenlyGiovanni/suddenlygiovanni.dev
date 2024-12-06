@@ -1,6 +1,6 @@
 import { BellIcon, CheckIcon } from '@radix-ui/react-icons'
 import type { Meta } from '@storybook/react'
-import { type ComponentProps, useRef } from 'react'
+import { type ComponentProps, type ReactElement, useRef } from 'react'
 import { clsx } from 'src/lib/utils.ts'
 import { Button } from '../../ui/button.tsx'
 import { Card } from '../../ui/card.tsx'
@@ -27,7 +27,7 @@ const notifications = [
 
 type CardProps = ComponentProps<typeof Card.Root>
 
-export function CardDemo({ className, ...props }: CardProps) {
+export function CardDemo({ className, ...props }: CardProps): ReactElement {
 	const pRef = useRef(null)
 	return (
 		<Card.Root

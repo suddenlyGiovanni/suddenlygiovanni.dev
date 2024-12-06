@@ -4,7 +4,7 @@
     <option name="applySafeFixesOnSave" value="true" />
     <option name="configPath" value="$PROJECT_DIR$" />
     <option name="configurationMode" value="MANUAL" />
-    <option name="executablePath" value="$PROJECT_DIR$/node_modules/.bin/biome" />
+    <option name="executablePath" value="/nix/store/3i56rzvqnr2a1q3sw6mjjc6asz2hidm4-biome-1.9.4/bin/biome" />
     <option name="formatOnSave" value="true" />
   </component>
 </project>

@@ -34,5 +34,4 @@ const config: StorybookConfig = {
 	},
 }
 
-// biome-ignore lint/style/noDefaultExport: <explanation>
 export default config

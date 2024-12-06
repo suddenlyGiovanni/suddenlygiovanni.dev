@@ -55,4 +55,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 )
 Button.displayName = 'Button'
 
-export { Button, buttonVariants }
+export {
+	Button,
+	// biome-ignore lint/nursery/useComponentExportOnlyModules: <explanation>
+	buttonVariants,
+}

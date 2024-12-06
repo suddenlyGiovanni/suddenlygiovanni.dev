@@ -55,7 +55,11 @@ export interface OpenGraphAudio {
 export function makeOpenGraphAudio(
 	openGraphAudio: Types.URL | OpenGraphAudio | readonly OpenGraphAudio[],
 ): readonly OpenGraphMeta[] {
-	function _makeOpenGraphAudio({ ogAudio, ogAudioSecureUrl, ogAudioType }: OpenGraphAudio) {
+	function _makeOpenGraphAudio({
+		ogAudio,
+		ogAudioSecureUrl,
+		ogAudioType,
+	}: OpenGraphAudio): OpenGraphMeta[] {
 		return [
 			// AUDIO!
 			makeOpenGraphMeta(PropertyAudio.OG_AUDIO, ogAudio),

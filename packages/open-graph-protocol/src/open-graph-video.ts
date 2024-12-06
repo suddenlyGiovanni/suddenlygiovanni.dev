@@ -100,7 +100,7 @@ export function makeOpenGraphVideo(
 		ogVideoType,
 		ogVideoUrl,
 		ogVideoWidth,
-	}: OpenGraphVideo) {
+	}: OpenGraphVideo): readonly OpenGraphMeta[] {
 		return [
 			// VIDEO!
 			makeOpenGraphMeta(PropertyVideo.OG_VIDEO, ogVideo),

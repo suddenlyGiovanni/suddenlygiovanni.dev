@@ -2,17 +2,44 @@
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
 	"extends": ["../../biome.json"],
 	"files": {
-		"include": ["src/*"],
+		"include": ["./src/*"],
 		"ignoreUnknown": true,
 		"ignore": ["./~"]
 	},
+	"linter": {
+		"rules": {
+			"a11y": {
+				"all": true
+			},
+			"nursery": {
+				"useConsistentCurlyBraces": "off",
+				"useExplicitType": "info",
+				"useSortedClasses": {
+					"fix": "safe",
+					"level": "warn",
+					"options": {
+						"attributes": ["class", "className"],
+						"functions": ["clsx", "cva", "tw"]
+					}
+				}
+			},
+			"suspicious": {
+				"noReactSpecificProps": "off"
+			},
+			"performance": {
+				"noBarrelFile": "off"
+			}
+		}
+	},
 	"overrides": [
 		{
-			"include": ["**/*.stories.tsx"],
+			"include": ["./src/**/*.stories.tsx"],
 			"linter": {
 				"rules": {
 					"nursery": {
-						"useComponentExportOnlyModules": "off"
+						"useComponentExportOnlyModules": "off",
+						"noImgElement": "off",
+						"noEnum": "off"
 					},
 					"style": {
 						"noDefaultExport": "off"

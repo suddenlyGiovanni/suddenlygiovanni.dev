@@ -59,4 +59,5 @@ const AccordionContent = forwardRef<
 AccordionContent.displayName = Content.displayName
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, AccordionHeader }
+
 export { Trigger } from '@radix-ui/react-accordion'

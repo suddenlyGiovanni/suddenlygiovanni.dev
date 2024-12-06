@@ -416,7 +416,6 @@ export function Animated(): ReactElement {
 	const [hasDynamicContent, setHasDynamicContent] = useState(false)
 	const timerRef = useRef(0)
 
-	// biome-ignore lint/correctness/useExhaustiveDependencies: trust me; it has the correct dependencies.
 	useEffect(() => {
 		if (hasDynamicContent) {
 			timerRef.current = window.setTimeout(() => {
@@ -429,17 +428,17 @@ export function Animated(): ReactElement {
 				})
 			}, 3000)
 		}
-		return () => {
+		return (): void => {
 			hasDynamicContent && clearTimeout(timerRef.current)
 		}
-	}, [count, hasDynamicContent])
+	}, [hasDynamicContent])
 
 	return (
 		<>
 			<label>
 				<input
 					checked={hasDynamicContent}
-					onChange={event => {
+					onChange={(event): void => {
 						const checked = event.target.checked
 						if (checked) {
 							setCount(1)

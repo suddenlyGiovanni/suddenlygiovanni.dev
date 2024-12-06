@@ -1,43 +1,49 @@
 {
   "$schema": "https://turbo.build/schema.json",
 	"tasks": {
-    "build": {
-      "outputs": [
-        "dist/**",
-        "storybook-static/**"
-      ],
-      "dependsOn": [
-        "^build"
-      ]
-    },
-    "clean": {
-      "cache": false
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true,
-      "dependsOn": [
-        "topo"
-      ]
-    },
-    "format": {
-      "cache": false
-    },
-    "check": {},
-    "test:unit": {
-      "dependsOn": [
-        "topo"
-      ]
-    },
-    "topo": {
-      "dependsOn": [
-        "^topo"
-      ]
-    },
-    "typecheck": {
-      "dependsOn": [
-        "topo"
-      ]
-    }
-  }
+		"build": {
+			"outputs": [
+				"dist/**",
+				"storybook-static/**"
+			],
+			"dependsOn": [
+				"^build"
+			]
+		},
+		"check": {},
+		"clean": {
+			"cache": false
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true,
+			"dependsOn": [
+				"topo"
+			]
+		},
+		"format": {
+			"cache": false
+		},
+		"format:ci": {"cache": false},
+		"format:ci:write": {"cache": false},
+		"format:write": {"cache": false},
+		"lint": { "cache": false },
+		"lint:ci": {"cache": false},
+		"lint:ci:write": {"cache": false},
+		"test:unit": {
+			"dependsOn": [
+				"topo"
+			]
+		},
+		"topo": {
+			"dependsOn": [
+				"^topo"
+			]
+		},
+		"typecheck": {
+			"dependsOn": [
+				"topo"
+			]
+		}
+	}
 }
