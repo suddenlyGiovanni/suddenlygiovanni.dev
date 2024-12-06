@@ -85,10 +85,10 @@ importers:
         specifier: workspace:*
         version: link:../../packages/config-typescript
       '@tailwindcss/typography':
-        specifier: ^0.5.15
+        specifier: 0.5.15
         version: 0.5.15(tailwindcss@4.0.0-beta.5)
       '@tailwindcss/vite':
-        specifier: ^4.0.0-beta.5
+        specifier: 4.0.0-beta.5
         version: 4.0.0-beta.5(vite@5.4.11(@types/node@22.10.1)(lightningcss@1.28.2))
       '@total-typescript/ts-reset':
         specifier: 0.6.1
@@ -112,7 +112,7 @@ importers:
         specifier: 2.0.0-beta.0
         version: 2.0.0-beta.0(@types/react-dom@18.3.1)(@types/react@18.3.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.11(@types/node@22.10.1)(lightningcss@1.28.2))
       tailwindcss:
-        specifier: ^4.0.0-beta.5
+        specifier: 4.0.0-beta.5
         version: 4.0.0-beta.5
       tailwindcss-animate:
         specifier: 1.0.7
@@ -240,10 +240,10 @@ importers:
         specifier: workspace:*
         version: link:../config-typescript
       '@tailwindcss/typography':
-        specifier: ^0.5.15
+        specifier: 0.5.15
         version: 0.5.15(tailwindcss@4.0.0-beta.5)
       '@tailwindcss/vite':
-        specifier: ^4.0.0-beta.5
+        specifier: 4.0.0-beta.5
         version: 4.0.0-beta.5(vite@5.4.11(@types/node@22.10.1)(lightningcss@1.28.2))
       '@total-typescript/ts-reset':
         specifier: 0.6.1
@@ -267,10 +267,10 @@ importers:
         specifier: 2.5.5
         version: 2.5.5
       tailwindcss:
-        specifier: ^4.0.0-beta.5
+        specifier: 4.0.0-beta.5
         version: 4.0.0-beta.5
       tailwindcss-animate:
-        specifier: ^1.0.7
+        specifier: 1.0.7
         version: 1.0.7(tailwindcss@4.0.0-beta.5)
       vite:
         specifier: 5.4.11
@@ -3450,6 +3450,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -3520,6 +3521,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
