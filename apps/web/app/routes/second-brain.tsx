@@ -2,6 +2,7 @@ import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import type { JSX } from 'react'
 import { routesRecord } from '~/routes-record.ts'
+// biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/second-brain.ts'
 
 export const meta: Route.MetaFunction = () => {

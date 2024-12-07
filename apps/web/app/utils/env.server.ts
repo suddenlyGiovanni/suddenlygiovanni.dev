@@ -1,4 +1,5 @@
 // biome-ignore lint/correctness/noNodejsModules: <explanation>
+// biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as process from 'node:process'
 import { Either, Schema } from 'effect'
 import { TreeFormatter } from 'effect/ParseResult'
@@ -14,13 +15,15 @@ const envSchema = Schema.Struct({
 		}),
 		{
 			exact: true,
-			default: (): string => 'MOCK_GITHUB_TOKEN',
+			default(): string {
+				return 'MOCK_GITHUB_TOKEN'
+			},
 		},
 	),
 	// biome-ignore lint/style/useNamingConvention: <explanation>
 	ALLOW_INDEXING: Schema.optionalWith(
 		Schema.transform(Schema.Literal('true', 'false'), Schema.Boolean, {
-			decode: (string: 'true' | 'false'): boolean => {
+			decode(string: 'true' | 'false'): boolean {
 				switch (string) {
 					case 'true':
 						return true
@@ -30,11 +33,15 @@ const envSchema = Schema.Struct({
 						return false
 				}
 			},
-			encode: (boolean: boolean): 'true' | 'false' => (boolean ? 'true' : 'false'),
+			encode(boolean: boolean): 'true' | 'false' {
+				return boolean ? 'true' : 'false'
+			},
 		}),
 		{
 			exact: true,
-			default: () => false,
+			default(): false {
+				return false
+			},
 		},
 	),
 })
@@ -72,6 +79,8 @@ export function init(): void {
  * be included in the client.
  * @returns all public ENV variables
  */
+
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function getEnv() {
 	return {
 		// biome-ignore lint/style/useNamingConvention: <explanation>
@@ -81,7 +90,7 @@ export function getEnv() {
 	} as const
 }
 
-type Env = ReturnType<typeof getEnv>
+export type Env = ReturnType<typeof getEnv>
 
 declare global {
 	// eslint-disable-next-line no-var -- We need it to be hoisted and editable

@@ -28,7 +28,7 @@ export function useOptimisticThemeMode(): Theme | undefined {
 			return result.right.theme
 		}
 	}
-	return undefined
+	return 
 }
 
 /**

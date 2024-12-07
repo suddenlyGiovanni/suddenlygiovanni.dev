@@ -10,7 +10,7 @@ import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'
 import { getHints } from '~/utils/client-hints.tsx'
-import { getEnv } from '~/utils/env.server.ts'
+import { type Env, getEnv } from '~/utils/env.server.ts'
 import { getDomainUrl } from '~/utils/misc.ts'
 import { getTheme, setTheme } from '~/utils/theme.server.ts'
 import { ThemeFormSchema, useTheme } from '~/utils/theme.tsx'
@@ -21,6 +21,7 @@ import { Main } from './main.tsx'
 
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
+// biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/root.ts'
 
 export const links: Route.LinksFunction = () => {
@@ -34,6 +35,7 @@ export const links: Route.LinksFunction = () => {
 	]
 }
 
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function meta({ location }: Route.MetaArgs) {
 	const description = "@suddenlyGiovanni's personal website"
 	const title = config.siteName
@@ -55,6 +57,7 @@ export function meta({ location }: Route.MetaArgs) {
 	]
 }
 
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function loader({ request }: Route.LoaderArgs) {
 	return {
 		requestInfo: {
@@ -64,10 +67,12 @@ export function loader({ request }: Route.LoaderArgs) {
 			userPrefs: { theme: getTheme(request) },
 		},
 
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ENV: getEnv(),
 	}
 }
 
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 export async function action({ request }: Route.ActionArgs) {
 	const formData = await request.formData()
 	const payload = Object.fromEntries(formData)
@@ -98,7 +103,7 @@ function Document({
 }: {
 	children: ReactNode
 	theme?: 'light' | 'dark' | null // TODO: address this prop
-	env?: typeof ENV
+	env?: Env
 }): ReactElement {
 	const colorScheme = theme ?? 'light dark'
 	return (

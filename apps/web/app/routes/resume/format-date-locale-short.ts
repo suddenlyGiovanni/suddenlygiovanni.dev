@@ -10,8 +10,12 @@ import type { ParseError } from 'effect/ParseResult'
  */
 export function formatDateLocaleShort(isoString: string): Either<string, ParseError> {
 	const schema = Schema.transform(Schema.Date, Schema.String, {
-		decode: fromDate => fromDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-		encode: fromLocaleDateString => new Date(fromLocaleDateString),
+		decode(fromDate): string {
+			return fromDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+		},
+		encode(fromLocaleDateString): Date {
+			return new Date(fromLocaleDateString)
+		},
 	}).annotations({
 		title: 'localDate',
 		description: 'a short US locale date format',

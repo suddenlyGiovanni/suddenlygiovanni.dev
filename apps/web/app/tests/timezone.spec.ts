@@ -1,9 +1,11 @@
+// biome-ignore lint/correctness/noNodejsModules: <explanation>
+import { env } from 'node:process'
 import { describe, expect, it } from 'vitest'
 
 describe('date utils tests', () => {
 	it('timezone should return UTC', () => {
 		// my local timezone 'Europe/Dublin' was returned instead
-		expect(process.env.TZ).toBe('UTC')
+		expect(env.TZ).toBe('UTC')
 	})
 
 	const unixTime = new Date('1970-01-01')
