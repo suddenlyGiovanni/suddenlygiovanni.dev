@@ -16,10 +16,7 @@ import { ThemeFormSchema, useTheme } from '~/utils/theme.tsx'
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/root.ts'
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
-import { Document } from './shell/document.tsx'
-import { Footer } from './shell/footer.tsx'
-import { Header } from './shell/header/header.tsx'
-import { Main } from './shell/main.tsx'
+import { Document, Footer, Header, Main } from './shell/index.tsx'
 
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
 
@@ -102,6 +99,7 @@ export default function App(_: Route.ComponentProps): ReactElement {
 		<Document
 			env={ENV}
 			theme={theme}
+			nonce={undefined}
 		>
 			<Header theme={requestInfo.userPrefs.theme} />
 			<Main />

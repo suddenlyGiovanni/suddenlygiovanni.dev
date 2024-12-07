@@ -13,7 +13,7 @@ export function Document({
 	theme,
 	nonce,
 }: {
-	nonce?: string
+	nonce?: string | undefined
 	children: ReactNode
 	theme?: 'light' | 'dark' | null
 	env?: Env
