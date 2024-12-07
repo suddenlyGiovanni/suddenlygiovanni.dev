@@ -1,29 +1,27 @@
 import { invariantResponse } from '@epic-web/invariant'
 import { Either, Schema } from 'effect'
-import type { ReactElement, ReactNode } from 'react'
-import { Links, Meta, Scripts, ScrollRestoration, data, useLoaderData } from 'react-router'
+import type { ReactElement } from 'react'
+import { data, useLoaderData } from 'react-router'
 
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
-import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
-import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'
-import { ClientHintCheck, getHints } from '~/utils/client-hints.tsx'
-import { type Env, getEnv } from '~/utils/env.server.ts'
+import { getHints } from '~/utils/client-hints.tsx'
+import { getEnv } from '~/utils/env.server.ts'
 import { getDomainUrl } from '~/utils/misc.ts'
 import { getTheme, setTheme } from '~/utils/theme.server.ts'
 import { ThemeFormSchema, useTheme } from '~/utils/theme.tsx'
 
+// biome-ignore lint/nursery/useImportRestrictions: <explanation>
+import type { Route } from './+types/root.ts'
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
 import { Footer } from './footer.tsx'
 import { Header } from './header/header.tsx'
 import { Main } from './main.tsx'
+import { Document } from './shell/document.tsx'
 
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'
-
-// biome-ignore lint/nursery/useImportRestrictions: <explanation>
-import type { Route } from './+types/root.ts'
 
 export const links: Route.LinksFunction = () => {
 	return [
@@ -94,52 +92,6 @@ export async function action({ request }: Route.ActionArgs) {
 				'set-cookie': setTheme(result.right.theme),
 			},
 		},
-	)
-}
-
-function Document({
-	children,
-	env,
-	theme,
-}: {
-	children: ReactNode
-	theme?: 'light' | 'dark' | null
-	env?: Env
-}): ReactElement {
-	return (
-		<html
-			className="min-h-screen"
-			data-theme={theme}
-			lang="en"
-		>
-			<head>
-				<ClientHintCheck />
-				<meta charSet="utf-8" />
-				<meta
-					httpEquiv="Content-Type"
-					content="text/html;charset=utf-8"
-				/>
-				<meta
-					content="width=device-width, initial-scale=1"
-					name="viewport"
-				/>
-				<Meta />
-				<Links />
-			</head>
-			<Layout.Body
-				className={clsx('min-h-full bg-background font-sans text-foreground antialiased')}
-			>
-				{children}
-				<ScrollRestoration />
-				<script
-					// biome-ignore lint/security/noDangerouslySetInnerHtml: we need to set the ENV variable
-					dangerouslySetInnerHTML={{
-						__html: `window.ENV = ${JSON.stringify(env, null, 2)};`,
-					}}
-				/>
-				<Scripts />
-			</Layout.Body>
-		</html>
 	)
 }
 
