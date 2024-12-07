@@ -29,16 +29,17 @@ jobs:
         shell: sh
         run: |
           pnpm --recursive --shell-mode exec biome check \
+          --max-diagnostics=none \
           --vcs-enabled=true \
           --vcs-use-ignore-file=true \
-          --vcs-root='../../' \
+          --vcs-root="../../" \
           --formatter-enabled=false \
           --linter-enabled=true \
           --organize-imports-enabled=true \
           --no-errors-on-unmatched \
           --reporter=github \
           --changed \
-          --write .
+          --write
 
       - name: 🚦 Git Auto Commit Lint fixes (with Biome)
         uses: stefanzweifel/git-auto-commit-action@v5.0.1
