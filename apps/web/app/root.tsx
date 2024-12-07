@@ -1,7 +1,7 @@
 import { invariantResponse } from '@epic-web/invariant'
 import { Either, Schema } from 'effect'
 import type { ReactElement } from 'react'
-import { data, useLoaderData } from 'react-router'
+import { Outlet, data, useLoaderData } from 'react-router'
 
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 
@@ -63,7 +63,6 @@ export function loader({ request }: Route.LoaderArgs) {
 			userPrefs: { theme: getTheme(request) },
 		},
 
-		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ENV: getEnv(),
 	}
 }
@@ -102,7 +101,9 @@ export default function App(_: Route.ComponentProps): ReactElement {
 			nonce={undefined}
 		>
 			<Header theme={requestInfo.userPrefs.theme} />
-			<Main />
+			<Main>
+				<Outlet />
+			</Main>
 			<Footer />
 		</Document>
 	)
