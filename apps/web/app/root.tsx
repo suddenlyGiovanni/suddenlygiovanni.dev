@@ -9,7 +9,7 @@ import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'
-import { getHints } from '~/utils/client-hints.tsx'
+import { ClientHintCheck, getHints } from '~/utils/client-hints.tsx'
 import { type Env, getEnv } from '~/utils/env.server.ts'
 import { getDomainUrl } from '~/utils/misc.ts'
 import { getTheme, setTheme } from '~/utils/theme.server.ts'
@@ -113,6 +113,7 @@ function Document({
 			lang="en"
 		>
 			<head>
+				<ClientHintCheck />
 				<meta charSet="utf-8" />
 				<meta
 					httpEquiv="Content-Type"

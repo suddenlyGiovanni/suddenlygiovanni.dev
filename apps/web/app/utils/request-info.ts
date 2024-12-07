@@ -9,3 +9,7 @@ export function useRequestInfo(): Info['loaderData']['requestInfo'] {
 	invariant(data?.requestInfo, 'No requestInfo found in root loader')
 	return data.requestInfo
 }
+
+export function useOptionalRequestInfo(): Info['loaderData']['requestInfo'] | undefined {
+	return useRouteLoaderData<typeof rootLoader>('root')?.requestInfo
+}
