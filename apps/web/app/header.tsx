@@ -52,7 +52,7 @@ function NavLink({
 	return (
 		<UnstyledNavLink
 			{...props}
-			className={({ isActive }) => calculateClassName({ isActive, className })}
+			className={({ isActive }): string => calculateClassName({ isActive, className })}
 		>
 			{children}
 		</UnstyledNavLink>
@@ -71,15 +71,13 @@ const routes = (
 
 const PRIMARY_NAVIGATION = 'primary-navigation'
 
-function computeNextThemeMode(mode: Theme): Theme {
-	const nextMode =
-		mode === 'system' //
-			? 'light'
-			: // biome-ignore lint/nursery/noNestedTernary: FIXME: convert it to a State Machine obj
-				mode === 'light'
-				? 'dark'
-				: 'system'
-	return nextMode
+function computeNextThemeMode(currentTheme: Theme): Theme {
+	const nextTheme = {
+		light: 'dark',
+		dark: 'system',
+		system: 'light',
+	} as const
+	return nextTheme[currentTheme]
 }
 
 function ThemeSwitch({
@@ -219,7 +217,6 @@ export const Header = memo(function Header({
 						id={PRIMARY_NAVIGATION}
 						onClick={handleMobileNavigationClick}
 						onKeyDown={handleMobileNavigationClick}
-						role="menu"
 					>
 						{renderLi}
 						<ThemeSwitch

@@ -18,8 +18,10 @@ import hero2670wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4c
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '~/config.ts'
 import { routesRecord } from '~/routes-record.ts'
+// biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/about-me.ts'
 
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function meta({ location }: Route.MetaArgs) {
 	const description = 'All about Giovanni Ravalico'
 	const title = `${config.siteName} | About me`

@@ -1,10 +1,13 @@
 // biome-ignore lint/correctness/noNodejsModules: <explanation>
+// biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as process from 'node:process'
 import { Either, Schema } from 'effect'
 import { TreeFormatter } from 'effect/ParseResult'
 
 const envSchema = Schema.Struct({
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	NODE_ENV: Schema.Literal('production', 'development', 'test'),
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	GITHUB_TOKEN: Schema.optionalWith(
 		Schema.NonEmptyString.annotations({
 			description: 'GitHub token',
@@ -12,12 +15,15 @@ const envSchema = Schema.Struct({
 		}),
 		{
 			exact: true,
-			default: (): string => 'MOCK_GITHUB_TOKEN',
+			default(): string {
+				return 'MOCK_GITHUB_TOKEN'
+			},
 		},
 	),
+	// biome-ignore lint/style/useNamingConvention: <explanation>
 	ALLOW_INDEXING: Schema.optionalWith(
 		Schema.transform(Schema.Literal('true', 'false'), Schema.Boolean, {
-			decode: (string: 'true' | 'false'): boolean => {
+			decode(string: 'true' | 'false'): boolean {
 				switch (string) {
 					case 'true':
 						return true
@@ -27,11 +33,15 @@ const envSchema = Schema.Struct({
 						return false
 				}
 			},
-			encode: (boolean: boolean): 'true' | 'false' => (boolean ? 'true' : 'false'),
+			encode(boolean: boolean): 'true' | 'false' {
+				return boolean ? 'true' : 'false'
+			},
 		}),
 		{
 			exact: true,
-			default: () => false,
+			default(): false {
+				return false
+			},
 		},
 	),
 })
@@ -69,19 +79,24 @@ export function init(): void {
  * be included in the client.
  * @returns all public ENV variables
  */
+
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function getEnv() {
 	return {
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		MODE: process.env.NODE_ENV,
+		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ALLOW_INDEXING: process.env.ALLOW_INDEXING,
 	} as const
 }
 
-type ENV = ReturnType<typeof getEnv>
+export type Env = ReturnType<typeof getEnv>
 
 declare global {
 	// eslint-disable-next-line no-var -- We need it to be hoisted and editable
-	var ENV: ENV
+	var ENV: Env
 	interface Window {
-		ENV: ENV
+		// biome-ignore lint/style/useNamingConvention: <explanation>
+		ENV: Env
 	}
 }

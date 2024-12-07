@@ -1,7 +1,8 @@
 import { invariant } from '@epic-web/invariant'
 import { useRouteLoaderData } from 'react-router'
 import type { loader as rootLoader } from '~/root.tsx'
-import type { Info } from '../+types/root'
+// biome-ignore lint/nursery/useImportRestrictions: <explanation>
+import type { Info } from '../+types/root.ts'
 
 export function useRequestInfo(): Info['loaderData']['requestInfo'] {
 	const data = useRouteLoaderData<typeof rootLoader>('root')

@@ -1,17 +1,25 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
 	"extends": ["../../biome.json"],
-	"linter": {
-		"enabled": true,
-		"include": ["apps/web/**/*"],
-		"rules": {
-			"style": { "noDefaultExport": "off" }
-		}
-	},
 	"files": {
 		"include": ["app/*"],
 		"ignoreUnknown": true,
-		"ignore": ["./~"]
+		"ignore": ["./~", ".react-router"]
+	},
+	"linter": {
+		"rules": {
+			"suspicious": {
+				"noReactSpecificProps": "off"
+			},
+			"nursery": {
+				"noSecrets": "off",
+				"useComponentExportOnlyModules": "off",
+				"useConsistentCurlyBraces": "off"
+			},
+			"style": {
+				"noDefaultExport": "off"
+			}
+		}
 	},
 	"overrides": [
 		{

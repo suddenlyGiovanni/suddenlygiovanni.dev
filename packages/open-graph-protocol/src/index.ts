@@ -1,4 +1,4 @@
-export { insertIf } from './utils/array.ts'
+export { insertIf } from './utils/index.ts'
 export {
 	makeOpenGraphMetaAttributesRecord,
 	type IOGType,

@@ -1,6 +1,7 @@
 import { type Effect, type Layer, ManagedRuntime } from 'effect'
 import type { LoaderFunction } from 'react-router'
 
+// biome-ignore lint/nursery/useExplicitType: <explanation>
 export const makeRemixRuntime = <R, E>(layer: Layer.Layer<R, E, never>) => {
 	const runtime = ManagedRuntime.make(layer)
 
@@ -11,6 +12,7 @@ export const makeRemixRuntime = <R, E>(layer: Layer.Layer<R, E, never>) => {
 		): (...args: Parameters<LoaderFunction>) => Promise<A>
 	} =
 		body =>
+		// biome-ignore lint/nursery/useExplicitType: <explanation>
 		(...args) =>
 			runtime.runPromise(body(...args))
 

@@ -20,10 +20,30 @@ jobs:
           github_packages_token: ${{ secrets.GH_PACKAGES_TOKEN }}
 
       - name: 💅 Format code
-        run: pnpm run format:ci
+        shell: sh
+        run: |
+          pnpm --recursive --shell-mode exec biome ci \
+          --max-diagnostics=none \
+          --vcs-enabled=true \
+          --vcs-use-ignore-file=true \
+          --vcs-root="../../" \
+          --formatter-enabled=true \
+          --linter-enabled=false \
+          --organize-imports-enabled=true \
+          --reporter=github
 
       - name: 🚨 Lint code
-        run: pnpm run lint:ci
+        shell: sh
+        run: |
+          pnpm --recursive --shell-mode exec biome ci \
+          --max-diagnostics=none \
+          --vcs-enabled=true \
+          --vcs-use-ignore-file=true \
+          --vcs-root="../../" \
+          --formatter-enabled=false \
+          --linter-enabled=true \
+          --organize-imports-enabled=false \
+          --reporter=github .
 
       - name: 🔍 Typecheck code
         continue-on-error: true

@@ -1,5 +1,4 @@
-import * as Either from 'effect/Either'
-import { pipe } from 'effect/Function'
+import { Either, pipe } from 'effect'
 import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
 
 import type * as Model from '@suddenlygiovanni/resume/schema-resume'
@@ -168,7 +167,7 @@ const EduHeader = memo(function EduHeader({
 			</h3>
 
 			<span
-				aria-label="institution"
+				// aria-label="institution"
 				className={clsx(styles.span, 'font-medium text-base not-italic')}
 			>
 				{institution}
@@ -189,7 +188,9 @@ const EduHeader = memo(function EduHeader({
 
 			<span className={clsx(styles.span, 'justify-between')}>
 				{startDate ? (
-					<span aria-label="start date / end date">
+					<span
+					// aria-label="start date / end date"
+					>
 						<time
 							className="mr-2"
 							dateTime={startDate}
@@ -212,7 +213,7 @@ const EduHeader = memo(function EduHeader({
 
 				{location ? (
 					<span
-						aria-label="location"
+						// aria-label="location"
 						className={styles.span}
 					>
 						{location}
@@ -222,7 +223,7 @@ const EduHeader = memo(function EduHeader({
 
 			{studyType ? (
 				<span
-					aria-label="description"
+					// aria-label="description"
 					className={styles.span}
 				>
 					{studyType}

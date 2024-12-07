@@ -1,5 +1,7 @@
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import type { JSX } from 'react'
+
+// biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/reading-journal.ts'
 
 export const meta: Route.MetaFunction = () => {

@@ -26,7 +26,20 @@ jobs:
         run: pnpm run typecheck
 
       - name: 🚨 Lint code
-        run: pnpm run lint:ci:write
+        shell: sh
+        run: |
+          pnpm --recursive --shell-mode exec biome check \
+          --max-diagnostics=none \
+          --vcs-enabled=true \
+          --vcs-use-ignore-file=true \
+          --vcs-root="../../" \
+          --formatter-enabled=false \
+          --linter-enabled=true \
+          --organize-imports-enabled=true \
+          --no-errors-on-unmatched \
+          --reporter=github \
+          --changed \
+          --write
 
       - name: 🚦 Git Auto Commit Lint fixes (with Biome)
         uses: stefanzweifel/git-auto-commit-action@v5.0.1
@@ -34,7 +47,20 @@ jobs:
           commit_message: "chore: lint code with Biome [skip ci]"
 
       - name: 💅 Format code
-        run: pnpm run format:ci:write
+        shell: sh
+        run: |
+          pnpm --recursive --shell-mode exec biome check \
+          --max-diagnostics=none \
+          --vcs-enabled=true \
+          --vcs-use-ignore-file=true \
+          --vcs-root="../../" \
+          --formatter-enabled=true \
+          --linter-enabled=false  \
+          --organize-imports-enabled=true \
+          --reporter=github \
+          --changed \
+          --no-errors-on-unmatched \
+          --write
 
       - name: 🚦 Git Auto Commit Format fixes (with Biome)
         uses: stefanzweifel/git-auto-commit-action@v5.0.1

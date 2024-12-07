@@ -1,3 +1,4 @@
+// biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as cookie from 'cookie'
 
 const cookieName = 'en_theme'
