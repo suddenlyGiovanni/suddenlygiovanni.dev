@@ -1,9 +1,9 @@
 import { invariantResponse } from '@epic-web/invariant'
-import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { Either, Schema } from 'effect'
 import type { ReactElement, ReactNode } from 'react'
 import { Links, Meta, Scripts, ScrollRestoration, data, useLoaderData } from 'react-router'
 
+import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
@@ -14,6 +14,7 @@ import { type Env, getEnv } from '~/utils/env.server.ts'
 import { getDomainUrl } from '~/utils/misc.ts'
 import { getTheme, setTheme } from '~/utils/theme.server.ts'
 import { ThemeFormSchema, useTheme } from '~/utils/theme.tsx'
+
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
 import { Footer } from './footer.tsx'
 import { Header } from './header/header.tsx'
