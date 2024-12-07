@@ -217,7 +217,6 @@ export const Header = memo(function Header({
 						id={PRIMARY_NAVIGATION}
 						onClick={handleMobileNavigationClick}
 						onKeyDown={handleMobileNavigationClick}
-						role="menu"
 					>
 						{renderLi}
 						<ThemeSwitch

@@ -108,7 +108,9 @@ const ExperienceHeader = memo(function ExperienceHeader(work: {
 			</hgroup>
 
 			<span className={clsx(styles.span, 'justify-between')}>
-				<span aria-label="start date / end date">
+				<span
+				// aria-label="start date / end date"
+				>
 					<time
 						className="mr-1"
 						dateTime={startDate}
@@ -128,12 +130,18 @@ const ExperienceHeader = memo(function ExperienceHeader(work: {
 					) : null}
 				</span>
 
-				{work.location ? <span aria-label="location">{work.location}</span> : null}
+				{work.location ? (
+					<span
+					// aria-label="location"
+					>
+						{work.location}
+					</span>
+				) : null}
 			</span>
 
 			{work.description ? (
 				<span
-					aria-label="description"
+					// aria-label="description"
 					className={styles.span}
 				>
 					{work.description}
@@ -224,7 +232,9 @@ function Role(
 						</Card.Title>
 						{'startDate' in role && (
 							<Card.Description>
-								<span aria-label="start date / end date">
+								<span
+								// aria-label="start date / end date"
+								>
 									<time
 										className="mr-1"
 										dateTime={role.startDate}
@@ -256,7 +266,7 @@ function Role(
 							{role.responsibilities.map(resp => (
 								<dd
 									key={resp}
-									role="listitem"
+									// role="listitem"
 									className="text-gray-600 dark:text-gray-400"
 								>
 									{resp.split('\n').map(resP => (
@@ -277,7 +287,7 @@ function Role(
 								{role.highlights.map(highlight => (
 									<dd
 										key={highlight}
-										role="listitem"
+										// role="listitem"
 										className="text-gray-600 dark:text-gray-400"
 									>
 										{highlight.split('\n').map(hP => (
