@@ -25,8 +25,8 @@ jobs:
           pnpm --recursive --shell-mode exec biome ci \
           --max-diagnostics=none \
           --vcs-enabled=true \
-          --vcs-use-ignore-file=true
-          --vcs-root="../../"
+          --vcs-use-ignore-file=true \
+          --vcs-root="../../" \
           --formatter-enabled=true \
           --linter-enabled=false \
           --organize-imports-enabled=true \
