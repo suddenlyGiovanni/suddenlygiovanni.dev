@@ -17,10 +17,8 @@
 		"format": {
 			"cache": false
 		},
-		"format:ci": { "cache": false },
 		"format:write": { "cache": false },
 		"lint": { "cache": false },
-		"lint:ci": { "cache": false },
 		"test:unit": {
 			"dependsOn": ["topo"]
 		},
