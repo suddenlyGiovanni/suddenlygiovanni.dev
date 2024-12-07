@@ -4,8 +4,8 @@ import { Links, Meta, Scripts, ScrollRestoration } from 'react-router'
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
-import { ClientHintCheck } from '../utils/client-hints.tsx'
-import type { Env } from '../utils/env.server.ts'
+import { ClientHintCheck } from '~/utils/client-hints.tsx'
+import type { Env } from '~/utils/env.server.ts'
 
 export function Document({
 	children,
