@@ -86,7 +86,7 @@ importers:
         version: link:../../packages/config-typescript
       '@tailwindcss/typography':
         specifier: 0.5.15
-        version: 0.5.15(tailwindcss@4.0.0-beta.5)
+        version: 0.5.15(tailwindcss@4.0.0-beta.6)
       '@tailwindcss/vite':
         specifier: 4.0.0-beta.6
         version: 4.0.0-beta.6(vite@5.4.11(@types/node@22.10.1)(lightningcss@1.28.2))
@@ -112,11 +112,11 @@ importers:
         specifier: 2.0.0-beta.0
         version: 2.0.0-beta.0(@types/react-dom@18.3.1)(@types/react@18.3.13)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(vite@5.4.11(@types/node@22.10.1)(lightningcss@1.28.2))
       tailwindcss:
-        specifier: 4.0.0-beta.5
-        version: 4.0.0-beta.5
+        specifier: 4.0.0-beta.6
+        version: 4.0.0-beta.6
       tailwindcss-animate:
         specifier: 1.0.7
-        version: 1.0.7(tailwindcss@4.0.0-beta.5)
+        version: 1.0.7(tailwindcss@4.0.0-beta.6)
       vite:
         specifier: 5.4.11
         version: 5.4.11(@types/node@22.10.1)(lightningcss@1.28.2)
@@ -204,7 +204,7 @@ importers:
         version: 7.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tailwind-variants:
         specifier: 0.3.0
-        version: 0.3.0(tailwindcss@4.0.0-beta.5)
+        version: 0.3.0(tailwindcss@4.0.0-beta.6)
     devDependencies:
       '@chromatic-com/storybook':
         specifier: 3.2.2
@@ -241,7 +241,7 @@ importers:
         version: link:../config-typescript
       '@tailwindcss/typography':
         specifier: 0.5.15
-        version: 0.5.15(tailwindcss@4.0.0-beta.5)
+        version: 0.5.15(tailwindcss@4.0.0-beta.6)
       '@tailwindcss/vite':
         specifier: 4.0.0-beta.6
         version: 4.0.0-beta.6(vite@5.4.11(@types/node@22.10.1)(lightningcss@1.28.2))
@@ -267,11 +267,11 @@ importers:
         specifier: 2.5.5
         version: 2.5.5
       tailwindcss:
-        specifier: 4.0.0-beta.5
-        version: 4.0.0-beta.5
+        specifier: 4.0.0-beta.6
+        version: 4.0.0-beta.6
       tailwindcss-animate:
         specifier: 1.0.7
-        version: 1.0.7(tailwindcss@4.0.0-beta.5)
+        version: 1.0.7(tailwindcss@4.0.0-beta.6)
       vite:
         specifier: 5.4.11
         version: 5.4.11(@types/node@22.10.1)(lightningcss@1.28.2)
@@ -4426,9 +4426,6 @@ packages:
     peerDependencies:
       tailwindcss: '>=3.0.0 || insiders'
 
-  tailwindcss@4.0.0-beta.5:
-    resolution: {integrity: sha512-59zeDyaVE5z1iQnhk5cGeBJvb6Z/Iym4qSFzPddiotWbnqWcIqj0kRgZH8OyR4VZU+solTRQaWRgfDZ8PQ+p8A==}
-
   tailwindcss@4.0.0-beta.6:
     resolution: {integrity: sha512-eCCuMk3H65w4J/QWkjxfeWoBSKbCD3E6Uj2LA6Xkkl4eMa1MXuwVpIU1RXcLIp+BVsXGEZMP7i7uJig7KxfAXQ==}
 
@@ -7595,13 +7592,13 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.0.0-beta.6
       '@tailwindcss/oxide-win32-x64-msvc': 4.0.0-beta.6
 
-  '@tailwindcss/typography@0.5.15(tailwindcss@4.0.0-beta.5)':
+  '@tailwindcss/typography@0.5.15(tailwindcss@4.0.0-beta.6)':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       postcss-selector-parser: 6.0.10
-      tailwindcss: 4.0.0-beta.5
+      tailwindcss: 4.0.0-beta.6
 
   '@tailwindcss/vite@4.0.0-beta.6(vite@5.4.11(@types/node@22.10.1)(lightningcss@1.28.2))':
     dependencies:
@@ -9483,16 +9480,14 @@ snapshots:
 
   tailwind-merge@2.5.5: {}
 
-  tailwind-variants@0.3.0(tailwindcss@4.0.0-beta.5):
+  tailwind-variants@0.3.0(tailwindcss@4.0.0-beta.6):
     dependencies:
       tailwind-merge: 2.5.4
-      tailwindcss: 4.0.0-beta.5
+      tailwindcss: 4.0.0-beta.6
 
-  tailwindcss-animate@1.0.7(tailwindcss@4.0.0-beta.5):
+  tailwindcss-animate@1.0.7(tailwindcss@4.0.0-beta.6):
     dependencies:
-      tailwindcss: 4.0.0-beta.5
-
-  tailwindcss@4.0.0-beta.5: {}
+      tailwindcss: 4.0.0-beta.6
 
   tailwindcss@4.0.0-beta.6: {}
 
