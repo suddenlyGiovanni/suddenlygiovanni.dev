@@ -102,10 +102,9 @@ function Document({
 	theme,
 }: {
 	children: ReactNode
-	theme?: 'light' | 'dark' | null // TODO: address this prop
+	theme?: 'light' | 'dark' | null
 	env?: Env
 }): ReactElement {
-	const colorScheme = theme ?? 'light dark'
 	return (
 		<html
 			className="min-h-screen"
@@ -121,10 +120,6 @@ function Document({
 				<meta
 					content="width=device-width, initial-scale=1"
 					name="viewport"
-				/>
-				<meta
-					name="color-scheme"
-					content={colorScheme}
 				/>
 				<Meta />
 				<Links />
