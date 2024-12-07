@@ -1,19 +1,15 @@
 import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
-import { type NavLinkProps, NavLink as UnstyledNavLink, useFetcher } from 'react-router'
+import { type NavLinkProps, NavLink as UnstyledNavLink } from 'react-router'
 
-import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.js'
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 import { NavigationMenuToggle } from '@suddenlygiovanni/ui/components/navigation-menu-toggle/navigation-menu-toggle.tsx'
 import { SuddenlyGiovanni } from '@suddenlygiovanni/ui/components/suddenly-giovanni/suddenly-giovanni.tsx'
 import { useToggle } from '@suddenlygiovanni/ui/hooks/use-toggle.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
-import { Button } from '@suddenlygiovanni/ui/ui/button.js'
 
-import type { action } from '~/root.tsx'
-import { type Theme, useOptimisticThemeMode } from '~/utils/theme.tsx'
 import avatarAssetUrl from '../assets/giovanni_ravalico-profile_bw.webp'
-
 import { routesRecord } from '../routes-record.ts'
+import { ThemeSwitch } from './theme-switch.tsx'
 
 /**
  * Calculates class name based on activated state and base classes
@@ -70,72 +66,6 @@ const routes = (
 ).filter(({ hidden }) => !hidden)
 
 const PRIMARY_NAVIGATION = 'primary-navigation'
-
-function computeNextThemeMode(currentTheme: Theme): Theme {
-	const nextTheme = {
-		light: 'dark',
-		dark: 'system',
-		system: 'light',
-	} as const
-	return nextTheme[currentTheme]
-}
-
-function ThemeSwitch({
-	userPreference,
-	className,
-}: {
-	readonly userPreference?: 'light' | 'dark' | null
-	readonly className?: string
-}): ReactElement {
-	const fetcher = useFetcher<typeof action>()
-
-	const optimisticMode = useOptimisticThemeMode()
-	const mode = optimisticMode ?? userPreference ?? 'system'
-	const modeLabel = {
-		light: (
-			<Icons.sun className={clsx('h-[1.2rem] w-[1.2rem]')}>
-				<span className="sr-only">Light</span>
-			</Icons.sun>
-		),
-		dark: (
-			<Icons.moon className={clsx('h-[1.2rem] w-[1.2rem]')}>
-				<span className="sr-only">Dark</span>
-			</Icons.moon>
-		),
-		system: (
-			<Icons.laptop
-				name="laptop"
-				className={clsx('h-[1.2rem] w-[1.2rem]')}
-			>
-				<span className="sr-only">System</span>
-			</Icons.laptop>
-		),
-	}
-
-	return (
-		<fetcher.Form
-			method="POST"
-			className={className}
-		>
-			<input
-				type="hidden"
-				name="theme"
-				value={computeNextThemeMode(mode)}
-			/>
-			<div className="flex gap-2">
-				<Button
-					className={clsx('flex h-8 w-8 cursor-pointer items-center justify-center')}
-					size="icon"
-					variant="ghost"
-					data-testid="ThemeSwitch"
-					type="submit"
-				>
-					{modeLabel[mode]}
-				</Button>
-			</div>
-		</fetcher.Form>
-	)
-}
 
 export const Header = memo(function Header({
 	theme,
