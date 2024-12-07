@@ -5,8 +5,8 @@ import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
 
-import type { action } from '../../root.tsx'
-import { type Theme, useOptimisticThemeMode } from '../../utils/theme.tsx'
+import type { action } from '../root.tsx'
+import { type Theme, useOptimisticThemeMode } from '../utils/theme.tsx'
 
 function computeNextThemeMode(currentTheme: Theme): Theme {
 	const nextTheme = {
