@@ -16,8 +16,8 @@ import { ThemeFormSchema, useTheme } from '~/utils/theme.tsx'
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/root.ts'
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
-import { Footer } from './footer.tsx'
 import { Document } from './shell/document.tsx'
+import { Footer } from './shell/footer.tsx'
 import { Header } from './shell/header/header.tsx'
 import { Main } from './shell/main.tsx'
 
