@@ -77,11 +77,9 @@
 		"dev": "storybook dev -p 6006",
 		"format": "biome check --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true .",
 		"format:ci": "biome check --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true --reporter=github --changed  --no-errors-on-unmatched .",
-		"format:ci:write": "biome check --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true --reporter=github --changed --no-errors-on-unmatched --write .",
 		"format:write": "biome check --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true --write .",
 		"lint": "biome ci --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=false --no-errors-on-unmatched .",
 		"lint:ci": "biome ci --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=false --no-errors-on-unmatched --reporter=github .",
-		"lint:ci:write": "biome check --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=true --no-errors-on-unmatched --reporter=github --changed --write .",
 		"typecheck": "scripty"
 	},
 	"type": "module",
