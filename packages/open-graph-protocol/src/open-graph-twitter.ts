@@ -1,8 +1,6 @@
 import type { BaseOrExtended, MetaBase } from './open-graph.ts'
 import * as Types from './types.ts'
-import { insertIf } from './utils/array.ts'
-import { maxLength } from './utils/string.ts'
-import type { ValueOf } from './utils/types.ts'
+import { type ValueOf, insertIf, maxLength } from './utils/index.ts'
 
 type Twitter<T extends string = ''> = BaseOrExtended<'twitter', T>
 export type TwitterCardType = 'summary_large_image' | 'summary' | 'app' | 'player'

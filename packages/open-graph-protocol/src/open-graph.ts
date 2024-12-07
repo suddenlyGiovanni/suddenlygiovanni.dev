@@ -18,7 +18,7 @@ import type { VideoOtherRecord } from './open-graph-video-other.ts'
 import type { VideoTvShowRecord } from './open-graph-video-tvshow.ts'
 import type { WebsiteRecord } from './open-graph-website.ts'
 import type * as Types from './types.ts'
-import type { ValueOf } from './utils/types.ts'
+import type { ValueOf } from './utils/index.ts'
 
 export const OGType = {
 	WEBSITE: 'website',

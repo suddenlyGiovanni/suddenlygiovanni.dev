@@ -11,6 +11,10 @@
 			"performance": {
 				"noBarrelFile": "off",
 				"noReExportAll": "off"
+			},
+			"style": {
+				"useNamingConvention": "off",
+				"noNamespaceImport": "off"
 			}
 		}
 	}

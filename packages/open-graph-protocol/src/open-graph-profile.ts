@@ -14,8 +14,7 @@ import {
 	type og,
 } from './open-graph.ts'
 import type * as Types from './types.ts'
-import { insertIf } from './utils/array.ts'
-import type { ValueOf } from './utils/types.ts'
+import { type ValueOf, insertIf } from './utils/index.ts'
 
 type Profile<T extends string = ''> = BaseOrExtended<'profile', T>
 
