@@ -1,6 +1,7 @@
-import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 import type { JSX } from 'react'
 import { Outlet } from 'react-router'
+
+import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 
 export function Main(): JSX.Element {
 	return (
