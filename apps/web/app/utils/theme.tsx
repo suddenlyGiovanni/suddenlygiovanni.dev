@@ -4,15 +4,13 @@ import { useFetchers } from 'react-router'
 import { useHints } from './client-hints.tsx'
 import { useRequestInfo } from './request-info.ts'
 
-export const ThemeFormSchema = Schema.Struct({
-	theme: Schema.Literal('light', 'dark', 'system').annotations({
-		title: 'Theme',
-		description: 'The theme to set',
-		examples: ['light', 'dark', 'system'],
-	}),
+const themeSchema = Schema.Literal('light', 'dark', 'system').annotations({
+	title: 'Theme',
+	description: 'The theme to set',
+	examples: ['light', 'dark', 'system'],
 })
-
-export type Theme = Schema.Schema.Type<typeof ThemeFormSchema>['theme']
+export const ThemeFormSchema = Schema.Struct({ theme: themeSchema })
+export type Theme = Schema.Schema.Type<typeof themeSchema>
 
 export function useOptimisticThemeMode(): Theme | undefined {
 	const fetchers = useFetchers()
@@ -28,7 +26,7 @@ export function useOptimisticThemeMode(): Theme | undefined {
 			return result.right.theme
 		}
 	}
-	return
+	return undefined
 }
 
 /**
