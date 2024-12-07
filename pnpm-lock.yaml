@@ -60,8 +60,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2
       effect:
-        specifier: 3.11.2
-        version: 3.11.2
+        specifier: 3.11.3
+        version: 3.11.3
       isbot:
         specifier: 5.1.17
         version: 5.1.17
@@ -3250,8 +3250,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect@3.11.2:
-    resolution: {integrity: sha512-iBdej2wiVtPijAn04uQQVZK3xtHIdiwLQHvW1KonEuDaHWKjaxbIVwz8TabfP6dWTZlm4jNR8DXUwhq56JWF+Q==}
+  effect@3.11.3:
+    resolution: {integrity: sha512-pbdB97Ejdbu7YvnkOf5J8y9J0ZIveAK+uKUZJpZGqUyTfykpL9VqfzahjWfdkseDqsktEZS7bFuJ9IBowVWNpA==}
 
   electron-to-chromium@1.5.47:
     resolution: {integrity: sha512-zS5Yer0MOYw4rtK2iq43cJagHZ8sXN0jDHDKzB+86gSBSAI4v07S97mcq+Gs2vclAxSh1j7vOAHxSVgduiiuVQ==}
@@ -8168,7 +8168,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect@3.11.2:
+  effect@3.11.3:
     dependencies:
       fast-check: 3.22.0
 
