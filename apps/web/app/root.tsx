@@ -16,7 +16,7 @@ import { getTheme, setTheme } from '~/utils/theme.server.ts'
 import { ThemeFormSchema, useTheme } from '~/utils/theme.tsx'
 import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
 import { Footer } from './footer.tsx'
-import { Header } from './header.tsx'
+import { Header } from './header/header.tsx'
 import { Main } from './main.tsx'
 
 import tailwindStyleSheetUrl from './styles/tailwind.css?url'

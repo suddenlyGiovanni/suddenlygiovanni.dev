@@ -11,9 +11,9 @@ import { Button } from '@suddenlygiovanni/ui/ui/button.js'
 
 import type { action } from '~/root.tsx'
 import { type Theme, useOptimisticThemeMode } from '~/utils/theme.tsx'
-import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
+import avatarAssetUrl from '../assets/giovanni_ravalico-profile_bw.webp'
 
-import { routesRecord } from './routes-record.ts'
+import { routesRecord } from '../routes-record.ts'
 
 /**
  * Calculates class name based on activated state and base classes
