@@ -28,7 +28,7 @@
 		"@react-router/dev": "7.0.2",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"@tailwindcss/typography": "0.5.15",
-		"@tailwindcss/vite": "4.0.0-beta.5",
+		"@tailwindcss/vite": "4.0.0-beta.6",
 		"@total-typescript/ts-reset": "0.6.1",
 		"@types/node": "22.10.1",
 		"@types/react": "18.3.13",
