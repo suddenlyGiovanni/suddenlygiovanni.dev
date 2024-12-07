@@ -1,3 +1,4 @@
+// biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as SwitchPrimitives from '@radix-ui/react-switch'
 import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from 'react'
 

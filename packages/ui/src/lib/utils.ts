@@ -1,3 +1,4 @@
+// biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as Clsx from '@nick/clsx'
 import { twMerge } from 'tailwind-merge'
 

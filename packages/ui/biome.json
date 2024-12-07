@@ -12,8 +12,10 @@
 				"all": true
 			},
 			"nursery": {
+				"noSecrets": "off",
 				"useConsistentCurlyBraces": "off",
 				"useExplicitType": "info",
+				"useImportRestrictions": "off",
 				"useSortedClasses": {
 					"fix": "safe",
 					"level": "warn",
