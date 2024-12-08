@@ -54,8 +54,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/resume':
-        specifier: 13.1.0
-        version: 13.1.0
+        specifier: 13.2.0
+        version: 13.2.0
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -2543,9 +2543,9 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@suddenlygiovanni/resume@13.1.0':
-    resolution: {integrity: sha512-CQRX0QRZFYjz0LK6/NBNufuq4Yezmfz4eNoaH/rQX18H0k/PFAvtJiwk1+LFcfJtLvcM6Bd6EYFpkOsYjOfzUw==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/13.1.0/5e51a55f124c7a07b2f423996223b37af2b33ae6}
-    engines: {node: '>=22.11'}
+  '@suddenlygiovanni/resume@13.2.0':
+    resolution: {integrity: sha512-lqpl8BUnC35eExiBjta+pbNFd1evbPkfe/MnlGkPUoZm9Thzk/JaEvQ1hVNwDGlaVCoplqZM5uSTw1rO8egiZw==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/13.2.0/1ae5769565dd300054b01391f8f3ea68fa465155}
+    engines: {node: '>=22.10'}
 
   '@swc/core-darwin-arm64@1.7.26':
     resolution: {integrity: sha512-FF3CRYTg6a7ZVW4yT9mesxoVVZTrcSWtmZhxKCYJX9brH4CS/7PRPjAKNk6kzWgWuRoglP7hkjQcd6EpMcZEAw==}
@@ -3464,6 +3464,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -3534,6 +3535,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -7536,7 +7538,7 @@ snapshots:
     dependencies:
       storybook: 8.4.7(prettier@2.8.8)
 
-  '@suddenlygiovanni/resume@13.1.0': {}
+  '@suddenlygiovanni/resume@13.2.0': {}
 
   '@swc/core-darwin-arm64@1.7.26':
     optional: true
