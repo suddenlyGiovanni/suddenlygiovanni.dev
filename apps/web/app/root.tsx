@@ -1,7 +1,5 @@
-import { invariantResponse } from '@epic-web/invariant'
-import { Either, Schema } from 'effect'
 import type { ReactElement, ReactNode } from 'react'
-import { Outlet, data, useLoaderData } from 'react-router'
+import { Outlet, useLoaderData } from 'react-router'
 
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 
@@ -13,11 +11,11 @@ import tailwindStyleSheetUrl from '~/styles/tailwind.css?url'
 import { getHints } from '~/utils/client-hints.tsx'
 import { getEnv } from '~/utils/env.server.ts'
 import { getDomainUrl } from '~/utils/misc.ts'
-import { getTheme, setTheme } from '~/utils/theme.server.ts'
-import { ThemeFormSchema, useOptionalTheme, useTheme } from '~/utils/theme.tsx'
+import { getTheme } from '~/utils/theme.server.ts'
 
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/root.ts'
+import { useOptionalTheme, useTheme } from './routes/resources/theme-switch.tsx'
 
 export const links: Route.LinksFunction = () => {
 	return [
@@ -64,30 +62,6 @@ export function loader({ request }: Route.LoaderArgs) {
 
 		ENV: getEnv(),
 	}
-}
-
-// biome-ignore lint/nursery/useExplicitType: <explanation>
-export async function action({ request }: Route.ActionArgs) {
-	const formData = await request.formData()
-	const payload = Object.fromEntries(formData)
-	const parse = Schema.decodeUnknownEither(ThemeFormSchema, { errors: 'all' })
-	const result = parse(payload)
-	invariantResponse(Either.isRight(result), 'Invalid theme received', { status: 400 })
-
-	return data(
-		{
-			result: {
-				status: 'success',
-				initialValue: payload,
-				fields: Object.keys(payload),
-			},
-		},
-		{
-			headers: {
-				'set-cookie': setTheme(result.right.theme),
-			},
-		},
-	)
 }
 
 export default function App(_: Route.ComponentProps): ReactElement {

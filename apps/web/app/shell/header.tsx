@@ -9,8 +9,8 @@ import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import avatarAssetUrl from '~/assets/giovanni_ravalico-profile_bw.webp'
 import { routesRecord } from '~/routes-record.ts'
 
+import { ThemeSwitch } from '~/routes/resources/theme-switch.tsx'
 import { NavLink } from './nav-link.tsx'
-import { ThemeSwitch } from './theme-switch.tsx'
 
 const routes = (
 	[
