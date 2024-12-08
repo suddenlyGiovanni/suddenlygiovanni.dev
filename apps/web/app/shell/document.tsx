@@ -13,10 +13,10 @@ export function Document({
 	theme,
 	nonce,
 }: {
-	nonce?: string | undefined
+	nonce: string | undefined
 	children: ReactNode
-	theme?: 'light' | 'dark' | null
-	env?: Env
+	theme: 'light' | 'dark' | undefined
+	env: Env | undefined
 }): ReactElement {
 	return (
 		<html

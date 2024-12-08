@@ -1,6 +1,6 @@
 import { invariantResponse } from '@epic-web/invariant'
 import { Either, Schema } from 'effect'
-import type { ReactElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 import { Outlet, data, useLoaderData } from 'react-router'
 
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
@@ -14,7 +14,7 @@ import { getHints } from '~/utils/client-hints.tsx'
 import { getEnv } from '~/utils/env.server.ts'
 import { getDomainUrl } from '~/utils/misc.ts'
 import { getTheme, setTheme } from '~/utils/theme.server.ts'
-import { ThemeFormSchema, useTheme } from '~/utils/theme.tsx'
+import { ThemeFormSchema, useOptionalTheme, useTheme } from '~/utils/theme.tsx'
 
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/root.ts'
@@ -91,20 +91,31 @@ export async function action({ request }: Route.ActionArgs) {
 }
 
 export default function App(_: Route.ComponentProps): ReactElement {
-	const { ENV, requestInfo } = useLoaderData<typeof loader>()
+	const { requestInfo } = useLoaderData<typeof loader>()
 	const theme = useTheme()
 
 	return (
-		<Document
-			env={ENV}
-			theme={theme}
-			nonce={undefined}
-		>
+		<>
 			<Header theme={requestInfo.userPrefs.theme} />
 			<Main>
 				<Outlet />
 			</Main>
 			<Footer />
+		</>
+	)
+}
+
+export function Layout({ children }: { children: ReactNode }): ReactElement {
+	// if there was an error running the loader, data could be missing
+	const data = useLoaderData<typeof loader | null>()
+	const theme = useOptionalTheme()
+	return (
+		<Document
+			nonce={undefined}
+			theme={theme}
+			env={data?.ENV}
+		>
+			{children}
 		</Document>
 	)
 }

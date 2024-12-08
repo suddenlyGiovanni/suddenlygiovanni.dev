@@ -1,8 +1,8 @@
 import { Either, Schema } from 'effect'
 import { useFetchers } from 'react-router'
 
-import { useHints } from './client-hints.tsx'
-import { useRequestInfo } from './request-info.ts'
+import { useHints, useOptionalHints } from './client-hints.tsx'
+import { useOptionalRequestInfo, useRequestInfo } from './request-info.ts'
 
 const themeSchema = Schema.Literal('light', 'dark', 'system').annotations({
 	title: 'Theme',
@@ -42,4 +42,14 @@ export function useTheme(): Exclude<Theme, 'system'> | null {
 	}
 
 	return requestInfo.userPrefs.theme ?? hints.theme
+}
+
+export function useOptionalTheme(): 'light' | 'dark' | undefined {
+	const optionalHints = useOptionalHints()
+	const optionalRequestInfo = useOptionalRequestInfo()
+	const optimisticMode = useOptimisticThemeMode()
+	if (optimisticMode) {
+		return optimisticMode === 'system' ? optionalHints?.theme : optimisticMode
+	}
+	return optionalRequestInfo?.userPrefs.theme ?? optionalHints?.theme
 }
