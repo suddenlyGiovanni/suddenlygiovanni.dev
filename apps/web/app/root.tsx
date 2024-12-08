@@ -7,6 +7,7 @@ import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4c
 import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
 import { config } from '~/config.ts'
 import { Document, Footer, GeneralErrorBoundary, Header, Main } from '~/shell/index.tsx'
+import fontStyleSheetUrl from '~/styles/fonts.css?url'
 import tailwindStyleSheetUrl from '~/styles/tailwind.css?url'
 import { getHints } from '~/utils/client-hints.tsx'
 import { getEnv } from '~/utils/env.server.ts'
@@ -24,6 +25,8 @@ export const links: Route.LinksFunction = () => {
 			type: 'image/svg+xml',
 			href: faviconAssertUrl,
 		},
+		{ rel: 'preload', href: fontStyleSheetUrl, as: 'style' },
+		{ rel: 'stylesheet', href: fontStyleSheetUrl },
 		{ rel: 'stylesheet', href: tailwindStyleSheetUrl, type: 'text/css' },
 	]
 }
