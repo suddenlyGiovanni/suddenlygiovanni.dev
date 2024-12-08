@@ -28,7 +28,8 @@
 			},
 			"nursery": {
 				"all": true
-			}
+			},
+			"suspicious": { "noReactSpecificProps": "off" }
 		}
 	},
 	"javascript": {

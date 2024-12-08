@@ -1,28 +1,22 @@
-import { invariantResponse } from '@epic-web/invariant'
-import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
-import { Either, Schema } from 'effect'
 import type { ReactElement, ReactNode } from 'react'
-import { Links, Meta, Scripts, ScrollRestoration, data, useLoaderData } from 'react-router'
+import { Outlet, useLoaderData } from 'react-router'
 
-import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
-import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
+import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
 import { config } from '~/config.ts'
+import { Document, Footer, GeneralErrorBoundary, Header, Main } from '~/shell/index.tsx'
+import fontStyleSheetUrl from '~/styles/fonts.css?url'
+import tailwindStyleSheetUrl from '~/styles/tailwind.css?url'
 import { getHints } from '~/utils/client-hints.tsx'
-import { type Env, getEnv } from '~/utils/env.server.ts'
+import { getEnv } from '~/utils/env.server.ts'
 import { getDomainUrl } from '~/utils/misc.ts'
-import { getTheme, setTheme } from '~/utils/theme.server.ts'
-import { ThemeFormSchema, useTheme } from '~/utils/theme.tsx'
-import faviconAssertUrl from './assets/suddenly_giovanni-icon-white.svg'
-import { Footer } from './footer.tsx'
-import { Header } from './header.tsx'
-import { Main } from './main.tsx'
-
-import tailwindStyleSheetUrl from './styles/tailwind.css?url'
+import { getTheme } from '~/utils/theme.server.ts'
 
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/root.ts'
+import { useOptionalTheme, useTheme } from './routes/resources/theme-switch.tsx'
 
 export const links: Route.LinksFunction = () => {
 	return [
@@ -31,6 +25,8 @@ export const links: Route.LinksFunction = () => {
 			type: 'image/svg+xml',
 			href: faviconAssertUrl,
 		},
+		{ rel: 'preload', href: fontStyleSheetUrl, as: 'style' },
+		{ rel: 'stylesheet', href: fontStyleSheetUrl },
 		{ rel: 'stylesheet', href: tailwindStyleSheetUrl, type: 'text/css' },
 	]
 }
@@ -67,96 +63,38 @@ export function loader({ request }: Route.LoaderArgs) {
 			userPrefs: { theme: getTheme(request) },
 		},
 
-		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ENV: getEnv(),
 	}
 }
 
-// biome-ignore lint/nursery/useExplicitType: <explanation>
-export async function action({ request }: Route.ActionArgs) {
-	const formData = await request.formData()
-	const payload = Object.fromEntries(formData)
-	const parse = Schema.decodeUnknownEither(ThemeFormSchema, { errors: 'all' })
-	const result = parse(payload)
-	invariantResponse(Either.isRight(result), 'Invalid theme received', { status: 400 })
-
-	return data(
-		{
-			result: {
-				status: 'success',
-				initialValue: payload,
-				fields: Object.keys(payload),
-			},
-		},
-		{
-			headers: {
-				'set-cookie': setTheme(result.right.theme),
-			},
-		},
-	)
-}
-
-function Document({
-	children,
-	env,
-	theme,
-}: {
-	children: ReactNode
-	theme?: 'light' | 'dark' | null // TODO: address this prop
-	env?: Env
-}): ReactElement {
-	const colorScheme = theme ?? 'light dark'
-	return (
-		<html
-			className="min-h-screen"
-			data-theme={theme}
-			lang="en"
-		>
-			<head>
-				<meta charSet="utf-8" />
-				<meta
-					httpEquiv="Content-Type"
-					content="text/html;charset=utf-8"
-				/>
-				<meta
-					content="width=device-width, initial-scale=1"
-					name="viewport"
-				/>
-				<meta
-					name="color-scheme"
-					content={colorScheme}
-				/>
-				<Meta />
-				<Links />
-			</head>
-			<Layout.Body
-				className={clsx('min-h-full bg-background font-sans text-foreground antialiased')}
-			>
-				{children}
-				<ScrollRestoration />
-				<script
-					// biome-ignore lint/security/noDangerouslySetInnerHtml: we need to set the ENV variable
-					dangerouslySetInnerHTML={{
-						__html: `window.ENV = ${JSON.stringify(env, null, 2)};`,
-					}}
-				/>
-				<Scripts />
-			</Layout.Body>
-		</html>
-	)
-}
-
 export default function App(_: Route.ComponentProps): ReactElement {
-	const { ENV, requestInfo } = useLoaderData<typeof loader>()
+	const { requestInfo } = useLoaderData<typeof loader>()
 	const theme = useTheme()
+
+	return (
+		<>
+			<Header theme={requestInfo.userPrefs.theme} />
+			<Main>
+				<Outlet />
+			</Main>
+			<Footer />
+		</>
+	)
+}
+
+export function Layout({ children }: { children: ReactNode }): ReactElement {
+	// if there was an error running the loader, data could be missing
+	const data = useLoaderData<typeof loader | null>()
+	const theme = useOptionalTheme()
 	return (
 		<Document
-			env={ENV}
+			nonce={undefined}
 			theme={theme}
+			env={data?.ENV}
 		>
-			<Header theme={requestInfo.userPrefs.theme} />
-			<Main />
-			<Footer />
+			{children}
 		</Document>
 	)
 }
+
+export const ErrorBoundary = GeneralErrorBoundary

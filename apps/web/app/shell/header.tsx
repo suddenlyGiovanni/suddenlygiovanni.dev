@@ -1,63 +1,16 @@
 import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
-import { type NavLinkProps, NavLink as UnstyledNavLink, useFetcher } from 'react-router'
 
-import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.js'
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 import { NavigationMenuToggle } from '@suddenlygiovanni/ui/components/navigation-menu-toggle/navigation-menu-toggle.tsx'
 import { SuddenlyGiovanni } from '@suddenlygiovanni/ui/components/suddenly-giovanni/suddenly-giovanni.tsx'
 import { useToggle } from '@suddenlygiovanni/ui/hooks/use-toggle.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
-import { Button } from '@suddenlygiovanni/ui/ui/button.js'
 
-import type { action } from '~/root.tsx'
-import { type Theme, useOptimisticThemeMode } from '~/utils/theme.tsx'
-import avatarAssetUrl from './assets/giovanni_ravalico-profile_bw.webp'
+import avatarAssetUrl from '~/assets/giovanni_ravalico-profile_bw.webp'
+import { routesRecord } from '~/routes-record.ts'
 
-import { routesRecord } from './routes-record.ts'
-
-/**
- * Calculates class name based on activated state and base classes
- * @param isActive - Is NavLink currently active
- * @param className - Optional class name
- * @returns  Resulting class name
- */
-function calculateClassName({
-	isActive,
-	className,
-}: {
-	isActive: boolean
-	className?: undefined | string
-}): string {
-	return clsx(
-		// baseClasses
-		'select-none p-1 font-medium text-foreground/60 capitalize transition-colors hover:text-foreground/80 md:text-sm',
-		// disabledClasses
-		'aria-[disabled]:pointer-events-none aria-[disabled]:cursor-not-allowed aria-[disabled]:line-through',
-		// isActiveClasses
-		isActive &&
-			'text-foreground underline decoration-auto decoration-foreground decoration-wavy underline-offset-8',
-		// Keyboard active classes
-		'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring',
-		className,
-	)
-}
-
-function NavLink({
-	children,
-	className,
-	...props
-}: Omit<NavLinkProps, 'className'> & {
-	className?: undefined | string
-}): ReactElement {
-	return (
-		<UnstyledNavLink
-			{...props}
-			className={({ isActive }): string => calculateClassName({ isActive, className })}
-		>
-			{children}
-		</UnstyledNavLink>
-	)
-}
+import { ThemeSwitch } from '~/routes/resources/theme-switch.tsx'
+import { NavLink } from './nav-link.tsx'
 
 const routes = (
 	[
@@ -70,72 +23,6 @@ const routes = (
 ).filter(({ hidden }) => !hidden)
 
 const PRIMARY_NAVIGATION = 'primary-navigation'
-
-function computeNextThemeMode(currentTheme: Theme): Theme {
-	const nextTheme = {
-		light: 'dark',
-		dark: 'system',
-		system: 'light',
-	} as const
-	return nextTheme[currentTheme]
-}
-
-function ThemeSwitch({
-	userPreference,
-	className,
-}: {
-	readonly userPreference?: 'light' | 'dark' | null
-	readonly className?: string
-}): ReactElement {
-	const fetcher = useFetcher<typeof action>()
-
-	const optimisticMode = useOptimisticThemeMode()
-	const mode = optimisticMode ?? userPreference ?? 'system'
-	const modeLabel = {
-		light: (
-			<Icons.sun className={clsx('h-[1.2rem] w-[1.2rem]')}>
-				<span className="sr-only">Light</span>
-			</Icons.sun>
-		),
-		dark: (
-			<Icons.moon className={clsx('h-[1.2rem] w-[1.2rem]')}>
-				<span className="sr-only">Dark</span>
-			</Icons.moon>
-		),
-		system: (
-			<Icons.laptop
-				name="laptop"
-				className={clsx('h-[1.2rem] w-[1.2rem]')}
-			>
-				<span className="sr-only">System</span>
-			</Icons.laptop>
-		),
-	}
-
-	return (
-		<fetcher.Form
-			method="POST"
-			className={className}
-		>
-			<input
-				type="hidden"
-				name="theme"
-				value={computeNextThemeMode(mode)}
-			/>
-			<div className="flex gap-2">
-				<Button
-					className={clsx('flex h-8 w-8 cursor-pointer items-center justify-center')}
-					size="icon"
-					variant="ghost"
-					data-testid="ThemeSwitch"
-					type="submit"
-				>
-					{modeLabel[mode]}
-				</Button>
-			</div>
-		</fetcher.Form>
-	)
-}
 
 export const Header = memo(function Header({
 	theme,
