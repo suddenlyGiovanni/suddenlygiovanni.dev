@@ -8,7 +8,7 @@ import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protoc
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
 import { config } from '~/config.ts'
-import { Document, Footer, Header, Main } from '~/shell/index.tsx'
+import { Document, Footer, GeneralErrorBoundary, Header, Main } from '~/shell/index.tsx'
 import tailwindStyleSheetUrl from '~/styles/tailwind.css?url'
 import { getHints } from '~/utils/client-hints.tsx'
 import { getEnv } from '~/utils/env.server.ts'
@@ -93,6 +93,7 @@ export async function action({ request }: Route.ActionArgs) {
 export default function App(_: Route.ComponentProps): ReactElement {
 	const { ENV, requestInfo } = useLoaderData<typeof loader>()
 	const theme = useTheme()
+
 	return (
 		<Document
 			env={ENV}
@@ -107,3 +108,5 @@ export default function App(_: Route.ComponentProps): ReactElement {
 		</Document>
 	)
 }
+
+export const ErrorBoundary = GeneralErrorBoundary
