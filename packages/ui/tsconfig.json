@@ -4,7 +4,7 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"noEmit": true,
-		"types": ["@total-typescript/ts-reset", "vite/client", "react/canary", "react-dom"],
+		"types": ["@total-typescript/ts-reset", "vite/client", "react", "react-dom"],
 		"useDefineForClassFields": true
 	},
 
