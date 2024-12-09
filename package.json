@@ -32,5 +32,25 @@
 		"test:unit": "turbo test:unit --log-order=grouped",
 		"typecheck": "turbo typecheck --log-order=grouped",
 		"typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"
+	},
+	"pnpm": {
+		"peerDependencyRules": {
+			"allowedVersions": {
+				"@storybook/icons@1.2.12>react": "^19",
+				"@storybook/icons@1.2.12>react-dom": "^19",
+				"react-confetti@6.1.0>react": "^19",
+				"react-remove-scroll-bar@2.3.6>@types/react": "^19",
+				"react-remove-scroll-bar@2.3.6>react": "^19",
+				"react-remove-scroll@2.6.0>@types/react": "^19",
+				"react-remove-scroll@2.6.0>react": "^19",
+				"react-style-singleton@2.2.1>@types/react": "^19",
+				"react-style-singleton@2.2.1>react": "^19",
+				"use-callback-ref@1.3.2>@types/react": "^19",
+				"use-callback-ref@1.3.2>react": "^19",
+				"use-sidecar@1.1.2>@types/react": "^19",
+				"use-sidecar@1.1.2>react": "^19",
+				"use-sync-external-store@1.2.2>react": "^19"
+			}
+		}
 	}
 }
