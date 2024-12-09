@@ -17,7 +17,7 @@
 			"react/canary",
 			"react-dom",
 			"vite/client",
-			"vitest",
+			"vitest/config",
 			"@react-router/node"
 		],
 		"rootDirs": [".", "./.react-router/types"]
