@@ -10,34 +10,38 @@ import {
 	Trigger,
 	Viewport,
 } from '@radix-ui/react-navigation-menu'
-import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from 'react'
+import type { CustomComponentPropsWithRef, FC } from 'react'
 
 import { clsx, cva } from '../lib/utils.ts'
 
-const NavigationMenu = forwardRef<ElementRef<typeof Root>, ComponentPropsWithoutRef<typeof Root>>(
-	({ className, children, ...props }, ref) => (
-		<Root
-			className={clsx('relative z-10 flex max-w-max flex-1 items-center justify-center', className)}
-			ref={ref}
-			{...props}
-		>
-			{children}
-			<NavigationMenuViewport />
-		</Root>
-	),
+const NavigationMenu: FC<CustomComponentPropsWithRef<typeof Root>> = ({
+	className,
+	children,
+	ref,
+	...props
+}) => (
+	<Root
+		className={clsx('relative z-10 flex max-w-max flex-1 items-center justify-center', className)}
+		ref={ref}
+		{...props}
+	>
+		{children}
+		<NavigationMenuViewport />
+	</Root>
 )
 NavigationMenu.displayName = Root.displayName
 
-const NavigationMenuList = forwardRef<
-	ElementRef<typeof List>,
-	ComponentPropsWithoutRef<typeof List>
->(({ className, ...props }, ref) => (
+const NavigationMenuList: FC<CustomComponentPropsWithRef<typeof List>> = ({
+	className,
+	ref,
+	...props
+}) => (
 	<List
 		className={clsx('group flex flex-1 list-none items-center justify-center space-x-1', className)}
 		ref={ref}
 		{...props}
 	/>
-))
+)
 NavigationMenuList.displayName = List.displayName
 
 const NavigationMenuItem = Item
@@ -48,10 +52,12 @@ const navigationMenuTriggerStyle = cva(
 	]),
 )
 
-const NavigationMenuTrigger = forwardRef<
-	ElementRef<typeof Trigger>,
-	ComponentPropsWithoutRef<typeof Trigger>
->(({ className, children, ...props }, ref) => (
+const NavigationMenuTrigger: FC<CustomComponentPropsWithRef<typeof Trigger>> = ({
+	className,
+	children,
+	ref,
+	...props
+}) => (
 	<Trigger
 		className={clsx(navigationMenuTriggerStyle(), 'group', className)}
 		ref={ref}
@@ -65,13 +71,14 @@ const NavigationMenuTrigger = forwardRef<
 			)}
 		/>
 	</Trigger>
-))
+)
 NavigationMenuTrigger.displayName = Trigger.displayName
 
-const NavigationMenuContent = forwardRef<
-	ElementRef<typeof Content>,
-	ComponentPropsWithoutRef<typeof Content>
->(({ className, ...props }, ref) => (
+const NavigationMenuContent: FC<CustomComponentPropsWithRef<typeof Content>> = ({
+	className,
+	ref,
+	...props
+}) => (
 	<Content
 		className={clsx(
 			'data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 top-0 left-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out md:absolute md:w-auto',
@@ -80,15 +87,16 @@ const NavigationMenuContent = forwardRef<
 		ref={ref}
 		{...props}
 	/>
-))
+)
 NavigationMenuContent.displayName = Content.displayName
 
 const NavigationMenuLink = Link
 
-const NavigationMenuViewport = forwardRef<
-	ElementRef<typeof Viewport>,
-	ComponentPropsWithoutRef<typeof Viewport>
->(({ className, ...props }, ref) => (
+const NavigationMenuViewport: FC<CustomComponentPropsWithRef<typeof Viewport>> = ({
+	className,
+	ref,
+	...props
+}) => (
 	<div className={clsx('absolute top-full left-0 flex justify-center')}>
 		<Viewport
 			className={clsx(
@@ -99,13 +107,14 @@ const NavigationMenuViewport = forwardRef<
 			{...props}
 		/>
 	</div>
-))
+)
 NavigationMenuViewport.displayName = Viewport.displayName
 
-const NavigationMenuIndicator = forwardRef<
-	ElementRef<typeof Indicator>,
-	ComponentPropsWithoutRef<typeof Indicator>
->(({ className, ...props }, ref) => (
+const NavigationMenuIndicator: FC<CustomComponentPropsWithRef<typeof Indicator>> = ({
+	className,
+	ref,
+	...props
+}) => (
 	<Indicator
 		className={clsx(
 			'data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-1 flex h-1.5 items-end justify-center overflow-hidden data-[state=hidden]:animate-out data-[state=visible]:animate-in',
@@ -118,7 +127,7 @@ const NavigationMenuIndicator = forwardRef<
 			className={clsx('relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md')}
 		/>
 	</Indicator>
-))
+)
 NavigationMenuIndicator.displayName = Indicator.displayName
 
 const NavigationMenuSub = Sub
