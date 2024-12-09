@@ -1,8 +1,12 @@
 import { resolve } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
+
+const ReactCompilerConfig = {
+	/* ... */
+}
 
 export default defineConfig({
 	resolve: {
@@ -11,5 +15,13 @@ export default defineConfig({
 		},
 	},
 	build: { target: 'esnext' },
-	plugins: [react(), tailwindcss(), tsconfigPaths()],
+	plugins: [
+		tsconfigPaths(),
+		react({
+			babel: {
+				plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
+			},
+		}),
+		tailwindcss(),
+	],
 })
