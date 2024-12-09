@@ -18,6 +18,13 @@
 	"license": "UNLICENSED",
 	"name": "@suddenlygiovanni/root",
 	"packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c",
+	"pnpm": {
+		"overrides": {
+			"react": "^19.0.0",
+			"react-dom": "19.0.0",
+			"@types/react": "^19.0.0"
+		}
+	},
 	"private": true,
 	"scripts": {
 		"build": "turbo build --log-order=grouped",
@@ -32,25 +39,5 @@
 		"test:unit": "turbo test:unit --log-order=grouped",
 		"typecheck": "turbo typecheck --log-order=grouped",
 		"typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"
-	},
-	"pnpm": {
-		"peerDependencyRules": {
-			"allowedVersions": {
-				"@storybook/icons@1.2.12>react": "^19",
-				"@storybook/icons@1.2.12>react-dom": "^19",
-				"react-confetti@6.1.0>react": "^19",
-				"react-remove-scroll-bar@2.3.6>@types/react": "^19",
-				"react-remove-scroll-bar@2.3.6>react": "^19",
-				"react-remove-scroll@2.6.0>@types/react": "^19",
-				"react-remove-scroll@2.6.0>react": "^19",
-				"react-style-singleton@2.2.1>@types/react": "^19",
-				"react-style-singleton@2.2.1>react": "^19",
-				"use-callback-ref@1.3.2>@types/react": "^19",
-				"use-callback-ref@1.3.2>react": "^19",
-				"use-sidecar@1.1.2>@types/react": "^19",
-				"use-sidecar@1.1.2>react": "^19",
-				"use-sync-external-store@1.2.2>react": "^19"
-			}
-		}
 	}
 }

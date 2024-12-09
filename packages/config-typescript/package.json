@@ -27,6 +27,5 @@
 	},
 	"scripts": {
 		"clean": "scripty"
-	},
-	"version": "0.0.1"
+	}
 }
