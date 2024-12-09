@@ -1,6 +1,6 @@
 import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
-import type { ComponentPropsWithRef, FC } from 'react'
+import type { ComponentPropsWithRef, CustomComponentPropsWithRef, FC } from 'react'
 
 import { clsx } from '../lib/utils.ts'
 
@@ -18,7 +18,7 @@ const AccordionItem: FC<ComponentPropsWithRef<typeof Item>> = ({ className, ref,
 )
 AccordionItem.displayName = 'AccordionItem'
 
-const AccordionTrigger: FC<ComponentPropsWithRef<typeof Trigger>> = ({
+const AccordionTrigger: FC<CustomComponentPropsWithRef<typeof Trigger>> = ({
 	className,
 	children,
 	ref,
@@ -42,7 +42,7 @@ const AccordionTrigger: FC<ComponentPropsWithRef<typeof Trigger>> = ({
 )
 AccordionTrigger.displayName = Trigger.displayName
 
-const AccordionContent: FC<ComponentPropsWithRef<typeof Content>> = ({
+const AccordionContent: FC<CustomComponentPropsWithRef<typeof Content>> = ({
 	className,
 	children,
 	ref,
