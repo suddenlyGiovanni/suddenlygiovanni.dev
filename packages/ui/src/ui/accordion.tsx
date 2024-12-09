@@ -1,6 +1,6 @@
 import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
-import { type ComponentPropsWithoutRef, type ElementRef, forwardRef } from 'react'
+import type { ComponentPropsWithRef, FC } from 'react'
 
 import { clsx } from '../lib/utils.ts'
 
@@ -9,21 +9,21 @@ Accordion.displayName = Root.displayName
 const AccordionHeader = Header
 AccordionHeader.displayName = Header.displayName
 
-const AccordionItem = forwardRef<ElementRef<typeof Item>, ComponentPropsWithoutRef<typeof Item>>(
-	({ className, ...props }, ref) => (
-		<Item
-			className={clsx('border-b', className)}
-			ref={ref}
-			{...props}
-		/>
-	),
+const AccordionItem: FC<ComponentPropsWithRef<typeof Item>> = ({ className, ref, ...props }) => (
+	<Item
+		className={clsx('border-b', className)}
+		ref={ref}
+		{...props}
+	/>
 )
 AccordionItem.displayName = 'AccordionItem'
 
-const AccordionTrigger = forwardRef<
-	ElementRef<typeof Trigger>,
-	ComponentPropsWithoutRef<typeof Trigger>
->(({ className, children, ...props }, ref) => (
+const AccordionTrigger: FC<ComponentPropsWithRef<typeof Trigger>> = ({
+	className,
+	children,
+	ref,
+	...props
+}) => (
 	<Header className="flex">
 		<Trigger
 			className={clsx(
@@ -39,13 +39,15 @@ const AccordionTrigger = forwardRef<
 			/>
 		</Trigger>
 	</Header>
-))
+)
 AccordionTrigger.displayName = Trigger.displayName
 
-const AccordionContent = forwardRef<
-	ElementRef<typeof Content>,
-	ComponentPropsWithoutRef<typeof Content>
->(({ className, children, ...props }, ref) => (
+const AccordionContent: FC<ComponentPropsWithRef<typeof Content>> = ({
+	className,
+	children,
+	ref,
+	...props
+}) => (
 	<Content
 		className={clsx(
 			'overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
@@ -55,7 +57,7 @@ const AccordionContent = forwardRef<
 	>
 		<div className={clsx('pt-0 pb-4', className)}>{children}</div>
 	</Content>
-))
+)
 AccordionContent.displayName = Content.displayName
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, AccordionHeader }
