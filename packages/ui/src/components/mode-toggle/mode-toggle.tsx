@@ -1,7 +1,3 @@
-/* eslint-disable
-	react/jsx-pascal-case -- Reason need to modify the Icons component,
-	react/jsx-boolean-value  -- Reason biome is conflicting with this rule,
-	*/
 import { type ReactNode, memo, useMemo } from 'react'
 
 import { clsx } from '../../lib/utils.ts'

@@ -1,4 +1,4 @@
-import type { JSX } from 'react'
+import type { ReactNode } from 'react'
 import { Link, type LinkProps } from 'react-router'
 
 import { clsx } from '../../lib/utils.ts'
@@ -15,7 +15,7 @@ export function SuddenlyGiovanni({
 	readonly className?: string
 	readonly to: LinkProps['to']
 	hrefUrl: string
-}): JSX.Element {
+}): ReactNode {
 	return (
 		<Link
 			aria-label={ariaLabel}

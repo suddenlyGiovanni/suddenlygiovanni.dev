@@ -1,4 +1,4 @@
-import { type HTMLAttributes, forwardRef } from 'react'
+import type { ComponentPropsWithRef, FC } from 'react'
 
 import { type VariantProps, clsx, cva } from '../lib/utils.ts'
 
@@ -23,16 +23,14 @@ export const badgeVariants = cva(
 )
 
 export interface BadgeProps
-	extends HTMLAttributes<HTMLDivElement>,
+	extends ComponentPropsWithRef<'div'>,
 		VariantProps<typeof badgeVariants> {}
 
-export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
-	({ className, variant, ...props }, ref) => (
-		<div
-			ref={ref}
-			className={clsx(badgeVariants({ variant }), className)}
-			{...props}
-		/>
-	),
+export const Badge: FC<BadgeProps> = ({ className, variant, ref, ...props }) => (
+	<div
+		ref={ref}
+		className={clsx(badgeVariants({ variant }), className)}
+		{...props}
+	/>
 )
 Badge.displayName = 'Badge'

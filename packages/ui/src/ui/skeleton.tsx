@@ -1,20 +1,19 @@
 import { Slot } from '@radix-ui/react-slot'
-import { type ComponentProps, type ElementRef, forwardRef } from 'react'
+import type { ComponentPropsWithRef, FC } from 'react'
 import { clsx } from '../lib/utils.ts'
 
-export const Skeleton = forwardRef<
-	ElementRef<'div'>,
-	ComponentProps<'div'> & {
+export const Skeleton: FC<
+	ComponentPropsWithRef<'div'> & {
 		asChild?: boolean
 	}
->(({ className, asChild = false, ...props }, forwardedRef) => {
+> = ({ className, asChild = false, ref, ...props }) => {
 	const Component = asChild ? Slot : 'div'
 	return (
 		<Component
 			className={clsx('animate-pulse rounded-md bg-primary/10', className)}
-			ref={forwardedRef}
+			ref={ref}
 			{...props}
 		/>
 	)
-})
+}
 Skeleton.displayName = 'Skeleton'
