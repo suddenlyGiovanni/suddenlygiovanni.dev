@@ -18,4 +18,9 @@ export default [
 			'react-compiler/react-compiler': 'error',
 		},
 	},
+	{
+		rules: {
+			'react/no-unescaped-entities': 'off',
+		},
+	},
 ]

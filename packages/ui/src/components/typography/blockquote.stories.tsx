@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities -- Reason: storybook story */
 import type { Meta, StoryObj } from '@storybook/react'
 import { T } from './typography.tsx'
 
