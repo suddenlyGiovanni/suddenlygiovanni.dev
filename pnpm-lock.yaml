@@ -88,8 +88,8 @@ importers:
         version: 7.7.0(react@19.0.0)(zod@3.23.8)
     devDependencies:
       '@codecov/vite-plugin':
-        specifier: 1.5.1
-        version: 1.5.1(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(lightningcss@1.28.2))
+        specifier: 1.6.0
+        version: 1.6.0(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(lightningcss@1.28.2))
       '@react-router/dev':
         specifier: 7.0.2
         version: 7.0.2(@react-router/serve@7.0.2(react-router@7.0.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.7.2))(@types/node@22.10.1)(babel-plugin-macros@3.1.0)(jiti@2.4.1)(lightningcss@1.28.2)(react-router@7.0.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.7.2)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(lightningcss@1.28.2))
@@ -537,12 +537,12 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@codecov/bundler-plugin-core@1.5.1':
-    resolution: {integrity: sha512-nfJdYLLGoSoJlQnUzYzfBvZ2/KQAFZ1JBRdnsc+4I4Td6cpzBup0B4NiftMD6Wki8FzYrj1Trx+3AKT1a+J5iQ==}
+  '@codecov/bundler-plugin-core@1.6.0':
+    resolution: {integrity: sha512-x2M5P1NUk5lNW5slKY3jSb6Hpuie7bKaolDyZ7oWBHvBgtAJOeU7VrutdVhaiYoiQonM65JI2UAIWtw6mup/Yw==}
     engines: {node: '>=18.0.0'}
 
-  '@codecov/vite-plugin@1.5.1':
-    resolution: {integrity: sha512-INEUIagr64XPTYHGh+3yzko10bmOadvF3juKs+QDA95Qvj9FU0KcPaMFFKgbJRu/i91w5qWeDFhllyKEldRjaA==}
+  '@codecov/vite-plugin@1.6.0':
+    resolution: {integrity: sha512-QwgFfF0FJMXovE/ZX33GqkBjkwUwzjPkWepwJizXiQD9emFS7iW82q1vPV9goiakJAvsCVm7Au9e7QnMBGJgvw==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       vite: ^6
@@ -5166,7 +5166,7 @@ snapshots:
       - '@chromatic-com/playwright'
       - react
 
-  '@codecov/bundler-plugin-core@1.5.1':
+  '@codecov/bundler-plugin-core@1.6.0':
     dependencies:
       '@actions/core': 1.11.1
       '@actions/github': 6.0.0
@@ -5175,9 +5175,9 @@ snapshots:
       unplugin: 1.16.0
       zod: 3.23.8
 
-  '@codecov/vite-plugin@1.5.1(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(lightningcss@1.28.2))':
+  '@codecov/vite-plugin@1.6.0(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(lightningcss@1.28.2))':
     dependencies:
-      '@codecov/bundler-plugin-core': 1.5.1
+      '@codecov/bundler-plugin-core': 1.6.0
       unplugin: 1.16.0
       vite: 6.0.3(@types/node@22.10.1)(jiti@2.4.1)(lightningcss@1.28.2)
 
