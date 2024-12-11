@@ -11,7 +11,7 @@ RUN jq -r .packageManager package.json > pnpm-version.txt
 
 ENTRYPOINT ["sh"]
 
-FROM node:22-alpine3.20 AS base
+FROM node:22-alpine3.21 AS base
 
 LABEL authors="suddenlyGiovanni"
 

@@ -81,7 +81,7 @@ export default defineConfig({
 	test: {
 		// biome-ignore lint/complexity/useLiteralKeys: TS4111: Property 'CODECOV_TOKEN' comes from an index signature, so it must be accessed with ['CODECOV_TOKEN'].
 		reporters: process.env['GITHUB_ACTIONS'] ? ['dot', 'github-actions'] : ['default'],
-		globalSetup: './app/tests/test-globals.ts',
+		globalSetup: './src/tests/test-globals.ts',
 		coverage: {
 			provider: 'v8',
 			reporter: ['text', 'json', 'html'],

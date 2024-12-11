@@ -50,6 +50,7 @@ node_modules/
 
 # dotenv environment variable files
 .env
+.env.example
 .env.development.local
 .env.test.local
 .env.production.local
@@ -69,7 +70,16 @@ node_modules
 /.cache
 /build
 /public/build
+.react-router
 
+
+### Application
+web.iml
+README.md
+fly.yaml
+fly.review.yaml
+docker-image-stages.md
+biome.json
 
 ### macOS template
 # General
