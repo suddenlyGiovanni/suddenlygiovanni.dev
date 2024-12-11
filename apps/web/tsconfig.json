@@ -7,7 +7,7 @@
 		"lib": ["DOM", "DOM.Iterable", "ES2022"],
 		"noEmit": true,
 		"paths": {
-			"~/*": ["./app/*"]
+			"~/*": ["./src/*"]
 		},
 		"skipLibCheck": true,
 		"target": "ES2022",
@@ -27,8 +27,8 @@
 		"tailwind.config.ts",
 		"vite.config.ts",
 		"postcss.config.mjs",
-		"app/**/*",
-		"app/.server/**/*"
+		"src/**/*",
+		"src/.server/**/*"
 	],
 	"exclude": ["build", "node_modules", "./~"]
 }
