@@ -13,7 +13,7 @@ import { useHints, useOptionalHints } from '~/utils/client-hints'
 import { useOptionalRequestInfo, useRequestInfo } from '~/utils/request-info'
 import { setTheme } from '~/utils/theme.server'
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
-import type { Route } from '.react-router/types/app/routes/resources/+types/theme-switch.ts'
+import type { Route } from '.react-router/types/src/routes/resources/+types/theme-switch.ts'
 
 const themeSchema = Schema.Literal('light', 'dark', 'system').annotations({
 	title: 'Theme',
