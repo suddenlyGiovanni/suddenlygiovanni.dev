@@ -60,8 +60,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/resume':
-        specifier: 13.2.0
-        version: 13.2.0
+        specifier: 13.3.0
+        version: 13.3.0
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -69,8 +69,8 @@ importers:
         specifier: 1.0.2
         version: 1.0.2
       effect:
-        specifier: 3.11.4
-        version: 3.11.4
+        specifier: 3.11.5
+        version: 3.11.5
       isbot:
         specifier: 5.1.17
         version: 5.1.17
@@ -2558,8 +2558,8 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@suddenlygiovanni/resume@13.2.0':
-    resolution: {integrity: sha512-lqpl8BUnC35eExiBjta+pbNFd1evbPkfe/MnlGkPUoZm9Thzk/JaEvQ1hVNwDGlaVCoplqZM5uSTw1rO8egiZw==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/13.2.0/1ae5769565dd300054b01391f8f3ea68fa465155}
+  '@suddenlygiovanni/resume@13.3.0':
+    resolution: {integrity: sha512-oqmwhahxqVX2h1H3is9HHR1WpesFhHPfmUkOUKu6SRTdIlQ4v10vJJdSZybqZ8u6UY+sNXqfoBlmqllMvpfyjQ==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/13.3.0/bca23d5279604a23f50cd87c7b301fff62a647c9}
     engines: {node: '>=22.10'}
 
   '@swc/core-darwin-arm64@1.7.26':
@@ -3284,8 +3284,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  effect@3.11.4:
-    resolution: {integrity: sha512-0tooO72Ii109A1SUY2A73hnO3y4AoglWupbBwaUHitV/B13/EVWRhWfuEDpKjJaEDNj96fhkeU8UCWvFrh6aSg==}
+  effect@3.11.5:
+    resolution: {integrity: sha512-oSzaR/S/2A/qDTnDqMWxQUNSjCG2sRLB4NEvTu+l9RqE122MTgKXOWzw0x4MHsdovRTzAihfkpgBj2aLFnH2+w==}
 
   electron-to-chromium@1.5.47:
     resolution: {integrity: sha512-zS5Yer0MOYw4rtK2iq43cJagHZ8sXN0jDHDKzB+86gSBSAI4v07S97mcq+Gs2vclAxSh1j7vOAHxSVgduiiuVQ==}
@@ -3385,8 +3385,8 @@ packages:
     resolution: {integrity: sha512-YSFlK1Ee0/GC8QaO91tHcDxJiE/X4FbpAyQWkxAvG6AXCuR65YzK8ua6D9hvi/TzUfZMpc+BwuM1IPw8fmQBiQ==}
     engines: {node: '>= 0.10.0'}
 
-  fast-check@3.22.0:
-    resolution: {integrity: sha512-8HKz3qXqnHYp/VCNn2qfjHdAdcI8zcSqOyX64GOMukp7SL2bfzfeDKjSd+UyECtejccaZv3LcvZTm9YDD22iCQ==}
+  fast-check@3.23.1:
+    resolution: {integrity: sha512-u/MudsoQEgBUZgR5N1v87vEgybeVYus9VnDVaIkxkkGP2jt54naghQ3PCQHJiogS8U/GavZCUPFfx3Xkp+NaHw==}
     engines: {node: '>=8.0.0'}
 
   fdir@6.4.2:
@@ -7574,7 +7574,7 @@ snapshots:
     dependencies:
       storybook: 8.4.7(prettier@2.8.8)
 
-  '@suddenlygiovanni/resume@13.2.0': {}
+  '@suddenlygiovanni/resume@13.3.0': {}
 
   '@swc/core-darwin-arm64@1.7.26':
     optional: true
@@ -8271,9 +8271,9 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  effect@3.11.4:
+  effect@3.11.5:
     dependencies:
-      fast-check: 3.22.0
+      fast-check: 3.23.1
 
   electron-to-chromium@1.5.47: {}
 
@@ -8427,7 +8427,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  fast-check@3.22.0:
+  fast-check@3.23.1:
     dependencies:
       pure-rand: 6.1.0
 
