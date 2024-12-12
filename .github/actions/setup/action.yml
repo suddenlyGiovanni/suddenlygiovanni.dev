@@ -39,7 +39,4 @@ runs:
 
     - name: 🧩 Install dependencies
       shell: bash
-      env:
-        NPM_CONFIG_USERCONFIG: ${{ github.workspace }}/.npmrc
-#        NODE_AUTH_TOKEN: ${{ inputs.github_packages_token }}
       run: pnpm install --recursive --frozen-lockfile --prod=false
