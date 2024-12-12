@@ -15,7 +15,7 @@ runs:
 
     - name: Configure .npmrc
       shell: bash
-      run: echo "//npm.pkg.github.com/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" >> ~/.npmrc
+      run: echo "//npm.pkg.github.com/:_authToken=${{ inputs.github_packages_token }}" >> ~/.npmrc
 
 
     - name: 🗂️ Install pnpm
