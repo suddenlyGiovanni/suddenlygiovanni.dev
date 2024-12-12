@@ -7,33 +7,34 @@ inputs:
 runs:
   using: composite
   steps:
+    - name: 🛠️ Install node
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: '.nvmrc'
+        registry-url: 'https://npm.pkg.github.com'
+
     - name: 🗂️ Install pnpm
       uses: pnpm/action-setup@v4
       with:
         package_json_file: 'package.json'
         run_install: false
 
-    - name: 🛠️ Install node
-      uses: actions/setup-node@v4
+    - name: Get pnpm store directory
+      shell: bash
+      run: |
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - name: Setup pnpm cache
+      uses: actions/cache@v4
       with:
-        cache: 'pnpm'
-        node-version-file: '.nvmrc'
-        registry-url: 'https://npm.pkg.github.com'
-
-    - name:
-        "🐞 Debug: List repository contents"
-      shell: bash
-      run: ls -alt .
-
-    - name:
-        "🐞 Debug: cat .npmrc"
-      shell: bash
-      run: cat .npmrc
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
 
     - name: 🧩 Install dependencies
       shell: bash
       env:
         NPM_CONFIG_USERCONFIG: ${{ github.workspace }}/.npmrc
-        GH_PACKAGES_TOKEN: ${{ inputs.github_packages_token }}
         NODE_AUTH_TOKEN: ${{ inputs.github_packages_token }}
-      run: pnpm install --frozen-lockfile --prod=false
+      run: pnpm install --recursive --frozen-lockfile --prod=false
