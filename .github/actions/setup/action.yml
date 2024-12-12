@@ -13,6 +13,11 @@ runs:
         node-version-file: '.nvmrc'
         registry-url: 'https://npm.pkg.github.com'
 
+    - name: Configure .npmrc
+      shell: bash
+      run: echo "//npm.pkg.github.com/:_authToken=${{ inputs.github_packages_token }}" >> ~/.npmrc
+
+
     - name: 🗂️ Install pnpm
       uses: pnpm/action-setup@v4
       with:
@@ -35,6 +40,5 @@ runs:
     - name: 🧩 Install dependencies
       shell: bash
       env:
-        NPM_CONFIG_USERCONFIG: ${{ github.workspace }}/.npmrc
         NODE_AUTH_TOKEN: ${{ inputs.github_packages_token }}
       run: pnpm install --recursive --frozen-lockfile --prod=false
