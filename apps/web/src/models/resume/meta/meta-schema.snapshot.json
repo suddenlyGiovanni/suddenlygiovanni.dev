@@ -1,9 +1,29 @@
 {
+	"$ref": "#/$defs/Meta",
 	"$schema": "http://json-schema.org/draft-07/schema#",
-	"type": "object",
-	"required": [],
-	"properties": {
-		"canonical": {
+	"$defs": {
+		"Meta": {
+			"type": "object",
+			"required": [],
+			"properties": {
+				"canonical": {
+					"$ref": "#/$defs/UrlString"
+				},
+				"lastModified": {
+					"$ref": "#/$defs/Date"
+				},
+				"version": {
+					"$ref": "#/$defs/TrimmedNonEmpty",
+					"description": "A version field which follows semver - e.g. v1.0.0",
+					"title": "version",
+					"examples": [
+						"v1.0.0"
+					]
+				}
+			},
+			"additionalProperties": false
+		},
+		"UrlString": {
 			"type": "string",
 			"description": "a string that fulfills the URL requirements (as per RFC 3986)",
 			"title": "UrlString",
@@ -16,20 +36,16 @@
 			],
 			"format": "uri"
 		},
-		"lastModified": {
-			"format": "date-time",
-			"type": "string"
-		},
-		"version": {
+		"Date": {
 			"type": "string",
-			"description": "A version field which follows semver - e.g. v1.0.0",
-			"title": "version",
-			"examples": [
-				"v1.0.0"
-			],
+			"description": "a string that will be parsed into a Date"
+		},
+		"TrimmedNonEmpty": {
+			"type": "string",
+			"description": "a non-empty string with no leading or trailing whitespace",
+			"title": "TrimmedNonEmpty",
 			"minLength": 1,
 			"pattern": "^[^\\s].*[^\\s]$"
 		}
-	},
-	"additionalProperties": false
+	}
 }
