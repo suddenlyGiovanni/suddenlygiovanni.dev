@@ -21,7 +21,6 @@
 	"pnpm": {
 		"peerDependencyRules": {
 			"allowedVersions": {
-				"@codecov/vite-plugin@1.5.1>vite": "^6",
 				"@react-router/dev@7.0.2>vite": "^6",
 				"@vitest/mocker@3.0.0-beta.1>vite": "^6"
 			}
