@@ -1,5 +1,4 @@
 {
-	"$ref": "#/$defs/Meta",
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$defs": {
 		"Meta": {
@@ -47,5 +46,6 @@
 			"minLength": 1,
 			"pattern": "^[^\\s].*[^\\s]$"
 		}
-	}
+	},
+	"$ref": "#/$defs/Meta"
 }
