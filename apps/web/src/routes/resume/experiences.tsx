@@ -1,4 +1,4 @@
-import { type ReactElement, useCallback, useMemo, useState } from 'react'
+import { type MouseEventHandler, type ReactElement, useState } from 'react'
 
 import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
@@ -13,19 +13,15 @@ export function Experiences({
 }: {
 	readonly work: readonly Model.Work[]
 }): ReactElement {
-	const all = useMemo(() => {
-		return work.map((_, idx) => `experience-${idx}`)
-	}, [work])
-	const none = useMemo<string[]>(() => [], [])
-	const initialState = useMemo(() => {
-		const [head] = all
-		return head ? [head] : none
-	}, [all, none])
+	const all = work.map((_, idx) => `experience-${idx}`)
+	const none: string[] = []
+	const initialState: string[] = all[0] ? [all[0]] : none
+
 	const [value, setValue] = useState<string[]>(initialState)
 
-	const toggleExperiences = useCallback(() => {
+	const toggleExperiences: MouseEventHandler<HTMLButtonElement> = _ => {
 		setValue(prevState => (prevState.length > 0 ? none : all))
-	}, [all, none])
+	}
 
 	return (
 		<section className="relative w-full">
