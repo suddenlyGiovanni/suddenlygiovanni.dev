@@ -1,4 +1,4 @@
-import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
+import { type ReactElement, useCallback, useMemo, useState } from 'react'
 
 import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
@@ -8,7 +8,7 @@ import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
 
 import { Experience } from './experience.tsx'
 
-export const Experiences = memo(function Experiences({
+export function Experiences({
 	work,
 }: {
 	readonly work: readonly Model.Work[]
@@ -59,4 +59,4 @@ export const Experiences = memo(function Experiences({
 			</Accordion>
 		</section>
 	)
-})
+}

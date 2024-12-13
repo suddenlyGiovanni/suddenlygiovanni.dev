@@ -1,5 +1,5 @@
 import { Option } from 'effect'
-import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
+import { type ReactElement, useCallback, useMemo, useState } from 'react'
 
 import type { Skill as ResumeSkill } from '@suddenlygiovanni/resume/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
@@ -15,7 +15,7 @@ import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
 
 import { getDevIconComponent } from './dev-icons.tsx'
 
-export const Skills = memo(function Skills({
+export function Skills({
 	skills,
 }: {
 	readonly skills: readonly ResumeSkill[]
@@ -67,13 +67,9 @@ export const Skills = memo(function Skills({
 			</Accordion>
 		</section>
 	)
-})
+}
 
-const Skill = memo(function Skill({
-	name,
-	keywords,
-	value,
-}: ResumeSkill & { readonly value: string }): ReactElement {
+function Skill({ name, keywords, value }: ResumeSkill & { readonly value: string }): ReactElement {
 	return (
 		<AccordionItem
 			asChild={true}
@@ -100,9 +96,9 @@ const Skill = memo(function Skill({
 			</dl>
 		</AccordionItem>
 	)
-})
+}
 
-const KeywordsList = memo(function KeywordsList({
+function KeywordsList({
 	keywords,
 }: {
 	readonly keywords: ResumeSkill['keywords']
@@ -123,9 +119,9 @@ const KeywordsList = memo(function KeywordsList({
 			</T.ul>
 		</AccordionContent>
 	)
-})
+}
 
-const Keyword = memo(function Keyword({
+function Keyword({
 	keyword,
 }: {
 	readonly keyword: ResumeSkill['keywords'][number]
@@ -152,4 +148,4 @@ const Keyword = memo(function Keyword({
 			</li>
 		),
 	})
-})
+}
