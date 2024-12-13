@@ -20,7 +20,7 @@ export function Skills({
 }: {
 	readonly skills: readonly ResumeSkill[]
 }): ReactElement {
-	const all = useMemo(() => skills.map((_, idx) => `skill-${idx}`), [skills])
+	const all = skills.map((_, idx) => `skill-${idx}`)
 
 	const none = useMemo<string[]>(() => [], [])
 	const initialState = useMemo(() => {
