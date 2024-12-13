@@ -93,7 +93,6 @@ export function getEnv() {
 export type Env = ReturnType<typeof getEnv>
 
 declare global {
-	// eslint-disable-next-line no-var -- We need it to be hoisted and editable
 	var ENV: Env
 	interface Window {
 		// biome-ignore lint/style/useNamingConvention: <explanation>
