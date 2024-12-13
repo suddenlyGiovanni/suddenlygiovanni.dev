@@ -17,7 +17,7 @@ const ReactCompilerConfig = {
 export default defineConfig({
 	plugins: [
 		babel({
-			include: ['./app/**/*'],
+			include: ['./src/**/*', '../../packages/ui/src/**/*'],
 			filter: name => name.endsWith('.tsx'),
 			babelConfig: {
 				presets: ['@babel/preset-typescript'], // if you use TypeScript
