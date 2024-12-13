@@ -1,5 +1,5 @@
 import { Either, pipe } from 'effect'
-import { type ReactElement, memo, useCallback, useMemo, useState } from 'react'
+import { type MouseEventHandler, type ReactElement, useState } from 'react'
 
 import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
@@ -16,24 +16,20 @@ import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
 import { formatDateLocaleShort } from './format-date-locale-short.ts'
 import { generateDjb2Hash } from './generate-djb2-hash.ts'
 
-export const Education = memo(function Education({
+export function Education({
 	educations,
 }: {
 	readonly educations: readonly Model.Education[]
 }): ReactElement {
-	const all = useMemo(() => {
-		return educations.map((_, idx) => `education-${idx}`)
-	}, [educations])
-	const none = useMemo<string[]>(() => [], [])
-	const initialState = useMemo(() => {
-		const [head] = all
-		return head ? [head] : none
-	}, [all, none])
+	const all: string[] = educations.map((_, idx) => `education-${idx}`)
+	const none: string[] = []
+	const initialState: string[] = all[0] ? [all[0]] : none
+
 	const [value, setValue] = useState<string[]>(initialState)
 
-	const toggleEducation = useCallback(() => {
+	const toggleEducation: MouseEventHandler<HTMLButtonElement> = _ => {
 		setValue(prevState => (prevState.length > 0 ? none : all))
-	}, [all, none])
+	}
 
 	return (
 		<section className="relative w-full">
@@ -75,9 +71,9 @@ export const Education = memo(function Education({
 			</Accordion>
 		</section>
 	)
-})
+}
 
-const Edu = memo(function Edu({
+function Edu({
 	area,
 	courses,
 	endDate,
@@ -134,13 +130,13 @@ const Edu = memo(function Edu({
 			</dl>
 		</AccordionItem>
 	)
-})
+}
 
 const styles = {
 	span: clsx('flex flex-row items-center font-normal text-sm accent-muted'),
 } as const
 
-const EduHeader = memo(function EduHeader({
+function EduHeader({
 	area,
 	institution,
 	url,
@@ -244,4 +240,4 @@ const EduHeader = memo(function EduHeader({
 			</Trigger>
 		</dt>
 	)
-})
+}

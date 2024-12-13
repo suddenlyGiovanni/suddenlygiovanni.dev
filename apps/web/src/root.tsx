@@ -67,21 +67,6 @@ export function loader({ request }: Route.LoaderArgs) {
 	}
 }
 
-export default function App(_: Route.ComponentProps): ReactElement {
-	const { requestInfo } = useLoaderData<typeof loader>()
-	const theme = useTheme()
-
-	return (
-		<>
-			<Header theme={requestInfo.userPrefs.theme} />
-			<Main>
-				<Outlet />
-			</Main>
-			<Footer />
-		</>
-	)
-}
-
 export function Layout({ children }: { children: ReactNode }): ReactElement {
 	// if there was an error running the loader, data could be missing
 	const data = useLoaderData<typeof loader | null>()
@@ -94,6 +79,21 @@ export function Layout({ children }: { children: ReactNode }): ReactElement {
 		>
 			{children}
 		</Document>
+	)
+}
+
+export default function App(_: Route.ComponentProps): ReactElement {
+	const { requestInfo } = useLoaderData<typeof loader>()
+	const theme = useTheme()
+
+	return (
+		<>
+			<Header theme={requestInfo.userPrefs.theme} />
+			<Main>
+				<Outlet />
+			</Main>
+			<Footer />
+		</>
 	)
 }
 

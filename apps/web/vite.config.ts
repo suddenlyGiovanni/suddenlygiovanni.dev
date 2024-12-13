@@ -4,13 +4,26 @@ import { codecovVitePlugin } from '@codecov/vite-plugin'
 import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
 import { reactRouterDevTools } from 'react-router-devtools'
+import babel from 'vite-plugin-babel'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite'
 
+const ReactCompilerConfig = {
+	/* ... */
+}
+
 export default defineConfig({
 	plugins: [
+		babel({
+			include: ['./src/**/*', '../../packages/ui/src/**/*'],
+			filter: name => name.endsWith('.tsx'),
+			babelConfig: {
+				presets: ['@babel/preset-typescript'], // if you use TypeScript
+				plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
+			},
+		}),
 		reactRouterDevTools({
 			server: {
 				silent: false,

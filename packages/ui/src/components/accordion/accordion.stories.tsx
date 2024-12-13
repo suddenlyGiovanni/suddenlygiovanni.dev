@@ -1,7 +1,3 @@
-/*
-	eslint-disable react/no-array-index-key,
-		react/no-unescaped-entities -- Reason: This rule is disabled because...
-*/
 import type { Meta } from '@storybook/react'
 import { type ReactElement, useEffect, useRef, useState } from 'react'
 
@@ -148,7 +144,6 @@ export function SingleUncontrolled(): ReactElement {
 }
 
 export function SingleControlled(): ReactElement {
-	// eslint-disable-next-line @typescript-eslint/ban-types -- Reason: I need a sum type and the ability to use a string as a value.
 	const [valueOne, setValueOne] = useState<('one' | 'two' | 'three' | 'four') | (string & {})>(
 		'one',
 	)
@@ -340,9 +335,6 @@ export function MultipleUncontrolled(): ReactElement {
 }
 
 export function MultipleControlled(): ReactElement {
-	/*
-	 eslint-disable-next-line @typescript-eslint/ban-types -- Reason: I need a sum type and the ability to use a string as a value.
-	*/
 	const [value, setValue] = useState<(('one' | 'two' | 'three' | 'four') | (string & {}))[]>([
 		'one',
 		'two',
@@ -554,7 +546,6 @@ export function Animated2D(): ReactElement {
 }
 
 export function AnimatedControlled(): ReactElement {
-	// eslint-disable-next-line @typescript-eslint/ban-types -- Reason: I need a sum type and the ability to use a string as a value.
 	const [value, setValue] = useState<(('one' | 'two' | 'three' | 'four') | (string & {}))[]>([
 		'one',
 		'two',

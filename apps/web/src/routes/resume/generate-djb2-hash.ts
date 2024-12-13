@@ -16,7 +16,6 @@ export function generateDjb2Hash(s: string): string {
 	let hash = 5381
 	for (const char of s) {
 		const charCode = char.charCodeAt(0)
-		// eslint-disable-next-line no-bitwise -- DJB2 hash algorithm
 		hash = (hash << 5) + hash + charCode /* hash * 33 + c */
 	}
 	return hash.toString()

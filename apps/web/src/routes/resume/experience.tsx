@@ -1,6 +1,6 @@
 import type * as Model from '@suddenlygiovanni/resume/schema-resume'
 import { Either, Option } from 'effect'
-import { type ReactElement, memo } from 'react'
+import type { ReactElement } from 'react'
 
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
@@ -13,7 +13,7 @@ import { Card } from '@suddenlygiovanni/ui/ui/card.tsx'
 import { getDevIconComponent } from '~/routes/resume/dev-icons.tsx'
 import { formatDateLocaleShort } from '~/routes/resume/format-date-locale-short.ts'
 
-export const Experience = memo(function Experience(
+export function Experience(
 	work: Pick<
 		Model.Work,
 		'contact' | 'description' | 'location' | 'name' | 'summary' | 'url' | 'roles'
@@ -40,7 +40,7 @@ export const Experience = memo(function Experience(
 			</article>
 		</AccordionItem>
 	)
-})
+}
 
 const styles = {
 	span: clsx('flex flex-row items-center font-normal text-sm italic accent-muted'),
@@ -62,7 +62,7 @@ function getDates(roles: Model.Work['roles']): {
 	}
 }
 
-const ExperienceHeader = memo(function ExperienceHeader(work: {
+function ExperienceHeader(work: {
 	readonly name: Model.Work['name']
 	readonly url: undefined | Model.Work['url']
 	readonly description: Model.Work['description']
@@ -162,7 +162,7 @@ const ExperienceHeader = memo(function ExperienceHeader(work: {
 			</Trigger>
 		</div>
 	)
-})
+}
 
 function ExperienceSummary({
 	summary,
