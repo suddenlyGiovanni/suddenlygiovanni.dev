@@ -23,7 +23,7 @@
 		"react": "19.0.0",
 		"react-dom": "19.0.0",
 		"react-router": "7.0.2",
-		"remix-utils": "7.7.0"
+		"remix-utils": "8.0.0"
 	},
 	"devDependencies": {
 		"@codecov/vite-plugin": "1.6.0",
@@ -61,7 +61,7 @@
 		"lint": "biome ci --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=false --no-errors-on-unmatched .",
 		"start": "react-router-serve ./build/server/index.js",
 		"test": "vitest",
-		"test:unit": "vitest run --coverage",
+		"test:unit": "vitest",
 		"typecheck": "react-router typegen && tsc"
 	},
 	"sideEffects": false,
