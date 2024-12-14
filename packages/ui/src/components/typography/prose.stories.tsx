@@ -1,7 +1,7 @@
 import type { Meta } from '@storybook/react'
 import type { ReactElement } from 'react'
 
-import { clsx } from '../../lib/utils.ts'
+import { clsx } from '#lib/utils.ts'
 
 const meta = {
 	title: 'components/typography/Prose',

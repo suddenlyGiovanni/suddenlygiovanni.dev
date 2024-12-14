@@ -18,7 +18,7 @@ import {
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons'
 import type { ComponentPropsWithRef, CustomComponentPropsWithRef, FC } from 'react'
 
-import { clsx } from '../lib/utils.ts'
+import { clsx } from '#lib/utils.ts'
 
 const DropdownMenu = Root
 const DropdownMenuTrigger = Trigger

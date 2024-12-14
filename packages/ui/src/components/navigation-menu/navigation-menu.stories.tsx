@@ -3,7 +3,8 @@ import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react'
 import { forwardRef } from 'react'
 import { Link } from 'react-router'
 
-import { clsx } from '../../lib/utils.ts'
+import { Icons } from '#components/icons/icons.tsx'
+import { clsx } from '#lib/utils.ts'
 import {
 	NavigationMenu,
 	NavigationMenuContent,
@@ -12,8 +13,7 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
-} from '../../ui/navigation-menu.tsx'
-import { Icons } from '../icons/icons.tsx'
+} from '#ui/navigation-menu.tsx'
 
 const meta: Meta = {
 	component: NavigationMenu,

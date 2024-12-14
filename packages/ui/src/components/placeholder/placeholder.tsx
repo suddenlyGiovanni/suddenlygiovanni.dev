@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef, FC } from 'react'
 
-import { clsx } from '../../lib/utils.ts'
+import { clsx } from '#lib/utils.ts'
 
 const name = 'Placeholder'
 export const Placeholder: FC<ComponentPropsWithRef<'div'>> = ({

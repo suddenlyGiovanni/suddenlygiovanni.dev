@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef, FC } from 'react'
 
-import { clsx } from '../../lib/utils.ts'
+import { clsx } from '#lib/utils.ts'
 
 export const Muted: FC<ComponentPropsWithRef<'p'>> = ({ className, children, ref, ...props }) => (
 	<p

@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef, FC } from 'react'
 
-import { clsx } from '../../lib/utils.ts'
+import { clsx } from '#lib/utils.ts'
 
 export const Tr: FC<ComponentPropsWithRef<'tr'>> = ({ className, children, ref, ...props }) => (
 	<tr

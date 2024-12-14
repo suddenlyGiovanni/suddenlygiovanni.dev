@@ -1,6 +1,7 @@
 import { Slot } from '@radix-ui/react-slot'
 import type { ComponentPropsWithRef, FC } from 'react'
-import { clsx } from '../lib/utils.ts'
+
+import { clsx } from '#lib/utils.ts'
 
 const Root: FC<ComponentPropsWithRef<'div'> & { asChild?: boolean }> = ({
 	className,

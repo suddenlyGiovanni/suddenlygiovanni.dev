@@ -1,9 +1,9 @@
 import type { ReactNode } from 'react'
 import { Link, type LinkProps } from 'react-router'
 
-import { clsx } from '../../lib/utils.ts'
-import { Avatar, AvatarFallback, AvatarImage } from '../../ui/avatar.tsx'
-import { Skeleton } from '../../ui/skeleton.tsx'
+import { clsx } from '#lib/utils.ts'
+import { Avatar, AvatarFallback, AvatarImage } from '#ui/avatar.tsx'
+import { Skeleton } from '#ui/skeleton.tsx'
 
 export function SuddenlyGiovanni({
 	className,
