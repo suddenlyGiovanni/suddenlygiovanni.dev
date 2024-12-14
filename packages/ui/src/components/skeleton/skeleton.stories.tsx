@@ -1,6 +1,6 @@
 import type { Meta, StoryFn } from '@storybook/react'
 
-import { Skeleton } from '../../ui/skeleton.tsx'
+import { Skeleton } from '#ui/skeleton.tsx'
 
 const meta = {
 	component: Skeleton,

@@ -2,7 +2,7 @@ import { Content, Header, Item, Root, Trigger } from '@radix-ui/react-accordion'
 import { ChevronDownIcon } from '@radix-ui/react-icons'
 import type { ComponentPropsWithRef, CustomComponentPropsWithRef, FC } from 'react'
 
-import { clsx } from '../lib/utils.ts'
+import { clsx } from '#lib/utils.ts'
 
 const Accordion = Root
 Accordion.displayName = Root.displayName

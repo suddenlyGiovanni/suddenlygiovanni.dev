@@ -2,7 +2,7 @@ import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-men
 import type { Meta, StoryFn } from '@storybook/react'
 import { useCallback, useState } from 'react'
 
-import { Button } from '../../ui/button.tsx'
+import { Button } from '#ui/button.tsx'
 import {
 	DropdownMenu,
 	DropdownMenuCheckboxItem,
@@ -19,7 +19,7 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from '../../ui/dropdown-menu.tsx'
+} from '#ui/dropdown-menu.tsx'
 
 const meta: Meta = {
 	component: DropdownMenu,

@@ -1,14 +1,14 @@
 import { type ReactNode, memo, useMemo } from 'react'
 
-import { clsx } from '../../lib/utils.ts'
-import { Button } from '../../ui/button.tsx'
+import { Icons } from '#components/icons/icons.tsx'
+import { clsx } from '#lib/utils.ts'
+import { Button } from '#ui/button.tsx'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
-} from '../../ui/dropdown-menu.tsx'
-import { Icons } from '../icons/icons.tsx'
+} from '#ui/dropdown-menu.tsx'
 
 export type Theme = 'dark' | 'light'
 

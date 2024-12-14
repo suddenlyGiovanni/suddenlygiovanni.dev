@@ -12,7 +12,7 @@ import {
 } from '@radix-ui/react-navigation-menu'
 import type { CustomComponentPropsWithRef, FC } from 'react'
 
-import { clsx, cva } from '../lib/utils.ts'
+import { clsx, cva } from '#lib/utils.ts'
 
 const NavigationMenu: FC<CustomComponentPropsWithRef<typeof Root>> = ({
 	className,

@@ -1,7 +1,7 @@
 import { Fallback, Image, Root } from '@radix-ui/react-avatar'
 import type { ComponentPropsWithRef, FC } from 'react'
 
-import { clsx } from '../lib/utils.ts'
+import { clsx } from '#lib/utils.ts'
 
 const Avatar: FC<ComponentPropsWithRef<typeof Root>> = ({ className, ref, ...props }) => (
 	<Root

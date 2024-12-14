@@ -2,9 +2,9 @@ import { CaretSortIcon } from '@radix-ui/react-icons'
 import type { Meta } from '@storybook/react'
 import { type ReactElement, useState } from 'react'
 
-import { clsx } from '../../lib/utils.ts'
-import { Button } from '../../ui/button.tsx'
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '../../ui/collapsible.tsx'
+import { clsx } from '#lib/utils.ts'
+import { Button } from '#ui/button.tsx'
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '#ui/collapsible.tsx'
 
 const rootClass = clsx('sans max-w-[20em]')
 

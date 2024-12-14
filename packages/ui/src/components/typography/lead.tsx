@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef, FC } from 'react'
 
-import { clsx } from '../../lib/utils.ts'
+import { clsx } from '#lib/utils.ts'
 
 export const Lead: FC<ComponentPropsWithRef<'h1'>> = ({ className, children, ref, ...props }) => (
 	<h1

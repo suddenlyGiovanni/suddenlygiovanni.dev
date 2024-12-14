@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactElement } from 'react'
 
-import { clsx } from '../../lib/utils.ts'
+import { clsx } from '#lib/utils.ts'
 
 const baseClasses = clsx('absolute h-0.5 w-6 transition-all duration-250 ease-in-out')
 

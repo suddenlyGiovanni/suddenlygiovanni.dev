@@ -1,7 +1,7 @@
 import { Slot } from '@radix-ui/react-slot'
 import type { ComponentPropsWithRef, FC } from 'react'
 
-import { type VariantProps, clsx, cva } from '../lib/utils.ts'
+import { type VariantProps, clsx, cva } from '#lib/utils.ts'
 
 const buttonVariants = cva(
 	clsx(

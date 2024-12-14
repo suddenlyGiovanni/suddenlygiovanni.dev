@@ -1,7 +1,7 @@
 import { Root } from '@radix-ui/react-separator'
 import type { CustomComponentPropsWithRef, FC } from 'react'
 
-import { clsx } from '../lib/utils.ts'
+import { clsx } from '#lib/utils.ts'
 
 export const Separator: FC<CustomComponentPropsWithRef<typeof Root>> = ({
 	className,
