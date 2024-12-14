@@ -7,6 +7,6 @@ export default [
 	...config,
 	{
 		files: ['**/*.{spec,test}.{ts,tsx}'],
-		...vitest.configs.recommended,
+		...vitest.configs.all,
 	},
 ]
