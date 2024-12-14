@@ -8,12 +8,6 @@
 		"useDefineForClassFields": true
 	},
 
-	"include": [
-		"tailwind.config.ts",
-		"vite.config.ts",
-		"postcss.config.mjs",
-		"./.storybook/**/*",
-		"./src/**/*"
-	],
+	"include": ["vite.config.ts", "./.storybook/**/*", "./src/**/*"],
 	"exclude": ["dist", "build", "node_modules", "./~"]
 }
