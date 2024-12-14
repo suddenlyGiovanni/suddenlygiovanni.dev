@@ -1,0 +1,29 @@
+{
+	"$schema": "https://json.schemastore.org/package.json",
+	"devDependencies": {
+		"@eslint/js": "9.17.0",
+		"@typescript-eslint/eslint-plugin": "8.18.0",
+		"@typescript-eslint/parser": "8.18.0",
+		"eslint": "9.17.0",
+		"eslint-config-prettier": "9.1.0",
+		"eslint-plugin-only-warn": "1.1.0",
+		"eslint-plugin-react": "7.37.2",
+		"eslint-plugin-react-compiler": "19.0.0-beta-37ed2a7-20241206",
+		"eslint-plugin-react-hooks": "5.1.0",
+		"eslint-plugin-turbo": "2.3.3",
+		"globals": "15.13.0",
+		"typescript": "5.7.2",
+		"typescript-eslint": "8.18.0"
+	},
+	"peerDependencies": {
+		"eslint": "9.17.0"
+	},
+	"exports": {
+		"./base": "./base.js",
+		"./react-internal": "./react-internal.js"
+	},
+	"name": "@suddenlygiovanni/eslint-config",
+	"packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c",
+	"private": true,
+	"type": "module"
+}

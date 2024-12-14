@@ -25,6 +25,7 @@
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "3.2.2",
+		"@storybook/addon-a11y": "8.4.7",
 		"@storybook/addon-essentials": "8.4.7",
 		"@storybook/addon-interactions": "8.4.7",
 		"@storybook/addon-links": "8.4.7",
@@ -32,10 +33,10 @@
 		"@storybook/addon-themes": "8.4.7",
 		"@storybook/blocks": "8.4.7",
 		"@storybook/react": "8.4.7",
-		"@storybook/addon-a11y": "8.4.7",
 		"@storybook/react-vite": "8.4.7",
 		"@storybook/test": "8.4.7",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
+		"@suddenlygiovanni/eslint-config": "workspace:*",
 		"@tailwindcss/typography": "0.5.15",
 		"@tailwindcss/vite": "4.0.0-beta.7",
 		"@total-typescript/ts-reset": "0.6.1",
@@ -44,16 +45,12 @@
 		"@vitejs/plugin-react": "4.3.4",
 		"babel-plugin-react-compiler": "19.0.0-beta-37ed2a7-20241206",
 		"class-variance-authority": "0.7.1",
-		"eslint": "9.16.0",
-		"eslint-plugin-react": "7.37.2",
-		"eslint-plugin-react-compiler": "19.0.0-beta-37ed2a7-20241206",
-		"eslint-plugin-react-hooks": "5.1.0",
+		"eslint-plugin-storybook": "0.11.1",
 		"globals": "15.13.0",
 		"storybook": "8.4.7",
 		"tailwind-merge": "2.5.5",
 		"tailwindcss": "4.0.0-beta.7",
 		"tailwindcss-animate": "1.0.7",
-		"typescript-eslint": "8.18.0",
 		"vite": "6.0.3"
 	},
 	"engines": {
@@ -89,6 +86,7 @@
 		"format": "biome check --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true .",
 		"format:write": "biome check --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true --write .",
 		"lint": "biome ci --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=false --no-errors-on-unmatched .",
+		"eslint": "eslint . --max-warnings 0",
 		"typecheck": "scripty"
 	},
 	"type": "module"
