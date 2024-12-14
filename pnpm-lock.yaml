@@ -356,6 +356,9 @@ importers:
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
+      eslint-plugin-storybook:
+        specifier: 0.11.1
+        version: 0.11.1(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
       globals:
         specifier: 15.13.0
         version: 15.13.0
@@ -489,6 +492,7 @@ packages:
   '@babel/plugin-proposal-private-methods@7.18.6':
     resolution: {integrity: sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==}
     engines: {node: '>=6.9.0'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
@@ -3733,6 +3737,12 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7
 
+  eslint-plugin-storybook@0.11.1:
+    resolution: {integrity: sha512-yGKpAYkBm/Q2hZg476vRUAvd9lAccjjSvzU5nYy3BSQbKTPy7uopx7JEpwk2vSuw4weTMZzWF64z9/gp/K5RCg==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      eslint: '>=6'
+
   eslint-plugin-turbo@2.3.3:
     resolution: {integrity: sha512-j8UEA0Z+NNCsjZep9G5u5soDQHcXq/x4amrwulk6eHF1U91H2qAjp5I4jQcvJewmccCJbVp734PkHHTRnosjpg==}
     peerDependencies:
@@ -3963,6 +3973,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -4066,6 +4077,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -9743,6 +9755,16 @@ snapshots:
       semver: 6.3.1
       string.prototype.matchall: 4.0.11
       string.prototype.repeat: 1.0.0
+
+  eslint-plugin-storybook@0.11.1(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2):
+    dependencies:
+      '@storybook/csf': 0.1.11
+      '@typescript-eslint/utils': 8.18.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
+      eslint: 9.17.0(jiti@2.4.1)
+      ts-dedent: 2.2.0
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
 
   eslint-plugin-turbo@2.3.3(eslint@9.17.0(jiti@2.4.1)):
     dependencies:
