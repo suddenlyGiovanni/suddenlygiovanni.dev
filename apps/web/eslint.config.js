@@ -1,27 +1,12 @@
-import pluginReact from 'eslint-plugin-react'
-import reactCompiler from 'eslint-plugin-react-compiler'
-import globals from 'globals'
-import tseslint from 'typescript-eslint'
+import { config } from '@suddenlygiovanni/eslint-config/react-internal'
+import vitest from '@vitest/eslint-plugin'
 
-/** @type {import('eslint').Linter.Config[]} */
+/** @type {import("eslint").Linter.Config} */
+
 export default [
-	{ files: ['**/*.{ts,tsx}'] },
-	{ languageOptions: { globals: { ...globals.browser, ...globals.node } } },
-	tseslint.configs.base,
-	pluginReact.configs.flat.recommended,
-	pluginReact.configs.flat['jsx-runtime'],
+	...config,
 	{
-		plugins: {
-			'react-compiler': reactCompiler,
-		},
-		rules: {
-			'react-compiler/react-compiler': 'error',
-		},
-	},
-	{
-		rules: {
-			'react/no-unescaped-entities': 'off',
-			'react/prop-types': [1, { skipUndeclared: true }],
-		},
+		files: ['**/*.{spec,test}.{ts,tsx}'],
+		...vitest.configs.recommended,
 	},
 ]
