@@ -26,7 +26,6 @@
 		".react-router/types/**/*",
 		"tailwind.config.ts",
 		"vite.config.ts",
-		"postcss.config.mjs",
 		"src/**/*",
 		"src/.server/**/*"
 	],
