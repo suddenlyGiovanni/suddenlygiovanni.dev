@@ -17,6 +17,9 @@ importers:
       '@biomejs/biome':
         specifier: nightly
         version: 1.9.5-nightly.81fdedb
+      eslint:
+        specifier: 9.17.0
+        version: 9.17.0(jiti@2.4.1)
       scripty:
         specifier: 2.1.1
         version: 2.1.1
@@ -186,6 +189,9 @@ importers:
 
   packages/eslint-config:
     devDependencies:
+      '@eslint/js':
+        specifier: 9.17.0
+        version: 9.17.0
       '@typescript-eslint/eslint-plugin':
         specifier: 8.18.0
         version: 8.18.0(@typescript-eslint/parser@8.18.0(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2))(eslint@9.17.0(jiti@2.4.1))(typescript@5.7.2)
@@ -323,6 +329,9 @@ importers:
       '@suddenlygiovanni/config-typescript':
         specifier: workspace:*
         version: link:../config-typescript
+      '@suddenlygiovanni/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
       '@tailwindcss/typography':
         specifier: 0.5.15
         version: 0.5.15(tailwindcss@4.0.0-beta.7)
@@ -347,18 +356,6 @@ importers:
       class-variance-authority:
         specifier: 0.7.1
         version: 0.7.1
-      eslint:
-        specifier: 9.16.0
-        version: 9.16.0(jiti@2.4.1)
-      eslint-plugin-react:
-        specifier: 7.37.2
-        version: 7.37.2(eslint@9.16.0(jiti@2.4.1))
-      eslint-plugin-react-compiler:
-        specifier: 19.0.0-beta-37ed2a7-20241206
-        version: 19.0.0-beta-37ed2a7-20241206(eslint@9.16.0(jiti@2.4.1))
-      eslint-plugin-react-hooks:
-        specifier: 5.1.0
-        version: 5.1.0(eslint@9.16.0(jiti@2.4.1))
       globals:
         specifier: 15.13.0
         version: 15.13.0
@@ -374,9 +371,6 @@ importers:
       tailwindcss-animate:
         specifier: 1.0.7
         version: 1.0.7(tailwindcss@4.0.0-beta.7)
-      typescript-eslint:
-        specifier: 8.18.0
-        version: 8.18.0(eslint@9.16.0(jiti@2.4.1))(typescript@5.7.2)
       vite:
         specifier: ^6
         version: 6.0.3(@types/node@22.10.2)(jiti@2.4.1)(lightningcss@1.28.2)
@@ -9701,10 +9695,6 @@ snapshots:
       zod-validation-error: 3.4.0(zod@3.23.8)
     transitivePeerDependencies:
       - supports-color
-
-  eslint-plugin-react-hooks@5.1.0(eslint@9.16.0(jiti@2.4.1)):
-    dependencies:
-      eslint: 9.16.0(jiti@2.4.1)
 
   eslint-plugin-react-hooks@5.1.0(eslint@9.17.0(jiti@2.4.1)):
     dependencies:
