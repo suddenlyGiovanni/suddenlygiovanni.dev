@@ -1,0 +1,28 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": ["./tsconfig.json", "@suddenlygiovanni/config-typescript/remix.json"],
+	"compilerOptions": {
+		"composite": true,
+		"allowImportingTsExtensions": true,
+		"baseUrl": ".",
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+		"noEmit": true,
+		"paths": {
+			"~/*": ["./src/*"]
+		},
+		"skipLibCheck": true,
+		"target": "ES2022",
+		"types": [
+			"@total-typescript/ts-reset",
+			"@octokit/core",
+			"react",
+			"react-dom",
+			"vite/client",
+			"vitest/config",
+			"@react-router/node"
+		],
+		"rootDirs": [".", "./.react-router/types"]
+	},
+	"include": ["vite.config.ts", ".react-router/types/**/*", "src/**/*"],
+	"exclude": ["build", "node_modules", "./~"]
+}

@@ -1,33 +1,12 @@
 {
+	"files": [],
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": "@suddenlygiovanni/config-typescript/remix.json",
+	"references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.vite.json" }],
+	"extends": [],
 	"compilerOptions": {
-		"allowImportingTsExtensions": true,
-		"baseUrl": ".",
-		"lib": ["DOM", "DOM.Iterable", "ES2022"],
 		"noEmit": true,
-		"paths": {
-			"~/*": ["./src/*"]
-		},
+		"verbatimModuleSyntax": true,
 		"skipLibCheck": true,
-		"target": "ES2022",
-		"types": [
-			"@total-typescript/ts-reset",
-			"@octokit/core",
-			"react/canary",
-			"react-dom",
-			"vite/client",
-			"vitest/config",
-			"@react-router/node"
-		],
-		"rootDirs": [".", "./.react-router/types"]
-	},
-	"include": [
-		".react-router/types/**/*",
-		"tailwind.config.ts",
-		"vite.config.ts",
-		"src/**/*",
-		"src/.server/**/*"
-	],
-	"exclude": ["build", "node_modules", "./~"]
+		"strict": true
+	}
 }
