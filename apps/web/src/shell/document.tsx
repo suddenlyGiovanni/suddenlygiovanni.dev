@@ -42,7 +42,20 @@ export function Document({
 				className={clsx('min-h-full bg-background font-sans text-foreground antialiased')}
 			>
 				{children}
+
+				{/**
+				 * Manages scroll position for client-side transitions
+				 * If you use a nonce-based content security policy for scripts, you must provide the
+				 *  `nonce` prop. Otherwise, omit the nonce prop as shown here.
+				 */}
 				<ScrollRestoration />
+
+				{/**
+				 * Script tags go here
+				 * If you use a nonce-based content security policy for scripts, you must provide the
+				 *  `nonce` prop.
+				 *  Otherwise, omit the nonce prop as shown here.
+				 */}
 				<script
 					// biome-ignore lint/security/noDangerouslySetInnerHtml: we need to set the ENV variable
 					dangerouslySetInnerHTML={{
