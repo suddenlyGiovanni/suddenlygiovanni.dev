@@ -1,15 +1,13 @@
 import fs from 'node:fs'
 import os from 'node:os'
-import path from 'node:path'
 import process from 'node:process'
 import url from 'node:url'
-import { createRequestHandler } from '@react-router/express'
 import compression from 'compression'
 import express from 'express'
 import getPort from 'get-port'
 import morgan from 'morgan'
-import type { ServerBuild } from 'react-router'
 import sourceMapSupport from 'source-map-support'
+import type { ViteDevServer } from 'vite'
 
 import { parseNumber } from './utils.ts'
 
@@ -60,21 +58,26 @@ run()
  * ```
  */
 async function run(): Promise<void> {
+	const buildPath = './build/server/index.js'
 	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-	const port = parseNumber(process.env['PORT']) ?? (await getPort({ port: 3000 }))
+	// biome-ignore lint/style/useNamingConvention: <explanation>
+	const DEVELOPMENT = process.env['NODE_ENV'] === 'development'
+	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+	// biome-ignore lint/style/useNamingConvention: <explanation>
+	const PORT = parseNumber(process.env['PORT']) ?? (await getPort({ port: 3000 }))
 
-	const buildPathArg = process.argv[2]
+	// const buildPathArg = process.argv[2]
 
-	if (!buildPathArg) {
-		// biome-ignore lint/suspicious/noConsole: <explanation>
-		console.error(`
-  Usage: react-router-serve <server-build-path> - e.g. react-router-serve build/server/index.js`)
-		process.exit(1)
-	}
+	// if (!buildPathArg) {
+	// 	// biome-ignore lint/suspicious/noConsole: <explanation>
+	// 	console.error(`
+	// Usage: react-router-serve <server-build-path> - e.g. react-router-serve build/server/index.js`)
+	// 	process.exit(1)
+	// }
 
-	const buildPath = path.resolve(buildPathArg)
+	// const buildPath = path.resolve(buildPathArg)
 
-	const build: ServerBuild = await import(url.pathToFileURL(buildPath).href)
+	// const build: ServerBuild = await import(url.pathToFileURL(buildPath).href)
 
 	const onListen = (): void => {
 		const address =
@@ -87,11 +90,11 @@ async function run(): Promise<void> {
 		if (address) {
 			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
 			// biome-ignore lint/suspicious/noConsole: <explanation>
-			console.log(`[react-router-serve] http://localhost:${port} (http://${address}:${port})`)
+			console.log(`[react-router-serve] http://localhost:${PORT} (http://${address}:${PORT})`)
 		} else {
 			// biome-ignore lint/suspicious/noConsole: <explanation>
 			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-			console.log(`[react-router-serve] http://localhost:${port}`)
+			console.log(`[react-router-serve] http://localhost:${PORT}`)
 		}
 	}
 
@@ -101,35 +104,67 @@ async function run(): Promise<void> {
 
 	app.use(compression())
 
-	app.use(
-		path.posix.join(build.publicPath, 'assets'),
-		express.static(path.join(build.assetsBuildDirectory, 'assets'), {
-			immutable: true,
-			maxAge: '1y',
-		}),
-	)
+	if (DEVELOPMENT) {
+		console.log('Starting development server')
 
-	app.use(build.publicPath, express.static(build.assetsBuildDirectory))
+		const viteDevServer: ViteDevServer = await import('vite').then(vite =>
+			vite.createServer({
+				server: { middlewareMode: true },
+			}),
+		)
 
-	app.use(express.static('public', { maxAge: '1h' }))
+		app.use(viteDevServer.middlewares)
+		app.use(async (req, res, next) => {
+			try {
+				const source = (await viteDevServer.ssrLoadModule('./server/app.ts')) as {
+					app: express.Express
+				}
+				return await source.app(req, res, next)
+			} catch (error: unknown) {
+				if (typeof error === 'object' && error instanceof Error) {
+					viteDevServer.ssrFixStacktrace(error)
+				}
+				next(error)
+			}
+		})
+	} else {
+		console.log('Starting production server')
+
+		app.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
+
+		app.use(express.static('build/client', { maxAge: '1h' }))
+		app.use(await import(buildPath).then(mod => mod.app))
+	}
+
+	// app.use(
+	// 	path.posix.join(build.publicPath, 'assets'),
+	// 	express.static(path.join(build.assetsBuildDirectory, 'assets'), {
+	// 		immutable: true,
+	// 		maxAge: '1y',
+	// 	}),
+	// )
+
+	// app.use(build.publicPath, express.static(build.assetsBuildDirectory))
+
+	// app.use(express.static('public', { maxAge: '1h' }))
 
 	app.use(morgan('tiny'))
 
-	app.all(
-		'*',
-		createRequestHandler({
-			build,
-			// biome-ignore lint/style/noNonNullAssertion: <explanation>
-			// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-			mode: process.env['NODE_ENV']!,
-		}),
-	)
+	// app.all(
+	// 	'*',
+	// 	createRequestHandler({
+	// 		build,
+	// 		// biome-ignore lint/style/noNonNullAssertion: <explanation>
+	// 		// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+	// 		mode: process.env['NODE_ENV']!,
+	// 	}),
+	// )
 
 	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 	const server = process.env['HOST']
 		? // biome-ignore lint/complexity/useLiteralKeys: <explanation>
-			app.listen(port, process.env['HOST'], onListen)
-		: app.listen(port, onListen)
+			app.listen(PORT, process.env['HOST'], onListen)
+		: app.listen(PORT, onListen)
 
 	for (const signal of ['SIGTERM', 'SIGINT']) {
 		process.once(signal, () => server?.close(console.error))

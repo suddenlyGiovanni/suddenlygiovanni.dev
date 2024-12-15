@@ -14,7 +14,14 @@ const ReactCompilerConfig = {
 	/* ... */
 }
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
+	build: {
+		rollupOptions: isSsrBuild
+			? {
+					input: './server/app.ts',
+				}
+			: undefined,
+	},
 	plugins: [
 		babel({
 			include: ['./src/**/*', '../../packages/ui/src/**/*'],
@@ -100,4 +107,4 @@ export default defineConfig({
 			reporter: ['text', 'json', 'html'],
 		},
 	},
-})
+}))
