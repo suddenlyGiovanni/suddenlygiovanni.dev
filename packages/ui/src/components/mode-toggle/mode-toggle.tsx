@@ -1,4 +1,4 @@
-import { type ReactNode, memo, useMemo } from 'react'
+import type { FC, MouseEventHandler } from 'react'
 
 import { Icons } from '#components/icons/icons.tsx'
 import { clsx } from '#lib/utils.ts'
@@ -19,13 +19,15 @@ interface ModeToggleProps {
 }
 
 const NAME = 'ModeToggle'
-const ModeToggle = memo(function ModeToggle({
-	setTheme,
-	theme,
-	className,
-}: ModeToggleProps): ReactNode {
-	const isLight = useMemo<boolean>(() => theme === 'light', [theme])
-	const isDark = useMemo<boolean>(() => theme === 'dark', [theme])
+const ModeToggle: FC<ModeToggleProps> = ({ setTheme, theme, className }) => {
+	const isLight = theme === 'light'
+	const isDark = theme === 'dark'
+
+	function makeToggleHandler(mode: Theme): MouseEventHandler<HTMLDivElement> {
+		return function toggleHandler(_) {
+			setTheme(mode)
+		}
+	}
 
 	return (
 		<DropdownMenu>
@@ -37,9 +39,9 @@ const ModeToggle = memo(function ModeToggle({
 					data-testid={NAME}
 				>
 					{isLight || theme === null ? (
-						<Icons.moon className={clsx('h-[1.2rem]', 'w-[1.2rem]')} />
+						<Icons.moon className={clsx('h-[1.2rem] w-[1.2rem]')} />
 					) : (
-						<Icons.sun className={clsx('h-[1.2rem]', 'w-[1.2rem]')} />
+						<Icons.sun className={clsx('h-[1.2rem] w-[1.2rem]')} />
 					)}
 
 					<span className="sr-only">Toggle theme</span>
@@ -48,20 +50,20 @@ const ModeToggle = memo(function ModeToggle({
 			<DropdownMenuContent align="end">
 				<DropdownMenuItem
 					disabled={isLight}
-					onClick={(): void => setTheme('light')}
+					onClick={makeToggleHandler('light')}
 				>
 					Light
 				</DropdownMenuItem>
 				<DropdownMenuItem
 					disabled={isDark}
-					onClick={(): void => setTheme('dark')}
+					onClick={makeToggleHandler('dark')}
 				>
 					Dark
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>
 	)
-})
+}
 ModeToggle.displayName = NAME
 
 export { ModeToggle }

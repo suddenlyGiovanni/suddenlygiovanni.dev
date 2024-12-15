@@ -1,22 +1,35 @@
 import type { ReactElement, ReactNode } from 'react'
-import { Outlet, useLoaderData } from 'react-router'
+import {
+	Links,
+	Meta,
+	Outlet,
+	Scripts,
+	ScrollRestoration,
+	useLoaderData,
+	useRouteLoaderData,
+} from 'react-router'
 
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
+import { Layout as _Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
+import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
 import hero2800wAssetUrl from '~/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import faviconAssertUrl from '~/assets/suddenly_giovanni-icon-white.svg'
 import { config } from '~/config.ts'
-import { Document, Footer, GeneralErrorBoundary, Header, Main } from '~/shell/index.tsx'
+import { useOptionalTheme, useTheme } from '~/routes/resources/theme-switch.tsx'
+import { Footer, GeneralErrorBoundary, Header } from '~/shell/index.tsx'
 import fontStyleSheetUrl from '~/styles/fonts.css?url'
 import tailwindStyleSheetUrl from '~/styles/tailwind.css?url'
 import { getHints } from '~/utils/client-hints.tsx'
+import { ClientHintCheck } from '~/utils/client-hints.tsx'
 import { getEnv } from '~/utils/env.server.ts'
 import { getDomainUrl } from '~/utils/misc.ts'
 import { getTheme } from '~/utils/theme.server.ts'
 
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/root.ts'
-import { useOptionalTheme, useTheme } from './routes/resources/theme-switch.tsx'
+
+const { Body, Main } = _Layout
 
 export const links: Route.LinksFunction = () => {
 	return [
@@ -67,18 +80,56 @@ export function loader({ request }: Route.LoaderArgs) {
 	}
 }
 
-export function Layout({ children }: { children: ReactNode }): ReactElement {
+export function Layout(props: { children: ReactNode }): ReactElement {
 	// if there was an error running the loader, data could be missing
-	const data = useLoaderData<typeof loader | null>()
+	const data = useRouteLoaderData<typeof loader>('root')
+
 	const theme = useOptionalTheme()
 	return (
-		<Document
-			nonce={undefined}
-			theme={theme}
-			env={data?.ENV}
+		<html
+			className="min-h-screen"
+			data-theme={theme}
+			lang="en"
 		>
-			{children}
-		</Document>
+			<head>
+				<ClientHintCheck />
+				<meta charSet="utf-8" />
+				<meta
+					httpEquiv="Content-Type"
+					content="text/html;charset=utf-8"
+				/>
+				<meta
+					content="width=device-width, initial-scale=1"
+					name="viewport"
+				/>
+				<Meta />
+				<Links />
+			</head>
+			<Body className={clsx('min-h-full bg-background font-sans text-foreground antialiased')}>
+				{props.children}
+
+				{/**
+				 * Manages scroll position for client-side transitions
+				 * If you use a nonce-based content security policy for scripts, you must provide the
+				 *  `nonce` prop. Otherwise, omit the nonce prop as shown here.
+				 */}
+				<ScrollRestoration />
+
+				{/**
+				 * Script tags go here
+				 * If you use a nonce-based content security policy for scripts, you must provide the
+				 *  `nonce` prop.
+				 *  Otherwise, omit the nonce prop as shown here.
+				 */}
+				<script
+					// biome-ignore lint/security/noDangerouslySetInnerHtml: we need to set the ENV variable
+					dangerouslySetInnerHTML={{
+						__html: `window.ENV = ${JSON.stringify(data?.ENV, null, 2)};`,
+					}}
+				/>
+				<Scripts />
+			</Body>
+		</html>
 	)
 }
 
@@ -89,7 +140,7 @@ export default function App(_: Route.ComponentProps): ReactElement {
 	return (
 		<>
 			<Header theme={requestInfo.userPrefs.theme} />
-			<Main>
+			<Main className="mx-auto my-8 h-full w-full max-w-4xl px-8">
 				<Outlet />
 			</Main>
 			<Footer />

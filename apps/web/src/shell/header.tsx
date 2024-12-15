@@ -1,4 +1,4 @@
-import { type ReactElement, type SyntheticEvent, memo, useCallback, useMemo } from 'react'
+import type { ReactElement, SyntheticEvent } from 'react'
 
 import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
 import { NavigationMenuToggle } from '@suddenlygiovanni/ui/components/navigation-menu-toggle/navigation-menu-toggle.tsx'
@@ -24,45 +24,13 @@ const routes = (
 
 const PRIMARY_NAVIGATION = 'primary-navigation'
 
-export const Header = memo(function Header({
-	theme,
-}: { theme: 'light' | 'dark' | null }): ReactElement {
+export function Header({ theme }: { theme: 'light' | 'dark' | null }): ReactElement {
 	const [isMobileNavigationVisible, toggleMobileNavigationVisibility] = useToggle(false)
 
-	const handleMobileNavigationClick = useCallback(
-		<T extends HTMLElement>(event: SyntheticEvent<T>) => {
-			event.stopPropagation()
-			toggleMobileNavigationVisibility()
-		},
-		[toggleMobileNavigationVisibility],
-	)
-
-	const renderLi = useMemo(
-		() =>
-			routes.map(({ title, url, uri, description, disabled }) => (
-				<li
-					className={clsx(
-						'flex min-h-16 min-w-32 items-center justify-end outline-hidden md:min-h-fit md:min-w-fit',
-					)}
-					key={uri}
-					// onClick={stopPropagation}
-				>
-					<NavLink
-						aria-disabled={disabled ? 'true' : undefined}
-						aria-label={description}
-						onClick={handleMobileNavigationClick}
-						prefetch="intent"
-						role="menuitem"
-						to={url}
-						tabIndex={0}
-					>
-						{title}
-					</NavLink>
-				</li>
-			)),
-
-		[handleMobileNavigationClick],
-	)
+	function handleMobileNavigationClick<T extends HTMLElement>(event: SyntheticEvent<T>): void {
+		event.stopPropagation()
+		toggleMobileNavigationVisibility()
+	}
 
 	return (
 		<Layout.Header
@@ -105,7 +73,26 @@ export const Header = memo(function Header({
 						onClick={handleMobileNavigationClick}
 						onKeyDown={handleMobileNavigationClick}
 					>
-						{renderLi}
+						{routes.map(({ title, url, uri, description, disabled }) => (
+							<li
+								className={clsx(
+									'flex min-h-16 min-w-32 items-center justify-end outline-hidden md:min-h-fit md:min-w-fit',
+								)}
+								key={uri}
+							>
+								<NavLink
+									aria-disabled={disabled ? 'true' : undefined}
+									aria-label={description}
+									onClick={handleMobileNavigationClick}
+									prefetch="intent"
+									role="menuitem"
+									to={url}
+									tabIndex={0}
+								>
+									{title}
+								</NavLink>
+							</li>
+						))}
 						<ThemeSwitch
 							userPreference={theme}
 							className="ml-16 aspect-square"
@@ -115,4 +102,4 @@ export const Header = memo(function Header({
 			</div>
 		</Layout.Header>
 	)
-})
+}
