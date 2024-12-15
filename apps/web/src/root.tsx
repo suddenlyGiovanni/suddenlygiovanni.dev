@@ -1,5 +1,5 @@
 import type { ReactElement, ReactNode } from 'react'
-import { Outlet, useLoaderData } from 'react-router'
+import { Outlet, useLoaderData, useRouteLoaderData } from 'react-router'
 
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 
@@ -69,7 +69,8 @@ export function loader({ request }: Route.LoaderArgs) {
 
 export function Layout({ children }: { children: ReactNode }): ReactElement {
 	// if there was an error running the loader, data could be missing
-	const data = useLoaderData<typeof loader | null>()
+	const data = useRouteLoaderData<typeof loader>('root')
+
 	const theme = useOptionalTheme()
 	return (
 		<Document
