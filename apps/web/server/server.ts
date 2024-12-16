@@ -1,7 +1,9 @@
 import fs from 'node:fs'
 import os from 'node:os'
+import path from 'node:path/posix'
 import process from 'node:process'
 import url from 'node:url'
+
 import compression from 'compression'
 import express from 'express'
 import getPort from 'get-port'
@@ -31,8 +33,6 @@ sourceMapSupport.install({
 	},
 })
 
-run()
-
 /**
  * Initiates and runs a server application for serving a React Router build.
  * The method performs the following operations:
@@ -58,7 +58,6 @@ run()
  * ```
  */
 async function run(): Promise<void> {
-	const buildPath = './build/server/index.js'
 	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 	// biome-ignore lint/style/useNamingConvention: <explanation>
 	const DEVELOPMENT = process.env['NODE_ENV'] === 'development'
@@ -66,18 +65,16 @@ async function run(): Promise<void> {
 	// biome-ignore lint/style/useNamingConvention: <explanation>
 	const PORT = parseNumber(process.env['PORT']) ?? (await getPort({ port: 3000 }))
 
-	// const buildPathArg = process.argv[2]
+	const buildPathArg = process.argv[2]
 
-	// if (!buildPathArg) {
-	// 	// biome-ignore lint/suspicious/noConsole: <explanation>
-	// 	console.error(`
-	// Usage: react-router-serve <server-build-path> - e.g. react-router-serve build/server/index.js`)
-	// 	process.exit(1)
-	// }
+	if (!buildPathArg) {
+		// biome-ignore lint/suspicious/noConsole: <explanation>
+		console.error(`
+	Usage: react-router-serve <server-build-path> - e.g. react-router-serve build/server/index.js`)
+		process.exit(1)
+	}
 
-	// const buildPath = path.resolve(buildPathArg)
-
-	// const build: ServerBuild = await import(url.pathToFileURL(buildPath).href)
+	const buildPath = path.resolve(buildPathArg)
 
 	const onListen = (): void => {
 		const address =
@@ -133,32 +130,11 @@ async function run(): Promise<void> {
 		app.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
 
 		app.use(express.static('build/client', { maxAge: '1h' }))
+
 		app.use(await import(buildPath).then(mod => mod.app))
 	}
 
-	// app.use(
-	// 	path.posix.join(build.publicPath, 'assets'),
-	// 	express.static(path.join(build.assetsBuildDirectory, 'assets'), {
-	// 		immutable: true,
-	// 		maxAge: '1y',
-	// 	}),
-	// )
-
-	// app.use(build.publicPath, express.static(build.assetsBuildDirectory))
-
-	// app.use(express.static('public', { maxAge: '1h' }))
-
 	app.use(morgan('tiny'))
-
-	// app.all(
-	// 	'*',
-	// 	createRequestHandler({
-	// 		build,
-	// 		// biome-ignore lint/style/noNonNullAssertion: <explanation>
-	// 		// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-	// 		mode: process.env['NODE_ENV']!,
-	// 	}),
-	// )
 
 	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 	const server = process.env['HOST']
@@ -170,3 +146,5 @@ async function run(): Promise<void> {
 		process.once(signal, () => server?.close(console.error))
 	}
 }
+
+run()
