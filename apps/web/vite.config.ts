@@ -1,5 +1,6 @@
 import { exec } from 'node:child_process'
 import process from 'node:process'
+
 import { codecovVitePlugin } from '@codecov/vite-plugin'
 import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
@@ -20,12 +21,14 @@ export default defineConfig(({ isSsrBuild }) => ({
 			? {
 					input: './server/app.ts',
 				}
-			: undefined,
+			: {},
 	},
 	plugins: [
 		babel({
 			include: ['./src/**/*', '../../packages/ui/src/**/*'],
-			filter: name => name.endsWith('.tsx'),
+			filter(name: string): boolean {
+				return name.endsWith('.tsx')
+			},
 			babelConfig: {
 				presets: ['@babel/preset-typescript'], // if you use TypeScript
 				plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
