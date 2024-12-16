@@ -9,7 +9,6 @@ RUN apk add --no-cache jq
 
 RUN jq -r .packageManager package.json > pnpm-version.txt
 
-ENTRYPOINT ["sh"]
 
 FROM node:22-alpine3.21 AS base
 
@@ -27,7 +26,6 @@ RUN corepack enable \
     && corepack prepare $(cat pnpm-version.txt) --activate \
     && rm pnpm-version.txt
 
-ENTRYPOINT ["sh"]
 
 FROM base AS builder
 
@@ -43,7 +41,6 @@ RUN echo "//npm.pkg.github.com/:_authToken=${GH_PACKAGES_TOKEN}" >> .npmrc
 
 RUN pnpm dlx turbo prune --docker "@suddenlygiovanni/web"
 
-ENTRYPOINT ["sh"]
 
 FROM base AS build
 
@@ -70,7 +67,6 @@ RUN pnpm exec turbo build --filter=@suddenlygiovanni/web
 
 RUN pnpm --filter @suddenlygiovanni/web --prod --no-optional deploy pruned
 
-ENTRYPOINT ["sh"]
 
 FROM base AS production
 
@@ -80,6 +76,7 @@ ENV HOST="0.0.0.0"
 
 COPY --from=build --chown=node:node /home/node/pruned/package.json .
 COPY --from=build --chown=node:node /home/node/pruned/node_modules ./node_modules
+COPY --from=build --chown=node:node /home/node/apps/web/server ./server
 COPY --from=build --chown=node:node /home/node/apps/web/build ./build
 
 USER node
