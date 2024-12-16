@@ -1,5 +1,6 @@
 import { exec } from 'node:child_process'
 import process from 'node:process'
+
 import { codecovVitePlugin } from '@codecov/vite-plugin'
 import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
@@ -14,11 +15,20 @@ const ReactCompilerConfig = {
 	/* ... */
 }
 
-export default defineConfig({
+export default defineConfig(({ isSsrBuild }) => ({
+	build: {
+		rollupOptions: isSsrBuild
+			? {
+					input: './server/app.ts',
+				}
+			: {},
+	},
 	plugins: [
 		babel({
 			include: ['./src/**/*', '../../packages/ui/src/**/*'],
-			filter: name => name.endsWith('.tsx'),
+			filter(name: string): boolean {
+				return name.endsWith('.tsx')
+			},
 			babelConfig: {
 				presets: ['@babel/preset-typescript'], // if you use TypeScript
 				plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
@@ -100,4 +110,4 @@ export default defineConfig({
 			reporter: ['text', 'json', 'html'],
 		},
 	},
-})
+}))
