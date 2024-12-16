@@ -13,7 +13,6 @@
 		"@octokit/request-error": "6.1.5",
 		"@react-router/express": "7.0.2",
 		"@react-router/node": "7.0.2",
-		"@react-router/serve": "7.0.2",
 		"@std/yaml": "npm:@jsr/std__yaml@1.0.5",
 		"@suddenlygiovanni/open-graph-protocol": "workspace:*",
 		"@suddenlygiovanni/resume": "13.3.0",
