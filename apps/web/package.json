@@ -11,7 +11,6 @@
 		"@octokit/core": "6.1.2",
 		"@octokit/plugin-rest-endpoint-methods": "13.2.6",
 		"@octokit/request-error": "6.1.5",
-		"@react-router/express": "7.0.2",
 		"@react-router/node": "7.0.2",
 		"@std/yaml": "npm:@jsr/std__yaml@1.0.5",
 		"@suddenlygiovanni/open-graph-protocol": "workspace:*",

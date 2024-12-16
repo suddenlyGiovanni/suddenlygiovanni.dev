@@ -1,7 +1,8 @@
 import 'react-router'
-import { createRequestHandler } from '@react-router/express'
-import express, { type Express } from 'express'
+import express from 'express'
 import type { ServerBuild } from 'react-router'
+
+import { createRequestHandler } from './react-router-express.ts'
 
 declare module 'react-router' {
 	interface AppLoadContext {
@@ -9,7 +10,7 @@ declare module 'react-router' {
 	}
 }
 
-export const app: Express = express()
+export const app: express.Express = express()
 
 app.use(
 	createRequestHandler({
