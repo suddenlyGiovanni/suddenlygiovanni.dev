@@ -43,7 +43,7 @@
 		"@types/react": "19.0.1",
 		"@types/react-dom": "19.0.2",
 		"@vitejs/plugin-react": "4.3.4",
-		"babel-plugin-react-compiler": "19.0.0-beta-37ed2a7-20241206",
+		"babel-plugin-react-compiler": "19.0.0-beta-df7b47d-20241124",
 		"class-variance-authority": "0.7.1",
 		"eslint-plugin-storybook": "0.11.1",
 		"globals": "15.13.0",
