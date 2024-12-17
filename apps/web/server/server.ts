@@ -15,9 +15,19 @@ import type { ViteDevServer } from 'vite'
 class Config extends Schema.Class<Config>('Config')({
 	NODE_ENV: Schema.optionalWith(Schema.Literal('development', 'production'), {
 		default: () => 'production',
+	}).annotations({
+		description: 'Environment to run the server in',
 	}),
-	PORT: Schema.optional(Schema.NumberFromString.pipe(Schema.int())),
-	HOST: Schema.optional(Schema.String),
+	PORT: Schema.optional(Schema.NumberFromString.pipe(Schema.int())).annotations({
+		description: 'Port to run the server on',
+	}),
+	HOST: Schema.optional(Schema.String).annotations({
+		description: 'Host to run the server on',
+	}),
+	buildPathArg: Schema.String.annotations({
+		description: 'Path to the server build',
+		message: () => 'Usage: node server/server.ts <server-build-path>',
+	}),
 }) {
 	static decodeUnknownSync = Schema.decodeUnknownSync(this)
 }
@@ -72,18 +82,57 @@ async function run({
 	NODE_ENV: 'development' | 'production'
 	PORT: number
 	HOST: undefined | string
-	buildPathArg: undefined | string
+	buildPathArg: string
 }): Promise<void> {
-	const isDevelopment = NODE_ENV === 'development'
+	const app: express.Express = express()
 
-	if (!buildPathArg) {
-		// biome-ignore lint/suspicious/noConsole: <explanation>
-		console.error(`
-	Usage: node server/server.ts <server-build-path>`)
-		process.exit(1)
+	app.disable('x-powered-by')
+
+	app.use(compression())
+
+	switch (NODE_ENV) {
+		case 'development': {
+			console.log('Starting development server')
+
+			const viteDevServer: ViteDevServer = await import('vite').then(vite =>
+				vite.createServer({
+					server: { middlewareMode: true },
+				}),
+			)
+
+			app.use(viteDevServer.middlewares)
+			app.use(async (req, res, next) => {
+				try {
+					const source = (await viteDevServer.ssrLoadModule('./server/app.ts')) as {
+						app: express.Express
+					}
+					return await source.app(req, res, next)
+				} catch (error: unknown) {
+					if (typeof error === 'object' && error instanceof Error) {
+						viteDevServer.ssrFixStacktrace(error)
+					}
+					next(error)
+				}
+			})
+
+			break
+		}
+		case 'production': {
+			console.log('Starting production server')
+
+			app.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
+
+			app.use(express.static('build/client', { maxAge: '1h' }))
+
+			app.use(await import(path.resolve(buildPathArg)).then(mod => mod.app))
+
+			break
+		}
+		default:
+			throw new Error(`Unknown NODE_ENV: ${NODE_ENV}`)
 	}
 
-	const buildPath = path.resolve(buildPathArg)
+	app.use(morgan('tiny'))
 
 	const onListen = (): void => {
 		const address =
@@ -93,56 +142,11 @@ async function run({
 				.find(ip => String(ip?.family).includes('4') && !ip?.internal)?.address
 
 		if (address) {
-			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.log(`[react-router-serve] http://localhost:${PORT} (http://${address}:${PORT})`)
 		} else {
-			// biome-ignore lint/suspicious/noConsole: <explanation>
-			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
 			console.log(`[react-router-serve] http://localhost:${PORT}`)
 		}
 	}
-
-	const app: express.Express = express()
-
-	app.disable('x-powered-by')
-
-	app.use(compression())
-
-	if (isDevelopment) {
-		console.log('Starting development server')
-
-		const viteDevServer: ViteDevServer = await import('vite').then(vite =>
-			vite.createServer({
-				server: { middlewareMode: true },
-			}),
-		)
-
-		app.use(viteDevServer.middlewares)
-		app.use(async (req, res, next) => {
-			try {
-				const source = (await viteDevServer.ssrLoadModule('./server/app.ts')) as {
-					app: express.Express
-				}
-				return await source.app(req, res, next)
-			} catch (error: unknown) {
-				if (typeof error === 'object' && error instanceof Error) {
-					viteDevServer.ssrFixStacktrace(error)
-				}
-				next(error)
-			}
-		})
-	} else {
-		console.log('Starting production server')
-
-		app.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
-
-		app.use(express.static('build/client', { maxAge: '1h' }))
-
-		app.use(await import(buildPath).then(mod => mod.app))
-	}
-
-	app.use(morgan('tiny'))
 
 	const server = HOST ? app.listen(PORT, HOST, onListen) : app.listen(PORT, onListen)
 
@@ -151,11 +155,11 @@ async function run({
 	}
 }
 
-const env = Config.decodeUnknownSync(process.env)
+const config = Config.decodeUnknownSync({ ...process.env, buildPathArg: process.argv[2] })
 
 run({
-	NODE_ENV: env.NODE_ENV,
-	PORT: await getPort({ port: env.PORT ?? 5173 }),
-	HOST: env.HOST,
-	buildPathArg: process.argv[2],
+	NODE_ENV: config.NODE_ENV,
+	PORT: await getPort({ port: config.PORT ?? 5173 }),
+	HOST: config.HOST,
+	buildPathArg: config.buildPathArg,
 })
