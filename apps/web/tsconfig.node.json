@@ -1,6 +1,5 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": ["./tsconfig.json", "@suddenlygiovanni/config-typescript/library.json"],
 	"compilerOptions": {
 		"composite": true,
 		"target": "esnext",
@@ -10,5 +9,12 @@
 		"verbatimModuleSyntax": true,
 		"types": ["node"]
 	},
-	"include": ["vite.config.ts", "./server/**/*.ts"]
+	"extends": ["./tsconfig.json", "@suddenlygiovanni/config-typescript/library.json"],
+	"include": [
+		"./vite.config.ts",
+		"./handlers.ts",
+		"./vitest.setup.ts",
+		"./server/**/*.ts",
+		"./mocks/**/*.ts"
+	]
 }
