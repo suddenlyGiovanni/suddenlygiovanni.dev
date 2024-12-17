@@ -29,6 +29,57 @@ The server is an Express application that serves a React Router build. It suppor
 - Uses `react-router` for handling requests and responses.
 - Custom request handler created using `react-router-express`.
 
+## Middleware Behavior
+
+### Compression Middleware (`compression`)
+- Compresses response bodies for all requests.
+- Adds `Content-Encoding` headers and compresses the body.
+
+### Morgan Middleware (`morgan`)
+- Logs HTTP requests.
+- Does not modify the `Request` or `Response` but logs details like method, URL, status, and response time.
+
+### Static File Serving (`express.static`)
+- Serves static files from the specified directories.
+- Adds appropriate headers (e.g., `Cache-Control`) and serves files.
+
+### Vite Dev Server Middleware (`viteDevServer.middlewares`)
+- Handles requests in development mode.
+- Attaches custom middlewares and acts as a handler function for custom HTTP servers.
+- Provides features like HMR, module loading, and development-specific optimizations.
+
+## Vite Dev Server in Development Mode
+
+- A connect app instance that attaches custom middlewares to the dev server.
+- Acts as a handler function for custom HTTP servers or as middleware in connect-style Node.js frameworks.
+- Provides HMR, module loading, and development-specific optimizations.
+
+## `viteDevServer.ssrLoadModule('./server/app.ts')` and `app.ts`
+
+### `ssrLoadModule`
+- Loads a given URL as an instantiated module for SSR.
+
+### `app.ts`
+- Sets up the Express application and request handler.
+- Defines a request handler using `createRequestHandler` from `react-router-express`.
+- Configures the request handler to load the server build and provide context values.
+
+## Handling OS Signals for Graceful Shutdown
+
+- Listens for termination signals (`SIGTERM` and `SIGINT`).
+- Closes the server instance and cleans up resources when a signal is received.
+
+## Additional Details
+
+### Configuration
+- Dynamically configures the port and host based on environment variables or default settings.
+
+### Source Map Support
+- Enhances error stack traces by retrieving source maps for better debugging.
+
+### Request Handling
+- Uses `react-router` to handle requests and responses, providing SSR capabilities.
+
 ## External Dependencies
 - `compression`: Middleware for response compression.
 - `effect`: Library for schema validation.
