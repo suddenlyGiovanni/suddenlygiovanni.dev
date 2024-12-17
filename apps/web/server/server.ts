@@ -1,4 +1,5 @@
 import fs from 'node:fs'
+import type * as http from 'node:http'
 import os from 'node:os'
 import path from 'node:path/posix'
 import process from 'node:process'
@@ -73,17 +74,20 @@ sourceMapSupport.install({
  *  server/main.ts ./build/server/index.js
  * ```
  */
-async function run({
-	NODE_ENV,
-	PORT,
-	HOST,
-	buildPathArg,
-}: {
-	NODE_ENV: 'development' | 'production'
-	PORT: number
-	HOST: undefined | string
-	buildPathArg: string
-}): Promise<void> {
+export async function run(): Promise<http.Server> {
+	const {
+		NODE_ENV,
+		PORT: _port,
+		HOST,
+		buildPathArg,
+	} = Config.decodeUnknownSync({
+		...process.env,
+		buildPathArg: process.argv[2],
+	})
+
+	// biome-ignore lint/style/useNamingConvention: <explanation>
+	const PORT = await getPort({ port: _port ?? 5173 })
+
 	const app: express.Express = express()
 
 	app.disable('x-powered-by')
@@ -153,13 +157,8 @@ async function run({
 	for (const signal of ['SIGTERM', 'SIGINT']) {
 		process.once(signal, () => server?.close(console.error))
 	}
+
+	return server
 }
 
-const config = Config.decodeUnknownSync({ ...process.env, buildPathArg: process.argv[2] })
-
-run({
-	NODE_ENV: config.NODE_ENV,
-	PORT: await getPort({ port: config.PORT ?? 5173 }),
-	HOST: config.HOST,
-	buildPathArg: config.buildPathArg,
-})
+run()
