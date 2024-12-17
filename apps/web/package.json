@@ -51,6 +51,7 @@
 		"@vitest/ui": "3.0.0-beta.2",
 		"babel-plugin-react-compiler": "19.0.0-beta-df7b47d-20241124",
 		"globals": "15.13.0",
+		"msw": "2.7.0",
 		"react-router-devtools": "2.0.0-beta.0",
 		"tailwindcss": "4.0.0-beta.8",
 		"tailwindcss-animate": "1.0.7",
