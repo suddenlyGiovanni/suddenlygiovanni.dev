@@ -13,6 +13,7 @@
 		'workarounds:all',
 		':followTag(typescript, rc)',
 		'schedule:earlyMondays',
+		'packages:eslint'
 	],
 	npmrcMerge: true,
 	hostRules: [
