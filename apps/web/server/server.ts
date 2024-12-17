@@ -6,7 +6,7 @@ import process from 'node:process'
 import url from 'node:url'
 
 import compression from 'compression'
-import { Schema } from 'effect'
+import { type ParseResult, Schema } from 'effect'
 import express from 'express'
 import getPort from 'get-port'
 import morgan from 'morgan'
@@ -30,7 +30,7 @@ class Config extends Schema.Class<Config>('Config')({
 		message: () => 'Usage: node server/server.ts <server-build-path>',
 	}),
 }) {
-	static decodeUnknownSync = Schema.decodeUnknownSync(this)
+	static decodeUnknownPromise = Schema.decodeUnknownPromise(this)
 }
 
 sourceMapSupport.install({
@@ -80,9 +80,12 @@ export async function run(): Promise<http.Server> {
 		PORT: _port,
 		HOST,
 		buildPathArg,
-	} = Config.decodeUnknownSync({
+	} = await Config.decodeUnknownPromise({
 		...process.env,
 		buildPathArg: process.argv[2],
+	}).catch((error: ParseResult.ParseError) => {
+		console.error(error.message, error.cause)
+		process.exit(1)
 	})
 
 	// biome-ignore lint/style/useNamingConvention: <explanation>
@@ -154,8 +157,20 @@ export async function run(): Promise<http.Server> {
 
 	const server = HOST ? app.listen(PORT, HOST, onListen) : app.listen(PORT, onListen)
 
+	const gracefulShutdown = (signal: 'SIGTERM' | 'SIGINT'): void => {
+		console.log(`Received shutdown signal "${signal}", closing server gracefully...`)
+		server?.close(err => {
+			if (err) {
+				console.error('Error during server shutdown:', err)
+				process.exit(1)
+			}
+			console.log('Server closed gracefully.')
+			process.exit(0)
+		})
+	}
+
 	for (const signal of ['SIGTERM', 'SIGINT']) {
-		process.once(signal, () => server?.close(console.error))
+		process.once(signal, gracefulShutdown)
 	}
 
 	return server
