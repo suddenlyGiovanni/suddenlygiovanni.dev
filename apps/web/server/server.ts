@@ -5,16 +5,22 @@ import process from 'node:process'
 import url from 'node:url'
 
 import compression from 'compression'
+import { Schema } from 'effect'
 import express from 'express'
 import getPort from 'get-port'
 import morgan from 'morgan'
 import sourceMapSupport from 'source-map-support'
 import type { ViteDevServer } from 'vite'
 
-import { parseNumber } from './utils.ts'
-
-// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-process.env['NODE_ENV'] = process.env['NODE_ENV'] ?? 'production'
+class Config extends Schema.Class<Config>('Config')({
+	NODE_ENV: Schema.optionalWith(Schema.Literal('development', 'production'), {
+		default: () => 'production',
+	}),
+	PORT: Schema.optional(Schema.NumberFromString.pipe(Schema.int())),
+	HOST: Schema.optional(Schema.String),
+}) {
+	static decodeUnknownSync = Schema.decodeUnknownSync(this)
+}
 
 sourceMapSupport.install({
 	retrieveSourceMap(source: string): { url: string; map: string } | null {
@@ -57,20 +63,23 @@ sourceMapSupport.install({
  *  server/main.ts ./build/server/index.js
  * ```
  */
-async function run(): Promise<void> {
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-	// biome-ignore lint/style/useNamingConvention: <explanation>
-	const DEVELOPMENT = process.env['NODE_ENV'] === 'development'
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-	// biome-ignore lint/style/useNamingConvention: <explanation>
-	const PORT = parseNumber(process.env['PORT']) ?? (await getPort({ port: 3000 }))
-
-	const buildPathArg = process.argv[2]
+async function run({
+	NODE_ENV,
+	PORT,
+	HOST,
+	buildPathArg,
+}: {
+	NODE_ENV: 'development' | 'production'
+	PORT: number
+	HOST: undefined | string
+	buildPathArg: undefined | string
+}): Promise<void> {
+	const isDevelopment = NODE_ENV === 'development'
 
 	if (!buildPathArg) {
 		// biome-ignore lint/suspicious/noConsole: <explanation>
 		console.error(`
-	Usage: react-router-serve <server-build-path> - e.g. react-router-serve build/server/index.js`)
+	Usage: node server/server.ts <server-build-path>`)
 		process.exit(1)
 	}
 
@@ -78,8 +87,7 @@ async function run(): Promise<void> {
 
 	const onListen = (): void => {
 		const address =
-			// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-			process.env['HOST'] ||
+			HOST ||
 			Object.values(os.networkInterfaces())
 				.flat()
 				.find(ip => String(ip?.family).includes('4') && !ip?.internal)?.address
@@ -95,13 +103,13 @@ async function run(): Promise<void> {
 		}
 	}
 
-	const app = express()
+	const app: express.Express = express()
 
 	app.disable('x-powered-by')
 
 	app.use(compression())
 
-	if (DEVELOPMENT) {
+	if (isDevelopment) {
 		console.log('Starting development server')
 
 		const viteDevServer: ViteDevServer = await import('vite').then(vite =>
@@ -136,15 +144,18 @@ async function run(): Promise<void> {
 
 	app.use(morgan('tiny'))
 
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-	const server = process.env['HOST']
-		? // biome-ignore lint/complexity/useLiteralKeys: <explanation>
-			app.listen(PORT, process.env['HOST'], onListen)
-		: app.listen(PORT, onListen)
+	const server = HOST ? app.listen(PORT, HOST, onListen) : app.listen(PORT, onListen)
 
 	for (const signal of ['SIGTERM', 'SIGINT']) {
 		process.once(signal, () => server?.close(console.error))
 	}
 }
 
-run()
+const env = Config.decodeUnknownSync(process.env)
+
+run({
+	NODE_ENV: env.NODE_ENV,
+	PORT: await getPort({ port: env.PORT ?? 5173 }),
+	HOST: env.HOST,
+	buildPathArg: process.argv[2],
+})
