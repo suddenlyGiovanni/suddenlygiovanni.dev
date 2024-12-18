@@ -25,10 +25,6 @@ class Config extends Schema.Class<Config>('Config')({
 	HOST: Schema.optional(Schema.String).annotations({
 		description: 'Host to run the server on',
 	}),
-	buildPathArg: Schema.String.annotations({
-		description: 'Path to the server build',
-		message: () => 'Usage: node server/server.ts <server-build-path>',
-	}),
 }) {
 	static decodeUnknownPromise = Schema.decodeUnknownPromise(this)
 }
@@ -49,6 +45,24 @@ sourceMapSupport.install({
 		return null
 	},
 })
+
+/**
+ * Retrieves the production server application instance.
+ *
+ * This method dynamically imports the required configuration and server files
+ * to set up and return the production server application.
+ *
+ * @return {Promise<express.Express>} A promise resolving to the Express application instance.
+ */
+async function getProductionServer(): Promise<express.Express> {
+	return import('../react-router.config.ts')
+		.then(mod => mod.default)
+		.then(({ buildDirectory, serverBuildFile }) =>
+			path.resolve(path.join(buildDirectory, 'server', serverBuildFile)),
+		)
+		.then(serverBuildPath => import(serverBuildPath))
+		.then(mod => mod.app)
+}
 
 /**
  * Initiates and runs a server application for serving a React Router build.
@@ -79,11 +93,7 @@ export async function run(): Promise<http.Server> {
 		NODE_ENV,
 		PORT: _port,
 		HOST,
-		buildPathArg,
-	} = await Config.decodeUnknownPromise({
-		...process.env,
-		buildPathArg: process.argv[2],
-	}).catch((error: ParseResult.ParseError) => {
+	} = await Config.decodeUnknownPromise(process.env).catch((error: ParseResult.ParseError) => {
 		console.error(error.message, error.cause)
 		process.exit(1)
 	})
@@ -108,12 +118,12 @@ export async function run(): Promise<http.Server> {
 			)
 
 			app.use(viteDevServer.middlewares)
+
 			app.use(async (req, res, next) => {
 				try {
-					const source = (await viteDevServer.ssrLoadModule('./server/app.ts')) as {
-						app: express.Express
-					}
-					return await source.app(req, res, next)
+					const source = await viteDevServer.ssrLoadModule('./server/app.ts')
+					// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+					return await source['app'](req, res, next)
 				} catch (error: unknown) {
 					if (typeof error === 'object' && error instanceof Error) {
 						viteDevServer.ssrFixStacktrace(error)
@@ -126,12 +136,13 @@ export async function run(): Promise<http.Server> {
 		}
 		case 'production': {
 			console.log('Starting production server')
+			const handler = await getProductionServer()
 
 			app.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
 
 			app.use(express.static('build/client', { maxAge: '1h' }))
 
-			app.use(await import(path.resolve(buildPathArg)).then(mod => mod.app))
+			app.use(handler)
 
 			break
 		}

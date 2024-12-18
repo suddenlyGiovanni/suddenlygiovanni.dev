@@ -11,10 +11,11 @@
 	},
 	"extends": ["./tsconfig.json", "@suddenlygiovanni/config-typescript/library.json"],
 	"include": [
-		"./vite.config.ts",
 		"./handlers.ts",
-		"./vitest.setup.ts",
+		"./mocks/**/*.ts",
+		"./react-router.config.ts",
 		"./server/**/*.ts",
-		"./mocks/**/*.ts"
+		"./vite.config.ts",
+		"./vitest.setup.ts"
 	]
 }
