@@ -1,20 +1,33 @@
 import fs from 'node:fs'
+import type * as http from 'node:http'
 import os from 'node:os'
 import path from 'node:path/posix'
 import process from 'node:process'
 import url from 'node:url'
 
 import compression from 'compression'
+import { type ParseResult, Schema } from 'effect'
 import express from 'express'
 import getPort from 'get-port'
 import morgan from 'morgan'
 import sourceMapSupport from 'source-map-support'
 import type { ViteDevServer } from 'vite'
 
-import { parseNumber } from './utils.ts'
-
-// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-process.env['NODE_ENV'] = process.env['NODE_ENV'] ?? 'production'
+class Config extends Schema.Class<Config>('Config')({
+	NODE_ENV: Schema.optionalWith(Schema.Literal('development', 'production'), {
+		default: () => 'production',
+	}).annotations({
+		description: 'Environment to run the server in',
+	}),
+	PORT: Schema.optional(Schema.NumberFromString.pipe(Schema.int())).annotations({
+		description: 'Port to run the server on',
+	}),
+	HOST: Schema.optional(Schema.String).annotations({
+		description: 'Host to run the server on',
+	}),
+}) {
+	static decodeUnknownPromise = Schema.decodeUnknownPromise(this)
+}
 
 sourceMapSupport.install({
 	retrieveSourceMap(source: string): { url: string; map: string } | null {
@@ -32,6 +45,24 @@ sourceMapSupport.install({
 		return null
 	},
 })
+
+/**
+ * Retrieves the production server application instance.
+ *
+ * This method dynamically imports the required configuration and server files
+ * to set up and return the production server application.
+ *
+ * @return {Promise<express.Express>} A promise resolving to the Express application instance.
+ */
+async function getProductionServer(): Promise<express.Express> {
+	return import('../react-router.config.ts')
+		.then(mod => mod.default)
+		.then(({ buildDirectory, serverBuildFile }) =>
+			path.resolve(path.join(buildDirectory, 'server', serverBuildFile)),
+		)
+		.then(serverBuildPath => import(serverBuildPath))
+		.then(mod => mod.app)
+}
 
 /**
  * Initiates and runs a server application for serving a React Router build.
@@ -57,94 +88,132 @@ sourceMapSupport.install({
  *  server/main.ts ./build/server/index.js
  * ```
  */
-async function run(): Promise<void> {
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-	// biome-ignore lint/style/useNamingConvention: <explanation>
-	const DEVELOPMENT = process.env['NODE_ENV'] === 'development'
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-	// biome-ignore lint/style/useNamingConvention: <explanation>
-	const PORT = parseNumber(process.env['PORT']) ?? (await getPort({ port: 3000 }))
-
-	const buildPathArg = process.argv[2]
-
-	if (!buildPathArg) {
-		// biome-ignore lint/suspicious/noConsole: <explanation>
-		console.error(`
-	Usage: react-router-serve <server-build-path> - e.g. react-router-serve build/server/index.js`)
+export async function run(): Promise<http.Server> {
+	const {
+		NODE_ENV,
+		PORT: _port,
+		HOST,
+	} = await Config.decodeUnknownPromise(process.env).catch((error: ParseResult.ParseError) => {
+		console.error(error.message, error.cause)
 		process.exit(1)
+	})
+
+	// biome-ignore lint/style/useNamingConvention: <explanation>
+	const PORT = await getPort({ port: _port ?? 5173 })
+
+	const app: express.Express = express()
+
+	app.disable('x-powered-by')
+
+	/**
+	 * Add compression middleware
+	 */
+	app.use(compression())
+
+	switch (NODE_ENV) {
+		case 'development': {
+			console.log('Starting development server')
+
+			const viteDevServer: ViteDevServer = await import('vite').then(vite =>
+				vite.createServer({
+					server: { middlewareMode: true },
+				}),
+			)
+
+			/**
+			 * Add React Router development middleware
+			 */
+			app.use(viteDevServer.middlewares)
+
+			app.use(async (req, res, next) => {
+				try {
+					const source = await viteDevServer.ssrLoadModule('./server/app.ts')
+					// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+					return await source['app'](req, res, next)
+				} catch (error: unknown) {
+					if (typeof error === 'object' && error instanceof Error) {
+						viteDevServer.ssrFixStacktrace(error)
+					}
+					next(error)
+				}
+			})
+
+			break
+		}
+		case 'production': {
+			console.log('Starting production server')
+			const handler = await getProductionServer()
+
+			/**
+			 * Serve assets files from build/client/assets
+			 */
+			app.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
+
+			/**
+			 * Serve public files
+			 */
+			app.use(express.static('build/client', { maxAge: '1h' }))
+
+			/**
+			 * Add React Router production middleware
+			 */
+			app.use(handler)
+
+			break
+		}
+		default:
+			throw new Error(`Unknown NODE_ENV: ${NODE_ENV}`)
 	}
 
-	const buildPath = path.resolve(buildPathArg)
+	/**
+	 * Add logger middleware
+	 */
+	app.use(morgan('tiny'))
 
 	const onListen = (): void => {
 		const address =
-			// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-			process.env['HOST'] ||
+			HOST ||
 			Object.values(os.networkInterfaces())
 				.flat()
 				.find(ip => String(ip?.family).includes('4') && !ip?.internal)?.address
 
 		if (address) {
-			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
-			// biome-ignore lint/suspicious/noConsole: <explanation>
 			console.log(`[react-router-serve] http://localhost:${PORT} (http://${address}:${PORT})`)
 		} else {
-			// biome-ignore lint/suspicious/noConsole: <explanation>
-			// biome-ignore lint/suspicious/noConsoleLog: <explanation>
 			console.log(`[react-router-serve] http://localhost:${PORT}`)
 		}
 	}
 
-	const app = express()
+	const server: http.Server = HOST ? app.listen(PORT, HOST, onListen) : app.listen(PORT, onListen)
 
-	app.disable('x-powered-by')
-
-	app.use(compression())
-
-	if (DEVELOPMENT) {
-		console.log('Starting development server')
-
-		const viteDevServer: ViteDevServer = await import('vite').then(vite =>
-			vite.createServer({
-				server: { middlewareMode: true },
-			}),
-		)
-
-		app.use(viteDevServer.middlewares)
-		app.use(async (req, res, next) => {
-			try {
-				const source = (await viteDevServer.ssrLoadModule('./server/app.ts')) as {
-					app: express.Express
-				}
-				return await source.app(req, res, next)
-			} catch (error: unknown) {
-				if (typeof error === 'object' && error instanceof Error) {
-					viteDevServer.ssrFixStacktrace(error)
-				}
-				next(error)
+	/**
+	 * Handles application shutdown gracefully upon receiving specific termination signals.
+	 *
+	 * This function listens for termination signals ('SIGTERM' or 'SIGINT') and performs
+	 * necessary actions to close the server safely. It logs the received signal, proceeds
+	 * to close the server, and exits the process with an appropriate exit code depending
+	 * on whether the shutdown was successful or encountered errors.
+	 *
+	 * @param {('SIGTERM' | 'SIGINT')} signal The termination signal received, triggering the graceful shutdown process.
+	 * @returns {void} Does not return a value.
+	 */
+	const gracefulShutdown = (signal: 'SIGTERM' | 'SIGINT'): void => {
+		console.log(`Received shutdown signal "${signal}", closing server gracefully...`)
+		server?.close(err => {
+			if (err) {
+				console.error('Error during server shutdown:', err)
+				process.exit(1)
 			}
+			console.log('Server closed gracefully.')
+			process.exit(0)
 		})
-	} else {
-		console.log('Starting production server')
-
-		app.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
-
-		app.use(express.static('build/client', { maxAge: '1h' }))
-
-		app.use(await import(buildPath).then(mod => mod.app))
 	}
-
-	app.use(morgan('tiny'))
-
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-	const server = process.env['HOST']
-		? // biome-ignore lint/complexity/useLiteralKeys: <explanation>
-			app.listen(PORT, process.env['HOST'], onListen)
-		: app.listen(PORT, onListen)
 
 	for (const signal of ['SIGTERM', 'SIGINT']) {
-		process.once(signal, () => server?.close(console.error))
+		process.once(signal, gracefulShutdown)
 	}
+
+	return server
 }
 
 run()

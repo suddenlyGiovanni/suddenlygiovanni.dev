@@ -23,6 +23,27 @@
 	},
 	"overrides": [
 		{
+			"include": ["./server/**/*.ts"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useNamingConvention": "info"
+					},
+					"suspicious": {
+						"noConsole": "off",
+						"noConsoleLog": "off"
+					},
+					"correctness": {
+						"noNodejsModules": "off"
+					},
+					"nursery": {
+						"useExplicitType": "off"
+					}
+				}
+			}
+		},
+
+		{
 			"include": ["app/routes/**/*.tsx"],
 			"linter": {
 				"rules": {
