@@ -105,6 +105,9 @@ export async function run(): Promise<http.Server> {
 
 	app.disable('x-powered-by')
 
+	/**
+	 * Add compression middleware
+	 */
 	app.use(compression())
 
 	switch (NODE_ENV) {
@@ -117,6 +120,9 @@ export async function run(): Promise<http.Server> {
 				}),
 			)
 
+			/**
+			 * Add React Router development middleware
+			 */
 			app.use(viteDevServer.middlewares)
 
 			app.use(async (req, res, next) => {
@@ -138,10 +144,19 @@ export async function run(): Promise<http.Server> {
 			console.log('Starting production server')
 			const handler = await getProductionServer()
 
+			/**
+			 * Serve assets files from build/client/assets
+			 */
 			app.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
 
+			/**
+			 * Serve public files
+			 */
 			app.use(express.static('build/client', { maxAge: '1h' }))
 
+			/**
+			 * Add React Router production middleware
+			 */
 			app.use(handler)
 
 			break
@@ -150,6 +165,9 @@ export async function run(): Promise<http.Server> {
 			throw new Error(`Unknown NODE_ENV: ${NODE_ENV}`)
 	}
 
+	/**
+	 * Add logger middleware
+	 */
 	app.use(morgan('tiny'))
 
 	const onListen = (): void => {
@@ -166,8 +184,19 @@ export async function run(): Promise<http.Server> {
 		}
 	}
 
-	const server = HOST ? app.listen(PORT, HOST, onListen) : app.listen(PORT, onListen)
+	const server: http.Server = HOST ? app.listen(PORT, HOST, onListen) : app.listen(PORT, onListen)
 
+	/**
+	 * Handles application shutdown gracefully upon receiving specific termination signals.
+	 *
+	 * This function listens for termination signals ('SIGTERM' or 'SIGINT') and performs
+	 * necessary actions to close the server safely. It logs the received signal, proceeds
+	 * to close the server, and exits the process with an appropriate exit code depending
+	 * on whether the shutdown was successful or encountered errors.
+	 *
+	 * @param {('SIGTERM' | 'SIGINT')} signal The termination signal received, triggering the graceful shutdown process.
+	 * @returns {void} Does not return a value.
+	 */
 	const gracefulShutdown = (signal: 'SIGTERM' | 'SIGINT'): void => {
 		console.log(`Received shutdown signal "${signal}", closing server gracefully...`)
 		server?.close(err => {
