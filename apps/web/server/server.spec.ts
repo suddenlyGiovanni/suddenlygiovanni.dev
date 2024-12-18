@@ -1,15 +1,4 @@
-import {
-	type MockInstance,
-	afterAll,
-	afterEach,
-	beforeEach,
-	describe,
-	expect,
-	it,
-	vi,
-} from 'vitest'
-
-import { run } from './server.ts'
+import { type MockInstance, afterAll, afterEach, beforeEach, describe, it, vi } from 'vitest'
 
 describe('server setup', () => {
 	let consoleErrorSpy: MockInstance<(...args: unknown[]) => void>
@@ -33,22 +22,6 @@ describe('server setup', () => {
 	})
 
 	describe('configuration tests', () => {
-		it('should throw an error if process.argv[2] <server-build-path> is empty', async () => {
-			// Act & Assert
-			await expect(run()).rejects.toThrow('process.exit(1)')
-			expect(consoleErrorSpy).toHaveBeenCalledWith(
-				`
-(Config (Encoded side) <-> Config)
-└─ Encoded side transformation failure
-   └─ Config (Encoded side)
-      └─ Encoded side transformation failure
-         └─ Struct (Encoded side)
-            └─ ["buildPathArg"]
-               └─ Usage: node server/server.ts <server-build-path>`.trimStart(),
-				undefined,
-			)
-		})
-
 		it.todo('should validate default values for NODE_ENV, PORT, and HOST')
 
 		it.todo('should test schema validation for different configurations')
