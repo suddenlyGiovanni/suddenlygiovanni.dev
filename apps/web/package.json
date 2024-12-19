@@ -18,7 +18,7 @@
 		"@suddenlygiovanni/ui": "workspace:*",
 		"compression": "^1.7.4",
 		"cookie": "1.0.2",
-		"effect": "3.11.8",
+		"effect": "3.11.9",
 		"express": "^4.19.2",
 		"get-port": "7.1.0",
 		"isbot": "5.1.18",
