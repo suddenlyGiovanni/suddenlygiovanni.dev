@@ -10,7 +10,7 @@ RUN apk add --no-cache jq
 RUN jq -r .packageManager package.json > pnpm-version.txt
 
 
-FROM node:22-alpine3.21 AS base
+FROM node:current-alpine3.21 AS base
 
 LABEL authors="suddenlyGiovanni"
 
@@ -78,6 +78,7 @@ COPY --from=build --chown=node:node /home/node/pruned/package.json .
 COPY --from=build --chown=node:node /home/node/pruned/node_modules ./node_modules
 COPY --from=build --chown=node:node /home/node/apps/web/server ./server
 COPY --from=build --chown=node:node /home/node/apps/web/build ./build
+COPY --from=build --chown=node:node /home/node/apps/web/react-router.config.ts ./react-router.config.ts
 
 USER node
 

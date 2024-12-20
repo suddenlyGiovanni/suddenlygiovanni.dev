@@ -14,10 +14,8 @@
 		"typescript": "5.7.2"
 	},
 	"engines": {
-		"node": ">=22.10"
+		"node": ">=23"
 	},
-	"license": "UNLICENSED",
-	"name": "@suddenlygiovanni/root",
 	"packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c",
 	"pnpm": {
 		"peerDependencyRules": {
@@ -42,8 +40,6 @@
 		"format": "turbo format --log-order=grouped",
 		"format:write": "turbo format:write --log-order=grouped",
 		"lint": "turbo lint --log-order=grouped",
-		"test:integration": "echo 'No integration tests configured' && exit 0",
-		"test:smoke": "echo 'No smoke tests configured' && exit 0",
 		"test:unit": "turbo test:unit --log-order=grouped",
 		"typecheck": "turbo typecheck --log-order=grouped",
 		"typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"

@@ -2,7 +2,7 @@ name: suddenlygiovannidev
 
 services:
   web:
-    env_file: apps/web/.env
+    env_file: .env
     build:
       context: .
       dockerfile: apps/web/Dockerfile
