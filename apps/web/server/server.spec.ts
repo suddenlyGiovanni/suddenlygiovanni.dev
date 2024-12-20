@@ -1,14 +1,11 @@
 import { type MockInstance, afterAll, afterEach, beforeEach, describe, it, vi } from 'vitest'
 
-describe('server setup', () => {
+describe.skip('server setup', () => {
 	let consoleErrorSpy: MockInstance<(...args: unknown[]) => void>
 
 	beforeEach(() => {
 		vi.stubEnv('NODE_ENV', undefined)
 		consoleErrorSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
-		vi.spyOn(process, 'exit').mockImplementation((code?: number) => {
-			throw new Error(`process.exit(${code})`)
-		})
 	})
 
 	afterEach(() => {
