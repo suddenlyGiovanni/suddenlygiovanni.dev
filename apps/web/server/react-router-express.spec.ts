@@ -6,7 +6,7 @@ import { Schema } from 'effect'
 import express, { type Express } from 'express'
 import { createRequest, createResponse } from 'node-mocks-http'
 import { type ServerBuild, createRequestHandler as createRemixRequestHandler } from 'react-router'
-import { type Mock, afterAll, afterEach, describe, expect, it, vi } from 'vitest'
+import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 
 import {
 	createRemixHeaders,
@@ -25,9 +25,8 @@ vi.mock('react-router', async () => {
 		createRequestHandler: vi.fn(),
 	}
 })
-const mockedCreateRequestHandler = createRemixRequestHandler as Mock<
-	typeof createRemixRequestHandler
->
+
+const mockedCreateRequestHandler = vi.mocked(createRemixRequestHandler)
 
 function createApp(): Express {
 	const app = express()
