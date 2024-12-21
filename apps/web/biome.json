@@ -37,7 +37,8 @@
 						"noNodejsModules": "off"
 					},
 					"nursery": {
-						"useExplicitType": "off"
+						"useExplicitType": "off",
+						"noSecrets": "off"
 					}
 				}
 			}

@@ -1,10 +1,11 @@
 import type net from 'node:net'
 import { Readable } from 'node:stream'
+
 import { createReadableStreamFromReadable } from '@react-router/node'
 import { Schema } from 'effect'
 import express, { type Express } from 'express'
 import { createRequest, createResponse } from 'node-mocks-http'
-import { createRequestHandler as createRemixRequestHandler } from 'react-router'
+import { type ServerBuild, createRequestHandler as createRemixRequestHandler } from 'react-router'
 import { type Mock, afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 
 import {
@@ -37,8 +38,9 @@ function createApp(): Express {
 		 * We don't have a real app to test, but it doesn't matter.
 		 * We won't ever call through to the real createRequestHandler
 		 */
-		// @ts-expect-error
-		createRequestHandler({ build: {} }),
+		createRequestHandler({
+			build: {} as ServerBuild,
+		}),
 	)
 
 	return app
@@ -158,6 +160,7 @@ describe('express createRequestHandler', () => {
 		it('handles body as stream', async () => {
 			// ARRANGE
 			expect.hasAssertions()
+
 			mockedCreateRequestHandler.mockImplementation(() => (): Promise<Response> => {
 				const readable = Readable.from('hello world')
 				const stream = createReadableStreamFromReadable(readable)
@@ -207,7 +210,7 @@ describe('express createRequestHandler', () => {
 			const res = await makeFetchRequest(createApp(), '/')
 
 			expect(res.headers.get('x-time-of-year')).toBe('most wonderful')
-			expect(res.headers.getSetCookie()).toEqual([
+			expect(res.headers.getSetCookie()).toStrictEqual([
 				'first=one; Expires=0; Path=/; HttpOnly; Secure; SameSite=Lax',
 				'second=two; MaxAge=1209600; Path=/; HttpOnly; Secure; SameSite=Lax',
 				'third=three; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Path=/; HttpOnly; Secure; SameSite=Lax',
@@ -219,38 +222,55 @@ describe('express createRequestHandler', () => {
 describe('express createRemixHeaders', () => {
 	describe('creates fetch headers from express headers', () => {
 		it('handles empty headers', () => {
+			expect.hasAssertions()
+
 			const headers = createRemixHeaders({})
+
 			expect(Object.fromEntries(headers.entries())).toMatchInlineSnapshot(`{}`)
 		})
 
 		it('handles simple headers', () => {
+			expect.hasAssertions()
+
 			const headers = createRemixHeaders({ 'x-foo': 'bar' })
+
 			expect(headers.get('x-foo')).toBe('bar')
 		})
 
 		it('handles multiple headers', () => {
+			expect.hasAssertions()
+
 			const headers = createRemixHeaders({ 'x-foo': 'bar', 'x-bar': 'baz' })
+
 			expect(headers.get('x-foo')).toBe('bar')
+
 			expect(headers.get('x-bar')).toBe('baz')
 		})
 
 		it('handles headers with multiple values', () => {
+			expect.hasAssertions()
+
 			const headers = createRemixHeaders({
 				'x-foo': ['bar', 'baz'],
 				'x-bar': 'baz',
 			})
-			expect(headers.get('x-foo')).toEqual('bar, baz')
+
+			expect(headers.get('x-foo')).toBe('bar, baz')
+
 			expect(headers.get('x-bar')).toBe('baz')
 		})
 
 		it('handles multiple set-cookie headers', () => {
+			expect.hasAssertions()
+
 			const headers = createRemixHeaders({
 				'set-cookie': [
 					'__session=some_value; Path=/; Secure; HttpOnly; MaxAge=7200; SameSite=Lax',
 					'__other=some_other_value; Path=/; Secure; HttpOnly; Expires=Wed, 21 Oct 2015 07:28:00 GMT; SameSite=Lax',
 				],
 			})
-			expect(headers.getSetCookie()).toEqual([
+
+			expect(headers.getSetCookie()).toStrictEqual([
 				'__session=some_value; Path=/; Secure; HttpOnly; MaxAge=7200; SameSite=Lax',
 				'__other=some_other_value; Path=/; Secure; HttpOnly; Expires=Wed, 21 Oct 2015 07:28:00 GMT; SameSite=Lax',
 			])
@@ -261,6 +281,8 @@ describe('express createRemixHeaders', () => {
 describe('express createRemixRequest', () => {
 	// biome-ignore lint/suspicious/useAwait: <explanation>
 	it('creates a request with the correct headers', async () => {
+		expect.hasAssertions()
+
 		const expressRequest = createRequest({
 			url: '/foo/bar',
 			method: 'GET',
