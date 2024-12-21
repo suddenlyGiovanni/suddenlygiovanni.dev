@@ -278,8 +278,7 @@ describe('express createRemixHeaders', () => {
 })
 
 describe('express createRemixRequest', () => {
-	// biome-ignore lint/suspicious/useAwait: <explanation>
-	it('creates a request with the correct headers', async () => {
+	it('creates a request with the correct headers', () => {
 		expect.hasAssertions()
 
 		const expressRequest = createRequest({
