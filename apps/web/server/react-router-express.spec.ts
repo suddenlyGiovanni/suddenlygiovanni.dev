@@ -225,7 +225,7 @@ describe('express createRemixHeaders', () => {
 
 			const headers = createRemixHeaders({})
 
-			expect(Object.fromEntries(headers.entries())).toMatchInlineSnapshot(`{}`)
+			expect(Object.fromEntries(headers.entries())).toMatchInlineSnapshot('{}')
 		})
 
 		it('handles simple headers', () => {
