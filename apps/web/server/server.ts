@@ -65,6 +65,13 @@ async function getProductionServer(): Promise<express.Express> {
 }
 
 /**
+ * Represents the default port number used for the application.
+ * This value is typically used as the fallback port if no custom port is specified.
+ * The default port is set to 5173.
+ */
+export const DEFAULT_PORT = 5173
+
+/**
  * Initiates and runs a server application for serving a React Router build.
  * The method performs the following operations:
  * - Configures server port dynamically from environment or default settings.
@@ -99,7 +106,7 @@ export async function run(): Promise<http.Server> {
 	})
 
 	// biome-ignore lint/style/useNamingConvention: <explanation>
-	const PORT = await getPort({ port: _port ?? 5173 })
+	const PORT = await getPort({ port: _port ?? DEFAULT_PORT })
 
 	const app: express.Express = express()
 

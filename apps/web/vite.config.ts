@@ -104,7 +104,6 @@ export default defineConfig(({ isSsrBuild }) => ({
 	test: {
 		// biome-ignore lint/complexity/useLiteralKeys: TS4111: Property 'CODECOV_TOKEN' comes from an index signature, so it must be accessed with ['CODECOV_TOKEN'].
 		reporters: process.env['GITHUB_ACTIONS'] ? ['dot', 'github-actions'] : ['default'],
-		setupFiles: ['./vitest.setup.ts'],
 		globalSetup: './src/tests/test-globals.ts',
 		coverage: {
 			provider: 'v8',

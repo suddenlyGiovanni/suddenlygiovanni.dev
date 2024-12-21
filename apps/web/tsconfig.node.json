@@ -4,6 +4,7 @@
 		"composite": true,
 		"target": "esnext",
 		"module": "nodenext",
+		"lib": ["es2024"],
 		"allowImportingTsExtensions": true,
 		"rewriteRelativeImportExtensions": true,
 		"verbatimModuleSyntax": true,
