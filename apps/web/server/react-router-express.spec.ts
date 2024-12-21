@@ -1,9 +1,10 @@
+import type net from 'node:net'
 import { Readable } from 'node:stream'
 import { createReadableStreamFromReadable } from '@react-router/node'
+import { Schema } from 'effect'
 import express, { type Express } from 'express'
 import { createRequest, createResponse } from 'node-mocks-http'
 import { createRequestHandler as createRemixRequestHandler } from 'react-router'
-import supertest from 'supertest'
 
 import { type Mock, afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 import {
@@ -43,6 +44,35 @@ function createApp(): Express {
 	return app
 }
 
+function assertAddressInfo(
+	address: net.AddressInfo | string | null,
+): asserts address is net.AddressInfo {
+	try {
+		Schema.decodeUnknownSync(
+			Schema.Struct({
+				address: Schema.String,
+				family: Schema.String,
+				port: Schema.Number,
+			}),
+		)(address)
+	} catch (error) {
+		throw new Error('Expected address to be an AddressInfo', {
+			cause: error instanceof Error ? error.cause : undefined,
+		})
+	}
+}
+
+async function makeFetchRequest(app: Express, path: string): Promise<Response> {
+	const server = app.listen(0)
+	const address = server.address()
+	assertAddressInfo(address)
+	const { port } = address
+	const url = `http://localhost:${port}${path}`
+	const response = await fetch(url)
+	server.close()
+	return response
+}
+
 describe('express createRequestHandler', () => {
 	describe('basic requests', () => {
 		afterEach(() => {
@@ -54,96 +84,113 @@ describe('express createRequestHandler', () => {
 		})
 
 		it('handles requests', async () => {
+			// ARRANGE
+			expect.hasAssertions()
+
 			mockedCreateRequestHandler.mockImplementation(
 				() =>
-					// biome-ignore lint/suspicious/useAwait: <explanation>
-					async (req: Request): Promise<Response> => {
-						return new Response(`URL: ${new URL(req.url).pathname}`)
-					},
+					(req): Promise<Response> =>
+						Promise.resolve(new Response(`URL: ${new URL(req.url).pathname}`)),
 			)
+			const app = createApp()
 
-			const request = supertest(createApp())
-			const res = await request.get('/foo/bar')
+			// ACT
+			const res = await makeFetchRequest(app, '/foo/bar')
 
+			// ASSERT
 			expect(res.status).toBe(200)
-			expect(res.text).toBe('URL: /foo/bar')
-			expect(res.headers['x-powered-by']).toBe('Express')
+			await expect(res.text()).resolves.toBe('URL: /foo/bar')
+			expect(res.headers.get('x-powered-by')).toBe('Express')
 		})
 
 		it('handles root // URLs', async () => {
+			// ARRANGE
+			expect.hasAssertions()
+
 			mockedCreateRequestHandler.mockImplementation(
 				() =>
-					// biome-ignore lint/suspicious/useAwait: <explanation>
-					async (req: Request): Promise<Response> => {
-						return new Response(`URL: ${new URL(req.url).pathname}`)
-					},
+					(req: Request): Promise<Response> =>
+						Promise.resolve(new Response(`URL: ${new URL(req.url).pathname}`)),
 			)
 
-			const request = supertest(createApp())
-			const res = await request.get('//')
+			// ACT
+			const res = await makeFetchRequest(createApp(), '//')
 
+			// ASSERT
 			expect(res.status).toBe(200)
-			expect(res.text).toBe('URL: //')
+			await expect(res.text()).resolves.toBe('URL: //')
 		})
 
 		it('handles nested // URLs', async () => {
+			// ARRANGE
+			expect.hasAssertions()
+
 			mockedCreateRequestHandler.mockImplementation(
 				() =>
-					// biome-ignore lint/suspicious/useAwait: <explanation>
-					async (req: Request): Promise<Response> => {
-						return new Response(`URL: ${new URL(req.url).pathname}`)
-					},
+					(req: Request): Promise<Response> =>
+						Promise.resolve(new Response(`URL: ${new URL(req.url).pathname}`)),
 			)
 
-			const request = supertest(createApp())
-			const res = await request.get('//foo//bar')
+			// ACT
+			const res = await makeFetchRequest(createApp(), '//foo//bar')
 
+			// ASSERT
 			expect(res.status).toBe(200)
-			expect(res.text).toBe('URL: //foo//bar')
+			await expect(res.text()).resolves.toBe('URL: //foo//bar')
 		})
 
 		it('handles null body', async () => {
-			// biome-ignore lint/suspicious/useAwait: <explanation>
-			mockedCreateRequestHandler.mockImplementation(() => async (): Promise<Response> => {
-				return new Response(null, { status: 200 })
-			})
+			// ARRANGE
+			expect.hasAssertions()
 
-			const request = supertest(createApp())
-			const res = await request.get('/')
+			mockedCreateRequestHandler.mockImplementation(
+				() => (): Promise<Response> => Promise.resolve(new Response(null, { status: 200 })),
+			)
 
+			// ACT
+			const res = await makeFetchRequest(createApp(), '/')
+
+			// ASSERT
 			expect(res.status).toBe(200)
 		})
 
 		// https://github.com/node-fetch/node-fetch/blob/4ae35388b078bddda238277142bf091898ce6fda/test/response.js#L142-L148
 		it('handles body as stream', async () => {
-			// biome-ignore lint/suspicious/useAwait: <explanation>
-			mockedCreateRequestHandler.mockImplementation(() => async (): Promise<Response> => {
+			// ARRANGE
+			expect.hasAssertions()
+			mockedCreateRequestHandler.mockImplementation(() => (): Promise<Response> => {
 				const readable = Readable.from('hello world')
 				const stream = createReadableStreamFromReadable(readable)
-				return new Response(stream, { status: 200 })
+				return Promise.resolve(new Response(stream, { status: 200 }))
 			})
 
-			const request = supertest(createApp())
-			const res = await request.get('/')
+			// ACT
+			const res = await makeFetchRequest(createApp(), '/')
+
+			// ASSERT
 			expect(res.status).toBe(200)
-			expect(res.text).toBe('hello world')
+			await expect(res.text()).resolves.toBe('hello world')
 		})
 
 		it('handles status codes', async () => {
-			// biome-ignore lint/suspicious/useAwait: <explanation>
-			mockedCreateRequestHandler.mockImplementation(() => async (): Promise<Response> => {
-				return new Response(null, { status: 204 })
-			})
+			// ARRANGE
+			expect.hasAssertions()
 
-			const request = supertest(createApp())
-			const res = await request.get('/')
+			mockedCreateRequestHandler.mockImplementation(
+				() => (): Promise<Response> => Promise.resolve(new Response(null, { status: 204 })),
+			)
 
+			// ACT
+			const res = await makeFetchRequest(createApp(), '/')
+
+			// ASSERT
 			expect(res.status).toBe(204)
 		})
 
 		it('sets headers', async () => {
-			// biome-ignore lint/suspicious/useAwait: <explanation>
-			mockedCreateRequestHandler.mockImplementation(() => async (): Promise<Response> => {
+			expect.hasAssertions()
+
+			mockedCreateRequestHandler.mockImplementation(() => (): Promise<Response> => {
 				const headers = new Headers({ 'X-Time-Of-Year': 'most wonderful' })
 				headers.append('Set-Cookie', 'first=one; Expires=0; Path=/; HttpOnly; Secure; SameSite=Lax')
 				headers.append(
@@ -154,14 +201,13 @@ describe('express createRequestHandler', () => {
 					'Set-Cookie',
 					'third=three; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Path=/; HttpOnly; Secure; SameSite=Lax',
 				)
-				return new Response(null, { headers })
+				return Promise.resolve(new Response(null, { headers }))
 			})
 
-			const request = supertest(createApp())
-			const res = await request.get('/')
+			const res = await makeFetchRequest(createApp(), '/')
 
-			expect(res.headers['x-time-of-year']).toBe('most wonderful')
-			expect(res.headers['set-cookie']).toEqual([
+			expect(res.headers.get('x-time-of-year')).toBe('most wonderful')
+			expect(res.headers.getSetCookie()).toEqual([
 				'first=one; Expires=0; Path=/; HttpOnly; Secure; SameSite=Lax',
 				'second=two; MaxAge=1209600; Path=/; HttpOnly; Secure; SameSite=Lax',
 				'third=three; Expires=Wed, 21 Oct 2015 07:28:00 GMT; Path=/; HttpOnly; Secure; SameSite=Lax',
