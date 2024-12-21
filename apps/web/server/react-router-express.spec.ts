@@ -5,8 +5,8 @@ import { Schema } from 'effect'
 import express, { type Express } from 'express'
 import { createRequest, createResponse } from 'node-mocks-http'
 import { createRequestHandler as createRemixRequestHandler } from 'react-router'
-
 import { type Mock, afterAll, afterEach, describe, expect, it, vi } from 'vitest'
+
 import {
 	createRemixHeaders,
 	createRemixRequest,
