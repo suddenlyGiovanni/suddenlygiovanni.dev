@@ -48,7 +48,7 @@ describe('Meta', () => {
       └─ ["lastModified"]
          └─ Date
             └─ Predicate refinement failure
-               └─ Expected Date, actual Invalid Date`,
+               └─ Expected a valid Date, actual Invalid Date`,
 			)
 			await expectEffectFailure(
 				Meta.decode({ lastModified: '  ' }),
@@ -58,7 +58,7 @@ describe('Meta', () => {
       └─ ["lastModified"]
          └─ Date
             └─ Predicate refinement failure
-               └─ Expected Date, actual Invalid Date`,
+               └─ Expected a valid Date, actual Invalid Date`,
 			)
 
 			await expectEffectSuccess(Meta.decode({ lastModified: metaInput.lastModified }), {
