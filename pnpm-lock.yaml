@@ -60,8 +60,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/resume':
-        specifier: 13.3.0
-        version: 13.3.0
+        specifier: 13.3.1
+        version: 13.3.1
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -2615,9 +2615,9 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@suddenlygiovanni/resume@13.3.0':
-    resolution: {integrity: sha512-oqmwhahxqVX2h1H3is9HHR1WpesFhHPfmUkOUKu6SRTdIlQ4v10vJJdSZybqZ8u6UY+sNXqfoBlmqllMvpfyjQ==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/13.3.0/bca23d5279604a23f50cd87c7b301fff62a647c9}
-    engines: {node: '>=22.10'}
+  '@suddenlygiovanni/resume@13.3.1':
+    resolution: {integrity: sha512-wRYoWU/hdY9/jMqfd12IVlWpLZM4UawgorCO14Ug87jcW2d/eOoh0FRtB21VPkdBumi4oyLb87tlB2kJg9qOSA==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/resume/13.3.1/4544dbcedbec580cde8180901ece97a96f2c8975}
+    engines: {node: '>=23'}
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -8397,7 +8397,7 @@ snapshots:
     dependencies:
       storybook: 8.4.7(prettier@2.8.8)
 
-  '@suddenlygiovanni/resume@13.3.0': {}
+  '@suddenlygiovanni/resume@13.3.1': {}
 
   '@swc/helpers@0.5.15':
     dependencies:
