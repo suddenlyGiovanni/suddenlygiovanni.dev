@@ -10,7 +10,7 @@
 		"@epic-web/invariant": "1.0.0",
 		"@octokit/core": "6.1.2",
 		"@octokit/plugin-rest-endpoint-methods": "13.2.6",
-		"@octokit/request-error": "6.1.5",
+		"@octokit/request-error": "6.1.6",
 		"@react-router/node": "7.1.1",
 		"@std/yaml": "npm:@jsr/std__yaml@1.0.5",
 		"@suddenlygiovanni/open-graph-protocol": "workspace:*",
