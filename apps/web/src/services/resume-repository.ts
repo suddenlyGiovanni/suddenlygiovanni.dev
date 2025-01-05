@@ -199,7 +199,7 @@ const decodeResume = Schema.decode(parseYml(Resume))
 const decodePackageJson = Schema.decode(Schema.parseJson(Package))
 
 function getResume(
-	ref = 'monorepo',
+	ref = 'main',
 ): Effect.Effect<
 	{ meta: typeof Meta.Type; resume: typeof Resume.Type },
 	DecodingError | RequestError | InvalidDataError | ParseError,
