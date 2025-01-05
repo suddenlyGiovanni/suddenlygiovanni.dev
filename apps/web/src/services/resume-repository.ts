@@ -162,11 +162,11 @@ function getResumeFile({
 				 * - fail
 				 * - notify
 				 */
-				return data.type === 'file' && data.name === path && data.path === path
+				return data.type === 'file' && data.path === path
 					? Effect.succeed(data)
 					: Effect.fail(
 							new InvalidDataError({
-								message: `Expected a file matching the correct path and name; got ${data.type}`,
+								message: `Expected a file matching the correct path and name; got "${data.type}"`,
 							}),
 						)
 			}),
@@ -211,8 +211,8 @@ function getResume(
 	return Effect.gen(function* () {
 		const [resumeFile, packageFile] = yield* Effect.all(
 			[
-				getResumeFile({ owner, path: 'resume.yml', ref, repo }),
-				getResumeFile({ owner, path: 'package.json', ref, repo }),
+				getResumeFile({ owner, path: 'packages/resume/src/resume.yml', ref, repo }),
+				getResumeFile({ owner, path: 'packages/resume/package.json', ref, repo }),
 			],
 			{ concurrency: 2 },
 		)
