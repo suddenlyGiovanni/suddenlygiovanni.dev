@@ -1,4 +1,4 @@
-import { Resume } from '@suddenlygiovanni/resume/schema-resume'
+import { Resume } from '@suddenlygiovanni/schema-resume'
 import { Console, Data, Effect, Layer, Option, Schema } from 'effect'
 import type { ParseError } from 'effect/ParseResult'
 
