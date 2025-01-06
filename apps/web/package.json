@@ -14,7 +14,7 @@
 		"@react-router/node": "7.1.1",
 		"@std/yaml": "npm:@jsr/std__yaml@1.0.5",
 		"@suddenlygiovanni/open-graph-protocol": "workspace:*",
-		"@suddenlygiovanni/resume": "13.3.1",
+		"@suddenlygiovanni/schema-resume": "14.0.0",
 		"@suddenlygiovanni/ui": "workspace:*",
 		"compression": "^1.7.5",
 		"cookie": "1.0.2",
@@ -36,6 +36,7 @@
 		"@react-router/dev": "7.1.1",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",
+
 		"@tailwindcss/typography": "0.5.15",
 		"@tailwindcss/vite": "4.0.0-beta.8",
 		"@total-typescript/ts-reset": "0.6.1",

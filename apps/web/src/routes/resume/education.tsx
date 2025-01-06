@@ -1,7 +1,7 @@
 import { Either, pipe } from 'effect'
 import { type MouseEventHandler, type ReactElement, useState } from 'react'
 
-import type * as Model from '@suddenlygiovanni/resume/schema-resume'
+import type * as Model from '@suddenlygiovanni/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
