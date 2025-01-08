@@ -121,8 +121,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/eslint-config
       '@tailwindcss/typography':
-        specifier: 0.5.15
-        version: 0.5.15(tailwindcss@4.0.0-beta.8)
+        specifier: 0.5.16
+        version: 0.5.16(tailwindcss@4.0.0-beta.8)
       '@tailwindcss/vite':
         specifier: 4.0.0-beta.8
         version: 4.0.0-beta.8(vite@6.0.6(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.28.2))
@@ -354,8 +354,8 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config
       '@tailwindcss/typography':
-        specifier: 0.5.15
-        version: 0.5.15(tailwindcss@4.0.0-beta.8)
+        specifier: 0.5.16
+        version: 0.5.16(tailwindcss@4.0.0-beta.8)
       '@tailwindcss/vite':
         specifier: 4.0.0-beta.8
         version: 4.0.0-beta.8(vite@6.0.6(@types/node@22.10.5)(jiti@2.4.2)(lightningcss@1.28.2))
@@ -2697,10 +2697,10 @@ packages:
     resolution: {integrity: sha512-fpZkAwKDFuRNbxQZrXViij2D38R6qqgAnctBR9NPyHxZqYDjn3uyk75alrDnSGj4wUCTAhOCEX4HCI9xCgKGdA==}
     engines: {node: '>= 10'}
 
-  '@tailwindcss/typography@0.5.15':
-    resolution: {integrity: sha512-AqhlCXl+8grUz8uqExv5OTtgpjuVIwFTSXTrh8y9/pw6q2ek7fJ+Y8ZEVw7EB2DCcuCOtEjf9w3+J3rzts01uA==}
+  '@tailwindcss/typography@0.5.16':
+    resolution: {integrity: sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==}
     peerDependencies:
-      tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20'
+      tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
 
   '@tailwindcss/vite@4.0.0-beta.8':
     resolution: {integrity: sha512-ZNlj0fdeH4/uWXafrXklZY+TgmN7wOHWHHBL4i3xzD4BflcCDZJkgJER/8baJCpagMzwWDnA6CyXDX+2q7lMRQ==}
@@ -8467,7 +8467,7 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.0.0-beta.8
       '@tailwindcss/oxide-win32-x64-msvc': 4.0.0-beta.8
 
-  '@tailwindcss/typography@0.5.15(tailwindcss@4.0.0-beta.8)':
+  '@tailwindcss/typography@0.5.16(tailwindcss@4.0.0-beta.8)':
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
