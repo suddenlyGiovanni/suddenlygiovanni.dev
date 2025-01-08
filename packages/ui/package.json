@@ -37,7 +37,7 @@
 		"@storybook/test": "8.4.7",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",
-		"@tailwindcss/typography": "0.5.15",
+		"@tailwindcss/typography": "0.5.16",
 		"@tailwindcss/vite": "4.0.0-beta.8",
 		"@total-typescript/ts-reset": "0.6.1",
 		"@types/react": "19.0.3",
