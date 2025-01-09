@@ -38,7 +38,7 @@
 		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",
 		"@tailwindcss/typography": "0.5.16",
-		"@tailwindcss/vite": "4.0.0-beta.8",
+		"@tailwindcss/vite": "4.0.0-beta.9",
 		"@total-typescript/ts-reset": "0.6.1",
 		"@types/react": "19.0.4",
 		"@types/react-dom": "19.0.2",
@@ -49,7 +49,7 @@
 		"globals": "15.14.0",
 		"storybook": "8.4.7",
 		"tailwind-merge": "2.6.0",
-		"tailwindcss": "4.0.0-beta.8",
+		"tailwindcss": "4.0.0-beta.9",
 		"tailwindcss-animate": "1.0.7",
 		"vite": "6.0.7"
 	},
