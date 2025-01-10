@@ -60,8 +60,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/schema-resume':
-        specifier: 14.0.1
-        version: 14.0.1(effect@3.12.1)
+        specifier: 14.0.2
+        version: 14.0.2(effect@3.12.1)
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -2622,10 +2622,10 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@suddenlygiovanni/schema-resume@14.0.1':
-    resolution: {integrity: sha512-vwvNL6a2FffdpYzO5R0IOty1clvXYn8UaueGzkYSiRLanR081HBIiqfLhT24yuPqGnoHTLbfS4CYf8aaFvCTIQ==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/schema-resume/14.0.1/f5d59eeae75bfb6b82b871dc775d943086eb1b29}
+  '@suddenlygiovanni/schema-resume@14.0.2':
+    resolution: {integrity: sha512-N9VKQTo+CkfvZpD3JAT1psqaKUAAna8QOEfTrJ8GoDz51RLerzItwx6OrUd8t3H0pgxqOck0XeAkRaGu6Dkw8g==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/schema-resume/14.0.2/f0d4ac85c20230de98d4fdf17b571537cec7252c}
     peerDependencies:
-      effect: ~3.12.0
+      effect: ~3.12.1
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -8418,7 +8418,7 @@ snapshots:
     dependencies:
       storybook: 8.4.7(prettier@2.8.8)
 
-  '@suddenlygiovanni/schema-resume@14.0.1(effect@3.12.1)':
+  '@suddenlygiovanni/schema-resume@14.0.2(effect@3.12.1)':
     dependencies:
       effect: 3.12.1
 
