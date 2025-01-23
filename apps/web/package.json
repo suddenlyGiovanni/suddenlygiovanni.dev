@@ -11,7 +11,7 @@
 		"@octokit/core": "6.1.3",
 		"@octokit/plugin-rest-endpoint-methods": "13.3.0",
 		"@octokit/request-error": "6.1.6",
-		"@react-router/node": "7.1.2",
+		"@react-router/node": "7.1.3",
 		"@std/yaml": "npm:@jsr/std__yaml@1.0.5",
 		"@suddenlygiovanni/open-graph-protocol": "workspace:*",
 		"@suddenlygiovanni/schema-resume": "14.0.2",
@@ -25,7 +25,7 @@
 		"morgan": "^1.10.0",
 		"react": "19.0.0",
 		"react-dom": "19.0.0",
-		"react-router": "7.1.2",
+		"react-router": "7.1.3",
 		"remix-utils": "8.0.0",
 		"source-map-support": "^0.5.21",
 		"vite-plugin-babel": "1.3.0"
@@ -33,7 +33,7 @@
 	"devDependencies": {
 		"@babel/preset-typescript": "7.26.0",
 		"@codecov/vite-plugin": "1.7.0",
-		"@react-router/dev": "7.1.2",
+		"@react-router/dev": "7.1.3",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",
 
