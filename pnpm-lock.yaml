@@ -109,8 +109,8 @@ importers:
         specifier: 7.26.0
         version: 7.26.0(@babel/core@7.26.0)
       '@codecov/vite-plugin':
-        specifier: 1.7.0
-        version: 1.7.0(vite@6.0.6(@types/node@22.10.9)(jiti@2.4.2)(lightningcss@1.29.1))
+        specifier: 1.8.0
+        version: 1.8.0(vite@6.0.6(@types/node@22.10.9)(jiti@2.4.2)(lightningcss@1.29.1))
       '@react-router/dev':
         specifier: 7.1.3
         version: 7.1.3(@types/node@22.10.9)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-router@7.1.3(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.7.2)(vite@6.0.6(@types/node@22.10.9)(jiti@2.4.2)(lightningcss@1.29.1))
@@ -655,12 +655,12 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@codecov/bundler-plugin-core@1.7.0':
-    resolution: {integrity: sha512-QsLwtwfy9KEe0CjqNE2Z/SPiCMn4CHAJ9cqTosZCX9YMKPi/WyFivv0pYE7CXA8ntG0l4Xc9kr36DUCuNRW0LQ==}
+  '@codecov/bundler-plugin-core@1.8.0':
+    resolution: {integrity: sha512-D1aeA8u3RHOkQVLImLHxW6zFdUrw5wgoeDzYrKZeDExGp5ePs4RpJxKwklg1N0e1JxRcAgKj+zZo/y3Q4nV+sA==}
     engines: {node: '>=18.0.0'}
 
-  '@codecov/vite-plugin@1.7.0':
-    resolution: {integrity: sha512-Cy/NxuEiGCf9X62dKewxnFf6Uv6CxfCCJAd8AfbOYbg96vwjwuq6BMoCIAk9gUFmwurw9EOKGPwoW0lIrUMIzA==}
+  '@codecov/vite-plugin@1.8.0':
+    resolution: {integrity: sha512-fydvHzBmlsihsQY1i2I24KCVOl26Pz7nGozwptSRyPNRagzURL0yeM0yY7TuZoqD9yC/Y4j7dIX56ofQvNboRQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       vite: ^6
@@ -2475,6 +2475,10 @@ packages:
     resolution: {integrity: sha512-+10CMg9vt1MoHj6x1pxyjPSMjHTIlqs8/tBztXvPAx24SKs9jwVnKqHJumlH/IzhaPUaj3T6T6wfZr8okdXaIg==}
     cpu: [x64]
     os: [win32]
+
+  '@sentry/core@8.51.0':
+    resolution: {integrity: sha512-Go0KxCYLw+OBIlLSv5YsYX+x9NW43fNVcyB6rhkSp2Q5Zme3tAE6KtZFvyu4SO7G/903wisW5Q6qV6UuK/ee4A==}
+    engines: {node: '>=14.18'}
 
   '@storybook/addon-a11y@8.5.1':
     resolution: {integrity: sha512-IyvxGZ292m/ntxj+RZzZ0+fZZZn4YzTycDzdcsoCZTjAeF+MOu1c49hxaXWuXsTl/Ni9CEnXJ7YO/IS96QdvOw==}
@@ -6070,18 +6074,19 @@ snapshots:
       - '@chromatic-com/playwright'
       - react
 
-  '@codecov/bundler-plugin-core@1.7.0':
+  '@codecov/bundler-plugin-core@1.8.0':
     dependencies:
       '@actions/core': 1.11.1
       '@actions/github': 6.0.0
+      '@sentry/core': 8.51.0
       chalk: 4.1.2
       semver: 7.6.3
       unplugin: 1.16.0
       zod: 3.24.1
 
-  '@codecov/vite-plugin@1.7.0(vite@6.0.6(@types/node@22.10.9)(jiti@2.4.2)(lightningcss@1.29.1))':
+  '@codecov/vite-plugin@1.8.0(vite@6.0.6(@types/node@22.10.9)(jiti@2.4.2)(lightningcss@1.29.1))':
     dependencies:
-      '@codecov/bundler-plugin-core': 1.7.0
+      '@codecov/bundler-plugin-core': 1.8.0
       unplugin: 1.16.0
       vite: 6.0.6(@types/node@22.10.9)(jiti@2.4.2)(lightningcss@1.29.1)
 
@@ -6476,7 +6481,7 @@ snapshots:
       '@octokit/graphql': 7.1.0
       '@octokit/request': 8.4.0
       '@octokit/request-error': 5.1.0
-      '@octokit/types': 13.6.2
+      '@octokit/types': 13.7.0
       before-after-hook: 2.2.3
       universal-user-agent: 6.0.1
 
@@ -6497,13 +6502,13 @@ snapshots:
 
   '@octokit/endpoint@9.0.5':
     dependencies:
-      '@octokit/types': 13.6.2
+      '@octokit/types': 13.7.0
       universal-user-agent: 6.0.1
 
   '@octokit/graphql@7.1.0':
     dependencies:
       '@octokit/request': 8.4.0
-      '@octokit/types': 13.6.2
+      '@octokit/types': 13.7.0
       universal-user-agent: 6.0.1
 
   '@octokit/graphql@8.1.2':
@@ -6535,7 +6540,7 @@ snapshots:
 
   '@octokit/request-error@5.1.0':
     dependencies:
-      '@octokit/types': 13.6.2
+      '@octokit/types': 13.7.0
       deprecation: 2.3.1
       once: 1.4.0
 
@@ -6547,7 +6552,7 @@ snapshots:
     dependencies:
       '@octokit/endpoint': 9.0.5
       '@octokit/request-error': 5.1.0
-      '@octokit/types': 13.6.2
+      '@octokit/types': 13.7.0
       universal-user-agent: 6.0.1
 
   '@octokit/request@9.1.4':
@@ -8316,6 +8321,8 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.29.1':
     optional: true
+
+  '@sentry/core@8.51.0': {}
 
   '@storybook/addon-a11y@8.5.1(storybook@8.5.1(prettier@2.8.8))(vitest@3.0.3)':
     dependencies:
