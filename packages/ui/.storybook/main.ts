@@ -1,8 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-vite'
 
-async function defineConfig(config: StorybookConfig): Promise<StorybookConfig> {
-	return config
-}
+ const defineConfig = (config: StorybookConfig): StorybookConfig => config
 
 export default defineConfig({
 	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
