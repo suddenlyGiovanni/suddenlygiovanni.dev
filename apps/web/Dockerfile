@@ -10,7 +10,7 @@ RUN apk add --no-cache jq
 RUN jq -r .packageManager package.json > pnpm-version.txt
 
 
-FROM node:current-alpine3.21 AS base
+FROM node:23.6-alpine3.21 AS base
 
 LABEL authors="suddenlyGiovanni"
 
@@ -84,4 +84,4 @@ USER node
 
 EXPOSE 5173
 
-CMD ["node", "--experimental-strip-types",  "--experimental-transform-types", "server/server.ts"]
+CMD ["node", "--experimental-transform-types", "server/server.ts"]
