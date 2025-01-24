@@ -8,7 +8,6 @@ overrides:
   react: ^19.0.0
   react-dom: ^19.0.0
   '@types/react': ^19.0.0
-  vite: ^6
 
 importers:
 
@@ -184,7 +183,7 @@ importers:
         specifier: 1.0.7
         version: 1.0.7(tailwindcss@4.0.0)
       vite:
-        specifier: ^6
+        specifier: 6.0.11
         version: 6.0.11(@types/node@22.10.9)(jiti@2.4.2)(lightningcss@1.29.1)
       vite-tsconfig-paths:
         specifier: 5.1.4
@@ -399,7 +398,7 @@ importers:
         specifier: 1.0.7
         version: 1.0.7(tailwindcss@4.0.0)
       vite:
-        specifier: ^6
+        specifier: 6.0.11
         version: 6.0.11(@types/node@22.10.9)(jiti@2.4.2)(lightningcss@1.29.1)
 
 packages:
@@ -665,7 +664,7 @@ packages:
     resolution: {integrity: sha512-fydvHzBmlsihsQY1i2I24KCVOl26Pz7nGozwptSRyPNRagzURL0yeM0yY7TuZoqD9yC/Y4j7dIX56ofQvNboRQ==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
-      vite: ^6
+      vite: 4.x || 5.x || 6.x
 
   '@conform-to/dom@1.2.2':
     resolution: {integrity: sha512-f05EClpNP31o6lX4LYmmLqgsiTOHdGfY7z2XXK6U6rRp+EtxrkUBdrFlIGsfkf7e9AFO19h3/Cb/cXHVd1k1FA==}
@@ -993,7 +992,7 @@ packages:
     resolution: {integrity: sha512-feQ+ntr+8hbVudnsTUapiMN9q8T90XA1d5jn9QzY09sNoj4iD9wi0PY1vsBFTda4ZjEaxRK9S81oarR2nj7TFQ==}
     peerDependencies:
       typescript: '>= 4.3.x'
-      vite: ^6
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -2065,7 +2064,7 @@ packages:
       '@react-router/serve': ^7.1.3
       react-router: ^7.1.3
       typescript: ^5.1.0
-      vite: ^6
+      vite: ^5.1.0 || ^6.0.0
       wrangler: ^3.28.2
     peerDependenciesMeta:
       '@react-router/serve':
@@ -2577,7 +2576,7 @@ packages:
     resolution: {integrity: sha512-m7nzMmXL8ySRDp3AWsd18xB/mRVFdGnCbXeC2HREQVsu1WFkvcHtksvF4x1BOeeL73eokD2/GzgpCjAS0xVvbw==}
     peerDependencies:
       storybook: ^8.5.1
-      vite: ^6
+      vite: ^4.0.0 || ^5.0.0 || ^6.0.0
 
   '@storybook/components@8.5.1':
     resolution: {integrity: sha512-dgZfIIRdI7yA9bYb1rhWzbvU4AnbndAeNhLouxHJkUR5r2Ycp9mJba5UNynN1slgDOxB+VMnq1fWKyfWQrBqnw==}
@@ -2643,7 +2642,7 @@ packages:
       react: ^19.0.0
       react-dom: ^19.0.0
       storybook: ^8.5.1
-      vite: ^6
+      vite: ^4.0.0 || ^5.0.0 || ^6.0.0
     peerDependenciesMeta:
       '@storybook/test':
         optional: true
@@ -2767,7 +2766,7 @@ packages:
   '@tailwindcss/vite@4.0.0':
     resolution: {integrity: sha512-4uukMiU9gHui8KMPMdWic5SP1O/tmQ1NFSRNrQWmcop5evAVl/LZ6/LuWL3quEiecp2RBcRWwqJrG+mFXlRlew==}
     peerDependencies:
-      vite: ^6
+      vite: ^5.2.0 || ^6
 
   '@testing-library/dom@10.4.0':
     resolution: {integrity: sha512-pemlzrSESWbdAloYml3bAJMEfNh1Z7EduzqPKprCH5S341frlpYnUEW0H72dLxa6IsYr+mPno20GiSm+h9dEdQ==}
@@ -2972,7 +2971,7 @@ packages:
     resolution: {integrity: sha512-SCCPBJtYLdE8PX/7ZQAs1QAZ8Jqwih+0VBLum1EGqmCCQal+MIUqLCzj3ZUy8ufbC0cAM4LRlSTm7IQJwWT4ug==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
-      vite: ^6
+      vite: ^4.2.0 || ^5.0.0 || ^6.0.0
 
   '@vitest/coverage-v8@3.0.3':
     resolution: {integrity: sha512-uVbJ/xhImdNtzPnLyxCZJMTeTIYdgcC2nWtBBBpR1H6z0w8m7D+9/zrDIx2nNxgMg9r+X8+RY2qVpUDeW2b3nw==}
@@ -3006,7 +3005,7 @@ packages:
     resolution: {integrity: sha512-XT2XBc4AN9UdaxJAeIlcSZ0ILi/GzmG5G8XSly4gaiqIvPV3HMTSIDZWJVX6QRJ0PX1m+W8Cy0K9ByXNb/bPIA==}
     peerDependencies:
       msw: ^2.4.9
-      vite: ^6
+      vite: ^5.0.0 || ^6.0.0
     peerDependenciesMeta:
       msw:
         optional: true
@@ -4890,7 +4889,7 @@ packages:
     peerDependencies:
       react: ^19.0.0
       react-dom: ^19.0.0
-      vite: ^6
+      vite: '>=5.0.0'
 
   react-router@7.0.0-pre.2:
     resolution: {integrity: sha512-SKt4Era+LiwvXnqM05MsogMF79DJ33Gw6TYDjjfQyuU9Rca5ub+DrU4UpQshB28PuXqcjMd5Zbo1H1eM0LQPhg==}
@@ -5574,12 +5573,12 @@ packages:
     resolution: {integrity: sha512-C5WKX0UwvQKH8WD2GiyWUjI62UBfLbfUhiLexnIm4asLdENX5ymrRipFlBnGeVxoOaYgTL5dh5KW6YDGpWsR8A==}
     peerDependencies:
       '@babel/core': ^7.0.0
-      vite: ^6
+      vite: ^2.7.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
 
   vite-tsconfig-paths@5.1.4:
     resolution: {integrity: sha512-cYj0LRuLV2c2sMqhqhGpaO3LretdtMn/BVX4cPLanIZuwwrkVl+lK84E/miEXkCHWXuq65rhNN4rXsBcOB3S4w==}
     peerDependencies:
-      vite: ^6
+      vite: '*'
     peerDependenciesMeta:
       vite:
         optional: true
