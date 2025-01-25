@@ -62,8 +62,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
       '@suddenlygiovanni/schema-resume':
-        specifier: 14.0.2
-        version: 14.0.2(effect@3.12.7)
+        specifier: 14.0.3
+        version: 14.0.3(effect@3.12.7)
       '@suddenlygiovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -511,7 +511,6 @@ packages:
   '@babel/plugin-proposal-private-methods@7.18.6':
     resolution: {integrity: sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==}
     engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
@@ -2673,10 +2672,10 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@suddenlygiovanni/schema-resume@14.0.2':
-    resolution: {integrity: sha512-N9VKQTo+CkfvZpD3JAT1psqaKUAAna8QOEfTrJ8GoDz51RLerzItwx6OrUd8t3H0pgxqOck0XeAkRaGu6Dkw8g==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/schema-resume/14.0.2/f0d4ac85c20230de98d4fdf17b571537cec7252c}
+  '@suddenlygiovanni/schema-resume@14.0.3':
+    resolution: {integrity: sha512-xXNXGC5nC738hsVEFYzH/qaFLiMMemeyVjcUuYZ0obzSDyX1qvSeY7+5uRFVDLh3zezi4mZnAwHbG1bZYRUipg==, tarball: https://npm.pkg.github.com/download/@suddenlygiovanni/schema-resume/14.0.3/23973b13120853caccdf8720666ca19a8b6e4f91}
     peerDependencies:
-      effect: ~3.12.1
+      effect: ~3.12.7
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
@@ -3926,7 +3925,6 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -4038,7 +4036,6 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
-    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -8589,7 +8586,7 @@ snapshots:
     dependencies:
       storybook: 8.5.1(prettier@2.8.8)
 
-  '@suddenlygiovanni/schema-resume@14.0.2(effect@3.12.7)':
+  '@suddenlygiovanni/schema-resume@14.0.3(effect@3.12.7)':
     dependencies:
       effect: 3.12.7
 
