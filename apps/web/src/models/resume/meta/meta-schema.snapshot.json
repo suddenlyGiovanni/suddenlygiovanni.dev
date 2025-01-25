@@ -37,7 +37,7 @@
 		},
 		"Date": {
 			"type": "string",
-			"description": "a string that will be parsed into a Date"
+			"description": "a string to be decoded into a Date"
 		},
 		"TrimmedNonEmpty": {
 			"type": "string",
