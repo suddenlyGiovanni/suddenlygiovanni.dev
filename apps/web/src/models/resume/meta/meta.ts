@@ -1,4 +1,4 @@
-import { TrimmedNonEmpty, UrlString } from '@suddenlygiovanni/schema-resume'
+import { TrimmedNonEmpty, UrlString } from '@suddenly-giovanni/schema-resume'
 import { Schema } from 'effect'
 
 export class Meta extends Schema.Class<Meta>('Meta')({

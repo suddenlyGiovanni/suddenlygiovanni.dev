@@ -1,7 +1,7 @@
 import type { ReactElement, ReactNode } from 'react'
 import { Link } from 'react-router'
 
-import type * as Model from '@suddenlygiovanni/schema-resume'
+import type * as Model from '@suddenly-giovanni/schema-resume'
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
 import { SocialIcon } from '@suddenlygiovanni/ui/components/social/social-icon.tsx'
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
