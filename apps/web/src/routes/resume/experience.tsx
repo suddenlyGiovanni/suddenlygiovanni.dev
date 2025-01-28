@@ -1,4 +1,4 @@
-import type * as Model from '@suddenlygiovanni/schema-resume'
+import type * as Model from '@suddenly-giovanni/schema-resume'
 import { Either, Option } from 'effect'
 import type { ReactElement } from 'react'
 
