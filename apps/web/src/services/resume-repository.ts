@@ -190,7 +190,7 @@ function getResumeFile({
 }
 
 class Package extends Schema.Class<Package>('Package')({
-	version: Schema.String,
+	version: Schema.TemplateLiteral(Schema.Number, '.', Schema.Number, '.', Schema.Number),
 }) {
 	static decode = Schema.decode(this)
 }
@@ -209,23 +209,23 @@ function getResume(
 	const owner = 'suddenlyGiovanni'
 
 	return Effect.gen(function* () {
-		const [resumeFile, packageFile] = yield* Effect.all(
+		const [resumeFile, denoFile] = yield* Effect.all(
 			[
 				getResumeFile({ owner, path: 'packages/resume/src/resume.yml', ref, repo }),
-				getResumeFile({ owner, path: 'packages/resume/package.json', ref, repo }),
+				getResumeFile({ owner, path: 'packages/resume/deno.json', ref, repo }),
 			],
 			{ concurrency: 2 },
 		)
 
 		const resume: typeof Resume.Type = yield* decodeResume(resumeFile.decodedContent)
-		const packageJson: typeof Package.Type = yield* decodePackageJson(packageFile.decodedContent)
+		const denoJson: typeof Package.Type = yield* decodePackageJson(denoFile.decodedContent)
 
 		const meta: typeof Meta.Type = yield* Meta.decode({
 			...(Option.isSome(resumeFile.lastModified)
 				? { lastModified: resumeFile.lastModified.value }
 				: {}),
 			...(Option.isSome(resumeFile.canonical) ? { canonical: resumeFile.canonical.value } : {}),
-			version: packageJson.version,
+			version: denoJson.version,
 		})
 
 		return { meta, resume }
