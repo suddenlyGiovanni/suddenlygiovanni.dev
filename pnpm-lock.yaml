@@ -59,8 +59,8 @@ importers:
         specifier: npm:@jsr/std__yaml@1.0.5
         version: '@jsr/std__yaml@1.0.5'
       '@suddenly-giovanni/schema-resume':
-        specifier: npm:@jsr/suddenly-giovanni__schema-resume@0.0.2
-        version: '@jsr/suddenly-giovanni__schema-resume@0.0.2'
+        specifier: npm:@jsr/suddenly-giovanni__schema-resume@0.0.3
+        version: '@jsr/suddenly-giovanni__schema-resume@0.0.3'
       '@suddenlygiovanni/open-graph-protocol':
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
@@ -1022,8 +1022,8 @@ packages:
   '@jsr/std__yaml@1.0.5':
     resolution: {integrity: sha512-jbh2xwnja+ar+7NE0oDTlbST1WW29dAQOKX8+1DZgdT54NVt9lZ9YVDrzh4uP1w6ZHVirtY0z99BSym0v+Zh4Q==, tarball: https://npm.jsr.io/~/11/@jsr/std__yaml/1.0.5.tgz}
 
-  '@jsr/suddenly-giovanni__schema-resume@0.0.2':
-    resolution: {integrity: sha512-W0Cf7rJLErhAm7+5XdjNqDDapchqRUDFjhNCIO9s1N2t9sp9soQtnopKMVYRlda/Xo7+7W6JQ3+q5Es0Y46uAg==, tarball: https://npm.jsr.io/~/11/@jsr/suddenly-giovanni__schema-resume/0.0.2.tgz}
+  '@jsr/suddenly-giovanni__schema-resume@0.0.3':
+    resolution: {integrity: sha512-OPklM2acGlJdHePBi0WkRetQ48G1VbWC5/f/fwH35U5ufVmgDJaPBmidVaDnglhrpavb66+GoO0LjUCKFJlHSw==, tarball: https://npm.jsr.io/~/11/@jsr/suddenly-giovanni__schema-resume/0.0.3.tgz}
 
   '@mdx-js/react@3.1.0':
     resolution: {integrity: sha512-QjHtSaoameoalGnKDT3FoIl4+9RwyTmo9ZJGBdLOks/YOiWHoRDI3PUwEzOE7kEmGcV3AFcp9K6dYu9rEuKLAQ==}
@@ -6426,7 +6426,7 @@ snapshots:
 
   '@jsr/std__yaml@1.0.5': {}
 
-  '@jsr/suddenly-giovanni__schema-resume@0.0.2':
+  '@jsr/suddenly-giovanni__schema-resume@0.0.3':
     dependencies:
       effect: 3.12.7
 
