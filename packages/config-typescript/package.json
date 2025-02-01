@@ -13,7 +13,7 @@
 	},
 	"name": "@suddenlygiovanni/config-typescript",
 	"peerDependencies": {
-		"typescript": "5.7.2"
+		"typescript": "5.8.0-beta"
 	},
 	"peerDependenciesMeta": {
 		"typescript": {
