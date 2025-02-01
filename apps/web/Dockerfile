@@ -10,7 +10,7 @@ RUN apk add --no-cache jq
 RUN jq -r .packageManager package.json > pnpm-version.txt
 
 
-FROM node:23.6-alpine3.21 AS base
+FROM node:23.7-alpine3.21 AS base
 
 LABEL authors="suddenlyGiovanni"
 
@@ -30,14 +30,11 @@ RUN corepack enable \
 FROM base AS builder
 
 # Add build argument for GitHub token
-ARG GH_PACKAGES_TOKEN
 ENV TURBO_FORCE=true
 ENV TURBO_TELEMETRY_DISABLED=1
 ENV DO_NOT_TRACK=1
 
 COPY . .
-
-RUN echo "//npm.pkg.github.com/:_authToken=${GH_PACKAGES_TOKEN}" >> .npmrc
 
 RUN pnpm dlx turbo prune --docker "@suddenlygiovanni/web"
 

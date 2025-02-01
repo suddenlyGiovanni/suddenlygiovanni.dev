@@ -7,8 +7,6 @@ services:
       context: .
       dockerfile: apps/web/Dockerfile
       target: production
-      args:
-        GH_PACKAGES_TOKEN: ${GH_PACKAGES_TOKEN}
     ports:
       - "5173:5173"
     init: true
