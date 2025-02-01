@@ -21,7 +21,6 @@ jobs:
           flyctl deploy . \
             --config ./apps/web/fly.yaml \
             --dockerfile ./apps/web/Dockerfile \
-            --build-arg GH_PACKAGES_TOKEN=${{ secrets.GH_PACKAGES_TOKEN }} \
             --build-target production \
             --remote-only
         env:

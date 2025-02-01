@@ -16,8 +16,7 @@ jobs:
 
       - name: 🧩 Install dependencies
         uses: ./.github/actions/setup
-        with:
-          github_packages_token: ${{ secrets.GH_PACKAGES_TOKEN }}
+
 
       - name: 💅 Format code
         shell: sh
