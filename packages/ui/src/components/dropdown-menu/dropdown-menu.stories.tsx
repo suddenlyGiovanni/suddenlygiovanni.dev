@@ -66,13 +66,16 @@ export const Checkboxes: StoryFn = () => {
 	)
 }
 
-enum Position {
-	Top = 'top',
-	Bottom = 'bottom',
-	Right = 'right',
-}
+const Position = {
+	Top: 'top',
+	Bottom: 'bottom',
+	Right: 'right',
+} as const
+
+type Position = (typeof Position)[keyof typeof Position]
+
 export const RadioGroup: StoryFn = () => {
-	const [position, setPosition] = useState(Position.Bottom)
+	const [position, setPosition] = useState<Position>(Position.Bottom)
 
 	const onValueChange = useCallback((value: string): void => {
 		function isPosition(_value: string): _value is Position {
