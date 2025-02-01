@@ -10,7 +10,7 @@ RUN apk add --no-cache jq
 RUN jq -r .packageManager package.json > pnpm-version.txt
 
 
-FROM node:23.6-alpine3.21 AS base
+FROM node:23.7-alpine3.21 AS base
 
 LABEL authors="suddenlyGiovanni"
 
