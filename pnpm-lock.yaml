@@ -194,12 +194,9 @@ importers:
 
   packages/config-typescript:
     dependencies:
-      '@tsconfig/node22':
-        specifier: 22.0.0
-        version: 22.0.0
-      '@tsconfig/remix':
-        specifier: 2.0.5
-        version: 2.0.5
+      '@tsconfig/node23':
+        specifier: 23.0.0
+        version: 23.0.0
       '@tsconfig/strictest':
         specifier: 2.0.5
         version: 2.0.5
@@ -511,7 +508,6 @@ packages:
   '@babel/plugin-proposal-private-methods@7.18.6':
     resolution: {integrity: sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==}
     engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
@@ -2784,11 +2780,8 @@ packages:
   '@total-typescript/ts-reset@0.6.1':
     resolution: {integrity: sha512-cka47fVSo6lfQDIATYqb/vO1nvFfbPw7uWLayIXIhGETj0wcOOlrlkobOMDNQOFr9QOafegUPq13V2+6vtD7yg==}
 
-  '@tsconfig/node22@22.0.0':
-    resolution: {integrity: sha512-twLQ77zevtxobBOD4ToAtVmuYrpeYUh3qh+TEp+08IWhpsrIflVHqQ1F1CiPxQGL7doCdBIOOCF+1Tm833faNg==}
-
-  '@tsconfig/remix@2.0.5':
-    resolution: {integrity: sha512-KawY0Z2oylbBsGbHZFE11O2kXuHF/LfT7NzwPl5CCfgmFy4jsMkVgMfnPQnsPe6Wdu2pNQMRzNoyRHU2PBAO1w==}
+  '@tsconfig/node23@23.0.0':
+    resolution: {integrity: sha512-a2qO9QOEWnomKbFFE3XlOJ5za6Sc+XduxQkFpah42enbTPFPaW0QzKw616KDNfmMLPhXMwCw4EHVjcKaFOj/OA==}
 
   '@tsconfig/strictest@2.0.5':
     resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
@@ -3924,7 +3917,6 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
-    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -4036,7 +4028,6 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
-    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -8693,9 +8684,7 @@ snapshots:
 
   '@total-typescript/ts-reset@0.6.1': {}
 
-  '@tsconfig/node22@22.0.0': {}
-
-  '@tsconfig/remix@2.0.5': {}
+  '@tsconfig/node23@23.0.0': {}
 
   '@tsconfig/strictest@2.0.5': {}
 
