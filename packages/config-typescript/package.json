@@ -6,8 +6,7 @@
 		}
 	},
 	"dependencies": {
-		"@tsconfig/node22": "22.0.0",
-		"@tsconfig/remix": "2.0.5",
+		"@tsconfig/node23": "23.0.0",
 		"@tsconfig/strictest": "2.0.5",
 		"@tsconfig/vite-react": "3.4.0"
 	},

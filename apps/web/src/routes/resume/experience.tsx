@@ -10,8 +10,8 @@ import { Badge } from '@suddenlygiovanni/ui/ui/badge.tsx'
 import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
 import { Card } from '@suddenlygiovanni/ui/ui/card.tsx'
 
-import { getDevIconComponent } from '~/routes/resume/dev-icons.tsx'
-import { formatDateLocaleShort } from '~/routes/resume/format-date-locale-short.ts'
+import { getDevIconComponent } from '#routes/resume/dev-icons.tsx'
+import { formatDateLocaleShort } from '#routes/resume/format-date-locale-short.ts'
 
 export function Experience(
 	work: Pick<

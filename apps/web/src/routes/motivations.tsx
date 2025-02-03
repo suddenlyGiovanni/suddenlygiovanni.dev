@@ -2,8 +2,10 @@ import type { ReactElement } from 'react'
 import { Link } from 'react-router'
 
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
-import { config } from '~/config.ts'
-import { routesRecord } from '~/routes-record.ts'
+
+import { config } from '#config.ts'
+import { routesRecord } from '#routes-record.ts'
+
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/motivations.ts'
 

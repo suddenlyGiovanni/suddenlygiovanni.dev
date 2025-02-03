@@ -7,7 +7,7 @@ import { SocialIcon } from '@suddenlygiovanni/ui/components/social/social-icon.t
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
-import { routesRecord } from '~/routes-record.ts'
+import { routesRecord } from '#routes-record.ts'
 
 import resumePdfAssetUrl from '/giovanni-ravalico-resume-2021.pdf?url'
 
