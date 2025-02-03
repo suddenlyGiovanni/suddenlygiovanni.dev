@@ -5,7 +5,7 @@ import { Link, useLoaderData } from 'react-router'
 import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
-import hero2800wAssetUrl from '#assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import hero2800wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '#config.ts'
 import { routesRecord } from '#routes-record.ts'
 import { Languages } from '#routes/resume/languages.tsx'
