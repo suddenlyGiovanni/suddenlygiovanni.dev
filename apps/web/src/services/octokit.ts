@@ -1,7 +1,5 @@
 import { Octokit } from '@octokit/core'
 import { restEndpointMethods } from '@octokit/plugin-rest-endpoint-methods'
-// biome-ignore lint/performance/noBarrelFile: <explanation>
-export { RequestError } from '@octokit/request-error'
 import { Config, Effect, Layer, Redacted } from 'effect'
 
 const makeOctokitService = Effect.gen(function* () {
@@ -17,3 +15,6 @@ export class OctokitService extends Effect.Tag('@services/OctokitService')<
 	// biome-ignore lint/style/useNamingConvention: <explanation>
 	static Live = Layer.effect(this, makeOctokitService)
 }
+
+// biome-ignore lint/performance/noBarrelFile: <explanation>
+export { RequestError } from '@octokit/request-error'

@@ -1,7 +1,6 @@
 import { Effect, Either, Option, Schema } from 'effect'
 import { type ParseError, TreeFormatter } from 'effect/ParseResult'
 import type { ParseOptions } from 'effect/SchemaAST'
-
 import { expect } from 'vitest'
 
 export const onExcessPropertyError: ParseOptions = {

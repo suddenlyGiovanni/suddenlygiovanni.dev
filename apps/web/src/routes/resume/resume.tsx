@@ -9,7 +9,7 @@ import hero2800wAssetUrl from '#assets/hero/giovanni_ravalico-profile_color_e4ci
 import { config } from '#config.ts'
 import { routesRecord } from '#routes-record.ts'
 import { Languages } from '#routes/resume/languages.tsx'
-import { loaderFunction } from '#services'
+import { loaderFunction } from '#services/index.ts'
 import { ResumeRepository } from '#services/resume-repository.ts'
 
 import { Basics } from './basics.tsx'
