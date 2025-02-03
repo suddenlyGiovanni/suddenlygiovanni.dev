@@ -29,10 +29,8 @@ vi.mock('react-router', async () => {
 const mockedCreateRequestHandler = vi.mocked(createRemixRequestHandler)
 
 function createApp(): Express {
-	const app = express()
-
-	app.all(
-		'*',
+	return express().all(
+		'/{*splat}',
 		/**
 		 * We don't have a real app to test, but it doesn't matter.
 		 * We won't ever call through to the real createRequestHandler
@@ -41,8 +39,6 @@ function createApp(): Express {
 			build: {} as ServerBuild,
 		}),
 	)
-
-	return app
 }
 
 function assertAddressInfo(
