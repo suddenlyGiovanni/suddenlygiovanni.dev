@@ -10,18 +10,14 @@ declare module 'react-router' {
 	}
 }
 
-export const app: express.Express = express()
-
-app.use(
+export const app: express.Express = express().use(
 	createRequestHandler({
 		build(): Promise<ServerBuild> {
 			// @ts-expect-error - virtual module provided by React Router at build time
 			return import('virtual:react-router/server-build')
 		},
 		getLoadContext(): import('react-router').AppLoadContext {
-			return {
-				VALUE_FROM_EXPRESS: 'Hello from Express',
-			}
+			return { VALUE_FROM_EXPRESS: 'Hello from Express' }
 		},
 	}),
 )

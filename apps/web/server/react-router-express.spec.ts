@@ -3,7 +3,7 @@ import { Readable } from 'node:stream'
 
 import { createReadableStreamFromReadable } from '@react-router/node'
 import { Schema } from 'effect'
-import express, { type Express } from 'express'
+import express from 'express'
 import { createRequest, createResponse } from 'node-mocks-http'
 import { type ServerBuild, createRequestHandler as createRemixRequestHandler } from 'react-router'
 import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
@@ -28,11 +28,9 @@ vi.mock('react-router', async () => {
 
 const mockedCreateRequestHandler = vi.mocked(createRemixRequestHandler)
 
-function createApp(): Express {
-	const app = express()
-
-	app.all(
-		'*',
+function createApp(): express.Express {
+	return express().all(
+		'/{*splat}',
 		/**
 		 * We don't have a real app to test, but it doesn't matter.
 		 * We won't ever call through to the real createRequestHandler
@@ -41,8 +39,6 @@ function createApp(): Express {
 			build: {} as ServerBuild,
 		}),
 	)
-
-	return app
 }
 
 function assertAddressInfo(
@@ -63,7 +59,7 @@ function assertAddressInfo(
 	}
 }
 
-async function makeFetchRequest(app: Express, path: string): Promise<Response> {
+async function makeFetchRequest(app: express.Express, path: string): Promise<Response> {
 	const server = app.listen(0)
 	const address = server.address()
 	assertAddressInfo(address)
