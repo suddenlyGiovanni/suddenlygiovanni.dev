@@ -109,41 +109,37 @@ export async function run(): Promise<http.Server> {
 	const PORT = await getPort({ port: _port ?? DEFAULT_PORT })
 
 	const app: express.Express = express()
-
-	app.disable('x-powered-by')
-
-	/**
-	 * Add compression middleware
-	 */
-	app.use(compression())
+		.disable('x-powered-by')
+		/**
+		 * Add compression middleware
+		 */
+		.use(compression())
 
 	switch (NODE_ENV) {
 		case 'development': {
 			console.log('Starting development server')
 
 			const viteDevServer: ViteDevServer = await import('vite').then(vite =>
-				vite.createServer({
-					server: { middlewareMode: true },
-				}),
+				vite.createServer({ server: { middlewareMode: true } }),
 			)
 
-			/**
-			 * Add React Router development middleware
-			 */
-			app.use(viteDevServer.middlewares)
-
-			app.use(async (req, res, next) => {
-				try {
-					const source = await viteDevServer.ssrLoadModule('./server/app.ts')
-					// biome-ignore lint/complexity/useLiteralKeys: <explanation>
-					return await source['app'](req, res, next)
-				} catch (error: unknown) {
-					if (typeof error === 'object' && error instanceof Error) {
-						viteDevServer.ssrFixStacktrace(error)
+			app
+				/**
+				 * Add React Router development middleware
+				 */
+				.use(viteDevServer.middlewares) //
+				.use(async (req, res, next) => {
+					try {
+						const source = await viteDevServer.ssrLoadModule('./server/app.ts')
+						// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+						return await source['app'](req, res, next)
+					} catch (error: unknown) {
+						if (typeof error === 'object' && error instanceof Error) {
+							viteDevServer.ssrFixStacktrace(error)
+						}
+						next(error)
 					}
-					next(error)
-				}
-			})
+				})
 
 			break
 		}
@@ -151,20 +147,19 @@ export async function run(): Promise<http.Server> {
 			console.log('Starting production server')
 			const handler = await getProductionServer()
 
-			/**
-			 * Serve assets files from build/client/assets
-			 */
-			app.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
-
-			/**
-			 * Serve public files
-			 */
-			app.use(express.static('build/client', { maxAge: '1h' }))
-
-			/**
-			 * Add React Router production middleware
-			 */
-			app.use(handler)
+			app
+				/**
+				 * Serve assets files from build/client/assets
+				 */
+				.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
+				/**
+				 * Serve public files
+				 */
+				.use(express.static('build/client', { maxAge: '1h' }))
+				/**
+				 * Add React Router production middleware
+				 */
+				.use(handler)
 
 			break
 		}
