@@ -34,7 +34,7 @@ export function createRequestHandler({
 }: {
 	build: ServerBuild | (() => Promise<ServerBuild>)
 	getLoadContext?: GetLoadContextFunction
-	mode?: string
+	mode?: ('development' | 'production') | (string & {})
 }): RequestHandler {
 	const handleRequest = createRemixRequestHandler(build, mode)
 
