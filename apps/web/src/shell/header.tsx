@@ -6,10 +6,10 @@ import { SuddenlyGiovanni } from '@suddenlygiovanni/ui/components/suddenly-giova
 import { useToggle } from '@suddenlygiovanni/ui/hooks/use-toggle.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
-import avatarAssetUrl from '~/assets/giovanni_ravalico-profile_bw.webp'
-import { routesRecord } from '~/routes-record.ts'
+import avatarAssetUrl from '#assets/giovanni_ravalico-profile_bw.webp'
+import { routesRecord } from '#routes-record.ts'
+import { ThemeSwitch } from '#routes/resources/theme-switch.tsx'
 
-import { ThemeSwitch } from '~/routes/resources/theme-switch.tsx'
 import { NavLink } from './nav-link.tsx'
 
 const routes = (

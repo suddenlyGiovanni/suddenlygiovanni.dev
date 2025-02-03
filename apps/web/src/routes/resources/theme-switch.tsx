@@ -3,15 +3,16 @@ import { invariantResponse } from '@epic-web/invariant'
 import { Either, Schema } from 'effect'
 import type { ReactElement } from 'react'
 import { data, redirect, useFetcher, useFetchers } from 'react-router'
+import { ServerOnly } from 'remix-utils/server-only'
 
 import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
 
-import { ServerOnly } from 'remix-utils/server-only'
-import { useHints, useOptionalHints } from '~/utils/client-hints'
-import { useOptionalRequestInfo, useRequestInfo } from '~/utils/request-info'
-import { setTheme } from '~/utils/theme.server'
+import { useHints, useOptionalHints } from '#utils/client-hints'
+import { useOptionalRequestInfo, useRequestInfo } from '#utils/request-info'
+import { setTheme } from '#utils/theme.server'
+
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from '.react-router/types/src/routes/resources/+types/theme-switch.ts'
 

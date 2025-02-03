@@ -8,7 +8,7 @@
 		"lib": ["DOM", "DOM.Iterable", "ES2022"],
 		"noEmit": true,
 		"paths": {
-			"~/*": ["./src/*"]
+			"#*": ["./src/*"]
 		},
 		"skipLibCheck": true,
 		"target": "ES2022",

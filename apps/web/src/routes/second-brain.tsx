@@ -1,7 +1,9 @@
+import type { ReactElement } from 'react'
+
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
-import type { JSX } from 'react'
-import { routesRecord } from '~/routes-record.ts'
+
+import { routesRecord } from '#routes-record.ts'
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/second-brain.ts'
 
@@ -16,7 +18,7 @@ export const meta: Route.MetaFunction = () => {
 	]
 }
 
-export default function SecondBrain(): JSX.Element {
+export default function SecondBrain(): ReactElement {
 	return (
 		<article className={clsx('prose dark:prose-invert w-full max-w-none bg-background font-comic')}>
 			<T.h2>Second Brain</T.h2>

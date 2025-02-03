@@ -1,10 +1,11 @@
-import { Resume } from '@suddenly-giovanni/schema-resume'
 import { Console, Data, Effect, Layer, Option, Schema } from 'effect'
 import type { ParseError } from 'effect/ParseResult'
 
-import { Meta } from '~/models/resume/meta/meta.ts'
-import { parseYml } from '~/schemas/parse-yml.ts'
-import { OctokitService, RequestError } from '~/services/octokit.ts'
+import { Resume } from '@suddenly-giovanni/schema-resume'
+
+import { Meta } from '#models/resume/meta/meta.ts'
+import { parseYml } from '#schemas/parse-yml.ts'
+import { OctokitService, RequestError } from '#services/octokit.ts'
 
 /**
  * Could throw if GITHUB_TOKEN is invalid or expired;

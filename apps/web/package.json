@@ -4,6 +4,9 @@
 			"path": "../../scripts"
 		}
 	},
+	"imports": {
+		"#*": "./src/*"
+	},
 	"dependencies": {
 		"@conform-to/react": "1.2.2",
 		"@epic-web/client-hints": "1.3.5",
