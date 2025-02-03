@@ -36,6 +36,7 @@
 	"devDependencies": {
 		"@babel/preset-typescript": "7.26.0",
 		"@codecov/vite-plugin": "1.8.0",
+		"@mdx-js/rollup": "3.1.0",
 		"@react-router/dev": "7.1.5",
 		"@suddenlygiovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",

@@ -5,6 +5,7 @@ import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protoc
 import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
 
+import AboutMeContent from 'content/about-me.md'
 import hero200wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
 import hero811wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
 import hero1200wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp'
@@ -19,7 +20,6 @@ import hero2670wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cil
 import hero2800wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '#config.ts'
 import { routesRecord } from '#routes-record.ts'
-
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/about-me.ts'
 
@@ -85,6 +85,9 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 					srcSet={imgSrcSet}
 				/>
 			</picture>
+			<div className="prose dark:prose">
+				<AboutMeContent />
+			</div>
 			<T.p>
 				I am a self-taught <strong>software developer</strong>, a geek, and more generally a problem
 				solver. I am also a young father of three and a committed husband.

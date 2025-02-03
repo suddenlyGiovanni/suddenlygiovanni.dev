@@ -2,6 +2,7 @@ import { exec } from 'node:child_process'
 import process from 'node:process'
 
 import { codecovVitePlugin } from '@codecov/vite-plugin'
+import mdx from '@mdx-js/rollup'
 import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
 import { reactRouterDevTools } from 'react-router-devtools'
@@ -24,6 +25,12 @@ export default defineConfig(({ isSsrBuild }) => ({
 			: {},
 	},
 	plugins: [
+		{
+			enforce: 'pre',
+			...mdx({
+				/* jsxImportSource: …, otherOptions… */
+			}),
+		},
 		babel({
 			include: ['./src/**/*', '../../packages/ui/src/**/*'],
 			filter(name: string): boolean {
