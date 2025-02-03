@@ -58,7 +58,9 @@ export function createRequestHandler({
 	}
 }
 
-export function createRemixHeaders(requestHeaders: express.Request['headers']): Headers {
+export function createRemixHeaders<RequestHeaders extends express.Request['headers']>(
+	requestHeaders: RequestHeaders,
+): Headers {
 	const headers = new Headers()
 
 	for (const [key, values] of Object.entries(requestHeaders)) {
@@ -76,9 +78,14 @@ export function createRemixHeaders(requestHeaders: express.Request['headers']): 
 	return headers
 }
 
-export function createRemixRequest(req: express.Request, res: express.Response): Request {
-	// req.hostname doesn't include port information so grab that from
-	// `X-Forwarded-Host` or `Host`
+export function createRemixRequest<Req extends express.Request, Res extends express.Response>(
+	req: Req,
+	res: Res,
+): Request {
+	/**
+	 * req.hostname doesn't include port information so grab that from
+	 * `X-Forwarded-Host` or `Host`
+	 */
 	const [, hostnamePort] = req.get('X-Forwarded-Host')?.split(':') ?? []
 	const [, hostPort] = req.get('host')?.split(':') ?? []
 	const port = hostnamePort || hostPort
@@ -95,10 +102,12 @@ export function createRemixRequest(req: express.Request, res: express.Response):
 		signal: controller.signal,
 	}
 
-	// Abort action/loaders once we can no longer write a response iff we have
-	// not yet sent a response (i.e., `close` without `finish`)
-	// `finish` -> done rendering the response
-	// `close` -> response can no longer be written to
+	/**
+	 * Abort action/loaders once we can no longer write a response iff we have not yet sent a response
+	 * (i.e., `close` without `finish`)
+	 * `finish` -> done rendering the response
+	 * `close` -> response can no longer be written to
+	 */
 	res.on('finish', () => {
 		controller = null
 	})
@@ -115,10 +124,10 @@ export function createRemixRequest(req: express.Request, res: express.Response):
 	return new Request(url.href, init)
 }
 
-export async function sendRemixResponse(
-	res: express.Response,
-	nodeResponse: Response,
-): Promise<void> {
+export async function sendRemixResponse<
+	ExpressResponse extends express.Response,
+	NodeResponse extends Response,
+>(res: ExpressResponse, nodeResponse: NodeResponse): Promise<void> {
 	res.statusMessage = nodeResponse.statusText
 	res.status(nodeResponse.status)
 
