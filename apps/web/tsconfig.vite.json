@@ -13,7 +13,8 @@
 			"react-dom",
 			"vite/client",
 			"vitest/config",
-			"@react-router/node"
+			"@react-router/node",
+			"@types/mdx"
 		],
 		"rootDirs": [".", "./.react-router/types"]
 	},
