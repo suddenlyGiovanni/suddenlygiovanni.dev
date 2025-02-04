@@ -4,9 +4,6 @@
 	"references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.vite.json" }],
 	"extends": [],
 	"compilerOptions": {
-		"noEmit": true,
-		"verbatimModuleSyntax": true,
-		"skipLibCheck": true,
-		"strict": true
+		"verbatimModuleSyntax": true
 	}
 }

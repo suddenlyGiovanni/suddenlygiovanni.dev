@@ -68,6 +68,8 @@ function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RouterLin
 	)
 }
 
+console.log(AboutMeContentV2)
+
 export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
 		<article className={clsx('flex w-full flex-col justify-start prose font-comic')}>
@@ -92,7 +94,7 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 			<AboutMeContentV2 />
 
 			<T.p>
-				I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently,{' '}
+				I lived in 🇮 Italy, 🇭 Croatia, and 🇩 Germany. Currently,{' '}
 				<strong>I'm located in Berlin, Germany</strong>.
 			</T.p>
 
