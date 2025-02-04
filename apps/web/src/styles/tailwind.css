@@ -3,8 +3,6 @@
 @plugin "@tailwindcss/typography";
 @plugin "tailwindcss-animate";
 
-@source '../../../../packages/ui/src/**/*.tsx';
-
 @variant dark (&:is([data-theme="dark"] *));
 
 @theme {
@@ -71,6 +69,7 @@
 	--animate-accordion-up: accordion-up 0.2s ease-out;
 	--animate-accordion-open: accordion-open 1000ms ease-out;
 	--animate-accordion-close: accordion-close 1000ms ease-out;
+	--animate-wiggle: wiggle 1s ease-in-out infinite;
 
 	@keyframes accordion-open {
 		from {
@@ -106,6 +105,16 @@
 		}
 		to {
 			height: 0;
+		}
+	}
+
+	@keyframes wiggle {
+		0%,
+		100% {
+			transform: rotate(-10deg);
+		}
+		50% {
+			transform: rotate(10deg);
 		}
 	}
 }

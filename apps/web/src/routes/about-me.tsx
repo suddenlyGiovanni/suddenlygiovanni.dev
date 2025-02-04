@@ -72,8 +72,11 @@ console.log(AboutMeContentV2)
 
 export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
-		<article className={clsx('flex w-full flex-col justify-start prose font-comic')}>
-			<T.h2>Hi! I'm Giovanni 👋</T.h2>
+		<article className={clsx('flex w-full flex-col justify-start ')}>
+			<T.h2 className={clsx('font-comic')}>
+				Hi! I'm Giovanni{' '}
+				<div className={clsx('inline-block animate-wiggle hover:animate-none')}>👋</div>
+			</T.h2>
 			<picture>
 				<source
 					media="(max-width: 767px)"
