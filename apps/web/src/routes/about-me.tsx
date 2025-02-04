@@ -18,7 +18,7 @@ import hero2314wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_col
 import hero2670wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp'
 import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import AboutMeContentV1 from 'content/copy/about-me-v1.md'
-import AboutMeContentV2 from 'content/copy/about-me-v2.md'
+
 import { config } from '#config.ts'
 
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
@@ -68,8 +68,6 @@ function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RouterLin
 	)
 }
 
-console.log(AboutMeContentV2)
-
 export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
 		<article className={clsx('flex w-full flex-col justify-start ')}>
@@ -94,10 +92,8 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 
 			<AboutMeContentV1 />
 
-			<AboutMeContentV2 />
-
 			<T.p>
-				I lived in 🇮 Italy, 🇭 Croatia, and 🇩 Germany. Currently,{' '}
+				I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently,{' '}
 				<strong>I'm located in Berlin, Germany</strong>.
 			</T.p>
 
