@@ -1,24 +1,26 @@
-
 # My Motivations
+
 > Over the years, I have learned how and under which conditions I like to work, what drives me, and which criteria enhance my productivity and happiness.
 
 ## Drive
-Curiosity and eagerness to learn is a personal driver like no other. It applies to both the **Domain** and the 
-underlying **technology** of the business. I usually find the most mundane activities exciting as long as there is some depth to them.
+
+Curiosity and eagerness to learn is a personal driver like no other. It applies to both the **Domain** and the underlying **technology** of the business. I usually find the most mundane activities exciting as long as there is some depth to them.
 
 If you can provide me with a challenge and the tools to navigate the domain, you'll make me a happy engineer.
 
 ## Culture
+
 An open and diversified environment is vital to me. I thrive working in cross-functional teams, where autonomous people help each other achieve the best results. Waterfall and micro-management are not acceptable.
 
 ## Transparency
+
 I work more effectively when the company shares as much of the long-term intentions as possible. It prevents misunderstandings, leads to better technical decisions, and encourages a trusting work environment.
 
 ## Work-life balance
+
 I am a workaholic. It is easy for me to end up putting work before everything else, my wife, and kids included. This is not a OK behavior. I'm consciously trying to cope with it every day.
 
 While I am OK with putting in a few extra hours on rare occasions or getting paged when a critical system is failing, **regular over-time is NOT something that I am willing to do**, and that if recurring must be addressed.
-
 
 I also value **flexible working hours** and **occasional remote work**.
 
@@ -29,6 +31,7 @@ As an active consumer of many open-source projects, and occasional contributor, 
 If you have Open Source projects of your own or help maintain someone else, you'll immediately gain extra points with me.
 
 ## Goals
+
 I am conscious of where I am now and where eventually I want to end up. I have also learned to be deliberate about my career choices and to set up goals.
 
 - First, I am looking forward to taking more ownership of the back-end code.
