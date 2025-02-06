@@ -5,20 +5,21 @@ import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-proto
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
-import hero200wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
-import hero811wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
-import hero1200wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp'
-import hero1534wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1534.webp'
-import hero461wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_461.webp'
-import hero929wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_929.webp'
-import hero1293wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1293.webp'
-import hero1804wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1804.webp'
-import hero1826wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1826.webp'
-import hero2314wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2314.webp'
-import hero2670wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp'
-import hero2800wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import hero200wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
+import hero811wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
+import hero1200wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp'
+import hero1534wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1534.webp'
+import hero461wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_461.webp'
+import hero929wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_929.webp'
+import hero1293wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1293.webp'
+import hero1804wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1804.webp'
+import hero1826wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1826.webp'
+import hero2314wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2314.webp'
+import hero2670wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp'
+import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import AboutMeContent from 'content/copy/about-me.md'
+
 import { config } from '#config.ts'
-import { routesRecord } from '#routes-record.ts'
 
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/about-me.ts'
@@ -69,8 +70,13 @@ function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RouterLin
 
 export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
-		<article className={clsx('flex w-full flex-col justify-start font-comic')}>
-			<T.h2>Hi! I'm Giovanni 👋</T.h2>
+		<article
+			className={clsx('prose dark:prose-invert flex w-full flex-col justify-start font-comic')}
+		>
+			<T.h2 className={clsx('font-comic')}>
+				Hi! I'm Giovanni{' '}
+				<div className={clsx('inline-block animate-wiggle hover:animate-none')}>👋</div>
+			</T.h2>
 			<picture>
 				<source
 					media="(max-width: 767px)"
@@ -85,82 +91,11 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 					srcSet={imgSrcSet}
 				/>
 			</picture>
-			<T.p>
-				I am a self-taught <strong>software developer</strong>, a geek, and more generally a problem
-				solver. I am also a young father of three and a committed husband.
-			</T.p>
-			<T.p>
-				I was born in ☢🌧 <strong>1986</strong> (you to do the math) and grew up in a small city by
-				the 🌊 sea <strong>in the north-east of 🇮 Italy</strong>.
-			</T.p>
+
+			<AboutMeContent />
 
 			<T.p>
-				At the university, I <strong>📚 studied Modern History</strong>, but I never actually
-				graduated. There I <strong>met the ❤ love of my life</strong>, 👱 Morena, with whom I have
-				been together ever since.
-			</T.p>
-			<T.p>
-				Soon after college, we <strong>got 💍 married and started</strong> our own 👩
-				<strong>family</strong>. In 2014 our hearts became soo much bigger when 👶 Enea come about.
-				Four years later, 👶 Elai managed to have the same effect on us.
-			</T.p>
-
-			<T.p>
-				<strong>Kids</strong> are the <strong>most amazing thing</strong> that had happened to me.
-				They <strong>changed my life</strong>. They <strong>brought</strong> so much{' '}
-				<strong>clarity</strong>!
-			</T.p>
-
-			<T.p>
-				Thanks to this new perspective, in <strong>2014</strong>, I decided to{' '}
-				<strong>switch career</strong> and transition toward 💻 software engineering. That was the
-				beginning of my unconventional journey toward becoming a software developer. For any further
-				information, please{' '}
-				<strong>
-					refer to my <Link to={routesRecord.resume.url}>📑 résumé</Link>
-				</strong>
-				.
-			</T.p>
-			<T.p>
-				I am an <strong>incredibly 👀 curious</strong> person by nature and a{' '}
-				<strong>life long learner</strong>. <strong>Reading</strong>, <strong>thinking</strong>, and{' '}
-				<strong>testing</strong> what I have learned <strong>is one of my life's joy</strong>.
-				Programming has managed to scratch this itch for me ever since I picked it up.
-			</T.p>
-
-			<T.p>
-				<strong>TypeScript</strong> is my language of choice. It has shaped the way I think soo much
-				soo that now I'm seeing types, signatures, and contracts flowing around even in dynamically
-				typed languages.
-			</T.p>
-			<T.p>
-				<strong>I'm language-curious</strong>; my gaze is set on the <strong>functional</strong>{' '}
-				side of the <strong>language</strong> spectrum with the end goal of, one day, picking up
-				Haskell.
-			</T.p>
-			<T.p>
-				<strong>I</strong> try <strong>not</strong> to <strong>concern</strong> myself too much{' '}
-				<strong>with this</strong> library <strong>or that framework</strong> since, as time has
-				proven many times over, they tend to come and go as the hype wagon moves on to the next
-				thing.
-			</T.p>
-			<T.p>
-				<strong>
-					Instead, I prefer to have a better understanding of the underlying building blocks
-				</strong>
-				, which tend to be more stable: the language, the data structures, and the design patterns
-				that enable the creation of higher levels of abstractions.
-			</T.p>
-
-			<T.p>
-				<strong>Making stuff is really fulfilling for me</strong>.{' '}
-				<strong>I just happened to choose to use code to do so</strong>, but I could definitely see
-				myself as a 🪓 carpenter, working with wood, or as a 🧑 chef preparing some elaborate recipe
-				or...
-			</T.p>
-
-			<T.p>
-				I lived in 🇮 Italy, 🇭 Croatia, and 🇩 Germany. Currently,{' '}
+				I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently,{' '}
 				<strong>I'm located in Berlin, Germany</strong>.
 			</T.p>
 

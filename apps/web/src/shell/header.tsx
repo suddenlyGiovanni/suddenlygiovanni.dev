@@ -6,7 +6,7 @@ import { SuddenlyGiovanni } from '@suddenly-giovanni/ui/components/suddenly-giov
 import { useToggle } from '@suddenly-giovanni/ui/hooks/use-toggle.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
-import avatarAssetUrl from 'assets/giovanni_ravalico-profile_bw.webp'
+import avatarAssetUrl from 'content/assets/giovanni_ravalico-profile_bw.webp'
 import { routesRecord } from '#routes-record.ts'
 import { ThemeSwitch } from '#routes/resources/theme-switch.tsx'
 

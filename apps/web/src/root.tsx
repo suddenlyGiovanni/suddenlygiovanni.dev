@@ -13,8 +13,8 @@ import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-proto
 import { Layout as _Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
-import hero2800wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
-import faviconAssertUrl from 'assets/suddenly_giovanni-icon-white.svg'
+import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import faviconAssertUrl from 'content/assets/suddenly_giovanni-icon-white.svg'
 import { config } from '#config.ts'
 import { useOptionalTheme, useTheme } from '#routes/resources/theme-switch.tsx'
 import { Footer, GeneralErrorBoundary, Header } from '#shell/index.tsx'
