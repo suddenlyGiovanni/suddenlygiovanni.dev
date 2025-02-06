@@ -1,10 +1,10 @@
 import type { ReactElement, SyntheticEvent } from 'react'
 
-import { Layout } from '@suddenlygiovanni/ui/components/layout/layout.tsx'
-import { NavigationMenuToggle } from '@suddenlygiovanni/ui/components/navigation-menu-toggle/navigation-menu-toggle.tsx'
-import { SuddenlyGiovanni } from '@suddenlygiovanni/ui/components/suddenly-giovanni/suddenly-giovanni.tsx'
-import { useToggle } from '@suddenlygiovanni/ui/hooks/use-toggle.tsx'
-import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
+import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
+import { NavigationMenuToggle } from '@suddenly-giovanni/ui/components/navigation-menu-toggle/navigation-menu-toggle.tsx'
+import { SuddenlyGiovanni } from '@suddenly-giovanni/ui/components/suddenly-giovanni/suddenly-giovanni.tsx'
+import { useToggle } from '@suddenly-giovanni/ui/hooks/use-toggle.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
 import avatarAssetUrl from 'assets/giovanni_ravalico-profile_bw.webp'
 import { routesRecord } from '#routes-record.ts'

@@ -62,7 +62,7 @@
 	"imports": {
 		"#*": "./src/*"
 	},
-	"name": "@suddenlygiovanni/ui",
+	"name": "@suddenly-giovanni/ui",
 	"peerDependencies": {
 		"react": "^19.0.0"
 	},

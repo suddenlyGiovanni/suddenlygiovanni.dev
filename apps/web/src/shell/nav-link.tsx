@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 import { type NavLinkProps, NavLink as UnstyledNavLink } from 'react-router'
 
-import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
 /**
  * Calculates class name based on activated state and base classes

@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 import { Link } from 'react-router'
 
-import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
 import { config } from '#config.ts'
 import { routesRecord } from '#routes-record.ts'
