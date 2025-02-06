@@ -16,7 +16,7 @@
 		"@octokit/request-error": "6.1.6",
 		"@react-router/node": "7.1.5",
 		"@std/yaml": "npm:@jsr/std__yaml@1.0.5",
-		"@suddenly-giovanni/schema-resume": "npm:@jsr/suddenly-giovanni__schema-resume@0.0.3",
+		"@suddenly-giovanni/schema-resume": "npm:@jsr/suddenly-giovanni__schema-resume@0.0.4",
 		"@suddenly-giovanni/open-graph-protocol": "workspace:*",
 		"@suddenly-giovanni/ui": "workspace:*",
 		"compression": "^1.7.5",

@@ -62,8 +62,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/open-graph-protocol
       '@suddenly-giovanni/schema-resume':
-        specifier: npm:@jsr/suddenly-giovanni__schema-resume@0.0.3
-        version: '@jsr/suddenly-giovanni__schema-resume@0.0.3'
+        specifier: npm:@jsr/suddenly-giovanni__schema-resume@0.0.4
+        version: '@jsr/suddenly-giovanni__schema-resume@0.0.4'
       '@suddenly-giovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -514,6 +514,7 @@ packages:
   '@babel/plugin-proposal-private-methods@7.18.6':
     resolution: {integrity: sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==}
     engines: {node: '>=6.9.0'}
+    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
@@ -1024,8 +1025,8 @@ packages:
   '@jsr/std__yaml@1.0.5':
     resolution: {integrity: sha512-jbh2xwnja+ar+7NE0oDTlbST1WW29dAQOKX8+1DZgdT54NVt9lZ9YVDrzh4uP1w6ZHVirtY0z99BSym0v+Zh4Q==, tarball: https://npm.jsr.io/~/11/@jsr/std__yaml/1.0.5.tgz}
 
-  '@jsr/suddenly-giovanni__schema-resume@0.0.3':
-    resolution: {integrity: sha512-OPklM2acGlJdHePBi0WkRetQ48G1VbWC5/f/fwH35U5ufVmgDJaPBmidVaDnglhrpavb66+GoO0LjUCKFJlHSw==, tarball: https://npm.jsr.io/~/11/@jsr/suddenly-giovanni__schema-resume/0.0.3.tgz}
+  '@jsr/suddenly-giovanni__schema-resume@0.0.4':
+    resolution: {integrity: sha512-QLkNsHoHmYNlOGIfTe726juhptLQyABK5OrKDE0YgqRF8WKNMSlZz2NcdDv0c+SZBZkELQ6RKKar9jxXlIIxEw==, tarball: https://npm.jsr.io/~/11/@jsr/suddenly-giovanni__schema-resume/0.0.4.tgz}
 
   '@mdx-js/mdx@3.1.0':
     resolution: {integrity: sha512-/QxEhPAvGwbQmy1Px8F899L5Uc2KZ6JtXwlCgJmjSTBedwOZkByYcBG4GceIGPXRDsmfxhHazuS+hlOShRLeDw==}
@@ -3737,6 +3738,9 @@ packages:
   effect@3.12.7:
     resolution: {integrity: sha512-BsDTgSjLbL12g0+vGn5xkOgOVhRSaR3VeHmjcUb0gLvpXACJ9OgmlfeH+/FaAZwM5+omIF3I/j1gC5KJrbK1Aw==}
 
+  effect@3.12.9:
+    resolution: {integrity: sha512-u3PsO0KWtCTO56yGGYaa8RLOccE6Kbeb4UotS/ArAG/tqAyf0x3JF3WaaklhnxJtt67P6SktLmwRPT4hiuhKEA==}
+
   electron-to-chromium@1.5.76:
     resolution: {integrity: sha512-CjVQyG7n7Sr+eBXE86HIulnL5N8xZY1sgmOPGuq/F0Rr0FJq63lg0kEtOIDfZBk44FnDLf6FUJ+dsJcuiUDdDQ==}
 
@@ -4115,6 +4119,7 @@ packages:
 
   glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
+    deprecated: Glob versions prior to v9 are no longer supported
 
   globals@11.12.0:
     resolution: {integrity: sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA==}
@@ -4239,6 +4244,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -6877,9 +6883,9 @@ snapshots:
 
   '@jsr/std__yaml@1.0.5': {}
 
-  '@jsr/suddenly-giovanni__schema-resume@0.0.3':
+  '@jsr/suddenly-giovanni__schema-resume@0.0.4':
     dependencies:
-      effect: 3.12.7
+      effect: 3.12.9
 
   '@mdx-js/mdx@3.1.0(acorn@8.14.0)':
     dependencies:
@@ -10189,6 +10195,10 @@ snapshots:
   ee-first@1.1.1: {}
 
   effect@3.12.7:
+    dependencies:
+      fast-check: 3.23.2
+
+  effect@3.12.9:
     dependencies:
       fast-check: 3.23.2
 
