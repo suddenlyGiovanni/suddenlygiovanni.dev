@@ -5,18 +5,18 @@ import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-proto
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
-import hero200wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
-import hero811wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
-import hero1200wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp'
-import hero1534wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1534.webp'
-import hero461wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_461.webp'
-import hero929wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_929.webp'
-import hero1293wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1293.webp'
-import hero1804wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1804.webp'
-import hero1826wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1826.webp'
-import hero2314wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2314.webp'
-import hero2670wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp'
-import hero2800wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import hero200wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
+import hero811wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
+import hero1200wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp'
+import hero1534wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1534.webp'
+import hero461wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_461.webp'
+import hero929wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_929.webp'
+import hero1293wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1293.webp'
+import hero1804wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1804.webp'
+import hero1826wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_1826.webp'
+import hero2314wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2314.webp'
+import hero2670wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp'
+import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '#config.ts'
 import { routesRecord } from '#routes-record.ts'
 
@@ -160,7 +160,7 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 			</T.p>
 
 			<T.p>
-				I lived in 🇮 Italy, 🇭 Croatia, and 🇩 Germany. Currently,{' '}
+					I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently,{' '}
 				<strong>I'm located in Berlin, Germany</strong>.
 			</T.p>
 
