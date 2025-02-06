@@ -5,7 +5,7 @@
     <option name="configPath" value="$PROJECT_DIR$" />
     <option name="configurationMode" value="MANUAL" />
     <option name="enableLspFormat" value="true" />
-    <option name="executablePath" value="/nix/store/3i56rzvqnr2a1q3sw6mjjc6asz2hidm4-biome-1.9.4/bin/biome" />
+    <option name="executablePath" value="/nix/store/s94qz24v2nrg9cxl2bldzvqrbwarfmwm-biome-1.9.4/bin/biome" />
     <option name="formatOnSave" value="true" />
   </component>
 </project>
