@@ -14,7 +14,7 @@
 	"exports": {
 		".": "./src/index.ts"
 	},
-	"name": "@suddenlygiovanni/open-graph-protocol",
+	"name": "@suddenly-giovanni/open-graph-protocol",
 	"private": true,
 	"scripts": {
 		"clean": "scripty",

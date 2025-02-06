@@ -9,9 +9,9 @@ import {
 	useRouteLoaderData,
 } from 'react-router'
 
+import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
 import { Layout as _Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
 
 import hero2800wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import faviconAssertUrl from 'assets/suddenly_giovanni-icon-white.svg'

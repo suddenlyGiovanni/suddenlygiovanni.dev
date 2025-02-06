@@ -58,15 +58,15 @@ importers:
       '@std/yaml':
         specifier: npm:@jsr/std__yaml@1.0.5
         version: '@jsr/std__yaml@1.0.5'
+      '@suddenly-giovanni/open-graph-protocol':
+        specifier: workspace:*
+        version: link:../../packages/open-graph-protocol
       '@suddenly-giovanni/schema-resume':
         specifier: npm:@jsr/suddenly-giovanni__schema-resume@0.0.3
         version: '@jsr/suddenly-giovanni__schema-resume@0.0.3'
       '@suddenly-giovanni/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@suddenlygiovanni/open-graph-protocol':
-        specifier: workspace:*
-        version: link:../../packages/open-graph-protocol
       compression:
         specifier: ^1.7.5
         version: 1.7.5
