@@ -63,7 +63,7 @@
 		"vite-tsconfig-paths": "5.1.4",
 		"vitest": "3.0.5"
 	},
-	"name": "@suddenlygiovanni/web",
+	"name": "@suddenly-giovanni/web",
 	"private": true,
 	"scripts": {
 		"build": "react-router build",

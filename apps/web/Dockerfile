@@ -36,7 +36,7 @@ ENV DO_NOT_TRACK=1
 
 COPY . .
 
-RUN pnpm dlx turbo prune --docker "@suddenlygiovanni/web"
+RUN pnpm dlx turbo prune --docker "@suddenly-giovanni/web"
 
 
 FROM base AS build
@@ -60,9 +60,9 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod=false
 
 ENV NODE_ENV="production"
 
-RUN pnpm exec turbo build --filter=@suddenlygiovanni/web
+RUN pnpm exec turbo build --filter=@suddenly-giovanni/web
 
-RUN pnpm --filter @suddenlygiovanni/web --prod --no-optional deploy pruned
+RUN pnpm --filter @suddenly-giovanni/web --prod --no-optional deploy pruned
 
 
 FROM base AS production
