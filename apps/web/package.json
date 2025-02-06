@@ -37,7 +37,7 @@
 		"@babel/preset-typescript": "7.26.0",
 		"@codecov/vite-plugin": "1.8.0",
 		"@react-router/dev": "7.1.5",
-		"@suddenlygiovanni/config-typescript": "workspace:*",
+		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"@suddenlygiovanni/eslint-config": "workspace:*",
 		"@tailwindcss/typography": "0.5.16",
 		"@tailwindcss/vite": "4.0.3",

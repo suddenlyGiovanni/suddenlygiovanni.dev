@@ -10,7 +10,7 @@
 		"verbatimModuleSyntax": true,
 		"types": ["node"]
 	},
-	"extends": ["./tsconfig.json", "@suddenlygiovanni/config-typescript/library.json"],
+	"extends": ["./tsconfig.json", "@suddenly-giovanni/config-typescript/library.json"],
 	"include": [
 		"./handlers.ts",
 		"./mocks/**/*.ts",

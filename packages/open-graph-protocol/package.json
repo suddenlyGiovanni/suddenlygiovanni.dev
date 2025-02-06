@@ -8,7 +8,7 @@
 		"ts-brand": "0.2.0"
 	},
 	"devDependencies": {
-		"@suddenlygiovanni/config-typescript": "workspace:*",
+		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"typescript": "5.8.0-beta"
 	},
 	"exports": {
