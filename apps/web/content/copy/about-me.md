@@ -1,4 +1,4 @@
-I am a self-taught **software developer**, a geek, and more generally a problem solver. I am also a young father of three and a committed husband. 
+I am a self-taught **software developer**, a geek, and more generally a problem solver. I am also a young father of three and a committed husband.
 
 I was born in ☢️🌧 **1986** (you to do the math) and grew up in a small city by the 🌊 sea **in the north-east of 🇮🇹 Italy**.
 
