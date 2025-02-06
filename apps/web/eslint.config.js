@@ -1,4 +1,4 @@
-import { config } from '@suddenlygiovanni/eslint-config/react-internal'
+import { config } from '@suddenly-giovanni/eslint-config/react-internal'
 import vitest from '@vitest/eslint-plugin'
 
 /** @type {import("eslint").Linter.Config} */

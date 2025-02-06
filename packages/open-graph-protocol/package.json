@@ -8,13 +8,13 @@
 		"ts-brand": "0.2.0"
 	},
 	"devDependencies": {
-		"@suddenlygiovanni/config-typescript": "workspace:*",
+		"@suddenly-giovanni/config-typescript": "workspace:*",
 		"typescript": "5.8.0-beta"
 	},
 	"exports": {
 		".": "./src/index.ts"
 	},
-	"name": "@suddenlygiovanni/open-graph-protocol",
+	"name": "@suddenly-giovanni/open-graph-protocol",
 	"private": true,
 	"scripts": {
 		"clean": "scripty",

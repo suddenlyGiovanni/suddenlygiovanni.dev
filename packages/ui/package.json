@@ -35,8 +35,8 @@
 		"@storybook/react": "8.5.3",
 		"@storybook/react-vite": "8.5.3",
 		"@storybook/test": "8.5.3",
-		"@suddenlygiovanni/config-typescript": "workspace:*",
-		"@suddenlygiovanni/eslint-config": "workspace:*",
+		"@suddenly-giovanni/config-typescript": "workspace:*",
+		"@suddenly-giovanni/eslint-config": "workspace:*",
 		"@tailwindcss/typography": "0.5.16",
 		"@tailwindcss/vite": "4.0.3",
 		"@total-typescript/ts-reset": "0.6.1",
@@ -62,7 +62,7 @@
 	"imports": {
 		"#*": "./src/*"
 	},
-	"name": "@suddenlygiovanni/ui",
+	"name": "@suddenly-giovanni/ui",
 	"peerDependencies": {
 		"react": "^19.0.0"
 	},

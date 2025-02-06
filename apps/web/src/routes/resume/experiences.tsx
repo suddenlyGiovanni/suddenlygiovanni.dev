@@ -1,10 +1,10 @@
 import { type MouseEventHandler, type ReactElement, useState } from 'react'
 
 import type * as Model from '@suddenly-giovanni/schema-resume'
-import { Icons } from '@suddenlygiovanni/ui/components/icons/icons.tsx'
-import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
-import { Accordion } from '@suddenlygiovanni/ui/ui/accordion.tsx'
-import { Button } from '@suddenlygiovanni/ui/ui/button.tsx'
+import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { Accordion } from '@suddenly-giovanni/ui/ui/accordion.tsx'
+import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 
 import { Experience } from './experience.tsx'
 

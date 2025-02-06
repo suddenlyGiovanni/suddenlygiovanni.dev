@@ -19,7 +19,7 @@
 		"./base": "./base.js",
 		"./react-internal": "./react-internal.js"
 	},
-	"name": "@suddenlygiovanni/eslint-config",
+	"name": "@suddenly-giovanni/eslint-config",
 	"peerDependencies": {
 		"eslint": "9.19.0"
 	},

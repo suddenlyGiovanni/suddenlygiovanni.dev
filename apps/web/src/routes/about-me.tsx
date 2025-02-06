@@ -1,9 +1,9 @@
 import type { ComponentPropsWithoutRef, ReactElement } from 'react'
 import { Link as RouterLink } from 'react-router'
 
-import { Types, makeOpenGraphWebsite } from '@suddenlygiovanni/open-graph-protocol'
-import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
-import { clsx } from '@suddenlygiovanni/ui/lib/utils.ts'
+import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
+import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
 import hero200wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp'
 import hero811wAssetUrl from 'assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp'
@@ -90,19 +90,19 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 				solver. I am also a young father of three and a committed husband.
 			</T.p>
 			<T.p>
-				I was born in ☢️🌧 <strong>1986</strong> (you to do the math) and grew up in a small city by
-				the 🌊 sea <strong>in the north-east of 🇮🇹 Italy</strong>.
+				I was born in ☢🌧 <strong>1986</strong> (you to do the math) and grew up in a small city by
+				the 🌊 sea <strong>in the north-east of 🇮 Italy</strong>.
 			</T.p>
 
 			<T.p>
 				At the university, I <strong>📚 studied Modern History</strong>, but I never actually
-				graduated. There I <strong>met the ❤️ love of my life</strong>, 👱🏻‍♀️ Morena, with whom I
-				have been together ever since.
+				graduated. There I <strong>met the ❤ love of my life</strong>, 👱 Morena, with whom I have
+				been together ever since.
 			</T.p>
 			<T.p>
-				Soon after college, we <strong>got 💍 married and started</strong> our own 👩‍❤️‍👨
-				<strong>family</strong>. In 2014 our hearts became soo much bigger when 👶🏻 Enea come
-				about. Four years later, 👶🏻 Elai managed to have the same effect on us.
+				Soon after college, we <strong>got 💍 married and started</strong> our own 👩
+				<strong>family</strong>. In 2014 our hearts became soo much bigger when 👶 Enea come about.
+				Four years later, 👶 Elai managed to have the same effect on us.
 			</T.p>
 
 			<T.p>
@@ -155,12 +155,12 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 			<T.p>
 				<strong>Making stuff is really fulfilling for me</strong>.{' '}
 				<strong>I just happened to choose to use code to do so</strong>, but I could definitely see
-				myself as a 🪓 carpenter, working with wood, or as a 🧑🏻‍🍳 chef preparing some elaborate
-				recipe or...
+				myself as a 🪓 carpenter, working with wood, or as a 🧑 chef preparing some elaborate recipe
+				or...
 			</T.p>
 
 			<T.p>
-				I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently,{' '}
+				I lived in 🇮 Italy, 🇭 Croatia, and 🇩 Germany. Currently,{' '}
 				<strong>I'm located in Berlin, Germany</strong>.
 			</T.p>
 

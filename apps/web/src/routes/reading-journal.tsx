@@ -1,4 +1,4 @@
-import { T } from '@suddenlygiovanni/ui/components/typography/typography.tsx'
+import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import type { JSX } from 'react'
 
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
