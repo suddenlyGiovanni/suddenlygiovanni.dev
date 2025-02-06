@@ -4,8 +4,7 @@ I was born in ☢️🌧 **1986** (you to do the math) and grew up in a small ci
 
 At the university, I **📚 studied Modern History**, but I never actually graduated. There I **met the ❤️ love of my life**, 👱🏻‍♀️ Morena, with whom I have been together ever since.
 
-Soon after college, we **got 💍 married and started** our own 👩‍❤️‍👨 **family**. In 2014 our hearts became soo much bigger when 👶🏻 Enea come about. Four years later, 👶🏻 Elai managed to have the same effect on us.
-
+Soon after college, we **got 💍 married and started** our own 👩‍❤️‍👨 **family**. In 2014 our hearts became soo much bigger when 👶🏻 Enea came about. Four years later, 👶🏻 Elai managed to have the same effect on us.
 **Kids** are the **most amazing thing** that had happened to me. They **changed my life**. They **brought** so much **clarity**!
 
 Thanks to this new perspective, in **2014**, I decided to **switch career** and transition toward 💻 software engineering. That was the beginning of my unconventional journey toward becoming a software developer. For any further information, please **refer to my [📑 résumé](/resume)**.
