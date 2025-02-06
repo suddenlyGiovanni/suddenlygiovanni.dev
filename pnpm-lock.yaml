@@ -119,7 +119,7 @@ importers:
       '@suddenly-giovanni/config-typescript':
         specifier: workspace:*
         version: link:../../packages/config-typescript
-      '@suddenlygiovanni/eslint-config':
+      '@suddenly-giovanni/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
       '@tailwindcss/typography':
@@ -349,7 +349,7 @@ importers:
       '@suddenly-giovanni/config-typescript':
         specifier: workspace:*
         version: link:../config-typescript
-      '@suddenlygiovanni/eslint-config':
+      '@suddenly-giovanni/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
       '@tailwindcss/typography':
