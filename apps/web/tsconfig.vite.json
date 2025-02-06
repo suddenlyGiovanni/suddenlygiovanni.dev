@@ -4,6 +4,7 @@
 	"compilerOptions": {
 		"composite": true,
 		"baseUrl": ".",
+		"module": "Preserve",
 		"noEmit": true,
 		"types": [
 			"@total-typescript/ts-reset",
@@ -16,6 +17,6 @@
 		],
 		"rootDirs": [".", "./.react-router/types"]
 	},
-	"include": ["vite.config.ts", ".react-router/types/**/*", "src/**/*"],
+	"include": ["vite.config.ts", ".react-router/types/**/*", "src/**/*", "types/*.d.ts"],
 	"exclude": ["build", "node_modules", "./~"]
 }

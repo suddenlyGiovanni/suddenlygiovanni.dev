@@ -17,6 +17,7 @@
 		"./react-router.config.ts",
 		"./server/**/*.ts",
 		"./vite.config.ts",
-		"./vitest.setup.ts"
+		"./vitest.setup.ts",
+		"types/*.d.ts"
 	]
 }
