@@ -27,4 +27,4 @@ Professionalism in software means **taking ownership** — not just of what I bu
 ### 🔄 A Never-Ending Learning Curve
 Software development is an **ever-changing field**, and that’s what makes it exciting. 🚀 I’m always looking for **better ways** to write code, structure applications, and think about software design. Whether it’s diving into **functional programming** 🧑‍💻, exploring **domain-driven design (DDD)** 🏛️, or improving my ability to communicate technical ideas, I see **learning as a core part of my work**. 🎓 As **Uncle Bob** puts it:  
 
-> *“Professionalism in software means never stopping learning.”* 🎯📚  
+> *“Professionalism in software means never stopping learning.”* 🎯📚 
