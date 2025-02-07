@@ -17,7 +17,7 @@ import hero1826wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_col
 import hero2314wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2314.webp'
 import hero2670wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp'
 import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
-import AboutMeContent from 'content/copy/about-me-v3.md'
+import AboutMeContent from 'content/copy/about-me-v4.md'
 
 import { config } from '#config.ts'
 
