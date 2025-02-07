@@ -1,6 +1,6 @@
 ## 🌍 My Journey  
 
-I’ve always been on a **search for meaning**—first through 📜history, then through 💻 code. As a student of Modern History, I tried to make sense of humanity by breaking it down into events, behaviors, and patterns. Now, as a 🔍🛠 software engineer, I do the same—just with systems, data, and the occasional stack trace..️  
+I’ve always been on a **search for meaning** — first through 📜history, then through 💻 code. As a student of Modern History, I tried to make sense of humanity by breaking it down into events, behaviors, and patterns. Now, as a 🔍🛠 software engineer, I do the same — just with systems, data, and the occasional stack trace.
 
 Along the way, I met **Morena**, the ❤️ love of my life, and together we built something truly meaningful: 👨‍👩‍👦**a family**. Parenthood shifted my perspective—suddenly, my choices weren’t just about me, but about building a solid future for them.  
 
