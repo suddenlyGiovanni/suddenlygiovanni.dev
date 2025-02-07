@@ -17,7 +17,7 @@ import hero1826wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_col
 import hero2314wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2314.webp'
 import hero2670wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp'
 import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
-import AboutMeContent from 'content/copy/about-me-v2.md'
+import AboutMeContent from 'content/copy/about-me-v3.md'
 
 import { config } from '#config.ts'
 
@@ -72,6 +72,7 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
 		<article
 			className={clsx('prose dark:prose-invert flex w-full flex-col justify-start font-comic')}
+			style={{ fontSynthesisWeight: 'initial' }}
 		>
 			<T.h2 className={clsx('font-comic')}>
 				Hi! I'm Giovanni{' '}
@@ -95,7 +96,7 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 			<AboutMeContent />
 
 			<T.p>
-				I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently,{' '}
+					I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently,{' '}
 				<strong>I'm located in Berlin, Germany</strong>.
 			</T.p>
 
