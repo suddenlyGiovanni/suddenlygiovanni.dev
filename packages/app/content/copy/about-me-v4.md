@@ -13,10 +13,10 @@ After more than a decade in the field, I’ve come to see software engineering a
 Along the way, I also discovered **Extreme Programming (XP)**, a set of technical practices introduced by **Kent Beck** in the late ’90s. XP emphasizes writing **simple, high-quality code** through **discipline, feedback, and iteration**. 🔄 These ideas deeply resonate with how I approach software development. 💡✨  
 
 ### 🛠️ Craft Over Code
-Software isn’t just about making things work — it’s about making things *right*. ✅ Good software isn’t brittle, hard to change, or overly complex. Instead, it’s **clean, testable, and evolves gracefully** over time. I take pride in refining my work, knowing that well-crafted code makes life easier for everyone who touches it.  
+Software isn’t just about making things work — it’s about making things *right*. ✅ Good software isn’t brittle, hard to change, or overly complex. Instead, it’s **clean, testable, and evolves gracefully** over time. I take pride in refining my work, knowing that well-crafted code makes life easier for everyone who touches it.
 
-### 🎯 Simplicity is Strength  
-I believe in **keeping things simple**—not simplistic, but simple in a way that reduces unnecessary complexity. 🤯 Practices like **Test-Driven Development (TDD)** ✅ and **refactoring** 🧼—which **Kent Beck** and **Martin Fowler** strongly advocate for—aren’t just buzzwords; they help me write **clear, maintainable, and long-lasting** code. The less cluttered the code, the more space there is for solving real problems. 🧩💡  
+### 🎯 Simplicity is Strength
+I believe in **keeping things simple** — not simplistic, but straightforward enough to reduce unnecessary complexity. 🤯 Practices like **Test-Driven Development (TDD)** ✅ and **refactoring** 🧼 — which **Kent Beck** and **Martin Fowler** strongly advocate for — aren’t just buzzwords; they help me write **clear, maintainable, and long-lasting** code. The less cluttered the code, the more space there is for solving real problems. 🧩💡
 
 ### 💰 Adding Value Beyond Features  
 A software engineer’s job isn’t just to add features or fix bugs—it’s to **steadily add value**. 🏗️ That means improving the structure of the codebase, making systems easier to change, and ensuring that the software remains flexible and maintainable over time. 🏛️ As the *Software Craftsmanship Manifesto* states, a **rewrite should be a last resort, not an inevitability**. ⚖️  
