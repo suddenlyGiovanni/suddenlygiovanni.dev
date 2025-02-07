@@ -2,7 +2,7 @@
 
 I’ve always been on a **search for meaning** — first through 📜history, then through 💻 code. As a student of Modern History, I tried to make sense of humanity by breaking it down into events, behaviors, and patterns. Now, as a 🔍🛠 software engineer, I do the same — just with systems, data, and the occasional stack trace.
 
-Along the way, I met **Morena**, the ❤️ love of my life, and together we built something truly meaningful: 👨‍👩‍👦**a family**. Parenthood shifted my perspective—suddenly, my choices weren’t just about me, but about building a solid future for them.  
+Along the way, I met **Morena**, the ❤️ love of my life, and together we built something truly meaningful: 👨‍👩‍👦 **a family**. Parenthood shifted my perspective — suddenly, my choices weren’t just about me but about building a solid future for them.
 
 In **2014**, I took a leap from studying the past to helping shape the future, switching careers to software engineering. It turns out, **breaking things apart to understand them** works just as well in tech as it does in history. And while the universe may be fundamentally meaningless, I’ve found purpose in craftsmanship and the joy of learning. And if I don’t always know the question, at least I can take comfort in knowing the answer—**42**.  
 
