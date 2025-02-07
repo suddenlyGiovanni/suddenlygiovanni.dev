@@ -18,13 +18,13 @@ Software isn’t just about making things work — it’s about making things *r
 ### 🎯 Simplicity is Strength
 I believe in **keeping things simple** — not simplistic, but straightforward enough to reduce unnecessary complexity. 🤯 Practices like **Test-Driven Development (TDD)** ✅ and **refactoring** 🧼 — which **Kent Beck** and **Martin Fowler** strongly advocate for — aren’t just buzzwords; they help me write **clear, maintainable, and long-lasting** code. The less cluttered the code, the more space there is for solving real problems. 🧩💡
 
-### 💰 Adding Value Beyond Features  
-A software engineer’s job isn’t just to add features or fix bugs—it’s to **steadily add value**. 🏗️ That means improving the structure of the codebase, making systems easier to change, and ensuring that the software remains flexible and maintainable over time. 🏛️ As the *Software Craftsmanship Manifesto* states, a **rewrite should be a last resort, not an inevitability**. ⚖️  
+### 💰 Adding Value Beyond Features
+A software engineer’s job isn’t just to add features or fix bugs — it’s to **steadily add value**. 🏗️ That means improving the structure of the codebase, making systems easier to change, and ensuring that the software remains flexible and maintainable over time. 🏛️ As the *Software Craftsmanship Manifesto* states, a **rewrite should be a last resort, not an inevitability**. ⚖️
 
-### 🤝 A Responsibility to the Craft  
+### 🤝 A Responsibility to the Craft
 Professionalism in software means **taking ownership**—not just of what I build but *how* I build it. 🏆 It means keeping up with new ideas, refining my skills, and being intentional about writing **quality software**. 🧠 It also means treating my employer or client as a **customer** 🤵, not just someone handing me a spec. My job is to provide **solutions, not just code**. This mindset is at the core of Software Craftsmanship, which emphasizes that we should be **not only well-functioning developers but also reliable partners** in building great software. 🎨🏗️  
 
-### 🔄 A Never-Ending Learning Curve  
+### 🔄 A Never-Ending Learning Curve
 Software development is an **ever-changing field**, and that’s what makes it exciting. 🚀 I’m always looking for **better ways** to write code, structure applications, and think about software design. Whether it’s diving into **functional programming** 🧑‍💻, exploring **domain-driven design (DDD)** 🏛️, or improving my ability to communicate technical ideas, I see **learning as a core part of my work**. 🎓 As **Uncle Bob** puts it:  
 
 > *“Professionalism in software means never stopping learning.”* 🎯📚  
