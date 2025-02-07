@@ -8,7 +8,7 @@ In **2014**, I took a leap from studying the past to helping shape the future, s
 
 ## My Professional Philosophy 🚀💻  
 
-After more than a decade in the field, I’ve come to see software engineering as more than just a job — it’s a craft. 🛠️ I don’t just aim to write working software; I aim to write *well-crafted* software. This mindset is at the core of **Software Craftsmanship**, an idea championed by **Bob Martin** (Uncle Bob) and later formalized in the *Software Craftsmanship Manifesto* by **Sandro Mancuso** and others. ✍️ It builds upon Agile principles but pushes them further, focusing on **professionalism, responsibility, and continuous learning**. 📚⚡
+After more than a decade in the field, I’ve come to see software engineering as more than just a job — it’s a craft. 🛠️ I don’t just aim to write working software; I aim to write *well-crafted* software. This mindset is at the core of **Software Craftsmanship**, an idea championed by **Bob Martin** (Uncle Bob) and later formalized in the [*Software Craftsmanship Manifesto*](https://manifesto.softwarecraftsmanship.org/) by **Sandro Mancuso** and others. ✍️ It builds upon Agile principles but pushes them further, focusing on **professionalism, responsibility, and continuous learning**. 📚⚡
 
 Along the way, I also discovered **Extreme Programming (XP)**, a set of technical practices introduced by **Kent Beck** in the late ’90s. XP emphasizes writing **simple, high-quality code** through **discipline, feedback, and iteration**. 🔄 These ideas deeply resonate with how I approach software development. 💡✨  
 
