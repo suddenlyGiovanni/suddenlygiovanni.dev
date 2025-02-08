@@ -1,12 +1,22 @@
-## 🌍 My Journey  
+## 🧑‍🦯‍➡️My Journey 
 
-I’ve always been on a **search for meaning** 🤌— first through history 📜, now through code 💻. Both let me break things apart to understand them — whether it’s human behavior or a tangled stack trace.
+I’ve always been on a **search for meaning** 🤌—first through history 📜, now through code 💻. Both let me break things apart to understand them—whether it’s human behavior or a tangled stack trace.  
 
-Somewhere along the way, I found meaning in something even greater — **family**. I met Morena, the ❤️ love of my life, and together we built something truly meaningful: a home full of chaos, love, and little humans 👨‍👩‍👦‍👦. Becoming a parent changed everything — suddenly, my choices weren’t just about me. I wasn’t the protagonist anymore, but rather a supporting character in their stories, shaping the present and future with them.
+### 🔎 From History to Systems  
 
-In 2014, I took a leap from studying the past to helping shape the future. I realized that my curiosity for breaking things down didn’t have to be limited to history — I could apply it to software too. So I switched careers to software engineering, where I could turn analysis into action and ideas into reality. Turns out, breaking things apart to understand them works just as well in tech as it does in history.
+Studying **Modern History**, I tried to make sense of humanity by analyzing events, behaviors, and patterns. As a **software engineer**, I do the same—only now, my puzzles involve **systems, data, and the occasional stack trace**. Turns out, curiosity and a knack for deconstructing things translate well across disciplines.  
 
-And while the universe may be fundamentally meaningless, my search for meaning hasn’t been in vain. I’ve found purpose in craftsmanship and the joy of learning. And if I don’t always know the question, at least I can take comfort in always knowing the answer — 42.
+### ❤️ Finding Meaning in Family  
+
+Somewhere along the way, I found meaning in something even greater—**family**. I met **Morena**, the ❤️ love of my life, and together we built something truly meaningful: **a home full of chaos, love, and little humans** 👨‍👩‍👦‍👦. Parenthood changed everything—suddenly, my choices weren’t just about me. I wasn’t the protagonist anymore but rather a **supporting character in their stories**, shaping the present and future with them.  
+
+### 👨‍💻 A Leap into Software Engineering  
+
+In **2014**, I took a leap from studying the past to helping shape the future. I realized that my curiosity for breaking things down didn’t have to be limited to history—I could apply it to software too. So I switched careers to **software engineering**, where I could turn **analysis into action and ideas into reality**. Turns out, breaking things apart to understand them works just as well in **tech** as it does in history.  
+
+### 🤖Life, the Universe, and Everything
+
+And while the universe may be fundamentally meaningless, **my search for meaning hasn’t been in vain**. I’ve found purpose in **craftsmanship and the joy of learning**. And if I don’t always know the question, at least I can take comfort in knowing the answer—**42**.  
 
 ## My Professional Philosophy 🚀💻  
 
