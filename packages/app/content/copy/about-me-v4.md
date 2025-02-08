@@ -1,10 +1,12 @@
 ## 🌍 My Journey  
 
-I’ve always been on a **search for meaning** — first through 📜history, then through 💻 code. As a student of Modern History, I tried to make sense of humanity by breaking it down into events, behaviors, and patterns. Now, as a 🔍🛠 software engineer, I do the same — just with systems, data, and the occasional stack trace.
+I’ve always been on a **search for meaning** 🤌— first through history 📜, now through code 💻. Both let me break things apart to understand them — whether it’s human behavior or a tangled stack trace.
 
-Along the way, I met **Morena**, the ❤️ love of my life, and together we built something truly meaningful: 👨‍👩‍👦 **a family**. Parenthood shifted my perspective — suddenly, my choices weren’t just about me but about building a solid future for them.
+Somewhere along the way, I found meaning in something even greater — **family**. I met Morena, the ❤️ love of my life, and together we built something truly meaningful: a home full of chaos, love, and little humans 👨‍👩‍👦‍👦. Becoming a parent changed everything — suddenly, my choices weren’t just about me. I wasn’t the protagonist anymore, but rather a supporting character in their stories, shaping the present and future with them.
 
-In **2014**, I took a leap from studying the past to helping shape the future, switching careers to software engineering. It turns out, **breaking things apart to understand them** works just as well in tech as it does in history. And while the universe may be fundamentally meaningless, I’ve found purpose in craftsmanship and the joy of learning. And if I don’t always know the question, at least I can take comfort in knowing the answer — **42**.  
+In 2014, I took a leap from studying the past to helping shape the future. I realized that my curiosity for breaking things down didn’t have to be limited to history — I could apply it to software too. So I switched careers to software engineering, where I could turn analysis into action and ideas into reality. Turns out, breaking things apart to understand them works just as well in tech as it does in history.
+
+And while the universe may be fundamentally meaningless, my search for meaning hasn’t been in vain. I’ve found purpose in craftsmanship and the joy of learning. And if I don’t always know the question, at least I can take comfort in always knowing the answer — 42.
 
 ## My Professional Philosophy 🚀💻  
 
