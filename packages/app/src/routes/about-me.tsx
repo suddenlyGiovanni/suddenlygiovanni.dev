@@ -98,7 +98,7 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 			<AboutMeContent />
 
 			<T.p>
-					I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently,{' '}
+				I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently,{' '}
 				<strong>I'm located in Berlin, Germany</strong>.
 			</T.p>
 
