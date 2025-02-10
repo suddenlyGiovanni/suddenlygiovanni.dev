@@ -1,22 +1,22 @@
 ## 🧑‍🦯‍➡️My Journey 
 
-I’ve always been on a **search for meaning** 🤌—first through history 📜, now through code 💻. Both let me break things apart to understand them—whether it’s human behavior or a tangled stack trace.  
+I’ve always been on a **search for meaning** 🤌—first through history 📜, now through code 💻. At university, I chose to study **Modern History** because, at the time, it seemed like a great way to **ponder the grand mysteries of human civilization** while simultaneously ensuring I would never be burdened with excessive wealth.  
 
-### 🔎 From History to Systems  
+It was as **intellectually fulfilling** as it was utterly useless in paying the bills.  
 
-Studying **Modern History**, I tried to make sense of humanity by analyzing events, behaviors, and patterns. As a **software engineer**, I do the same—only now, my puzzles involve **systems, data, and the occasional stack trace**. Turns out, curiosity and a knack for deconstructing things translate well across disciplines.  
+That was fine—until I accidentally acquired **a wife and multiple children**.  
 
-### ❤️ Finding Meaning in Family  
+Back then, being broke wasn’t a problem. As long as I could afford books, pasta, and the occasional coffee, life was good. But then I met **Morena**, the ❤️ love of my life, and somehow convinced her to keep me. Fast forward a few years, and we had a **wonderful, chaotic, and highly demanding** family 👨‍👩‍👦‍👦. Suddenly, my choices weren’t just about **which obscure historical rabbit hole to fall into**, but also about **keeping small humans alive and financially supporting them in their relentless quest for snacks**.  
 
-Somewhere along the way, I found meaning in something even greater—**family**. I met **Morena**, the ❤️ love of my life, and together we built something truly meaningful: **a home full of chaos, love, and little humans** 👨‍👩‍👦‍👦. Parenthood changed everything—suddenly, my choices weren’t just about me. I wasn’t the protagonist anymore but rather a **supporting character in their stories**, shaping the present and future with them.  
+I needed a career that was **as intellectually satisfying as history**, but with the added benefit of **not living exclusively on discount noodles**.  
 
-### 👨‍💻 A Leap into Software Engineering  
+**Enter Software Engineering.**  
 
-In **2014**, I took a leap from studying the past to helping shape the future. I realized that my curiosity for breaking things down didn’t have to be limited to history—I could apply it to software too. So I switched careers to **software engineering**, where I could turn **analysis into action and ideas into reality**. Turns out, breaking things apart to understand them works just as well in **tech** as it does in history.  
+Realizing I could get **paid** to tinker with complex systems and break things for a living felt like **finding a loophole in the Matrix**. Instead of being a historian documenting **the fall of empires**, I could now **cause server crashes in real-time**. Jackpot. 🎰💸  
 
-### 🤖Life, the Universe, and Everything
+Turns out, **breaking things apart to understand them** works just as well in tech as it does in history—except now, instead of uncovering the past, I get to **accidentally deploy bugs into the future**.  
 
-And while the universe may be fundamentally meaningless, **my search for meaning hasn’t been in vain**. I’ve found purpose in **craftsmanship and the joy of learning**. And if I don’t always know the question, at least I can take comfort in knowing the answer—**42**.  
+And while the universe may be **fundamentally meaningless**, my search for meaning hasn’t been in vain. I’ve found purpose in **craftsmanship**, **curiosity**, and the **joy of learning**. And if I don’t always know the question, at least I can take comfort in knowing the answer—**42**. 🚀    
 
 ## My Professional Philosophy 🚀💻  
 
