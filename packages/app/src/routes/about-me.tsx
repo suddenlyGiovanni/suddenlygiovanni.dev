@@ -71,7 +71,9 @@ function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RouterLin
 export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
 		<article
-			className={clsx('prose dark:prose-invert flex w-full flex-col justify-start font-comic')}
+			className={clsx(
+				'prose dark:prose-invert flex w-full max-w-full flex-col justify-start font-comic',
+			)}
 			style={{ fontSynthesisWeight: 'initial' }}
 		>
 			<T.h2 className={clsx('font-comic')}>

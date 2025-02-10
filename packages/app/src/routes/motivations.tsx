@@ -19,7 +19,7 @@ export const meta: Route.MetaFunction = () => {
 
 export default function Motivation(_: Route.ComponentProps): ReactElement {
 	return (
-		<article className={clsx('prose dark:prose-invert w-full max-w-none bg-background font-comic')}>
+		<article className={clsx('prose dark:prose-invert max-w-full bg-background font-comic')}>
 			<Motivations />
 			<p>
 				My previous work experience and contact informations are available in my{' '}
