@@ -377,7 +377,7 @@ importers:
         specifier: 4.3.4
         version: 4.3.4(vite@6.1.0(@types/node@22.13.1)(jiti@2.4.2)(lightningcss@1.29.1))
       babel-plugin-react-compiler:
-        specifier: ~19.0.0-beta-714736e-20250131
+        specifier: 19.0.0-beta-e552027-20250112
         version: 19.0.0-beta-e552027-20250112
       class-variance-authority:
         specifier: 0.7.1
