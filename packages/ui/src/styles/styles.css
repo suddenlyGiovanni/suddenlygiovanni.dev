@@ -69,6 +69,8 @@
 	--animate-accordion-open: accordion-open 1000ms ease-out;
 	--animate-accordion-close: accordion-close 1000ms ease-out;
 
+	--animate-wiggle: wiggle 1s ease-in-out infinite;
+
 	@keyframes accordion-open {
 		from {
 			width: 0;
@@ -79,6 +81,7 @@
 			height: var(--radix-accordion-content-height);
 		}
 	}
+
 	@keyframes accordion-close {
 		from {
 			width: var(--radix-accordion-content-width);
@@ -89,6 +92,7 @@
 			height: 0;
 		}
 	}
+
 	@keyframes accordion-down {
 		from {
 			height: 0;
@@ -97,12 +101,23 @@
 			height: var(--radix-accordion-content-height);
 		}
 	}
+
 	@keyframes accordion-up {
 		from {
 			height: var(--radix-accordion-content-height);
 		}
 		to {
 			height: 0;
+		}
+	}
+
+	@keyframes wiggle {
+		0%,
+		100% {
+			transform: rotate(-10deg);
+		}
+		50% {
+			transform: rotate(10deg);
 		}
 	}
 }

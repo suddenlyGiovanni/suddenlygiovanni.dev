@@ -4,20 +4,6 @@
 @source "@suddenly-giovanni/ui/ui/**/*.tsx";
 @source "@suddenly-giovanni/ui/components/**/*.tsx";
 
-@theme {
-	--animate-wiggle: wiggle 1s ease-in-out infinite;
-
-	@keyframes wiggle {
-		0%,
-		100% {
-			transform: rotate(-10deg);
-		}
-		50% {
-			transform: rotate(10deg);
-		}
-	}
-}
-
 html {
 	color-scheme: light dark;
 
