@@ -3,16 +3,8 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/node_modules" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/config-eslint/node_modules" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/config-prettier/node_modules" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/config-tailwind/node_modules" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/config-typescript/node_modules" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/open-graph-protocol/node_modules" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/ui/node_modules" />
-      <excludeFolder url="file://$MODULE_DIR$/packages/app/node_modules" />
-      <excludeFolder url="file://$MODULE_DIR$/.pnpm" />
       <excludeFolder url="file://$MODULE_DIR$/.direnv" />
+      <excludeFolder url="file://$MODULE_DIR$/packages/eslint-config/node_modules" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
