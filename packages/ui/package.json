@@ -57,7 +57,8 @@
 		"./lib/*": "./src/lib/*",
 		"./components/*": "./src/components/*",
 		"./ui/*": "./src/ui/*",
-		"./hooks/*": "./src/hooks/*"
+		"./hooks/*": "./src/hooks/*",
+		"./styles.css": "./src/styles/styles.css"
 	},
 	"imports": {
 		"#*": "./src/*"
