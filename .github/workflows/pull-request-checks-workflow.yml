@@ -56,7 +56,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: suddenlyGiovanni/suddenlygiovanni.dev
-          working-directory: apps/web
+          working-directory: packages/web
           directory: coverage
           fail_ci_if_error: false
 

@@ -19,8 +19,8 @@ jobs:
       - name: 🚀Deploy to Production
         run: |
           flyctl deploy . \
-            --config ./apps/web/fly.yaml \
-            --dockerfile ./apps/web/Dockerfile \
+            --config ./packages/web/fly.yaml \
+            --dockerfile ./packages/web/Dockerfile \
             --build-target production \
             --remote-only
         env:

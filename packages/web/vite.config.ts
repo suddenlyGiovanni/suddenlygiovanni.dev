@@ -32,7 +32,7 @@ export default defineConfig(({ isSsrBuild }) => ({
 			}),
 		},
 		babel({
-			include: ['./src/**/*', '../../packages/ui/src/**/*'],
+			include: ['./src/**/*', '../ui/src/**/*'],
 			filter(name: string): boolean {
 				return name.endsWith('.tsx')
 			},
