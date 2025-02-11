@@ -13,6 +13,8 @@ Turns out, **breaking things apart to understand them** works just as well in te
 
 And while the universe may be **fundamentally meaningless**, my search for meaning hasn’t been in vain. I’ve found purpose in **craftsmanship**, **curiosity**, and the **joy of learning**. And if I don’t always know the question, at least I can take comfort in knowing the answer—**42** 🚀.
 
+
+
 ## 💻 My Professional Philosophy
 
 After more than a decade in the field, I’ve come to see software engineering as more than just a job — it’s a craft. 🛠️ I don’t just aim to write working software; I aim to write *well-crafted* software. This mindset is at the core of **Software Craftsmanship**, an idea championed by **Bob Martin** (Uncle Bob) and later formalized in the [*Software Craftsmanship Manifesto*](https://manifesto.softwarecraftsmanship.org/) by **Sandro Mancuso** and others ✍️. It builds upon Agile principles but pushes them further, focusing on **professionalism, responsibility, and continuous learning** 📚⚡.
@@ -37,6 +39,11 @@ Professionalism in software means **taking ownership** — not just of what I bu
 
 ### 🔄 A Never-Ending Learning Curve
 
-Software development is an **ever-changing field**, and that’s what makes it exciting. 🚀 I’m always looking for **better ways** to write code, structure applications, and think about software design. Whether it’s diving into **functional programming** 🧑‍💻, exploring **domain-driven design (DDD)** 🏛️, or improving my ability to communicate technical ideas, I see **learning as a core part of my work** 🎓. As **Uncle Bob** puts it:
+Software development is an **ever-changing field**, and that’s what makes it exciting. 🚀 I’m always looking for **better ways** to write code, structure applications, and think about software design. Whether it’s diving into **functional programming** 🧑‍💻, exploring **domain-driven design (DDD)** 🏛️, or improving my ability to communicate technical ideas, I see **learning as a core part of my work** 🎓.
 
-> **Professionalism in software means never stopping learning.** 🎯📚
+As **Uncle Bob** puts it: "_Professionalism in software means never stopping learning_" 📚.
+
+
+I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently, **I'm located in Berlin, Germany**.
+
+You can **find me on** [🐦 Twitter](https://twitter.com/suddenlyGio), [🐙 GitHub](https://github.com/suddenlyGiovanni), and [🦵 LinkedIn](https://www.linkedin.com/in/giovanni-ravalico).
