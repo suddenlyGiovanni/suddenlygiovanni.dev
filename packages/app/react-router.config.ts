@@ -6,7 +6,5 @@ export default {
 	serverBuildFile: 'index.js',
 	buildDirectory: 'build',
 	ssr: true,
-	future: {
-		unstable_optimizeDeps: true,
-	},
+	future: {},
 } satisfies Config
