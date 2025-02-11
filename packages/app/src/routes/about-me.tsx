@@ -1,5 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactElement } from 'react'
-import { Link as RouterLink } from 'react-router'
+import type { ReactElement } from 'react'
 
 import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
@@ -17,7 +16,7 @@ import hero1826wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_col
 import hero2314wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2314.webp'
 import hero2670wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp'
 import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
-import AboutMeContent from 'content/copy/about-me.md'
+import AboutMeContent from 'content/copy/about-me-v4.md'
 
 import { config } from '#config.ts'
 
@@ -59,23 +58,17 @@ const imgSrcSet = [
 	`${hero2800wAssetUrl} 2800w`,
 ].join(', ')
 
-function Link({ className, ...props }: ComponentPropsWithoutRef<typeof RouterLink>): ReactElement {
-	return (
-		<RouterLink
-			className={clsx('underline decoration-auto decoration-wavy underline-offset-4', className)}
-			{...props}
-		/>
-	)
-}
-
 export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
 		<article
-			className={clsx('prose dark:prose-invert flex w-full flex-col justify-start font-comic')}
+			className={clsx(
+				'prose dark:prose-invert flex w-full max-w-full flex-col justify-start font-comic',
+			)}
+			style={{ fontSynthesisWeight: 'initial' }}
 		>
 			<T.h2 className={clsx('font-comic')}>
-				Hi! I'm Giovanni{' '}
-				<div className={clsx('inline-block animate-wiggle hover:animate-none')}>👋</div>
+				<div className={clsx('inline-block animate-wiggle hover:animate-none')}>👋</div> Hi, I'm
+				Giovanni!
 			</T.h2>
 			<picture>
 				<source
@@ -93,39 +86,6 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 			</picture>
 
 			<AboutMeContent />
-
-			<T.p>
-				I lived in 🇮🇹 Italy, 🇭🇷 Croatia, and 🇩🇪 Germany. Currently,{' '}
-				<strong>I'm located in Berlin, Germany</strong>.
-			</T.p>
-
-			<T.p>
-				You can <strong>find me on</strong>{' '}
-				<T.a
-					href={config.socials.Twitter.url}
-					target="_blank"
-					rel="noreferrer"
-				>
-					🐦 Twitter
-				</T.a>
-				,{' '}
-				<T.a
-					href={config.socials.GitHub.url}
-					target="_blank"
-					rel="noreferrer"
-				>
-					🐙 GitHub
-				</T.a>
-				, and{' '}
-				<T.a
-					href={config.socials.LinkedIn.url}
-					target="_blank"
-					rel="noreferrer"
-				>
-					🦵 LinkedIn
-				</T.a>
-				.
-			</T.p>
 		</article>
 	)
 }
