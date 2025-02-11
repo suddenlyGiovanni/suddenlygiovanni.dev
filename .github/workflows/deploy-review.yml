@@ -37,7 +37,7 @@ jobs:
         id: deploy
         uses: suddenlyGiovanni/fly-pr-review-apps@ci/with-secrets
         with:
-          config: ./apps/web/fly.review.yaml
+          config: ./packages/app/fly.review.yaml
           name: suddenlygiovanni-dev-${{ github.event.number }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
 

@@ -1,9 +1,5 @@
 name: 💉Setup the project
 description: Perform standard setup and install dependencies using pnpm.
-inputs:
-  github_packages_token:
-    description: 'GitHub token for accessing GitHub Packages registry'
-    required: true
 runs:
   using: composite
   steps:

@@ -36,7 +36,7 @@ ENV DO_NOT_TRACK=1
 
 COPY . .
 
-RUN pnpm dlx turbo prune --docker "@suddenly-giovanni/web"
+RUN pnpm dlx turbo prune --docker "@suddenly-giovanni/app"
 
 
 FROM base AS build
@@ -54,15 +54,19 @@ RUN pnpm fetch
 # Build the project
 COPY --from=builder /home/node/out/full/ .
 
-RUN cd ./apps/web
+RUN cd ./packages/app
 
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod=false
 
 ENV NODE_ENV="production"
 
-RUN pnpm exec turbo build --filter=@suddenly-giovanni/web
+RUN pnpm exec turbo run build --filter=@suddenly-giovanni/app
 
-RUN pnpm --filter @suddenly-giovanni/web --prod --no-optional deploy pruned
+# Deploy a package from a workspace:
+# During deployment, the files of the deployed package are copied to the target directory.
+# All dependencies of the deployed package, including dependencies from the workspace, are installed inside an isolated node_modules directory at the target directory.
+# The target directory will contain a portable package that can be copied to a server and executed without additional steps.
+RUN pnpm --filter @suddenly-giovanni/app --prod --no-optional deploy pruned
 
 
 FROM base AS production
@@ -73,9 +77,9 @@ ENV HOST="0.0.0.0"
 
 COPY --from=build --chown=node:node /home/node/pruned/package.json .
 COPY --from=build --chown=node:node /home/node/pruned/node_modules ./node_modules
-COPY --from=build --chown=node:node /home/node/apps/web/server ./server
-COPY --from=build --chown=node:node /home/node/apps/web/build ./build
-COPY --from=build --chown=node:node /home/node/apps/web/react-router.config.ts ./react-router.config.ts
+COPY --from=build --chown=node:node /home/node/packages/app/server ./server
+COPY --from=build --chown=node:node /home/node/packages/app/build ./build
+COPY --from=build --chown=node:node /home/node/packages/app/react-router.config.ts ./react-router.config.ts
 
 USER node
 

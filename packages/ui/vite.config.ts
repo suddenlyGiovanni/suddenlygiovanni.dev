@@ -10,7 +10,7 @@ const ReactCompilerConfig = {
 export default defineConfig({
 	resolve: {
 		alias: {
-			'@fonts': resolve('../../apps/web/public/fonts'),
+			'@fonts': resolve('../app/public/fonts'),
 		},
 	},
 	build: { target: 'esnext' },

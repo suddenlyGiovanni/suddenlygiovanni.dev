@@ -100,8 +100,6 @@ jobs:
 
       - name: 🧩 Install dependencies
         uses: ./.github/actions/setup
-        with:
-          github_packages_token: ${{ secrets.GH_PACKAGES_TOKEN }}
 
       - name: 🐶 reviewdog with tsc (TypeScript) - packages/ui
         uses: EPMatt/reviewdog-action-tsc@v1
@@ -114,7 +112,7 @@ jobs:
           fail_on_error: false
           tsc_flags: "--noEmit --pretty --project packages/ui"
 
-      - name: 🐶 reviewdog with tsc (TypeScript) - apps/web
+      - name: 🐶 reviewdog with tsc (TypeScript) - packages/app
         uses: EPMatt/reviewdog-action-tsc@v1
         with:
           github_token: ${{ secrets.github_token }}
@@ -123,7 +121,7 @@ jobs:
           reporter: github-pr-review
           filter_mode: nofilter
           fail_on_error: false
-          tsc_flags: "--noEmit --pretty --project apps/web"
+          tsc_flags: "--noEmit --pretty --project packages/app"
 
   biome:
     name: runner / Biome
