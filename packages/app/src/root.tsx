@@ -18,7 +18,6 @@ import faviconAssertUrl from 'content/assets/suddenly_giovanni-icon-white.svg'
 import { config } from '#config.ts'
 import { useOptionalTheme, useTheme } from '#routes/resources/theme-switch.tsx'
 import { Footer, GeneralErrorBoundary, Header } from '#shell/index.tsx'
-import fontStyleSheetUrl from '#styles/fonts.css?url'
 import tailwindStyleSheetUrl from '#styles/tailwind.css?url'
 import { getHints } from '#utils/client-hints.tsx'
 import { ClientHintCheck } from '#utils/client-hints.tsx'
@@ -38,8 +37,12 @@ export const links: Route.LinksFunction = () => {
 			type: 'image/svg+xml',
 			href: faviconAssertUrl,
 		},
-		{ rel: 'preload', href: fontStyleSheetUrl, as: 'style' },
-		{ rel: 'stylesheet', href: fontStyleSheetUrl },
+		{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+		{ rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'use-credentials' },
+		{
+			rel: 'stylesheet',
+			href: 'https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght,BNCE,INFM,SPAC@0,300..800,-100..100,0..100,0..100;1,300..800,-100..100,0..100,0..100&display=swap',
+		},
 		{ rel: 'stylesheet', href: tailwindStyleSheetUrl, type: 'text/css' },
 	]
 }

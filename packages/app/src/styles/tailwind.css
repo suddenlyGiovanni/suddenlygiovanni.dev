@@ -10,7 +10,7 @@
 @variant dark (&:is([data-theme="dark"] *));
 
 @theme {
-	--font-comic: "Shantell Sans", cursive;
+	--font-comic: "Shantell Sans", serif;
 	--font-comic--font-feature-settings: "cv11", "ss01";
 	--font-comic--font-variation-settings: "BNCE" 30, "INFM" 50, "SPAC" 0;
 
@@ -161,7 +161,7 @@
 }
 
 .font-comic-hero {
-	font-family: "Shantell Sans", cursive;
+	font-family: "Shantell Sans", serif;
 	font-optical-sizing: auto;
 	font-weight: 500;
 	font-style: italic;
