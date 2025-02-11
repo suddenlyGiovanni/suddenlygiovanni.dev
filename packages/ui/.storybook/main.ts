@@ -22,7 +22,7 @@ export default defineConfig({
 	docs: {},
 	staticDirs: [
 		// make sure we are serving the same assets as the Remix app
-		'../../web/public',
+		'../../app/public',
 	],
 	typescript: {
 		reactDocgen: 'react-docgen-typescript',
