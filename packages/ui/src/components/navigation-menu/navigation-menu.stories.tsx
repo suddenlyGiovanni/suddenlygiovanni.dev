@@ -1,6 +1,5 @@
 import type { Meta } from '@storybook/react'
-import type { ComponentPropsWithoutRef, ElementRef, ReactElement } from 'react'
-import { forwardRef } from 'react'
+import type { ComponentPropsWithRef, FC, ReactElement } from 'react'
 import { Link } from 'react-router'
 
 import { Icons } from '#components/icons/icons.tsx'
@@ -133,29 +132,33 @@ export function Default(): ReactElement {
 	)
 }
 
-const ListItem = forwardRef<ElementRef<'a'>, ComponentPropsWithoutRef<'a'>>(
-	({ className, title, children, ...props }, ref) => {
-		return (
-			<li>
-				<NavigationMenuLink asChild={true}>
-					<a
-						className={clsx(
-							'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
-							className,
-						)}
-						ref={ref}
-						{...props}
-					>
-						<div className={clsx('text-sm', 'font-medium', 'leading-none')}>{title}</div>
-						<p className={clsx('line-clamp-2', 'text-sm', 'leading-snug', 'text-muted-foreground')}>
-							{children}
-						</p>
-					</a>
-				</NavigationMenuLink>
-			</li>
-		)
-	},
-)
+const ListItem: FC<ComponentPropsWithRef<'a'>> = ({
+	className,
+	title,
+	children,
+	ref,
+	...props
+}) => {
+	return (
+		<li>
+			<NavigationMenuLink asChild={true}>
+				<a
+					className={clsx(
+						'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-hidden transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+						className,
+					)}
+					ref={ref}
+					{...props}
+				>
+					<div className={clsx('text-sm', 'font-medium', 'leading-none')}>{title}</div>
+					<p className={clsx('line-clamp-2', 'text-sm', 'leading-snug', 'text-muted-foreground')}>
+						{children}
+					</p>
+				</a>
+			</NavigationMenuLink>
+		</li>
+	)
+}
 ListItem.displayName = 'ListItem'
 
 export default meta
