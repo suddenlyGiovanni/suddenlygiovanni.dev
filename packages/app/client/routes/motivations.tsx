@@ -5,8 +5,8 @@ import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
 import Motivations from 'content/copy/motivations.md'
 
-import { config } from '#config.ts'
-import { routesRecord } from '#routes-record.ts'
+import { config } from '#root/client/config.ts'
+import { routesRecord } from '#root/client/routes-record.ts'
 
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/motivations.ts'

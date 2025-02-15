@@ -6,11 +6,11 @@ import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-proto
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
 import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
-import { config } from '#config.ts'
-import { routesRecord } from '#routes-record.ts'
-import { Languages } from '#routes/resume/languages.tsx'
-import { loaderFunction } from '#services/index.ts'
-import { ResumeRepository } from '#services/resume-repository.ts'
+import { config } from '#root/client/config.ts'
+import { routesRecord } from '#root/client/routes-record.ts'
+import { Languages } from '#root/client/routes/resume/languages.tsx'
+import { loaderFunction } from '#root/client/services/index.ts'
+import { ResumeRepository } from '#root/client/services/resume-repository.ts'
 
 import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'

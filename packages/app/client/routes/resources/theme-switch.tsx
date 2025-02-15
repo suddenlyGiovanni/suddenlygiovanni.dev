@@ -9,9 +9,9 @@ import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 
-import { useHints, useOptionalHints } from '#utils/client-hints.tsx'
-import { useOptionalRequestInfo, useRequestInfo } from '#utils/request-info.ts'
-import { setTheme } from '#utils/theme.server.ts'
+import { useHints, useOptionalHints } from '#root/client/utils/client-hints.tsx'
+import { useOptionalRequestInfo, useRequestInfo } from '#root/client/utils/request-info.ts'
+import { setTheme } from '#root/client/utils/theme.server.ts'
 
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from '.react-router/types/src/routes/resources/+types/theme-switch.ts'
