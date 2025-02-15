@@ -18,6 +18,6 @@
 		],
 		"rootDirs": [".", "./.react-router/types"]
 	},
-	"include": ["vite.config.ts", ".react-router/types/**/*", "src/**/*", "types/*.d.ts"],
+	"include": ["vite.config.ts", ".react-router/types/**/*", "client/**/*", "types/*.d.ts"],
 	"exclude": ["build", "node_modules", "./~"]
 }

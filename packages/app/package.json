@@ -5,7 +5,7 @@
 		}
 	},
 	"imports": {
-		"#*": "./src/*"
+		"#*": "./client/*"
 	},
 	"dependencies": {
 		"@conform-to/react": "1.2.2",
