@@ -9,7 +9,7 @@
 	},
 	"devDependencies": {
 		"@suddenly-giovanni/config-typescript": "workspace:*",
-		"typescript": "5.8.0-beta"
+		"typescript": "5.8.1-rc"
 	},
 	"exports": {
 		".": "./src/index.ts"
