@@ -2,7 +2,7 @@
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
 	"extends": ["../../biome.json"],
 	"files": {
-		"include": ["src/*"],
+		"include": ["client/*"],
 		"ignoreUnknown": true,
 		"ignore": ["./~", ".react-router"]
 	},
@@ -44,7 +44,7 @@
 			}
 		},
 		{
-			"include": ["app/routes/**/*.tsx"],
+			"include": ["client/routes/**/*.tsx"],
 			"linter": {
 				"rules": {
 					"style": {
