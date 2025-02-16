@@ -7,8 +7,8 @@ import { useToggle } from '@suddenly-giovanni/ui/hooks/use-toggle.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
 import avatarAssetUrl from 'content/assets/giovanni_ravalico-profile_bw.webp'
-import { routesRecord } from '#routes-record.ts'
-import { ThemeSwitch } from '#routes/resources/theme-switch.tsx'
+import { routesRecord } from '#root/client/routes-record.ts'
+import { ThemeSwitch } from '#root/client/routes/resources/theme-switch.tsx'
 
 import { NavLink } from './nav-link.tsx'
 

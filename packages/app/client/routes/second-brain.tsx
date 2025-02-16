@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
-import { routesRecord } from '#routes-record.ts'
+import { routesRecord } from '#root/client/routes-record.ts'
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/second-brain.ts'
 
