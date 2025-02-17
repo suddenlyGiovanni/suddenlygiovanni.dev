@@ -51,7 +51,6 @@ function isModuleExpressApp(module: unknown): module is { app: express.Applicati
 		module &&
 		typeof module === 'object' &&
 		'app' in module &&
-		typeof module.app === 'function' &&
 		typeof module.app === 'function' && // First, must be a function itself
 		'use' in module.app &&
 		typeof module.app.use === 'function' && // Middleware registration
