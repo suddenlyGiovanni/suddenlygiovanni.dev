@@ -4,6 +4,7 @@ import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-proto
 import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
+import { config } from '#root/client/config.ts'
 import hero200wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp?url'
 import hero811wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp?url'
 import hero1200wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp?url'
@@ -17,8 +18,7 @@ import hero2314wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profi
 import hero2670wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp?url'
 import hero2800wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp?url'
 import AboutMeContent from '#root/content/copy/about-me-v4.md'
-
-import { config } from '#root/client/config.ts'
+import type { Strings } from '#root/types/index.ts'
 
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/about-me.ts'
@@ -40,19 +40,33 @@ export function meta({ location }: Route.MetaArgs) {
 	]
 }
 
-export type PrependIfDefined<T extends string, S extends string> = T extends '' ? T : `${S}${T}`
-
-export type ConcatSeparator<T extends string[], S extends string> = T extends [
-	infer F extends string,
-	...infer R extends string[],
-]
-	? `${F}${PrependIfDefined<ConcatSeparator<R, S>, S>}`
-	: ''
-
+/**
+ * A higher-order function that generates a string concatenation function
+ * with a specified separator. The resulting function can concatenate
+ * multiple string arguments, inserting the given separator between each
+ * string.
+ *
+ * @template S - The type of the separator string.
+ * @param {S} separator - The string used to separate concatenated strings.
+ * @returns {<T extends string[]>(...strings: T) => Strings.ConcatSeparator<T, S>}
+ * A function that takes an arbitrary number of string arguments and returns
+ * a single concatenated string with the specified separator inserted between them.
+ *
+ * @example
+ * ```ts
+ * const commaSeparated = concatSeparator(', ');
+ * const result = commaSeparated('one', 'two', 'three');
+ * console.log(result); // "one, two, three"
+ *
+ * const dashSeparated = concatSeparator(' - ');
+ * const dashResult = dashSeparated('a', 'b', 'c');
+ * console.log(dashResult); // "a - b - c"
+ * ```
+ */
 const concatSeparator =
-	<S extends string>(separator: S) =>
-	<T extends string[]>(...strings: T): ConcatSeparator<T, S> =>
-		strings.join(separator) as ConcatSeparator<T, S>
+	<const S extends string>(separator: S) =>
+	<const T extends string[]>(...strings: T): Strings.ConcatSeparator<T, S> =>
+		strings.join(separator) as Strings.ConcatSeparator<T, S>
 
 const sourceSrcSet = concatSeparator(', ')(
 	`${hero200wAssetUrl} 200w`,
