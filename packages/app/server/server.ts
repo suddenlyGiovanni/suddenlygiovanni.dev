@@ -46,22 +46,67 @@ sourceMapSupport.install({
 	},
 })
 
+function isModuleExpressApp(module: unknown): module is { app: express.Application } {
+	if (
+		module &&
+		typeof module === 'object' &&
+		'app' in module &&
+		typeof module.app === 'function' && // First, must be a function itself
+		'use' in module.app &&
+		typeof module.app.use === 'function' && // Middleware registration
+		'listen' in module.app &&
+		typeof module.app.listen === 'function' && // Start server
+		'get' in module.app &&
+		typeof module.app.get === 'function' && // HTTP GET route handler
+		'post' in module.app &&
+		typeof module.app.post === 'function' && // HTTP POST route handler
+		'set' in module.app &&
+		typeof module.app.set === 'function' && // Set app settings
+		'locals' in module.app &&
+		typeof module.app.locals === 'object' // App-local variables
+	) {
+		return true
+	}
+	return false
+}
+
+export class InvalidServerBuildFileError extends Error {
+	constructor() {
+		super('Invalid server build file; must export an Express application instance')
+	}
+}
+
+/**
+ * Asserts that the provided module is an object containing an Express application.
+ *
+ * @param module - The module to be validated.
+ * @return Confirms that the module includes an Express application property if the assertion passes.
+ */
+function assertModuleExpressApp(module: unknown): asserts module is { app: express.Application } {
+	if (!isModuleExpressApp(module)) {
+		throw new InvalidServerBuildFileError()
+	}
+}
+
 /**
  * Retrieves the production server application instance.
  *
  * This method dynamically imports the required configuration and server files
  * to set up and return the production server application.
  *
- * @return {Promise<express.Express>} A promise resolving to the Express application instance.
+ * @return A promise resolving to the Express application instance.
  */
-async function getProductionServer(): Promise<express.Express> {
+export async function getProductionServer(): Promise<express.Application> {
 	return import('../react-router.config.ts')
 		.then(mod => mod.default)
 		.then(({ buildDirectory, serverBuildFile }) =>
 			path.resolve(path.join(buildDirectory, 'server', serverBuildFile)),
 		)
 		.then(serverBuildPath => import(serverBuildPath))
-		.then(mod => mod.app)
+		.then((module: unknown) => {
+			assertModuleExpressApp(module)
+			return module.app
+		})
 }
 
 /**
@@ -90,9 +135,8 @@ export const DEFAULT_PORT = 5173
  *  --inspect-wait                    \
  *  --watch                           \
  *  --experimental-network-inspection \
- *  --experimental-strip-types        \
  *  --experimental-transform-types    \
- *  server/main.ts ./build/server/index.js
+ *  server/main.ts
  * ```
  */
 export async function run(): Promise<http.Server> {
@@ -164,7 +208,7 @@ export async function run(): Promise<http.Server> {
 			break
 		}
 		default:
-			throw new Error(`Unknown NODE_ENV: ${NODE_ENV}`)
+			throw new NodeEnvError(NODE_ENV)
 	}
 
 	/**
@@ -219,3 +263,17 @@ export async function run(): Promise<http.Server> {
 }
 
 run()
+
+/**
+ * Represents an error that occurs when an undefined or invalid `NODE_ENV` value is encountered.
+ *
+ * This error class is specifically designed to handle unexpected or invalid
+ * `NODE_ENV` values that are not handled in the application.
+ *
+ * @param _nodeEnv - The invalid or unexpected `NODE_ENV` value, provided to enforce type safety.
+ */
+class NodeEnvError extends Error {
+	constructor(_nodeEnv: never) {
+		super('Unknown NODE_ENV')
+	}
+}
