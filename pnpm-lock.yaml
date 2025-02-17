@@ -97,6 +97,9 @@ importers:
       react-router:
         specifier: 7.1.5
         version: 7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      react-router-hono-server:
+        specifier: 2.8.5
+        version: 2.8.5(@react-router/dev@7.1.5(@types/node@22.13.4)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-router@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.8.1-rc)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)))(@types/react@19.0.8)(react-router@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1))
       remix-utils:
         specifier: 8.1.0
         version: 8.1.0(react-router@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(zod@3.24.1)
@@ -677,6 +680,9 @@ packages:
     peerDependencies:
       react: ~19.0.0
 
+  '@drizzle-team/brocli@0.11.0':
+    resolution: {integrity: sha512-hD3pekGiPg0WPCCGAZmusBBJsDqGUR66Y452YgQsZOnkdQ7ViEPKuyP4huUGEZQefp8g34RRodXYmJ2TbCH+tg==}
+
   '@emotion/babel-plugin@11.13.5':
     resolution: {integrity: sha512-pxHCpT2ex+0q+HH91/zsdHkw/lXd468DIN2zvfvLtPKLLMo6gQj7oLObq8PhkrxOZb/gGCq03S3Z7PDhS8pduQ==}
 
@@ -934,6 +940,32 @@ packages:
 
   '@formatjs/intl-localematcher@0.5.9':
     resolution: {integrity: sha512-8zkGu/sv5euxbjfZ/xmklqLyDGQSxsLqg8XOq88JW3cmJtzhCP8EtSJXlaKZnVO4beEaoiT9wj4eIoCQ9smwxA==}
+
+  '@hono/node-server@1.13.8':
+    resolution: {integrity: sha512-fsn8ucecsAXUoVxrUil0m13kOEq4mkX4/4QozCqmY+HpGfKl74OYSn8JcMA8GnG0ClfdRI4/ZSeG7zhFaVg+wg==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: ^4
+
+  '@hono/node-ws@1.0.8':
+    resolution: {integrity: sha512-LhoJeaFsrgP9prhudqI/9finYjtjTyv4oXd0IjORRV7BGpmGkKaleYyT2zEl7I4scv0e0HJfvNcVMnzxGAHvQw==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      '@hono/node-server': ^1.11.1
+      hono: ^4.6.0
+
+  '@hono/vite-dev-server@0.17.0':
+    resolution: {integrity: sha512-EvGOIj1MoY9uV94onXXz88yWaTxzUK+Mv8LiIEsR/9eSFoVUnHVR0B7l7iNIsxfHYRN7tbPDMWBSnD2RQun3yw==}
+    engines: {node: '>=18.14.1'}
+    peerDependencies:
+      hono: '*'
+      miniflare: '*'
+      wrangler: '*'
+    peerDependenciesMeta:
+      miniflare:
+        optional: true
+      wrangler:
+        optional: true
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -4132,6 +4164,10 @@ packages:
   hermes-parser@0.25.1:
     resolution: {integrity: sha512-6pEjquH3rqaI6cYAXYPcz9MS4rY6R4ngRgrgfDshRptUZIc3lw0MCIJIGDj9++mfySOuPTHB4nrSW99BCvOPIA==}
 
+  hono@4.7.1:
+    resolution: {integrity: sha512-V3eWoPkBxoNgFCkSc5Y5rpLF6YoQQx1pkYO4qrF6YfOw8RZbujUNlJLZCxh0z9gZct70+je2Ih7Zrdpv21hP9w==}
+    engines: {node: '>=16.9.0'}
+
   hosted-git-info@6.1.3:
     resolution: {integrity: sha512-HVJyzUrLIL1c0QmviVh5E8VGyUS7xCFPS6yydaVd1UegW+ibV/CohqTH9MkOLDp5o+rb82DMo77PTuc9F/8GKw==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -5191,6 +5227,26 @@ packages:
       react: ~19.0.0
       react-dom: ~19.0.0
       vite: '>=5.0.0'
+
+  react-router-hono-server@2.8.5:
+    resolution: {integrity: sha512-z/zG/BeGq9uioQxpvgYoL/jTpqviu4UqpzpJ0sX7wq4Bxg3illoCGRn/TeLDtWwkTSCRFZ7QPsL0cyMT6aPWDA==}
+    engines: {node: '>=22.12.0'}
+    hasBin: true
+    peerDependencies:
+      '@cloudflare/workers-types': ^4.20241112.0
+      '@react-router/dev': ^7.0.0
+      '@types/react': ^19.0.0
+      miniflare: ^3.20241205.0
+      react-router: ^7.1.0
+      vite: ^5.1.0 || ^6.0.0
+      wrangler: ^3.91.0
+    peerDependenciesMeta:
+      '@cloudflare/workers-types':
+        optional: true
+      miniflare:
+        optional: true
+      wrangler:
+        optional: true
 
   react-router@7.0.0-pre.2:
     resolution: {integrity: sha512-SKt4Era+LiwvXnqM05MsogMF79DJ33Gw6TYDjjfQyuU9Rca5ub+DrU4UpQshB28PuXqcjMd5Zbo1H1eM0LQPhg==}
@@ -6476,6 +6532,8 @@ snapshots:
       '@conform-to/dom': 1.2.2
       react: 19.0.0
 
+  '@drizzle-team/brocli@0.11.0': {}
+
   '@emotion/babel-plugin@11.13.5':
     dependencies:
       '@babel/helper-module-imports': 7.25.9
@@ -6699,6 +6757,25 @@ snapshots:
   '@formatjs/intl-localematcher@0.5.9':
     dependencies:
       tslib: 2.8.1
+
+  '@hono/node-server@1.13.8(hono@4.7.1)':
+    dependencies:
+      hono: 4.7.1
+
+  '@hono/node-ws@1.0.8(@hono/node-server@1.13.8(hono@4.7.1))(hono@4.7.1)':
+    dependencies:
+      '@hono/node-server': 1.13.8(hono@4.7.1)
+      hono: 4.7.1
+      ws: 8.18.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+
+  '@hono/vite-dev-server@0.17.0(hono@4.7.1)':
+    dependencies:
+      '@hono/node-server': 1.13.8(hono@4.7.1)
+      hono: 4.7.1
+      minimatch: 9.0.5
 
   '@humanfs/core@0.19.1': {}
 
@@ -10701,6 +10778,8 @@ snapshots:
     dependencies:
       hermes-estree: 0.25.1
 
+  hono@4.7.1: {}
+
   hosted-git-info@6.1.3:
     dependencies:
       lru-cache: 7.18.3
@@ -12009,6 +12088,21 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
       - supports-color
+
+  react-router-hono-server@2.8.5(@react-router/dev@7.1.5(@types/node@22.13.4)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-router@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.8.1-rc)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)))(@types/react@19.0.8)(react-router@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)):
+    dependencies:
+      '@drizzle-team/brocli': 0.11.0
+      '@hono/node-server': 1.13.8(hono@4.7.1)
+      '@hono/node-ws': 1.0.8(@hono/node-server@1.13.8(hono@4.7.1))(hono@4.7.1)
+      '@hono/vite-dev-server': 0.17.0(hono@4.7.1)
+      '@react-router/dev': 7.1.5(@types/node@22.13.4)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(lightningcss@1.29.1)(react-router@7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.8.1-rc)(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1))
+      '@types/react': 19.0.8
+      hono: 4.7.1
+      react-router: 7.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      vite: 6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
 
   react-router@7.0.0-pre.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
