@@ -46,6 +46,49 @@ sourceMapSupport.install({
 	},
 })
 
+function isModuleExpressApp(module: unknown): module is { app: express.Application } {
+	if (
+		module &&
+		typeof module === 'object' &&
+		'app' in module &&
+		typeof module.app === 'function' &&
+		typeof module.app === 'function' && // First, must be a function itself
+		'use' in module.app &&
+		typeof module.app.use === 'function' && // Middleware registration
+		'listen' in module.app &&
+		typeof module.app.listen === 'function' && // Start server
+		'get' in module.app &&
+		typeof module.app.get === 'function' && // HTTP GET route handler
+		'post' in module.app &&
+		typeof module.app.post === 'function' && // HTTP POST route handler
+		'set' in module.app &&
+		typeof module.app.set === 'function' && // Set app settings
+		'locals' in module.app &&
+		typeof module.app.locals === 'object' // App-local variables
+	) {
+		return true
+	}
+	return false
+}
+
+export class InvalidServerBuildFileError extends Error {
+	constructor() {
+		super('Invalid server build file; must export an Express application instance')
+	}
+}
+
+/**
+ * Asserts that the provided module is an object containing an Express application.
+ *
+ * @param module - The module to be validated.
+ * @return Confirms that the module includes an Express application property if the assertion passes.
+ */
+function assertModuleExpressApp(module: unknown): asserts module is { app: express.Application } {
+	if (!isModuleExpressApp(module)) {
+		throw new InvalidServerBuildFileError()
+	}
+}
+
 /**
  * Retrieves the production server application instance.
  *
@@ -54,7 +97,7 @@ sourceMapSupport.install({
  *
  * @return A promise resolving to the Express application instance.
  */
-export async function getProductionServer(): Promise<typeof import('./app.ts').app> {
+export async function getProductionServer(): Promise<express.Application> {
 	return import('../react-router.config.ts')
 		.then(mod => mod.default)
 		.then(({ buildDirectory, serverBuildFile }) =>
@@ -62,29 +105,8 @@ export async function getProductionServer(): Promise<typeof import('./app.ts').a
 		)
 		.then(serverBuildPath => import(serverBuildPath))
 		.then((module: unknown) => {
-			if (
-				module &&
-				typeof module === 'object' &&
-				'app' in module &&
-				typeof module.app === 'function' &&
-				typeof module.app === 'function' && // First, must be a function itself
-				'use' in module.app &&
-				typeof module.app.use === 'function' && // Middleware registration
-				'listen' in module.app &&
-				typeof module.app.listen === 'function' && // Start server
-				'get' in module.app &&
-				typeof module.app.get === 'function' && // HTTP GET route handler
-				'post' in module.app &&
-				typeof module.app.post === 'function' && // HTTP POST route handler
-				'set' in module.app &&
-				typeof module.app.set === 'function' && // Set app settings
-				'locals' in module.app &&
-				typeof module.app.locals === 'object' // App-local variables
-			) {
-				return module.app as typeof import('./app.ts').app
-			}
-
-			throw new InvalidServerBuildFileError()
+			assertModuleExpressApp(module)
+			return module.app
 		})
 }
 
@@ -114,9 +136,8 @@ export const DEFAULT_PORT = 5173
  *  --inspect-wait                    \
  *  --watch                           \
  *  --experimental-network-inspection \
- *  --experimental-strip-types        \
  *  --experimental-transform-types    \
- *  server/main.ts ./build/server/index.js
+ *  server/main.ts
  * ```
  */
 export async function run(): Promise<http.Server> {
@@ -255,11 +276,5 @@ run()
 class NodeEnvError extends Error {
 	constructor(_nodeEnv: never) {
 		super('Unknown NODE_ENV')
-	}
-}
-
-export class InvalidServerBuildFileError extends Error {
-	constructor() {
-		super('Invalid server build file; must export an Express application instance')
 	}
 }
