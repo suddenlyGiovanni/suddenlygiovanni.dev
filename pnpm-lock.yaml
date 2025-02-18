@@ -43,6 +43,9 @@ importers:
       '@epic-web/invariant':
         specifier: 1.0.0
         version: 1.0.0
+      '@hono/node-server':
+        specifier: ^1.13.7
+        version: 1.13.8(hono@4.7.1)
       '@octokit/core':
         specifier: 6.1.4
         version: 6.1.4
@@ -82,6 +85,9 @@ importers:
       get-port:
         specifier: 7.1.0
         version: 7.1.0
+      hono:
+        specifier: ^4.6.11
+        version: 4.7.1
       isbot:
         specifier: 5.1.22
         version: 5.1.22

@@ -14,7 +14,10 @@ export default defineConfig({
 	root: process.cwd(),
 	plugins: [
 		{ enforce: 'pre', ...mdx({}) },
-		reactRouterHonoServer({ runtime: 'node' }),
+		reactRouterHonoServer({
+			runtime: 'node',
+			serverEntryPoint: 'server/index.ts',
+		}),
 		reactRouter(),
 		tailwindcss(),
 		tsconfigPaths(),
