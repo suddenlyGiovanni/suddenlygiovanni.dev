@@ -3,7 +3,7 @@ import { createHonoServer } from 'react-router-hono-server/node'
 
 export default await createHonoServer({
 	configure: async server => {
-		server.use('*', serveStatic({ root: './' }))
-		server.get('/assets', serveStatic({ root: './build/client/assets' }))
+		// server.use('*', serveStatic({ root: './' }))
+		// server.get('/assets', serveStatic({ root: './build/client/assets' }))
 	},
 })

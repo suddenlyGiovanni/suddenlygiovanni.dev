@@ -1,4 +1,5 @@
 import process from 'node:process'
+import { defaultOptions } from '@hono/vite-dev-server'
 import mdx from '@mdx-js/rollup'
 import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
@@ -12,11 +13,17 @@ export default defineConfig({
 	publicDir: 'public',
 	cacheDir: 'node_modules/.vite',
 	root: process.cwd(),
+	build: {
+		target: 'esnext',
+	},
 	plugins: [
 		{ enforce: 'pre', ...mdx({}) },
 		reactRouterHonoServer({
 			runtime: 'node',
 			serverEntryPoint: 'server/index.ts',
+			dev: {
+				exclude: [/.*\.webp$/, /.*\.svg$/, ...defaultOptions.exclude],
+			},
 		}),
 		reactRouter(),
 		tailwindcss(),
