@@ -11,7 +11,7 @@ import morgan from 'morgan'
 import sourceMapSupport from 'source-map-support'
 
 import { developmentApp } from './development-app.ts'
-import { productionApp } from './production-app.js'
+import { productionApp } from './production-app.ts'
 
 class Config extends Schema.Class<Config>('Config')({
 	NODE_ENV: Schema.optionalWith(Schema.Literal('development', 'production'), {
@@ -20,7 +20,9 @@ class Config extends Schema.Class<Config>('Config')({
 	PORT: Schema.optional(Schema.NumberFromString.pipe(Schema.int())).annotations({
 		description: 'Port to run the server on',
 	}),
-	HOST: Schema.optional(Schema.String).annotations({ description: 'Host to run the server on' }),
+	HOST: Schema.optional(Schema.String).annotations({
+		description: 'Host to run the server on',
+	}),
 }) {
 	static decodeUnknownPromise = Schema.decodeUnknownPromise(this)
 }
@@ -95,52 +97,52 @@ export async function run(): Promise<http.Server> {
 	 */
 	app.use(morgan('tiny'))
 
-	const onListen = (): void => {
+	const onListen = (error?: Error): void => {
 		const address =
 			HOST ||
 			Object.values(os.networkInterfaces())
 				.flat()
 				.find(ip => String(ip?.family).includes('4') && !ip?.internal)?.address
 
-		if (address) {
-			console.log(`[react-router-serve] http://localhost:${port} (http://${address}:${port})`)
-		} else {
-			console.log(`[react-router-serve] http://localhost:${port}`)
-		}
+		console.log(
+			address
+				? `[react-router-serve] http://localhost:${port} (http://${address}:${port})`
+				: `[react-router-serve] http://localhost:${port}`,
+		)
+
+		if (error) console.error(error)
 	}
 
-	const server: http.Server = HOST //
+	const httpServer: http.Server = HOST //
 		? app.listen(port, HOST, onListen)
 		: app.listen(port, onListen)
 
-	/**
-	 * Handles application shutdown gracefully upon receiving specific termination signals.
-	 *
-	 * This function listens for termination signals ('SIGTERM' or 'SIGINT') and performs
-	 * necessary actions to close the server safely. It logs the received signal, proceeds
-	 * to close the server, and exits the process with an appropriate exit code depending
-	 * on whether the shutdown was successful or encountered errors.
-	 *
-	 * @param {('SIGTERM' | 'SIGINT')} signal The termination signal received, triggering the graceful shutdown process.
-	 * @returns {void} Does not return a value.
-	 */
-	const gracefulShutdown = (signal: 'SIGTERM' | 'SIGINT'): void => {
-		console.log(`Received shutdown signal "${signal}", closing server gracefully...`)
-		server?.close(err => {
-			if (err) {
-				console.error('Error during server shutdown:', err)
-				process.exit(1)
-			}
-			console.log('Server closed gracefully.')
-			process.exit(0)
+	for (const signal of ['SIGTERM', 'SIGINT'] as const) {
+		/**
+		 * Handles application shutdown gracefully upon receiving specific termination signals.
+		 *
+		 * This function listens for termination signals ('SIGTERM' or 'SIGINT') and performs
+		 * necessary actions to close the server safely. It logs the received signal, proceeds
+		 * to close the server, and exits the process with an appropriate exit code depending
+		 * on whether the shutdown was successful or encountered errors.
+		 *
+		 * @param {('SIGTERM' | 'SIGINT')} signal The termination signal received, triggering the graceful shutdown process.
+		 * @returns Does not return a value.
+		 */
+		process.once(signal, (_signal: typeof signal) => {
+			console.log(`Received shutdown signal "${_signal}", closing server gracefully...`)
+			httpServer?.close(err => {
+				if (err) {
+					console.error('Error during server shutdown:', err)
+					process.exit(1)
+				}
+				console.log('Server closed gracefully.')
+				process.exit(0)
+			})
 		})
 	}
 
-	for (const signal of ['SIGTERM', 'SIGINT']) {
-		process.once(signal, gracefulShutdown)
-	}
-
-	return server
+	return httpServer
 }
 
 run()
