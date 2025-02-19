@@ -1,15 +1,8 @@
-import 'react-router'
 import process from 'node:process'
 import express from 'express'
 import type { ServerBuild } from 'react-router'
 
 import { createRequestHandler } from '../adapters/react-router-express.ts'
-
-declare module 'react-router' {
-	interface AppLoadContext {
-		VALUE_FROM_EXPRESS: string
-	}
-}
 
 export const app: express.Application = express().use(
 	createRequestHandler({
