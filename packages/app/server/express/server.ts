@@ -4,14 +4,14 @@ import os from 'node:os'
 import path from 'node:path/posix'
 import process from 'node:process'
 import url from 'node:url'
-
 import compression from 'compression'
 import { type ParseResult, Schema } from 'effect'
 import express from 'express'
 import getPort from 'get-port'
 import morgan from 'morgan'
 import sourceMapSupport from 'source-map-support'
-import type { ViteDevServer } from 'vite'
+
+import { developmentApp } from './development-app.ts'
 
 class Config extends Schema.Class<Config>('Config')({
 	NODE_ENV: Schema.optionalWith(Schema.Literal('development', 'production'), {
@@ -151,42 +151,12 @@ export async function run(): Promise<http.Server> {
 
 	const port = await getPort({ port: _port ?? DEFAULT_PORT })
 
-	const app: express.Express = express()
-		.disable('x-powered-by')
-		/**
-		 * Add compression middleware
-		 */
-		.use(compression())
+	let app: express.Express = express().disable('x-powered-by').use(compression())
 
-	switch (NODE_ENV) {
-		case 'development': {
-			console.log('Starting development server')
-
-			const viteDevServer: ViteDevServer = await import('vite').then(vite =>
-				vite.createServer({ server: { middlewareMode: true } }),
-			)
-
-			app
-				/**
-				 * Add React Router development middleware
-				 */
-				.use(viteDevServer.middlewares) //
-				.use(async (req, res, next) => {
-					try {
-						const source = await viteDevServer.ssrLoadModule('./server/express/app.ts')
-
-						return await source['app'](req, res, next)
-					} catch (error: unknown) {
-						if (typeof error === 'object' && error instanceof Error) {
-							viteDevServer.ssrFixStacktrace(error)
-						}
-						next(error)
-					}
-				})
-
-			break
-		}
-		case 'production': {
+	if (NODE_ENV === 'development') {
+		app = await developmentApp(app)
+	} else if (NODE_ENV === 'production') {
+		{
 			console.log('Starting production server')
 			const handler = await getProductionServer()
 
@@ -209,11 +179,9 @@ export async function run(): Promise<http.Server> {
 				 * Add React Router production middleware
 				 */
 				.use(handler)
-
-			break
 		}
-		default:
-			throw new NodeEnvError(NODE_ENV)
+	} else {
+		throw new NodeEnvError(NODE_ENV)
 	}
 
 	/**
