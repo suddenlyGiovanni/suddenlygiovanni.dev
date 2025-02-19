@@ -97,7 +97,7 @@ function assertModuleExpressApp(module: unknown): asserts module is { app: expre
  * @return A promise resolving to the Express application instance.
  */
 export async function getProductionServer(): Promise<express.Application> {
-	return import('../react-router.config.ts')
+	return import('../../react-router.config.ts')
 		.then(mod => mod.default)
 		.then(({ buildDirectory, serverBuildFile }) =>
 			path.resolve(path.join(buildDirectory, 'server', serverBuildFile)),
@@ -149,8 +149,7 @@ export async function run(): Promise<http.Server> {
 		process.exit(1)
 	})
 
-	// biome-ignore lint/style/useNamingConvention: <explanation>
-	const PORT = await getPort({ port: _port ?? DEFAULT_PORT })
+	const port = await getPort({ port: _port ?? DEFAULT_PORT })
 
 	const app: express.Express = express()
 		.disable('x-powered-by')
@@ -174,8 +173,8 @@ export async function run(): Promise<http.Server> {
 				.use(viteDevServer.middlewares) //
 				.use(async (req, res, next) => {
 					try {
-						const source = await viteDevServer.ssrLoadModule('./server/app.ts')
-						// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+						const source = await viteDevServer.ssrLoadModule('./server/express/app.ts')
+
 						return await source['app'](req, res, next)
 					} catch (error: unknown) {
 						if (typeof error === 'object' && error instanceof Error) {
@@ -195,7 +194,13 @@ export async function run(): Promise<http.Server> {
 				/**
 				 * Serve assets files from build/client/assets
 				 */
-				.use('/assets', express.static('build/client/assets', { immutable: true, maxAge: '1y' }))
+				.use(
+					'/assets',
+					express.static('build/client/assets', {
+						immutable: true,
+						maxAge: '1y',
+					}),
+				)
 				/**
 				 * Serve public files
 				 */
@@ -224,13 +229,13 @@ export async function run(): Promise<http.Server> {
 				.find(ip => String(ip?.family).includes('4') && !ip?.internal)?.address
 
 		if (address) {
-			console.log(`[react-router-serve] http://localhost:${PORT} (http://${address}:${PORT})`)
+			console.log(`[react-router-serve] http://localhost:${port} (http://${address}:${port})`)
 		} else {
-			console.log(`[react-router-serve] http://localhost:${PORT}`)
+			console.log(`[react-router-serve] http://localhost:${port}`)
 		}
 	}
 
-	const server: http.Server = HOST ? app.listen(PORT, HOST, onListen) : app.listen(PORT, onListen)
+	const server: http.Server = HOST ? app.listen(port, HOST, onListen) : app.listen(port, onListen)
 
 	/**
 	 * Handles application shutdown gracefully upon receiving specific termination signals.
