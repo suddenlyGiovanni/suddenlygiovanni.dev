@@ -1,16 +1,14 @@
 import { exec } from 'node:child_process'
 import process from 'node:process'
-
 import { codecovVitePlugin } from '@codecov/vite-plugin'
 import mdx from '@mdx-js/rollup'
 import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
 import { reactRouterDevTools } from 'react-router-devtools'
+
+import { defineConfig } from 'vite'
 import babel from 'vite-plugin-babel'
 import tsconfigPaths from 'vite-tsconfig-paths'
-
-/// <reference types="vitest/config" />
-import { defineConfig } from 'vite'
 
 const ReactCompilerConfig = {
 	/* ... */
@@ -23,6 +21,7 @@ export default defineConfig(({ isSsrBuild }) => ({
 					input: './server/express/app.ts',
 				}
 			: {},
+		target: 'esnext',
 	},
 	plugins: [
 		{
