@@ -1,7 +1,6 @@
 import fs from 'node:fs'
 import type * as http from 'node:http'
 import os from 'node:os'
-import path from 'node:path/posix'
 import process from 'node:process'
 import url from 'node:url'
 import compression from 'compression'
@@ -12,102 +11,33 @@ import morgan from 'morgan'
 import sourceMapSupport from 'source-map-support'
 
 import { developmentApp } from './development-app.ts'
+import { productionApp } from './production-app.js'
 
 class Config extends Schema.Class<Config>('Config')({
 	NODE_ENV: Schema.optionalWith(Schema.Literal('development', 'production'), {
 		default: () => 'production',
-	}).annotations({
-		description: 'Environment to run the server in',
-	}),
+	}).annotations({ description: 'Environment to run the server in' }),
 	PORT: Schema.optional(Schema.NumberFromString.pipe(Schema.int())).annotations({
 		description: 'Port to run the server on',
 	}),
-	HOST: Schema.optional(Schema.String).annotations({
-		description: 'Host to run the server on',
-	}),
+	HOST: Schema.optional(Schema.String).annotations({ description: 'Host to run the server on' }),
 }) {
 	static decodeUnknownPromise = Schema.decodeUnknownPromise(this)
 }
 
 sourceMapSupport.install({
-	retrieveSourceMap(source: string): { url: string; map: string } | null {
+	retrieveSourceMap(source) {
 		const match = source.startsWith('file://')
 		if (match) {
 			const filePath = url.fileURLToPath(source)
 			const sourceMapPath = `${filePath}.map`
 			if (fs.existsSync(sourceMapPath)) {
-				return {
-					url: source,
-					map: fs.readFileSync(sourceMapPath, 'utf8'),
-				}
+				return { url: source, map: fs.readFileSync(sourceMapPath, 'utf8') }
 			}
 		}
 		return null
 	},
 })
-
-function isModuleExpressApp(module: unknown): module is { app: express.Application } {
-	if (
-		module &&
-		typeof module === 'object' &&
-		'app' in module &&
-		typeof module.app === 'function' && // First, must be a function itself
-		'use' in module.app &&
-		typeof module.app.use === 'function' && // Middleware registration
-		'listen' in module.app &&
-		typeof module.app.listen === 'function' && // Start server
-		'get' in module.app &&
-		typeof module.app.get === 'function' && // HTTP GET route handler
-		'post' in module.app &&
-		typeof module.app.post === 'function' && // HTTP POST route handler
-		'set' in module.app &&
-		typeof module.app.set === 'function' && // Set app settings
-		'locals' in module.app &&
-		typeof module.app.locals === 'object' // App-local variables
-	) {
-		return true
-	}
-	return false
-}
-
-export class InvalidServerBuildFileError extends Error {
-	constructor() {
-		super('Invalid server build file; must export an Express application instance')
-	}
-}
-
-/**
- * Asserts that the provided module is an object containing an Express application.
- *
- * @param module - The module to be validated.
- * @return Confirms that the module includes an Express application property if the assertion passes.
- */
-function assertModuleExpressApp(module: unknown): asserts module is { app: express.Application } {
-	if (!isModuleExpressApp(module)) {
-		throw new InvalidServerBuildFileError()
-	}
-}
-
-/**
- * Retrieves the production server application instance.
- *
- * This method dynamically imports the required configuration and server files
- * to set up and return the production server application.
- *
- * @return A promise resolving to the Express application instance.
- */
-export async function getProductionServer(): Promise<express.Application> {
-	return import('../../react-router.config.ts')
-		.then(mod => mod.default)
-		.then(({ buildDirectory, serverBuildFile }) =>
-			path.resolve(path.join(buildDirectory, 'server', serverBuildFile)),
-		)
-		.then(serverBuildPath => import(serverBuildPath))
-		.then((module: unknown) => {
-			assertModuleExpressApp(module)
-			return module.app
-		})
-}
 
 /**
  * Represents the default port number used for the application.
@@ -151,38 +81,14 @@ export async function run(): Promise<http.Server> {
 
 	const port = await getPort({ port: _port ?? DEFAULT_PORT })
 
-	let app: express.Express = express().disable('x-powered-by').use(compression())
+	let app = express() //
+		.disable('x-powered-by')
+		.use(compression())
 
-	if (NODE_ENV === 'development') {
-		app = await developmentApp(app)
-	} else if (NODE_ENV === 'production') {
-		{
-			console.log('Starting production server')
-			const handler = await getProductionServer()
-
-			app
-				/**
-				 * Serve assets files from build/client/assets
-				 */
-				.use(
-					'/assets',
-					express.static('build/client/assets', {
-						immutable: true,
-						maxAge: '1y',
-					}),
-				)
-				/**
-				 * Serve public files
-				 */
-				.use(express.static('build/client', { maxAge: '1h' }))
-				/**
-				 * Add React Router production middleware
-				 */
-				.use(handler)
-		}
-	} else {
-		throw new NodeEnvError(NODE_ENV)
-	}
+	app =
+		NODE_ENV === 'development'
+			? await developmentApp(app) //
+			: await productionApp(app)
 
 	/**
 	 * Add logger middleware
@@ -203,7 +109,9 @@ export async function run(): Promise<http.Server> {
 		}
 	}
 
-	const server: http.Server = HOST ? app.listen(port, HOST, onListen) : app.listen(port, onListen)
+	const server: http.Server = HOST //
+		? app.listen(port, HOST, onListen)
+		: app.listen(port, onListen)
 
 	/**
 	 * Handles application shutdown gracefully upon receiving specific termination signals.
@@ -236,17 +144,3 @@ export async function run(): Promise<http.Server> {
 }
 
 run()
-
-/**
- * Represents an error that occurs when an undefined or invalid `NODE_ENV` value is encountered.
- *
- * This error class is specifically designed to handle unexpected or invalid
- * `NODE_ENV` values that are not handled in the application.
- *
- * @param _nodeEnv - The invalid or unexpected `NODE_ENV` value, provided to enforce type safety.
- */
-class NodeEnvError extends Error {
-	constructor(_nodeEnv: never) {
-		super('Unknown NODE_ENV')
-	}
-}
