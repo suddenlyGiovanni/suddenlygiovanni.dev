@@ -3,7 +3,7 @@ import process from 'node:process'
 import express from 'express'
 import type { ServerBuild } from 'react-router'
 
-import { createRequestHandler } from './react-router-express.ts'
+import { createRequestHandler } from '../react-router-express.ts'
 
 declare module 'react-router' {
 	interface AppLoadContext {
@@ -20,7 +20,7 @@ export const app: express.Application = express().use(
 		getLoadContext(): import('react-router').AppLoadContext {
 			return { VALUE_FROM_EXPRESS: 'Hello from Express' }
 		},
-		// biome-ignore lint/complexity/useLiteralKeys: <explanation>
+
 		mode: process.env['NODE_ENV'] || 'production',
 	}),
 )
