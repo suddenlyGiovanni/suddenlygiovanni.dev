@@ -2,8 +2,8 @@
 	"$schema": "https://json.schemastore.org/package.json",
 	"devDependencies": {
 		"@eslint/js": "9.20.0",
-		"@typescript-eslint/eslint-plugin": "8.24.0",
-		"@typescript-eslint/parser": "8.24.0",
+		"@typescript-eslint/eslint-plugin": "8.24.1",
+		"@typescript-eslint/parser": "8.24.1",
 		"eslint": "9.20.1",
 		"eslint-config-prettier": "10.0.1",
 		"eslint-plugin-only-warn": "1.1.0",
@@ -13,7 +13,7 @@
 		"eslint-plugin-turbo": "2.4.1",
 		"globals": "15.14.0",
 		"typescript": "5.8.1-rc",
-		"typescript-eslint": "8.24.0"
+		"typescript-eslint": "8.24.1"
 	},
 	"exports": {
 		"./base": "./base.js",
