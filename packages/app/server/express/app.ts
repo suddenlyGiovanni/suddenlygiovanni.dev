@@ -3,7 +3,7 @@ import process from 'node:process'
 import express from 'express'
 import type { ServerBuild } from 'react-router'
 
-import { createRequestHandler } from '../react-router-express.ts'
+import { createRequestHandler } from '../adapters/react-router-express.ts'
 
 declare module 'react-router' {
 	interface AppLoadContext {
