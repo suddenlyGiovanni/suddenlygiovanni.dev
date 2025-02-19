@@ -11,7 +11,6 @@ import morgan from 'morgan'
 import sourceMapSupport from 'source-map-support'
 
 import { developmentApp } from './development-app.ts'
-import { productionApp } from './production-app.ts'
 
 class Config extends Schema.Class<Config>('Config')({
 	NODE_ENV: Schema.optionalWith(Schema.Literal('development', 'production'), {
@@ -68,7 +67,7 @@ export const DEFAULT_PORT = 5173
  *  --watch                           \
  *  --experimental-network-inspection \
  *  --experimental-transform-types    \
- *  server/main.ts
+ *  server/express/server.ts
  * ```
  */
 export async function run(): Promise<http.Server> {
@@ -83,21 +82,7 @@ export async function run(): Promise<http.Server> {
 
 	const port = await getPort({ port: _port ?? DEFAULT_PORT })
 
-	let app = express() //
-		.disable('x-powered-by')
-		.use(compression())
-
-	app =
-		NODE_ENV === 'development'
-			? await developmentApp(app) //
-			: await productionApp(app)
-
-	/**
-	 * Add logger middleware
-	 */
-	app.use(morgan('tiny'))
-
-	const onListen = (error?: Error): void => {
+	function onListen(error?: Error): void {
 		const address =
 			HOST ||
 			Object.values(os.networkInterfaces())
@@ -112,6 +97,20 @@ export async function run(): Promise<http.Server> {
 
 		if (error) console.error(error)
 	}
+
+	let app = express() //
+		.disable('x-powered-by')
+		.use(compression())
+
+	app =
+		NODE_ENV === 'development'
+			? developmentApp(app) //
+			: await import('./production-app.ts').then(({ productionApp }) => productionApp(app))
+
+	/**
+	 * Add logger middleware
+	 */
+	app.use(morgan('tiny'))
 
 	const httpServer: http.Server = HOST //
 		? app.listen(port, HOST, onListen)
