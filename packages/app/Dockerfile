@@ -85,4 +85,4 @@ USER node
 
 EXPOSE 5173
 
-CMD ["node", "--experimental-transform-types", "server/server.ts"]
+CMD ["node", "--experimental-transform-types", "server/express/server.ts"]
