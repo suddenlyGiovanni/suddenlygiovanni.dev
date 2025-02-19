@@ -1,4 +1,5 @@
 import process from 'node:process'
+
 import { createReadableStreamFromReadable, writeReadableStreamToWritable } from '@react-router/node'
 import type * as express from 'express'
 import type { AppLoadContext, ServerBuild } from 'react-router'
@@ -29,7 +30,6 @@ export type RequestHandler = (
 export function createRequestHandler({
 	build,
 	getLoadContext,
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 	mode = process.env['NODE_ENV'],
 }: {
 	build: ServerBuild | (() => Promise<ServerBuild>)

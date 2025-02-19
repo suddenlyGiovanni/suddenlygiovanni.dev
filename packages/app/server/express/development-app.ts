@@ -4,22 +4,22 @@ const viteDevServer = await import('vite').then(vite =>
 	vite.createServer({ server: { middlewareMode: true } }),
 )
 
-const reactRouterRequestHandler: express.Handler = async (req, res, next) => {
-	try {
-		const _express = await (viteDevServer.ssrLoadModule('./server/express/app.ts') as Promise<
-			typeof import('./app.ts')
-		>)
+const expressRequestHandler = await (
+	viteDevServer.ssrLoadModule('./server/express/app.ts') as Promise<typeof import('./app.ts')>
+).then(({ reactRouterRequestHandler }) => reactRouterRequestHandler)
 
-		return _express.app(req, res, next)
+const reactRouterRequestHandler: typeof expressRequestHandler = async (req, res, next) => {
+	try {
+		await expressRequestHandler(req, res, next)
 	} catch (error: unknown) {
-		if (typeof error === 'object' && error instanceof Error) {
+		if (error instanceof Error) {
 			viteDevServer.ssrFixStacktrace(error)
 		}
 		next(error)
 	}
 }
 
-export async function developmentApp(app: express.Express): Promise<express.Express> {
+export function developmentApp<App extends express.Application>(app: App): App {
 	console.log('Starting development server')
 
 	return app //
