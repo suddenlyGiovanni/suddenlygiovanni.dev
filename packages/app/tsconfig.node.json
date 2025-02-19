@@ -11,7 +11,10 @@
 	  "es2024"
 	],
 	"types": [
-	  "node"
+	  "node",
+	  "vite/client",
+	  "vitest/config",
+	  "vitest/importMeta"
 	],
 	/* Base Options: */
 	"esModuleInterop": true,
