@@ -19,6 +19,16 @@ const reactRouterRequestHandler: typeof expressRequestHandler = async (req, res,
 	}
 }
 
+/**
+ * Configures an Express application for development by attaching Vite middlewares and a React Router request handler.
+ *
+ * This function logs the start of the development server, and it integrates the Vite development server's middlewares
+ * with the supplied Express app. It also sets up the React Router request handler, which includes error handling via
+ * Vite's stack trace fixer.
+ *
+ * @param app - The Express application instance to configure with development server middleware.
+ * @returns The modified Express application instance with Vite and React Router integrations.
+ */
 export function developmentApp<App extends express.Application>(app: App): App {
 	console.log('Starting development server')
 

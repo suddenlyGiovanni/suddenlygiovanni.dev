@@ -48,27 +48,24 @@ sourceMapSupport.install({
 export const DEFAULT_PORT = 5173
 
 /**
- * Initiates and runs a server application for serving a React Router build.
- * The method performs the following operations:
- * - Configures server port dynamically from environment or default settings.
- * - Resolves and loads the server build path.
- * - Sets up an Express application with necessary middlewares including compression, static file serving, and logging.
- * - Configures routes for serving client-side assets and handling all incoming requests with a request handler.
- * - Listens to the configured port and outputs server address details to the console.
- * - Cleans up resources and stops the server gracefully on receiving termination signals.
+ * Initiates and runs the Express server application for serving a React Router build.
  *
- * @return {Promise<void>} A promise that resolves when the server successfully starts.
+ * This asynchronous function performs the following steps:
+ * - Decodes and validates environment variables using the defined configuration schema.
+ *   If decoding fails, it logs the error and terminates the process.
+ * - Determines the server port using an environment-specified port or defaults to a fallback port.
+ * - Creates and configures an Express application with middleware for compression and logging.
+ * - Dynamically loads the appropriate server build based on the NODE_ENV value,
+ *   using a development version if NODE_ENV is 'development' or a production build otherwise.
+ * - Starts an HTTP server that listens on the specified port (and optionally a host),
+ *   logging the server address details once the server is running.
+ * - Registers graceful shutdown handlers for SIGTERM and SIGINT signals to close the server safely.
+ *
+ * @returns A promise that resolves to the HTTP server instance.
+ *
  * @example
- * ```sh
- * NODE_ENV=development               \
- * PORT=3000                          \
- * node                               \
- *  --inspect-wait                    \
- *  --watch                           \
- *  --experimental-network-inspection \
- *  --experimental-transform-types    \
- *  server/express/server.ts
- * ```
+ * // Start the server with environment variables
+ * NODE_ENV=development PORT=3000 HOST=localhost node server/express/server.ts
  */
 export async function run(): Promise<http.Server> {
 	const {
@@ -82,6 +79,17 @@ export async function run(): Promise<http.Server> {
 
 	const port = await getPort({ port: _port ?? DEFAULT_PORT })
 
+	/**
+	 * Logs the server's listening address when the HTTP server starts and prints any error encountered.
+	 *
+	 * This function is intended as a callback for when the server begins listening. It first checks if a host has been
+	 * explicitly configured using the HOST variable. If not, it retrieves the system's network interfaces to find the first
+	 * available external IPv4 address. It then logs the server URL using "localhost" and, when available, the detected network
+	 * address along with the port number. If an error is provided through the optional parameter, it prints the error using
+	 * console.error.
+	 *
+	 * @param error - An optional error that occurred during server startup and listening.
+	 */
 	function onListen(error?: Error): void {
 		const address =
 			HOST ||
