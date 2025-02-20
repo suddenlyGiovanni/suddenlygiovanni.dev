@@ -25,7 +25,29 @@ export type RequestHandler = (
 ) => Promise<void>
 
 /**
- * Returns a request handler for Express that serves the response using Remix.
+ * Creates and returns an Express request handler that utilizes Remix to process HTTP requests.
+ *
+ * This function constructs an asynchronous request handler that:
+ * - Converts the incoming Express request and response into a Remix Request.
+ * - Optionally retrieves a load context via the provided getLoadContext callback.
+ * - Processes the Remix request using the supplied ServerBuild (or a function returning one) and mode.
+ * - Sends the resulting Remix response back to the Express response object.
+ *
+ * In the event of an error, the handler passes the error to Express's error handling middleware.
+ *
+ * @param build - A ServerBuild instance or a function that returns a Promise resolving to a ServerBuild, providing the server's configuration.
+ * @param getLoadContext - An optional function that extracts the load context from the Express request and response.
+ * @param mode - The operating mode (e.g., "development" or "production"). Defaults to process.env['NODE_ENV'].
+ *
+ * @returns An Express request handler function for processing requests with Remix.
+ *
+ * @example
+ * const handler = createRequestHandler({
+ *   build: myServerBuild,
+ *   getLoadContext: (req, res) => ({ user: req.user }),
+ *   mode: 'development',
+ * });
+ * app.use(handler);
  */
 export function createRequestHandler({
 	build,
