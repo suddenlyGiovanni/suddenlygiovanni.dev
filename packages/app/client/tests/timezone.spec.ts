@@ -1,4 +1,4 @@
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
+// biome-ignore lint/correctness/noNodejsModules: Required for accessing process.env in tests
 import { env } from 'node:process'
 import { describe, expect, it } from 'vitest'
 
