@@ -23,8 +23,8 @@ importers:
         specifier: 9.20.1
         version: 9.20.1(jiti@2.4.2)
       scripty:
-        specifier: 2.1.1
-        version: 2.1.1
+        specifier: 3.0.0
+        version: 3.0.0
       turbo:
         specifier: 2.4.1
         version: 2.4.1
@@ -5364,8 +5364,8 @@ packages:
   scheduler@0.25.0:
     resolution: {integrity: sha512-xFVuu11jh+xcO7JOAGJNOXld8/TcEHK/4CituBUeUb5hqxJLj9YuemAEuvm9gQ/+pgXYfbQuqAkiYu+u7YEsNA==}
 
-  scripty@2.1.1:
-    resolution: {integrity: sha512-yAutoO7+MfJcc7UAjAOp1CNbAI6GhxXYB63yFLEJe80BY1VkKQWrJ2xrdd57rh/UBnUIKmO31hzKUHWGxIupbA==}
+  scripty@3.0.0:
+    resolution: {integrity: sha512-rB8QX6PqBQf+sJly8rHJzDksTyvmhfOsQJzlpgu7uakq0gUi/tt9ppoWHFTN2BhbJq8Ti5Y1A166tTb+QBvp0w==}
     deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     hasBin: true
 
@@ -12230,7 +12230,7 @@ snapshots:
 
   scheduler@0.25.0: {}
 
-  scripty@2.1.1:
+  scripty@3.0.0:
     dependencies:
       async: 2.6.4
       glob: 7.2.3
