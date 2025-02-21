@@ -32,8 +32,12 @@ sourceMapSupport.install({
 		if (match) {
 			const filePath = url.fileURLToPath(source)
 			const sourceMapPath = `${filePath}.map`
-			if (fs.existsSync(sourceMapPath)) {
-				return { url: source, map: fs.readFileSync(sourceMapPath, 'utf8') }
+			try {
+				if (fs.existsSync(sourceMapPath)) {
+					return { url: source, map: fs.readFileSync(sourceMapPath, 'utf8') }
+				}
+			} catch (error) {
+				console.warn(`Failed to load source map for ${source}:`, error)
 			}
 		}
 		return null
