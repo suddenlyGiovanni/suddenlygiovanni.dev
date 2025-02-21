@@ -1,13 +1,13 @@
 import fs from 'node:fs'
-import compression from 'compression'
-import { type ParseResult, Schema } from 'effect'
-import express from 'express'
-import getPort from 'get-port'
-
 import http from 'node:http'
 import os from 'node:os'
 import process from 'node:process'
 import url from 'node:url'
+
+import compression from 'compression'
+import { type ParseResult, Schema } from 'effect'
+import express from 'express'
+import getPort from 'get-port'
 import sourceMapSupport from 'source-map-support'
 
 import { developmentApp } from './development-app.ts'
@@ -108,10 +108,10 @@ export async function run(): Promise<http.Server> {
 		.disable('x-powered-by')
 		.use(compression())
 
-	app =
-		NODE_ENV === 'development'
-			? await developmentApp(app) //
-			: await import('./production-app.ts').then(({ productionApp }) => productionApp(app))
+	app = await (NODE_ENV === 'development'
+		? developmentApp(app) //
+		: import('./production-app.ts') //
+				.then(({ productionApp }) => productionApp(app)))
 
 	const httpServer = http.createServer(app)
 
