@@ -87,6 +87,10 @@ export async function run(): Promise<http.Server> {
 	const port = await getPort({ port: _port ?? DEFAULT_PORT })
 
 	function onListen(error?: Error): void {
+		if (error) {
+			console.error('[react-router-serve] Failed to start server:', error)
+			process.exit(1)
+		}
 		const address =
 			HOST ||
 			Object.values(os.networkInterfaces())
@@ -98,8 +102,6 @@ export async function run(): Promise<http.Server> {
 				? `[react-router-serve] http://localhost:${port} (http://${address}:${port})`
 				: `[react-router-serve] http://localhost:${port}`,
 		)
-
-		if (error) console.error(error)
 	}
 
 	let app = express() //
