@@ -27,9 +27,10 @@
 				"noUndeclaredDependencies": "off"
 			},
 			"nursery": {
-				"all": true
+				"all": true,
+				"useExplicitType": "off"
 			},
-			"suspicious": { "noReactSpecificProps": "off" }
+			"suspicious": { "noReactSpecificProps": "off", "noConsole": "info" }
 		}
 	},
 	"javascript": {
