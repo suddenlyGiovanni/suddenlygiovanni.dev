@@ -17,9 +17,12 @@ const ReactCompilerConfig = {
 
 export default defineConfig(({ isSsrBuild }) => ({
 	build: {
+		/** Disable minification for better debugging */
 		minify: false,
 		rollupOptions: isSsrBuild ? { input: './server/express/app.ts' } : {},
+		/** Enable source maps for better debugging experience */
 		sourcemap: true,
+		/** Target the latest ECMAScript features for better performance */
 		target: 'esnext',
 	},
 	plugins: [
