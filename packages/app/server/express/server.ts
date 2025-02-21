@@ -57,7 +57,7 @@ export const DEFAULT_PORT = 5173
  * - Listens to the configured port and outputs server address details to the console.
  * - Cleans up resources and stops the server gracefully on receiving termination signals.
  *
- * @return {Promise<void>} A promise that resolves when the server successfully starts.
+ * @return A promise that resolves when the server successfully starts.
  * @example
  * ```sh
  * NODE_ENV=development               \
@@ -104,13 +104,15 @@ export async function run(): Promise<http.Server> {
 
 	app =
 		NODE_ENV === 'development'
-			? developmentApp(app) //
+			? await developmentApp(app) //
 			: await import('./production-app.ts').then(({ productionApp }) => productionApp(app))
 
 	/**
-	 * Add logger middleware
+	 * Add logger middleware ...
+	 *
+	 * FIXME: this middleware does not have effect as it is register after the request handlers
 	 */
-	app.use(morgan('tiny'))
+	app.use(morgan(NODE_ENV === 'development' ? 'dev' : 'tiny'))
 
 	const httpServer: http.Server = HOST //
 		? app.listen(port, HOST, onListen)
