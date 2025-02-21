@@ -66,7 +66,25 @@ class DecodingError extends Data.TaggedError('DecodingError')<{
 	readonly encoding?: string
 }> {}
 
-// biome-ignore lint/nursery/useExplicitType: <explanation>
+/**
+ * Retrieves and decodes a file from a GitHub repository.
+ *
+ * This function uses the Octokit GitHub API client to fetch the content of a specified file. It verifies that the response represents a file matching the expected path and decodes its Base64-encoded content into a UTF-8 string. Additionally, it extracts metadata such as the canonical URL and the last modified date from the response headers, if available.
+ *
+ * @param owner - The owner of the repository.
+ * @param repo - The name of the repository.
+ * @param path - The file path within the repository.
+ * @param ref - An optional branch, tag, or commit SHA to retrieve the file from.
+ *
+ * @returns An object containing:
+ *   - decodedContent: The file content decoded to a UTF-8 string.
+ *   - canonical: The canonical URL of the file, if available.
+ *   - lastModified: The last modified timestamp from the API response headers, if available.
+ *
+ * @remarks
+ * The function may fail with a RequestError if the API request fails, an InvalidDataError if the response data
+ * does not match the expected format, or a DecodingError if decoding the file content fails.
+ */
 function getResumeFile({
 	owner,
 	repo,
@@ -199,6 +217,17 @@ class Package extends Schema.Class<Package>('Package')({
 const decodeResume = Schema.decode(parseYml(Resume))
 const decodePackageJson = Schema.decode(Schema.parseJson(Package))
 
+/**
+ * Retrieves and decodes resume data and associated metadata from a GitHub repository.
+ *
+ * This function concurrently fetches the resume YAML file and the Deno package JSON file from a fixed repository.
+ * It decodes the resume content and package information, then constructs metadata from available last modified dates,
+ * canonical URLs, and version details from the package file. The function returns an effect that resolves to an object
+ * containing both the decoded resume and the constructed metadata. The default Git reference used is "main".
+ *
+ * @param ref - The Git reference (branch, tag, etc.) to use when fetching the files. Defaults to "main".
+ * @returns An effect that resolves to an object with the decoded resume and its metadata.
+ */
 function getResume(
 	ref = 'main',
 ): Effect.Effect<

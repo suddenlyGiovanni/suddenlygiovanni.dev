@@ -52,27 +52,18 @@ sourceMapSupport.install({
 export const DEFAULT_PORT = 5173
 
 /**
- * Initiates and runs a server application for serving a React Router build.
- * The method performs the following operations:
- * - Configures server port dynamically from environment or default settings.
- * - Resolves and loads the server build path.
- * - Sets up an Express application with necessary middlewares including compression, static file serving, and logging.
- * - Configures routes for serving client-side assets and handling all incoming requests with a request handler.
- * - Listens to the configured port and outputs server address details to the console.
- * - Cleans up resources and stops the server gracefully on receiving termination signals.
+ * Starts an HTTP server with an Express application to serve a React Router build.
  *
- * @return A promise that resolves when the server successfully starts.
+ * This asynchronous function decodes environment variables, selects an available port (defaulting when necessary),
+ * and configures the Express application with compression middleware. Depending on the NODE_ENV setting, it dynamically
+ * loads either a development or production build to handle client-side routing. It also sets up listeners for termination
+ * signals (SIGTERM and SIGINT) to gracefully shut down the server.
+ *
+ * @returns A promise that resolves with the created HTTP server instance once the server has started.
+ *
  * @example
- * ```sh
- * NODE_ENV=development               \
- * PORT=3000                          \
- * node                               \
- *  --inspect-wait                    \
- *  --watch                           \
- *  --experimental-network-inspection \
- *  --experimental-transform-types    \
- *  server/express/server.ts
- * ```
+ * // Start the server in development mode on port 3000:
+ * // NODE_ENV=development PORT=3000 node server/express/server.ts
  */
 export async function run(): Promise<http.Server> {
 	const {
@@ -86,6 +77,15 @@ export async function run(): Promise<http.Server> {
 
 	const port = await getPort({ port: _port ?? DEFAULT_PORT })
 
+	/**
+	 * Callback executed upon server startup.
+	 *
+	 * If an error is provided, logs the failure message and terminates the process.
+	 * Otherwise, resolves the server's network address—using a predefined host if available or by
+	 * discovering a non-internal IPv4 address—and logs the local and external URLs for accessing the server.
+	 *
+	 * @param error - An optional error encountered during server startup.
+	 */
 	function onListen(error?: Error): void {
 		if (error) {
 			console.error('[react-router-serve] Failed to start server:', error)
