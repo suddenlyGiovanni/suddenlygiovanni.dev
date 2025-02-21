@@ -4,7 +4,7 @@
 		"@biomejs/biome": "nightly",
 		"@tailwindcss/language-server": "0.14.6",
 		"eslint": "9.20.1",
-		"scripty": "2.1.1",
+		"scripty": "3.0.0",
 		"turbo": "2.4.1",
 		"typescript": "5.8.1-rc"
 	},
