@@ -1,47 +1,32 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": [
-	"./tsconfig.json",
-	"@suddenly-giovanni/config-typescript/library.json"
-  ],
-  "compilerOptions": {
-	"composite": true,
-	"target": "es2024",
-	"lib": [
-	  "es2024"
-	],
-	"types": [
-	  "node",
-	  "vite/client",
-	  "vitest/config",
-	  "vitest/importMeta"
-	],
-	/* Base Options: */
-	"esModuleInterop": true,
-	//	"skipLibCheck": true, // inherited from the "./tsconfig.json"
-	//	"allowJs": true, // inherited from the "./tsconfig.json"
-	"resolveJsonModule": true,
-	"moduleDetection": "force",
-	//	"isolatedModules": true, inherited from the "./tsconfig.json"
-	//	"verbatimModuleSyntax": true, // inherited from the "./tsconfig.json"
-	/* Strictness */
-	//	"strict": true, // inherited from the "./tsconfig.json"
-	"noUncheckedIndexedAccess": true,
-	"noImplicitOverride": true,
-	"exactOptionalPropertyTypes": false,
-	/* Node Stuff */
-	//	"allowImportingTsExtensions": true, // inherited from the "./tsconfig.json"
-	"rewriteRelativeImportExtensions": true,
-	"module": "NodeNext",
-	//	"noEmit": true // inherited from the "./tsconfig.json"
-	"erasableSyntaxOnly": true
-  },
-  "include": [
-	"./mocks/**/*.ts",
-	"./react-router.config.ts",
-	"./server/**/*.ts",
-	"./vite.config.ts",
-	"./vitest.setup.ts",
-	"./types/**/*.ts"
-  ]
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": ["./tsconfig.json", "@suddenly-giovanni/config-typescript/library.json"],
+	"compilerOptions": {
+		"composite": true,
+		"target": "es2024",
+		"lib": ["es2024"],
+		"types": ["node", "vite/client", "vitest/config", "vitest/importMeta"],
+
+		"esModuleInterop": true,
+
+		"resolveJsonModule": true,
+		"moduleDetection": "force",
+
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"exactOptionalPropertyTypes": false,
+
+		"rewriteRelativeImportExtensions": true,
+		"module": "NodeNext",
+
+		"erasableSyntaxOnly": true
+	},
+	"include": [
+		"./mocks/**/*.ts",
+		"./react-router.config.ts",
+		"./server/**/*.ts",
+		"./vite.config.ts",
+		"./vitest.setup.ts",
+		"./types/**/*.ts"
+	]
 }
