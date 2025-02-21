@@ -1,57 +1,24 @@
-### macOS template
-# General
-.DS_Store
-
-### Git
-.gitignore
 .git/
-
-### Docker
-.dockerignore
-Dockerfile
-
-### Node template
-# Logs
-logs
-*.log
-.pnpm-debug.log*
-
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
-
-# Compiled binary addons (https://nodejs.org/api/addons.html)
-build/Release
-
-# Dependency directories
+.github/
+.direnv/
 node_modules/
+coverage/
+.cache/
+build/
+public/
+mocks/
 
-# TypeScript cache
-*.tsbuildinfo
-
-# dotenv environment variable files
+.gitignore
+.dockerignore
+.DS_Store
 .env
-.env.example
-.env.development.local
-.env.test.local
-.env.production.local
-.env.production
-.env.local
-
-
-### Application
-web.iml
-README.md
-fly.yaml
-fly.review.yaml
-docker-image-stages.md
+*.env
+*.tsbuildinfo
+Dockerfile
 biome.json
-
-
-### Remix template
-/.cache
-/build
-/public/build
-.react-router
-
-mocks
+eslint.config.js
+fly.*.yaml
+fly.yaml
+docker-image-stages.md
+README.md
+web.iml

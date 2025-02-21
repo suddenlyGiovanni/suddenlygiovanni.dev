@@ -17,7 +17,8 @@
 				"useConsistentCurlyBraces": "off"
 			},
 			"style": {
-				"noDefaultExport": "off"
+				"noDefaultExport": "off",
+				"noNamespace": "off"
 			}
 		}
 	},

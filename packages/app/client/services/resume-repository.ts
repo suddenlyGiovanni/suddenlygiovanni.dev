@@ -1,4 +1,4 @@
-import { Console, Data, Effect, Layer, Option, Schema } from 'effect'
+import { Data, Effect, Layer, Option, Schema } from 'effect'
 import type { ParseError } from 'effect/ParseResult'
 
 import { Resume } from '@suddenly-giovanni/schema-resume'
@@ -128,7 +128,7 @@ function getResumeFile({
 			},
 		})
 
-		yield* Console.debug(octokitResponse)
+		// yield* Console.debug(octokitResponse)
 
 		const {
 			content,
@@ -233,9 +233,7 @@ function getResume(
 	}).pipe(Effect.withLogSpan('getResume'))
 }
 
-const makeResumeRepository = Effect.sync(() => {
-	return { getResume }
-})
+const makeResumeRepository = Effect.sync(() => ({ getResume }))
 
 export class ResumeRepository extends Effect.Tag('@services/ResumeRepository')<
 	ResumeRepository,

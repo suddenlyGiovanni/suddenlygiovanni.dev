@@ -5,9 +5,8 @@ WORKDIR /tmp
 
 COPY package.json .
 
-RUN apk add --no-cache jq
-
-RUN jq -r .packageManager package.json > pnpm-version.txt
+RUN apk add --no-cache jq \
+    && jq -r .packageManager package.json > pnpm-version.txt
 
 
 FROM node:23.8-alpine3.21 AS base
@@ -60,7 +59,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod=false
 
 ENV NODE_ENV="production"
 
-RUN pnpm exec turbo run build --filter=@suddenly-giovanni/app
+RUN pnpm run --filter=@suddenly-giovanni/app build
 
 # Deploy a package from a workspace:
 # During deployment, the files of the deployed package are copied to the target directory.
@@ -85,4 +84,4 @@ USER node
 
 EXPOSE 5173
 
-CMD ["node", "--experimental-transform-types", "server/server.ts"]
+CMD ["node", "--experimental-transform-types", "server/express/server.ts"]

@@ -1,23 +1,32 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": ["./tsconfig.json", "@suddenly-giovanni/config-typescript/library.json"],
 	"compilerOptions": {
 		"composite": true,
-		"target": "esnext",
-		"module": "nodenext",
+		"target": "es2024",
 		"lib": ["es2024"],
-		"allowImportingTsExtensions": true,
+		"types": ["node", "vite/client", "vitest/config", "vitest/importMeta"],
+
+		"esModuleInterop": true,
+
+		"resolveJsonModule": true,
+		"moduleDetection": "force",
+
+		"noUncheckedIndexedAccess": true,
+		"noImplicitOverride": true,
+		"exactOptionalPropertyTypes": false,
+
 		"rewriteRelativeImportExtensions": true,
-		"verbatimModuleSyntax": true,
-		"types": ["node"]
+		"module": "NodeNext",
+
+		"erasableSyntaxOnly": true
 	},
-	"extends": ["./tsconfig.json", "@suddenly-giovanni/config-typescript/library.json"],
 	"include": [
-		"./handlers.ts",
 		"./mocks/**/*.ts",
 		"./react-router.config.ts",
 		"./server/**/*.ts",
 		"./vite.config.ts",
 		"./vitest.setup.ts",
-		"types/*.d.ts"
+		"./types/**/*.ts"
 	]
 }

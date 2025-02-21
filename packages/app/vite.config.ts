@@ -6,11 +6,10 @@ import mdx from '@mdx-js/rollup'
 import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
 import { reactRouterDevTools } from 'react-router-devtools'
+
+import { defineConfig } from 'vite'
 import babel from 'vite-plugin-babel'
 import tsconfigPaths from 'vite-tsconfig-paths'
-
-/// <reference types="vitest/config" />
-import { defineConfig } from 'vite'
 
 const ReactCompilerConfig = {
 	/* ... */
@@ -18,11 +17,13 @@ const ReactCompilerConfig = {
 
 export default defineConfig(({ isSsrBuild }) => ({
 	build: {
-		rollupOptions: isSsrBuild
-			? {
-					input: './server/app.ts',
-				}
-			: {},
+		/** Disable minification for better debugging */
+		minify: false,
+		rollupOptions: isSsrBuild ? { input: './server/express/app.ts' } : {},
+		/** Enable source maps for better debugging experience */
+		sourcemap: true,
+		/** Target the latest ECMAScript features for better performance */
+		target: 'esnext',
 	},
 	plugins: [
 		{

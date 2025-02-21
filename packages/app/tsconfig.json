@@ -2,8 +2,17 @@
 	"files": [],
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.vite.json" }],
-	"extends": [],
+	"exclude": ["node_modules", "dist"],
 	"compilerOptions": {
-		"verbatimModuleSyntax": true
+		"allowImportingTsExtensions": true,
+		"allowJs": true,
+		"checkJs": true,
+		"isolatedModules": true,
+		"noEmit": true,
+		"noUncheckedSideEffectImports": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"verbatimModuleSyntax": true,
+		"erasableSyntaxOnly": true
 	}
 }
