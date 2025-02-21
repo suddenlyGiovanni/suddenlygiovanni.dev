@@ -107,12 +107,6 @@ export async function run(): Promise<http.Server> {
 			? await developmentApp(app) //
 			: await import('./production-app.ts').then(({ productionApp }) => productionApp(app))
 
-	/**
-	 * Add logger middleware ...
-	 *
-	 * FIXME: this middleware does not have effect as it is register after the request handlers
-	 */
-
 	const httpServer = http.createServer(app)
 
 	for (const signal of ['SIGTERM', 'SIGINT'] as const) {
