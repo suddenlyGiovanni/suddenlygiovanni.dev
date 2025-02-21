@@ -1,4 +1,5 @@
 import type express from 'express'
+import morgan from 'morgan'
 
 export async function developmentApp<App extends express.Application>(app: App): Promise<App> {
 	const viteDevServer = await import('vite').then(vite =>
@@ -10,7 +11,8 @@ export async function developmentApp<App extends express.Application>(app: App):
 	).then(({ reactRouterRequestHandler }) => reactRouterRequestHandler)
 
 	console.log('Starting development server')
-	return app //
+	return app
+		.use(morgan('dev'))
 		.use(viteDevServer.middlewares)
 		.use(async (req, res, next) => {
 			try {

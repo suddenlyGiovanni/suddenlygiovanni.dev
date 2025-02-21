@@ -1,5 +1,6 @@
 import path from 'node:path/posix'
 import express from 'express'
+import morgan from 'morgan'
 
 export async function productionApp<App extends express.Application>(app: App): Promise<App> {
 	const { reactRouterRequestHandler } = await import('../../react-router.config.ts')
@@ -24,6 +25,7 @@ export async function productionApp<App extends express.Application>(app: App): 
 			/** Serve public files */
 			express.static('build/client', { maxAge: '1h' }),
 		)
+		.use(morgan('short'))
 		.use(
 			/** Add React Router production middleware */
 			reactRouterRequestHandler,

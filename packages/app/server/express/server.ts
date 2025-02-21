@@ -3,7 +3,6 @@ import compression from 'compression'
 import { type ParseResult, Schema } from 'effect'
 import express from 'express'
 import getPort from 'get-port'
-import morgan from 'morgan'
 
 import http from 'node:http'
 import os from 'node:os'
@@ -113,7 +112,6 @@ export async function run(): Promise<http.Server> {
 	 *
 	 * FIXME: this middleware does not have effect as it is register after the request handlers
 	 */
-	app.use(morgan(NODE_ENV === 'development' ? 'dev' : 'tiny'))
 
 	const httpServer = http.createServer(app)
 
