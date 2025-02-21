@@ -7,7 +7,11 @@ export async function developmentApp<App extends express.Application>(app: App):
 	)
 
 	const expressRequestHandler = await (
-		viteDevServer.ssrLoadModule('./server/express/app.ts') as Promise<typeof import('./app.ts')>
+		viteDevServer.ssrLoadModule('./server/express/app.ts').catch(error => {
+			// biome-ignore lint/suspicious/noConsole: The dynamic module loading could fail silently
+			console.error('Fail to load server module:', error)
+			throw error
+		}) as Promise<typeof import('./app.ts')>
 	).then(({ reactRouterRequestHandler }) => reactRouterRequestHandler)
 
 	console.log('Starting development server')
