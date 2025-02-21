@@ -1,13 +1,14 @@
 import fs from 'node:fs'
-import type * as http from 'node:http'
-import os from 'node:os'
-import process from 'node:process'
-import url from 'node:url'
 import compression from 'compression'
 import { type ParseResult, Schema } from 'effect'
 import express from 'express'
 import getPort from 'get-port'
 import morgan from 'morgan'
+
+import http from 'node:http'
+import os from 'node:os'
+import process from 'node:process'
+import url from 'node:url'
 import sourceMapSupport from 'source-map-support'
 
 import { developmentApp } from './development-app.ts'
@@ -114,9 +115,7 @@ export async function run(): Promise<http.Server> {
 	 */
 	app.use(morgan(NODE_ENV === 'development' ? 'dev' : 'tiny'))
 
-	const httpServer: http.Server = HOST //
-		? app.listen(port, HOST, onListen)
-		: app.listen(port, onListen)
+	const httpServer = http.createServer(app)
 
 	for (const signal of ['SIGTERM', 'SIGINT'] as const) {
 		/**
@@ -141,6 +140,12 @@ export async function run(): Promise<http.Server> {
 				process.exit(0)
 			})
 		})
+	}
+
+	if (HOST) {
+		httpServer.listen(port, HOST, onListen)
+	} else {
+		httpServer.listen(port, onListen)
 	}
 
 	return httpServer
