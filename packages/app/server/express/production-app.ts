@@ -1,17 +1,16 @@
 import path from 'node:path/posix'
 import express from 'express'
 
-const { reactRouterRequestHandler } = await import('../../react-router.config.ts')
-	.then(mod => mod.default)
-	.then(({ buildDirectory, serverBuildFile }) =>
-		path.resolve(path.join(buildDirectory, 'server', serverBuildFile)),
-	)
-	.then(serverBuildPath => import(serverBuildPath))
-	.then((module: typeof import('./app.ts')) => module)
+export async function productionApp<App extends express.Application>(app: App): Promise<App> {
+	const { reactRouterRequestHandler } = await import('../../react-router.config.ts')
+		.then(mod => mod.default)
+		.then(({ buildDirectory, serverBuildFile }) =>
+			path.resolve(path.join(buildDirectory, 'server', serverBuildFile)),
+		)
+		.then(serverBuildPath => import(serverBuildPath))
+		.then((module: typeof import('./app.ts')) => module)
 
-export function productionApp<App extends express.Application>(app: App): App {
 	console.log('Starting production server')
-
 	return app
 		.use(
 			'/assets',
