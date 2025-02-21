@@ -1,5 +1,6 @@
 import { exec } from 'node:child_process'
 import process from 'node:process'
+
 import { codecovVitePlugin } from '@codecov/vite-plugin'
 import mdx from '@mdx-js/rollup'
 import { reactRouter } from '@react-router/dev/vite'
@@ -16,11 +17,9 @@ const ReactCompilerConfig = {
 
 export default defineConfig(({ isSsrBuild }) => ({
 	build: {
-		rollupOptions: isSsrBuild
-			? {
-					input: './server/express/app.ts',
-				}
-			: {},
+		minify: false,
+		rollupOptions: isSsrBuild ? { input: './server/express/app.ts' } : {},
+		sourcemap: true,
 		target: 'esnext',
 	},
 	plugins: [
