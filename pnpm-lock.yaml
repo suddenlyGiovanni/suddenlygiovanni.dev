@@ -171,8 +171,8 @@ importers:
         specifier: 19.0.0-beta-e552027-20250112
         version: 19.0.0-beta-e552027-20250112
       globals:
-        specifier: 15.14.0
-        version: 15.14.0
+        specifier: 16.0.0
+        version: 16.0.0
       msw:
         specifier: 2.7.0
         version: 2.7.0(@types/node@22.13.4)(typescript@5.8.1-rc)
@@ -246,8 +246,8 @@ importers:
         specifier: 2.4.1
         version: 2.4.1(eslint@9.20.1(jiti@2.4.2))(turbo@2.4.1)
       globals:
-        specifier: 15.14.0
-        version: 15.14.0
+        specifier: 16.0.0
+        version: 16.0.0
       typescript:
         specifier: 5.8.1-rc
         version: 5.8.1-rc
@@ -386,8 +386,8 @@ importers:
         specifier: 0.11.3
         version: 0.11.3(eslint@9.20.1(jiti@2.4.2))(typescript@5.8.1-rc)
       globals:
-        specifier: 15.14.0
-        version: 15.14.0
+        specifier: 16.0.0
+        version: 16.0.0
       storybook:
         specifier: 8.5.8
         version: 8.5.8(prettier@2.8.8)
@@ -4036,8 +4036,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@15.14.0:
-    resolution: {integrity: sha512-OkToC372DtlQeje9/zHIo5CT8lRP/FUgEOKBEhU4e0abL7J7CD24fD9ohiLN5hagG/kWCYj4K5oaxxtj2Z0Dig==}
+  globals@16.0.0:
+    resolution: {integrity: sha512-iInW14XItCXET01CQFqudPOWP2jYMl7T+QRQT+UNcR/iQncN/F0UNpgd76iFkBPgNQb4+X3LV9tLJYzwh+Gl3A==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -10546,7 +10546,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@15.14.0: {}
+  globals@16.0.0: {}
 
   globalthis@1.0.4:
     dependencies:
