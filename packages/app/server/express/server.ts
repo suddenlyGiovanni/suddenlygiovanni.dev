@@ -45,6 +45,30 @@ sourceMapSupport.install({
 })
 
 /**
+ * Handles application shutdown gracefully upon receiving specific termination signals.
+ *
+ * This function listens for termination signals ('SIGTERM' or 'SIGINT') and performs
+ * necessary actions to close the server safely. It logs the received signal, proceeds
+ * to close the server, and exits the process with an appropriate exit code depending
+ * on whether the shutdown was successful or encountered errors.
+ */
+function setupGracefulShutdown(server: http.Server): void {
+	for (const signal of ['SIGTERM', 'SIGINT'] as const) {
+		process.once(signal, (_signal: typeof signal) => {
+			console.log(`Received shutdown signal "${_signal}", closing server gracefully...`)
+			server.close(err => {
+				if (err) {
+					console.error('Error during server shutdown:', err)
+					process.exit(1)
+				}
+				console.log('Server closed gracefully.')
+				process.exit(0)
+			})
+		})
+	}
+}
+
+/**
  * Represents the default port number used for the application.
  * This value is typically used as the fallback port if no custom port is specified.
  * The default port is set to 5173.
@@ -115,30 +139,7 @@ export async function run(): Promise<http.Server> {
 
 	const httpServer = http.createServer(app)
 
-	for (const signal of ['SIGTERM', 'SIGINT'] as const) {
-		/**
-		 * Handles application shutdown gracefully upon receiving specific termination signals.
-		 *
-		 * This function listens for termination signals ('SIGTERM' or 'SIGINT') and performs
-		 * necessary actions to close the server safely. It logs the received signal, proceeds
-		 * to close the server, and exits the process with an appropriate exit code depending
-		 * on whether the shutdown was successful or encountered errors.
-		 *
-		 * @param {('SIGTERM' | 'SIGINT')} signal The termination signal received, triggering the graceful shutdown process.
-		 * @returns Does not return a value.
-		 */
-		process.once(signal, (_signal: typeof signal) => {
-			console.log(`Received shutdown signal "${_signal}", closing server gracefully...`)
-			httpServer?.close(err => {
-				if (err) {
-					console.error('Error during server shutdown:', err)
-					process.exit(1)
-				}
-				console.log('Server closed gracefully.')
-				process.exit(0)
-			})
-		})
-	}
+	setupGracefulShutdown(httpServer)
 
 	if (HOST) {
 		httpServer.listen(port, HOST, onListen)
