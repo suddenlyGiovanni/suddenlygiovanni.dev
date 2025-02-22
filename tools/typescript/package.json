@@ -10,7 +10,7 @@
 		"@tsconfig/strictest": "2.0.5",
 		"@tsconfig/vite-react": "3.4.0"
 	},
-	"name": "@suddenly-giovanni/config-typescript",
+	"name": "@suddenly-giovanni/typescript",
 	"peerDependencies": {
 		"typescript": "5.8.1-rc"
 	},

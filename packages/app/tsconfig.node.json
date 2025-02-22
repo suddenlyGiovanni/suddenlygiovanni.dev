@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": ["./tsconfig.json", "@suddenly-giovanni/config-typescript/library.json"],
+	"extends": ["./tsconfig.json", "@suddenly-giovanni/typescript/library.json"],
 	"compilerOptions": {
 		"composite": true,
 		"target": "es2024",
