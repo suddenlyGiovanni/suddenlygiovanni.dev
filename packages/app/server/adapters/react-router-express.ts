@@ -1,4 +1,5 @@
 import process from 'node:process'
+
 import { createReadableStreamFromReadable, writeReadableStreamToWritable } from '@react-router/node'
 import type * as express from 'express'
 import type { AppLoadContext, ServerBuild } from 'react-router'
@@ -24,12 +25,20 @@ export type RequestHandler = (
 ) => Promise<void>
 
 /**
- * Returns a request handler for Express that serves the response using Remix.
+ * Creates an Express request handler that processes incoming requests with Remix.
+ *
+ * This function converts an incoming Express request into a Remix-compatible request, optionally
+ * retrieves additional load context via a provided function, and sends the Remix response back
+ * through Express. It also forwards any encountered errors to the next middleware.
+ *
+ * @param build - The Remix server build or an async function returning the build.
+ * @param getLoadContext - An optional function to extract additional load context from the Express request and response.
+ * @param mode - The operating mode for Remix (e.g., "development" or "production"). Defaults to process.env['NODE_ENV'].
+ * @returns A function to handle Express requests.
  */
 export function createRequestHandler({
 	build,
 	getLoadContext,
-	// biome-ignore lint/complexity/useLiteralKeys: <explanation>
 	mode = process.env['NODE_ENV'],
 }: {
 	build: ServerBuild | (() => Promise<ServerBuild>)

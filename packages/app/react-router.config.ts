@@ -6,5 +6,7 @@ export default {
 	serverBuildFile: 'index.js',
 	buildDirectory: 'build',
 	ssr: true,
-	future: {},
+	future: {
+		unstable_splitRouteModules: true,
+	},
 } satisfies Config
