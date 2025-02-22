@@ -19,7 +19,13 @@
 			"optional": false
 		}
 	},
-	"private": true,
+  "exports": {
+	"./remix.json": "./remix.json",
+	"./react-library.json": "./react-library.json",
+	"./library.json": "./library.json",
+	"./base.json": "./base.json"
+  },
+  "private": true,
 	"scripts": {
 		"clean": "scripty"
 	}
