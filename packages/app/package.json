@@ -1,9 +1,8 @@
 {
-	"config": {
-		"scripty": {
-			"path": "../../scripts"
-		}
-	},
+	"$schema": "https://json.schemastore.org/package.json",
+	"name": "@repo/app",
+	"type": "module",
+	"private": true,
 	"imports": {
 		"#root/*": "./*"
 	},
@@ -66,13 +65,11 @@
 		"vite-tsconfig-paths": "5.1.4",
 		"vitest": "3.0.6"
 	},
-	"name": "@repo/app",
-	"private": true,
 	"scripts": {
 		"build": "react-router build",
 		"check": "biome check .",
 		"check:fix": "biome check --apply .",
-		"clean": "scripty",
+		"clean": "rm -rf node_modules build coverage .turbo pruned .react-router",
 		"dev": "node --env-file=.development.env --experimental-network-inspection server/express/server.ts",
 		"format": "biome check --vcs-enabled=true --vcs-use-ignore-file=true  --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true .",
 		"format:write": "biome check --vcs-enabled=true --vcs-use-ignore-file=true  --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true --write .",
@@ -80,8 +77,7 @@
 		"start": "node --env-file=.production.env server/express/server.ts",
 		"test": "vitest",
 		"test:unit": "vitest",
-		"typecheck": "react-router typegen && tsc"
+		"typecheck": "react-router typegen && tsc --noEmit"
 	},
-	"sideEffects": false,
-	"type": "module"
+	"sideEffects": false
 }
