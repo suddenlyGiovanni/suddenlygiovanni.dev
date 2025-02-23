@@ -90,9 +90,8 @@ export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
 		<article
 			className={clsx(
-				'prose dark:prose-invert flex w-full max-w-full flex-col justify-start font-comic',
+				'prose dark:prose-invert flex w-full max-w-full flex-col justify-start font-comic prose-blockquote:font-light prose-blockquote:not-italic',
 			)}
-			style={{ fontSynthesisWeight: 'initial' }}
 		>
 			<T.h2 className={clsx('font-comic')}>
 				<div className={clsx('inline-block animate-wiggle hover:animate-none')}>👋</div> Hi, I'm
