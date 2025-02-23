@@ -55,6 +55,9 @@ importers:
       '@react-router/node':
         specifier: 7.2.0
         version: 7.2.0(react-router@7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.8.1-rc)
+      '@repo/open-graph-protocol':
+        specifier: workspace:*
+        version: link:../open-graph-protocol
       '@repo/tailwind-config':
         specifier: workspace:*
         version: link:../../tools/tailwind
@@ -64,9 +67,6 @@ importers:
       '@std/yaml':
         specifier: npm:@jsr/std__yaml@1.0.5
         version: '@jsr/std__yaml@1.0.5'
-      '@suddenly-giovanni/open-graph-protocol':
-        specifier: workspace:*
-        version: link:../open-graph-protocol
       '@suddenly-giovanni/schema-resume':
         specifier: npm:@jsr/suddenly-giovanni__schema-resume@0.0.5
         version: '@jsr/suddenly-giovanni__schema-resume@0.0.5'
