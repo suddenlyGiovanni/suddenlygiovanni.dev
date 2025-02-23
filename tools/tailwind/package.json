@@ -8,7 +8,7 @@
 	},
 	"dependencies": {
 		"@tailwindcss/typography": "0.5.16",
-		"tailwindcss": "4.0.8",
+		"tailwindcss": "catalog:",
 		"tailwindcss-animate": "1.0.7"
 	},
 	"peerDependencies": {
