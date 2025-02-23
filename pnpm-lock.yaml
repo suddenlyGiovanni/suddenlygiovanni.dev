@@ -12,6 +12,9 @@ catalogs:
     '@types/react-dom':
       specifier: ^19.0.4
       version: 19.0.4
+    vite:
+      specifier: 6.1.1
+      version: 6.1.1
 
 overrides:
   react: ~19.0.0
@@ -192,7 +195,7 @@ importers:
         specifier: 1.0.7
         version: 1.0.7(tailwindcss@4.0.8)
       vite:
-        specifier: 6.1.1
+        specifier: 'catalog:'
         version: 6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)
       vite-plugin-babel:
         specifier: 1.3.0
@@ -353,7 +356,7 @@ importers:
         specifier: 1.0.7
         version: 1.0.7(tailwindcss@4.0.8)
       vite:
-        specifier: 6.1.1
+        specifier: 'catalog:'
         version: 6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)
 
   tools/eslint-config:
