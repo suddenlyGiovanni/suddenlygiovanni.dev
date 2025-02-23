@@ -1,9 +1,17 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"config": {
-		"scripty": {
-			"path": "../../scripts"
-		}
+	"name": "@repo/ui",
+	"private": true,
+	"type": "module",
+	"exports": {
+		"./lib/*": "./src/lib/*",
+		"./components/*": "./src/components/*",
+		"./ui/*": "./src/ui/*",
+		"./hooks/*": "./src/hooks/*",
+		"./styles.css": "./src/styles/styles.css"
+	},
+	"imports": {
+		"#*": "./src/*"
 	},
 	"dependencies": {
 		"@nick/clsx": "npm:@jsr/nick__clsx@0.3.1",
@@ -54,27 +62,15 @@
 		"tailwindcss-animate": "1.0.7",
 		"vite": "6.1.1"
 	},
-	"exports": {
-		"./lib/*": "./src/lib/*",
-		"./components/*": "./src/components/*",
-		"./ui/*": "./src/ui/*",
-		"./hooks/*": "./src/hooks/*",
-		"./styles.css": "./src/styles/styles.css"
-	},
-	"imports": {
-		"#*": "./src/*"
-	},
-	"name": "@repo/ui",
 	"peerDependencies": {
 		"react": "~19.0.0"
 	},
-	"private": true,
 	"scripts": {
 		"build-storybook": "storybook build",
 		"check": "biome check .",
 		"check:fix": "biome check --apply .",
 		"chromatic": "npx chromatic",
-		"clean": "scripty",
+		"clean": "rm -rf node_modules storybook-static .turbo",
 		"components-add": "pnpm dlx shadcn-ui@latest add",
 		"components-diff": "pnpm dlx shadcn-ui@latest diff",
 		"dev": "storybook dev -p 6006",
@@ -82,7 +78,6 @@
 		"format:write": "biome check --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true --write .",
 		"lint": "biome ci --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=false --no-errors-on-unmatched .",
 		"eslint": "eslint . --max-warnings 0",
-		"typecheck": "scripty"
-	},
-	"type": "module"
+		"typecheck": "tsc --noEmit"
+	}
 }
