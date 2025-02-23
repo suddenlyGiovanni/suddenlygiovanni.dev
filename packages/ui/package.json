@@ -60,7 +60,8 @@
 		"tailwind-merge": "3.0.2",
 		"tailwindcss": "4.0.8",
 		"tailwindcss-animate": "1.0.7",
-		"vite": "catalog:"
+		"vite": "catalog:",
+		"vitest": "catalog:"
 	},
 	"peerDependencies": {
 		"react": "catalog:"

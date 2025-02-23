@@ -12,9 +12,18 @@ catalogs:
     '@types/react-dom':
       specifier: ^19.0.4
       version: 19.0.4
+    '@vitest/coverage-v8':
+      specifier: 3.0.6
+      version: 3.0.6
+    '@vitest/ui':
+      specifier: 3.0.6
+      version: 3.0.6
     vite:
       specifier: 6.1.1
       version: 6.1.1
+    vitest:
+      specifier: 3.0.6
+      version: 3.0.6
 
 overrides:
   react: ~19.0.0
@@ -165,13 +174,13 @@ importers:
         specifier: 0.5.10
         version: 0.5.10
       '@vitest/coverage-v8':
-        specifier: 3.0.6
+        specifier: 'catalog:'
         version: 3.0.6(vitest@3.0.6)
       '@vitest/eslint-plugin':
         specifier: 1.1.31
         version: 1.1.31(@typescript-eslint/utils@8.24.1(eslint@9.21.0(jiti@2.4.2))(typescript@5.8.1-rc))(eslint@9.21.0(jiti@2.4.2))(typescript@5.8.1-rc)(vitest@3.0.6)
       '@vitest/ui':
-        specifier: 3.0.6
+        specifier: 'catalog:'
         version: 3.0.6(vitest@3.0.6)
       babel-plugin-react-compiler:
         specifier: 19.0.0-beta-e552027-20250112
@@ -204,7 +213,7 @@ importers:
         specifier: 5.1.4
         version: 5.1.4(typescript@5.8.1-rc)(vite@6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1))
       vitest:
-        specifier: 3.0.6
+        specifier: 'catalog:'
         version: 3.0.6(@types/debug@4.1.12)(@types/node@22.13.5)(@vitest/ui@3.0.6)(jiti@2.4.2)(lightningcss@1.29.1)(msw@2.7.1(@types/node@22.13.5)(typescript@5.8.1-rc))
 
   packages/open-graph-protocol:
@@ -358,6 +367,9 @@ importers:
       vite:
         specifier: 'catalog:'
         version: 6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)
+      vitest:
+        specifier: 'catalog:'
+        version: 3.0.6(@types/debug@4.1.12)(@types/node@22.13.5)(@vitest/ui@3.0.6)(jiti@2.4.2)(lightningcss@1.29.1)(msw@2.7.1(@types/node@22.13.5)(typescript@5.8.1-rc))
 
   tools/eslint-config:
     devDependencies:
