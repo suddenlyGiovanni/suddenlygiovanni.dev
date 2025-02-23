@@ -1,6 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"name": "@suddenly-giovanni/tailwind",
+	"name": "@repo/tailwind-config",
+	"type": "module",
 	"private": true,
 	"exports": {
 		"./style.css": "./style.css"
