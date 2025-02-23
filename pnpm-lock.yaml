@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    '@total-typescript/ts-reset':
+      specifier: 0.6.1
+      version: 0.6.1
     '@types/react-dom':
       specifier: ^19.0.4
       version: 19.0.4
@@ -132,7 +135,7 @@ importers:
         specifier: 4.0.8
         version: 4.0.8(vite@6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1))
       '@total-typescript/ts-reset':
-        specifier: 0.6.1
+        specifier: 'catalog:'
         version: 0.6.1
       '@types/compression':
         specifier: 1.7.5
@@ -314,7 +317,7 @@ importers:
         specifier: 4.0.8
         version: 4.0.8(vite@6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1))
       '@total-typescript/ts-reset':
-        specifier: 0.6.1
+        specifier: 'catalog:'
         version: 0.6.1
       '@types/react':
         specifier: ^19.0.0
