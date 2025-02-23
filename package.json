@@ -13,7 +13,7 @@
 	"pnpm": {
 		"overrides": {
 			"react": "catalog:",
-			"react-dom": "~19.0.0",
+			"react-dom": "catalog:",
 			"@types/react": "^19.0.0"
 		}
 	},

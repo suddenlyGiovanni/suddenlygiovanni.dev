@@ -4,6 +4,12 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    '@types/react-dom':
+      specifier: ^19.0.4
+      version: 19.0.4
+
 overrides:
   react: ~19.0.0
   react-dom: ~19.0.0
@@ -147,7 +153,7 @@ importers:
         specifier: ^19.0.0
         version: 19.0.10
       '@types/react-dom':
-        specifier: 19.0.4
+        specifier: 'catalog:'
         version: 19.0.4(@types/react@19.0.10)
       '@types/source-map-support':
         specifier: 0.5.10
@@ -314,7 +320,7 @@ importers:
         specifier: ^19.0.0
         version: 19.0.10
       '@types/react-dom':
-        specifier: 19.0.4
+        specifier: 'catalog:'
         version: 19.0.4(@types/react@19.0.10)
       '@vitejs/plugin-react':
         specifier: 4.3.4
