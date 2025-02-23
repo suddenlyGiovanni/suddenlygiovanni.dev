@@ -1,10 +1,5 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"config": {
-		"scripty": {
-			"path": "../../scripts"
-		}
-	},
 	"dependencies": {
 		"@tsconfig/node23": "23.0.0",
 		"@tsconfig/strictest": "2.0.5",
@@ -27,6 +22,6 @@
 	},
 	"private": true,
 	"scripts": {
-		"clean": "scripty"
+		"clean": "rm -rf node_modules"
 	}
 }
