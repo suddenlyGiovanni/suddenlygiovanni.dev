@@ -41,7 +41,7 @@
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
 		"@tailwindcss/typography": "0.5.16",
-		"@tailwindcss/vite": "4.0.8",
+		"@tailwindcss/vite": "catalog:",
 		"@total-typescript/ts-reset": "catalog:",
 		"@types/compression": "1.7.5",
 		"@types/express": "5.0.0",

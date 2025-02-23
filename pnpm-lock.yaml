@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    '@tailwindcss/vite':
+      specifier: 4.0.8
+      version: 4.0.8
     '@total-typescript/ts-reset':
       specifier: 0.6.1
       version: 0.6.1
@@ -147,7 +150,7 @@ importers:
         specifier: 0.5.16
         version: 0.5.16(tailwindcss@4.0.8)
       '@tailwindcss/vite':
-        specifier: 4.0.8
+        specifier: 'catalog:'
         version: 4.0.8(vite@6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1))
       '@total-typescript/ts-reset':
         specifier: 'catalog:'
@@ -329,7 +332,7 @@ importers:
         specifier: 0.5.16
         version: 0.5.16(tailwindcss@4.0.8)
       '@tailwindcss/vite':
-        specifier: 4.0.8
+        specifier: 'catalog:'
         version: 4.0.8(vite@6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1))
       '@total-typescript/ts-reset':
         specifier: 'catalog:'
