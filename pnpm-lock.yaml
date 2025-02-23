@@ -21,6 +21,9 @@ catalogs:
     '@vitest/ui':
       specifier: 3.0.6
       version: 3.0.6
+    babel-plugin-react-compiler:
+      specifier: ^19.0.0-beta-21e868a-20250216
+      version: 19.0.0-beta-e552027-20250112
     tailwindcss:
       specifier: 4.0.8
       version: 4.0.8
@@ -189,7 +192,7 @@ importers:
         specifier: 'catalog:'
         version: 3.0.6(vitest@3.0.6)
       babel-plugin-react-compiler:
-        specifier: 19.0.0-beta-e552027-20250112
+        specifier: 'catalog:'
         version: 19.0.0-beta-e552027-20250112
       globals:
         specifier: 16.0.0
@@ -347,7 +350,7 @@ importers:
         specifier: 4.3.4
         version: 4.3.4(vite@6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1))
       babel-plugin-react-compiler:
-        specifier: ~19.0.0-beta-714736e-20250131
+        specifier: 'catalog:'
         version: 19.0.0-beta-e552027-20250112
       class-variance-authority:
         specifier: 0.7.1

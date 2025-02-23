@@ -52,7 +52,7 @@
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"@vitejs/plugin-react": "4.3.4",
-		"babel-plugin-react-compiler": "~19.0.0-beta-714736e-20250131",
+		"babel-plugin-react-compiler": "catalog:",
 		"class-variance-authority": "0.7.1",
 		"eslint-plugin-storybook": "0.11.3",
 		"globals": "16.0.0",

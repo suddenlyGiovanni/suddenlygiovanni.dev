@@ -54,7 +54,7 @@
 		"@vitest/coverage-v8": "catalog:",
 		"@vitest/eslint-plugin": "1.1.31",
 		"@vitest/ui": "catalog:",
-		"babel-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
+		"babel-plugin-react-compiler": "catalog:",
 		"globals": "16.0.0",
 		"msw": "2.7.1",
 		"node-mocks-http": "1.16.2",
