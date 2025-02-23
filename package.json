@@ -2,7 +2,7 @@
 	"$schema": "https://json.schemastore.org/package.json",
 	"devDependencies": {
 		"@biomejs/biome": "nightly",
-		"eslint": "9.21.0",
+		"eslint": "catalog:",
 		"turbo": "2.4.2",
 		"typescript": "catalog:"
 	},
