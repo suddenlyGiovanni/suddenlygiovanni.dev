@@ -35,7 +35,7 @@ ENV DO_NOT_TRACK=1
 
 COPY . .
 
-RUN pnpm dlx turbo prune --docker "@suddenly-giovanni/app"
+RUN pnpm dlx turbo prune --docker "@repo/app"
 
 
 FROM base AS build
@@ -59,13 +59,13 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod=false
 
 ENV NODE_ENV="production"
 
-RUN pnpm run --filter=@suddenly-giovanni/app build
+RUN pnpm run --filter=@repo/app build
 
 # Deploy a package from a workspace:
 # During deployment, the files of the deployed package are copied to the target directory.
 # All dependencies of the deployed package, including dependencies from the workspace, are installed inside an isolated node_modules directory at the target directory.
 # The target directory will contain a portable package that can be copied to a server and executed without additional steps.
-RUN pnpm --filter @suddenly-giovanni/app --prod --no-optional deploy pruned
+RUN pnpm --filter @repo/app --prod --no-optional deploy pruned
 
 
 FROM base AS production
