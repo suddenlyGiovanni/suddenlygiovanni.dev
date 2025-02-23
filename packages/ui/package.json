@@ -26,6 +26,7 @@
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "3.2.4",
+		"@repo/typescript-config": "workspace:*",
 		"@storybook/addon-a11y": "8.5.8",
 		"@storybook/addon-essentials": "8.5.8",
 		"@storybook/addon-interactions": "8.5.8",
@@ -37,7 +38,6 @@
 		"@storybook/react-vite": "8.5.8",
 		"@storybook/test": "8.5.8",
 		"@suddenly-giovanni/eslint-config": "workspace:*",
-		"@suddenly-giovanni/typescript": "workspace:*",
 		"@tailwindcss/typography": "0.5.16",
 		"@tailwindcss/vite": "4.0.8",
 		"@total-typescript/ts-reset": "0.6.1",

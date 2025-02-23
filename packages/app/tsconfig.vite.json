@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": ["./tsconfig.json", "@suddenly-giovanni/typescript/remix.json"],
+	"extends": ["./tsconfig.json", "@repo/typescript-config/remix.json"],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"composite": true,
