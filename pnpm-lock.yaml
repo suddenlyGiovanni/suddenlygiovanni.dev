@@ -27,6 +27,9 @@ catalogs:
     tailwindcss:
       specifier: 4.0.8
       version: 4.0.8
+    typescript:
+      specifier: ^5.8.1-rc
+      version: 5.8.1-rc
     vite:
       specifier: 6.1.1
       version: 6.1.1
@@ -53,7 +56,7 @@ importers:
         specifier: 2.4.2
         version: 2.4.2
       typescript:
-        specifier: 5.8.1-rc
+        specifier: 'catalog:'
         version: 5.8.1-rc
 
   packages/app:
@@ -229,7 +232,7 @@ importers:
         specifier: workspace:*
         version: link:../../tools/typescript
       typescript:
-        specifier: 5.8.1-rc
+        specifier: 'catalog:'
         version: 5.8.1-rc
 
   packages/ui:
@@ -404,7 +407,7 @@ importers:
         specifier: 16.0.0
         version: 16.0.0
       typescript:
-        specifier: 5.8.1-rc
+        specifier: 'catalog:'
         version: 5.8.1-rc
       typescript-eslint:
         specifier: 8.24.1
@@ -434,7 +437,7 @@ importers:
         specifier: 3.4.0
         version: 3.4.0
       typescript:
-        specifier: 5.8.1-rc
+        specifier: 'catalog:'
         version: 5.8.1-rc
 
 packages:

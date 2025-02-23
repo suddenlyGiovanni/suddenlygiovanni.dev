@@ -4,7 +4,7 @@
 		"@biomejs/biome": "nightly",
 		"eslint": "9.21.0",
 		"turbo": "2.4.2",
-		"typescript": "5.8.1-rc"
+		"typescript": "catalog:"
 	},
 	"engines": {
 		"node": ">=23.7"

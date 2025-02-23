@@ -11,7 +11,7 @@
 	},
 	"devDependencies": {
 		"@repo/typescript-config": "workspace:*",
-		"typescript": "5.8.1-rc"
+		"typescript": "catalog:"
 	},
 	"scripts": {
 		"clean": "rm -rf node_modules .turbo",
