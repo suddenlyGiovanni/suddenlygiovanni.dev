@@ -14,7 +14,7 @@
 		"overrides": {
 			"react": "catalog:",
 			"react-dom": "catalog:",
-			"@types/react": "^19.0.0"
+			"@types/react": "catalog:"
 		}
 	},
 	"private": true,
