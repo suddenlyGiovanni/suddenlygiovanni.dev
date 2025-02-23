@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 import { Link } from 'react-router'
 
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { clsx } from '@repo/ui/lib/utils.ts'
 
 import Motivations from 'content/copy/motivations.md'
 

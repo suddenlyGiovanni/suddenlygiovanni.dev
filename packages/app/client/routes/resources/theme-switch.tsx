@@ -5,9 +5,9 @@ import type { ReactElement } from 'react'
 import { data, redirect, useFetcher, useFetchers } from 'react-router'
 import { ServerOnly } from 'remix-utils/server-only'
 
-import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
+import { Icons } from '@repo/ui/components/icons/icons.tsx'
+import { clsx } from '@repo/ui/lib/utils.ts'
+import { Button } from '@repo/ui/ui/button.tsx'
 
 import { useHints, useOptionalHints } from '#root/client/utils/client-hints.tsx'
 import { useOptionalRequestInfo, useRequestInfo } from '#root/client/utils/request-info.ts'

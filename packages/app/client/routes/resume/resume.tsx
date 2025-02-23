@@ -2,8 +2,8 @@ import { Effect } from 'effect'
 import type { ReactElement } from 'react'
 import { Link, useLoaderData } from 'react-router'
 
+import { clsx } from '@repo/ui/lib/utils.ts'
 import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
 
 import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '#root/client/config.ts'

@@ -1,12 +1,12 @@
 import type { JSX } from 'react'
 
-import { Layout } from '@suddenly-giovanni/ui/components/layout/layout.tsx'
+import { Layout } from '@repo/ui/components/layout/layout.tsx'
 import {
 	GitHubIconLink,
 	LinkedInIconLink,
 	TwitterIconLink,
-} from '@suddenly-giovanni/ui/components/social/social.tsx'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+} from '@repo/ui/components/social/social.tsx'
+import { clsx } from '@repo/ui/lib/utils.ts'
 
 import { config } from '#root/client/config.ts'
 

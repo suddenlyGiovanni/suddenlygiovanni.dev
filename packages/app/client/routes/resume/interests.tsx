@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
+import { T } from '@repo/ui/components/typography/typography.tsx'
 import type * as Model from '@suddenly-giovanni/schema-resume'
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
 
 import { generateDjb2Hash } from '#root/client/routes/resume/generate-djb2-hash.ts'
 

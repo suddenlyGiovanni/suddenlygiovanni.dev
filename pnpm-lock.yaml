@@ -58,6 +58,9 @@ importers:
       '@repo/tailwind-config':
         specifier: workspace:*
         version: link:../../tools/tailwind
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../ui
       '@std/yaml':
         specifier: npm:@jsr/std__yaml@1.0.5
         version: '@jsr/std__yaml@1.0.5'
@@ -67,9 +70,6 @@ importers:
       '@suddenly-giovanni/schema-resume':
         specifier: npm:@jsr/suddenly-giovanni__schema-resume@0.0.5
         version: '@jsr/suddenly-giovanni__schema-resume@0.0.5'
-      '@suddenly-giovanni/ui':
-        specifier: workspace:*
-        version: link:../ui
       compression:
         specifier: ^1.7.5
         version: 1.8.0
