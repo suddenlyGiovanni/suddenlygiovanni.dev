@@ -1,45 +1,54 @@
 {
-	$schema: 'https://docs.renovatebot.com/renovate-schema.json',
-	configMigration: true,
-	dockerfile: {
-		enabled: true,
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  configMigration: true,
+  dockerfile: {
+	enabled: true,
+  },
+  extends: [
+	'config:recommended',
+	':pinDevDependencies',
+	'group:monorepos',
+	'group:recommended',
+	'replacements:all',
+	'workarounds:all',
+	':followTag(typescript, rc)',
+	'schedule:earlyMondays',
+	'packages:eslint'
+  ],
+  npmrcMerge: true,
+  hostRules: [
+	{
+	  matchHost: 'https://npm.pkg.github.com/',
+	  hostType: 'npm',
+	  token: '{{ secrets.REPO_GITHUB_PACKAGES_TOKEN }}',
 	},
-	extends: [
-		'config:recommended',
-		':pinDevDependencies',
-		'group:monorepos',
-		'group:recommended',
-		'replacements:all',
-		'workarounds:all',
-		':followTag(typescript, rc)',
-		'schedule:earlyMondays',
-		'packages:eslint'
-	],
-	npmrcMerge: true,
-	hostRules: [
-		{
-			matchHost: 'https://npm.pkg.github.com/',
-			hostType: 'npm',
-			token: '{{ secrets.REPO_GITHUB_PACKAGES_TOKEN }}',
-		},
-	],
-	labels: [
-		'dependencies',
-	],
-	packageRules: [
-		{
-			groupName: 'effect packages',
-			matchPackageNames: [
-				'/^effect$/',
-				'/^@effect//',
-			],
-		},
-		{
-            		groupName: 'tailwindcss packages',
-            		matchPackageNames: [
-                		'@tailwindcss/vite',
-                		'tailwindcss',
-            		],
-        	}
-	],
+  ],
+  labels: [
+	'dependencies',
+  ],
+  packageRules: [
+	{
+	  groupName: 'effect packages',
+	  matchPackageNames: [
+		'/^effect$/',
+		'/^@effect//',
+	  ],
+	},
+	{
+	  "groupName": "eslint updates",
+	  "matchPackageNames": [
+		"eslint",
+		"/^eslint-/",
+		"/^@.*eslint/"
+	  ]
+	},
+
+	{
+	  groupName: 'tailwindcss packages',
+	  matchPackageNames: [
+		'@tailwindcss/vite',
+		'tailwindcss',
+	  ],
+	}
+  ],
 }
