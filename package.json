@@ -2,11 +2,9 @@
 	"$schema": "https://json.schemastore.org/package.json",
 	"devDependencies": {
 		"@biomejs/biome": "nightly",
-		"@tailwindcss/language-server": "0.14.6",
-		"eslint": "9.21.0",
-		"scripty": "3.0.0",
+		"eslint": "catalog:",
 		"turbo": "2.4.2",
-		"typescript": "5.8.1-rc"
+		"typescript": "catalog:"
 	},
 	"engines": {
 		"node": ">=23.7"
@@ -14,16 +12,16 @@
 	"packageManager": "pnpm@9.15.5+sha512.845196026aab1cc3f098a0474b64dfbab2afe7a1b4e91dd86895d8e4aa32a7a6d03049e2d0ad770bbe4de023a7122fb68c1a1d6e0d033c7076085f9d5d4800d4",
 	"pnpm": {
 		"overrides": {
-			"react": "~19.0.0",
-			"react-dom": "~19.0.0",
-			"@types/react": "^19.0.0"
+			"react": "catalog:",
+			"react-dom": "catalog:",
+			"@types/react": "catalog:"
 		}
 	},
 	"private": true,
 	"scripts": {
 		"build": "turbo build --log-order=grouped",
 		"check": "biome check --write .",
-		"clean": "turbo run clean && scripty clean",
+		"clean": "pnpm run --recursive clean && rm -rf node_modules .turbo",
 		"dev": "turbo dev",
 		"format": "turbo format --log-order=grouped",
 		"format:write": "turbo format:write --log-order=grouped",

@@ -1,8 +1,8 @@
 import type { ReactElement } from 'react'
 
-import { Types, makeOpenGraphWebsite } from '@suddenly-giovanni/open-graph-protocol'
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { Types, makeOpenGraphWebsite } from '@repo/open-graph-protocol'
+import { T } from '@repo/ui/components/typography/typography.tsx'
+import { clsx } from '@repo/ui/lib/utils.ts'
 
 import { config } from '#root/client/config.ts'
 import hero200wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp?url'

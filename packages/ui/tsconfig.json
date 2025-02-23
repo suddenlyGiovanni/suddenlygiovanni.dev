@@ -1,6 +1,6 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": "@suddenly-giovanni/config-typescript/react-library.json",
+	"extends": "@repo/typescript-config/react-library.json",
 	"compilerOptions": {
 		"baseUrl": ".",
 		"noEmit": true,

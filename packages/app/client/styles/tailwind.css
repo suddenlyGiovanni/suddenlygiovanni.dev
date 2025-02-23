@@ -1,8 +1,7 @@
 @import "tailwindcss";
-@import "@suddenly-giovanni/ui/styles.css";
+@import "@repo/tailwind-config/style.css";
 
-@source "@suddenly-giovanni/ui/ui/**/*.tsx";
-@source "@suddenly-giovanni/ui/components/**/*.tsx";
+@source "../../../ui/";
 
 html {
 	color-scheme: light dark;

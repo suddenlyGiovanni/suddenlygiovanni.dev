@@ -1,17 +1,12 @@
 import { Option } from 'effect'
 import { type MouseEventHandler, type ReactElement, useState } from 'react'
 
+import { Icons } from '@repo/ui/components/icons/icons.tsx'
+import { T } from '@repo/ui/components/typography/typography.tsx'
+import { clsx } from '@repo/ui/lib/utils.ts'
+import { Accordion, AccordionContent, AccordionItem, Trigger } from '@repo/ui/ui/accordion.tsx'
+import { Button } from '@repo/ui/ui/button.tsx'
 import type { Skill as ResumeSkill } from '@suddenly-giovanni/schema-resume'
-import { Icons } from '@suddenly-giovanni/ui/components/icons/icons.tsx'
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
-import {
-	Accordion,
-	AccordionContent,
-	AccordionItem,
-	Trigger,
-} from '@suddenly-giovanni/ui/ui/accordion.tsx'
-import { Button } from '@suddenly-giovanni/ui/ui/button.tsx'
 
 import { getDevIconComponent } from './dev-icons.tsx'
 

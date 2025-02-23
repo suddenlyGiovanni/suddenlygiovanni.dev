@@ -1,26 +1,27 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"config": {
-		"scripty": {
-			"path": "../../scripts"
-		}
-	},
 	"dependencies": {
 		"@tsconfig/node23": "23.0.0",
 		"@tsconfig/strictest": "2.0.5",
 		"@tsconfig/vite-react": "3.4.0"
 	},
-	"name": "@suddenly-giovanni/config-typescript",
+	"name": "@repo/typescript-config",
 	"peerDependencies": {
-		"typescript": "5.8.1-rc"
+		"typescript": "catalog:"
 	},
 	"peerDependenciesMeta": {
 		"typescript": {
 			"optional": false
 		}
 	},
+	"exports": {
+		"./remix.json": "./remix.json",
+		"./react-library.json": "./react-library.json",
+		"./library.json": "./library.json",
+		"./base.json": "./base.json"
+	},
 	"private": true,
 	"scripts": {
-		"clean": "scripty"
+		"clean": "rm -rf node_modules"
 	}
 }

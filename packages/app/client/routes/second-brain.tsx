@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react'
 
-import { T } from '@suddenly-giovanni/ui/components/typography/typography.tsx'
-import { clsx } from '@suddenly-giovanni/ui/lib/utils.ts'
+import { T } from '@repo/ui/components/typography/typography.tsx'
+import { clsx } from '@repo/ui/lib/utils.ts'
 
 import { routesRecord } from '#root/client/routes-record.ts'
 // biome-ignore lint/nursery/useImportRestrictions: <explanation>

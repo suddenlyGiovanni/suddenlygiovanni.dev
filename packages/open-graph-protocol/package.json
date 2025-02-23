@@ -1,27 +1,23 @@
 {
-	"config": {
-		"scripty": {
-			"path": "../../scripts"
-		}
+	"$schema": "https://json.schemastore.org/package.json",
+	"name": "@repo/open-graph-protocol",
+	"type": "module",
+	"private": true,
+	"exports": {
+		".": "./src/index.ts"
 	},
 	"dependencies": {
 		"ts-brand": "0.2.0"
 	},
 	"devDependencies": {
-		"@suddenly-giovanni/config-typescript": "workspace:*",
-		"typescript": "5.8.1-rc"
+		"@repo/typescript-config": "workspace:*",
+		"typescript": "catalog:"
 	},
-	"exports": {
-		".": "./src/index.ts"
-	},
-	"name": "@suddenly-giovanni/open-graph-protocol",
-	"private": true,
 	"scripts": {
-		"clean": "scripty",
+		"clean": "rm -rf node_modules .turbo",
 		"format": "biome check --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true .",
 		"format:write": "biome check --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=true --linter-enabled=false --organize-imports-enabled=true --write .",
 		"lint": "biome ci --vcs-enabled=true --vcs-use-ignore-file=true --vcs-root='../../' --formatter-enabled=false --linter-enabled=true --organize-imports-enabled=false --no-errors-on-unmatched .",
-		"typecheck": "scripty"
-	},
-	"type": "module"
+		"typecheck": "tsc --noEmit"
+	}
 }
