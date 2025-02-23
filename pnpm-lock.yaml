@@ -55,6 +55,9 @@ importers:
       '@react-router/node':
         specifier: 7.2.0
         version: 7.2.0(react-router@7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(typescript@5.8.1-rc)
+      '@repo/tailwind-config':
+        specifier: workspace:*
+        version: link:../../tools/tailwind
       '@std/yaml':
         specifier: npm:@jsr/std__yaml@1.0.5
         version: '@jsr/std__yaml@1.0.5'
