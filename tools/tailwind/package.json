@@ -1,0 +1,21 @@
+{
+	"$schema": "https://json.schemastore.org/package.json",
+	"name": "@suddenly-giovanni/tailwind",
+	"private": true,
+	"exports": {
+		"./style.css": "./style.css"
+	},
+	"dependencies": {
+		"@tailwindcss/typography": "0.5.16",
+		"tailwindcss": "4.0.7",
+		"tailwindcss-animate": "1.0.7"
+	},
+	"peerDependencies": {
+		"tailwindcss": "4.0.7"
+	},
+	"peerDependenciesMeta": {
+		"tailwindcss": {
+			"optional": false
+		}
+	}
+}
