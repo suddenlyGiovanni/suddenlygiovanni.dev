@@ -46,7 +46,6 @@
 		"@storybook/react": "8.5.8",
 		"@storybook/react-vite": "8.5.8",
 		"@storybook/test": "8.5.8",
-		"@tailwindcss/typography": "0.5.16",
 		"@tailwindcss/vite": "catalog:",
 		"@total-typescript/ts-reset": "catalog:",
 		"@types/react": "catalog:",
