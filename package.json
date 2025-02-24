@@ -20,7 +20,7 @@
 	"scripts": {
 		"build": "pnpm run --recursive --if-present build",
 		"check": "pnpm run --recursive --parallel --aggregate-output check --write",
-		"clean": "pnpm run --recursive clean && rm -rf node_modules .turbo",
+		"clean": "pnpm run --recursive clean && rm -rf node_modules",
 		"dev": "pnpm run --recursive --parallel --stream dev",
 		"format": "pnpm run --recursive --parallel --aggregate-output format",
 		"format:write": "pnpm run --recursive --parallel --aggregate-output format:write",

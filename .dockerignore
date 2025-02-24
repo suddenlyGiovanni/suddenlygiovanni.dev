@@ -7,7 +7,6 @@
 .git/
 .github/
 .idea/
-.turbo
 Dockerfile
 README.md
 biome.json
