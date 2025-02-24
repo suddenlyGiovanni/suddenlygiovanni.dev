@@ -40,7 +40,7 @@ RUN pnpm run --filter=@repo/app build
 # During deployment, the files of the deployed package are copied to the target directory.
 # All dependencies of the deployed package, including dependencies from the workspace, are installed inside an isolated node_modules directory at the target directory.
 # The target directory will contain a portable package that can be copied to a server and executed without additional steps.
-RUN pnpm deploy --filter=@repo/app --prod --no-optional  pruned
+RUN pnpm deploy --filter=@repo/app --prod --no-optional --legacy  pruned
 
 
 FROM base AS production
