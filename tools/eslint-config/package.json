@@ -24,5 +24,8 @@
 	},
 	"peerDependencies": {
 		"eslint": "catalog:"
+	},
+	"scripts": {
+		"clean": "rm -rf node_modules"
 	}
 }

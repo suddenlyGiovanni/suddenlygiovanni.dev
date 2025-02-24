@@ -69,7 +69,7 @@
 		"check": "biome check .",
 		"check:fix": "biome check --apply .",
 		"chromatic": "npx chromatic",
-		"clean": "rm -rf node_modules storybook-static .turbo",
+		"clean": "rm -rf node_modules storybook-static",
 		"components-add": "pnpm dlx shadcn-ui@latest add",
 		"components-diff": "pnpm dlx shadcn-ui@latest diff",
 		"dev": "storybook dev -p 6006",

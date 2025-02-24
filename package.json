@@ -3,7 +3,6 @@
 	"devDependencies": {
 		"@biomejs/biome": "nightly",
 		"eslint": "catalog:",
-		"turbo": "2.4.2",
 		"typescript": "catalog:"
 	},
 	"engines": {
@@ -19,15 +18,15 @@
 	},
 	"private": true,
 	"scripts": {
-		"build": "turbo build --log-order=grouped",
-		"check": "biome check --write .",
+		"build": "pnpm run --recursive --if-present build",
+		"check": "pnpm run --recursive --parallel --aggregate-output check --write",
 		"clean": "pnpm run --recursive clean && rm -rf node_modules .turbo",
 		"dev": "turbo dev",
-		"format": "turbo format --log-order=grouped",
-		"format:write": "turbo format:write --log-order=grouped",
-		"lint": "turbo lint --log-order=grouped",
-		"test:unit": "turbo test:unit --log-order=grouped",
-		"typecheck": "turbo typecheck --log-order=grouped",
-		"typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"
+		"format": "pnpm run --recursive --parallel --aggregate-output format",
+		"format:write": "pnpm run --recursive --parallel --aggregate-output format:write",
+		"lint": "pnpm run --recursive --parallel --aggregate-output lint",
+		"test": "pnpm run --recursive test run",
+		"typecheck": "pnpm run --recursive typecheck",
+		"typecheck:watch": "pnpm run --recursive --stream typecheck --watch --preserveWatchOutput"
 	}
 }
