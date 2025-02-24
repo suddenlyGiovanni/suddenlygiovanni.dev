@@ -3,13 +3,12 @@
 	"devDependencies": {
 		"@biomejs/biome": "nightly",
 		"eslint": "catalog:",
-		"turbo": "2.4.2",
 		"typescript": "catalog:"
 	},
 	"engines": {
-		"node": ">=23.7"
+		"node": ">=23.8"
 	},
-	"packageManager": "pnpm@9.15.5+sha512.845196026aab1cc3f098a0474b64dfbab2afe7a1b4e91dd86895d8e4aa32a7a6d03049e2d0ad770bbe4de023a7122fb68c1a1d6e0d033c7076085f9d5d4800d4",
+	"packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af",
 	"pnpm": {
 		"overrides": {
 			"react": "catalog:",
@@ -19,15 +18,15 @@
 	},
 	"private": true,
 	"scripts": {
-		"build": "turbo build --log-order=grouped",
-		"check": "biome check --write .",
-		"clean": "pnpm run --recursive clean && rm -rf node_modules .turbo",
-		"dev": "turbo dev",
-		"format": "turbo format --log-order=grouped",
-		"format:write": "turbo format:write --log-order=grouped",
-		"lint": "turbo lint --log-order=grouped",
-		"test:unit": "turbo test:unit --log-order=grouped",
-		"typecheck": "turbo typecheck --log-order=grouped",
-		"typecheck:watch": "turbo typecheck -- --watch --preserveWatchOutput"
+		"build": "pnpm run --recursive --if-present build",
+		"check": "pnpm run --recursive --parallel --aggregate-output check --write",
+		"clean": "pnpm run --recursive clean && rm -rf node_modules",
+		"dev": "pnpm run --recursive --parallel --stream dev",
+		"format": "pnpm run --recursive --parallel --aggregate-output format",
+		"format:write": "pnpm run --recursive --parallel --aggregate-output format:write",
+		"lint": "pnpm run --recursive --parallel --aggregate-output lint",
+		"test": "pnpm run --recursive test run",
+		"typecheck": "pnpm run --recursive typecheck",
+		"typecheck:watch": "pnpm run --recursive --stream typecheck --watch --preserveWatchOutput"
 	}
 }

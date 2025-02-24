@@ -26,38 +26,13 @@ RUN corepack enable \
     && rm pnpm-version.txt
 
 
-FROM base AS builder
+FROM base AS build
 
-# Add build argument for GitHub token
-ENV TURBO_FORCE=true
-ENV TURBO_TELEMETRY_DISABLED=1
-ENV DO_NOT_TRACK=1
+ENV NODE_ENV="production"
 
 COPY . .
 
-RUN pnpm dlx turbo prune --docker "@repo/app"
-
-
-FROM base AS build
-
-ENV TURBO_TELEMETRY_DISABLED=1
-ENV DO_NOT_TRACK=1
-
-# pnpm fetch does require only lockfile + .npmrc
-COPY --from=builder /home/node/out/json/pnpm-lock.yaml .
-COPY --from=builder /home/node/out/json/.npmrc .
-
-# Fetch packages from a lockfile into virtual store, package manifest is ignored.
-RUN pnpm fetch
-
-# Build the project
-COPY --from=builder /home/node/out/full/ .
-
-RUN cd ./packages/app
-
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod=false
-
-ENV NODE_ENV="production"
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile --prod=false
 
 RUN pnpm run --filter=@repo/app build
 
@@ -65,7 +40,7 @@ RUN pnpm run --filter=@repo/app build
 # During deployment, the files of the deployed package are copied to the target directory.
 # All dependencies of the deployed package, including dependencies from the workspace, are installed inside an isolated node_modules directory at the target directory.
 # The target directory will contain a portable package that can be copied to a server and executed without additional steps.
-RUN pnpm --filter @repo/app --prod --no-optional deploy pruned
+RUN pnpm --filter=@repo/app deploy --legacy --prod --no-optional ./pruned
 
 
 FROM base AS production
