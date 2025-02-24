@@ -49,7 +49,7 @@ jobs:
         run: pnpm typecheck
 
       - name: 🧪 Run unit tests
-        run: pnpm test:unit
+        run: pnpm test
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
