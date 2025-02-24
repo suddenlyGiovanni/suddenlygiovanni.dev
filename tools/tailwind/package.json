@@ -12,7 +12,7 @@
 		"tailwindcss-animate": "1.0.7"
 	},
 	"peerDependencies": {
-		"tailwindcss": "4.0.8"
+		"tailwindcss": "catalog:"
 	},
 	"peerDependenciesMeta": {
 		"tailwindcss": {
