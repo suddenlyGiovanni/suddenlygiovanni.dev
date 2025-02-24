@@ -19,4 +19,5 @@ flake.nix
 fly.review.yaml
 fly.yaml
 node_modules/
+pruned/
 turbo.json
