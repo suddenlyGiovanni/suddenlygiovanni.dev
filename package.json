@@ -21,7 +21,7 @@
 		"build": "pnpm run --recursive --if-present build",
 		"check": "pnpm run --recursive --parallel --aggregate-output check --write",
 		"clean": "pnpm run --recursive clean && rm -rf node_modules .turbo",
-		"dev": "turbo dev",
+		"dev": "pnpm run --recursive --parallel --stream dev",
 		"format": "pnpm run --recursive --parallel --aggregate-output format",
 		"format:write": "pnpm run --recursive --parallel --aggregate-output format:write",
 		"lint": "pnpm run --recursive --parallel --aggregate-output lint",
