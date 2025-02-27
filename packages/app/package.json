@@ -51,7 +51,7 @@
 		"@types/react-dom": "catalog:",
 		"@types/source-map-support": "0.5.10",
 		"@vitest/coverage-v8": "catalog:",
-		"@vitest/eslint-plugin": "1.1.31",
+		"@vitest/eslint-plugin": "1.1.36",
 		"@vitest/ui": "catalog:",
 		"babel-plugin-react-compiler": "catalog:",
 		"globals": "16.0.0",
