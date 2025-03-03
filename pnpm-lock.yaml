@@ -290,8 +290,8 @@ importers:
         version: 0.3.1(tailwindcss@4.0.9)
     devDependencies:
       '@chromatic-com/storybook':
-        specifier: 3.2.4
-        version: 3.2.4(react@19.0.0)(storybook@8.6.3(prettier@2.8.8))
+        specifier: 3.2.5
+        version: 3.2.5(react@19.0.0)(storybook@8.6.3(prettier@2.8.8))
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../tools/eslint-config
@@ -687,8 +687,8 @@ packages:
   '@bundled-es-modules/tough-cookie@0.1.6':
     resolution: {integrity: sha512-dvMHbL464C0zI+Yqxbz6kZ5TOEp7GLW+pry/RWndAR8MJQAXZ2rPmIs8tziTZjeIyhSNZgZbCePtfSbdWqStJw==}
 
-  '@chromatic-com/storybook@3.2.4':
-    resolution: {integrity: sha512-5/bOOYxfwZ2BktXeqcCpOVAoR6UCoeART5t9FVy22hoo8F291zOuX4y3SDgm10B1GVU/ZTtJWPT2X9wZFlxYLg==}
+  '@chromatic-com/storybook@3.2.5':
+    resolution: {integrity: sha512-Y388ft6po5FmGKdkcqz3r2sW6aMF5DSBaatC0jvT5bI/Dh27RJw3gPTmXJcZVNjteNl6tpiP3qxZ9MswAk5luw==}
     engines: {node: '>=16.0.0', yarn: '>=1.22.18'}
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
@@ -6426,7 +6426,7 @@ snapshots:
       '@types/tough-cookie': 4.0.5
       tough-cookie: 4.1.4
 
-  '@chromatic-com/storybook@3.2.4(react@19.0.0)(storybook@8.6.3(prettier@2.8.8))':
+  '@chromatic-com/storybook@3.2.5(react@19.0.0)(storybook@8.6.3(prettier@2.8.8))':
     dependencies:
       chromatic: 11.25.2
       filesize: 10.1.6
