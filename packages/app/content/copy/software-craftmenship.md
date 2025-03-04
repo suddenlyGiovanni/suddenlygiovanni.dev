@@ -3,7 +3,7 @@ Excerpt From "SOLID: The Software Design and Architecture Handbook" by Khalil St
 # Software Craftsmanship (2006 — today)
 
 There had been some talk about Software Craftsmanship before. The first book to hint that software development might be more of a trade than a science was “The Pragmatic Programmer: From Journeymen to Master.” It drew comparisons between how developers learn and gain seniority to the apprenticeship model in medieval Europe, and was one of the first texts to attempt to distill some sense of professionalism toward software developers.
-In 2006, Peter McBreen published the book Software Craftsmanship, solidifying the name and explaining many of today’s professional practices. Unfortunately for the craftsmanship community around this time, Agile had the limelight. We considered Agile to be the solution to our biggest problems, giving little need for this thing called Software Craftsmanship.
+In 2006, Peter McBreen published the book **Software Craftsmanship**, solidifying the name and explaining many of today’s professional practices. Unfortunately for the craftsmanship community around this time, Agile had the limelight. We considered Agile to be the solution to our biggest problems, giving little need for this thing called **Software Craftsmanship**.
 To nudge craftsmanship back into the spotlight, in 2008, Uncle Bob proposed a fifth value for the Agile Manifesto: “craftmanship over execution”.
 Since things weren’t going the way we wanted them to with Agile, and because we deviated from technical Agile frameworks like XP, in 2009, a group of developers aimed to produce something to be written down that could concisely describe the craftsmanship movement. Eventually, we created the Software Craftsmanship Manifesto. The manifesto, printed below, took the Agile Manifesto’s values and pushed it further, promoting technical excellence and professionalism.
 
@@ -12,21 +12,19 @@ Since things weren’t going the way we wanted them to with Agile, and because w
 The manifesto is as follows:
 “As aspiring Software Craftsmen we are raising the bar of professional software development by practicing it and helping others learn the craft. Through this work we have come to value the following:
 
-- Not only working software, but also well-crafted software
-- Not only responding to change, but also steadily adding value
-- Not only individuals and interactions, but also a community of professionals
-- Not only customer collaboration, but also productive partnerships”
+- Not only working software, but also **well-crafted software**
+- Not only responding to change, but also **steadily adding value**
+- Not only individuals and interactions, but also **a community of professionals**
+- Not only customer collaboration, but also **productive partnerships**”
 
 # Back to Basics (XP)
 
-There’s still a lot of work to be done, but today, we’re seeing some positive changes in the
-software industry around Agile and Software Craftsmanship.
+There’s still a lot of work to be done, but today, we’re seeing some positive changes in the software industry around Agile and Software Craftsmanship.
 
 **The software craftsmanship community is growing.**
 Developers worldwide are organizing meetups, signing the original manifesto, and spreading the word of professionalism. This community may very well be the one that comes together to popularize and standardize the approach to solving that 60-year old productivity and quality problem.
 
-Also, in 2019, a frustrated Uncle Bob published a book titled “Clean Agile: Back to Basics”, which is almost entirely
-**a walkthrough of the technical practices of XP**.
+Also, in 2019, a frustrated Uncle Bob published a book titled “Clean Agile: Back to Basics”, which is almost entirely **a walkthrough of the technical practices of XP**.
 
 If you ask me about my future assumptions, I would say that in the next decade or so, we’re going to see the craftsmanship and Agile communities converge. It’s only a matter of time before this happens because they share the same goal:
 **to deliver high-quality software on time**.
@@ -44,9 +42,7 @@ Craftsmanship is professionalism in software development.
 
 Software Craftsmanship is a professionalism **mindset**.
 It’s not about if you have a certification, if you’re a senior developer, or if you practice TDD all the time.
-It’s about taking **responsibility** for our careers, clients, and community. It also means taking *
-*pride** in our solutions, working with **pragmatism
-**, and seeking to constantly improve our reputations with the good work we do.
+It’s about taking **responsibility** for our careers, clients, and community. It also means taking **pride** in our solutions, working with **pragmatism**, and seeking to constantly improve our reputations with the good work we do.
 
 ## Are you a software craftsperson?
 
