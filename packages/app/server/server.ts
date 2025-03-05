@@ -3,8 +3,6 @@ import { NodeHttpServer, NodeRuntime } from '@effect/platform-node'
 import { Console, Effect, flow, Layer } from 'effect'
 import { createServer } from 'node:http'
 
-
-
 import { PublicAssetsMiddleware, StaticAssetsMiddleware } from './middlewares/assets-middleware.ts'
 import { viteMiddleware } from './middlewares/vite-middleware.ts'
 import { ConfigService, ViteDevServerService } from './services/index.ts'
@@ -14,44 +12,43 @@ const ServerLive = ConfigService.pipe(
 	Layer.unwrapEffect,
 )
 
-
 const HttpLive = ConfigService.pipe(
-		Effect.andThen(({NODE_ENV}) =>
-				NODE_ENV === 'production'
-		?  HttpRouter.empty.pipe(
+	Effect.andThen(({ NODE_ENV }) =>
+		NODE_ENV === 'production'
+			? HttpRouter.empty.pipe(
 					HttpRouter.all(
-							'*',
-							Effect.promise(() => {
-								// @ts-expect-error - This is a dynamic import of build stuff
-								return import('../build/server/index.js') as Promise<
-										typeof import('./handler/handler.ts')
-								>
-							}).pipe(Effect.flatMap(module => module.handler)),
+						'*',
+						Effect.promise(() => {
+							// @ts-expect-error - This is a dynamic import of build stuff
+							return import('../build/server/index.js') as Promise<
+								typeof import('./handler/handler.ts')
+							>
+						}).pipe(Effect.flatMap(module => module.handler)),
 					),
 
 					HttpRouter.use(StaticAssetsMiddleware),
 
 					HttpRouter.use(PublicAssetsMiddleware),
-			)
-		:  HttpRouter.empty.pipe(
+				)
+			: HttpRouter.empty.pipe(
 					HttpRouter.all(
-							'*',
-							ViteDevServerService.pipe(
-									Effect.flatMap(viteDevServer =>
-											Effect.promise(
-													() =>
-															viteDevServer.ssrLoadModule('./server/handler/handler.ts') as Promise<
-																	typeof import('./handler/handler.ts')
-															>,
-											),
-									),
-									Effect.flatMap(({ handler }) => handler),
+						'*',
+						ViteDevServerService.pipe(
+							Effect.flatMap(viteDevServer =>
+								Effect.promise(
+									() =>
+										viteDevServer.ssrLoadModule('./server/handler/handler.ts') as Promise<
+											typeof import('./handler/handler.ts')
+										>,
+								),
 							),
+							Effect.flatMap(({ handler }) => handler),
+						),
 					),
 
 					HttpRouter.use(viteMiddleware),
-			)
-),
+				),
+	),
 	Effect.catchTags({
 		RouteNotFound: _ =>
 			Effect.gen(function* () {

@@ -14,7 +14,7 @@ export const handler: Effect.Effect<
 	const { NODE_ENV } = yield* ConfigService
 
 	const handleRequest = ReactRouter.createRequestHandler(
-		// @ts-expect-error - This is a dynamic import of build stuff
+		// @ts-expect-error - The virtual module is created at build time by Vite and doesn't exist for TypeScript
 		() => import('virtual:react-router/server-build'),
 		NODE_ENV,
 	)
@@ -29,12 +29,13 @@ export const handler: Effect.Effect<
 		| 'http'
 		| 'https'
 
-	const protocol: 'http' | 'https' = xForwardedProto ||
-			((incomingMessage.socket &&
-					'encrypted' in incomingMessage.socket &&
-					incomingMessage.socket.encrypted)
-					? 'https'
-					: 'http')
+	const protocol: 'http' | 'https' =
+		xForwardedProto ||
+		(incomingMessage.socket &&
+		'encrypted' in incomingMessage.socket &&
+		incomingMessage.socket.encrypted
+			? 'https'
+			: 'http')
 
 	// Extract hostname and port from headers
 	const xForwardedHost = incomingMessage.headersDistinct['x-forwarded-host']?.[0]
@@ -44,11 +45,11 @@ export const handler: Effect.Effect<
 	const [hostname, hostPort = ''] = hostHeader.split(':')
 
 	/**
-	 * Use req.hostname here as it respects the "trust proxy" setting
+	 * Use hostname from headers with respect to forwarded host
 	 */
 	const resolvedHost = `${hostname}${hostPort ? `:${hostPort}` : ''}`
 	/**
-	 * Use `req.originalUrl` so Remix is aware of the full path
+	 * Create full URL so React Router is aware of the full path
 	 */
 	const url = new URL(`${protocol}://${resolvedHost}${incomingMessage.url ?? ''}`)
 
@@ -80,7 +81,9 @@ export const handler: Effect.Effect<
 
 	const request = new Request(url.href, init)
 
-	const loadContext = { VALUE_FROM_EXPRESS: 'Hello from `@effect/platform`' }
+	const loadContext = {
+		VALUE_FROM_PLATFORM: 'Hello from `@effect/platform`',
+	} satisfies ReactRouter.AppLoadContext
 
 	const response: Response = yield* Effect.promise(() => handleRequest(request, loadContext))
 	if (response.headers.get('Content-Type')?.match(/text\/event-stream/i)) {

@@ -2,6 +2,6 @@
 
 declare module 'react-router' {
 	interface AppLoadContext {
-		VALUE_FROM_EXPRESS: string
+		VALUE_FROM_PLATFORM: string
 	}
 }
