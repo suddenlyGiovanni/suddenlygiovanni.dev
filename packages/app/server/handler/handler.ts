@@ -29,13 +29,12 @@ export const handler: Effect.Effect<
 		| 'http'
 		| 'https'
 
-	const protocol: 'http' | 'https' =
-		xForwardedProto ||
-		(incomingMessage.socket &&
-			'encrypted' in incomingMessage.socket &&
-			incomingMessage.socket.encrypted)
-			? 'https'
-			: 'http'
+	const protocol: 'http' | 'https' = xForwardedProto ||
+			((incomingMessage.socket &&
+					'encrypted' in incomingMessage.socket &&
+					incomingMessage.socket.encrypted)
+					? 'https'
+					: 'http')
 
 	// Extract hostname and port from headers
 	const xForwardedHost = incomingMessage.headersDistinct['x-forwarded-host']?.[0]
