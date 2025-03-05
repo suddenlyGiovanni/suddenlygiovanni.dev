@@ -1,5 +1,4 @@
 import { Effect } from 'effect'
-import type { ViteDevServer } from 'vite'
 
 /**
  * ViteServiceSingleton is a class designed to manage the Vite service as a singleton instance.
@@ -11,9 +10,9 @@ import type { ViteDevServer } from 'vite'
 class ViteServiceSingleton {
 	private static instance: ViteServiceSingleton
 
-	readonly #viteDevServer: ViteDevServer
+	readonly #viteDevServer: import('vite').ViteDevServer
 
-	private constructor(viteDevServer: ViteDevServer) {
+	private constructor(viteDevServer: import('vite').ViteDevServer) {
 		this.#viteDevServer = viteDevServer
 	}
 
@@ -22,7 +21,7 @@ class ViteServiceSingleton {
 	 *
 	 * @return {ViteDevServer} The ViteDevServer instance associated with the current object.
 	 */
-	get viteDevServer(): ViteDevServer {
+	get viteDevServer(): import('vite').ViteDevServer {
 		return this.#viteDevServer
 	}
 
