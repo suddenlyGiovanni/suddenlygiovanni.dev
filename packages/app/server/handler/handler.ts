@@ -99,8 +99,7 @@ export const handler: Effect.Effect<
 	if (response.body) {
 		return yield* HttpServerResponse.stream(
 			Stream.fromReadableStream(
-				// biome-ignore lint/style/noNonNullAssertion: <explanation>
-				() => response.body!,
+				() => response.body || new ReadableStream(),
 				error => new Error(`Error reading response stream: ${String(error)}`),
 			),
 			options,
