@@ -29,7 +29,7 @@ export const handler: Effect.Effect<
 		| 'http'
 		| 'https'
 
-	const protocol =
+	const protocol: 'http' | 'https' =
 		xForwardedProto ||
 		(incomingMessage.socket &&
 			'encrypted' in incomingMessage.socket &&
