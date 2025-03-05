@@ -122,8 +122,8 @@ importers:
         specifier: 7.2.0
         version: 7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       remix-utils:
-        specifier: 8.1.0
-        version: 8.1.0(react-router@7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(zod@3.24.2)
+        specifier: 8.1.1
+        version: 8.1.1(react-router@7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(zod@3.24.2)
     devDependencies:
       '@babel/preset-typescript':
         specifier: 7.26.0
@@ -5085,8 +5085,8 @@ packages:
   remark-rehype@11.1.1:
     resolution: {integrity: sha512-g/osARvjkBXb6Wo0XvAeXQohVta8i84ACbenPpoSsxTOQH/Ae0/RGP4WZgnMH5pMLpsj4FG7OHmcIcXxpza8eQ==}
 
-  remix-utils@8.1.0:
-    resolution: {integrity: sha512-k44K4FOPyMv6QQ+yaQrCrXdnzkKE1b86ZUODAK5fvmWsmi7ntZAAA+Ods+nzNAxFEAPDTreCzl7cGWnxWd6ibw==}
+  remix-utils@8.1.1:
+    resolution: {integrity: sha512-OU6r+1tsjaDJvvzl8qopmdHmTZqMQ670AUQIZQh8BKaPvhq0axbm6YEE/OwPvqfM859CfQG60E8Pt5WhLGutzw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@oslojs/crypto': ^1.0.1
@@ -5490,6 +5490,10 @@ packages:
 
   type-fest@4.35.0:
     resolution: {integrity: sha512-2/AwEFQDFEy30iOLjrvHDIH7e4HEWH+f1Yl1bI5XMqzuoCUqwYCdxachgsgv0og/JdVZUhbfjcJAoHj5L1753A==}
+    engines: {node: '>=16'}
+
+  type-fest@4.37.0:
+    resolution: {integrity: sha512-S/5/0kFftkq27FPNye0XM1e2NsnoD/3FS+pBmbjmmtLT6I+i344KoOf7pvXreaFsDamWeaJX55nczA1m5PsBDg==}
     engines: {node: '>=16'}
 
   typed-array-buffer@1.0.3:
@@ -11667,9 +11671,9 @@ snapshots:
       unified: 11.0.5
       vfile: 6.0.3
 
-  remix-utils@8.1.0(react-router@7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(zod@3.24.2):
+  remix-utils@8.1.1(react-router@7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)(zod@3.24.2):
     dependencies:
-      type-fest: 4.35.0
+      type-fest: 4.37.0
     optionalDependencies:
       react: 19.0.0
       react-router: 7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -12068,6 +12072,8 @@ snapshots:
   type-fest@2.19.0: {}
 
   type-fest@4.35.0: {}
+
+  type-fest@4.37.0: {}
 
   typed-array-buffer@1.0.3:
     dependencies:
