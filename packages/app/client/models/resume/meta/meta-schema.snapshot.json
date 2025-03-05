@@ -15,9 +15,7 @@
 					"$ref": "#/$defs/TrimmedNonEmpty",
 					"description": "A version field which follows semver - e.g. v1.0.0",
 					"title": "version",
-					"examples": [
-						"v1.0.0"
-					]
+					"examples": ["v1.0.0"]
 				}
 			},
 			"additionalProperties": false
