@@ -1,4 +1,6 @@
-import type { Config } from '@react-router/dev/config'
+import type {
+	Config,
+} from '@react-router/dev/config'
 
 export default {
 	appDirectory: 'client',
@@ -9,4 +11,8 @@ export default {
 	future: {
 		unstable_splitRouteModules: true,
 	},
+	prerender: [
+		'/',
+		'/motivations',
+	],
 } satisfies Config
