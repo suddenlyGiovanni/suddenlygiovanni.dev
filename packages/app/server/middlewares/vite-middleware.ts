@@ -61,13 +61,20 @@ export const viteMiddleware = HttpMiddleware.make(app =>
 				)
 			}
 
+			/**
+			 * @event: 'close'
+			 * Indicates that the response is completed, or its underlying connection was terminated prematurely (before the response completion).
+			 *
+			 * @event: 'finish'
+			 * Emitted when the response has been sent. More specifically, this event is emitted when the last segment of the response headers and body have been handed off to the operating system for transmission over the network. It does not imply that the client has received anything yet.
+			 */
 			serverResponse.once('close', listener)
 
 			viteDevServer.middlewares(incomingMessage, serverResponse, (err?: unknown): void => {
 				if (err) {
 					resume(Effect.fail(new MiddlewareError({ message: String(err) })))
 				} else {
-					serverResponse.off('finish', listener)
+					serverResponse.off('close', listener)
 					resume(app)
 				}
 			})
