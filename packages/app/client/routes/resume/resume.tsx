@@ -1,6 +1,6 @@
 import { Effect } from 'effect'
 import type { ReactElement } from 'react'
-import { Link, useLoaderData } from 'react-router'
+import { Link } from 'react-router'
 
 import { Types, makeOpenGraphWebsite } from '@repo/open-graph-protocol'
 import { clsx } from '@repo/ui/lib/utils.ts'
@@ -72,8 +72,8 @@ export const loader = loaderFunction(
 // 	}
 // }
 
-export default function Resume(_: Route.ComponentProps): ReactElement {
-	const { resume, meta } = useLoaderData<typeof loader>()
+export default function Resume({ loaderData }: Route.ComponentProps): ReactElement {
+	const { resume, meta } = loaderData
 	const { basics, skills, work, education, interests, languages } = resume
 
 	return (

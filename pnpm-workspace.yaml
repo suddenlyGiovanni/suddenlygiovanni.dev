@@ -17,4 +17,7 @@ catalog:
   typescript: 5.8.2
   eslint: 9.21.0
 onlyBuiltDependencies:
+  - '@biomejs/biome'
+  - '@parcel/watcher'
+  - esbuild
   - msw
