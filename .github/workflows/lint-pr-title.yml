@@ -9,7 +9,8 @@ on:
       - reopened
 
 permissions:
-  pull-requests: read
+  contents: read
+  pull-requests: write
 
 jobs:
   main:
