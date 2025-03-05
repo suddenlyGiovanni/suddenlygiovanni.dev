@@ -22,7 +22,7 @@ class ViteServiceSingleton {
 	 *
 	 * @return {ViteDevServer} The ViteDevServer instance associated with the current object.
 	 */
-	public get viteDevServer(): ViteDevServer {
+	get viteDevServer(): ViteDevServer {
 		return this.#viteDevServer
 	}
 
