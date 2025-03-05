@@ -55,7 +55,7 @@ class ViteServiceSingleton {
 	 *
 	 * @return {Promise<void>} A promise that resolves once the resource has been successfully disposed of.
 	 */
-	public async [Symbol.asyncDispose](): Promise<void> {
+	async [Symbol.asyncDispose](): Promise<void> {
 		return await this.#viteDevServer.close()
 	}
 }
