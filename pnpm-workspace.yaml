@@ -21,3 +21,7 @@ onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
   - msw
+autoInstallPeers: true
+dedupePeerDependents: true
+strictPeerDependencies: false
+resolvePeersFromWorkspaceRoot: true
