@@ -30,4 +30,4 @@ runs:
 
     - name: 🧩 Install dependencies
       shell: bash
-      run: pnpm install --recursive --frozen-lockfile --prod=false
+      run: pnpm install --recursive --frozen-lockfile
