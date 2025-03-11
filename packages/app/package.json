@@ -43,7 +43,7 @@
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"@vitest/coverage-v8": "catalog:",
-		"@vitest/eslint-plugin": "1.1.36",
+		"@vitest/eslint-plugin": "1.1.37",
 		"@vitest/ui": "catalog:",
 		"babel-plugin-react-compiler": "catalog:",
 		"globals": "16.0.0",
