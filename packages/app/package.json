@@ -22,7 +22,7 @@
 		"@std/yaml": "npm:@jsr/std__yaml@1.0.5",
 		"@suddenly-giovanni/schema-resume": "npm:@jsr/suddenly-giovanni__schema-resume@0.0.5",
 		"cookie": "1.0.2",
-		"effect": "3.13.2",
+		"effect": "3.13.6",
 		"isbot": "5.1.23",
 		"react": "catalog:",
 		"react-dom": "catalog:",
