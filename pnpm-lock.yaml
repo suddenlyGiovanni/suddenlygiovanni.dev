@@ -101,8 +101,8 @@ importers:
         specifier: npm:@jsr/std__yaml@1.0.5
         version: '@jsr/std__yaml@1.0.5'
       '@suddenly-giovanni/schema-resume':
-        specifier: npm:@jsr/suddenly-giovanni__schema-resume@0.0.5
-        version: '@jsr/suddenly-giovanni__schema-resume@0.0.5'
+        specifier: npm:@jsr/suddenly-giovanni__schema-resume@0.0.6
+        version: '@jsr/suddenly-giovanni__schema-resume@0.0.6'
       cookie:
         specifier: 1.0.2
         version: 1.0.2
@@ -1054,8 +1054,8 @@ packages:
   '@jsr/std__yaml@1.0.5':
     resolution: {integrity: sha512-jbh2xwnja+ar+7NE0oDTlbST1WW29dAQOKX8+1DZgdT54NVt9lZ9YVDrzh4uP1w6ZHVirtY0z99BSym0v+Zh4Q==, tarball: https://npm.jsr.io/~/11/@jsr/std__yaml/1.0.5.tgz}
 
-  '@jsr/suddenly-giovanni__schema-resume@0.0.5':
-    resolution: {integrity: sha512-UAKzHqZMFd0gMfYwRt5UOlVNy8hRIKzbofnrKsPayK9KN/ek6CiODwcluE/pInmAKl32Ojp2S0f9FNjiNpBE1A==, tarball: https://npm.jsr.io/~/11/@jsr/suddenly-giovanni__schema-resume/0.0.5.tgz}
+  '@jsr/suddenly-giovanni__schema-resume@0.0.6':
+    resolution: {integrity: sha512-dS2eB3bff/aAAsd3YIQFbi2IR6o6WlMbAyGcJjXpMFc/MfZO9b4WnacLOxQZrtRIWN0A4UrUuRFEDAtjI5CRLA==, tarball: https://npm.jsr.io/~/11/@jsr/suddenly-giovanni__schema-resume/0.0.6.tgz}
 
   '@mdx-js/mdx@3.1.0':
     resolution: {integrity: sha512-/QxEhPAvGwbQmy1Px8F899L5Uc2KZ6JtXwlCgJmjSTBedwOZkByYcBG4GceIGPXRDsmfxhHazuS+hlOShRLeDw==}
@@ -3646,9 +3646,6 @@ packages:
     resolution: {integrity: sha512-L9Qe08KWTlqYMVvMcTIvMAdl1cDUubzRNYL+WfA4bLDMHe4nemKkpmYzkznE1FwLKu0EEmy6obgQKzMJrg4x9Q==}
     engines: {node: '>=14'}
     hasBin: true
-
-  effect@3.12.12:
-    resolution: {integrity: sha512-mBRET5ThCuWN/yZOGJRbJYMSWhH9fr3nfjFHpkbJIrH290WMWziFY7/fiQQGBTjtGgJOHlcfxEFMqtVOm8fygA==}
 
   effect@3.13.10:
     resolution: {integrity: sha512-f2n51BJJ25G9rb/C1ClkgsVFXH6YTkCHmd6ebpu6cAkwQxfhnfbkVWKgkn3nyW9YnC9z4K8bGohRYaZ+HyWtLg==}
@@ -6532,9 +6529,9 @@ snapshots:
 
   '@jsr/std__yaml@1.0.5': {}
 
-  '@jsr/suddenly-giovanni__schema-resume@0.0.5':
+  '@jsr/suddenly-giovanni__schema-resume@0.0.6':
     dependencies:
-      effect: 3.12.12
+      effect: 3.13.10
 
   '@mdx-js/mdx@3.1.0(acorn@8.14.0)':
     dependencies:
@@ -9692,10 +9689,6 @@ snapshots:
       commander: 10.0.1
       minimatch: 9.0.1
       semver: 7.7.1
-
-  effect@3.12.12:
-    dependencies:
-      fast-check: 3.23.2
 
   effect@3.13.10:
     dependencies:
