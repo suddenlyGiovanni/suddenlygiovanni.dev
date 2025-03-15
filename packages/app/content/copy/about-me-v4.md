@@ -11,15 +11,21 @@ I needed a new career that was **as intellectually satisfying as history**, but 
 Realizing I could get **paid** to tinker with complex systems and break things for a living felt like **finding a loophole in the Matrix**. Instead of being a historian documenting **the fall of empires**, I could now **cause server crashes in real-time**. Jackpot 🎰💸.
 Turns out, **breaking things apart to understand them** works just as well in tech as it does in history — except now, instead of uncovering the past, I get to **accidentally deploy bugs into the future**.
 
-And while the universe may be **fundamentally meaningless**, my search for meaning hasn’t been in vain. I’ve found purpose in **craftsmanship**, **curiosity**, and the **joy of learning**. And if I don’t always know the question, at least I can take comfort in knowing the answer—**42** 🚀.
+And while the universe may be **fundamentally meaningless**, my search for meaning hasn’t been in vain. I’ve found purpose in **craftsmanship**, **curiosity**, and the **joy of learning**. And if I don’t always know "_the question_", at least I can take comfort in knowing "_the answer_" — **42** 🚀.
 
 
 
 ## 💻 My Professional Philosophy
 
-After **more than a decade** in the field, I’ve come to see software engineering as more than just a job — it’s a craft. 🛠️ I don’t just aim to write working software; **I aim to write _well-crafted_ software**. This mindset is at the core of **Software Craftsmanship**, an idea championed by **Bob Martin** (Uncle Bob) and later formalized in the [*Software Craftsmanship Manifesto*](https://manifesto.softwarecraftsmanship.org/) by **Sandro Mancuso** and others ✍️. It builds upon Agile principles but pushes them further, focusing on **professionalism, responsibility, and continuous learning** 📚⚡.
+After **more than a decade** in software development, and in my pursuit of refining my craft, I've explored countless methodologies and guidelines on what it means to be a “professional”. Eventually, I discovered the **Software Craftsmanship** movement, whose [manifesto](https://manifesto.softwarecraftsmanship.org/) truly struck a chord. Over time, I've **embraced its principles as the foundation of my work**, finding them both practical and deeply aligned with the kind of developer I aspire to be.
 
-Along the way, I also discovered **Extreme Programming (XP)**, a set of technical practices introduced by **Kent Beck** in the late ’90s. XP emphasizes writing **simple, high-quality code** through **discipline, feedback, and iteration**. 🔄 These ideas deeply resonate with how I approach software development 💡✨.
+> As aspiring Software Craftsmen we are raising the bar of professional software development by practicing it and helping others learn the craft. Through this work we have come to value:
+> - _Not only working software_, but also **well-crafted software**
+> - _Not only responding to change_, but also **steadily adding value**
+> - _Not only individuals and interactions_, but also **a community of professionals**
+> - _Not only customer collaboration_, but also **productive partnerships**
+>
+> That is, in pursuit of the items on the _left_ we have found the items on the _right_ to be indispensable.
 
 ### 🛠️ Craft Over Code
 
