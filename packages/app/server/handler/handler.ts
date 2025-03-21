@@ -6,11 +6,7 @@ import * as ReactRouter from 'react-router'
 
 import { ConfigService } from '../services/config-service.ts'
 
-export const handler: Effect.Effect<
-	HttpServerResponse.HttpServerResponse,
-	never,
-	HttpServerRequest.HttpServerRequest
-> = Effect.gen(function* () {
+export const handler = Effect.gen(function* () {
 	const { NODE_ENV } = yield* ConfigService
 
 	const handleRequest = ReactRouter.createRequestHandler(

@@ -7,4 +7,4 @@ export const ConfigService = Config.all({
 		Config.withDefault('production'),
 	),
 	PORT: pipe('PORT', Config.number, Config.withDefault(5173)),
-})
+	})
