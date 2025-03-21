@@ -7,7 +7,9 @@ import {
 	flow,
 	Layer,
 	pipe,
+	Console, Effect, flow, Layer, pipe, Match,
 } from 'effect'
+
 
 import { PublicAssetsMiddleware, StaticAssetsMiddleware } from './middlewares/assets-middleware.ts'
 import { viteMiddleware } from './middlewares/vite-middleware.ts'
@@ -36,26 +38,25 @@ const HttpLive = ConfigService.pipe(
 
 					HttpRouter.use(PublicAssetsMiddleware),
 				)
-			: HttpRouter.empty
-					.pipe(
-						HttpRouter.all(
-							'*',
-							ViteDevServerService.pipe(
-								Effect.flatMap(viteDevServer =>
-									Effect.promise(
-										() =>
-											viteDevServer.ssrLoadModule('./server/handler/handler.ts') as Promise<
-												typeof import('./handler/handler.ts')
-											>,
-									),
+			: HttpRouter.empty.pipe(
+					HttpRouter.all(
+						'*',
+						ViteDevServerService.pipe(
+							Effect.flatMap(viteDevServer =>
+								Effect.promise(
+									() =>
+										viteDevServer.ssrLoadModule('./server/handler/handler.ts') as Promise<
+											typeof import('./handler/handler.ts')
+										>,
 								),
-								Effect.flatMap(({ handler }) => handler),
 							),
+							Effect.flatMap(({ handler }) => handler),
 						),
+					),
 
-						HttpRouter.use(viteMiddleware),
-					)
-					.pipe(Effect.provide(ViteDevServerService.Default)),
+					HttpRouter.use(viteMiddleware),
+					Effect.provide(ViteDevServerService.Default),
+				),
 	),
 	Effect.catchTags({
 		RouteNotFound: _ =>
