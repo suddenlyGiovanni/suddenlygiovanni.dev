@@ -1,14 +1,20 @@
 import { createServer } from 'node:http'
 import { HttpMiddleware, HttpRouter, HttpServer, HttpServerResponse } from '@effect/platform'
 import { NodeHttpServer, NodeRuntime } from '@effect/platform-node'
-import { Console, Effect, flow, Layer } from 'effect'
+import {
+	Console,
+	Effect,
+	flow,
+	Layer,
+	pipe,
+} from 'effect'
 
 import { PublicAssetsMiddleware, StaticAssetsMiddleware } from './middlewares/assets-middleware.ts'
 import { viteMiddleware } from './middlewares/vite-middleware.ts'
 import { ConfigService, ViteDevServerService } from './services/index.ts'
 
-const ServerLive = ConfigService.pipe(
-	Effect.map(({ PORT }) => NodeHttpServer.layer(createServer, { port: PORT })),
+const ServerLive = pipe(
+	Effect.map(ConfigService, ({ PORT }) => NodeHttpServer.layer(createServer, { port: PORT })),
 	Layer.unwrapEffect,
 )
 
