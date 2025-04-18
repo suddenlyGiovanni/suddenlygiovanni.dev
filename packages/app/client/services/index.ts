@@ -6,5 +6,5 @@ import { ResumeRepository } from '#root/client/services/resume-repository.ts'
 import { TodoRepo } from '#root/client/services/todos-repo.ts'
 
 export const { loaderFunction } = makeRemixRuntime(
-	Layer.mergeAll(TodoRepo.Live, Octokit.Default, ResumeRepository.Live),
+	Layer.mergeAll(TodoRepo.Live, Octokit.Default, ResumeRepository.Default),
 )

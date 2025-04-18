@@ -52,8 +52,8 @@ export const links: Route.LinksFunction = () => {
 export const loader = loaderFunction(
 	() =>
 		Effect.gen(function* () {
-			const { resume, meta } = yield* ResumeRepository.getResume()
-			return { resume, meta }
+			const { getResume } = yield* ResumeRepository
+			return yield* getResume()
 		}),
 	// still need to handle the error cases here!!
 )

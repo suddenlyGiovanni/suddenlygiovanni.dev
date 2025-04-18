@@ -1,4 +1,4 @@
-import { Data, Effect, Layer, Option, Schema } from 'effect'
+import { Data, Effect, Option, Schema } from 'effect'
 import type { ParseError } from 'effect/ParseResult'
 
 import { Resume } from '@suddenly-giovanni/schema-resume'
@@ -244,10 +244,13 @@ function getResume(
 
 const makeResumeRepository = Effect.sync(() => ({ getResume }))
 
-export class ResumeRepository extends Effect.Tag('@services/ResumeRepository')<
-	ResumeRepository,
-	Effect.Effect.Success<typeof makeResumeRepository>
->() {
-	// biome-ignore lint/style/useNamingConvention: <explanation>
-	static Live = Layer.effect(this, makeResumeRepository)
-}
+export class ResumeRepository extends Effect.Service<ResumeRepository>()(
+	'app/services/ResumeRepository',
+	{
+		effect: Effect.gen(function* () {
+			const { getResume } = yield* makeResumeRepository
+
+			return { getResume } as const
+		}),
+	},
+) {}
