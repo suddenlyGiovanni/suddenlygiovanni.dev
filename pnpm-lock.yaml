@@ -400,6 +400,9 @@ importers:
 
   tools/typescript:
     dependencies:
+      '@tsconfig/node-ts':
+        specifier: 23.6.1
+        version: 23.6.1
       '@tsconfig/node23':
         specifier: 23.0.1
         version: 23.0.1
@@ -523,7 +526,6 @@ packages:
   '@babel/plugin-proposal-private-methods@7.18.6':
     resolution: {integrity: sha512-nutsvktDItsNn4rpGItSNV2sz1XwS+nfU0Rg8aCx3W3NOKVzdMjJRu0O5OkgDp3ZGICSTbgRpxZoWsxoKRvbeA==}
     engines: {node: '>=6.9.0'}
-    deprecated: This proposal has been merged to the ECMAScript standard and thus this plugin is no longer maintained. Please use @babel/plugin-transform-private-methods instead.
     peerDependencies:
       '@babel/core': ^7.0.0-0
 
@@ -2911,6 +2913,9 @@ packages:
 
   '@total-typescript/ts-reset@0.6.1':
     resolution: {integrity: sha512-cka47fVSo6lfQDIATYqb/vO1nvFfbPw7uWLayIXIhGETj0wcOOlrlkobOMDNQOFr9QOafegUPq13V2+6vtD7yg==}
+
+  '@tsconfig/node-ts@23.6.1':
+    resolution: {integrity: sha512-1E5cUp+S65pLKKI9VrGMQPWDHxOEq3dAGM2onG3fLeSRwWbylYFwhIjnzJikjSN7w2nCgwxmv8ifvUKDFkK38Q==}
 
   '@tsconfig/node23@23.0.1':
     resolution: {integrity: sha512-oJ0Y42TmsBLuLAfEbPTS5JXSbJJEEU4bULROS6zsL54Gdlw5aOy27rpsquotMKGf2auP6rkbfYsjl43WdGrNcg==}
@@ -8903,6 +8908,8 @@ snapshots:
       '@testing-library/dom': 10.4.0
 
   '@total-typescript/ts-reset@0.6.1': {}
+
+  '@tsconfig/node-ts@23.6.1': {}
 
   '@tsconfig/node23@23.0.1': {}
 

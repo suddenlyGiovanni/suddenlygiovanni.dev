@@ -1,9 +1,10 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"dependencies": {
-		"@tsconfig/node23": "23.0.1",
-		"@tsconfig/strictest": "2.0.5",
-		"@tsconfig/vite-react": "3.4.0"
+	  "@tsconfig/node-ts": "23.6.1",
+	  "@tsconfig/node23": "23.0.1",
+	  "@tsconfig/strictest": "2.0.5",
+	  "@tsconfig/vite-react": "3.4.0"
 	},
 	"name": "@repo/typescript-config",
 	"peerDependencies": {
