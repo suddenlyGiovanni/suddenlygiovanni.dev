@@ -1,20 +1,32 @@
-import { Octokit } from '@octokit/core'
+import * as Api from '@octokit/core'
 import { restEndpointMethods } from '@octokit/plugin-rest-endpoint-methods'
-import { Config, Effect, Layer, Redacted } from 'effect'
+import { RequestError } from '@octokit/request-error'
+import { Config, Effect, Redacted, Schema } from 'effect'
 
-const makeOctokitService = Effect.gen(function* () {
-	const githubToken = yield* Config.redacted('GITHUB_TOKEN')
-	const OctokitApi = Octokit.plugin(restEndpointMethods)
-	return { octokit: new OctokitApi({ auth: Redacted.value(githubToken) }) }
-})
+export class OctokitError extends Schema.TaggedError<OctokitError>()('OctokitError', {
+	cause: Schema.Defect,
+}) {}
 
-export class OctokitService extends Effect.Tag('@services/OctokitService')<
-	OctokitService,
-	Effect.Effect.Success<typeof makeOctokitService>
->() {
-	// biome-ignore lint/style/useNamingConvention: <explanation>
-	static Live = Layer.effect(this, makeOctokitService)
-}
+export class Octokit extends Effect.Service<Octokit>()('app/services/Octokit', {
+	effect: Effect.gen(function* () {
+		const OctokitApi = Api.Octokit.plugin(restEndpointMethods)
+		const _client = new OctokitApi({ auth: Redacted.value(yield* Config.redacted('GITHUB_TOKEN')) })
 
-// biome-ignore lint/performance/noBarrelFile: <explanation>
-export { RequestError } from '@octokit/request-error'
+		const use = Effect.fn('Octokit.use')(
+			<A>(
+				f: (client: typeof _client, signal: AbortSignal) => Promise<A>,
+			): Effect.Effect<A, OctokitError> =>
+				Effect.tryPromise({
+					try: signal => f(_client, signal),
+					catch: error => {
+						if (error instanceof RequestError) {
+							return new OctokitError({ cause: error })
+						}
+						return new OctokitError({ cause: error })
+					},
+				}),
+		)
+
+		return { client: _client, use } as const
+	}),
+}) {}

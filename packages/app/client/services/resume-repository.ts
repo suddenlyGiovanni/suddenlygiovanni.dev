@@ -5,7 +5,7 @@ import { Resume } from '@suddenly-giovanni/schema-resume'
 
 import { Meta } from '#root/client/models/resume/meta/meta.ts'
 import { parseYml } from '#root/client/schemas/parse-yml.ts'
-import { OctokitService, RequestError } from '#root/client/services/octokit.ts'
+import { Octokit, type OctokitError } from '#root/client/services/octokit.ts'
 
 /**
  * Could throw if GITHUB_TOKEN is invalid or expired;
@@ -112,39 +112,19 @@ function getResumeFile({
 	readonly ref?: string
 }) {
 	return Effect.gen(function* () {
-		const { octokit } = yield* OctokitService
+		const octokit = yield* Octokit
 
-		const octokitResponse = yield* Effect.tryPromise({
-			// biome-ignore lint/nursery/useExplicitType: <explanation>
-			try: () =>
-				octokit.rest.repos.getContent({
-					owner: owner,
-					repo: repo,
-					path: path,
-					...(ref ? { ref } : {}),
-				}),
-			catch: (error: unknown): RequestError => {
-				/**
-				 * The getContent request to the GitHub API fails. This could be due to a number of reasons
-				 * such as network issues, incorrect repository details, or the file not existing in the repository.
-				 *
-				 * ~if the error is due to network issues, we could retry the request after a delay~
-				 * retry capabilities ara already backed in the octokit lib.
-				 *
-				 * According to the docs, only 200 status code will not throw an error
-				 */
-				if (error instanceof RequestError) {
-					// handle Octokit error
-					// error.message; // Oops
-					// error.status; // 500
-					// error.request; // { method, url, headers, body }
-					// error.response; // { url, status, headers, data }
-
-					return error
-				}
-				throw error
-			},
-		})
+		const octokitResponse = yield* octokit.use((client, signal) =>
+			client.rest.repos.getContent({
+				owner: owner,
+				repo: repo,
+				path: path,
+				...(ref ? { ref } : {}),
+				request: {
+					signal,
+				},
+			}),
+		)
 
 		// yield* Console.debug(octokitResponse)
 
@@ -232,8 +212,8 @@ function getResume(
 	ref = 'main',
 ): Effect.Effect<
 	{ meta: typeof Meta.Type; resume: typeof Resume.Type },
-	DecodingError | RequestError | InvalidDataError | ParseError,
-	OctokitService
+	DecodingError | InvalidDataError | ParseError | OctokitError,
+	Octokit
 > {
 	const repo = 'resume'
 	const owner = 'suddenlyGiovanni'
