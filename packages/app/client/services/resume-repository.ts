@@ -98,110 +98,111 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 			 * The function may fail with a RequestError if the API request fails, an InvalidDataError if the response data
 			 * does not match the expected format, or a DecodingError if decoding the file content fails.
 			 */
-			function getResumeFile({
-				owner,
-				repo,
-				path,
-				ref,
-			}: {
-				/**
-				 * The owner of a resource.
-				 */
-				readonly owner: string
+			const getResumeFile = Effect.fn('ResumeRepository.getResumeFile')(
+				({
+					owner,
+					repo,
+					path,
+					ref,
+				}: {
+					/**
+					 * The owner of a resource.
+					 */
+					readonly owner: string
 
-				/**
-				 * Repository variable.
-				 */
-				readonly repo: string
+					/**
+					 * Repository variable.
+					 */
+					readonly repo: string
 
-				/**
-				 * The path variable represents a string that stores a file path.
-				 */
-				readonly path: string
+					/**
+					 * The path variable represents a string that stores a file path.
+					 */
+					readonly path: string
 
-				/**
-				 * the branch, tag, or commit sha to get the file from
-				 */
-				readonly ref?: string
-			}) {
-				return Effect.gen(function* () {
-					const octokit = yield* Octokit
+					/**
+					 * the branch, tag, or commit sha to get the file from
+					 */
+					readonly ref?: string
+				}) =>
+					Effect.gen(function* () {
+						const octokit = yield* Octokit
 
-					const octokitResponse = yield* octokit.use((client, signal) =>
-						client.rest.repos.getContent({
-							owner: owner,
-							repo: repo,
-							path: path,
-							...(ref ? { ref } : {}),
-							request: {
-								signal,
-							},
-						}),
-					)
-
-					// yield* Console.debug(octokitResponse)
-
-					const {
-						content,
-						encoding,
-						_links: { html: maybeCanonical },
-					} = yield* Effect.succeed(octokitResponse).pipe(
-						Effect.flatMap(({ data }) => {
-							/**
-							 * the api returns data in different formats depending on the parameters passed to the getContent request.
-							 * We have asked for a single file, not a directory, therefore we expect a single object to be returned.
-							 * We need to type guard the data to ensure it is the correct type.
-							 *
-							 * If the data differs from our expectations, we should throw an error.
-							 * This could be due to the file not existing, or the path being incorrect.
-							 * Not recoverable at runtime, strategy:
-							 * - fail
-							 * - notify
-							 */
-							return typeof data === 'object' && !Array.isArray(data)
-								? Effect.succeed(data)
-								: Effect.fail(
-										new InvalidDataError({
-											message: `Expected an object, but got: ${typeof data}`,
-										}),
-									)
-						}),
-
-						Effect.flatMap(data => {
-							/**
-							 * The data returned from the getContent request not being an object or being an array,
-							 * or not having the correct type, name, or path. These are issues with the data returned
-							 * from the API and the program should fail if it cannot process the data.
-							 * Strategy:
-							 * - fail
-							 * - notify
-							 */
-							return data.type === 'file' && data.path === path
-								? Effect.succeed(data)
-								: Effect.fail(
-										new InvalidDataError({
-											message: `Expected a file matching the correct path and name; got "${data.type}"`,
-										}),
-									)
-						}),
-					)
-
-					const decodedContent = yield* Effect.try({
-						try: (): string => Buffer.from(content, 'base64').toString('utf8'),
-						catch: (_error): DecodingError =>
-							new DecodingError({
-								message: 'failed to parse data content',
-								encoding: encoding,
+						const octokitResponse = yield* octokit.use((client, signal) =>
+							client.rest.repos.getContent({
+								owner: owner,
+								repo: repo,
+								path: path,
+								...(ref ? { ref } : {}),
+								request: {
+									signal,
+								},
 							}),
-					})
+						)
 
-					return {
-						decodedContent,
-						canonical: Option.fromNullable(maybeCanonical),
-						lastModified: Option.fromNullable(octokitResponse.headers['last-modified']),
-					}
-				}).pipe(Effect.withLogSpan('getResumeFile'))
-			}
+						// yield* Console.debug(octokitResponse)
+
+						const {
+							content,
+							encoding,
+							_links: { html: maybeCanonical },
+						} = yield* Effect.succeed(octokitResponse).pipe(
+							Effect.flatMap(({ data }) => {
+								/**
+								 * the api returns data in different formats depending on the parameters passed to the getContent request.
+								 * We have asked for a single file, not a directory, therefore we expect a single object to be returned.
+								 * We need to type guard the data to ensure it is the correct type.
+								 *
+								 * If the data differs from our expectations, we should throw an error.
+								 * This could be due to the file not existing, or the path being incorrect.
+								 * Not recoverable at runtime, strategy:
+								 * - fail
+								 * - notify
+								 */
+								return typeof data === 'object' && !Array.isArray(data)
+									? Effect.succeed(data)
+									: Effect.fail(
+											new InvalidDataError({
+												message: `Expected an object, but got: ${typeof data}`,
+											}),
+										)
+							}),
+
+							Effect.flatMap(data => {
+								/**
+								 * The data returned from the getContent request not being an object or being an array,
+								 * or not having the correct type, name, or path. These are issues with the data returned
+								 * from the API and the program should fail if it cannot process the data.
+								 * Strategy:
+								 * - fail
+								 * - notify
+								 */
+								return data.type === 'file' && data.path === path
+									? Effect.succeed(data)
+									: Effect.fail(
+											new InvalidDataError({
+												message: `Expected a file matching the correct path and name; got "${data.type}"`,
+											}),
+										)
+							}),
+						)
+
+						const decodedContent = yield* Effect.try({
+							try: (): string => Buffer.from(content, 'base64').toString('utf8'),
+							catch: (_error): DecodingError =>
+								new DecodingError({
+									message: 'failed to parse data content',
+									encoding: encoding,
+								}),
+						})
+
+						return {
+							decodedContent,
+							canonical: Option.fromNullable(maybeCanonical),
+							lastModified: Option.fromNullable(octokitResponse.headers['last-modified']),
+						}
+					}),
+			)
 
 			/**
 			 * Retrieves and decodes resume data and associated metadata from a GitHub repository.
@@ -214,41 +215,46 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 			 * @param ref - The Git reference (branch, tag, etc.) to use when fetching the files. Defaults to "main".
 			 * @returns An effect that resolves to an object with the decoded resume and its metadata.
 			 */
-			function getResume(
-				ref = 'main',
-			): Effect.Effect<
-				{ meta: typeof Meta.Type; resume: typeof Resume.Type },
-				DecodingError | InvalidDataError | ParseError | OctokitError,
-				Octokit
-			> {
-				const repo = 'resume'
-				const owner = 'suddenlyGiovanni'
+			const getResume = Effect.fn('ResumeRepository.getResume')(
+				(
+					ref = 'main',
+				): Effect.Effect<
+					{
+						meta: typeof Meta.Type
+						resume: typeof Resume.Type
+					},
+					DecodingError | InvalidDataError | ParseError | OctokitError,
+					Octokit
+				> => {
+					const repo = 'resume'
+					const owner = 'suddenlyGiovanni'
 
-				return Effect.gen(function* () {
-					const [resumeFile, denoFile] = yield* Effect.all(
-						[
-							getResumeFile({ owner, path: 'packages/resume/src/resume.yml', ref, repo }),
-							getResumeFile({ owner, path: 'packages/resume/deno.json', ref, repo }),
-						],
-						{ concurrency: 2 },
-					)
+					return Effect.gen(function* () {
+						const [resumeFile, denoFile] = yield* Effect.all(
+							[
+								getResumeFile({ owner, path: 'packages/resume/src/resume.yml', ref, repo }),
+								getResumeFile({ owner, path: 'packages/resume/deno.json', ref, repo }),
+							],
+							{ concurrency: 2 },
+						)
 
-					const resume: typeof Resume.Type = yield* decodeResume(resumeFile.decodedContent)
-					const denoJson: typeof Package.Type = yield* decodePackageJson(denoFile.decodedContent)
+						const resume: typeof Resume.Type = yield* decodeResume(resumeFile.decodedContent)
+						const denoJson: typeof Package.Type = yield* decodePackageJson(denoFile.decodedContent)
 
-					const meta: typeof Meta.Type = yield* Meta.decode({
-						...(Option.isSome(resumeFile.lastModified)
-							? { lastModified: resumeFile.lastModified.value }
-							: {}),
-						...(Option.isSome(resumeFile.canonical)
-							? { canonical: resumeFile.canonical.value }
-							: {}),
-						version: denoJson.version,
+						const meta: typeof Meta.Type = yield* Meta.decode({
+							...(Option.isSome(resumeFile.lastModified)
+								? { lastModified: resumeFile.lastModified.value }
+								: {}),
+							...(Option.isSome(resumeFile.canonical)
+								? { canonical: resumeFile.canonical.value }
+								: {}),
+							version: denoJson.version,
+						})
+
+						return { meta, resume } as const
 					})
-
-					return { meta, resume }
-				}).pipe(Effect.withLogSpan('getResume'))
-			}
+				},
+			)
 
 			return { getResume } as const
 		}),
