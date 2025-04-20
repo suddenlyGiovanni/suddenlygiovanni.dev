@@ -1,8 +1,11 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   configMigration: true,
+  semanticCommits: "enabled",
+  semanticCommitType: "chore",
+  prConcurrentLimit: 5,
   dockerfile: {
-	enabled: true,
+	enabled: true
   },
   extends: [
 	'config:recommended',
@@ -20,19 +23,55 @@
 	{
 	  matchHost: 'https://npm.pkg.github.com/',
 	  hostType: 'npm',
-	  token: '{{ secrets.REPO_GITHUB_PACKAGES_TOKEN }}',
+	  token: '{{ secrets.REPO_GITHUB_PACKAGES_TOKEN }}'
 	},
   ],
   labels: [
-	'dependencies',
+	'dependencies'
   ],
   packageRules: [
+	{
+	  matchPaths: [
+		"packages/app/**"
+	  ],
+	  semanticCommitScope: "packages/app"
+	},
+	{
+	  matchPaths: [
+		"packages/open-graph-protocol/**"
+	  ],
+	  semanticCommitScope: "packages/open-graph-protocol"
+	},
+	{
+	  matchPaths: [
+		"packages/ui/**"
+	  ],
+	  semanticCommitScope: "packages/ui"
+	},
+	{
+	  matchPaths: [
+		"tools/eslint-config/**"
+	  ],
+	  semanticCommitScope: "tools/eslint-config"
+	},
+	{
+	  matchPaths: [
+		"tools/tailwind/**"
+	  ],
+	  semanticCommitScope: "tools/tailwind"
+	},
+	{
+	  matchPaths: [
+		"tools/typescript/**"
+	  ],
+	  semanticCommitScope: "tools/typescript"
+	},
 	{
 	  groupName: 'effect packages',
 	  matchPackageNames: [
 		'/^effect$/',
-		'/^@effect//',
-	  ],
+		'/^@effect//'
+	  ]
 	},
 	{
 	  "groupName": "eslint updates",
@@ -42,13 +81,12 @@
 		"/^@.*eslint/"
 	  ]
 	},
-
 	{
 	  groupName: 'tailwindcss packages',
 	  matchPackageNames: [
 		'@tailwindcss/vite',
-		'tailwindcss',
-	  ],
+		'tailwindcss'
+	  ]
 	}
-  ],
+  ]
 }
