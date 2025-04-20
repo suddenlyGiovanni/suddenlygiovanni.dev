@@ -1,0 +1,14 @@
+# Enable/disable creation of status checks
+enabled: true # default: true
+# Validate the PR title, and ignore all commit messages
+titleOnly: true # default: false
+# The values allowed for the "scope" part of the PR title/commit message. e.g. for a PR title/commit message of "feat(awesome-feature): add some stuff", the type would be "awesome-feature"
+scopes: # default: any value
+  - monorepo
+  - ci
+  - packages/app
+  - packages/ui
+  - packages/open-graph-protocol
+  - tools/eslint
+  - tools/tailwind
+  - tools/typescript
