@@ -14,7 +14,14 @@
 			"react": "catalog:",
 			"react-dom": "catalog:",
 			"@types/react": "catalog:"
-		}
+		},
+		"onlyBuiltDependencies": [
+			"@biomejs/biome",
+			"@parcel/watcher",
+			"esbuild",
+			"msgpackr-extract",
+			"msw"
+		]
 	},
 	"private": true,
 	"scripts": {
