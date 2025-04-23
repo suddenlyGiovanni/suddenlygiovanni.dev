@@ -9,11 +9,18 @@ runs:
         node-version-file: '.nvmrc'
         registry-url: 'https://npm.pkg.github.com'
 
+    - id: get_pnpm_version
+      shell: bash
+      run: echo "version=$(jq -r '.devEngines.packageManager.version' package.json)" >> $GITHUB_OUTPUT
+
     - name: 🗂️ Install pnpm
       uses: pnpm/action-setup@v4
       with:
         package_json_file: 'package.json'
         run_install: false
+        version: ${{ steps.get_pnpm_version.outputs.version }}
+
+
 
     - name: Get pnpm store directory
       shell: bash
