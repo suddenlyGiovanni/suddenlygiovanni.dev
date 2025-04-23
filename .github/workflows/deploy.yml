@@ -23,6 +23,6 @@ jobs:
             --dockerfile ./packages/app/Dockerfile \
             --build-target production \
             --recreate-builder \
-            --remote-only
+            --local-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
