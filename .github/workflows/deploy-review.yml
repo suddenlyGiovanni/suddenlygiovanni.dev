@@ -40,6 +40,8 @@ jobs:
           config: ./packages/app/fly.review.yaml
           name: suddenlygiovanni-dev-${{ github.event.number }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
+          launch_options: --local-only
+
 
       - name: 🗑 Delete deployment environment
         uses: strumwolf/delete-deployment-environment@v3
