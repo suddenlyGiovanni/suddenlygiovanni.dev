@@ -23,7 +23,7 @@
 		"@suddenly-giovanni/schema-resume": "jsr:0.0.7",
 		"cookie": "1.0.2",
 		"effect": "3.14.13",
-		"isbot": "5.1.23",
+		"isbot": "5.1.26",
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"react-router": "7.3.0",
