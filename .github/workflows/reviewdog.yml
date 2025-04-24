@@ -109,7 +109,6 @@ jobs:
 
       - name: 🐶 reviewdog with tsc (TypeScript) - packages/ui
         shell: bash
-        working-directory: ./packages/ui
         run: |
           pnpm --filter="@repo/ui" -c exec  tsc --noEmit --pretty |
           reviewdog -f=tsc \
@@ -121,7 +120,6 @@ jobs:
 
       - name: 🐶 reviewdog with tsc (TypeScript) - packages/app
         shell: bash
-        working-directory: ./packages/app
         run: |
           pnpm --filter="@repo/app" -c exec  tsc --noEmit --pretty |
           reviewdog -f=tsc \
