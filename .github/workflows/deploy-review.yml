@@ -30,8 +30,10 @@ jobs:
         run: |
           repo_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
           echo "REPO_LOWERCASE=$repo_lowercase" >> $GITHUB_ENV
+          # Define the package name based on lowercase repo
+          echo "PACKAGE_NAME=$repo_lowercase/preview" >> $GITHUB_ENV
           echo "IMAGE_NAME=ghcr.io/$repo_lowercase/preview" >> $GITHUB_ENV
-          echo "CACHE_IMAGE_NAME=ghcr.io/$repo_lowercase/cache" >> $GITHUB_ENV    
+          echo "CACHE_IMAGE_NAME=ghcr.io/$repo_lowercase/cache" >> $GITHUB_ENV
           echo "FLY_APP_NAME=suddenlygiovanni-dev-${{ github.event.number }}" >> $GITHUB_ENV
 
       - name: Login to GitHub Container Registry
@@ -39,11 +41,10 @@ jobs:
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }} # GITHUB_TOKEN has permissions for GHCR in the same repo
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
 
       - name: Build and Push Docker Image for Preview
         id: docker_build_push
@@ -75,6 +76,21 @@ jobs:
         uses: strumwolf/delete-deployment-environment@v3
         if: ${{ github.event.action == 'closed' }}
         with:
-          # ⚠️ The provided token needs permission for admin write:org
           token: ${{ secrets.GITHUB_TOKEN }}
-          environment: ${{ env.FLY_APP_NAME }}
+          environment: fly-preview-${{ github.event.number }}
+
+      - name: 🗑 Delete GHCR preview images for closed PR
+        uses: actions/delete-package-versions@v5
+        # Only run if PR is closed
+        if: ${{ github.event.action == 'closed' }}
+        with:
+          # Use the package name derived in the 'Prepare Variables' step
+          package-name: ${{ env.PACKAGE_NAME }}
+          package-type: 'container'
+          # Delete all versions whose tags start with pr-NUMBER-
+          delete-only-pre-release-versions: false # Ensure we can delete non-pre-release if needed
+          tag-pattern: pr-${{ github.event.number }}-.* # Pattern to match tags for this specific PR
+          min-versions-to-keep: 0 # Delete all matched versions
+          token: ${{ secrets.GITHUB_TOKEN }} # Use default token, it usually has package delete permissions for the repo
+          # Optional: Add ignore-errors: true if you don't want workflow failure if cleanup fails
+          # ignore-errors: true
