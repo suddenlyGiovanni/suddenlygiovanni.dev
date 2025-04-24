@@ -32,12 +32,13 @@ jobs:
         shell: bash
         run: |
           repo_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
-          echo "REPO_LOWERCASE=$repo_lowercase" >> $GITHUB_ENV
-          # Define the package name based on lowercase repo
-          echo "PACKAGE_NAME=$repo_lowercase/preview" >> $GITHUB_ENV
-          echo "IMAGE_NAME=ghcr.io/$repo_lowercase/preview" >> $GITHUB_ENV
-          echo "CACHE_IMAGE_NAME=ghcr.io/$repo_lowercase/cache" >> $GITHUB_ENV
-          echo "FLY_APP_NAME=suddenlygiovanni-dev-${{ github.event.number }}" >> $GITHUB_ENV
+          {
+            echo "REPO_LOWERCASE=$repo_lowercase"
+            echo "PACKAGE_NAME=$repo_lowercase/preview"
+            echo "IMAGE_NAME=ghcr.io/$repo_lowercase/preview"
+            echo "CACHE_IMAGE_NAME=ghcr.io/$repo_lowercase/cache"
+            echo "FLY_APP_NAME=suddenlygiovanni-dev-${{ github.event.number }}"
+          } >> $GITHUB_ENV
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
