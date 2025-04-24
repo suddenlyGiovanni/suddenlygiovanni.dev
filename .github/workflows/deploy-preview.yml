@@ -6,9 +6,8 @@ permissions:
 on:
   pull_request:
     types: [ opened, reopened, synchronize, closed ]
-# Allow only one preview deployment per PR
 concurrency:
-  group: ${{ github.workflow }}-${{ github.head_ref }}
+  group: ${{ github.workflow }}-pr-${{ github.event.number }}
   cancel-in-progress: true
 
 
@@ -39,7 +38,7 @@ jobs:
             echo "CACHE_IMAGE_NAME=ghcr.io/$repo_lowercase/cache"
             echo "FLY_APP_NAME=suddenlygiovanni-dev-${{ github.event.number }}"
           } >> "$GITHUB_ENV"
-          
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
