@@ -11,9 +11,10 @@ concurrency:
 
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_APP_REVIEW }}
-  # Set these to your Fly.io organization and preferred region.
   FLY_REGION: ams
   FLY_ORG: personal
+  LOWERCASE_REPO: ${{ github.repository | toLower }}
+
 
 jobs:
   deploy_preview:
@@ -53,10 +54,10 @@ jobs:
           context: .
           file: ./packages/app/Dockerfile
           push: true # Push the image to the registry
-          tags: ghcr.io/${{ github.repository }}/preview:pr-${{ github.event.number }}-${{ github.sha }}
+          tags: ghcr.io/${{ env.LOWERCASE_REPO }}/preview:pr-${{ github.event.number }}-${{ github.sha }}
           # Cache configuration (using registry)
-          cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/cache:latest
-          cache-to: type=registry,ref=ghcr.io/${{ github.repository }}/cache:latest,mode=max
+          cache-from: type=registry,ref=ghcr.io/${{ env.LOWERCASE_REPO }}/cache:latest
+          cache-to: type=registry,ref=ghcr.io/${{ env.LOWERCASE_REPO }}/cache:latest,mode=max
 
       - name: Deploy PR app to Fly.io
         id: deploy
@@ -65,7 +66,7 @@ jobs:
           config: ./packages/app/fly.review.yaml
           name: ${{ steps.app_name.outputs.app }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
-          image: ghcr.io/${{ github.repository }}/preview:pr-${{ github.event.number }}-${{ github.sha }}
+          image: ghcr.io/${{ env.LOWERCASE_REPO }}/preview:pr-${{ github.event.number }}-${{ github.sha }}
 
       - name: 🗑 Delete deployment environment
         uses: strumwolf/delete-deployment-environment@v3
