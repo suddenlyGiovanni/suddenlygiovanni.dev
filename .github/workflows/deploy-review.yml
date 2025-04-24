@@ -89,7 +89,6 @@ jobs:
           package-type: 'container'
           # Delete all versions whose tags start with pr-NUMBER-
           delete-only-pre-release-versions: false # Ensure we can delete non-pre-release if needed
-          tag-pattern: pr-${{ github.event.number }}-.* # Pattern to match tags for this specific PR
           min-versions-to-keep: 0 # Delete all matched versions
           token: ${{ secrets.GITHUB_TOKEN }} # Use default token, it usually has package delete permissions for the repo
           # Optional: Add ignore-errors: true if you don't want workflow failure if cleanup fails
