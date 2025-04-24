@@ -94,34 +94,42 @@ jobs:
     name: runner / tsc
     runs-on: ubuntu-latest
     continue-on-error: true
+    env:
+      REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
+
+      - uses: reviewdog/action-setup@v1.3.2
+        with:
+          reviewdog_version: latest
 
       - name: 🧩 Install dependencies
         uses: ./.github/actions/setup
 
       - name: 🐶 reviewdog with tsc (TypeScript) - packages/ui
-        uses: EPMatt/reviewdog-action-tsc@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          workdir: "."
-          level: error
-          reporter: github-pr-review
-          filter_mode: nofilter
-          fail_on_error: false
-          tsc_flags: "--noEmit --pretty --project packages/ui"
+        shell: bash
+        working-directory: ./packages/ui
+        run: |
+          pnpm --filter="@repo/ui" -c exec  tsc --noEmit --pretty |
+          reviewdog -f=tsc \
+            -name="tsc" \
+            -reporter="github-pr-review" \
+            -filter-mode="nofilter" \
+            -fail-on-error="false" \
+            -level="error"
 
       - name: 🐶 reviewdog with tsc (TypeScript) - packages/app
-        uses: EPMatt/reviewdog-action-tsc@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          workdir: "."
-          level: error
-          reporter: github-pr-review
-          filter_mode: nofilter
-          fail_on_error: false
-          tsc_flags: "--noEmit --pretty --project packages/app"
+        shell: bash
+        working-directory: ./packages/app
+        run: |
+          pnpm --filter="@repo/app" -c exec  tsc --noEmit --pretty |
+          reviewdog -f=tsc \
+            -name="tsc" \
+            -reporter="github-pr-review" \
+            -filter-mode="nofilter" \
+            -fail-on-error="false" \
+            -level="error"
 
   biome:
     name: runner / Biome
