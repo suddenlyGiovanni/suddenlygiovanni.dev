@@ -1,0 +1,81 @@
+name: 🚀 Deploy Main
+permissions:
+  contents: read
+  packages: write
+
+on:
+  push:
+    branches:
+      - main
+
+# Ensure only one production deployment runs at a time for the main branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: 🚀 Build and Deploy app to Fly.io (Production)
+    runs-on: ubuntu-latest
+    environment: production # Specifies the GitHub deployment environment
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed for flyctl release naming
+
+      - name: Prepare Variables
+        id: prep
+        shell: bash
+        run: |
+          repo_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
+          {
+            echo "REPO_LOWERCASE=$repo_lowercase"
+            # Define distinct package name for main if desired, or reuse cache name
+            # Using just repo_lowercase for the main image package name is common
+            echo "PACKAGE_NAME=$repo_lowercase"
+            echo "IMAGE_NAME=ghcr.io/$repo_lowercase" # Base image name for main
+            echo "CACHE_IMAGE_NAME=ghcr.io/$repo_lowercase/cache" # Consistent cache location
+          } >> "$GITHUB_ENV"
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and Push Docker Image for Production
+        id: docker_build_push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./packages/app/Dockerfile
+          target: production
+          push: true
+          # Tag main image with commit SHA and 'latest'
+          tags: |
+            ${{ env.IMAGE_NAME }}:main-${{ github.sha }}
+            ${{ env.IMAGE_NAME }}:latest
+          # Cache configuration (pulls cache from PR/main builds, pushes for future builds)
+          cache-from: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest
+          cache-to: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest,mode=max
+
+      - name: 📠 Setup flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@1.5
+
+      - name: 🚀 Deploy to Production using Pre-built Image
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+          FLY_ORG: personal
+          FLY_REGION: ams
+        run: |
+          # Deploy using the specific image tag we just built and pushed
+          flyctl deploy \
+            --config ./packages/app/fly.yaml \
+            --image ${{ env.IMAGE_NAME }}:main-${{ github.sha }} \
+            # Add --detach if you don't need the action to wait for the deployment monitor

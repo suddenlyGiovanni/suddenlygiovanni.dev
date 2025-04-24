@@ -1,14 +1,3 @@
-# Extract pnpm version from package.json
-FROM alpine:3.21 AS pnpm-version
-
-WORKDIR /tmp
-
-COPY package.json .
-
-RUN apk add --no-cache jq \
-    && jq -r .packageManager package.json > pnpm-version.txt
-
-
 FROM node:23.11-alpine3.21 AS base
 
 LABEL authors="suddenlyGiovanni"
@@ -19,11 +8,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 
 WORKDIR /home/node/
 
-COPY --from=pnpm-version /tmp/pnpm-version.txt .
-
-RUN corepack enable \
-    && corepack prepare $(cat pnpm-version.txt) --activate \
-    && rm pnpm-version.txt
+RUN corepack enable pnpm
 
 
 FROM base AS build

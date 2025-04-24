@@ -1,0 +1,102 @@
+name: 🚀 Deploy Preview
+permissions:
+  contents: read
+  packages: write
+  actions: read
+  deployments: write
+  statuses: write
+  pull-requests: write
+on:
+  pull_request:
+    types: [ opened, reopened, synchronize, closed ]
+concurrency:
+  group: ${{ github.workflow }}-pr-${{ github.event.number }}
+  cancel-in-progress: true
+
+
+jobs:
+  deploy_preview:
+    name: Build and Deploy Preview to Fly.io
+    runs-on: ubuntu-latest
+    outputs:
+      url: ${{ steps.deploy.outputs.url }}
+    environment:
+      name: fly-preview-${{ github.event.number }}
+      url: ${{ steps.deploy.outputs.url }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed for flyctl release naming
+
+      - name: Prepare Variables
+        id: prep
+        shell: bash
+        run: |
+          repo_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
+          {
+            echo "REPO_LOWERCASE=$repo_lowercase"
+            echo "PACKAGE_NAME=$repo_lowercase/preview"
+            echo "IMAGE_NAME=ghcr.io/$repo_lowercase/preview"
+            echo "CACHE_IMAGE_NAME=ghcr.io/$repo_lowercase/cache"
+            echo "FLY_APP_NAME=suddenlygiovanni-dev-${{ github.event.number }}"
+          } >> "$GITHUB_ENV"
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and Push Docker Image for Preview
+        id: docker_build_push
+        uses: docker/build-push-action@v5
+        if: ${{ github.event.action != 'closed' }}
+        with:
+          context: .
+          file: ./packages/app/Dockerfile
+          push: true # Push the image to the registry
+          tags: ${{ env.IMAGE_NAME }}:pr-${{ github.event.number }}-${{ github.sha }}
+          # Cache configuration (using registry)
+          cache-from: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest
+          cache-to: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest,mode=max
+
+      - name: Deploy PR app to Fly.io
+        id: deploy
+        uses: superfly/fly-pr-review-apps@1.5.0
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_APP_REVIEW }}
+          FLY_REGION: ams
+          FLY_ORG: personal
+        with:
+          config: ./packages/app/fly.review.yaml
+          name: ${{ env.FLY_APP_NAME }}
+          secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
+          image: ${{ env.IMAGE_NAME }}:pr-${{ github.event.number }}-${{ github.sha }}
+
+      - name: 🗑 Delete deployment environment
+        continue-on-error: true
+        uses: strumwolf/delete-deployment-environment@v3
+        if: ${{ github.event.action == 'closed' }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: fly-preview-${{ github.event.number }}
+
+      - name: 🗑 Delete GHCR preview images for closed PR
+        uses: actions/delete-package-versions@v5
+        continue-on-error: true
+        # Only run if PR is closed
+        if: ${{ github.event.action == 'closed' }}
+        with:
+          # Use the package name derived in the 'Prepare Variables' step
+          package-name: ${{ env.PACKAGE_NAME }}
+          package-type: 'container'
+          # Delete all versions whose tags start with pr-NUMBER-
+          delete-only-pre-release-versions: false # Ensure we can delete non-pre-release if needed
+          min-versions-to-keep: 0 # Delete all matched versions
+          token: ${{ secrets.GITHUB_TOKEN }} # Use default token, it usually has package delete permissions for the repo
+          # Optional: Add ignore-errors: true if you don't want workflow failure if cleanup fails
