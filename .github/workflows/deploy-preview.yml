@@ -38,8 +38,8 @@ jobs:
             echo "IMAGE_NAME=ghcr.io/$repo_lowercase/preview"
             echo "CACHE_IMAGE_NAME=ghcr.io/$repo_lowercase/cache"
             echo "FLY_APP_NAME=suddenlygiovanni-dev-${{ github.event.number }}"
-          } >> $GITHUB_ENV
-
+          } >> "$GITHUB_ENV"
+          
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
