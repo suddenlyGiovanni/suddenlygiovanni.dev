@@ -1,7 +1,6 @@
 name: 🚀 Deploy Preview
 
 on:
-  # Run this workflow on every PR event. Existing review apps will be updated when the PR is updated.
   pull_request:
     types: [ opened, reopened, synchronize, closed ]
 # Allow only one preview deployment per PR
@@ -78,4 +77,4 @@ jobs:
         with:
           # ⚠️ The provided token needs permission for admin write:org
           token: ${{ secrets.GITHUB_TOKEN }}
-          environment: ${{ FLY_APP_NAME }}
+          environment: ${{ env.FLY_APP_NAME }}
