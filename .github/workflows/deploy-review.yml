@@ -1,9 +1,13 @@
-name: 🚀 Deploy Review App
+name: 🚀 Deploy Preview
 
 on:
   # Run this workflow on every PR event. Existing review apps will be updated when the PR is updated.
   pull_request:
     types: [ opened, reopened, synchronize, closed ]
+# Allow only one preview deployment per PR
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
 
 env:
   FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_APP_REVIEW }}
@@ -12,35 +16,56 @@ env:
   FLY_ORG: personal
 
 jobs:
-  review_app:
-    name: 🚀 Deploy Review app to Fly.io
+  deploy_preview:
+    name: Build and Deploy Preview to Fly.io
     runs-on: ubuntu-latest
-    continue-on-error: true
     outputs:
       url: ${{ steps.deploy.outputs.url }}
-    # Only run one deployment at a time per PR.
-    concurrency:
-      group: pr-${{ github.event.number }}
-
-    # Deploying apps with this "review" environment allows the URL for the app to be displayed in the PR UI.
-    # Feel free to change the name of this environment.
     environment:
-      name: review
-      # The script in the `deploy` sets the URL output for each review app.
+      name: fly-preview-${{ github.event.number }}
       url: ${{ steps.deploy.outputs.url }}
 
     steps:
-      - name: Get code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed for flyctl release naming
+
+      - name: Generate Preview App Name
+        id: app_name
+        run: echo "app=suddenlygiovanni-dev-${{ github.event.number }}" >> $GITHUB_OUTPUT
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }} # GITHUB_TOKEN has permissions for GHCR in the same repo
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+
+      - name: Build and Push Docker Image for Preview
+        id: docker_build_push
+        uses: docker/build-push-action@v5
+        if: ${{ github.event.action != 'closed' }}
+        with:
+          context: .
+          file: ./packages/app/Dockerfile
+          push: true # Push the image to the registry
+          tags: ghcr.io/${{ github.repository }}/preview:pr-${{ github.event.number }}-${{ github.sha }}
+          # Cache configuration (using registry)
+          cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/cache:latest
+          cache-to: type=registry,ref=ghcr.io/${{ github.repository }}/cache:latest,mode=max
 
       - name: Deploy PR app to Fly.io
         id: deploy
-        uses: suddenlyGiovanni/fly-pr-review-apps@ci/with-secrets
+        uses: superfly/fly-pr-review-apps@1.5.0
         with:
           config: ./packages/app/fly.review.yaml
-          name: suddenlygiovanni-dev-${{ github.event.number }}
+          name: ${{ steps.app_name.outputs.app }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
-          launch_options: '--recreate-builder --local-only --depot="false"'
+          image: ghcr.io/${{ github.repository }}/preview:pr-${{ github.event.number }}-${{ github.sha }}
 
       - name: 🗑 Delete deployment environment
         uses: strumwolf/delete-deployment-environment@v3
