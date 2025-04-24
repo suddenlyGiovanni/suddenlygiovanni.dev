@@ -18,7 +18,6 @@
           nodejs-slim_23
           corepack_23
           biome
-          jq
         ];
 
         # Set any environment variables for your dev shell
@@ -29,8 +28,8 @@
           echo "Nix dev env!"
           echo "Node version: $(node --version)"
           echo "Biome version: $(biome --version)"
-          echo "Corepack version: %(corepack --version)"
-          corepack use "$(jq -r '.packageManager' package.json)"
+          echo "Corepack version: $(corepack --version)"
+          echo "pnpm version: $(pnpm -v)"
         '';
       };
     };
