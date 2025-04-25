@@ -33,12 +33,15 @@ jobs:
         id: prep
         shell: bash
         run: |
-          repo_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
+          repo_full_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
+          repo_name_only=$(echo "$repo_full_lowercase" | cut -d '/' -f 2) # Still useful for base name
           {
-            echo "REPO_LOWERCASE=$repo_lowercase"
-            echo "PACKAGE_NAME=$repo_lowercase/preview"
-            echo "IMAGE_NAME=ghcr.io/$repo_lowercase/preview"
-            echo "CACHE_IMAGE_NAME=ghcr.io/$repo_lowercase/cache"
+            # --- Adopt new naming convention ---
+            echo "PACKAGE_NAME_PREVIEW=$repo_name_only-preview" # e.g., suddenlygiovanni.dev-preview
+            echo "PACKAGE_NAME_CACHE=$repo_name_only-cache"     # e.g., suddenlygiovanni.dev-cache
+            echo "IMAGE_NAME_PREVIEW=ghcr.io/$repo_full_lowercase-preview" # e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-preview
+            echo "CACHE_IMAGE_NAME=ghcr.io/$repo_full_lowercase-cache" # e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-cache
+            # --- Keep Fly App name as is ---
             echo "FLY_APP_NAME=suddenlygiovanni-dev-${{ github.event.number }}"
           } >> "$GITHUB_ENV"
 
@@ -52,7 +55,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and Push Docker Image for Preview
+      - name: 🐳 Build and Push Docker Image for Preview
         id: docker_build_push
         uses: docker/build-push-action@v5
         if: ${{ github.event.action != 'closed' }}
@@ -60,12 +63,12 @@ jobs:
           context: .
           file: ./packages/app/Dockerfile
           push: true # Push the image to the registry
-          tags: ${{ env.IMAGE_NAME }}:pr-${{ github.event.number }}-${{ github.sha }}
+          tags: ${{ env.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number }}-${{ github.sha }}
           # Cache configuration (using registry)
           cache-from: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest
           cache-to: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest,mode=max
 
-      - name: Deploy PR app to Fly.io
+      - name: 🚢 Deploy PR app to Fly.io
         id: deploy
         uses: superfly/fly-pr-review-apps@1.5.0
         env:
@@ -76,7 +79,7 @@ jobs:
           config: ./packages/app/fly.review.yaml
           name: ${{ env.FLY_APP_NAME }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
-          image: ${{ env.IMAGE_NAME }}:pr-${{ github.event.number }}-${{ github.sha }}
+          image: ${{ env.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number }}-${{ github.sha }}
 
       - name: 🗑 Delete deployment environment
         continue-on-error: true
@@ -88,15 +91,11 @@ jobs:
 
       - name: 🗑 Delete GHCR preview images for closed PR
         uses: actions/delete-package-versions@v5
-        continue-on-error: true
-        # Only run if PR is closed
         if: ${{ github.event.action == 'closed' }}
         with:
           # Use the package name derived in the 'Prepare Variables' step
-          package-name: ${{ env.PACKAGE_NAME }}
+          package-name: ${{ env.PACKAGE_NAME_PREVIEW }}
           package-type: 'container'
-          # Delete all versions whose tags start with pr-NUMBER-
-          delete-only-pre-release-versions: false # Ensure we can delete non-pre-release if needed
           min-versions-to-keep: 0 # Delete all matched versions
           token: ${{ secrets.GITHUB_TOKEN }} # Use default token, it usually has package delete permissions for the repo
           # Optional: Add ignore-errors: true if you don't want workflow failure if cleanup fails

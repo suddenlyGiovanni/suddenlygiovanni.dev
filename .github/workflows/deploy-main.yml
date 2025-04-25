@@ -29,14 +29,16 @@ jobs:
         id: prep
         shell: bash
         run: |
-          repo_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
+          repo_full_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
+          repo_name_only=$(echo "$repo_full_lowercase" | cut -d '/' -f 2)
           {
-            echo "REPO_LOWERCASE=$repo_lowercase"
-            # Define distinct package name for main if desired, or reuse cache name
-            # Using just repo_lowercase for the main image package name is common
-            echo "PACKAGE_NAME=$repo_lowercase"
-            echo "IMAGE_NAME=ghcr.io/$repo_lowercase" # Base image name for main
-            echo "CACHE_IMAGE_NAME=ghcr.io/$repo_lowercase/cache" # Consistent cache location
+            # --- Main Production Image Naming (Simple) ---
+            echo "PACKAGE_NAME_MAIN=$repo_name_only" # e.g., suddenlygiovanni.dev
+            echo "IMAGE_NAME_MAIN=ghcr.io/$repo_full_lowercase" # e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev
+          
+            # --- Cache Image Naming (Consistent with Preview Workflow) ---
+            echo "PACKAGE_NAME_CACHE=$repo_name_only-cache" # e.g., suddenlygiovanni.dev-cache
+            echo "CACHE_IMAGE_NAME=ghcr.io/$repo_full_lowercase-cache" # e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-cache
           } >> "$GITHUB_ENV"
 
       - name: Login to GitHub Container Registry
@@ -49,7 +51,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Build and Push Docker Image for Production
+      - name: 🐳 Build and Push Docker Image for Production
         id: docker_build_push
         uses: docker/build-push-action@v5
         with:
@@ -59,8 +61,8 @@ jobs:
           push: true
           # Tag main image with commit SHA and 'latest'
           tags: |
-            ${{ env.IMAGE_NAME }}:main-${{ github.sha }}
-            ${{ env.IMAGE_NAME }}:latest
+            ${{ env.IMAGE_NAME_MAIN }}:main-${{ github.sha }}
+            ${{ env.IMAGE_NAME_MAIN }}:latest
           # Cache configuration (pulls cache from PR/main builds, pushes for future builds)
           cache-from: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest
           cache-to: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest,mode=max
@@ -68,7 +70,7 @@ jobs:
       - name: 📠 Setup flyctl
         uses: superfly/flyctl-actions/setup-flyctl@1.5
 
-      - name: 🚀 Deploy to Production using Pre-built Image
+      - name: 🚢 Deploy to Production using Pre-built Image
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
           FLY_ORG: personal
@@ -77,5 +79,5 @@ jobs:
           # Deploy using the specific image tag we just built and pushed
           flyctl deploy \
             --config ./packages/app/fly.yaml \
-            --image ${{ env.IMAGE_NAME }}:main-${{ github.sha }} \
+            --image ${{ env.IMAGE_NAME_MAIN }}:main-${{ github.sha }} \
             # Add --detach if you don't need the action to wait for the deployment monitor
