@@ -86,7 +86,7 @@ jobs:
         uses: strumwolf/delete-deployment-environment@v3
         if: ${{ github.event.action == 'closed' }}
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
           environment: fly-preview-${{ github.event.number }}
 
       - name: 🗑 Delete GHCR preview images for closed PR
@@ -97,5 +97,5 @@ jobs:
           package-name: ${{ env.PACKAGE_NAME_PREVIEW }}
           package-type: 'container'
           min-versions-to-keep: 0 # Delete all matched versions
-          token: ${{ secrets.GITHUB_TOKEN }} # Use default token, it usually has package delete permissions for the repo
+          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }} # Use default token, it usually has package delete permissions for the repo
           # Optional: Add ignore-errors: true if you don't want workflow failure if cleanup fails
