@@ -1,0 +1,29 @@
+name: 🧹 Deploy Preview Environments Cleanup
+on:
+  pull_request:
+    types:
+      - closed
+permissions:
+  contents: read
+  packages: write
+  deployments: write
+
+jobs:
+  cleanup:
+    name: Cleanup Preview Resources
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: 🗑 Delete deployment environment
+        uses: strumwolf/delete-deployment-environment@v3
+        with:
+          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
+          environment: fly-preview-${{ github.event.number }}
+
+      - name: 🗑 Delete GHCR preview images for closed PR
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: ${{ github.repository }}-preview # ${{ env.PACKAGE_NAME_PREVIEW }}
+          package-type: 'container'
+          min-versions-to-keep: 0
+          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
