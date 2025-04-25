@@ -93,9 +93,8 @@ jobs:
         uses: actions/delete-package-versions@v5
         if: ${{ github.event.action == 'closed' }}
         with:
-          # Use the package name derived in the 'Prepare Variables' step
           package-name: ${{ env.PACKAGE_NAME_PREVIEW }}
           package-type: 'container'
           min-versions-to-keep: 0 # Delete all matched versions
-          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }} # Use default token, it usually has package delete permissions for the repo
+          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
           # Optional: Add ignore-errors: true if you don't want workflow failure if cleanup fails
