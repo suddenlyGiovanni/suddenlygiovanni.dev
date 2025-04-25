@@ -80,21 +80,3 @@ jobs:
           name: ${{ env.FLY_APP_NAME }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
           image: ${{ env.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number }}-${{ github.sha }}
-
-      - name: 🗑 Delete deployment environment
-        continue-on-error: true
-        uses: strumwolf/delete-deployment-environment@v3
-        if: ${{ github.event.action == 'closed' }}
-        with:
-          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
-          environment: fly-preview-${{ github.event.number }}
-
-      - name: 🗑 Delete GHCR preview images for closed PR
-        uses: actions/delete-package-versions@v5
-        if: ${{ github.event.action == 'closed' }}
-        with:
-          package-name: ${{ env.PACKAGE_NAME_PREVIEW }}
-          package-type: 'container'
-          min-versions-to-keep: 0 # Delete all matched versions
-          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
-          # Optional: Add ignore-errors: true if you don't want workflow failure if cleanup fails
