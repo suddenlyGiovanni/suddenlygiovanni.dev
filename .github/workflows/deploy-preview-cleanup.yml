@@ -3,6 +3,18 @@ on:
   pull_request:
     types:
       - closed
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull Request number to cleanup'
+        required: true
+        type: string
+      force_cleanup:
+        description: 'Force cleanup even if resources are missing'
+        required: false
+        type: boolean
+        default: false
+
 permissions:
   contents: read
   packages: write
@@ -15,8 +27,20 @@ jobs:
     name: Cleanup Preview Resources
     runs-on: ubuntu-latest
     environment:
-      name: fly-preview-${{ github.event.number }}
+      name: fly-preview-${{ github.event.number || github.event.inputs.pr_number }}
     steps:
+      - name: Add cleanup pending comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🧹 Starting cleanup of preview environment resources...'
+            });
 
       - uses: actions/checkout@v4
         with:
@@ -25,8 +49,12 @@ jobs:
       - name: Prepare Repository Variables
         id: vars
         uses: ./.github/actions/prepare-repo-variables
+        with:
+          pr_number: ${{ github.event.number || github.event.inputs.pr_number }}
 
       - name: 🗑️ Destroy PR app in Fly.io
+        id: destroy_app
+        continue-on-error: ${{ github.event.inputs.force_cleanup == 'true' }}
         uses: superfly/fly-pr-review-apps@1.5.0
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_APP_REVIEW }}
@@ -37,12 +65,16 @@ jobs:
           name: ${{ steps.vars.outputs.FLY_APP_NAME }}
 
       - name: 🗑 Delete deployment environment
+        id: delete_environment
+        continue-on-error: ${{ github.event.inputs.force_cleanup == 'true' }}
         uses: strumwolf/delete-deployment-environment@v3
         with:
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
-          environment: fly-preview-${{ github.event.number }}
+          environment: fly-preview-${{ github.event.number || github.event.inputs.pr_number }}
 
       - name: 🗑 Delete GHCR preview images for closed PR
+        id: delete_images
+        continue-on-error: ${{ github.event.inputs.force_cleanup == 'true' }}
         uses: actions/delete-package-versions@v5
         with:
           package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
@@ -56,11 +88,35 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const result = ${{ job.status }};
-            const emoji = result === 'success' ? '✅' : '❌';
+            const pr_number = context.issue?.number || ${{ github.event.inputs.pr_number }};
+            const result = "${{ job.status }}";
+            const emoji = result === "success" ? "✅" : "❌";
+            
+            // Create detailed status report
+            let body = `${emoji} Preview environment cleanup ${result.toLowerCase()}.\n\n`;
+            
+            // Add resource cleanup details
+            body += "### Cleanup Status:\n";
+            body += `- Fly App: ${{ steps.destroy_app.outcome || 'skipped' }}\n`;
+            body += `- GitHub Environment: ${{ steps.delete_environment.outcome || 'skipped' }}\n`;
+            body += `- Container Images: ${{ steps.delete_images.outcome || 'skipped' }}\n\n`;
+            
+            if (result !== "success") {
+              body += "Some resources may require manual cleanup. Check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.\n";
+            }
+            
+            // Post to the PR if it exists
+            if (pr_number) {
             github.rest.issues.createComment({
-              issue_number: context.issue.number,
+                issue_number: pr_number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `${emoji} Preview environment cleanup ${result}: All preview resources have been deleted.`
+                body: body
             });
+            }
+            
+            // Also create a step summary
+            core.summary
+              .addHeading('Preview Environment Cleanup')
+              .addRaw(body)
+              .write();
