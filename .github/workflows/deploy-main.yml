@@ -65,7 +65,7 @@ jobs:
           FLY_REGION: ams
         run: |
           # Deploy using the specific image tag we just built and pushed
+          # Add --detach if you don't need the action to wait for the deployment monitor
           flyctl deploy \
             --config ./packages/app/fly.yaml \
-            --image ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}:main-${{ github.sha }} \
-            # Add --detach if you don't need the action to wait for the deployment monitor
+            --image ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}:main-${{ github.sha }}
