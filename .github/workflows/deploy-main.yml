@@ -29,15 +29,6 @@ jobs:
         id: vars
         uses: ./.github/actions/prepare-repo-variables
 
-      - name: Set Environment Variables
-        run: |
-          {
-            echo "PACKAGE_NAME_MAIN=${{ steps.vars.outputs.PACKAGE_NAME_MAIN }}"
-            echo "IMAGE_NAME_MAIN=${{ steps.vars.outputs.IMAGE_NAME_MAIN }}"
-            echo "PACKAGE_NAME_CACHE=${{ steps.vars.outputs.PACKAGE_NAME_CACHE }}"
-            echo "CACHE_IMAGE_NAME=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}"
-          } >> "$GITHUB_ENV"
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -58,11 +49,11 @@ jobs:
           push: true
           # Tag main image with commit SHA and 'latest'
           tags: |
-            ${{ env.IMAGE_NAME_MAIN }}:main-${{ github.sha }}
-            ${{ env.IMAGE_NAME_MAIN }}:latest
+            ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}:main-${{ github.sha }}
+            ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}:latest
           # Cache configuration (pulls cache from PR/main builds, pushes for future builds)
-          cache-from: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest
-          cache-to: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest,mode=max
+          cache-from: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
+          cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
 
       - name: 📠 Setup flyctl
         uses: superfly/flyctl-actions/setup-flyctl@1.5
@@ -76,5 +67,5 @@ jobs:
           # Deploy using the specific image tag we just built and pushed
           flyctl deploy \
             --config ./packages/app/fly.yaml \
-            --image ${{ env.IMAGE_NAME_MAIN }}:main-${{ github.sha }} \
+            --image ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}:main-${{ github.sha }} \
             # Add --detach if you don't need the action to wait for the deployment monitor
