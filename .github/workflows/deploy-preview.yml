@@ -8,7 +8,7 @@ permissions:
   pull-requests: write
 on:
   pull_request:
-    types: [ opened, reopened, synchronize, closed ]
+    types: [ opened, reopened, synchronize ]
 concurrency:
   group: ${{ github.workflow }}-pr-${{ github.event.number }}
   cancel-in-progress: true
@@ -46,7 +46,6 @@ jobs:
       - name: 🐳 Build and Push Docker Image for Preview
         id: docker_build_push
         uses: docker/build-push-action@v5
-        if: ${{ github.event.action != 'closed' }}
         with:
           context: .
           file: ./packages/app/Dockerfile

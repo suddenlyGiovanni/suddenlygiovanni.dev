@@ -12,12 +12,25 @@ jobs:
   cleanup:
     name: Cleanup Preview Resources
     runs-on: ubuntu-latest
+    environment:
+      name: fly-preview-${{ github.event.number }}
     steps:
+
       - uses: actions/checkout@v4
 
       - name: Prepare Repository Variables
         id: vars
         uses: ./.github/actions/prepare-repo-variables
+
+      - name: 🗑️ Destroy PR app in Fly.io
+        uses: superfly/fly-pr-review-apps@1.5.0
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_APP_REVIEW }}
+          FLY_REGION: ams
+          FLY_ORG: personal
+        with:
+          config: ./packages/app/fly.review.yaml
+          name: ${{ steps.vars.outputs.FLY_APP_NAME }}
 
       - name: 🗑 Delete deployment environment
         uses: strumwolf/delete-deployment-environment@v3
