@@ -32,3 +32,18 @@ jobs:
           package-type: 'container'
           min-versions-to-keep: 0
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
+
+      - name: 📢 Post cleanup notification
+        if: always()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const result = ${{ job.status }};
+            const emoji = result === 'success' ? '✅' : '❌';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `${emoji} Preview environment cleanup ${result}: All preview resources have been deleted.`
+            });
