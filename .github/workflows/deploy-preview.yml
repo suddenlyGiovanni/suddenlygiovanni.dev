@@ -29,20 +29,18 @@ jobs:
         with:
           fetch-depth: 0 # Needed for flyctl release naming
 
-      - name: Prepare Variables
-        id: prep
-        shell: bash
+      - name: Prepare Repository Variables
+        id: vars
+        uses: ./.github/actions/prepare-repo-variables
+
+      - name: Set Environment Variables
         run: |
-          repo_full_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
-          repo_name_only=$(echo "$repo_full_lowercase" | cut -d '/' -f 2) # Still useful for base name
           {
-            # --- Adopt new naming convention ---
-            echo "PACKAGE_NAME_PREVIEW=$repo_name_only-preview" # e.g., suddenlygiovanni.dev-preview
-            echo "PACKAGE_NAME_CACHE=$repo_name_only-cache"     # e.g., suddenlygiovanni.dev-cache
-            echo "IMAGE_NAME_PREVIEW=ghcr.io/$repo_full_lowercase-preview" # e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-preview
-            echo "CACHE_IMAGE_NAME=ghcr.io/$repo_full_lowercase-cache" # e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-cache
-            # --- Keep Fly App name as is ---
-            echo "FLY_APP_NAME=suddenlygiovanni-dev-${{ github.event.number }}"
+            echo "PACKAGE_NAME_PREVIEW=${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
+            echo "PACKAGE_NAME_CACHE=${{ steps.vars.outputs.PACKAGE_NAME_CACHE }}"
+            echo "IMAGE_NAME_PREVIEW=${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}"
+            echo "CACHE_IMAGE_NAME=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}"
+            echo "FLY_APP_NAME=${{ steps.vars.outputs.FLY_APP_NAME }}"
           } >> "$GITHUB_ENV"
 
       - name: Login to GitHub Container Registry

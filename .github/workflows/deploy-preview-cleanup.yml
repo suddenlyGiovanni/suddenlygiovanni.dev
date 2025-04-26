@@ -13,6 +13,11 @@ jobs:
     name: Cleanup Preview Resources
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare Repository Variables
+        id: vars
+        uses: ./.github/actions/prepare-repo-variables
 
       - name: 🗑 Delete deployment environment
         uses: strumwolf/delete-deployment-environment@v3
@@ -23,7 +28,7 @@ jobs:
       - name: 🗑 Delete GHCR preview images for closed PR
         uses: actions/delete-package-versions@v5
         with:
-          package-name: ${{ github.repository }}-preview # ${{ env.PACKAGE_NAME_PREVIEW }}
+          package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
           package-type: 'container'
           min-versions-to-keep: 0
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}

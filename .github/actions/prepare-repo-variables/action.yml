@@ -1,0 +1,45 @@
+name: 'Prepare Repository Variables'
+description: 'Prepares common repository variables for workflows'
+outputs:
+  PACKAGE_NAME_MAIN:
+    description: 'Main package name (e.g., suddenlygiovanni.dev)'
+    value: ${{ steps.set-vars.outputs.PACKAGE_NAME_MAIN }}
+  IMAGE_NAME_MAIN:
+    description: 'Main image name (e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev)'
+    value: ${{ steps.set-vars.outputs.IMAGE_NAME_MAIN }}
+  PACKAGE_NAME_PREVIEW:
+    description: 'Preview package name (e.g., suddenlygiovanni.dev-preview)'
+    value: ${{ steps.set-vars.outputs.PACKAGE_NAME_PREVIEW }}
+  IMAGE_NAME_PREVIEW:
+    description: 'Preview image name (e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-preview)'
+    value: ${{ steps.set-vars.outputs.IMAGE_NAME_PREVIEW }}
+  PACKAGE_NAME_CACHE:
+    description: 'Cache package name (e.g., suddenlygiovanni.dev-cache)'
+    value: ${{ steps.set-vars.outputs.PACKAGE_NAME_CACHE }}
+  CACHE_IMAGE_NAME:
+    description: 'Cache image name (e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-cache)'
+    value: ${{ steps.set-vars.outputs.CACHE_IMAGE_NAME }}
+  FLY_APP_NAME:
+    description: 'Fly app name for preview environments'
+    value: ${{ steps.set-vars.outputs.FLY_APP_NAME }}
+
+runs:
+  using: "composite"
+  steps:
+    - id: set-vars
+      shell: bash
+      run: |
+        repo_full_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
+        repo_name_only=$(echo "$repo_full_lowercase" | cut -d '/' -f 2)
+        
+        # Set outputs for all variables
+        echo "PACKAGE_NAME_MAIN=$repo_name_only" >> $GITHUB_OUTPUT
+        echo "IMAGE_NAME_MAIN=ghcr.io/$repo_full_lowercase" >> $GITHUB_OUTPUT
+        
+        echo "PACKAGE_NAME_PREVIEW=$repo_name_only-preview" >> $GITHUB_OUTPUT
+        echo "IMAGE_NAME_PREVIEW=ghcr.io/$repo_full_lowercase-preview" >> $GITHUB_OUTPUT
+        
+        echo "PACKAGE_NAME_CACHE=$repo_name_only-cache" >> $GITHUB_OUTPUT
+        echo "CACHE_IMAGE_NAME=ghcr.io/$repo_full_lowercase-cache" >> $GITHUB_OUTPUT
+        
+        echo "FLY_APP_NAME=suddenlygiovanni-dev-${{ github.event.number }}" >> $GITHUB_OUTPUT

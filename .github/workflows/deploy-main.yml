@@ -25,20 +25,17 @@ jobs:
         with:
           fetch-depth: 0 # Needed for flyctl release naming
 
-      - name: Prepare Variables
-        id: prep
-        shell: bash
+      - name: Prepare Repository Variables
+        id: vars
+        uses: ./.github/actions/prepare-repo-variables
+
+      - name: Set Environment Variables
         run: |
-          repo_full_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
-          repo_name_only=$(echo "$repo_full_lowercase" | cut -d '/' -f 2)
           {
-            # --- Main Production Image Naming (Simple) ---
-            echo "PACKAGE_NAME_MAIN=$repo_name_only" # e.g., suddenlygiovanni.dev
-            echo "IMAGE_NAME_MAIN=ghcr.io/$repo_full_lowercase" # e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev
-          
-            # --- Cache Image Naming (Consistent with Preview Workflow) ---
-            echo "PACKAGE_NAME_CACHE=$repo_name_only-cache" # e.g., suddenlygiovanni.dev-cache
-            echo "CACHE_IMAGE_NAME=ghcr.io/$repo_full_lowercase-cache" # e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-cache
+            echo "PACKAGE_NAME_MAIN=${{ steps.vars.outputs.PACKAGE_NAME_MAIN }}"
+            echo "IMAGE_NAME_MAIN=${{ steps.vars.outputs.IMAGE_NAME_MAIN }}"
+            echo "PACKAGE_NAME_CACHE=${{ steps.vars.outputs.PACKAGE_NAME_CACHE }}"
+            echo "CACHE_IMAGE_NAME=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}"
           } >> "$GITHUB_ENV"
 
       - name: Login to GitHub Container Registry
