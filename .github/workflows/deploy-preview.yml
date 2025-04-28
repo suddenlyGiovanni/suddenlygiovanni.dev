@@ -75,7 +75,12 @@ jobs:
           context: .
           file: ./packages/app/Dockerfile
           push: true # Push the image to the registry
-          tags: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}
+          # 1) a rolling tag that is overwritten on every push
+          # 2) an immutable tag with the full SHA for debugging/roll-back
+          tags: |
+            ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}
+            ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}
+
           # Cache configuration (using registry)
           cache-from: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
           cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
@@ -139,7 +144,7 @@ jobs:
           package-name: ${{ steps.registry_info.outputs.package_base_name }}
           package-type: 'container'
           min-versions-to-keep: 2
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # PAT with delete:packages
           # Only keep the current build image, delete older ones for this PR
           ignore-versions: "^(?!pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}$).*$"
           num-old-versions-to-delete: 5
