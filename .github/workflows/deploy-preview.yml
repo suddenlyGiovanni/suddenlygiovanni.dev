@@ -94,8 +94,8 @@ jobs:
           # 1) a rolling tag that is overwritten on every push
           # 2) an immutable tag with the full SHA for debugging/roll-back
           tags: |
-            ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ steps.vars.outputs.PR_NUMBER }}
-            ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ steps.vars.outputs.PR_NUMBER }}-${{ github.sha }}
+            ${{ steps.vars.outputs.IMAGE_TAG_PR }}
+            ${{ steps.vars.outputs.IMAGE_TAG_PR_SHA }}
 
           # Cache configuration (using registry)
           cache-from: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
@@ -112,8 +112,8 @@ jobs:
           # 1) a rolling tag that is overwritten on every push
           # 2) an immutable tag with the full SHA for debugging/roll-back
           tags: |
-            ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ steps.vars.outputs.PR_NUMBER }}
-            ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ steps.vars.outputs.PR_NUMBER }}-${{ github.sha }}
+            ${{ steps.vars.outputs.IMAGE_TAG_PR }}
+            ${{ steps.vars.outputs.IMAGE_TAG_PR_SHA }}
 
           # Only create cache, don't try to use it
           cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
@@ -130,7 +130,7 @@ jobs:
           config: ./packages/app/fly.review.yaml
           name: ${{ steps.vars.outputs.FLY_APP_NAME }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
-          image: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ steps.vars.outputs.PR_NUMBER }}
+          image: ${{ steps.vars.outputs.IMAGE_TAG_PR }}
 
 
 
@@ -146,6 +146,7 @@ jobs:
           min-versions-to-keep: 2
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # PAT with delete:packages
           # Only keep the current build image, delete older ones for this PR
+          # Extract just the tag part (pr-<PR_NUMBER>-<SHA>) from IMAGE_TAG_PR_SHA
           ignore-versions: "^(?!pr-${{ steps.vars.outputs.PR_NUMBER }}-${{ github.sha }}$).*$"
           num-old-versions-to-delete: 5
           # Set additional parameters to simplify the operation

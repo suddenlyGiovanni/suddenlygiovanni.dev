@@ -8,6 +8,12 @@ outputs:
   PR_NUMBER:
     description: 'Pull Request number used for preview environments. Useful for referencing in workflows.'
     value: ${{ steps.set-vars.outputs.PR_NUMBER }}
+  IMAGE_TAG_PR:
+    description: 'Preview image tag (rolling)  → <IMAGE_NAME_PREVIEW>:pr-<PR_NUMBER>'
+    value: ${{ steps.set-vars.outputs.IMAGE_TAG_PR }}
+  IMAGE_TAG_PR_SHA:
+    description: 'Preview image tag (immutable) → <IMAGE_NAME_PREVIEW>:pr-<PR_NUMBER>-<SHA>'
+    value: ${{ steps.set-vars.outputs.IMAGE_TAG_PR_SHA }}
   PACKAGE_NAME_MAIN:
     description: 'Main package name for GitHub Container Registry (e.g., suddenlygiovanni.dev). Used for tagging and referencing the main application package.'
     value: ${{ steps.set-vars.outputs.PACKAGE_NAME_MAIN }}
@@ -39,6 +45,7 @@ runs:
         EVENT_PR_NUMBER: ${{ github.event.number }}
         INPUT_PR_NUMBER: ${{ inputs.pr_number }}
         GITHUB_REPOSITORY: ${{ github.repository }}
+        GITHUB_SHA: ${{ github.sha }}
       run: |
         set -e  # Exit immediately if a command exits with a non-zero status
 
@@ -116,6 +123,15 @@ runs:
         # Set Fly.io app name
         FLY_APP_NAME="suddenlygiovanni-dev-${PR_NUMBER}"
         echo "FLY_APP_NAME: ${FLY_APP_NAME}"
+
+        # ------------------------------------------------------------------
+        # Build complete image tags in one place
+        # ------------------------------------------------------------------
+        IMAGE_TAG_PR="${IMAGE_NAME_PREVIEW}:pr-${PR_NUMBER}"
+        IMAGE_TAG_PR_SHA="${IMAGE_NAME_PREVIEW}:pr-${PR_NUMBER}-${GITHUB_SHA}"
+
+        echo "IMAGE_TAG_PR: ${IMAGE_TAG_PR}"
+        echo "IMAGE_TAG_PR_SHA: ${IMAGE_TAG_PR_SHA}"
         echo "::endgroup::"
 
         # Set outputs for all variables with proper quoting to handle special characters
@@ -145,6 +161,12 @@ runs:
 
         echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_OUTPUT
         echo "- PR_NUMBER: ${PR_NUMBER}"
+
+        echo "IMAGE_TAG_PR=${IMAGE_TAG_PR}" >> $GITHUB_OUTPUT
+        echo "- IMAGE_TAG_PR: ${IMAGE_TAG_PR}"
+
+        echo "IMAGE_TAG_PR_SHA=${IMAGE_TAG_PR_SHA}" >> $GITHUB_OUTPUT
+        echo "- IMAGE_TAG_PR_SHA: ${IMAGE_TAG_PR_SHA}"
 
         echo "::endgroup::"
 
