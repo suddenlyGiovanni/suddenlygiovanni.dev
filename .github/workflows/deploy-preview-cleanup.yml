@@ -54,7 +54,7 @@ jobs:
 
       - name: 🗑️ Destroy PR app in Fly.io
         id: destroy_app
-        continue-on-error: ${{ github.event.inputs.force_cleanup }}
+        continue-on-error: ${{ github.event.inputs.force_cleanup == 'true' || github.event.inputs.force_cleanup == true }}
         uses: superfly/fly-pr-review-apps@1.5.0
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_APP_REVIEW }}
@@ -66,7 +66,7 @@ jobs:
       
       - name: 🗑 Delete deployment environment
         id: delete_environment
-        continue-on-error: ${{ github.event.inputs.force_cleanup }}
+        continue-on-error: ${{ github.event.inputs.force_cleanup == 'true' || github.event.inputs.force_cleanup == true }}
         uses: strumwolf/delete-deployment-environment@v3
         with:
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
@@ -74,7 +74,7 @@ jobs:
       
       - name: 🗑 Delete GHCR preview images for closed PR
         id: delete_images
-        continue-on-error: ${{ github.event.inputs.force_cleanup }}
+        continue-on-error: ${{ github.event.inputs.force_cleanup == 'true' || github.event.inputs.force_cleanup == true }}
         uses: actions/delete-package-versions@v5
         with:
           package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
