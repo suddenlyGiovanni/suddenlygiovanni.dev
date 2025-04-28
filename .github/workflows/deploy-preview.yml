@@ -39,12 +39,12 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: '🔄 Preview deployment started... Please wait while we deploy your changes!'
-			})
+           github.rest.issues.createComment({
+               issue_number: context.issue.number,
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               body: '🔄 Preview deployment started... Please wait while we deploy your changes!'           
+           })
 
       - uses: actions/checkout@v4
         with:
