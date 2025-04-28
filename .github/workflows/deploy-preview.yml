@@ -130,7 +130,7 @@ jobs:
           config: ./packages/app/fly.review.yaml
           name: ${{ steps.vars.outputs.FLY_APP_NAME }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
-          image: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}
+          image: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}
 
 
 
