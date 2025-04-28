@@ -103,6 +103,11 @@ jobs:
           PACKAGE_BASE_NAME=$(echo "${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}" | sed 's|ghcr.io/'"${{ github.repository_owner }}"'/||' | tr '[:upper:]' '[:lower:]')
           echo "Package Base Name: $PACKAGE_BASE_NAME"
           echo "package_base_name=$PACKAGE_BASE_NAME" >> $GITHUB_OUTPUT
+          
+          # For GHCR, the full name should include ghcr.io prefix for API operations
+          FULL_PACKAGE_NAME="ghcr.io/${{ github.repository_owner }}/suddenlygiovanni.dev-preview"
+          echo "Full Package Name: $FULL_PACKAGE_NAME"
+          echo "full_package_name=$FULL_PACKAGE_NAME" >> $GITHUB_OUTPUT
       
       - name: List GitHub Packages API Endpoints (Debug)
         run: |
@@ -129,22 +134,37 @@ jobs:
         uses: actions/delete-package-versions@v5
         with:
           owner: ${{ github.repository_owner }}
-          package-name: ${{ steps.registry_info.outputs.package_base_name }}
+          package-name: ghcr.io/${{ github.repository_owner }}/suddenlygiovanni.dev-preview
           package-type: 'container'
           min-versions-to-keep: 2
           token: ${{ secrets.GITHUB_TOKEN }}
           # Only keep the current build image, delete older ones for this PR
-          ignore-versions: "^(?!pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}$)pr-${{ github.event.number || github.event.inputs.pr_number }}-.*$"
+          ignore-versions: "^(?!pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}$).*$"
           num-old-versions-to-delete: 5
       
       - name: Verify image cleanup
-        if: success() && steps.clean_old_images.outcome == 'success'
+        if: always()
         run: |
-          echo "Verifying package cleanup for: ${{ steps.registry_info.outputs.package_base_name }}"
-          REMAINING_VERSIONS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/${{ github.repository_owner }}/packages/container/${{ steps.registry_info.outputs.package_base_name }}/versions" | \
-            jq -r '.[] | .metadata.container.tags[] | select(startswith("pr-${{ github.event.number || github.event.inputs.pr_number }}-"))' | wc -l)
-          echo "Remaining versions for this PR: $REMAINING_VERSIONS"
+          echo "Verifying package cleanup for: suddenlygiovanni.dev-preview"
+          
+          # List packages to verify existence
+          echo "Available packages:"
+          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/user/packages?package_type=container" | jq -r '.[].name'
+          
+          # Attempt to get versions
+          RESPONSE=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/users/${{ github.repository_owner }}/packages/container/suddenlygiovanni.dev-preview/versions")
+          
+          # Check if we have actual content or an error
+          if echo "$RESPONSE" | jq -e 'has("message")' > /dev/null; then
+            echo "Error from GitHub API: $(echo "$RESPONSE" | jq -r '.message')"
+          else
+            REMAINING_VERSIONS=$(echo "$RESPONSE" | jq -r '.[] | .metadata.container.tags[] | select(startswith("pr-${{ github.event.number || github.event.inputs.pr_number }}-"))' | wc -l)
+            echo "Remaining versions for this PR: $REMAINING_VERSIONS"
+            echo "Available versions:"
+            echo "$RESPONSE" | jq -r '.[] | .metadata.container.tags[]'
+          fi
       
       - name: Update PR with deployment status
         if: always() && github.event_name == 'pull_request'
