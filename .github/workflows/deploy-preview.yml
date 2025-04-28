@@ -117,22 +117,6 @@ jobs:
           # Only create cache, don't try to use it
           cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
 
-      - name: Set Docker Image ID
-        id: set_image_id
-        shell: bash
-        run: |
-          # Set the image ID directly without conditional logic
-          IMAGE_ID="${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}"
-          echo "IMAGE_ID=$IMAGE_ID" >> $GITHUB_OUTPUT
-
-          # Enhanced debugging
-          echo "=== Image Information ==="
-          echo "Using image: $IMAGE_ID"
-          echo "IMAGE_NAME_PREVIEW: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}"
-          echo "PR Number: ${{ github.event.number || github.event.inputs.pr_number }}"
-          echo "SHA: ${{ github.sha }}"
-          echo "Cache exists: ${{ steps.check_cache.outputs.cache_exists }}"
-          echo "========================="
 
       - name: 🚢 Deploy PR app to Fly.io
         id: deploy
@@ -145,7 +129,7 @@ jobs:
           config: ./packages/app/fly.review.yaml
           name: ${{ steps.vars.outputs.FLY_APP_NAME }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
-          image: ${{ steps.set_image_id.outputs.IMAGE_ID }}
+          image: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}
 
 
       - name: Debug Container Registry Info
