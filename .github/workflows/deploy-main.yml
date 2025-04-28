@@ -15,10 +15,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  validate_secrets:
+    name: 🔒 Validate Secrets
+    uses: ./.github/workflows/validate-secrets.yml
+    with:
+      environment: production
+
   deploy:
     name: 🚀 Build and Deploy app to Fly.io (Production)
     runs-on: ubuntu-latest
     environment: production # Specifies the GitHub deployment environment
+    needs: validate_secrets
 
     steps:
       - name: ⬇️ Checkout code
