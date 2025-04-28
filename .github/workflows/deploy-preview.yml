@@ -99,13 +99,21 @@ jobs:
           echo "Package Name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
           echo "Organization: ${{ github.repository_owner }}"
       
+      - name: List available container packages (Debug)
+        run: |
+          echo "Listing available packages for debugging..."
+          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/users/${{ github.repository_owner }}/packages?package_type=container" | \
+            jq '.[] | {name: .name, id: .id}'
+      
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
         if: success()
+        continue-on-error: true # Prevent workflow failure if cleanup fails
         uses: actions/delete-package-versions@v5
         with:
           owner: ${{ github.repository_owner }}
-          package-name: ${{ github.repository_owner }}/${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
+          package-name: suddenlygiovanni.dev-preview # Use exact name without owner prefix
           package-type: 'container'
           min-versions-to-keep: 1
           delete-only-untagged-versions: false
