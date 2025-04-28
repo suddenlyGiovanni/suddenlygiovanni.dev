@@ -110,12 +110,12 @@ jobs:
           # List packages using the package name directly
           echo "Direct package lookup:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/${{ github.repository_owner }}/packages/container/suddenlygiovanni.dev-preview" | jq '.'
+            "https://api.github.com/users/${{ github.repository_owner }}/packages/container/${{ steps.registry_info.outputs.package_base_name }}" | jq '.'
           
           # List all container packages for the authenticated user
           echo "All user container packages:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/${{ github.repository_owner }}/packages?package_type=container" | jq '.[].name'
+            "https://api.github.com/users/${{ github.repository_owner }}/packages?package_type=container" | jq -r '.[] | .name' || echo "Failed to list packages or no packages found"
       
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
