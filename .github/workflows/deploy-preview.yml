@@ -133,41 +133,6 @@ jobs:
           image: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}
 
 
-      - name: Debug Container Registry Info
-        id: registry_info
-        run: |
-          echo "Image Name: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}"
-          echo "Package Name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
-          echo "Organization: ${{ github.repository_owner }}"
-
-          # For GitHub Container Registry API, we need just the package name without ghcr.io prefix
-          PACKAGE_BASE_NAME="${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
-          echo "Package Base Name: $PACKAGE_BASE_NAME"
-          echo "package_base_name=$PACKAGE_BASE_NAME" >> $GITHUB_OUTPUT
-
-      - name: List GitHub Packages API Endpoints (Debug)
-        run: |
-          echo "Listing GitHub Packages API endpoints for debugging..."
-
-          # List all container packages for the authenticated user/organization
-          echo "All container packages:"
-          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/user/packages?package_type=container" | jq '.' || echo "Failed to list packages or no packages found"
-
-          # List packages under the organization
-          echo "Organization container packages:"
-          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/orgs/${{ github.repository_owner }}/packages?package_type=container" | jq '.' || echo "Failed to list organization packages"
-
-          # Try to get specific package info
-          echo "Specific package info:"
-          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/user/packages/container/${{ steps.registry_info.outputs.package_base_name }}" | jq '.' || echo "Failed to get package info"
-
-          # List versions of the specific package using the user endpoint
-          echo "Package versions via user endpoint:"
-          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/user/packages/container/${{ steps.registry_info.outputs.package_base_name }}/versions" | jq '.' || echo "Failed to list versions"
 
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
@@ -176,7 +141,7 @@ jobs:
         uses: actions/delete-package-versions@v5
         with:
           owner: ${{ github.repository_owner }}
-          package-name: ${{ steps.registry_info.outputs.package_base_name }}
+          package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
           package-type: 'container'
           min-versions-to-keep: 2
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # PAT with delete:packages
@@ -189,7 +154,7 @@ jobs:
       - name: Verify image cleanup
         if: always()
         run: |
-          echo "Verifying package cleanup for: ${{ steps.registry_info.outputs.package_base_name }}"
+          echo "Verifying package cleanup for: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
 
           # List packages to verify existence
           echo "Available packages:"
@@ -199,7 +164,7 @@ jobs:
           # Attempt to get versions using correct endpoint
           echo "Checking versions for this package:"
           RESPONSE=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/user/packages/container/${{ steps.registry_info.outputs.package_base_name }}/versions")
+            "https://api.github.com/user/packages/container/${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}/versions")
 
           # Check if we have actual content or an error
           if echo "$RESPONSE" | jq -e 'has("message")' > /dev/null; then
