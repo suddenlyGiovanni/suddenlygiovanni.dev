@@ -9,7 +9,7 @@ permissions:
   issues: write
 on:
   pull_request:
-    types: [ opened, reopened, synchronize ]
+    types: [ opened, reopened, synchronize, edited ]
   workflow_dispatch:
     inputs:
       pr_number:
@@ -44,7 +44,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: '🔄 Preview deployment started... Please wait while we deploy your changes!'
-            })
+			})
 
       - uses: actions/checkout@v4
         with:
