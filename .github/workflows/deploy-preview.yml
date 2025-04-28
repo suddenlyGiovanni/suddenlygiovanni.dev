@@ -98,13 +98,28 @@ jobs:
           echo "Image Name: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}"
           echo "Package Name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
           echo "Organization: ${{ github.repository_owner }}"
+          # Extract the base name from image URL for use with package APIs
+          PACKAGE_BASE_NAME=$(echo "${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}" | sed 's|ghcr.io/suddenlygiovanni/||')
+          echo "Package Base Name: $PACKAGE_BASE_NAME"
+          echo "::set-output name=package_base_name::$PACKAGE_BASE_NAME"
       
       - name: List available container packages (Debug)
         run: |
           echo "Listing available packages for debugging..."
+          # Try organization packages first
+          echo "Organization packages:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/${{ github.repository_owner }}/packages?package_type=container" | \
-            jq '.[] | {name: .name, id: .id}'
+            "https://api.github.com/orgs/${{ github.repository_owner }}/packages?package_type=container" | jq '.'
+          
+          # Try user packages next
+          echo "User packages:"
+          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/user/packages?package_type=container" | jq '.'
+          
+          # Try repo packages
+          echo "Repository packages:"
+          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/packages?package_type=container" | jq '.'
       
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
@@ -113,7 +128,7 @@ jobs:
         uses: actions/delete-package-versions@v5
         with:
           owner: ${{ github.repository_owner }}
-          package-name: suddenlygiovanni.dev-preview # Use exact name without owner prefix
+          package-name: suddenlygiovanni.dev-preview
           package-type: 'container'
           min-versions-to-keep: 1
           delete-only-untagged-versions: false
@@ -121,6 +136,7 @@ jobs:
           # Only keep the current build image, delete older ones for this PR
           # The regex will match any PR images except the one we just built
           ignore-versions: "^(?!pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}$)pr-${{ github.event.number || github.event.inputs.pr_number }}-.*$"
+          num-old-versions-to-delete: 10
       
       - name: Update PR with deployment status
         if: always() && github.event_name == 'pull_request'
