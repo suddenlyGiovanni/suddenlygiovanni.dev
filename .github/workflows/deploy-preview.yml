@@ -94,6 +94,7 @@ jobs:
           image: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}
 
       - name: Debug Container Registry Info
+        id: registry_info
         run: |
           echo "Image Name: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}"
           echo "Package Name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
@@ -101,25 +102,20 @@ jobs:
           # Extract the base name from image URL for use with package APIs
           PACKAGE_BASE_NAME=$(echo "${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}" | sed 's|ghcr.io/suddenlygiovanni/||')
           echo "Package Base Name: $PACKAGE_BASE_NAME"
-          echo "::set-output name=package_base_name::$PACKAGE_BASE_NAME"
+          echo "package_base_name=$PACKAGE_BASE_NAME" >> $GITHUB_OUTPUT
       
-      - name: List available container packages (Debug)
+      - name: List GitHub Packages API Endpoints (Debug)
         run: |
-          echo "Listing available packages for debugging..."
-          # Try organization packages first
-          echo "Organization packages:"
+          echo "Listing GitHub Packages API endpoints for debugging..."
+          # List packages using the package name directly
+          echo "Direct package lookup:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/orgs/${{ github.repository_owner }}/packages?package_type=container" | jq '.'
+            "https://api.github.com/users/${{ github.repository_owner }}/packages/container/suddenlygiovanni.dev-preview" | jq '.'
           
-          # Try user packages next
-          echo "User packages:"
+          # List all container packages for the authenticated user
+          echo "All user container packages:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/user/packages?package_type=container" | jq '.'
-          
-          # Try repo packages
-          echo "Repository packages:"
-          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/${{ github.repository }}/packages?package_type=container" | jq '.'
+            "https://api.github.com/users/${{ github.repository_owner }}/packages?package_type=container" | jq '.[].name'
       
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
@@ -128,15 +124,12 @@ jobs:
         uses: actions/delete-package-versions@v5
         with:
           owner: ${{ github.repository_owner }}
-          package-name: suddenlygiovanni.dev-preview
+          package-name: ${{ steps.registry_info.outputs.package_base_name }}
           package-type: 'container'
-          min-versions-to-keep: 1
-          delete-only-untagged-versions: false
+          min-versions-to-keep: 2
           token: ${{ secrets.GITHUB_TOKEN }}
           # Only keep the current build image, delete older ones for this PR
-          # The regex will match any PR images except the one we just built
           ignore-versions: "^(?!pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}$)pr-${{ github.event.number || github.event.inputs.pr_number }}-.*$"
-          num-old-versions-to-delete: 10
       
       - name: Update PR with deployment status
         if: always() && github.event_name == 'pull_request'
