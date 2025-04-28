@@ -94,8 +94,8 @@ jobs:
           # 1) a rolling tag that is overwritten on every push
           # 2) an immutable tag with the full SHA for debugging/roll-back
           tags: |
-            ${{ steps.vars.outputs.IMAGE_TAG_PR }}
-            ${{ steps.vars.outputs.IMAGE_TAG_PR_SHA }}
+            ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
+            ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW_SHA }}
 
           # Cache configuration (using registry)
           cache-from: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
@@ -112,8 +112,8 @@ jobs:
           # 1) a rolling tag that is overwritten on every push
           # 2) an immutable tag with the full SHA for debugging/roll-back
           tags: |
-            ${{ steps.vars.outputs.IMAGE_TAG_PR }}
-            ${{ steps.vars.outputs.IMAGE_TAG_PR_SHA }}
+            ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
+            ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW_SHA }}
 
           # Only create cache, don't try to use it
           cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
@@ -130,7 +130,7 @@ jobs:
           config: ./packages/app/fly.review.yaml
           name: ${{ steps.vars.outputs.FLY_APP_NAME }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
-          image: ${{ steps.vars.outputs.IMAGE_TAG_PR }}
+          image: ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
 
 
 

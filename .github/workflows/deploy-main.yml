@@ -57,8 +57,8 @@ jobs:
           push: true
           # Tag main image with commit SHA and 'latest'
           tags: |
-            ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}:main-${{ github.sha }}
-            ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}:latest
+            ${{ steps.vars.outputs.IMAGE_TAG_MAIN_SHA }}
+            ${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }}
           # Cache configuration (pulls cache from PR/main builds, pushes for future builds)
           cache-from: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
           cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
@@ -75,7 +75,7 @@ jobs:
           # Deploy using the specific image tag we just built and pushed
           flyctl deploy \
             --config ./packages/app/fly.yaml \
-            --image ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}:main-${{ github.sha }}
+            --image ${{ steps.vars.outputs.IMAGE_TAG_MAIN_SHA }}
 
       - name: 📢 Create GitHub deployment
         if: success()
@@ -91,7 +91,7 @@ jobs:
               auto_merge: false,
               required_contexts: []
             });
-            
+
             await github.rest.repos.createDeploymentStatus({
               owner: context.repo.owner,
               repo: context.repo.repo,

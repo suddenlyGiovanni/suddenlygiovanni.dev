@@ -8,12 +8,18 @@ outputs:
   PR_NUMBER:
     description: 'Pull Request number used for preview environments. Useful for referencing in workflows.'
     value: ${{ steps.set-vars.outputs.PR_NUMBER }}
-  IMAGE_TAG_PR:
+  IMAGE_TAG_PREVIEW:
     description: 'Preview image tag (rolling)  → <IMAGE_NAME_PREVIEW>:pr-<PR_NUMBER>'
-    value: ${{ steps.set-vars.outputs.IMAGE_TAG_PR }}
-  IMAGE_TAG_PR_SHA:
+    value: ${{ steps.set-vars.outputs.IMAGE_TAG_PREVIEW }}
+  IMAGE_TAG_PREVIEW_SHA:
     description: 'Preview image tag (immutable) → <IMAGE_NAME_PREVIEW>:pr-<PR_NUMBER>-<SHA>'
-    value: ${{ steps.set-vars.outputs.IMAGE_TAG_PR_SHA }}
+    value: ${{ steps.set-vars.outputs.IMAGE_TAG_PREVIEW_SHA }}
+  IMAGE_TAG_MAIN_SHA:
+    description: 'Main image tag (immutable) → <IMAGE_NAME_MAIN>:main-<SHA>'
+    value: ${{ steps.set-vars.outputs.IMAGE_TAG_MAIN_SHA }}
+  IMAGE_TAG_MAIN_LATEST:
+    description: 'Main image tag (latest) → <IMAGE_NAME_MAIN>:latest'
+    value: ${{ steps.set-vars.outputs.IMAGE_TAG_MAIN_LATEST }}
   PACKAGE_NAME_MAIN:
     description: 'Main package name for GitHub Container Registry (e.g., suddenlygiovanni.dev). Used for tagging and referencing the main application package.'
     value: ${{ steps.set-vars.outputs.PACKAGE_NAME_MAIN }}
@@ -127,11 +133,18 @@ runs:
         # ------------------------------------------------------------------
         # Build complete image tags in one place
         # ------------------------------------------------------------------
-        IMAGE_TAG_PR="${IMAGE_NAME_PREVIEW}:pr-${PR_NUMBER}"
-        IMAGE_TAG_PR_SHA="${IMAGE_NAME_PREVIEW}:pr-${PR_NUMBER}-${GITHUB_SHA}"
+        # Preview tags
+        IMAGE_TAG_PREVIEW="${IMAGE_NAME_PREVIEW}:pr-${PR_NUMBER}"
+        IMAGE_TAG_PREVIEW_SHA="${IMAGE_NAME_PREVIEW}:pr-${PR_NUMBER}-${GITHUB_SHA}"
 
-        echo "IMAGE_TAG_PR: ${IMAGE_TAG_PR}"
-        echo "IMAGE_TAG_PR_SHA: ${IMAGE_TAG_PR_SHA}"
+        # Main tags
+        IMAGE_TAG_MAIN_SHA="${IMAGE_NAME_MAIN}:main-${GITHUB_SHA}"
+        IMAGE_TAG_MAIN_LATEST="${IMAGE_NAME_MAIN}:latest"
+
+        echo "IMAGE_TAG_PREVIEW: ${IMAGE_TAG_PREVIEW}"
+        echo "IMAGE_TAG_PREVIEW_SHA: ${IMAGE_TAG_PREVIEW_SHA}"
+        echo "IMAGE_TAG_MAIN_SHA: ${IMAGE_TAG_MAIN_SHA}"
+        echo "IMAGE_TAG_MAIN_LATEST: ${IMAGE_TAG_MAIN_LATEST}"
         echo "::endgroup::"
 
         # Set outputs for all variables with proper quoting to handle special characters
@@ -162,11 +175,17 @@ runs:
         echo "PR_NUMBER=${PR_NUMBER}" >> $GITHUB_OUTPUT
         echo "- PR_NUMBER: ${PR_NUMBER}"
 
-        echo "IMAGE_TAG_PR=${IMAGE_TAG_PR}" >> $GITHUB_OUTPUT
-        echo "- IMAGE_TAG_PR: ${IMAGE_TAG_PR}"
+        echo "IMAGE_TAG_PREVIEW=${IMAGE_TAG_PREVIEW}" >> $GITHUB_OUTPUT
+        echo "- IMAGE_TAG_PREVIEW: ${IMAGE_TAG_PREVIEW}"
 
-        echo "IMAGE_TAG_PR_SHA=${IMAGE_TAG_PR_SHA}" >> $GITHUB_OUTPUT
-        echo "- IMAGE_TAG_PR_SHA: ${IMAGE_TAG_PR_SHA}"
+        echo "IMAGE_TAG_PREVIEW_SHA=${IMAGE_TAG_PREVIEW_SHA}" >> $GITHUB_OUTPUT
+        echo "- IMAGE_TAG_PREVIEW_SHA: ${IMAGE_TAG_PREVIEW_SHA}"
+
+        echo "IMAGE_TAG_MAIN_SHA=${IMAGE_TAG_MAIN_SHA}" >> $GITHUB_OUTPUT
+        echo "- IMAGE_TAG_MAIN_SHA: ${IMAGE_TAG_MAIN_SHA}"
+
+        echo "IMAGE_TAG_MAIN_LATEST=${IMAGE_TAG_MAIN_LATEST}" >> $GITHUB_OUTPUT
+        echo "- IMAGE_TAG_MAIN_LATEST: ${IMAGE_TAG_MAIN_LATEST}"
 
         echo "::endgroup::"
 
