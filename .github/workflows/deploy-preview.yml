@@ -93,12 +93,19 @@ jobs:
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
           image: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}
 
+      - name: Debug Container Registry Info
+        run: |
+          echo "Image Name: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}"
+          echo "Package Name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
+          echo "Organization: ${{ github.repository_owner }}"
+      
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
         if: success()
         uses: actions/delete-package-versions@v5
         with:
-          package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
+          owner: ${{ github.repository_owner }}
+          package-name: ${{ github.repository_owner }}/${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
           package-type: 'container'
           min-versions-to-keep: 1
           delete-only-untagged-versions: false
