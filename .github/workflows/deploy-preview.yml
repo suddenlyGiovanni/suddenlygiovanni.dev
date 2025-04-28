@@ -121,21 +121,15 @@ jobs:
         id: set_image_id
         shell: bash
         run: |
-          # Set the image ID based on which build step was executed
-          if [ "${{ steps.check_cache.outputs.cache_exists }}" == "true" ]; then
-            echo "Using image from build with cache"
-            IMAGE_ID="${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}"
-          else
-            echo "Using image from build without cache"
-            IMAGE_ID="${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}"
-          fi
+          # Set the image ID directly without conditional logic
+          IMAGE_ID="${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}"
           echo "IMAGE_ID=$IMAGE_ID" >> $GITHUB_OUTPUT
 
           # Enhanced debugging
           echo "=== Image Information ==="
           echo "Using image: $IMAGE_ID"
           echo "IMAGE_NAME_PREVIEW: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}"
-          echo "PR Number: ${{ github.event.inputs.pr_number || github.event.number }}"
+          echo "PR Number: ${{ github.event.number || github.event.inputs.pr_number }}"
           echo "SHA: ${{ github.sha }}"
           echo "Cache exists: ${{ steps.check_cache.outputs.cache_exists }}"
           echo "========================="
