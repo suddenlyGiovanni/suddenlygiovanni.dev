@@ -76,10 +76,10 @@ runs:
         IMAGE_NAME_MAIN="ghcr.io/$repo_full_lowercase"
         
         PACKAGE_NAME_PREVIEW="${repo_name_only}-preview"
-        IMAGE_NAME_PREVIEW="ghcr.io/${repo_full_lowercase}-preview"
+        IMAGE_NAME_PREVIEW="ghcr.io/$repo_full_lowercase/$repo_name_only-preview"
         
         PACKAGE_NAME_CACHE="${repo_name_only}-cache"
-        CACHE_IMAGE_NAME="ghcr.io/${repo_full_lowercase}-cache"
+        CACHE_IMAGE_NAME="ghcr.io/$repo_full_lowercase/$repo_name_only-cache"
         
         # Set Fly.io app name
         FLY_APP_NAME="suddenlygiovanni-dev-${PR_NUMBER}"
