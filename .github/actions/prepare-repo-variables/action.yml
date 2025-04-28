@@ -1,5 +1,9 @@
 name: 'Prepare Repository Variables'
 description: 'Prepares common repository variables for workflows'
+inputs:
+  pr_number:
+    description: 'PR number for preview environments (required for workflow_dispatch)'
+    required: false
 outputs:
   PACKAGE_NAME_MAIN:
     description: 'Main package name (e.g., suddenlygiovanni.dev)'
@@ -28,9 +32,22 @@ runs:
   steps:
     - id: set-vars
       shell: bash
+      env:
+        EVENT_PR_NUMBER: ${{ github.event.number }}
+        INPUT_PR_NUMBER: ${{ inputs.pr_number }}
       run: |
         repo_full_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
         repo_name_only=$(echo "$repo_full_lowercase" | cut -d '/' -f 2)
+        
+        # Determine PR number from event or input
+        # Use event PR number if available, otherwise use input PR number
+        if [ -n "$EVENT_PR_NUMBER" ]; then
+          PR_NUMBER="$EVENT_PR_NUMBER"
+        else
+          PR_NUMBER="$INPUT_PR_NUMBER"
+        fi
+        
+        echo "Using PR number: $PR_NUMBER"
         
         # Set outputs for all variables
         echo "PACKAGE_NAME_MAIN=$repo_name_only" >> $GITHUB_OUTPUT
@@ -42,4 +59,4 @@ runs:
         echo "PACKAGE_NAME_CACHE=$repo_name_only-cache" >> $GITHUB_OUTPUT
         echo "CACHE_IMAGE_NAME=ghcr.io/$repo_full_lowercase-cache" >> $GITHUB_OUTPUT
         
-        echo "FLY_APP_NAME=suddenlygiovanni-dev-${{ github.event.number }}" >> $GITHUB_OUTPUT
+        echo "FLY_APP_NAME=suddenlygiovanni-dev-$PR_NUMBER" >> $GITHUB_OUTPUT
