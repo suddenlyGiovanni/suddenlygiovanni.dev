@@ -99,33 +99,35 @@ jobs:
           echo "Image Name: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}"
           echo "Package Name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
           echo "Organization: ${{ github.repository_owner }}"
-          # Extract the base name from image URL for use with package APIs
-          PACKAGE_BASE_NAME=$(echo "${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}" | sed 's|ghcr.io/'"${{ github.repository_owner }}"'/||' | tr '[:upper:]' '[:lower:]')
+          
+          # For GitHub Container Registry API, we need just the package name without ghcr.io prefix
+          PACKAGE_BASE_NAME="${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
           echo "Package Base Name: $PACKAGE_BASE_NAME"
           echo "package_base_name=$PACKAGE_BASE_NAME" >> $GITHUB_OUTPUT
-          
-          # For GHCR, the full name should include ghcr.io prefix for API operations
-          FULL_PACKAGE_NAME="ghcr.io/${{ github.repository_owner }}/suddenlygiovanni.dev-preview"
-          echo "Full Package Name: $FULL_PACKAGE_NAME"
-          echo "full_package_name=$FULL_PACKAGE_NAME" >> $GITHUB_OUTPUT
       
       - name: List GitHub Packages API Endpoints (Debug)
         run: |
           echo "Listing GitHub Packages API endpoints for debugging..."
-          # List packages using the package name directly
-          echo "Direct package lookup:"
-          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/${{ github.repository_owner }}/packages/container/${{ steps.registry_info.outputs.package_base_name }}" | jq '.'
           
-          # List all container packages for the authenticated user
-          echo "All user container packages:"
+          # List all container packages for the authenticated user/organization
+          echo "All container packages:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/${{ github.repository_owner }}/packages?package_type=container" | jq '.[] | .name' || echo "Failed to list packages or no packages found"
+            "https://api.github.com/user/packages?package_type=container" | jq '.' || echo "Failed to list packages or no packages found"
           
-          # List versions of the specific package
-          echo "Package versions:"
+          # List packages under the organization
+          echo "Organization container packages:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/${{ github.repository_owner }}/packages/container/${{ steps.registry_info.outputs.package_base_name }}/versions" | jq '.[] | {id: .id, name: .metadata.container.tags[0]}' || echo "Failed to list versions or no versions found"
+            "https://api.github.com/orgs/${{ github.repository_owner }}/packages?package_type=container" | jq '.' || echo "Failed to list organization packages"
+          
+          # Try to get specific package info
+          echo "Specific package info:"
+          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/user/packages/container/${{ steps.registry_info.outputs.package_base_name }}" | jq '.' || echo "Failed to get package info"
+          
+          # List versions of the specific package using the user endpoint
+          echo "Package versions via user endpoint:"
+          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/user/packages/container/${{ steps.registry_info.outputs.package_base_name }}/versions" | jq '.' || echo "Failed to list versions"
       
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
@@ -134,36 +136,42 @@ jobs:
         uses: actions/delete-package-versions@v5
         with:
           owner: ${{ github.repository_owner }}
-          package-name: ghcr.io/${{ github.repository_owner }}/suddenlygiovanni.dev-preview
+          package-name: ${{ steps.registry_info.outputs.package_base_name }}
           package-type: 'container'
           min-versions-to-keep: 2
           token: ${{ secrets.GITHUB_TOKEN }}
           # Only keep the current build image, delete older ones for this PR
           ignore-versions: "^(?!pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}$).*$"
           num-old-versions-to-delete: 5
+          # Set additional parameters to simplify the operation
+          delete-only-untagged-versions: false
       
       - name: Verify image cleanup
         if: always()
         run: |
-          echo "Verifying package cleanup for: suddenlygiovanni.dev-preview"
+          echo "Verifying package cleanup for: ${{ steps.registry_info.outputs.package_base_name }}"
           
           # List packages to verify existence
           echo "Available packages:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/user/packages?package_type=container" | jq -r '.[].name'
+            "https://api.github.com/user/packages?package_type=container" | jq '.[].name' || echo "No packages found or error"
           
-          # Attempt to get versions
+          # Attempt to get versions using correct endpoint
+          echo "Checking versions for this package:"
           RESPONSE=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/${{ github.repository_owner }}/packages/container/suddenlygiovanni.dev-preview/versions")
+            "https://api.github.com/user/packages/container/${{ steps.registry_info.outputs.package_base_name }}/versions")
           
           # Check if we have actual content or an error
           if echo "$RESPONSE" | jq -e 'has("message")' > /dev/null; then
             echo "Error from GitHub API: $(echo "$RESPONSE" | jq -r '.message')"
           else
-            REMAINING_VERSIONS=$(echo "$RESPONSE" | jq -r '.[] | .metadata.container.tags[] | select(startswith("pr-${{ github.event.number || github.event.inputs.pr_number }}-"))' | wc -l)
-            echo "Remaining versions for this PR: $REMAINING_VERSIONS"
             echo "Available versions:"
-            echo "$RESPONSE" | jq -r '.[] | .metadata.container.tags[]'
+            echo "$RESPONSE" | jq '.[].metadata.container.tags[]' || echo "No versions found or format different than expected"
+            
+            # Count remaining versions for this PR
+            PR_TAG_PREFIX="pr-${{ github.event.number || github.event.inputs.pr_number }}-"
+            REMAINING_VERSIONS=$(echo "$RESPONSE" | jq --arg prefix "$PR_TAG_PREFIX" '[.[].metadata.container.tags[] | select(startswith($prefix))] | length' || echo "0")
+            echo "Remaining versions for this PR: $REMAINING_VERSIONS"
           fi
       
       - name: Update PR with deployment status
