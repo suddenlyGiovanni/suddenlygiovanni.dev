@@ -35,28 +35,63 @@ runs:
       env:
         EVENT_PR_NUMBER: ${{ github.event.number }}
         INPUT_PR_NUMBER: ${{ inputs.pr_number }}
+        GITHUB_REPOSITORY: ${{ github.repository }}
       run: |
-        repo_full_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
+        set -e  # Exit immediately if a command exits with a non-zero status
+        
+        # Validate repository format
+        if [[ ! "$GITHUB_REPOSITORY" =~ ^[^/]+/[^/]+$ ]]; then
+          echo "::error::Invalid repository format: $GITHUB_REPOSITORY"
+          exit 1
+        fi
+        
+        # Process repository name
+        repo_full_lowercase=$(echo "$GITHUB_REPOSITORY" | tr '[:upper:]' '[:lower:]')
         repo_name_only=$(echo "$repo_full_lowercase" | cut -d '/' -f 2)
         
-        # Determine PR number from event or input
-        # Use event PR number if available, otherwise use input PR number
+        # Basic sanitization of repo name - replace special chars with dashes
+        repo_name_only=$(echo "$repo_name_only" | tr -c '[:alnum:]-' '-')
+        
+        # Determine PR number from event or input with validation
         if [ -n "$EVENT_PR_NUMBER" ]; then
           PR_NUMBER="$EVENT_PR_NUMBER"
         else
           PR_NUMBER="$INPUT_PR_NUMBER"
         fi
         
+        # Validate PR number is present and numeric
+        if [ -z "$PR_NUMBER" ]; then
+          echo "::error::PR number is required but not provided"
+          exit 1
+        fi
+        
+        if ! [[ "$PR_NUMBER" =~ ^[0-9]+$ ]]; then
+          echo "::warning::PR number is not numeric: '$PR_NUMBER'. This may cause issues."
+        fi
+        
         echo "Using PR number: $PR_NUMBER"
         
-        # Set outputs for all variables
-        echo "PACKAGE_NAME_MAIN=$repo_name_only" >> $GITHUB_OUTPUT
-        echo "IMAGE_NAME_MAIN=ghcr.io/$repo_full_lowercase" >> $GITHUB_OUTPUT
+        # Construct resource names
+        PACKAGE_NAME_MAIN="$repo_name_only"
+        IMAGE_NAME_MAIN="ghcr.io/$repo_full_lowercase"
         
-        echo "PACKAGE_NAME_PREVIEW=$repo_name_only-preview" >> $GITHUB_OUTPUT
-        echo "IMAGE_NAME_PREVIEW=ghcr.io/$repo_full_lowercase-preview" >> $GITHUB_OUTPUT
+        PACKAGE_NAME_PREVIEW="${repo_name_only}-preview"
+        IMAGE_NAME_PREVIEW="ghcr.io/${repo_full_lowercase}-preview"
         
-        echo "PACKAGE_NAME_CACHE=$repo_name_only-cache" >> $GITHUB_OUTPUT
-        echo "CACHE_IMAGE_NAME=ghcr.io/$repo_full_lowercase-cache" >> $GITHUB_OUTPUT
+        PACKAGE_NAME_CACHE="${repo_name_only}-cache"
+        CACHE_IMAGE_NAME="ghcr.io/${repo_full_lowercase}-cache"
         
-        echo "FLY_APP_NAME=suddenlygiovanni-dev-$PR_NUMBER" >> $GITHUB_OUTPUT
+        # Set Fly.io app name
+        FLY_APP_NAME="suddenlygiovanni-dev-${PR_NUMBER}"
+        
+        # Set outputs for all variables with proper quoting to handle special characters
+        echo "PACKAGE_NAME_MAIN=${PACKAGE_NAME_MAIN}" >> $GITHUB_OUTPUT
+        echo "IMAGE_NAME_MAIN=${IMAGE_NAME_MAIN}" >> $GITHUB_OUTPUT
+        
+        echo "PACKAGE_NAME_PREVIEW=${PACKAGE_NAME_PREVIEW}" >> $GITHUB_OUTPUT
+        echo "IMAGE_NAME_PREVIEW=${IMAGE_NAME_PREVIEW}" >> $GITHUB_OUTPUT
+        
+        echo "PACKAGE_NAME_CACHE=${PACKAGE_NAME_CACHE}" >> $GITHUB_OUTPUT
+        echo "CACHE_IMAGE_NAME=${CACHE_IMAGE_NAME}" >> $GITHUB_OUTPUT
+        
+        echo "FLY_APP_NAME=${FLY_APP_NAME}" >> $GITHUB_OUTPUT
