@@ -93,6 +93,20 @@ jobs:
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
           image: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}
 
+      - name: 🗑 Clean up old GHCR preview images for this PR
+        id: clean_old_images
+        if: success()
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
+          package-type: 'container'
+          min-versions-to-keep: 1
+          delete-only-untagged-versions: false
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # Only keep the current build image, delete older ones for this PR
+          # The regex will match any PR images except the one we just built
+          ignore-versions: "^(?!pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}$)pr-${{ github.event.number || github.event.inputs.pr_number }}-.*$"
+      
       - name: Update PR with deployment status
         if: always() && github.event_name == 'pull_request'
         uses: actions/github-script@v7
