@@ -73,8 +73,9 @@ jobs:
         continue-on-error: true
         shell: bash
         run: |
-          # Try to pull the cache image to check if it exists
-          if docker pull ${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest 2>/dev/null; then
+          # Check if the image exists using docker manifest inspect instead of pull
+          echo "Checking if cache image exists: ${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest"
+          if docker manifest inspect ${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest > /dev/null 2>&1; then
             echo "Cache image exists"
             echo "cache_exists=true" >> $GITHUB_OUTPUT
           else
