@@ -100,7 +100,7 @@ jobs:
           echo "Package Name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
           echo "Organization: ${{ github.repository_owner }}"
           # Extract the base name from image URL for use with package APIs
-          PACKAGE_BASE_NAME=$(echo "${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}" | sed 's|ghcr.io/suddenlygiovanni/||')
+          PACKAGE_BASE_NAME=$(echo "${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}" | sed 's|ghcr.io/'"${{ github.repository_owner }}"'/||' | tr '[:upper:]' '[:lower:]')
           echo "Package Base Name: $PACKAGE_BASE_NAME"
           echo "package_base_name=$PACKAGE_BASE_NAME" >> $GITHUB_OUTPUT
       
@@ -115,7 +115,12 @@ jobs:
           # List all container packages for the authenticated user
           echo "All user container packages:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/users/${{ github.repository_owner }}/packages?package_type=container" | jq -r '.[] | .name' || echo "Failed to list packages or no packages found"
+            "https://api.github.com/users/${{ github.repository_owner }}/packages?package_type=container" | jq '.[] | .name' || echo "Failed to list packages or no packages found"
+          
+          # List versions of the specific package
+          echo "Package versions:"
+          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/users/${{ github.repository_owner }}/packages/container/${{ steps.registry_info.outputs.package_base_name }}/versions" | jq '.[] | {id: .id, name: .metadata.container.tags[0]}' || echo "Failed to list versions or no versions found"
       
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
@@ -130,6 +135,16 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           # Only keep the current build image, delete older ones for this PR
           ignore-versions: "^(?!pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}$)pr-${{ github.event.number || github.event.inputs.pr_number }}-.*$"
+          num-old-versions-to-delete: 5
+      
+      - name: Verify image cleanup
+        if: success() && steps.clean_old_images.outcome == 'success'
+        run: |
+          echo "Verifying package cleanup for: ${{ steps.registry_info.outputs.package_base_name }}"
+          REMAINING_VERSIONS=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/users/${{ github.repository_owner }}/packages/container/${{ steps.registry_info.outputs.package_base_name }}/versions" | \
+            jq -r '.[] | .metadata.container.tags[] | select(startswith("pr-${{ github.event.number || github.event.inputs.pr_number }}-"))' | wc -l)
+          echo "Remaining versions for this PR: $REMAINING_VERSIONS"
       
       - name: Update PR with deployment status
         if: always() && github.event_name == 'pull_request'
