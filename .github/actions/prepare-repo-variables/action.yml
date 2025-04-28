@@ -62,6 +62,8 @@ runs:
 
         # Basic sanitization of repo name - replace special chars with dashes
         repo_name_only=$(echo "${repo_name_only}" | tr -c '[:alnum:]-' '-')
+        # Remove any trailing dashes
+        repo_name_only=$(echo "${repo_name_only}" | sed 's/-*$//')
         echo "Repository name (sanitized): ${repo_name_only}"
         echo "::endgroup::"
 
