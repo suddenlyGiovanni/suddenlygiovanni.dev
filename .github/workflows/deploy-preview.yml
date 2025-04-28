@@ -64,12 +64,26 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      
-      - name: 🐳 Build and Push Docker Image for Preview
-        id: docker_build_push
+
+      - name: Check if cache image exists
+        id: check_cache
+        continue-on-error: true
+        run: |
+          # Try to pull the cache image to check if it exists
+          if docker pull ${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest 2>/dev/null; then
+            echo "Cache image exists"
+            echo "cache_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "Cache image does not exist yet"
+            echo "cache_exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 🐳 Build and Push Docker Image for Preview (with cache)
+        id: docker_build_push_with_cache
+        if: steps.check_cache.outputs.cache_exists == 'true'
         uses: docker/build-push-action@v5
         with:
           context: .
@@ -84,9 +98,63 @@ jobs:
           # Cache configuration (using registry)
           cache-from: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
           cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
-      
+
+      - name: 🐳 Build and Push Docker Image for Preview (without cache)
+        id: docker_build_push_without_cache
+        if: steps.check_cache.outputs.cache_exists != 'true'
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./packages/app/Dockerfile
+          push: true # Push the image to the registry
+          # 1) a rolling tag that is overwritten on every push
+          # 2) an immutable tag with the full SHA for debugging/roll-back
+          tags: |
+            ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}
+            ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}
+
+          # Only create cache, don't try to use it
+          cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
+
+      - name: Set Docker Image ID
+        id: set_image_id
+        run: |
+          # Set the image ID based on which build step was executed
+          if [ "${{ steps.check_cache.outputs.cache_exists }}" == "true" ]; then
+            echo "Using image from build with cache"
+            IMAGE_ID="${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}"
+          else
+            echo "Using image from build without cache"
+            IMAGE_ID="${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}"
+          fi
+          echo "IMAGE_ID=$IMAGE_ID" >> $GITHUB_OUTPUT
+
+          # Enhanced debugging
+          echo "=== Image Information ==="
+          echo "Using image: $IMAGE_ID"
+          echo "IMAGE_NAME_PREVIEW: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}"
+          echo "PR Number: ${{ github.event.number || github.event.inputs.pr_number }}"
+          echo "SHA: ${{ github.sha }}"
+          echo "Cache exists: ${{ steps.check_cache.outputs.cache_exists }}"
+          echo "========================="
+
+      - name: Verify Docker Image Exists
+        id: verify_image
+        run: |
+          echo "Verifying image exists: ${{ steps.set_image_id.outputs.IMAGE_ID }}"
+          if docker pull ${{ steps.set_image_id.outputs.IMAGE_ID }} 2>/dev/null; then
+            echo "✅ Image exists and is accessible"
+            echo "image_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Image does not exist or is not accessible"
+            echo "image_exists=false" >> $GITHUB_OUTPUT
+            # Don't fail the workflow, let the deploy step handle it
+            # This is just for diagnostic purposes
+          fi
+
       - name: 🚢 Deploy PR app to Fly.io
         id: deploy
+        if: steps.verify_image.outputs.image_exists != 'false'
         uses: superfly/fly-pr-review-apps@1.5.0
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_APP_REVIEW }}
@@ -96,7 +164,15 @@ jobs:
           config: ./packages/app/fly.review.yaml
           name: ${{ steps.vars.outputs.FLY_APP_NAME }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
-          image: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}:pr-${{ github.event.number || github.event.inputs.pr_number }}-${{ github.sha }}
+          image: ${{ steps.set_image_id.outputs.IMAGE_ID }}
+
+      - name: Handle Missing Image Error
+        if: steps.verify_image.outputs.image_exists == 'false'
+        run: |
+          echo "::error::Docker image not found: ${{ steps.set_image_id.outputs.IMAGE_ID }}"
+          echo "This could be due to a build failure or an issue with the image registry."
+          echo "Please check the build logs and ensure the image was successfully built and pushed."
+          exit 1
 
       - name: Debug Container Registry Info
         id: registry_info
@@ -104,36 +180,36 @@ jobs:
           echo "Image Name: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}"
           echo "Package Name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
           echo "Organization: ${{ github.repository_owner }}"
-          
+
           # For GitHub Container Registry API, we need just the package name without ghcr.io prefix
           PACKAGE_BASE_NAME="${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
           echo "Package Base Name: $PACKAGE_BASE_NAME"
           echo "package_base_name=$PACKAGE_BASE_NAME" >> $GITHUB_OUTPUT
-      
+
       - name: List GitHub Packages API Endpoints (Debug)
         run: |
           echo "Listing GitHub Packages API endpoints for debugging..."
-          
+
           # List all container packages for the authenticated user/organization
           echo "All container packages:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/user/packages?package_type=container" | jq '.' || echo "Failed to list packages or no packages found"
-          
+
           # List packages under the organization
           echo "Organization container packages:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/orgs/${{ github.repository_owner }}/packages?package_type=container" | jq '.' || echo "Failed to list organization packages"
-          
+
           # Try to get specific package info
           echo "Specific package info:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/user/packages/container/${{ steps.registry_info.outputs.package_base_name }}" | jq '.' || echo "Failed to get package info"
-          
+
           # List versions of the specific package using the user endpoint
           echo "Package versions via user endpoint:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/user/packages/container/${{ steps.registry_info.outputs.package_base_name }}/versions" | jq '.' || echo "Failed to list versions"
-      
+
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
         if: success()
@@ -150,35 +226,35 @@ jobs:
           num-old-versions-to-delete: 5
           # Set additional parameters to simplify the operation
           delete-only-untagged-versions: false
-      
+
       - name: Verify image cleanup
         if: always()
         run: |
           echo "Verifying package cleanup for: ${{ steps.registry_info.outputs.package_base_name }}"
-          
+
           # List packages to verify existence
           echo "Available packages:"
           curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/user/packages?package_type=container" | jq '.[].name' || echo "No packages found or error"
-          
+
           # Attempt to get versions using correct endpoint
           echo "Checking versions for this package:"
           RESPONSE=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             "https://api.github.com/user/packages/container/${{ steps.registry_info.outputs.package_base_name }}/versions")
-          
+
           # Check if we have actual content or an error
           if echo "$RESPONSE" | jq -e 'has("message")' > /dev/null; then
             echo "Error from GitHub API: $(echo "$RESPONSE" | jq -r '.message')"
           else
             echo "Available versions:"
             echo "$RESPONSE" | jq '.[].metadata.container.tags[]' || echo "No versions found or format different than expected"
-            
+
             # Count remaining versions for this PR
             PR_TAG_PREFIX="pr-${{ github.event.number || github.event.inputs.pr_number }}-"
             REMAINING_VERSIONS=$(echo "$RESPONSE" | jq --arg prefix "$PR_TAG_PREFIX" '[.[].metadata.container.tags[] | select(startswith($prefix))] | length' || echo "0")
             echo "Remaining versions for this PR: $REMAINING_VERSIONS"
           fi
-      
+
       - name: Update PR with deployment status
         if: always() && github.event_name == 'pull_request'
         uses: actions/github-script@v7
@@ -188,16 +264,16 @@ jobs:
             const result = "${{ job.status }}";
             const url = "${{ steps.deploy.outputs.url }}";
             const emoji = result === "success" ? "✅" : "❌";
-            
+
             let body = `${emoji} Preview deployment ${result.toLowerCase()}.\n\n`;
-            
+
             if (result === "success") {
               body += `🌐 Preview URL: ${url}\n`;
               body += `\nThis preview environment will be automatically cleaned up when the PR is closed.`;
             } else {
               body += `Deployment failed. Please check the [workflow logs](${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}) for more details.`;
             }
-            
+
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,

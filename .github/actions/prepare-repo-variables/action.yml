@@ -38,7 +38,7 @@ runs:
         GITHUB_REPOSITORY: ${{ github.repository }}
       run: |
         set -e  # Exit immediately if a command exits with a non-zero status
-
+        
         # Debug: Show input values
         echo "::group::📥 Input Values"
         echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
@@ -51,7 +51,7 @@ runs:
           echo "::error::Invalid repository format: ${GITHUB_REPOSITORY}"
           exit 1
         fi
-
+        
         # Process repository name
         echo "::group::🔄 Repository Name Processing"
         repo_full_lowercase=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
@@ -59,14 +59,14 @@ runs:
 
         repo_name_only=$(echo "${repo_full_lowercase}" | cut -d '/' -f 2)
         echo "Repository name only: ${repo_name_only}"
-
+        
         # Basic sanitization of repo name - replace special chars with dashes
         repo_name_only=$(echo "${repo_name_only}" | tr -c '[:alnum:]-' '-')
         # Remove any trailing dashes
         repo_name_only=$(echo "${repo_name_only}" | sed 's/-*$//')
         echo "Repository name (sanitized): ${repo_name_only}"
         echo "::endgroup::"
-
+        
         # Determine PR number from event or input with validation
         echo "::group::🔢 PR Number Processing"
         if [ -n "${EVENT_PR_NUMBER}" ]; then
@@ -76,20 +76,19 @@ runs:
           PR_NUMBER="${INPUT_PR_NUMBER}"
           echo "Using PR number from input: ${PR_NUMBER}"
         fi
-
+        
         # Validate PR number is present and numeric
         if [ -z "${PR_NUMBER}" ]; then
           echo "::error::PR number is required but not provided"
           exit 1
         fi
-
+        
         if ! [[ "${PR_NUMBER}" =~ ^[0-9]+$ ]]; then
           echo "::warning::PR number is not numeric: '${PR_NUMBER}'. This may cause issues."
         fi
-
-        echo "Final PR number: ${PR_NUMBER}"
-        echo "::endgroup::"
-
+        
+        echo "Using PR number: ${PR_NUMBER}"
+        
         # Construct resource names
         echo "::group::🏷️ Computed Variables"
         echo "Constructing resource names..."
@@ -98,24 +97,24 @@ runs:
         IMAGE_NAME_MAIN="ghcr.io/${repo_full_lowercase}"
         echo "PACKAGE_NAME_MAIN: ${PACKAGE_NAME_MAIN}"
         echo "IMAGE_NAME_MAIN: ${IMAGE_NAME_MAIN}"
-
-        # NOTE: Package names should be simple and consistent
-        #       GHCR will expose them as <owner>/<package-name>
-        PACKAGE_NAME_PREVIEW="${repo_name_only}-preview"
+        
+        # NOTE: The package has to include the repository path so that GHCR
+        #       exposes it as   <owner>/<repo>/<repo>-preview
+        PACKAGE_NAME_PREVIEW="${repo_name_only}/${repo_name_only}-preview"
         IMAGE_NAME_PREVIEW="ghcr.io/${repo_full_lowercase}/${repo_name_only}-preview"
         echo "PACKAGE_NAME_PREVIEW: ${PACKAGE_NAME_PREVIEW}"
         echo "IMAGE_NAME_PREVIEW: ${IMAGE_NAME_PREVIEW}"
-
-        PACKAGE_NAME_CACHE="${repo_name_only}-cache"
+        
+        PACKAGE_NAME_CACHE="${repo_name_only}/${repo_name_only}-cache"
         CACHE_IMAGE_NAME="ghcr.io/${repo_full_lowercase}/${repo_name_only}-cache"
         echo "PACKAGE_NAME_CACHE: ${PACKAGE_NAME_CACHE}"
         echo "CACHE_IMAGE_NAME: ${CACHE_IMAGE_NAME}"
-
+        
         # Set Fly.io app name
         FLY_APP_NAME="suddenlygiovanni-dev-${PR_NUMBER}"
         echo "FLY_APP_NAME: ${FLY_APP_NAME}"
         echo "::endgroup::"
-
+        
         # Set outputs for all variables with proper quoting to handle special characters
         echo "::group::📤 Setting Outputs"
         echo "Setting the following outputs for use in the workflow:"
@@ -125,19 +124,19 @@ runs:
 
         echo "IMAGE_NAME_MAIN=${IMAGE_NAME_MAIN}" >> $GITHUB_OUTPUT
         echo "- IMAGE_NAME_MAIN: ${IMAGE_NAME_MAIN}"
-
+        
         echo "PACKAGE_NAME_PREVIEW=${PACKAGE_NAME_PREVIEW}" >> $GITHUB_OUTPUT
         echo "- PACKAGE_NAME_PREVIEW: ${PACKAGE_NAME_PREVIEW}"
 
         echo "IMAGE_NAME_PREVIEW=${IMAGE_NAME_PREVIEW}" >> $GITHUB_OUTPUT
         echo "- IMAGE_NAME_PREVIEW: ${IMAGE_NAME_PREVIEW}"
-
+        
         echo "PACKAGE_NAME_CACHE=${PACKAGE_NAME_CACHE}" >> $GITHUB_OUTPUT
         echo "- PACKAGE_NAME_CACHE: ${PACKAGE_NAME_CACHE}"
 
         echo "CACHE_IMAGE_NAME=${CACHE_IMAGE_NAME}" >> $GITHUB_OUTPUT
         echo "- CACHE_IMAGE_NAME: ${CACHE_IMAGE_NAME}"
-
+        
         echo "FLY_APP_NAME=${FLY_APP_NAME}" >> $GITHUB_OUTPUT
         echo "- FLY_APP_NAME: ${FLY_APP_NAME}"
 
