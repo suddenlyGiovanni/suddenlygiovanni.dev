@@ -75,10 +75,12 @@ runs:
         PACKAGE_NAME_MAIN="${repo_name_only}"
         IMAGE_NAME_MAIN="ghcr.io/${repo_full_lowercase}"
         
-        PACKAGE_NAME_PREVIEW="${repo_name_only}-preview"
+        # NOTE: The package has to include the repository path so that GHCR
+        #       exposes it as   <owner>/<repo>/<repo>-preview
+        PACKAGE_NAME_PREVIEW="${repo_name_only}/${repo_name_only}-preview"
         IMAGE_NAME_PREVIEW="ghcr.io/${repo_full_lowercase}/${repo_name_only}-preview"
         
-        PACKAGE_NAME_CACHE="${repo_name_only}-cache"
+        PACKAGE_NAME_CACHE="${repo_name_only}/${repo_name_only}-cache"
         CACHE_IMAGE_NAME="ghcr.io/${repo_full_lowercase}/${repo_name_only}-cache"
         
         # Set Fly.io app name
