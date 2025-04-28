@@ -1,30 +1,30 @@
 name: 'Prepare Repository Variables'
-description: 'Prepares common repository variables for workflows'
+description: 'Prepares common repository variables for workflows including package names, image names, and Fly.io app names. Provides detailed logging of all computed values.'
 inputs:
   pr_number:
-    description: 'PR number for preview environments (required for workflow_dispatch)'
+    description: 'PR number for preview environments. Required when triggered via workflow_dispatch, otherwise automatically detected from github.event.number. Used to generate unique names for preview environments.'
     required: false
 outputs:
   PACKAGE_NAME_MAIN:
-    description: 'Main package name (e.g., suddenlygiovanni.dev)'
+    description: 'Main package name for GitHub Container Registry (e.g., suddenlygiovanni.dev). Used for tagging and referencing the main application package.'
     value: ${{ steps.set-vars.outputs.PACKAGE_NAME_MAIN }}
   IMAGE_NAME_MAIN:
-    description: 'Main image name (e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev)'
+    description: 'Main Docker image name with registry prefix (e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev). Used for pushing/pulling the main application image.'
     value: ${{ steps.set-vars.outputs.IMAGE_NAME_MAIN }}
   PACKAGE_NAME_PREVIEW:
-    description: 'Preview package name (e.g., suddenlygiovanni.dev-preview)'
+    description: 'Preview package name for GitHub Container Registry (e.g., suddenlygiovanni.dev-preview). Used for tagging and referencing PR preview packages.'
     value: ${{ steps.set-vars.outputs.PACKAGE_NAME_PREVIEW }}
   IMAGE_NAME_PREVIEW:
-    description: 'Preview image name (e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-preview)'
+    description: 'Preview Docker image name with registry prefix (e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-preview). Used for pushing/pulling PR preview images.'
     value: ${{ steps.set-vars.outputs.IMAGE_NAME_PREVIEW }}
   PACKAGE_NAME_CACHE:
-    description: 'Cache package name (e.g., suddenlygiovanni.dev-cache)'
+    description: 'Cache package name for GitHub Container Registry (e.g., suddenlygiovanni.dev-cache). Used for tagging and referencing build cache packages.'
     value: ${{ steps.set-vars.outputs.PACKAGE_NAME_CACHE }}
   CACHE_IMAGE_NAME:
-    description: 'Cache image name (e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-cache)'
+    description: 'Cache Docker image name with registry prefix (e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-cache). Used for Docker build caching between workflow runs.'
     value: ${{ steps.set-vars.outputs.CACHE_IMAGE_NAME }}
   FLY_APP_NAME:
-    description: 'Fly app name for preview environments'
+    description: 'Fly.io application name for preview environments (e.g., suddenlygiovanni-dev-123 for PR #123). Used for deploying PR previews to Fly.io.'
     value: ${{ steps.set-vars.outputs.FLY_APP_NAME }}
 
 runs:
@@ -38,62 +38,115 @@ runs:
         GITHUB_REPOSITORY: ${{ github.repository }}
       run: |
         set -e  # Exit immediately if a command exits with a non-zero status
-        
+
+        # Debug: Show input values
+        echo "::group::📥 Input Values"
+        echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
+        echo "EVENT_PR_NUMBER: ${EVENT_PR_NUMBER}"
+        echo "INPUT_PR_NUMBER: ${INPUT_PR_NUMBER}"
+        echo "::endgroup::"
+
         # Validate repository format
         if [[ ! "${GITHUB_REPOSITORY}" =~ ^[^/]+/[^/]+$ ]]; then
           echo "::error::Invalid repository format: ${GITHUB_REPOSITORY}"
           exit 1
         fi
-        
+
         # Process repository name
+        echo "::group::🔄 Repository Name Processing"
         repo_full_lowercase=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
+        echo "Repository (lowercase): ${repo_full_lowercase}"
+
         repo_name_only=$(echo "${repo_full_lowercase}" | cut -d '/' -f 2)
-        
+        echo "Repository name only: ${repo_name_only}"
+
         # Basic sanitization of repo name - replace special chars with dashes
         repo_name_only=$(echo "${repo_name_only}" | tr -c '[:alnum:]-' '-')
-        
+        echo "Repository name (sanitized): ${repo_name_only}"
+        echo "::endgroup::"
+
         # Determine PR number from event or input with validation
+        echo "::group::🔢 PR Number Processing"
         if [ -n "${EVENT_PR_NUMBER}" ]; then
           PR_NUMBER="${EVENT_PR_NUMBER}"
+          echo "Using PR number from event: ${PR_NUMBER}"
         else
           PR_NUMBER="${INPUT_PR_NUMBER}"
+          echo "Using PR number from input: ${PR_NUMBER}"
         fi
-        
+
         # Validate PR number is present and numeric
         if [ -z "${PR_NUMBER}" ]; then
           echo "::error::PR number is required but not provided"
           exit 1
         fi
-        
+
         if ! [[ "${PR_NUMBER}" =~ ^[0-9]+$ ]]; then
           echo "::warning::PR number is not numeric: '${PR_NUMBER}'. This may cause issues."
         fi
-        
-        echo "Using PR number: ${PR_NUMBER}"
-        
+
+        echo "Final PR number: ${PR_NUMBER}"
+        echo "::endgroup::"
+
         # Construct resource names
+        echo "::group::🏷️ Computed Variables"
+        echo "Constructing resource names..."
+
         PACKAGE_NAME_MAIN="${repo_name_only}"
         IMAGE_NAME_MAIN="ghcr.io/${repo_full_lowercase}"
-        
-        # NOTE: The package has to include the repository path so that GHCR
-        #       exposes it as   <owner>/<repo>/<repo>-preview
-        PACKAGE_NAME_PREVIEW="${repo_name_only}/${repo_name_only}-preview"
+        echo "PACKAGE_NAME_MAIN: ${PACKAGE_NAME_MAIN}"
+        echo "IMAGE_NAME_MAIN: ${IMAGE_NAME_MAIN}"
+
+        # NOTE: Package names should be simple and consistent
+        #       GHCR will expose them as <owner>/<package-name>
+        PACKAGE_NAME_PREVIEW="${repo_name_only}-preview"
         IMAGE_NAME_PREVIEW="ghcr.io/${repo_full_lowercase}/${repo_name_only}-preview"
-        
-        PACKAGE_NAME_CACHE="${repo_name_only}/${repo_name_only}-cache"
+        echo "PACKAGE_NAME_PREVIEW: ${PACKAGE_NAME_PREVIEW}"
+        echo "IMAGE_NAME_PREVIEW: ${IMAGE_NAME_PREVIEW}"
+
+        PACKAGE_NAME_CACHE="${repo_name_only}-cache"
         CACHE_IMAGE_NAME="ghcr.io/${repo_full_lowercase}/${repo_name_only}-cache"
-        
+        echo "PACKAGE_NAME_CACHE: ${PACKAGE_NAME_CACHE}"
+        echo "CACHE_IMAGE_NAME: ${CACHE_IMAGE_NAME}"
+
         # Set Fly.io app name
         FLY_APP_NAME="suddenlygiovanni-dev-${PR_NUMBER}"
-        
+        echo "FLY_APP_NAME: ${FLY_APP_NAME}"
+        echo "::endgroup::"
+
         # Set outputs for all variables with proper quoting to handle special characters
+        echo "::group::📤 Setting Outputs"
+        echo "Setting the following outputs for use in the workflow:"
+
         echo "PACKAGE_NAME_MAIN=${PACKAGE_NAME_MAIN}" >> $GITHUB_OUTPUT
+        echo "- PACKAGE_NAME_MAIN: ${PACKAGE_NAME_MAIN}"
+
         echo "IMAGE_NAME_MAIN=${IMAGE_NAME_MAIN}" >> $GITHUB_OUTPUT
-        
+        echo "- IMAGE_NAME_MAIN: ${IMAGE_NAME_MAIN}"
+
         echo "PACKAGE_NAME_PREVIEW=${PACKAGE_NAME_PREVIEW}" >> $GITHUB_OUTPUT
+        echo "- PACKAGE_NAME_PREVIEW: ${PACKAGE_NAME_PREVIEW}"
+
         echo "IMAGE_NAME_PREVIEW=${IMAGE_NAME_PREVIEW}" >> $GITHUB_OUTPUT
-        
+        echo "- IMAGE_NAME_PREVIEW: ${IMAGE_NAME_PREVIEW}"
+
         echo "PACKAGE_NAME_CACHE=${PACKAGE_NAME_CACHE}" >> $GITHUB_OUTPUT
+        echo "- PACKAGE_NAME_CACHE: ${PACKAGE_NAME_CACHE}"
+
         echo "CACHE_IMAGE_NAME=${CACHE_IMAGE_NAME}" >> $GITHUB_OUTPUT
-        
+        echo "- CACHE_IMAGE_NAME: ${CACHE_IMAGE_NAME}"
+
         echo "FLY_APP_NAME=${FLY_APP_NAME}" >> $GITHUB_OUTPUT
+        echo "- FLY_APP_NAME: ${FLY_APP_NAME}"
+
+        echo "::endgroup::"
+
+        # Provide a summary of what this action has done
+        echo "::group::📋 Action Summary"
+        echo "✅ Prepare Repository Variables action completed successfully"
+        echo "- Repository: ${GITHUB_REPOSITORY} (sanitized as: ${repo_name_only})"
+        echo "- PR Number: ${PR_NUMBER}"
+        echo "- Generated ${repo_name_only} package names for main, preview, and cache environments"
+        echo "- Generated Fly.io app name: ${FLY_APP_NAME}"
+        echo "- All variables are now available as outputs for use in the workflow"
+        echo "::endgroup::"
