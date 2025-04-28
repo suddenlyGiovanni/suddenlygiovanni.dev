@@ -40,46 +40,46 @@ runs:
         set -e  # Exit immediately if a command exits with a non-zero status
         
         # Validate repository format
-        if [[ ! "$GITHUB_REPOSITORY" =~ ^[^/]+/[^/]+$ ]]; then
-          echo "::error::Invalid repository format: $GITHUB_REPOSITORY"
+        if [[ ! "${GITHUB_REPOSITORY}" =~ ^[^/]+/[^/]+$ ]]; then
+          echo "::error::Invalid repository format: ${GITHUB_REPOSITORY}"
           exit 1
         fi
         
         # Process repository name
-        repo_full_lowercase=$(echo "$GITHUB_REPOSITORY" | tr '[:upper:]' '[:lower:]')
-        repo_name_only=$(echo "$repo_full_lowercase" | cut -d '/' -f 2)
+        repo_full_lowercase=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
+        repo_name_only=$(echo "${repo_full_lowercase}" | cut -d '/' -f 2)
         
         # Basic sanitization of repo name - replace special chars with dashes
-        repo_name_only=$(echo "$repo_name_only" | tr -c '[:alnum:]-' '-')
+        repo_name_only=$(echo "${repo_name_only}" | tr -c '[:alnum:]-' '-')
         
         # Determine PR number from event or input with validation
-        if [ -n "$EVENT_PR_NUMBER" ]; then
-          PR_NUMBER="$EVENT_PR_NUMBER"
+        if [ -n "${EVENT_PR_NUMBER}" ]; then
+          PR_NUMBER="${EVENT_PR_NUMBER}"
         else
-          PR_NUMBER="$INPUT_PR_NUMBER"
+          PR_NUMBER="${INPUT_PR_NUMBER}"
         fi
         
         # Validate PR number is present and numeric
-        if [ -z "$PR_NUMBER" ]; then
+        if [ -z "${PR_NUMBER}" ]; then
           echo "::error::PR number is required but not provided"
           exit 1
         fi
         
-        if ! [[ "$PR_NUMBER" =~ ^[0-9]+$ ]]; then
-          echo "::warning::PR number is not numeric: '$PR_NUMBER'. This may cause issues."
+        if ! [[ "${PR_NUMBER}" =~ ^[0-9]+$ ]]; then
+          echo "::warning::PR number is not numeric: '${PR_NUMBER}'. This may cause issues."
         fi
         
-        echo "Using PR number: $PR_NUMBER"
+        echo "Using PR number: ${PR_NUMBER}"
         
         # Construct resource names
-        PACKAGE_NAME_MAIN="$repo_name_only"
-        IMAGE_NAME_MAIN="ghcr.io/$repo_full_lowercase"
+        PACKAGE_NAME_MAIN="${repo_name_only}"
+        IMAGE_NAME_MAIN="ghcr.io/${repo_full_lowercase}"
         
         PACKAGE_NAME_PREVIEW="${repo_name_only}-preview"
-        IMAGE_NAME_PREVIEW="ghcr.io/$repo_full_lowercase/$repo_name_only-preview"
+        IMAGE_NAME_PREVIEW="ghcr.io/${repo_full_lowercase}/${repo_name_only}-preview"
         
         PACKAGE_NAME_CACHE="${repo_name_only}-cache"
-        CACHE_IMAGE_NAME="ghcr.io/$repo_full_lowercase/$repo_name_only-cache"
+        CACHE_IMAGE_NAME="ghcr.io/${repo_full_lowercase}/${repo_name_only}-cache"
         
         # Set Fly.io app name
         FLY_APP_NAME="suddenlygiovanni-dev-${PR_NUMBER}"
