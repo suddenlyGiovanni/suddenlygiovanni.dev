@@ -2,6 +2,7 @@ name: 🚀 Deploy Main
 permissions:
   contents: read
   packages: write
+  deployments: write
 
 on:
   push:
@@ -14,10 +15,17 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  validate_secrets:
+    name: 🔒 Validate Secrets
+    uses: ./.github/workflows/validate-secrets.yml
+    with:
+      environment: production
+
   deploy:
     name: 🚀 Build and Deploy app to Fly.io (Production)
     runs-on: ubuntu-latest
     environment: production # Specifies the GitHub deployment environment
+    needs: validate_secrets
 
     steps:
       - name: ⬇️ Checkout code
@@ -25,21 +33,9 @@ jobs:
         with:
           fetch-depth: 0 # Needed for flyctl release naming
 
-      - name: Prepare Variables
-        id: prep
-        shell: bash
-        run: |
-          repo_full_lowercase=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')
-          repo_name_only=$(echo "$repo_full_lowercase" | cut -d '/' -f 2)
-          {
-            # --- Main Production Image Naming (Simple) ---
-            echo "PACKAGE_NAME_MAIN=$repo_name_only" # e.g., suddenlygiovanni.dev
-            echo "IMAGE_NAME_MAIN=ghcr.io/$repo_full_lowercase" # e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev
-          
-            # --- Cache Image Naming (Consistent with Preview Workflow) ---
-            echo "PACKAGE_NAME_CACHE=$repo_name_only-cache" # e.g., suddenlygiovanni.dev-cache
-            echo "CACHE_IMAGE_NAME=ghcr.io/$repo_full_lowercase-cache" # e.g., ghcr.io/suddenlygiovanni/suddenlygiovanni.dev-cache
-          } >> "$GITHUB_ENV"
+      - name: Prepare Repository Variables
+        id: vars
+        uses: ./.github/actions/prepare-repo-variables
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
@@ -51,21 +47,52 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # ─────────────────────────────────────────────────────────────
+      # Auto-generate tags & OCI labels (sha + latest) – output id=meta
+      # ─────────────────────────────────────────────────────────────
+      - name: Extract image metadata
+        id: meta
+        uses: docker/metadata-action@v5.5.1
+        with:
+          images: ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}
+          tags: |
+            type=sha,prefix=
+            type=raw,latest
+          labels: |
+            org.opencontainers.image.title=suddenlygiovanni-dev
+            org.opencontainers.image.description=Production image for suddenlygiovanni-dev
+            org.opencontainers.image.url=https://github.com/${{ github.repository }}
+            org.opencontainers.image.documentation=https://github.com/${{ github.repository }}#readme
+            org.opencontainers.image.source=${{ github.repositoryUrl }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
       - name: 🐳 Build and Push Docker Image for Production
         id: docker_build_push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
+        timeout-minutes: 20
         with:
           context: .
           file: ./packages/app/Dockerfile
           target: production
           push: true
-          # Tag main image with commit SHA and 'latest'
-          tags: |
-            ${{ env.IMAGE_NAME_MAIN }}:main-${{ github.sha }}
-            ${{ env.IMAGE_NAME_MAIN }}:latest
-          # Cache configuration (pulls cache from PR/main builds, pushes for future builds)
-          cache-from: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest
-          cache-to: type=registry,ref=${{ env.CACHE_IMAGE_NAME }}:latest,mode=max
+          platforms: linux/amd64
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          attests: |
+            type=provenance,mode=max   # SLSA-compatible provenance
+            type=sbom                  # SPDX SBOM (attached as OCI artifact)
+          # ─── Cache strategy ────────────────────────────────────
+          # 1. Re-use layers from previous main build
+          # 2. Otherwise fall back to the long-living generic cache
+          cache-from: |
+            type=gha,scope=main
+            type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }}
+            type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
+          # Publish layers to both "main-latest" and the generic cache
+          cache-to: |
+            type=gha,scope=main,mode=max
+            type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }},mode=max
+            type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
 
       - name: 📠 Setup flyctl
         uses: superfly/flyctl-actions/setup-flyctl@1.5
@@ -79,5 +106,29 @@ jobs:
           # Deploy using the specific image tag we just built and pushed
           flyctl deploy \
             --config ./packages/app/fly.yaml \
-            --image ${{ env.IMAGE_NAME_MAIN }}:main-${{ github.sha }} \
-            # Add --detach if you don't need the action to wait for the deployment monitor
+            --image ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}@${{ steps.docker_build_push.outputs.digest }}
+
+      - name: 📢 Create GitHub deployment
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: deployment } = await github.rest.repos.createDeployment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: context.sha,
+              environment: 'production',
+              auto_merge: false,
+              required_contexts: []
+            });
+
+            await github.rest.repos.createDeploymentStatus({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              deployment_id: deployment.id,
+              state: 'success',
+              environment_url: 'https://app.fly.dev',
+              log_url: `https://github.com/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`,
+              description: 'Production deployment completed successfully'
+            });
