@@ -133,16 +133,15 @@ jobs:
           package-type: container
           package-name: suddenlygiovanni.dev-preview
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # PAT with `delete:packages`
-          #
-          # ── Keep exactly the two “active” tags ───────────────────────────
-          #  • pr-<PR>                   → the rolling tag updated on every push
-          #  • pr-<PR>-<SHA>            → the specific image we have just built
-          #    Everything else can go.
-          #
-          ignore-versions: '^pr-${{ steps.vars.outputs.PR_NUMBER }}$|^pr-${{ steps.vars.outputs.PR_NUMBER }}-${{ github.sha }}$'
-          min-versions-to-keep: 2             # safety-net: never delete if only those two remain
-          num-old-versions-to-delete: 30      # hard cap – avoid paging through hundreds of versions
+          # keep the most-recent two versions
+          min-versions-to-keep: 2
+          # regexes of versions that must NEVER be deleted
+          ignore-versions: |
+            ^pr-${{ github.event.pull_request.number }}$
+            ^pr-${{ github.event.pull_request.number }}-${{ github.sha }}$
+          # optional filters – leave as needed
           delete-only-untagged-versions: false
+          delete-only-pre-release-versions: false
 
       - name: Update PR with deployment status
         if: always() && github.event_name == 'pull_request'
