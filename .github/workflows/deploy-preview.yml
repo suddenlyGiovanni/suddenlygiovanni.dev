@@ -68,6 +68,22 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      # ─────────────────────────────────────────────────────────────
+      # Auto-generate tags & labels for the PR image
+      # ─────────────────────────────────────────────────────────────
+      - name: Extract image metadata
+        id: meta
+        uses: docker/metadata-action@v5.5.1
+        with:
+          images: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}
+          tags: |
+            type=raw,pr-${{ steps.vars.outputs.PR_NUMBER }}
+            type=sha
+          labels: |
+            org.opencontainers.image.source=${{ github.repositoryUrl }}
+            org.opencontainers.image.revision=${{ github.sha }}
+
+
       # 🏗 ---------- Docker build & push (single step) ----------
       - name: 🐳 Build and Push Docker Image for Preview
         id: docker_build_push
@@ -77,9 +93,8 @@ jobs:
           file: ./packages/app/Dockerfile
           push: true
           platforms: linux/amd64
-          tags: |
-            ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
-            ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW_SHA }}
+          tags:   ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           #
           # ─── Cache strategy ──────────────────────────────────────────────
           # 1. Re-use layers from the previous build of this very PR
@@ -111,7 +126,7 @@ jobs:
           config: ./packages/app/fly.review.yaml
           name: ${{ steps.vars.outputs.FLY_APP_NAME }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
-          image: ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
+          image: ${{ steps.vars.outputs.IMAGE_NAME_PREVIEW }}@${{ steps.docker_build_push.outputs.digest }}
 
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
