@@ -80,9 +80,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           attests: |
-            # SLSA-compatible provenance
-            type=provenance,mode=max   
-            # SPDX SBOM (attached as OCI artifact)
+            type=provenance,mode=max
             type=sbom
           # ─── Cache strategy ────────────────────────────────────
           # 1. Re-use layers from previous main build
