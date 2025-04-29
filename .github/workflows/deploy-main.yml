@@ -64,7 +64,7 @@ jobs:
             org.opencontainers.image.description=Production image for suddenlygiovanni-dev
             org.opencontainers.image.url=https://github.com/${{ github.repository }}
             org.opencontainers.image.documentation=https://github.com/${{ github.repository }}#readme
-            org.opencontainers.image.source=${{ github.repositoryUrl }}
+            org.opencontainers.image.url=https://github.com/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
 
       - name: 🐳 Build and Push Docker Image for Production

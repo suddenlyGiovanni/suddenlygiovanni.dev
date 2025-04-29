@@ -53,92 +53,111 @@ runs:
         GITHUB_REPOSITORY: ${{ github.repository }}
         GITHUB_SHA: ${{ github.sha }}
       run: |
-        set -e  # Exit immediately if a command exits with a non-zero status
-
+        set -e # Exit immediately if a command exits with a non-zero status
+        
         # Debug: Show input values
         echo "::group::📥 Input Values"
         echo "GITHUB_REPOSITORY: ${GITHUB_REPOSITORY}"
         echo "EVENT_PR_NUMBER: ${EVENT_PR_NUMBER}"
         echo "INPUT_PR_NUMBER: ${INPUT_PR_NUMBER}"
         echo "::endgroup::"
-
+        
         # Validate repository format
         if [[ ! "${GITHUB_REPOSITORY}" =~ ^[^/]+/[^/]+$ ]]; then
-          echo "::error::Invalid repository format: ${GITHUB_REPOSITORY}"
-          exit 1
+        	echo "::error::Invalid repository format: ${GITHUB_REPOSITORY}"
+        	exit 1
         fi
-
+        
         # Process repository name
         echo "::group::🔄 Repository Name Processing"
         repo_full_lowercase=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')
         echo "Repository (lowercase): ${repo_full_lowercase}"
-
+        
         repo_name_only=$(echo "${repo_full_lowercase}" | cut -d '/' -f 2)
         echo "Repository name only: ${repo_name_only}"
-
+        
         # keep letters, numbers, dot, dash and underscore – everything else → ‘-’
         repo_name_only=$(echo "${repo_name_only}" | sed 's/[^a-z0-9._-]/-/g')
         echo "Repository name (sanitized): ${repo_name_only}"
-
+        
         # Use the repo path part (everything after the owner) including dots (suddenlygiovanni.dev)
-        repo_path="${repo_full_lowercase#*/}" 
+        repo_path_raw="${repo_full_lowercase#*/}"
+        # Sanitize the path so every downstream name is safe
+        repo_path=$(echo "${repo_path_raw}" | sed 's/[^a-z0-9._-]/-/g')
+        
         echo "Repository path: ${repo_path}"
         echo "::endgroup::"
-
+        
         # Determine PR number from event or input with validation
+        # ─────────── 🔢 PR Number Processing ───────────
         echo "::group::🔢 PR Number Processing"
         if [ -n "${EVENT_PR_NUMBER}" ]; then
-          PR_NUMBER="${EVENT_PR_NUMBER}"
-          echo "Using PR number from event: ${PR_NUMBER}"
+        	PR_NUMBER="${EVENT_PR_NUMBER}"
+        	echo "Using PR number from event: ${PR_NUMBER}"
+        elif [ -n "${INPUT_PR_NUMBER}" ]; then
+        	PR_NUMBER="${INPUT_PR_NUMBER}"
+        	echo "Using PR number from input: ${PR_NUMBER}"
         else
-          PR_NUMBER="${INPUT_PR_NUMBER}"
-          echo "Using PR number from input: ${PR_NUMBER}"
+        	# No PR number given – that is fine for push / tag events.
+        	echo "No PR number detected – assuming push/merge to the default branch."
+        	PR_NUMBER=""
         fi
-
-        # Validate PR number is present and numeric
-        if [ -z "${PR_NUMBER}" ]; then
-          echo "::error::PR number is required but not provided"
-          exit 1
+        
+        # Fail only for pull-request events
+        if [[ "${GITHUB_EVENT_NAME}" == "pull_request" || "${GITHUB_EVENT_NAME}" == "pull_request_target" ]]; then
+        	if [ -z "${PR_NUMBER}" ]; then
+        		echo "::error::PR number is required for pull-request events but was not provided"
+        		exit 1
+        	fi
         fi
-
-        if ! [[ "${PR_NUMBER}" =~ ^[0-9]+$ ]]; then
-          echo "::warning::PR number is not numeric: '${PR_NUMBER}'. This may cause issues."
-        fi
-
+        echo "::endgroup::"
+        
         echo "Using PR number: ${PR_NUMBER}"
-
+        
         # Construct resource names
         echo "::group::🏷️ Computed Variables"
         echo "Constructing resource names..."
-
-        PACKAGE_NAME_MAIN="${repo_path}" # suddenlygiovanni.dev
+        
+        PACKAGE_NAME_MAIN="${repo_path}"                 # suddenlygiovanni.dev
         IMAGE_NAME_MAIN="ghcr.io/${repo_full_lowercase}" # ghcr.io/suddenlygiovanni/suddenlygiovanni.dev
         echo "PACKAGE_NAME_MAIN: ${PACKAGE_NAME_MAIN}"
         echo "IMAGE_NAME_MAIN: ${IMAGE_NAME_MAIN}"
-
+        
         # NOTE: The package has to include the repository path so that GHCR
         #       exposes it as   <owner>/<repo>/<repo>-preview
         PACKAGE_NAME_PREVIEW="${repo_path}/${repo_path}-preview"
         IMAGE_NAME_PREVIEW="ghcr.io/${repo_full_lowercase}/${repo_path}-preview"
         echo "PACKAGE_NAME_PREVIEW: ${PACKAGE_NAME_PREVIEW}"
         echo "IMAGE_NAME_PREVIEW: ${IMAGE_NAME_PREVIEW}"
-
+        
         PACKAGE_NAME_CACHE="${repo_path}/${repo_path}-cache"
         CACHE_IMAGE_NAME="ghcr.io/${repo_full_lowercase}/${repo_path}-cache"
         echo "PACKAGE_NAME_CACHE: ${PACKAGE_NAME_CACHE}"
         echo "CACHE_IMAGE_NAME: ${CACHE_IMAGE_NAME}"
-
+        
         # Set Fly.io app name
-        FLY_APP_NAME="suddenlygiovanni-dev-${PR_NUMBER}"
+        if [[ -n "${PR_NUMBER}" ]]; then
+        	# PR preview or workflow_dispatch with pr_number
+        	FLY_APP_NAME="suddenlygiovanni-dev-${PR_NUMBER}"
+        else
+        	# Default (main) deployment
+        	FLY_APP_NAME="suddenlygiovanni-dev"
+        fi
+        
         echo "FLY_APP_NAME: ${FLY_APP_NAME}"
-
+        
         # ------------------------------------------------------------------
         # Build complete image tags in one place
         # ------------------------------------------------------------------
-        # Preview tags
-        IMAGE_TAG_PREVIEW="${IMAGE_NAME_PREVIEW}:pr-${PR_NUMBER}"
-        IMAGE_TAG_PREVIEW_SHA="${IMAGE_NAME_PREVIEW}:pr-${PR_NUMBER}-${GITHUB_SHA}"
-
+        # Preview tags (only if PR number exists)
+        if [[ -n "${PR_NUMBER}" ]]; then
+        	IMAGE_TAG_PREVIEW="${IMAGE_NAME_PREVIEW}:pr-${PR_NUMBER}"
+        	IMAGE_TAG_PREVIEW_SHA="${IMAGE_NAME_PREVIEW}:pr-${PR_NUMBER}-${GITHUB_SHA}"
+        else
+        	IMAGE_TAG_PREVIEW=""
+        	IMAGE_TAG_PREVIEW_SHA=""
+        fi
+        
         # Main tags
         IMAGE_TAG_MAIN_SHA="${IMAGE_NAME_MAIN}:main-${GITHUB_SHA}"
         IMAGE_TAG_MAIN_LATEST="${IMAGE_NAME_MAIN}:latest"
@@ -176,13 +195,13 @@ runs:
 
         echo "PR_NUMBER=${PR_NUMBER}" >> "$GITHUB_OUTPUT"
         echo "- PR_NUMBER: ${PR_NUMBER}"
-
+        
         echo "IMAGE_TAG_PREVIEW=${IMAGE_TAG_PREVIEW}" >> "$GITHUB_OUTPUT"
-        echo "- IMAGE_TAG_PREVIEW: ${IMAGE_TAG_PREVIEW}"
-
+        echo "- IMAGE_TAG_PREVIEW: ${IMAGE_TAG_PREVIEW:-<empty>}"
+        
         echo "IMAGE_TAG_PREVIEW_SHA=${IMAGE_TAG_PREVIEW_SHA}" >> "$GITHUB_OUTPUT"
-        echo "- IMAGE_TAG_PREVIEW_SHA: ${IMAGE_TAG_PREVIEW_SHA}"
-
+        echo "- IMAGE_TAG_PREVIEW_SHA: ${IMAGE_TAG_PREVIEW_SHA:-<empty>}"
+        
         echo "IMAGE_TAG_MAIN_SHA=${IMAGE_TAG_MAIN_SHA}" >> "$GITHUB_OUTPUT"
         echo "- IMAGE_TAG_MAIN_SHA: ${IMAGE_TAG_MAIN_SHA}"
 
