@@ -130,7 +130,7 @@ jobs:
         with:
           owner: ${{ github.repository_owner }}
           package-type: container
-          package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
+          package-name: suddenlygiovanni.dev-preview
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # PAT with `delete:packages`
           #
           # ── Keep exactly the two “active” tags ───────────────────────────
