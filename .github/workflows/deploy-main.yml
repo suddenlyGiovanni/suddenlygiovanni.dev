@@ -108,7 +108,6 @@ jobs:
             --config ./packages/app/fly.yaml \
             --image ${{ steps.vars.outputs.IMAGE_NAME_MAIN }}@${{ steps.docker_build_push.outputs.digest }}
 
-
       - name: 📢 Create GitHub deployment
         if: success()
         uses: actions/github-script@v7

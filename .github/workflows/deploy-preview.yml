@@ -9,17 +9,16 @@ permissions:
   issues: write
 on:
   pull_request:
-    types: [ opened, reopened, synchronize, edited ]
+    types: [opened, reopened, synchronize, edited]
   workflow_dispatch:
     inputs:
       pr_number:
-        description: 'Pull Request number to deploy'
+        description: "Pull Request number to deploy"
         required: true
         type: string
 concurrency:
   group: ${{ github.workflow }}-pr-${{ github.event.number || github.event.inputs.pr_number }}
   cancel-in-progress: true
-
 
 jobs:
   deploy_preview:
@@ -39,12 +38,12 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-           github.rest.issues.createComment({
-               issue_number: context.issue.number,
-               owner: context.repo.owner,
-               repo: context.repo.repo,
-               body: '🔄 Preview deployment started... Please wait while we deploy your changes!'           
-           })
+            github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: '🔄 Preview deployment started... Please wait while we deploy your changes!'           
+            })
 
       - uses: actions/checkout@v4
         with:
@@ -83,7 +82,6 @@ jobs:
             org.opencontainers.image.source=${{ github.repositoryUrl }}
             org.opencontainers.image.revision=${{ github.sha }}
 
-
       # 🏗 ---------- Docker build & push (single step) ----------
       - name: 🐳 Build and Push Docker Image for Preview
         timeout-minutes: 15
@@ -94,7 +92,7 @@ jobs:
           file: ./packages/app/Dockerfile
           push: true
           platforms: linux/amd64
-          tags:   ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
           provenance: false
@@ -126,13 +124,13 @@ jobs:
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
         if: success()
-        continue-on-error: true      # Don’t fail the whole workflow if the tidy-up bombs
+        continue-on-error: true # Don’t fail the whole workflow if the tidy-up bombs
         uses: actions/delete-package-versions@v5
         with:
           owner: ${{ github.repository_owner }}
           package-type: container
           package-name: suddenlygiovanni.dev/suddenlygiovanni.dev-preview
-          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # PAT with `delete:packages`
+          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }} # PAT with `delete:packages`
           # keep the most-recent two versions
           min-versions-to-keep: 2
           # regexes of versions that must NEVER be deleted

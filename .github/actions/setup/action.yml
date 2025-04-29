@@ -6,8 +6,8 @@ runs:
     - name: 🛠️ Install node
       uses: actions/setup-node@v4
       with:
-        node-version-file: '.nvmrc'
-        registry-url: 'https://npm.pkg.github.com'
+        node-version-file: ".nvmrc"
+        registry-url: "https://npm.pkg.github.com"
 
     - name: 📝 Get pnpm version from package.json
       id: get_pnpm_version
@@ -23,7 +23,7 @@ runs:
     - name: 🗂️ Install pnpm
       uses: pnpm/action-setup@v4
       with:
-        package_json_file: 'package.json'
+        package_json_file: "package.json"
         run_install: false
         version: ${{ steps.get_pnpm_version.outputs.version }}
 

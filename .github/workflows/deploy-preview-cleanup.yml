@@ -6,11 +6,11 @@ on:
   workflow_dispatch:
     inputs:
       pr_number:
-        description: 'Pull Request number to cleanup'
+        description: "Pull Request number to cleanup"
         required: true
         type: string
       force_cleanup:
-        description: 'Force cleanup even if resources are missing'
+        description: "Force cleanup even if resources are missing"
         required: false
         type: boolean
         default: false
@@ -55,7 +55,6 @@ jobs:
         with:
           pr_number: ${{ github.event.inputs.pr_number || github.event.number }}
 
-
       - name: 🗑️ Destroy PR app in Fly.io
         id: destroy_app
         continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
@@ -67,7 +66,7 @@ jobs:
         with:
           config: ./packages/app/fly.review.yaml
           name: ${{ steps.vars.outputs.FLY_APP_NAME }}
-          
+
       - name: 🗑 Delete deployment environment
         id: delete_environment
         continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
@@ -75,7 +74,7 @@ jobs:
         with:
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
           environment: fly-preview-${{ github.event.number || github.event.inputs.pr_number }}
-      
+
       - name: 🗑 Delete GHCR preview images for closed PR
         id: delete_images
         continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
@@ -83,7 +82,7 @@ jobs:
         with:
           owner: ${{ github.repository_owner }}
           package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
-          package-type: 'container'
+          package-type: "container"
           min-versions-to-keep: 0
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
 
@@ -98,20 +97,20 @@ jobs:
             const pr_number = process.env.PR_NUMBER;
             const result = "${{ job.status }}";
             const emoji = result === "success" ? "✅" : "❌";
-            
+
             // Create detailed status report
             let body = `${emoji} Preview environment cleanup ${result.toLowerCase()}.\n\n`;
-            
+
             // Add resource cleanup details
             body += "### Cleanup Status:\n";
             body += `- Fly App: ${{ steps.destroy_app.outcome || 'skipped' }}\n`;
             body += `- GitHub Environment: ${{ steps.delete_environment.outcome || 'skipped' }}\n`;
             body += `- Container Images: ${{ steps.delete_images.outcome || 'skipped' }}\n\n`;
-            
+
             if (result !== "success") {
               body += "Some resources may require manual cleanup. Check the [workflow logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.\n";
             }
-            
+
             // Post to the PR if it exists
             if (pr_number) {
             github.rest.issues.createComment({
@@ -121,7 +120,7 @@ jobs:
                 body: body
             });
             }
-            
+
             // Also create a step summary
             core.summary
               .addHeading('Preview Environment Cleanup')
