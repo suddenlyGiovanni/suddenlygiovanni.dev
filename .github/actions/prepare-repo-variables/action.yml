@@ -39,7 +39,7 @@ outputs:
     description: 'Cache Docker image name with registry prefix (e.g., `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev/suddenlygiovanni.dev-cache`). Used for Docker build caching between workflow runs.'
     value: ${{ steps.set-vars.outputs.CACHE_IMAGE_NAME }}
   FLY_APP_NAME:
-    description: 'Fly.io application name for preview environments (e.g., `suddenlygiovanni.dev-pr-1374` for PR #1374). Used for deploying PR previews to Fly.io.'
+    description: 'Fly.io application name for preview environments (e.g., `suddenlygiovanni-dev-1374` for PR #1374). Used for deploying PR previews to Fly.io.'
     value: ${{ steps.set-vars.outputs.FLY_APP_NAME }}
 
 runs:
@@ -129,7 +129,7 @@ runs:
         echo "CACHE_IMAGE_NAME: ${CACHE_IMAGE_NAME}"
         
         # Set Fly.io app name
-        FLY_APP_NAME="${repo_name_only}-pr-${PR_NUMBER}"
+        FLY_APP_NAME="suddenlygiovanni-dev-${PR_NUMBER}"
         echo "FLY_APP_NAME: ${FLY_APP_NAME}"
         
         # ------------------------------------------------------------------
