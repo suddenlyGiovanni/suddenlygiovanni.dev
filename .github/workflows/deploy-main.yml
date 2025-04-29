@@ -59,9 +59,16 @@ jobs:
           tags: |
             ${{ steps.vars.outputs.IMAGE_TAG_MAIN_SHA }}
             ${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }}
-          # Cache configuration (pulls cache from PR/main builds, pushes for future builds)
-          cache-from: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
-          cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
+          # ─── Cache strategy ────────────────────────────────────
+          # 1. Re-use layers from previous main build
+          # 2. Otherwise fall back to the long-living generic cache
+          cache-from: |
+            type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }}
+            type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
+          # Publish layers to both "main-latest" and the generic cache
+          cache-to: |
+            type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }},mode=max
+            type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
 
       - name: 📠 Setup flyctl
         uses: superfly/flyctl-actions/setup-flyctl@1.5
