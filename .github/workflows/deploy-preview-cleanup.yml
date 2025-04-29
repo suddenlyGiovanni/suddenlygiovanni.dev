@@ -67,12 +67,12 @@ jobs:
         with:
           config: ./packages/app/fly.review.yaml
           name: ${{ steps.vars.outputs.FLY_APP_NAME }}
-      
-      - name: 🗑 Delete deployment environment
-        id: delete_environment
-        continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
-        uses: strumwolf/delete-deployment-environment@v3
-        with:
+          
+                - name: 🗑 Delete deployment environment
+                  id: delete_environment
+                  continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
+                  uses: strumwolf/delete-deployment-environment@v3
+                  with:
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
           environment: fly-preview-${{ github.event.number || github.event.inputs.pr_number }}
       
