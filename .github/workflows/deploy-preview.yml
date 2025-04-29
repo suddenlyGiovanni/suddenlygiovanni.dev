@@ -131,7 +131,7 @@ jobs:
         with:
           owner: ${{ github.repository_owner }}
           package-type: container
-          package-name: suddenlygiovanni.dev-preview
+          package-name: suddenlygiovanni.dev/suddenlygiovanni.dev-preview
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # PAT with `delete:packages`
           # keep the most-recent two versions
           min-versions-to-keep: 2
@@ -139,7 +139,6 @@ jobs:
           ignore-versions: |
             ^pr-${{ github.event.pull_request.number }}$
             ^pr-${{ github.event.pull_request.number }}-${{ github.sha }}$
-          # optional filters – leave as needed
           delete-only-untagged-versions: false
           delete-only-pre-release-versions: false
 
