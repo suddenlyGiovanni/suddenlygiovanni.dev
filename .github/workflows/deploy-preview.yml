@@ -68,56 +68,36 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Check if cache image exists
-        id: check_cache
-        continue-on-error: true
-        shell: bash
-        run: |
-          # Check if the image exists using docker manifest inspect instead of pull
-          echo "Checking if cache image exists: ${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest"
-          if docker manifest inspect ${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest > /dev/null 2>&1; then
-            echo "Cache image exists"
-            echo "cache_exists=true" >> $GITHUB_OUTPUT
-          else
-            echo "Cache image does not exist yet"
-            echo "cache_exists=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: 🐳 Build and Push Docker Image for Preview (with cache)
-        id: docker_build_push_with_cache
-        if: steps.check_cache.outputs.cache_exists == 'true'
+      # 🏗 ---------- Docker build & push (single step) ----------
+      - name: 🐳 Build and Push Docker Image for Preview
+        id: docker_build_push
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./packages/app/Dockerfile
-          push: true # Push the image to the registry
-          # 1) a rolling tag that is overwritten on every push
-          # 2) an immutable tag with the full SHA for debugging/roll-back
+          push: true
           tags: |
             ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
             ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW_SHA }}
-
-          # Cache configuration (using registry)
-          cache-from: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
-          cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
-
-      - name: 🐳 Build and Push Docker Image for Preview (without cache)
-        id: docker_build_push_without_cache
-        if: steps.check_cache.outputs.cache_exists != 'true'
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./packages/app/Dockerfile
-          push: true # Push the image to the registry
-          # 1) a rolling tag that is overwritten on every push
-          # 2) an immutable tag with the full SHA for debugging/roll-back
-          tags: |
-            ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
-            ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW_SHA }}
-
-          # Only create cache, don't try to use it
-          cache-to: type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
-
+          #
+          # ─── Cache strategy ──────────────────────────────────────────────
+          # 1. Re-use layers from the previous build of this very PR
+          # 2. Otherwise fall back to the latest build from main
+          # 3. Finally fall back to the long-living generic cache (optional)
+          #
+          cache-from: |
+            type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
+            type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }}
+            type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
+          #
+          # Publish layers to both the PR-specific image and the generic cache.
+          # The PR image gives us super-fast incremental rebuilds during the
+          # lifetime of the PR; the generic cache helps other branches, and
+          # the next main build, pick up what was compiled here.
+          #
+          cache-to: |
+            type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }},mode=max
+            type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
 
       - name: 🚢 Deploy PR app to Fly.io
         id: deploy
@@ -131,8 +111,6 @@ jobs:
           name: ${{ steps.vars.outputs.FLY_APP_NAME }}
           secrets: GITHUB_TOKEN=${{ secrets.OCTOKIT_RESUME_TOKEN }}
           image: ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
-
-
 
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
