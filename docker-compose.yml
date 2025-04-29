@@ -4,6 +4,8 @@ services:
   web:
     env_file: .env
     build:
+      platforms:
+      - linux/amd64
       context: .
       dockerfile: packages/app/Dockerfile
       target: production

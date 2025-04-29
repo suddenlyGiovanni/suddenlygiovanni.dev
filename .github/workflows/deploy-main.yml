@@ -55,6 +55,7 @@ jobs:
           file: ./packages/app/Dockerfile
           target: production
           push: true
+          platforms: linux/amd64,linux/arm64
           # Tag main image with commit SHA and 'latest'
           tags: |
             ${{ steps.vars.outputs.IMAGE_TAG_MAIN_SHA }}

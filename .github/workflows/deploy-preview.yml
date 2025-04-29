@@ -76,6 +76,7 @@ jobs:
           context: .
           file: ./packages/app/Dockerfile
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: |
             ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
             ${{ steps.vars.outputs.IMAGE_TAG_PREVIEW_SHA }}
