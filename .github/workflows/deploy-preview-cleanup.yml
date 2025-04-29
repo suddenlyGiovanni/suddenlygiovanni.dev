@@ -54,11 +54,12 @@ jobs:
         id: vars
         uses: ./.github/actions/prepare-repo-variables
         with:
-          pr_number: ${{ github.event.inputs.pr_number }}
+          pr_number: ${{ github.event.inputs.pr_number || github.event.number }}
+
 
       - name: 🗑️ Destroy PR app in Fly.io
         id: destroy_app
-        continue-on-error: ${{ (github.event.inputs.force_cleanup || 'false') == 'true' }}
+        continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
         uses: superfly/fly-pr-review-apps@1.5.0
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_APP_REVIEW }}
@@ -70,7 +71,7 @@ jobs:
       
       - name: 🗑 Delete deployment environment
         id: delete_environment
-        continue-on-error: ${{ (github.event.inputs.force_cleanup || 'false') == 'true' }}
+        continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
         uses: strumwolf/delete-deployment-environment@v3
         with:
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
@@ -78,7 +79,7 @@ jobs:
       
       - name: 🗑 Delete GHCR preview images for closed PR
         id: delete_images
-        continue-on-error: ${{ (github.event.inputs.force_cleanup || 'false') == 'true' }}
+        continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
         uses: actions/delete-package-versions@v5
         with:
           owner: ${{ github.repository_owner }}
@@ -90,10 +91,12 @@ jobs:
       - name: 📢 Post cleanup notification
         if: always()
         uses: actions/github-script@v7
+        env:
+          PR_NUMBER: ${{ steps.vars.outputs.PR_NUMBER }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const pr_number = context.issue?.number || ${{ github.event.inputs.pr_number }};
+            const pr_number = process.env.PR_NUMBER;
             const result = "${{ job.status }}";
             const emoji = result === "success" ? "✅" : "❌";
             
