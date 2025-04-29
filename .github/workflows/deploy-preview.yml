@@ -102,6 +102,7 @@ jobs:
           # 3. Finally fall back to the long-living generic cache (optional)
           #
           cache-from: |
+            type=gha,scope=preview-${{ steps.vars.outputs.PR_NUMBER }}
             type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
             type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }}
             type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
@@ -112,6 +113,7 @@ jobs:
           # the next main build, pick up what was compiled here.
           #
           cache-to: |
+            type=gha,scope=preview-${{ steps.vars.outputs.PR_NUMBER }},mode=max
             type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }},mode=max
             type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
 

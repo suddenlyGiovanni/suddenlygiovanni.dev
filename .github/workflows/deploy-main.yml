@@ -59,6 +59,10 @@ jobs:
             type=sha,prefix=
             type=raw,latest
           labels: |
+            org.opencontainers.image.title=suddenlygiovanni-dev
+            org.opencontainers.image.description=Production image for suddenlygiovanni-dev
+            org.opencontainers.image.url=https://github.com/${{ github.repository }}
+            org.opencontainers.image.documentation=https://github.com/${{ github.repository }}#readme
             org.opencontainers.image.source=${{ github.repositoryUrl }}
             org.opencontainers.image.revision=${{ github.sha }}
 
@@ -77,10 +81,12 @@ jobs:
           # 1. Re-use layers from previous main build
           # 2. Otherwise fall back to the long-living generic cache
           cache-from: |
+            type=gha,scope=main
             type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }}
             type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
           # Publish layers to both "main-latest" and the generic cache
           cache-to: |
+            type=gha,scope=main,mode=max
             type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }},mode=max
             type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
 
