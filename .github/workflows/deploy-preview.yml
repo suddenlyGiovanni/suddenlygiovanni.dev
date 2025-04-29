@@ -21,6 +21,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  validate_secrets:
+    name: 🔒 Validate Secrets
+    uses: ./.github/workflows/validate-secrets.yml
+    secrets: inherit
+    with:
+      environment: preview
+
   deploy_preview:
     name: Build and Deploy Preview to Fly.io
     runs-on: ubuntu-latest
