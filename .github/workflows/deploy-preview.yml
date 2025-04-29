@@ -115,19 +115,22 @@ jobs:
       - name: 🗑 Clean up old GHCR preview images for this PR
         id: clean_old_images
         if: success()
-        continue-on-error: true # Prevent workflow failure if cleanup fails
+        continue-on-error: true      # Don’t fail the whole workflow if the tidy-up bombs
         uses: actions/delete-package-versions@v5
         with:
           owner: ${{ github.repository_owner }}
+          package-type: container
           package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
-          package-type: 'container'
-          min-versions-to-keep: 2
-          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # PAT with delete:packages
-          # Only keep the current build image, delete older ones for this PR
-          # Extract just the tag part (pr-<PR_NUMBER>-<SHA>) from IMAGE_TAG_PR_SHA
-          ignore-versions: "^(?!pr-${{ steps.vars.outputs.PR_NUMBER }}-${{ github.sha }}$).*$"
-          num-old-versions-to-delete: 5
-          # Set additional parameters to simplify the operation
+          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # PAT with `delete:packages`
+          #
+          # ── Keep exactly the two “active” tags ───────────────────────────
+          #  • pr-<PR>                   → the rolling tag updated on every push
+          #  • pr-<PR>-<SHA>            → the specific image we have just built
+          #    Everything else can go.
+          #
+          ignore-versions: '^pr-${{ steps.vars.outputs.PR_NUMBER }}$|^pr-${{ steps.vars.outputs.PR_NUMBER }}-${{ github.sha }}$'
+          min-versions-to-keep: 2             # safety-net: never delete if only those two remain
+          num-old-versions-to-delete: 30      # hard cap – avoid paging through hundreds of versions
           delete-only-untagged-versions: false
 
       - name: Verify image cleanup
