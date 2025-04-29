@@ -69,6 +69,7 @@ jobs:
       - name: 🐳 Build and Push Docker Image for Production
         id: docker_build_push
         uses: docker/build-push-action@v6
+        timeout-minutes: 20
         with:
           context: .
           file: ./packages/app/Dockerfile
@@ -79,7 +80,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           attests: |
             type=provenance,mode=max   # SLSA-compatible provenance
-            type=sbom                  # SPDX SBOM (attached as OCI artefact)
+            type=sbom                  # SPDX SBOM (attached as OCI artifact)
           # ─── Cache strategy ────────────────────────────────────
           # 1. Re-use layers from previous main build
           # 2. Otherwise fall back to the long-living generic cache
