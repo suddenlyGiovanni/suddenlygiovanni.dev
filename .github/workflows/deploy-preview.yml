@@ -133,34 +133,6 @@ jobs:
           num-old-versions-to-delete: 30      # hard cap – avoid paging through hundreds of versions
           delete-only-untagged-versions: false
 
-      - name: Verify image cleanup
-        if: always()
-        run: |
-          echo "Verifying package cleanup for: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}"
-
-          # List packages to verify existence
-          echo "Available packages:"
-          curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/user/packages?package_type=container" | jq '.[].name' || echo "No packages found or error"
-
-          # Attempt to get versions using correct endpoint
-          echo "Checking versions for this package:"
-          RESPONSE=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/user/packages/container/${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}/versions")
-
-          # Check if we have actual content or an error
-          if echo "$RESPONSE" | jq -e 'has("message")' > /dev/null; then
-            echo "Error from GitHub API: $(echo "$RESPONSE" | jq -r '.message')"
-          else
-            echo "Available versions:"
-            echo "$RESPONSE" | jq '.[].metadata.container.tags[]' || echo "No versions found or format different than expected"
-
-            # Count remaining versions for this PR
-            PR_TAG_PREFIX="pr-${{ steps.vars.outputs.PR_NUMBER }}-"
-            REMAINING_VERSIONS=$(echo "$RESPONSE" | jq --arg prefix "$PR_TAG_PREFIX" '[.[].metadata.container.tags[] | select(startswith($prefix))] | length' || echo "0")
-            echo "Remaining versions for this PR: $REMAINING_VERSIONS"
-          fi
-
       - name: Update PR with deployment status
         if: always() && github.event_name == 'pull_request'
         uses: actions/github-script@v7
