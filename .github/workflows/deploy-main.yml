@@ -80,8 +80,10 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           attests: |
-            type=provenance,mode=max   # SLSA-compatible provenance
-            type=sbom                  # SPDX SBOM (attached as OCI artifact)
+            # SLSA-compatible provenance
+            type=provenance,mode=max   
+            # SPDX SBOM (attached as OCI artifact)
+            type=sbom
           # ─── Cache strategy ────────────────────────────────────
           # 1. Re-use layers from previous main build
           # 2. Otherwise fall back to the long-living generic cache
