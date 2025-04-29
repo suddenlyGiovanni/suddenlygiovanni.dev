@@ -87,7 +87,7 @@ jobs:
       # 🏗 ---------- Docker build & push (single step) ----------
       - name: 🐳 Build and Push Docker Image for Preview
         id: docker_build_push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
           file: ./packages/app/Dockerfile
