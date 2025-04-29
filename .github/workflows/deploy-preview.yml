@@ -86,6 +86,7 @@ jobs:
 
       # 🏗 ---------- Docker build & push (single step) ----------
       - name: 🐳 Build and Push Docker Image for Preview
+        timeout-minutes: 15
         id: docker_build_push
         uses: docker/build-push-action@v6
         with:
@@ -95,30 +96,18 @@ jobs:
           platforms: linux/amd64
           tags:   ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          attests: |
-            type=provenance,mode=max
-            type=sbom
+          provenance: false
+          sbom: false
           #
-          # ─── Cache strategy ──────────────────────────────────────────────
-          # 1. Re-use layers from the previous build of this very PR
-          # 2. Otherwise fall back to the latest build from main
-          # 3. Finally fall back to the long-living generic cache (optional)
-          #
+          # 1. Re-use layers from this PR.
+          # 2. Otherwise fall back to the “main” cache.
           cache-from: |
             type=gha,scope=preview-${{ steps.vars.outputs.PR_NUMBER }}
-            type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }}
-            type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_MAIN_LATEST }}
-            type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest
+            type=gha,scope=main
           #
-          # Publish layers to both the PR-specific image and the generic cache.
-          # The PR image gives us super-fast incremental rebuilds during the
-          # lifetime of the PR; the generic cache helps other branches, and
-          # the next main build, pick up what was compiled here.
-          #
+          # Publish only to the PR-scoped GHA cache.
           cache-to: |
             type=gha,scope=preview-${{ steps.vars.outputs.PR_NUMBER }},mode=max
-            type=registry,ref=${{ steps.vars.outputs.IMAGE_TAG_PREVIEW }},mode=max
-            type=registry,ref=${{ steps.vars.outputs.CACHE_IMAGE_NAME }}:latest,mode=max
 
       - name: 🚢 Deploy PR app to Fly.io
         id: deploy
