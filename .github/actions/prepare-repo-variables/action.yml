@@ -9,34 +9,34 @@ outputs:
     description: 'Pull Request number used for preview environments (e.g. `1374`). Useful for referencing in workflows.'
     value: ${{ steps.set-vars.outputs.PR_NUMBER }}
   IMAGE_TAG_PREVIEW:
-    description: 'Preview image tag (rolling) → <IMAGE_NAME_PREVIEW>:pr-<PR_NUMBER> (e.g. `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev/suddenlygiovanni-dev-preview:pr-1374`)'
+    description: 'Preview image tag (rolling) → <IMAGE_NAME_PREVIEW>:pr-<PR_NUMBER> (e.g. `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev/suddenlygiovanni.dev-preview:pr-1374`)'
     value: ${{ steps.set-vars.outputs.IMAGE_TAG_PREVIEW }}
   IMAGE_TAG_PREVIEW_SHA:
-    description: 'Preview image tag (immutable) → <IMAGE_NAME_PREVIEW>:pr-<PR_NUMBER>-<SHA> (e.g. `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev/suddenlygiovanni-dev-preview:pr-1374-c092748cba6716795026f37f4ff70661360a6538`)'
+    description: 'Preview image tag (immutable) → <IMAGE_NAME_PREVIEW>:pr-<PR_NUMBER>-<SHA> (e.g. `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev/suddenlygiovanni.dev-preview:pr-1374-f3fa2b9c5cb5c9e17d0d306cb332c0f3f4c23ae7`)'
     value: ${{ steps.set-vars.outputs.IMAGE_TAG_PREVIEW_SHA }}
   IMAGE_TAG_MAIN_SHA:
-    description: 'Main image tag (immutable) → <IMAGE_NAME_MAIN>:main-<SHA> (e.g. `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev:main-c092748cba6716795026f37f4ff70661360a6538`)'
+    description: 'Main image tag (immutable) → <IMAGE_NAME_MAIN>:main-<SHA> (e.g. `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev:main-f3fa2b9c5cb5c9e17d0d306cb332c0f3f4c23ae7`)'
     value: ${{ steps.set-vars.outputs.IMAGE_TAG_MAIN_SHA }}
   IMAGE_TAG_MAIN_LATEST:
     description: 'Main image tag (latest) → <IMAGE_NAME_MAIN>:latest (e.g. `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev:latest`)'
     value: ${{ steps.set-vars.outputs.IMAGE_TAG_MAIN_LATEST }}
   PACKAGE_NAME_MAIN:
-    description: 'Main package name for GitHub Container Registry (e.g., `suddenlygiovanni-dev`). Used for tagging and referencing the main application package.'
+    description: 'Main package name for GitHub Container Registry (e.g., `suddenlygiovanni.dev`). Used for tagging and referencing the main application package.'
     value: ${{ steps.set-vars.outputs.PACKAGE_NAME_MAIN }}
   IMAGE_NAME_MAIN:
     description: 'Main Docker image name with registry prefix (e.g., `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev`). Used for pushing/pulling the main application image.'
     value: ${{ steps.set-vars.outputs.IMAGE_NAME_MAIN }}
   PACKAGE_NAME_PREVIEW:
-    description: 'Preview package name for GitHub Container Registry (e.g., `suddenlygiovanni-dev/suddenlygiovanni-dev-preview`). Used for tagging and referencing PR preview packages.'
+    description: 'Preview package name for GitHub Container Registry (e.g., `suddenlygiovanni.dev/suddenlygiovanni.dev-preview`). Used for tagging and referencing PR preview packages.'
     value: ${{ steps.set-vars.outputs.PACKAGE_NAME_PREVIEW }}
   IMAGE_NAME_PREVIEW:
-    description: 'Preview Docker image name with registry prefix (e.g., `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev/suddenlygiovanni-dev-preview`). Used for pushing/pulling PR preview images.'
+    description: 'Preview Docker image name with registry prefix (e.g., `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev/suddenlygiovanni.dev-preview`). Used for pushing/pulling PR preview images.'
     value: ${{ steps.set-vars.outputs.IMAGE_NAME_PREVIEW }}
   PACKAGE_NAME_CACHE:
-    description: 'Cache package name for GitHub Container Registry (e.g., `suddenlygiovanni-dev/suddenlygiovanni-dev-cache`). Used for tagging and referencing build cache packages.'
+    description: 'Cache package name for GitHub Container Registry (e.g., `suddenlygiovanni.dev/suddenlygiovanni.dev-cache`). Used for tagging and referencing build cache packages.'
     value: ${{ steps.set-vars.outputs.PACKAGE_NAME_CACHE }}
   CACHE_IMAGE_NAME:
-    description: 'Cache Docker image name with registry prefix (e.g., `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev/suddenlygiovanni-dev-cache`). Used for Docker build caching between workflow runs.'
+    description: 'Cache Docker image name with registry prefix (e.g., `ghcr.io/suddenlygiovanni/suddenlygiovanni.dev/suddenlygiovanni.dev-cache`). Used for Docker build caching between workflow runs.'
     value: ${{ steps.set-vars.outputs.CACHE_IMAGE_NAME }}
   FLY_APP_NAME:
     description: 'Fly.io application name for preview environments (e.g., `suddenlygiovanni-dev-1374` for PR #1374). Used for deploying PR previews to Fly.io.'
@@ -84,7 +84,7 @@ runs:
         repo_path="${repo_full_lowercase#*/}" 
         echo "Repository path: ${repo_path}"
         echo "::endgroup::"
-             
+        
         # Determine PR number from event or input with validation
         echo "::group::🔢 PR Number Processing"
         if [ -n "${EVENT_PR_NUMBER}" ]; then
