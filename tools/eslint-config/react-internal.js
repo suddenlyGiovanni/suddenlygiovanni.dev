@@ -1,8 +1,7 @@
 import js from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import pluginReact from 'eslint-plugin-react'
-import reactCompiler from 'eslint-plugin-react-compiler'
-import pluginReactHooks from 'eslint-plugin-react-hooks'
+import * as reactHooks from 'eslint-plugin-react-hooks'
 import globals from 'globals'
 import { config as baseConfig } from './base.js'
 
@@ -15,6 +14,7 @@ export const config = [
 	js.configs.recommended,
 	eslintConfigPrettier,
 	pluginReact.configs.flat.recommended,
+	reactHooks.configs.recommended,
 	{
 		languageOptions: {
 			...pluginReact.configs.flat.recommended.languageOptions,
@@ -25,17 +25,12 @@ export const config = [
 		},
 	},
 	{
-		plugins: {
-			'react-hooks': pluginReactHooks,
-			'react-compiler': reactCompiler,
-		},
 		settings: { react: { version: 'detect' } },
 		rules: {
-			...pluginReactHooks.configs.recommended.rules,
 			// React scope no longer necessary with new JSX transform.
-			'react/react-in-jsx-scope': 'off',
-			'react-compiler/react-compiler': 'error',
+			'react-hooks/react-compiler': 'error',
 			'react/no-unescaped-entities': 'off',
+			'react/react-in-jsx-scope': 'off',
 		},
 	},
 ]
