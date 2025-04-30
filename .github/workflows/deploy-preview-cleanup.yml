@@ -60,8 +60,7 @@ jobs:
 
       - name: 🗑️ Destroy PR app in Fly.io
         id: destroy_app
-        continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup ==
-        'true' }}
+        continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true'}}
         shell: bash
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_APP_REVIEW }}
