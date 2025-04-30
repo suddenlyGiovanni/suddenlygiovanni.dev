@@ -102,6 +102,7 @@ jobs:
           PKG_NAME: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
           PR_NUMBER: ${{ steps.vars.outputs.PR_NUMBER }}
           OWNER: ${{ github.repository_owner }}
+        shell: bash
         run: |
           set -euo pipefail
 
