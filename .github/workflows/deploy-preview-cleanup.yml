@@ -1,4 +1,4 @@
-name: 🧹 Deploy Preview Environments Cleanup
+name: 🧼 Deploy Preview Environments Cleanup
 on:
   pull_request:
     types:
@@ -24,6 +24,7 @@ permissions:
   packages: write
   deployments: write
   issues: write
+  pull-requests: write
 
 jobs:
   cleanup:
@@ -32,6 +33,10 @@ jobs:
     environment:
       name: fly-preview-${{ github.event.number || github.event.inputs.pr_number }}
     steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed for consistency with other workflows
+
       - name: Add cleanup pending comment
         if: github.event_name == 'pull_request'
         uses: actions/github-script@v7
@@ -44,10 +49,6 @@ jobs:
               repo: context.repo.repo,
               body: '🧹 Starting cleanup of preview environment resources...'
             });
-
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Needed for consistency with other workflows
 
       - name: Prepare Repository Variables
         id: vars
