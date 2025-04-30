@@ -69,7 +69,7 @@ jobs:
           FLY_ORG: personal
         run: |
           set -euo pipefail
-          
+
           APP="${{ steps.vars.outputs.FLY_APP_NAME }}"
           echo "Destroying Fly app: ${APP}"
 
@@ -94,11 +94,14 @@ jobs:
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
           environment: fly-preview-${{ github.event.number || github.event.inputs.pr_number }}
 
-      - name: 🗑 Delete GHCR images for this PR only
-        id: delete_images
+      # ----------------------------------------------------------------------------
+      # GHCR package cleanup (new approach: use actions/delete-package-versions)
+      # ----------------------------------------------------------------------------
+      - name: 🔍 Locate package version IDs for this PR
+        id: find_package_versions
         continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
         env:
-          GH_TOKEN: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # must have delete-packages scope
+          GH_TOKEN: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
           PKG_NAME: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
           PR_NUMBER: ${{ steps.vars.outputs.PR_NUMBER }}
           OWNER: ${{ github.repository_owner }}
@@ -106,36 +109,46 @@ jobs:
         run: |
           set -euo pipefail
 
-          echo "Looking for versions of '${PKG_NAME}' whose tags belong to PR #${PR_NUMBER} …"
+          HARD_CODED_PATH="/users/suddenlygiovanni/packages/container/suddenlygiovanni.dev%2Fsuddenlygiovanni.dev-preview/versions?per_page=100"
+          
+          echo "Searching for container versions of '${PKG_NAME}' tagged for PR #${PR_NUMBER} …"
 
-          # collect version IDs whose tag list contains pr-<PR> or pr-<PR>-<sha>
-          mapfile -t VERSION_IDS < <(
-            gh api -H "Accept: application/vnd.github+json" \
-              "/orgs/${OWNER}/packages/container/${PKG_NAME}/versions?per_page=100" \
-              --paginate \
-              --jq ".[] |
+          mapfile -t IDS < <(
+          	gh api -H "Accept: application/vnd.github+json" \
+          		"${HARD_CODED_PATH}" \
+          		--paginate \
+          		--jq ".[] |
                     select(
                       .metadata.container.tags[]? |
                       test(\"^pr-${PR_NUMBER}(-[0-9a-f]+)?$\")
                     ) |
-                    .id"
+                    .id" | sort -u
           )
 
-          if [[ ${#VERSION_IDS[@]} -eq 0 ]]; then
-            echo "No container versions found for this PR – nothing to delete."
-            exit 0
+          if [[ ${#IDS[@]} -eq 0 ]]; then
+          	echo "No versions found – nothing to delete."
+          	echo "version_ids=" >> "$GITHUB_OUTPUT"
+          	exit 0
           fi
 
-          echo "Found ${#VERSION_IDS[@]} version(s) to delete:"
-          printf '  • %s\n' "${VERSION_IDS[@]}"
+          CSV=$(
+          	IFS=,
+          	echo "${IDS[*]}"
+          )
+          echo "Found ${#IDS[@]} version(s): ${CSV}"
+          echo "version_ids=${CSV}" >> "$GITHUB_OUTPUT"
 
-          for id in "${VERSION_IDS[@]}"; do
-            echo "::group::Deleting version $id"
-            gh api -X DELETE "/orgs/${OWNER}/packages/container/${PKG_NAME}/versions/${id}"
-            echo "::endgroup::"
-          done
-
-          echo "::notice::Deleted ${#VERSION_IDS[@]} PR-specific image version(s)."
+      - name: 🗑 Delete GHCR images for this PR only
+        id: delete_images
+        if: steps.find_package_versions.outputs.version_ids != ''
+        continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
+        uses: actions/delete-package-versions@v5
+        with:
+          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
+          owner: ${{ github.repository_owner }}
+          package-type: container
+          package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
+          package-version-ids: ${{ steps.find_package_versions.outputs.version_ids }}
 
       - name: 📢 Post cleanup notification
         if: always()
