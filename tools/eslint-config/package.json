@@ -15,8 +15,7 @@
 		"eslint-config-prettier": "10.1.1",
 		"eslint-plugin-only-warn": "1.1.0",
 		"eslint-plugin-react": "7.37.4",
-		"eslint-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
-		"eslint-plugin-react-hooks": "5.2.0",
+		"eslint-plugin-react-hooks": "6.0.0-rc.1",
 		"globals": "16.0.0",
 		"typescript": "catalog:",
 		"typescript-eslint": "8.26.1"
