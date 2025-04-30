@@ -94,16 +94,47 @@ jobs:
           token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
           environment: fly-preview-${{ github.event.number || github.event.inputs.pr_number }}
 
-      - name: 🗑 Delete GHCR preview images for closed PR
+      - name: 🗑 Delete GHCR images for this PR only
         id: delete_images
         continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
-        uses: actions/delete-package-versions@v5
-        with:
-          owner: ${{ github.repository_owner }}
-          package-name: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
-          package-type: "container"
-          min-versions-to-keep: 0
-          token: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}
+        env:
+          GH_TOKEN: ${{ secrets.DELETE_DEPLOYMENT_PAT_TOKEN }}   # must have delete-packages scope
+          PKG_NAME: ${{ steps.vars.outputs.PACKAGE_NAME_PREVIEW }}
+          PR_NUMBER: ${{ steps.vars.outputs.PR_NUMBER }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          set -euo pipefail
+
+          echo "Looking for versions of '${PKG_NAME}' whose tags belong to PR #${PR_NUMBER} …"
+
+          # collect version IDs whose tag list contains pr-<PR> or pr-<PR>-<sha>
+          mapfile -t VERSION_IDS < <(
+            gh api -H "Accept: application/vnd.github+json" \
+              "/orgs/${OWNER}/packages/container/${PKG_NAME}/versions?per_page=100" \
+              --paginate \
+              --jq ".[] |
+                    select(
+                      .metadata.container.tags[]? |
+                      test(\"^pr-${PR_NUMBER}(-[0-9a-f]+)?$\")
+                    ) |
+                    .id"
+          )
+
+          if [[ ${#VERSION_IDS[@]} -eq 0 ]]; then
+            echo "No container versions found for this PR – nothing to delete."
+            exit 0
+          fi
+
+          echo "Found ${#VERSION_IDS[@]} version(s) to delete:"
+          printf '  • %s\n' "${VERSION_IDS[@]}"
+
+          for id in "${VERSION_IDS[@]}"; do
+            echo "::group::Deleting version $id"
+            gh api -X DELETE "/orgs/${OWNER}/packages/container/${PKG_NAME}/versions/${id}"
+            echo "::endgroup::"
+          done
+
+          echo "::notice::Deleted ${#VERSION_IDS[@]} PR-specific image version(s)."
 
       - name: 📢 Post cleanup notification
         if: always()
