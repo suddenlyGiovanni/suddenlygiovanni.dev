@@ -55,17 +55,35 @@ jobs:
         with:
           pr_number: ${{ github.event.inputs.pr_number || github.event.number }}
 
+      - name: Install Flyctl
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
       - name: 🗑️ Destroy PR app in Fly.io
         id: destroy_app
-        continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true' }}
-        uses: superfly/fly-pr-review-apps@1.5.0
+        continue-on-error: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.force_cleanup == 'true'}}
+        shell: bash
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN_APP_REVIEW }}
           FLY_REGION: ams
           FLY_ORG: personal
-        with:
-          config: ./packages/app/fly.review.yaml
-          name: ${{ steps.vars.outputs.FLY_APP_NAME }}
+        run: |
+          set -euo pipefail
+          
+          APP="${{ steps.vars.outputs.FLY_APP_NAME }}"
+          echo "Destroying Fly app: ${APP}"
+
+          # capture output + exit code of destroy command
+          destroy_output=$(mktemp)
+          if flyctl apps destroy "${APP}" -y 2>&1 | tee "${destroy_output}"; then
+            echo "::notice::Fly app ${APP} destroyed."
+          else
+            if grep -qiE "not found|could not resolve" "${destroy_output}"; then
+              echo "::notice::Fly app ${APP} not found – skipping."
+            elif [[ "${{ github.event_name }}" != "workflow_dispatch" || "${{ github.event.inputs.force_cleanup }}" != "true" ]]; then
+              echo "::warning::Failed to destroy Fly app ${APP}."
+              exit 1
+            fi
+          fi
 
       - name: 🗑 Delete deployment environment
         id: delete_environment
