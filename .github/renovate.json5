@@ -18,6 +18,7 @@
 	":followTag(typescript, rc)",
 	"schedule:earlyMondays",
 	"packages:eslint",
+	"packages:react"
   ],
   npmrcMerge: true,
   hostRules: [
