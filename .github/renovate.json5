@@ -63,7 +63,7 @@
 		},
 		{
 			groupName: "tailwindcss packages",
-			matchPackageNames: ["@tailwindcss/vite", "tailwindcss"],
+			matchPackageNames: ["@tailwindcss/vite", "tailwindcss", "tailwind-variants", "@tailwindcss/typography", "tailwindcss-animate", "tailwind-merge" ],
 		},
 	],
 }
