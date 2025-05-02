@@ -2,50 +2,75 @@
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
 	"extends": ["../../biome.json"],
 	"files": {
-		"include": ["client/*"],
 		"ignoreUnknown": true,
-		"ignore": ["./~", ".react-router"]
+		"includes": ["**/client/*", "!~", "!**/.react-router", "!**/node_modules/**"]
 	},
 	"linter": {
 		"rules": {
-			"suspicious": {
-				"noReactSpecificProps": "off"
-			},
 			"nursery": {
 				"noSecrets": "off",
 				"useComponentExportOnlyModules": "off",
 				"useConsistentCurlyBraces": "off"
 			},
 			"style": {
+				"noArguments": "error",
+				"noCommaOperator": "error",
 				"noDefaultExport": "off",
-				"noNamespace": "off"
+				"noInferrableTypes": "error",
+				"noNamespace": "off",
+				"noNonNullAssertion": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
+				"useAsConstAssertion": "error",
+				"useConst": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useExponentiationOperator": "error",
+				"useExportType": "error",
+				"useImportType": "error",
+				"useLiteralEnumMembers": "error",
+				"useNodejsImportProtocol": "error",
+				"useNumberNamespace": "error",
+				"useNumericLiterals": "error",
+				"useSelfClosingElements": "error",
+				"useShorthandFunctionType": "error",
+				"useSingleVarDeclarator": "error",
+				"useTemplate": "error"
+			},
+			"suspicious": {
+				"noReactSpecificProps": "off"
 			}
 		}
 	},
 	"overrides": [
 		{
-			"include": ["server/**/*.ts"],
+			"includes": ["**/server/**/*.ts", "!**/node_modules/**"],
 			"linter": {
 				"rules": {
-					"style": {
-						"useNamingConvention": "info"
-					},
-					"suspicious": {
-						"noConsole": "off",
-						"noConsoleLog": "off"
-					},
 					"correctness": {
 						"noNodejsModules": "off"
 					},
 					"nursery": {
-						"useExplicitType": "off",
-						"noSecrets": "off"
+						"noSecrets": "off",
+						"useExplicitType": "off"
+					},
+					"style": {
+						"useNamingConvention": "info"
+					},
+					"suspicious": {
+						"noConsole": {
+							"level": "off",
+							"options": {
+								"allow": ["log"]
+							}
+						}
 					}
 				}
 			}
 		},
 		{
-			"include": ["client/routes/**/*.tsx"],
+			"includes": ["**/client/routes/**/*.tsx", "!**/node_modules/**"],
 			"linter": {
 				"rules": {
 					"style": {
@@ -55,10 +80,10 @@
 			}
 		},
 		{
-			"include": ["**/*.snapshot.json"],
 			"formatter": {
 				"enabled": false
-			}
+			},
+			"includes": ["**/*.snapshot.json", "!**/node_modules/**"]
 		}
 	]
 }

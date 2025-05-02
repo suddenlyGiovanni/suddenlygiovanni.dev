@@ -6,6 +6,12 @@
 		"@tsconfig/strictest": "2.0.5",
 		"@tsconfig/vite-react": "3.4.0"
 	},
+	"exports": {
+		"./base.json": "./base.json",
+		"./library.json": "./library.json",
+		"./react-library.json": "./react-library.json",
+		"./remix.json": "./remix.json"
+	},
 	"name": "@repo/typescript-config",
 	"peerDependencies": {
 		"typescript": "catalog:"
@@ -15,14 +21,11 @@
 			"optional": false
 		}
 	},
-	"exports": {
-		"./remix.json": "./remix.json",
-		"./react-library.json": "./react-library.json",
-		"./library.json": "./library.json",
-		"./base.json": "./base.json"
-	},
 	"private": true,
 	"scripts": {
-		"clean": "rm -rf node_modules"
+		"clean": "rm -rf node_modules",
+	  	"lint": "biome lint",
+	  	"format": "biome format",
+	  	"format:write": "biome format"
 	}
 }
