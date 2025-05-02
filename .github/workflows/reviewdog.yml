@@ -151,10 +151,8 @@ jobs:
       - name: Setup Biome
         uses: biomejs/setup-biome@v2
         with:
-          biome-version: latest
           token: ${{ secrets.github_token }}
           working-dir: "."
-          version: "latest"
 
       - name: 🐶 reviewdog with Biome
         env:
