@@ -1,7 +1,6 @@
 import { invariant } from '@epic-web/invariant'
 import { useRouteLoaderData } from 'react-router'
 
-// biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Info } from '../+types/root.ts'
 
 export function useOptionalRequestInfo(): Info['loaderData']['requestInfo'] | undefined {

@@ -1,11 +1,11 @@
-import { type OpenGraphVideoBase, _makeOpenGraphVideoBase } from './open-graph-video-base.ts'
+import type { MetaBase, OpenGraphMeta, og } from './open-graph.ts'
+import type { video } from './open-graph-video.ts'
+import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base.ts'
 import type {
 	IPropertyVideoMovie,
 	OgTypeVideoMovie,
 	VideoMovieRecord,
 } from './open-graph-video-movie.ts'
-import type { video } from './open-graph-video.ts'
-import type { MetaBase, OpenGraphMeta, og } from './open-graph.ts'
 import type * as Types from './types.ts'
 
 export type IPropertyVideoTvShow = IPropertyVideoMovie

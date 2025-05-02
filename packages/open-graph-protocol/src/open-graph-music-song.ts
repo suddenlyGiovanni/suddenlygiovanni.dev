@@ -1,20 +1,20 @@
 import {
+	type MetaBase,
+	makeOpenGraphMeta,
+	type OpenGraphMeta,
+	type og,
+	PropertyMusicSong,
+} from './open-graph.ts'
+import {
 	type BasicRecord,
+	makeOpenGraphBase,
 	type OgType,
 	type OpenGraphBaseWithOptional,
 	type OptionalRecord,
-	makeOpenGraphBase,
 } from './open-graph-base.ts'
 import type { music } from './open-graph-music.ts'
-import {
-	type MetaBase,
-	type OpenGraphMeta,
-	PropertyMusicSong,
-	makeOpenGraphMeta,
-	type og,
-} from './open-graph.ts'
 import * as Types from './types.ts'
-import { type ValueOf, insertIf, isArray } from './utils/index.ts'
+import { insertIf, isArray, type ValueOf } from './utils/index.ts'
 
 export type IPropertyMusicSong = ValueOf<typeof PropertyMusicSong>
 

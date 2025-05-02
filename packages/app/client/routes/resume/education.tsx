@@ -1,12 +1,11 @@
-import { Either, pipe } from 'effect'
-import { type MouseEventHandler, type ReactElement, useState } from 'react'
-
 import { Icons } from '@repo/ui/components/icons/icons.tsx'
 import { T } from '@repo/ui/components/typography/typography.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
 import { Accordion, AccordionContent, AccordionItem, Trigger } from '@repo/ui/ui/accordion.tsx'
 import { Button } from '@repo/ui/ui/button.tsx'
 import type * as Model from '@suddenly-giovanni/schema-resume'
+import { Either, pipe } from 'effect'
+import { type MouseEventHandler, type ReactElement, useState } from 'react'
 
 import { formatDateLocaleShort } from './format-date-locale-short.ts'
 import { generateDjb2Hash } from './generate-djb2-hash.ts'
@@ -57,10 +56,7 @@ export function Education({
 						startDate={education.startDate}
 						studyType={education.studyType}
 						url={education.url}
-						value={
-							// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non-null assertion
-							all.at(idx)!
-						}
+						value={all.at(idx)!}
 					/>
 				))}
 			</Accordion>

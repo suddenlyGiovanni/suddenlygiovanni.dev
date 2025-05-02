@@ -1,3 +1,8 @@
+import { makeOpenGraphWebsite, Types } from '@repo/open-graph-protocol'
+import { Layout as _Layout } from '@repo/ui/components/layout/layout.tsx'
+import { clsx } from '@repo/ui/lib/utils.ts'
+import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import faviconAssertUrl from 'content/assets/suddenly_giovanni-icon-white.svg'
 import type { ReactElement, ReactNode } from 'react'
 import {
 	Links,
@@ -9,23 +14,15 @@ import {
 	useRouteLoaderData,
 } from 'react-router'
 
-import { Types, makeOpenGraphWebsite } from '@repo/open-graph-protocol'
-import { Layout as _Layout } from '@repo/ui/components/layout/layout.tsx'
-import { clsx } from '@repo/ui/lib/utils.ts'
-
-import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
-import faviconAssertUrl from 'content/assets/suddenly_giovanni-icon-white.svg'
 import { config } from '#root/client/config.ts'
 import { useOptionalTheme, useTheme } from '#root/client/routes/resources/theme-switch.tsx'
 import { Footer, GeneralErrorBoundary, Header } from '#root/client/shell/index.tsx'
 import tailwindStyleSheetUrl from '#root/client/styles/tailwind.css?url'
-import { getHints } from '#root/client/utils/client-hints.tsx'
-import { ClientHintCheck } from '#root/client/utils/client-hints.tsx'
+import { ClientHintCheck, getHints } from '#root/client/utils/client-hints.tsx'
 import { getEnv } from '#root/client/utils/env.server.ts'
 import { getDomainUrl } from '#root/client/utils/misc.ts'
 import { getTheme } from '#root/client/utils/theme.server.ts'
 
-// biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from './+types/root.ts'
 
 const { Body, Main } = _Layout
@@ -33,29 +30,28 @@ const { Body, Main } = _Layout
 export const links: Route.LinksFunction = () => {
 	return [
 		{
+			href: faviconAssertUrl,
 			rel: 'icon',
 			type: 'image/svg+xml',
-			href: faviconAssertUrl,
 		},
-		{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-		{ rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'use-credentials' },
+		{ href: 'https://fonts.googleapis.com', rel: 'preconnect' },
+		{ crossOrigin: 'use-credentials', href: 'https://fonts.gstatic.com', rel: 'preconnect' },
 		{
-			rel: 'stylesheet',
 			href: 'https://fonts.googleapis.com/css2?family=Shantell+Sans:ital,wght,BNCE,INFM,SPAC@0,300..800,-100..100,0..100,0..100;1,300..800,-100..100,0..100,0..100&display=swap',
+			rel: 'stylesheet',
 		},
-		{ rel: 'stylesheet', href: tailwindStyleSheetUrl, type: 'text/css' },
+		{ href: tailwindStyleSheetUrl, rel: 'stylesheet', type: 'text/css' },
 	]
 }
 
-// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function meta({ location }: Route.MetaArgs) {
 	const description = "@suddenlyGiovanni's personal website"
 	const title = config.siteName
 	return [
 		{ title },
 		{
-			name: 'description',
 			content: description,
+			name: 'description',
 		},
 		makeOpenGraphWebsite({
 			ogDescription: Types.String(description),
@@ -69,17 +65,16 @@ export function meta({ location }: Route.MetaArgs) {
 	]
 }
 
-// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function loader({ request }: Route.LoaderArgs) {
 	return {
+		ENV: getEnv(),
+
 		requestInfo: {
 			hints: getHints(request),
 			origin: getDomainUrl(request),
 			path: new URL(request.url).pathname,
 			userPrefs: { theme: getTheme(request) },
 		},
-
-		ENV: getEnv(),
 	}
 }
 
@@ -98,8 +93,8 @@ export function Layout(props: { children: ReactNode }): ReactElement {
 				<ClientHintCheck />
 				<meta charSet="utf-8" />
 				<meta
-					httpEquiv="Content-Type"
 					content="text/html;charset=utf-8"
+					httpEquiv="Content-Type"
 				/>
 				<meta
 					content="width=device-width, initial-scale=1"

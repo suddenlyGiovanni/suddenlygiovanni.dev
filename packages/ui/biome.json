@@ -2,20 +2,16 @@
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
 	"extends": ["../../biome.json"],
 	"files": {
-		"include": ["./src/*"],
 		"ignoreUnknown": true,
-		"ignore": ["./~"]
+		"includes": ["src/*", "!~", "!**/node_modules/**"]
 	},
 	"linter": {
 		"rules": {
-			"a11y": {
-				"all": true
-			},
+			"a11y": {},
 			"nursery": {
 				"noSecrets": "off",
 				"useConsistentCurlyBraces": "off",
 				"useExplicitType": "info",
-				"useImportRestrictions": "off",
 				"useSortedClasses": {
 					"fix": "safe",
 					"level": "warn",
@@ -25,23 +21,47 @@
 					}
 				}
 			},
-			"suspicious": {
-				"noReactSpecificProps": "off"
-			},
 			"performance": {
 				"noBarrelFile": "off"
+			},
+			"style": {
+				"noArguments": "error",
+				"noCommaOperator": "error",
+				"noInferrableTypes": "error",
+				"noNonNullAssertion": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
+				"useAsConstAssertion": "error",
+				"useConst": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useExponentiationOperator": "error",
+				"useExportType": "error",
+				"useImportType": "error",
+				"useLiteralEnumMembers": "error",
+				"useNodejsImportProtocol": "error",
+				"useNumberNamespace": "error",
+				"useNumericLiterals": "error",
+				"useSelfClosingElements": "error",
+				"useShorthandFunctionType": "error",
+				"useSingleVarDeclarator": "error",
+				"useTemplate": "error"
+			},
+			"suspicious": {
+				"noReactSpecificProps": "off"
 			}
 		}
 	},
 	"overrides": [
 		{
-			"include": ["./src/**/*.stories.tsx"],
+			"includes": ["src/**/*.stories.tsx", "!**/node_modules/**"],
 			"linter": {
 				"rules": {
 					"nursery": {
-						"useComponentExportOnlyModules": "off",
+						"noEnum": "off",
 						"noImgElement": "off",
-						"noEnum": "off"
+						"useComponentExportOnlyModules": "off"
 					},
 					"style": {
 						"noDefaultExport": "off"

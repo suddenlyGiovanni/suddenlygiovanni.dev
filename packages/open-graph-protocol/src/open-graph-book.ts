@@ -1,20 +1,20 @@
 import {
+	type BaseOrExtended,
+	type MetaBase,
+	makeOpenGraphMeta,
+	type OpenGraphMeta,
+	type og,
+	PropertyBook,
+} from './open-graph.ts'
+import {
 	type BasicRecord,
+	makeOpenGraphBase,
 	type OgType,
 	type OpenGraphBaseWithOptional,
 	type OptionalRecord,
-	makeOpenGraphBase,
 } from './open-graph-base.ts'
-import {
-	type BaseOrExtended,
-	type MetaBase,
-	type OpenGraphMeta,
-	PropertyBook,
-	makeOpenGraphMeta,
-	type og,
-} from './open-graph.ts'
 import type * as Types from './types.ts'
-import { type ValueOf, insertIf, isArray } from './utils/index.ts'
+import { insertIf, isArray, type ValueOf } from './utils/index.ts'
 
 export type book<T extends string = ''> = BaseOrExtended<'book', T>
 

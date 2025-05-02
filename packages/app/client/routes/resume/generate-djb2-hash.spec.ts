@@ -1,4 +1,5 @@
 import { describe, expect, test } from 'vitest'
+
 import { generateDjb2Hash } from './generate-djb2-hash.ts'
 
 describe('generateDjb2Hash', () => {

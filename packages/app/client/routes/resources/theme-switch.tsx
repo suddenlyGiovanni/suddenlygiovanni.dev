@@ -1,33 +1,31 @@
-import { type SubmissionResult, getFormProps, useForm } from '@conform-to/react'
+import { getFormProps, type SubmissionResult, useForm } from '@conform-to/react'
 import { invariantResponse } from '@epic-web/invariant'
+import { Icons } from '@repo/ui/components/icons/icons.tsx'
+import { clsx } from '@repo/ui/lib/utils.ts'
+import { Button } from '@repo/ui/ui/button.tsx'
 import { Either, Schema } from 'effect'
 import type { ReactElement } from 'react'
 import { data, redirect, useFetcher, useFetchers } from 'react-router'
 import { ServerOnly } from 'remix-utils/server-only'
 
-import { Icons } from '@repo/ui/components/icons/icons.tsx'
-import { clsx } from '@repo/ui/lib/utils.ts'
-import { Button } from '@repo/ui/ui/button.tsx'
-
 import { useHints, useOptionalHints } from '#root/client/utils/client-hints.tsx'
 import { useOptionalRequestInfo, useRequestInfo } from '#root/client/utils/request-info.ts'
 import { setTheme } from '#root/client/utils/theme.server.ts'
 
-// biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Route } from '.react-router/types/src/routes/resources/+types/theme-switch.ts'
 
 const themeSchema = Schema.Literal('light', 'dark', 'system').annotations({
-	title: 'Theme',
 	description: 'The theme to set',
 	examples: ['light', 'dark', 'system'],
+	title: 'Theme',
 })
 export const ThemeFormSchema = Schema.Struct({
-	theme: themeSchema,
 	redirectTo: Schema.optional(Schema.String).annotations({
-		title: 'Redirect to',
 		description: 'URL to redirect to after setting the theme',
 		examples: ['/', '/about'],
+		title: 'Redirect to',
 	}),
+	theme: themeSchema,
 })
 export type Theme = Schema.Schema.Type<typeof themeSchema>
 
@@ -50,15 +48,15 @@ export async function action({ request }: Route.ActionArgs) {
 	return data(
 		{
 			result: {
-				status: 'success',
 				fields: Object.keys(payload),
 				initialValue: payload as Record<string, string>,
 				state: {
 					validated: {
-						theme: true,
 						redirectTo: true,
+						theme: true,
 					},
 				},
+				status: 'success',
 			} satisfies SubmissionResult,
 		},
 		responseInit,
@@ -67,8 +65,8 @@ export async function action({ request }: Route.ActionArgs) {
 
 function computeNextThemeMode(currentTheme: Theme): Theme {
 	const nextTheme = {
-		light: 'dark',
 		dark: 'system',
+		light: 'dark',
 		system: 'light',
 	} as const
 	return nextTheme[currentTheme]
@@ -94,20 +92,20 @@ export function ThemeSwitch({
 	const nextMode = computeNextThemeMode(mode)
 
 	const modeLabel = {
-		light: (
-			<Icons.sun className={clsx('h-[1.2rem] w-[1.2rem]')}>
-				<span className="sr-only">Light</span>
-			</Icons.sun>
-		),
 		dark: (
 			<Icons.moon className={clsx('h-[1.2rem] w-[1.2rem]')}>
 				<span className="sr-only">Dark</span>
 			</Icons.moon>
 		),
+		light: (
+			<Icons.sun className={clsx('h-[1.2rem] w-[1.2rem]')}>
+				<span className="sr-only">Light</span>
+			</Icons.sun>
+		),
 		system: (
 			<Icons.laptop
-				name="laptop"
 				className={clsx('h-[1.2rem] w-[1.2rem]')}
+				name="laptop"
 			>
 				<span className="sr-only">System</span>
 			</Icons.laptop>
@@ -116,32 +114,32 @@ export function ThemeSwitch({
 
 	return (
 		<fetcher.Form
-			method="POST"
 			className={className}
+			method="POST"
 			{...getFormProps(form)}
 			action="/resources/theme-switch"
 		>
 			<ServerOnly>
 				{(): ReactElement => (
 					<input
-						type="hidden"
 						name="redirectTo"
+						type="hidden"
 						value={requestInfo.path}
 					/>
 				)}
 			</ServerOnly>
 			<input
-				type="hidden"
 				name="theme"
+				type="hidden"
 				value={nextMode}
 			/>
 			<div className="flex gap-2">
 				<Button
 					className={clsx('flex h-8 w-8 cursor-pointer items-center justify-center')}
-					size="icon"
-					variant="ghost"
 					data-testid="ThemeSwitch"
+					size="icon"
 					type="submit"
+					variant="ghost"
 				>
 					{modeLabel[mode]}
 				</Button>

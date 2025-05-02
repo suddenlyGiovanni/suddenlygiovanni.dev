@@ -1,7 +1,7 @@
+import type { MetaBase, OpenGraphMeta, og, PropertyVideoMovie } from './open-graph.ts'
 import type { BasicRecord, OgType, OptionalRecord } from './open-graph-base.ts'
-import { type OpenGraphVideoBase, _makeOpenGraphVideoBase } from './open-graph-video-base.ts'
 import type { video } from './open-graph-video.ts'
-import type { MetaBase, OpenGraphMeta, PropertyVideoMovie, og } from './open-graph.ts'
+import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base.ts'
 import type * as Types from './types.ts'
 import type { ValueOf } from './utils/index.ts'
 

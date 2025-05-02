@@ -1,11 +1,11 @@
+import type { MetaBase, OpenGraphMeta, og } from './open-graph.ts'
 import {
 	type BasicRecord,
+	makeOpenGraphBase,
 	type OgType,
 	type OpenGraphBaseWithOptional,
 	type OptionalRecord,
-	makeOpenGraphBase,
 } from './open-graph-base.ts'
-import type { MetaBase, OpenGraphMeta, og } from './open-graph.ts'
 import type * as Types from './types.ts'
 
 type OgTypeWebsite = MetaBase<og<'type'>, Types.Enum<'website'>>

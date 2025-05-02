@@ -1,14 +1,13 @@
-import type { ReactElement, SyntheticEvent } from 'react'
-
 import { Layout } from '@repo/ui/components/layout/layout.tsx'
 import { NavigationMenuToggle } from '@repo/ui/components/navigation-menu-toggle/navigation-menu-toggle.tsx'
 import { SuddenlyGiovanni } from '@repo/ui/components/suddenly-giovanni/suddenly-giovanni.tsx'
 import { useToggle } from '@repo/ui/hooks/use-toggle.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
-
 import avatarAssetUrl from 'content/assets/giovanni_ravalico-profile_bw.webp'
-import { routesRecord } from '#root/client/routes-record.ts'
+import type { ReactElement, SyntheticEvent } from 'react'
+
 import { ThemeSwitch } from '#root/client/routes/resources/theme-switch.tsx'
+import { routesRecord } from '#root/client/routes-record.ts'
 
 import { NavLink } from './nav-link.tsx'
 
@@ -86,16 +85,16 @@ export function Header({ theme }: { theme: 'light' | 'dark' | null }): ReactElem
 									onClick={handleMobileNavigationClick}
 									prefetch="intent"
 									role="menuitem"
-									to={url}
 									tabIndex={0}
+									to={url}
 								>
 									{title}
 								</NavLink>
 							</li>
 						))}
 						<ThemeSwitch
-							userPreference={theme}
 							className="ml-16 aspect-square"
+							userPreference={theme}
 						/>
 					</menu>
 				</nav>

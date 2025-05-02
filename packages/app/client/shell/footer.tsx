@@ -1,5 +1,3 @@
-import type { JSX } from 'react'
-
 import { Layout } from '@repo/ui/components/layout/layout.tsx'
 import {
 	GitHubIconLink,
@@ -7,6 +5,7 @@ import {
 	TwitterIconLink,
 } from '@repo/ui/components/social/social.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
+import type { JSX } from 'react'
 
 import { config } from '#root/client/config.ts'
 

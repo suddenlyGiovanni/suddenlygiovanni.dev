@@ -3,7 +3,6 @@ import type { StorybookConfig } from '@storybook/react-vite'
 const defineConfig = (config: StorybookConfig): StorybookConfig => config
 
 export default defineConfig({
-	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 	addons: [
 		'@storybook/addon-onboarding',
 		'@storybook/addon-links',
@@ -13,17 +12,18 @@ export default defineConfig({
 		'@storybook/addon-themes',
 		'@storybook/addon-a11y',
 	],
+	docs: {},
 	framework: {
 		name: '@storybook/react-vite',
 		options: {
 			strictMode: true,
 		},
 	},
-	docs: {},
 	staticDirs: [
 		// make sure we are serving the same assets as the Remix app
 		'../../app/public',
 	],
+	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 	typescript: {
 		reactDocgen: 'react-docgen-typescript',
 	},

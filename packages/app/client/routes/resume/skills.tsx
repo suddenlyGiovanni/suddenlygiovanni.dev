@@ -1,20 +1,15 @@
-import { Option } from 'effect'
-import { type MouseEventHandler, type ReactElement, useState } from 'react'
-
 import { Icons } from '@repo/ui/components/icons/icons.tsx'
 import { T } from '@repo/ui/components/typography/typography.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
 import { Accordion, AccordionContent, AccordionItem, Trigger } from '@repo/ui/ui/accordion.tsx'
 import { Button } from '@repo/ui/ui/button.tsx'
 import type { Skill as ResumeSkill } from '@suddenly-giovanni/schema-resume'
+import { Option } from 'effect'
+import { type MouseEventHandler, type ReactElement, useState } from 'react'
 
 import { getDevIconComponent } from './dev-icons.tsx'
 
-export function Skills({
-	skills,
-}: {
-	readonly skills: readonly ResumeSkill[]
-}): ReactElement {
+export function Skills({ skills }: { readonly skills: readonly ResumeSkill[] }): ReactElement {
 	const all = skills.map((_, idx) => `skill-${idx}`)
 	const none: string[] = []
 	const initialState: string[] = all[0] ? [all[0]] : none
@@ -49,10 +44,7 @@ export function Skills({
 						key={name}
 						keywords={keywords}
 						name={name}
-						value={
-							// biome-ignore lint/style/noNonNullAssertion: FIXME: move away from non null assertions
-							all.at(idx)!
-						}
+						value={all.at(idx)!}
 					/>
 				))}
 			</Accordion>
@@ -89,11 +81,7 @@ function Skill({ name, keywords, value }: ResumeSkill & { readonly value: string
 	)
 }
 
-function KeywordsList({
-	keywords,
-}: {
-	readonly keywords: ResumeSkill['keywords']
-}): ReactElement {
+function KeywordsList({ keywords }: { readonly keywords: ResumeSkill['keywords'] }): ReactElement {
 	return (
 		<AccordionContent asChild={true}>
 			<T.ul
@@ -112,11 +100,7 @@ function KeywordsList({
 	)
 }
 
-function Keyword({
-	keyword,
-}: {
-	readonly keyword: ResumeSkill['keywords'][number]
-}): ReactElement {
+function Keyword({ keyword }: { readonly keyword: ResumeSkill['keywords'][number] }): ReactElement {
 	const maybeIcon = getDevIconComponent(keyword)
 	const classname = clsx('my-0 flex w-fit flex-row items-center justify-start gap-1 align-middle')
 

@@ -8,30 +8,20 @@ import { withThemeByColorScheme } from './with_theme_by_color_scheme.tsx'
 import '../src/styles/styles.css'
 
 const themeConfig = {
-	themes: {
-		light: 'light',
-		dark: 'dark',
-	},
 	defaultTheme: 'light',
+	themes: {
+		dark: 'dark',
+		light: 'light',
+	},
 } as const
 
 const preview: Preview = {
-	parameters: {
-		actions: { argTypesRegex: '^on.*' },
-		controls: {
-			matchers: {
-				color: /(background|color)$/i,
-				date: /Date$/i,
-			},
-		},
-	},
-
 	decorators: [
 		story => {
 			const RemixStub = createRoutesStub([
 				{
-					path: '/',
 					Component: (): ReactNode => story(),
+					path: '/',
 				},
 			])
 			return <RemixStub />
@@ -43,6 +33,16 @@ const preview: Preview = {
 		}),
 		withThemeByColorScheme(themeConfig),
 	],
+
+	parameters: {
+		actions: { argTypesRegex: '^on.*' },
+		controls: {
+			matchers: {
+				color: /(background|color)$/i,
+				date: /Date$/i,
+			},
+		},
+	},
 
 	tags: ['autodocs'],
 }

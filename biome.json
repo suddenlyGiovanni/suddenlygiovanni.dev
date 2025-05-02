@@ -1,14 +1,55 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"defaultBranch": "main",
-		"useIgnoreFile": true,
-		"root": "."
-	},
-	"organizeImports": {
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							":URL:",
+							":BLANK_LINE:",
+
+							":BLANK_LINE:",
+							":NODE:",
+							":BUN:",
+							":BLANK_LINE:",
+
+							":BLANK_LINE:",
+							":PACKAGE_WITH_PROTOCOL:",
+							":PACKAGE:",
+							":BLANK_LINE:",
+
+							":BLANK_LINE:",
+							":ALIAS:",
+							"@repo/**",
+							":BLANK_LINE:",
+
+							":BLANK_LINE:",
+							":PATH:",
+							":BLANK_LINE:"
+						]
+					}
+				},
+				"recommended": true,
+				"useSortedAttributes": "on",
+				"useSortedKeys": "on",
+				"useSortedProperties": "on"
+			}
+		},
 		"enabled": true
+	},
+	"css": {
+		"formatter": {
+			"enabled": true,
+			"indentStyle": "tab",
+			"indentWidth": 2,
+			"lineEnding": "lf",
+			"lineWidth": 80
+		},
+		"linter": {
+			"enabled": false
+		}
 	},
 	"formatter": {
 		"enabled": true,
@@ -19,44 +60,63 @@
 		"lineWidth": 100,
 		"useEditorconfig": true
 	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"all": true,
-			"correctness": {
-				"noUndeclaredDependencies": "off"
-			},
-			"nursery": {
-				"all": true,
-				"useExplicitType": "off"
-			},
-			"suspicious": { "noReactSpecificProps": "off", "noConsole": "info" }
-		}
-	},
 	"javascript": {
 		"formatter": {
-			"enabled": true,
 			"arrowParentheses": "asNeeded",
+			"attributePosition": "multiline",
 			"bracketSameLine": false,
 			"bracketSpacing": true,
+			"enabled": true,
 			"jsxQuoteStyle": "double",
 			"quoteProperties": "asNeeded",
-			"semicolons": "asNeeded",
 			"quoteStyle": "single",
-			"trailingCommas": "all",
-			"attributePosition": "multiline"
+			"semicolons": "asNeeded",
+			"trailingCommas": "all"
 		}
 	},
-	"css": {
-		"formatter": {
-			"enabled": true,
-			"indentStyle": "tab",
-			"lineWidth": 80,
-			"lineEnding": "lf",
-			"indentWidth": 2
+	"linter": {
+		"domains": {
+			"react": "recommended",
+			"test": "recommended"
 		},
-		"linter": {
-			"enabled": false
+		"enabled": true,
+		"rules": {
+			"a11y": {
+				"recommended": true
+			},
+			"complexity": {
+				"recommended": true
+			},
+			"correctness": {
+				"noUndeclaredDependencies": "off",
+				"recommended": true
+			},
+			"nursery": {
+				"recommended": true,
+				"useExplicitType": "off"
+			},
+			"performance": {
+				"recommended": true
+			},
+			"recommended": true,
+			"security": {
+				"recommended": true
+			},
+			"style": {
+				"recommended": true
+			},
+			"suspicious": {
+				"noConsole": "info",
+				"noReactSpecificProps": "off",
+				"recommended": true
+			}
 		}
+	},
+	"vcs": {
+		"clientKind": "git",
+		"defaultBranch": "main",
+		"enabled": true,
+		"root": ".",
+		"useIgnoreFile": true
 	}
 }

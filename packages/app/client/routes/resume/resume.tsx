@@ -1,34 +1,30 @@
+import { makeOpenGraphWebsite, Types } from '@repo/open-graph-protocol'
+import { clsx } from '@repo/ui/lib/utils.ts'
+import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { Effect } from 'effect'
 import type { ReactElement } from 'react'
 import { Link } from 'react-router'
 
-import { Types, makeOpenGraphWebsite } from '@repo/open-graph-protocol'
-import { clsx } from '@repo/ui/lib/utils.ts'
-
-import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import { config } from '#root/client/config.ts'
-import { routesRecord } from '#root/client/routes-record.ts'
 import { Languages } from '#root/client/routes/resume/languages.tsx'
+import { routesRecord } from '#root/client/routes-record.ts'
 import { loaderFunction } from '#root/client/services/index.ts'
 import { ResumeRepository } from '#root/client/services/resume-repository.ts'
 
+import type { Route } from './+types/resume.ts'
 import { Basics } from './basics.tsx'
 import { Education } from './education.tsx'
 import { Experiences } from './experiences.tsx'
 import { Interests } from './interests.tsx'
 import { Skills } from './skills.tsx'
 
-// biome-ignore lint/nursery/useImportRestrictions: <explanation>
-import type { Route } from './+types/resume.ts'
-
-// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function meta({ location }: Route.MetaArgs) {
 	const title = `${config.siteName} | Résumé`
 	const description =
 		"Giovanni Ravalico's Résumé. A place where I showcase my professional experience and skills."
 	return [
 		{ title },
-		{ name: 'description', content: description },
+		{ content: description, name: 'description' },
 		makeOpenGraphWebsite({
 			ogDescription: Types.String(description),
 			ogImage: Types.URL(config.siteUrl + hero2800wAssetUrl),
@@ -42,9 +38,9 @@ export function meta({ location }: Route.MetaArgs) {
 export const links: Route.LinksFunction = () => {
 	return [
 		{
+			href: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css',
 			rel: 'stylesheet',
 			type: 'text/css',
-			href: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css',
 		},
 	]
 }
@@ -118,8 +114,8 @@ export default function Resume({ loaderData }: Route.ComponentProps): ReactEleme
 						<span className="ml-4">
 							<a
 								href={meta.canonical}
-								target="_blank"
 								rel="noreferrer"
+								target="_blank"
 							>
 								version {meta.version}
 							</a>

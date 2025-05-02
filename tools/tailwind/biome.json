@@ -1,0 +1,23 @@
+{
+	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"css": {
+		"assist": {
+			"enabled": true
+		},
+		"formatter": {
+			"enabled": true
+		},
+		"linter": {
+			"enabled": true
+		}
+	},
+	"extends": ["../../biome.json"],
+	"files": {
+		"includes": ["./style.css", "./package.json", "biome.json"]
+	},
+	"json": {
+		"formatter": {
+			"enabled": true
+		}
+	}
+}

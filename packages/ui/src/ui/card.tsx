@@ -12,8 +12,8 @@ const Root: FC<ComponentPropsWithRef<'div'> & { asChild?: boolean }> = ({
 	const Component = asChild ? Slot : 'div'
 	return (
 		<Component
-			ref={ref}
 			className={clsx('rounded-xl border bg-card text-card-foreground shadow-sm', className)}
+			ref={ref}
 			{...props}
 		/>
 	)
@@ -22,8 +22,8 @@ Root.displayName = 'Card.Root'
 
 const Header: FC<ComponentPropsWithRef<'div'>> = ({ className, ref, ...props }) => (
 	<div
-		ref={ref}
 		className={clsx('flex flex-col space-y-1.5 p-6', className)}
+		ref={ref}
 		{...props}
 	/>
 )
@@ -31,8 +31,8 @@ Header.displayName = 'Card.Header'
 
 const Title: FC<ComponentPropsWithRef<'h3'>> = ({ className, ref, ...props }) => (
 	<h3
-		ref={ref}
 		className={clsx('font-semibold leading-none tracking-tight', className)}
+		ref={ref}
 		{...props}
 	/>
 )
@@ -40,8 +40,8 @@ Title.displayName = 'Card.Title'
 
 const Description: FC<ComponentPropsWithRef<'p'>> = ({ className, ref, ...props }) => (
 	<p
-		ref={ref}
 		className={clsx('text-muted-foreground text-sm', className)}
+		ref={ref}
 		{...props}
 	/>
 )
@@ -49,8 +49,8 @@ Description.displayName = 'Card.Description'
 
 const Content: FC<ComponentPropsWithRef<'div'>> = ({ className, ref, ...props }) => (
 	<div
-		ref={ref}
 		className={clsx('p-6 pt-0', className)}
+		ref={ref}
 		{...props}
 	/>
 )
@@ -58,18 +58,18 @@ Content.displayName = 'Card.Content'
 
 const Footer: FC<ComponentPropsWithRef<'div'>> = ({ className, ref, ...props }) => (
 	<div
-		ref={ref}
 		className={clsx('flex items-center p-6 pt-0', className)}
+		ref={ref}
 		{...props}
 	/>
 )
 Footer.displayName = 'Card.Footer'
 
 export const Card = {
-	Root,
-	Header,
-	Footer,
-	Title,
-	Description,
 	Content,
+	Description,
+	Footer,
+	Header,
+	Root,
+	Title,
 } as const

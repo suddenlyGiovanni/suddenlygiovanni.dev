@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+
 import { Placeholder } from './placeholder.tsx'
 
 const meta: Meta<typeof Placeholder> = {

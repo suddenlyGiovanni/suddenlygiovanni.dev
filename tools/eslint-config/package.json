@@ -1,12 +1,5 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
-	"name": "@repo/eslint-config",
-	"private": true,
-	"type": "module",
-	"exports": {
-		"./base": "./base.js",
-		"./react-internal": "./react-internal.js"
-	},
 	"devDependencies": {
 		"@eslint/js": "9.25.1",
 		"@typescript-eslint/eslint-plugin": "8.31.1",
@@ -20,10 +13,20 @@
 		"typescript": "catalog:",
 		"typescript-eslint": "8.26.1"
 	},
+	"exports": {
+		"./base": "./base.js",
+		"./react-internal": "./react-internal.js"
+	},
+	"name": "@repo/eslint-config",
 	"peerDependencies": {
 		"eslint": "catalog:"
 	},
+	"private": true,
 	"scripts": {
-		"clean": "rm -rf node_modules"
-	}
+		"clean": "rm -rf node_modules",
+	  	"format": "biome format",
+	  	"format:write": "biome format --write",
+	  	"lint": "biome lint"
+	},
+	"type": "module"
 }

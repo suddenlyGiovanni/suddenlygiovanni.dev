@@ -17,9 +17,9 @@ export function formatDateLocaleShort(isoString: string): Either<string, ParseEr
 			return new Date(fromLocaleDateString)
 		},
 	}).annotations({
-		title: 'localDate',
 		description: 'a short US locale date format',
 		examples: ['Apr 2022'],
+		title: 'localDate',
 	})
 	return Schema.decodeEither(schema)(isoString)
 }

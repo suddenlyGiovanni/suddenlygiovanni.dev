@@ -4,11 +4,11 @@ export const Icons = {
 	aria({ ref, ...props }): ReactNode {
 		return (
 			<svg
-				ref={ref}
-				fill="currentColor"
-				viewBox="0 0 24 24"
-				role="img"
 				aria-label="aria"
+				fill="currentColor"
+				ref={ref}
+				role="img"
+				viewBox="0 0 24 24"
 				{...props}
 			>
 				<path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624Z" />
@@ -18,11 +18,11 @@ export const Icons = {
 	chevronDown({ ref, ...props }): ReactNode {
 		return (
 			<svg
-				ref={ref}
-				role="img"
 				aria-label="chevronDown"
 				fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
@@ -40,11 +40,11 @@ export const Icons = {
 	cross2({ ref, ...props }): ReactNode {
 		return (
 			<svg
-				ref={ref}
-				role="img"
 				aria-label="cross2"
 				fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
@@ -62,14 +62,14 @@ export const Icons = {
 	desktop({ ref, ...props }): ReactNode {
 		return (
 			<svg
-				ref={ref}
+				aria-label="desktop"
 				fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				role="img"
-				aria-label="desktop"
 				{...props}
 			>
 				<path
@@ -84,14 +84,14 @@ export const Icons = {
 	envelope({ ref, ...props }): ReactNode {
 		return (
 			<svg
-				ref={ref}
+				aria-label="envelope"
 				fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				role="img"
-				aria-label="envelope"
 				{...props}
 			>
 				<path
@@ -106,14 +106,14 @@ export const Icons = {
 	gitHub({ ref, ...props }): ReactNode {
 		return (
 			<svg
-				ref={ref}
+				aria-label="gitHub"
 				// fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				role="img"
-				aria-label="gitHub"
 				{...props}
 			>
 				<path
@@ -128,14 +128,14 @@ export const Icons = {
 	globe({ ref, ...props }): ReactNode {
 		return (
 			<svg
-				ref={ref}
+				aria-label="globe"
 				fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				role="img"
-				aria-label="globe"
 				{...props}
 			>
 				<path
@@ -168,21 +168,21 @@ export const Icons = {
 	laptop({ ref, ...props }): ReactNode {
 		return (
 			<svg
+				aria-label="laptop"
+				fill="none"
+				height="15"
 				ref={ref}
 				role="img"
-				width="15"
-				height="15"
 				viewBox="0 0 15 15"
-				fill="none"
+				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				aria-label="laptop"
 				{...props}
 			>
 				<path
+					clipRule="evenodd"
 					d="M2 4.25C2 4.11193 2.11193 4 2.25 4H12.75C12.8881 4 13 4.11193 13 4.25V11.5H2V4.25ZM2.25 3C1.55964 3 1 3.55964 1 4.25V12H0V12.5C0 12.7761 0.223858 13 0.5 13H14.5C14.7761 13 15 12.7761 15 12.5V12H14V4.25C14 3.55964 13.4404 3 12.75 3H2.25Z"
 					fill="currentColor"
 					fillRule="evenodd"
-					clipRule="evenodd"
 				/>
 			</svg>
 		)
@@ -190,14 +190,14 @@ export const Icons = {
 	link2({ ref, ...props }): ReactNode {
 		return (
 			<svg
-				ref={ref}
+				aria-label="link2"
 				fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				role="img"
-				aria-label="link2"
 				{...props}
 			>
 				<path
@@ -212,21 +212,21 @@ export const Icons = {
 	linkedin({ ref, ...props }): ReactNode {
 		return (
 			<svg
-				ref={ref}
-				width="15"
-				height="15"
-				viewBox="0 0 15 15"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-				role="img"
 				aria-label="linkedin"
+				fill="none"
+				height="15"
+				ref={ref}
+				role="img"
+				viewBox="0 0 15 15"
+				width="15"
+				xmlns="http://www.w3.org/2000/svg"
 				{...props}
 			>
 				<path
-					d="M2 1C1.44772 1 1 1.44772 1 2V13C1 13.5523 1.44772 14 2 14H13C13.5523 14 14 13.5523 14 13V2C14 1.44772 13.5523 1 13 1H2ZM3.05 6H4.95V12H3.05V6ZM5.075 4.005C5.075 4.59871 4.59371 5.08 4 5.08C3.4063 5.08 2.925 4.59871 2.925 4.005C2.925 3.41129 3.4063 2.93 4 2.93C4.59371 2.93 5.075 3.41129 5.075 4.005ZM12 8.35713C12 6.55208 10.8334 5.85033 9.67449 5.85033C9.29502 5.83163 8.91721 5.91119 8.57874 6.08107C8.32172 6.21007 8.05265 6.50523 7.84516 7.01853H7.79179V6.00044H6V12.0047H7.90616V8.8112C7.8786 8.48413 7.98327 8.06142 8.19741 7.80987C8.41156 7.55832 8.71789 7.49825 8.95015 7.46774H9.02258C9.62874 7.46774 10.0786 7.84301 10.0786 8.78868V12.0047H11.9847L12 8.35713Z"
-					// fill="currentColor"
-					fillRule="evenodd"
 					clipRule="evenodd"
+					// fill="currentColor"
+					d="M2 1C1.44772 1 1 1.44772 1 2V13C1 13.5523 1.44772 14 2 14H13C13.5523 14 14 13.5523 14 13V2C14 1.44772 13.5523 1 13 1H2ZM3.05 6H4.95V12H3.05V6ZM5.075 4.005C5.075 4.59871 4.59371 5.08 4 5.08C3.4063 5.08 2.925 4.59871 2.925 4.005C2.925 3.41129 3.4063 2.93 4 2.93C4.59371 2.93 5.075 3.41129 5.075 4.005ZM12 8.35713C12 6.55208 10.8334 5.85033 9.67449 5.85033C9.29502 5.83163 8.91721 5.91119 8.57874 6.08107C8.32172 6.21007 8.05265 6.50523 7.84516 7.01853H7.79179V6.00044H6V12.0047H7.90616V8.8112C7.8786 8.48413 7.98327 8.06142 8.19741 7.80987C8.41156 7.55832 8.71789 7.49825 8.95015 7.46774H9.02258C9.62874 7.46774 10.0786 7.84301 10.0786 8.78868V12.0047H11.9847L12 8.35713Z"
+					fillRule="evenodd"
 				/>
 			</svg>
 		)
@@ -234,14 +234,14 @@ export const Icons = {
 	mobile({ ref, ...props }): ReactNode {
 		return (
 			<svg
-				ref={ref}
+				aria-label="mobile"
 				fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				role="img"
-				aria-label="mobile"
 				{...props}
 			>
 				<path
@@ -256,14 +256,14 @@ export const Icons = {
 	moon({ ref, ...props }): ReactElement {
 		return (
 			<svg
-				ref={ref}
+				aria-label="moon"
 				fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				role="img"
-				aria-label="moon"
 				{...props}
 			>
 				<path
@@ -278,14 +278,14 @@ export const Icons = {
 	rowSpacing({ ref, ...props }): ReactElement {
 		return (
 			<svg
-				ref={ref}
+				aria-label="rowSpacing"
 				fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				role="img"
-				aria-label="rowSpacing"
 				{...props}
 			>
 				<path
@@ -300,9 +300,11 @@ export const Icons = {
 	spinner({ ref, ...props }): ReactElement {
 		return (
 			<svg
-				ref={ref}
+				aria-label="spinner"
 				fill="none"
 				height="24"
+				ref={ref}
+				role="img"
 				stroke="currentColor"
 				strokeLinecap="round"
 				strokeLinejoin="round"
@@ -310,8 +312,6 @@ export const Icons = {
 				viewBox="0 0 24 24"
 				width="24"
 				xmlns="http://www.w3.org/2000/svg"
-				role="img"
-				aria-label="spinner"
 				{...props}
 			>
 				<path d="M21 12a9 9 0 1 1-6.219-8.56" />
@@ -321,14 +321,14 @@ export const Icons = {
 	sun({ ref, ...props }): ReactElement {
 		return (
 			<svg
+				aria-label="sun"
 				fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				ref={ref}
-				role="img"
-				aria-label="sun"
 				{...props}
 			>
 				<path
@@ -343,14 +343,14 @@ export const Icons = {
 	twitter({ ref, ...props }): ReactElement {
 		return (
 			<svg
-				ref={ref}
+				aria-label="twitter"
 				// fill="none"
 				height="15"
+				ref={ref}
+				role="img"
 				viewBox="0 0 15 15"
 				width="15"
 				xmlns="http://www.w3.org/2000/svg"
-				role="img"
-				aria-label="twitter"
 				{...props}
 			>
 				<path

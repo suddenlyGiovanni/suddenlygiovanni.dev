@@ -1,7 +1,3 @@
-import type * as Model from '@suddenly-giovanni/schema-resume'
-import { Either, Option } from 'effect'
-import type { ReactElement } from 'react'
-
 import { Icons } from '@repo/ui/components/icons/icons.tsx'
 import { T } from '@repo/ui/components/typography/typography.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
@@ -9,6 +5,9 @@ import { AccordionContent, AccordionItem, Trigger } from '@repo/ui/ui/accordion.
 import { Badge } from '@repo/ui/ui/badge.tsx'
 import { Button } from '@repo/ui/ui/button.tsx'
 import { Card } from '@repo/ui/ui/card.tsx'
+import type * as Model from '@suddenly-giovanni/schema-resume'
+import { Either, Option } from 'effect'
+import type { ReactElement } from 'react'
 
 import { getDevIconComponent } from '#root/client/routes/resume/dev-icons.tsx'
 import { formatDateLocaleShort } from '#root/client/routes/resume/format-date-locale-short.ts'
@@ -55,9 +54,8 @@ function getDates(roles: Model.Work['roles']): {
 		.sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
 
 	return {
-		// biome-ignore lint/style/noNonNullAssertion: we know it has a tail!
 		endDate: dates.at(-1)!,
-		// biome-ignore lint/style/noNonNullAssertion: we know it has a head!
+
 		startDate: dates.at(0)!,
 	}
 }
@@ -71,7 +69,6 @@ function ExperienceHeader(work: {
 }): ReactElement {
 	const { startDate, endDate } = getDates(work.roles)
 
-	// biome-ignore lint/style/noNonNullAssertion: this is a tuple with known size!
 	const firstRole = work.roles.at(0)!
 
 	return (
@@ -166,13 +163,15 @@ function ExperienceHeader(work: {
 
 function ExperienceSummary({
 	summary,
-}: { readonly summary: Model.Work['summary'] }): null | ReactElement {
+}: {
+	readonly summary: Model.Work['summary']
+}): null | ReactElement {
 	return summary ? (
 		<div className="mb-4">
 			{summary.split('\n').map(p => (
 				<T.blockquote
-					key={p}
 					className="my-0 text-muted-foreground text-sm"
+					key={p}
 				>
 					{p}
 				</T.blockquote>
@@ -188,10 +187,10 @@ function Roles({ roles }: { readonly roles: Model.Work['roles'] }): ReactElement
 				<li key={role.startDate}>
 					<Role
 						{...(roles.length > 1
-							? { title: role.title, startDate: role.startDate, endDate: role.endDate }
+							? { endDate: role.endDate, startDate: role.startDate, title: role.title }
 							: {})}
-						responsibilities={role.responsibilities}
 						highlights={role.highlights}
+						responsibilities={role.responsibilities}
 						technologies={role.technologies}
 					/>
 				</li>
@@ -265,9 +264,9 @@ function Role(
 
 							{role.responsibilities.map(resp => (
 								<dd
-									key={resp}
-									// role="listitem"
 									className="text-gray-600 dark:text-gray-400"
+									// role="listitem"
+									key={resp}
 								>
 									{resp.split('\n').map(resP => (
 										<p
@@ -286,9 +285,9 @@ function Role(
 								<dt className="mt-0">Highlights</dt>
 								{role.highlights.map(highlight => (
 									<dd
-										key={highlight}
-										// role="listitem"
 										className="text-gray-600 dark:text-gray-400"
+										// role="listitem"
+										key={highlight}
 									>
 										{highlight.split('\n').map(hP => (
 											<p
@@ -342,11 +341,7 @@ function ExperienceContact({
 	) : null
 }
 
-function Tech({
-	tech,
-}: {
-	readonly tech: string
-}): ReactElement {
+function Tech({ tech }: { readonly tech: string }): ReactElement {
 	const maybeIcon = getDevIconComponent(tech)
 	const classname = clsx(
 		'my-0 flex w-fit select-none flex-row items-center justify-start gap-1 align-middle',

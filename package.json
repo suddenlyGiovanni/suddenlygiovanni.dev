@@ -1,50 +1,50 @@
 {
-	"$schema": "https://json.schemastore.org/package.json",
-	"devDependencies": {
-		"@biomejs/biome": "nightly",
-		"eslint": "catalog:",
-		"typescript": "catalog:"
+  "$schema": "https://json.schemastore.org/package.json",
+  "devDependencies": {
+	"@biomejs/biome": "2.0.0-beta.2",
+	"eslint": "catalog:",
+	"typescript": "catalog:"
+  },
+  "devEngines": {
+	"packageManager": {
+	  "name": "pnpm",
+	  "version": "10.9.0",
+	  "onFail": "error"
 	},
-	"engines": {
-		"node": ">=23.9"
-	},
-	"pnpm": {
-		"overrides": {
-			"react": "catalog:",
-			"react-dom": "catalog:",
-			"@types/react": "catalog:"
-		},
-		"onlyBuiltDependencies": [
-			"@biomejs/biome",
-			"@parcel/watcher",
-			"esbuild",
-			"msgpackr-extract",
-			"msw"
-		]
-	},
-	"devEngines": {
-		"packageManager": {
-			"name": "pnpm",
-			"version": "10.9.0",
-			"onFail": "error"
-		},
-		"runtime": {
-			"name": "node",
-			"version": ">= 23.11.0",
-			"onFail": "error"
-		}
-	},
-	"private": true,
-	"scripts": {
-		"build": "pnpm run --recursive --if-present build",
-		"check": "pnpm run --recursive --parallel --aggregate-output check --write",
-		"clean": "pnpm run --recursive clean && rm -rf node_modules",
-		"dev": "pnpm run --recursive --parallel --stream dev",
-		"format": "pnpm run --recursive --parallel --aggregate-output format",
-		"format:write": "pnpm run --recursive --parallel --aggregate-output format:write",
-		"lint": "pnpm run --recursive --parallel --aggregate-output lint",
-		"test": "pnpm run --recursive test run",
-		"typecheck": "pnpm run --recursive typecheck",
-		"typecheck:watch": "pnpm run --recursive --stream typecheck --watch --preserveWatchOutput"
+	"runtime": {
+	  "name": "node",
+	  "version": ">= 23.11.0",
+	  "onFail": "error"
 	}
+  },
+  "engines": {
+	"node": ">=23.9"
+  },
+  "pnpm": {
+	"overrides": {
+	  "react": "catalog:",
+	  "react-dom": "catalog:",
+	  "@types/react": "catalog:"
+	},
+	"onlyBuiltDependencies": [
+	  "@biomejs/biome",
+	  "@parcel/watcher",
+	  "esbuild",
+	  "msgpackr-extract",
+	  "msw"
+	]
+  },
+  "private": true,
+  "scripts": {
+	"build": "pnpm run --recursive --if-present build",
+	"check": "pnpm run --recursive --parallel --aggregate-output check --write",
+	"clean": "pnpm run --recursive clean && rm -rf node_modules",
+	"dev": "pnpm run --recursive --parallel --stream dev",
+	"format": "pnpm run --recursive --parallel --aggregate-output format",
+	"format:write": "pnpm run --recursive --parallel --aggregate-output format:write",
+	"lint": "pnpm run --recursive --parallel --aggregate-output lint",
+	"test": "pnpm run --recursive test run",
+	"typecheck": "pnpm run --recursive typecheck",
+	"typecheck:watch": "pnpm run --recursive --stream typecheck --watch --preserveWatchOutput"
+  }
 }

@@ -3,6 +3,7 @@ import eslintConfigPrettier from 'eslint-config-prettier'
 import pluginReact from 'eslint-plugin-react'
 import * as reactHooks from 'eslint-plugin-react-hooks'
 import globals from 'globals'
+
 import { config as baseConfig } from './base.js'
 
 /**

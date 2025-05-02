@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+
 import { NavigationMenuToggle } from './navigation-menu-toggle.tsx'
 
 const meta: Meta<typeof NavigationMenuToggle> = {

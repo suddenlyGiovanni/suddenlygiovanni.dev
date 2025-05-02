@@ -15,8 +15,8 @@ export const Body = {
 		return (
 			<Layout.Body
 				{...args}
-				className="border-violet-500 border-dashed bg-violet-200 text-center text-violet-500 text-xl"
 				asChild={true}
+				className="border-violet-500 border-dashed bg-violet-200 text-center text-violet-500 text-xl"
 			>
 				<div>
 					Body

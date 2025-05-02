@@ -1,5 +1,6 @@
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
+/** biome-ignore-all lint/suspicious/noConsole: legit console error statement. */
 import { PassThrough } from 'node:stream'
+
 import { createReadableStreamFromReadable } from '@react-router/node'
 import { isbot } from 'isbot'
 import { renderToPipeableStream } from 'react-dom/server'
@@ -34,9 +35,9 @@ function handleBotRequest(
 		let shellRendered = false
 		const { pipe, abort } = renderToPipeableStream(
 			<ServerRouter
+				abortDelay={ABORT_DELAY}
 				context={reactRouterContext}
 				url={request.url}
-				abortDelay={ABORT_DELAY}
 			/>,
 			{
 				onAllReady(): void {
@@ -55,11 +56,8 @@ function handleBotRequest(
 
 					pipe(body)
 				},
-				onShellError(error: unknown): void {
-					reject(error)
-				},
 				onError(error: unknown): void {
-					// biome-ignore lint/style/noParameterAssign: this is how Remix defined the default entry.server
+					// biome-ignore lint/style/noParameterAssign: xxx
 					responseStatusCode = 500
 					/*
 					 Log streaming rendering errors from inside the shell.  Don't log
@@ -67,9 +65,11 @@ function handleBotRequest(
 					 reject and get logged in handleDocumentRequest.
 					*/
 					if (shellRendered) {
-						// biome-ignore lint/suspicious/noConsole: legit console error statement.
 						console.error(error)
 					}
+				},
+				onShellError(error: unknown): void {
+					reject(error)
 				},
 			},
 		)
@@ -88,11 +88,26 @@ function handleBrowserRequest(
 		let shellRendered = false
 		const { pipe, abort } = renderToPipeableStream(
 			<ServerRouter
+				abortDelay={ABORT_DELAY}
 				context={reactRouterContext}
 				url={request.url}
-				abortDelay={ABORT_DELAY}
 			/>,
 			{
+				onError(error: unknown): void {
+					// biome-ignore lint/style/noParameterAssign: xxx
+					responseStatusCode = 500
+					/*
+					 Log streaming rendering errors from inside the shell.  Don't log
+					 errors encountered during initial shell rendering since they'll
+					 reject and get logged in handleDocumentRequest.
+					*/
+					if (shellRendered) {
+						console.error(error)
+					}
+				},
+				onShellError(error: unknown): void {
+					reject(error)
+				},
 				onShellReady(): void {
 					shellRendered = true
 					const body = new PassThrough()
@@ -108,22 +123,6 @@ function handleBrowserRequest(
 					)
 
 					pipe(body)
-				},
-				onShellError(error: unknown): void {
-					reject(error)
-				},
-				onError(error: unknown): void {
-					// biome-ignore lint/style/noParameterAssign: this is how Remix defined the default entry.server
-					responseStatusCode = 500
-					/*
-					 Log streaming rendering errors from inside the shell.  Don't log
-					 errors encountered during initial shell rendering since they'll
-					 reject and get logged in handleDocumentRequest.
-					*/
-					if (shellRendered) {
-						// biome-ignore lint/suspicious/noConsole: legit console error statement.
-						console.error(error)
-					}
 				},
 			},
 		)

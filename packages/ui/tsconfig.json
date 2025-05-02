@@ -1,13 +1,13 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": "@repo/typescript-config/react-library.json",
 	"compilerOptions": {
 		"baseUrl": ".",
 		"noEmit": true,
 		"types": ["@total-typescript/ts-reset", "vite/client", "react", "react-dom"],
 		"useDefineForClassFields": true
 	},
+	"exclude": ["dist", "build", "node_modules", "./~"],
+	"extends": "@repo/typescript-config/react-library.json",
 
-	"include": ["vite.config.ts", "./.storybook/**/*", "./src/**/*"],
-	"exclude": ["dist", "build", "node_modules", "./~"]
+	"include": ["vite.config.ts", "./.storybook/**/*", "./src/**/*"]
 }

@@ -1,8 +1,8 @@
 {
-	"files": ["base.js", "react-internal.js"],
 	"compilerOptions": {
 		"allowJs": true,
 		"checkJs": true,
 		"esModuleInterop": true
-	}
+	},
+	"files": ["base.js", "react-internal.js"]
 }

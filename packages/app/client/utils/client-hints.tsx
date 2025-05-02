@@ -8,7 +8,6 @@ import { clientHint as timeZoneHint } from '@epic-web/client-hints/time-zone'
 import { type ReactElement, useEffect } from 'react'
 import { useRevalidator } from 'react-router'
 
-// biome-ignore lint/nursery/useImportRestrictions: <explanation>
 import type { Info } from '../+types/root.ts'
 import { useOptionalRequestInfo, useRequestInfo } from './request-info.ts'
 
@@ -40,11 +39,11 @@ export function ClientHintCheck({ nonce }: { nonce?: string }): ReactElement {
 
 	return (
 		<script
-			nonce={nonce}
-			// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
 			dangerouslySetInnerHTML={{
 				__html: hintsUtils.getClientHintCheckScript(),
 			}}
+			// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+			nonce={nonce}
 		/>
 	)
 }

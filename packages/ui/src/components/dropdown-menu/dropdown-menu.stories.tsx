@@ -67,9 +67,9 @@ export const Checkboxes: StoryFn = () => {
 }
 
 const Position = {
-	Top: 'top',
 	Bottom: 'bottom',
 	Right: 'right',
+	Top: 'top',
 } as const
 
 type Position = (typeof Position)[keyof typeof Position]

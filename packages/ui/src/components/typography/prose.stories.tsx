@@ -21,11 +21,11 @@ export function Prose(): ReactElement {
 			>
 				<div className={clsx('prose prose-slate lg:prose-lg mx-auto mt-8')}>
 					<svg
+						aria-label="foo???"
 						className="h-6"
 						fill="none"
-						viewBox="0 0 297 24"
-						aria-label="foo???"
 						role="img"
+						viewBox="0 0 297 24"
 					>
 						<path
 							className="fill-sky-400"
