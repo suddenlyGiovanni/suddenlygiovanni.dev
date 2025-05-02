@@ -43,7 +43,7 @@
 		"babel-plugin-react-compiler": "catalog:",
 		"globals": "16.0.0",
 		"msw": "2.7.3",
-		"react-router-devtools": "2.0.0-beta.0",
+		"react-router-devtools": "5.0.0",
 		"tailwindcss": "catalog:",
 		"vite": "catalog:",
 		"vite-plugin-babel": "1.3.0",
