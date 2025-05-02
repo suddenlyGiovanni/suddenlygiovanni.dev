@@ -27,7 +27,7 @@ jobs:
           --vcs-root="../../" \
           --formatter-enabled=true \
           --linter-enabled=false \
-          --organize-imports-enabled=true \
+          --assist-enabled=true \
           --reporter=github
 
       - name: 🚨 Lint code
@@ -40,7 +40,7 @@ jobs:
           --vcs-root="../../" \
           --formatter-enabled=false \
           --linter-enabled=true \
-          --organize-imports-enabled=false \
+          --assist-enabled=false \
           --reporter=github .
 
       - name: 🔍 Typecheck code

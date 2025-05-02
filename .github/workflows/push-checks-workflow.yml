@@ -33,7 +33,7 @@ jobs:
           --vcs-root="../../" \
           --formatter-enabled=false \
           --linter-enabled=true \
-          --organize-imports-enabled=true \
+          --assist-enabled=true \
           --no-errors-on-unmatched \
           --reporter=github \
           --changed \
@@ -54,7 +54,7 @@ jobs:
           --vcs-root="../../" \
           --formatter-enabled=true \
           --linter-enabled=false  \
-          --organize-imports-enabled=true \
+          --assist-enabled=true \
           --reporter=github \
           --changed \
           --no-errors-on-unmatched \
