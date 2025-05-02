@@ -1,14 +1,14 @@
 import {
 	type BaseOrExtended,
-	type MIMEContent,
 	type MetaBase,
-	type OpenGraphMeta,
-	PropertyVideo,
+	type MIMEContent,
 	makeOpenGraphMeta,
+	type OpenGraphMeta,
 	type og,
+	PropertyVideo,
 } from './open-graph.ts'
 import type * as Types from './types.ts'
-import { type ValueOf, insertIf, isArray } from './utils/index.ts'
+import { insertIf, isArray, type ValueOf } from './utils/index.ts'
 
 export type video<T extends string = ''> = BaseOrExtended<'video', T>
 

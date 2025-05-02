@@ -1,7 +1,6 @@
+import { clsx } from '@repo/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 import { type NavLinkProps, NavLink as UnstyledNavLink } from 'react-router'
-
-import { clsx } from '@repo/ui/lib/utils.ts'
 
 /**
  * Calculates class name based on activated state and base classes
@@ -40,7 +39,7 @@ export function NavLink({
 	return (
 		<UnstyledNavLink
 			{...props}
-			className={({ isActive }): string => calculateClassName({ isActive, className })}
+			className={({ isActive }): string => calculateClassName({ className, isActive })}
 		>
 			{children}
 		</UnstyledNavLink>

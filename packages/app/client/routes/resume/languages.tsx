@@ -1,7 +1,6 @@
-import type { ReactElement } from 'react'
-
 import { T } from '@repo/ui/components/typography/typography.tsx'
 import type * as Model from '@suddenly-giovanni/schema-resume'
+import type { ReactElement } from 'react'
 
 export function Languages({
 	languages,

@@ -58,8 +58,8 @@ export const handler: Effect.Effect<
 	 */
 	let controller: null | AbortController = new AbortController()
 	const init: RequestInit = {
-		method: httpServerRequest.method,
 		headers: httpServerRequest.headers,
+		method: httpServerRequest.method,
 		signal: controller.signal,
 	}
 
@@ -91,9 +91,9 @@ export const handler: Effect.Effect<
 	}
 
 	const options: HttpServerResponse.Options = {
+		headers: Headers.fromInput(response.headers),
 		status: response.status,
 		statusText: response.statusText,
-		headers: Headers.fromInput(response.headers),
 	}
 
 	if (response.body) {

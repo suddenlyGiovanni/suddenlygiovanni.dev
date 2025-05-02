@@ -17,13 +17,13 @@ export class Octokit extends Effect.Service<Octokit>()('app/services/Octokit', {
 				f: (client: typeof _client, signal: AbortSignal) => Promise<A>,
 			): Effect.Effect<A, OctokitError> =>
 				Effect.tryPromise({
-					try: signal => f(_client, signal),
 					catch: error => {
 						if (error instanceof RequestError) {
 							return new OctokitError({ cause: error })
 						}
 						return new OctokitError({ cause: error })
 					},
+					try: signal => f(_client, signal),
 				}),
 		)
 

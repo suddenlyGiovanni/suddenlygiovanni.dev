@@ -531,8 +531,8 @@ export function Animated2D(): ReactElement {
 						<AccordionTrigger className={triggerClass}>{value}</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={animated2dContentClass}>
-						<div style={{ padding: 10, background: 'whitesmoke', overflow: 'hidden' }}>
-							<div style={{ width: 'calc(20em - 20px)', height: 100 }}>
+						<div style={{ background: 'whitesmoke', overflow: 'hidden', padding: 10 }}>
+							<div style={{ height: 100, width: 'calc(20em - 20px)' }}>
 								Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
 								viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
 								suscipit habitant sed.

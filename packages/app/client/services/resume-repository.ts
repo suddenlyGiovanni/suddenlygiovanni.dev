@@ -1,7 +1,6 @@
+import { Resume } from '@suddenly-giovanni/schema-resume'
 import { Data, Effect, Option, Schema } from 'effect'
 import type { ParseError } from 'effect/ParseResult'
-
-import { Resume } from '@suddenly-giovanni/schema-resume'
 
 import { Meta } from '#root/client/models/resume/meta/meta.ts'
 import { parseYml } from '#root/client/schemas/parse-yml.ts'
@@ -26,7 +25,6 @@ import { Octokit, type OctokitError } from '#root/client/services/octokit.ts'
  * This error can be thrown when the GITHUB_TOKEN is not set in the environment variables.
  */
 
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
 class AuthenticationError extends Data.TaggedError('AuthenticationError')<{
 	readonly message?: string
 }> {}
@@ -35,8 +33,6 @@ class AuthenticationError extends Data.TaggedError('AuthenticationError')<{
  * This error can be thrown when the getContent request to the GitHub API fails due to network
  * issues.
  */
-
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
 class NetworkError extends Data.TaggedError('NetworkError')<{ readonly message?: string }> {}
 
 /**
@@ -44,7 +40,6 @@ class NetworkError extends Data.TaggedError('NetworkError')<{ readonly message?:
  * not 200.
  */
 
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
 class ApiResponseError extends Data.TaggedError('ApiResponseError')<{
 	readonly message?: string
 }> {}
@@ -131,8 +126,8 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 						const octokitResponse = yield* octokit.use((client, signal) =>
 							client.rest.repos.getContent({
 								owner: owner,
-								repo: repo,
 								path: path,
+								repo: repo,
 								...(ref ? { ref } : {}),
 								request: {
 									signal,
@@ -188,17 +183,17 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 						)
 
 						const decodedContent = yield* Effect.try({
-							try: (): string => Buffer.from(content, 'base64').toString('utf8'),
 							catch: (_error): DecodingError =>
 								new DecodingError({
-									message: 'failed to parse data content',
 									encoding: encoding,
+									message: 'failed to parse data content',
 								}),
+							try: (): string => Buffer.from(content, 'base64').toString('utf8'),
 						})
 
 						return {
-							decodedContent,
 							canonical: Option.fromNullable(maybeCanonical),
+							decodedContent,
 							lastModified: Option.fromNullable(octokitResponse.headers['last-modified']),
 						}
 					}),

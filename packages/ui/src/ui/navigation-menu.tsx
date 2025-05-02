@@ -143,6 +143,5 @@ export {
 	NavigationMenuSub,
 	NavigationMenuTrigger,
 	NavigationMenuViewport,
-	// biome-ignore lint/nursery/useComponentExportOnlyModules: <explanation>
 	navigationMenuTriggerStyle,
 }

@@ -1,21 +1,21 @@
 import {
+	type BaseOrExtended,
+	type MetaBase,
+	makeOpenGraphMeta,
+	type OpenGraphMeta,
+	type og,
+	PropertyArticle,
+} from './open-graph.ts'
+import {
 	type BasicRecord,
+	makeOpenGraphBase,
 	type OgType,
 	type OpenGraphBaseWithOptional,
 	type OptionalRecord,
-	makeOpenGraphBase,
 } from './open-graph-base.ts'
-import { type OpenGraphProfile, makeOpenGraphProfile } from './open-graph-profile.ts'
-import {
-	type BaseOrExtended,
-	type MetaBase,
-	type OpenGraphMeta,
-	PropertyArticle,
-	makeOpenGraphMeta,
-	type og,
-} from './open-graph.ts'
+import { makeOpenGraphProfile, type OpenGraphProfile } from './open-graph-profile.ts'
 import type * as Types from './types.ts'
-import { type ValueOf, insertIf, isArray } from './utils/index.ts'
+import { insertIf, isArray, type ValueOf } from './utils/index.ts'
 
 type Article<T extends string = ''> = BaseOrExtended<'article', T>
 

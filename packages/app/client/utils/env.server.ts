@@ -1,26 +1,9 @@
-// biome-ignore lint/correctness/noNodejsModules: <explanation>
-// biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as process from 'node:process'
+
 import { Either, Schema } from 'effect'
 import { TreeFormatter } from 'effect/ParseResult'
 
 const envSchema = Schema.Struct({
-	// biome-ignore lint/style/useNamingConvention: <explanation>
-	NODE_ENV: Schema.Literal('production', 'development', 'test'),
-	// biome-ignore lint/style/useNamingConvention: <explanation>
-	GITHUB_TOKEN: Schema.optionalWith(
-		Schema.NonEmptyString.annotations({
-			description: 'GitHub token',
-			examples: ['github_pat_xxxxxxx_xxxxxx'],
-		}),
-		{
-			exact: true,
-			default(): string {
-				return 'MOCK_GITHUB_TOKEN'
-			},
-		},
-	),
-	// biome-ignore lint/style/useNamingConvention: <explanation>
 	ALLOW_INDEXING: Schema.optionalWith(
 		Schema.transform(Schema.Literal('true', 'false'), Schema.Boolean, {
 			decode(string: 'true' | 'false'): boolean {
@@ -38,17 +21,29 @@ const envSchema = Schema.Struct({
 			},
 		}),
 		{
-			exact: true,
 			default(): false {
 				return false
 			},
+			exact: true,
 		},
 	),
+	GITHUB_TOKEN: Schema.optionalWith(
+		Schema.NonEmptyString.annotations({
+			description: 'GitHub token',
+			examples: ['github_pat_xxxxxxx_xxxxxx'],
+		}),
+		{
+			default(): string {
+				return 'MOCK_GITHUB_TOKEN'
+			},
+			exact: true,
+		},
+	),
+
+	NODE_ENV: Schema.Literal('production', 'development', 'test'),
 })
 
 declare global {
-	// biome-ignore lint/style/noNamespace: <explanation>
-	// biome-ignore lint/style/useNamingConvention: this is the correct overload
 	namespace NodeJS {
 		interface ProcessEnv extends Schema.Schema.Encoded<typeof envSchema> {}
 	}
@@ -80,13 +75,10 @@ export function init(): void {
  * @returns all public ENV variables
  */
 
-// biome-ignore lint/nursery/useExplicitType: <explanation>
 export function getEnv() {
 	return {
-		// biome-ignore lint/style/useNamingConvention: <explanation>
-		MODE: process.env.NODE_ENV,
-		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ALLOW_INDEXING: process.env.ALLOW_INDEXING,
+		MODE: process.env.NODE_ENV,
 	} as const
 }
 
@@ -95,7 +87,6 @@ export type Env = ReturnType<typeof getEnv>
 declare global {
 	var ENV: Env
 	interface Window {
-		// biome-ignore lint/style/useNamingConvention: <explanation>
 		ENV: Env
 	}
 }

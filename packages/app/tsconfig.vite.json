@@ -1,6 +1,5 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"extends": ["./tsconfig.json", "@repo/typescript-config/remix.json"],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"composite": true,
@@ -19,12 +18,13 @@
 			"@types/mdx"
 		]
 	},
+	"exclude": ["build", "node_modules", "./~"],
+	"extends": ["./tsconfig.json", "@repo/typescript-config/remix.json"],
 	"include": [
 		"vite.config.ts",
 		".react-router/types/**/*",
 		"client/**/*",
 		"types/*.d.ts",
 		"types/*.ts"
-	],
-	"exclude": ["build", "node_modules", "./~"]
+	]
 }

@@ -1,4 +1,3 @@
-// biome-ignore lint/style/noNamespaceImport: <explanation>
 import * as Clsx from '@nick/clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -12,5 +11,5 @@ export function clsx(...classes: Clsx.ClassValues): string {
 	return twMerge(Clsx.clsx(classes))
 }
 
-export { type VariantProps, cva } from 'class-variance-authority'
+export { cva, type VariantProps } from 'class-variance-authority'
 export { tv } from 'tailwind-variants'

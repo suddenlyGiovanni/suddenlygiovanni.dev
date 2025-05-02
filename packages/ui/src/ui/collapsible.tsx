@@ -4,6 +4,6 @@ const Collapsible = Root
 export { Collapsible }
 
 export {
-	CollapsibleTrigger,
 	CollapsibleContent,
+	CollapsibleTrigger,
 } from '@radix-ui/react-collapsible'

@@ -27,46 +27,46 @@ interface Route<
 
 export const routesRecord = {
 	'about-me': {
-		uri: 'about-me',
-		url: '/',
-		title: 'about me',
 		description: 'Go to about me page',
 		disabled: false,
 		hidden: false,
+		title: 'about me',
+		uri: 'about-me',
+		url: '/',
 	},
-	'second-brain': {
-		uri: 'second-brain',
-		url: '/second-brain',
-		title: 'second brain',
-		description: 'Go to second brain page',
-		disabled: true,
-		hidden: false,
-	},
-
-	'reading-journal': {
-		uri: 'reading-journal',
-		url: '/reading-journal',
-		title: 'reading journal',
-		description: 'Go to reading journal page',
-		disabled: true,
-		hidden: false,
-	},
-
-	resume: {
-		uri: 'resume',
-		url: '/resume',
-		title: 'résumé',
-		description: 'Go to resume page',
-		disabled: false,
-		hidden: false,
-	},
-
 	motivations: {
-		uri: 'motivations',
-		url: '/motivations',
-		title: 'motivations',
 		description: 'Go to my motivations',
 		disabled: false,
 		hidden: true,
+		title: 'motivations',
+		uri: 'motivations',
+		url: '/motivations',
+	},
+
+	'reading-journal': {
+		description: 'Go to reading journal page',
+		disabled: true,
+		hidden: false,
+		title: 'reading journal',
+		uri: 'reading-journal',
+		url: '/reading-journal',
+	},
+
+	resume: {
+		description: 'Go to resume page',
+		disabled: false,
+		hidden: false,
+		title: 'résumé',
+		uri: 'resume',
+		url: '/resume',
+	},
+
+	'second-brain': {
+		description: 'Go to second brain page',
+		disabled: true,
+		hidden: false,
+		title: 'second brain',
+		uri: 'second-brain',
+		url: '/second-brain',
 	},
 } as const satisfies Readonly<Record<string, Route>>

@@ -6,23 +6,22 @@ interface SocialProfile {
 type Socials = Record<SocialNetwork, SocialProfile>
 
 export const config = {
+	siteName: 'suddenlyGiovanni',
+	siteUrl: 'https://www.suddenlygiovanni.dev',
 	socials: {
-		// biome-ignore lint/style/useNamingConvention: <explanation>
 		GitHub: {
-			url: 'https://github.com/suddenlyGiovanni/',
 			handle: 'suddenlyGiovanni',
+			url: 'https://github.com/suddenlyGiovanni/',
 		},
-		// biome-ignore lint/style/useNamingConvention: <explanation>
-		Twitter: {
-			url: 'https://twitter.com/suddenlyGio/',
-			handle: 'suddenlyGio',
-		},
-		// biome-ignore lint/style/useNamingConvention: <explanation>
+
 		LinkedIn: {
-			url: 'https://www.linkedin.com/in/giovanni-ravalico/',
 			handle: 'giovanni-ravalico',
+			url: 'https://www.linkedin.com/in/giovanni-ravalico/',
+		},
+
+		Twitter: {
+			handle: 'suddenlyGio',
+			url: 'https://twitter.com/suddenlyGio/',
 		},
 	} as const satisfies Socials,
-	siteUrl: 'https://www.suddenlygiovanni.dev',
-	siteName: 'suddenlyGiovanni',
 } as const

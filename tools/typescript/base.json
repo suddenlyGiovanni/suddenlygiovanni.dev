@@ -1,12 +1,11 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"display": "Default",
-	"extends": "@tsconfig/strictest/tsconfig.json",
 	"compilerOptions": {
 		"allowImportingTsExtensions": true,
 		"composite": false,
 		"declaration": true,
 		"declarationMap": true,
+		"erasableSyntaxOnly": true,
 		"esModuleInterop": true,
 		"exactOptionalPropertyTypes": true,
 		"forceConsistentCasingInFileNames": true,
@@ -18,8 +17,9 @@
 		"noUnusedParameters": false,
 		"preserveWatchOutput": true,
 		"skipLibCheck": true,
-		"strictBuiltinIteratorReturn": true,
-		"erasableSyntaxOnly": true
+		"strictBuiltinIteratorReturn": true
 	},
-	"exclude": ["node_modules"]
+	"display": "Default",
+	"exclude": ["node_modules"],
+	"extends": "@tsconfig/strictest/tsconfig.json"
 }

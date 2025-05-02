@@ -60,7 +60,7 @@ Footer.displayName = footerName
 
 export const Layout = {
 	Body,
+	Footer,
 	Header,
 	Main,
-	Footer,
 }

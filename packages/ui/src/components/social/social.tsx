@@ -2,6 +2,7 @@ import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 import type { JSX, ReactElement } from 'react'
 
 import { clsx } from '#lib/utils.ts'
+
 import { SocialIcon } from './social-icon.tsx'
 
 function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a']): ReactElement {
@@ -32,8 +33,8 @@ export function TwitterIconLink({ href, className, ...props }: Props): ReactElem
 			<AccessibleIcon label="Twitter">
 				<SocialIcon
 					aria-label="Twitter icon"
-					network="twitter"
 					className={clsx('size-5 fill-foreground')}
+					network="twitter"
 					// size={24}
 				/>
 			</AccessibleIcon>
@@ -53,8 +54,8 @@ export function LinkedInIconLink({ href, className, ...props }: Props): ReactEle
 			<AccessibleIcon label="LinkedIn">
 				<SocialIcon
 					aria-label="LinkedIn icon"
-					network="linkedin"
 					className={clsx('size-5 fill-foreground')}
+					network="linkedin"
 					// size={24}
 				/>
 			</AccessibleIcon>
@@ -74,8 +75,8 @@ export function GitHubIconLink({ className, href, ...props }: Props): ReactEleme
 			<AccessibleIcon label="GitHub">
 				<SocialIcon
 					aria-label="GitHub icon"
-					network="github"
 					className={clsx('size-5 fill-foreground')}
+					network="github"
 					// size={24}
 				/>
 			</AccessibleIcon>

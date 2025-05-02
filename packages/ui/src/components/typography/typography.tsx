@@ -14,20 +14,20 @@ import { Td, Th, Tr } from './table.tsx'
 import { Ul } from './ul.tsx'
 
 export const T = {
+	a: A,
 	blockquote: Blockquote,
+	code: Code,
 	h1: H1,
 	h2: H2,
 	h3: H3,
 	h4: H4,
+	large: Large,
+	lead: Lead,
+	muted: Muted,
 	p: P,
+	small: Small,
 	td: Td,
 	th: Th,
 	tr: Tr,
 	ul: Ul,
-	code: Code,
-	lead: Lead,
-	large: Large,
-	small: Small,
-	muted: Muted,
-	a: A,
 }

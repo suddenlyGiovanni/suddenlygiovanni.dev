@@ -32,8 +32,8 @@ export function SuddenlyGiovanni({
 				/>
 				<AvatarFallback>
 					<Skeleton
-						className="h-full w-full rounded-xl"
 						asChild={true}
+						className="h-full w-full rounded-xl"
 					>
 						<span />
 					</Skeleton>

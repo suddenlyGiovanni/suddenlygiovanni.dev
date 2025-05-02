@@ -1,33 +1,33 @@
 import type { BaseOrExtended, MetaBase } from './open-graph.ts'
 import * as Types from './types.ts'
-import { type ValueOf, insertIf, maxLength } from './utils/index.ts'
+import { insertIf, maxLength, type ValueOf } from './utils/index.ts'
 
 type Twitter<T extends string = ''> = BaseOrExtended<'twitter', T>
 export type TwitterCardType = 'summary_large_image' | 'summary' | 'app' | 'player'
 export type IPropertyTwitter = ValueOf<typeof PropertyTwitter>
 export const PropertyTwitter = {
+	TWITTER_APP_ID_GOOGLEPLAY: 'twitter:app:id:googleplay',
+	TWITTER_APP_ID_IPAD: 'twitter:app:id:ipad',
+	TWITTER_APP_ID_IPHONE: 'twitter:app:id:iphone',
+	TWITTER_APP_NAME_GOOGLEPLAY: 'twitter:app:name:googleplay',
+	TWITTER_APP_NAME_IPAD: 'twitter:app:name:ipad',
+	TWITTER_APP_NAME_IPHONE: 'twitter:app:name:iphone',
+	TWITTER_APP_URL_GOOGLEPLAY: 'twitter:app:url:googleplay',
+	TWITTER_APP_URL_IPAD: 'twitter:app:url:ipad',
+	TWITTER_APP_URL_IPHONE: 'twitter:app:url:iphone',
 	TWITTER_CARD: 'twitter:card',
-	TWITTER_SITE: 'twitter:site',
-	TWITTER_SITE_ID: 'twitter:site:id',
 	TWITTER_CREATOR: 'twitter:creator',
 	TWITTER_CREATOR_ID: 'twitter:creator:id',
 	TWITTER_DESCRIPTION: 'twitter:description',
-	TWITTER_TITLE: 'twitter:title',
 	TWITTER_IMAGE: 'twitter:image',
 	TWITTER_IMAGE_ALT: 'twitter:image:alt',
 	TWITTER_PLAYER: 'twitter:player',
-	TWITTER_PLAYER_WIDTH: 'twitter:player:width',
 	TWITTER_PLAYER_HEIGHT: 'twitter:player:height',
 	TWITTER_PLAYER_STREAM: 'twitter:player:stream',
-	TWITTER_APP_NAME_IPHONE: 'twitter:app:name:iphone',
-	TWITTER_APP_ID_IPHONE: 'twitter:app:id:iphone',
-	TWITTER_APP_URL_IPHONE: 'twitter:app:url:iphone',
-	TWITTER_APP_NAME_IPAD: 'twitter:app:name:ipad',
-	TWITTER_APP_ID_IPAD: 'twitter:app:id:ipad',
-	TWITTER_APP_URL_IPAD: 'twitter:app:url:ipad',
-	TWITTER_APP_NAME_GOOGLEPLAY: 'twitter:app:name:googleplay',
-	TWITTER_APP_ID_GOOGLEPLAY: 'twitter:app:id:googleplay',
-	TWITTER_APP_URL_GOOGLEPLAY: 'twitter:app:url:googleplay',
+	TWITTER_PLAYER_WIDTH: 'twitter:player:width',
+	TWITTER_SITE: 'twitter:site',
+	TWITTER_SITE_ID: 'twitter:site:id',
+	TWITTER_TITLE: 'twitter:title',
 } as const
 
 export type TwitterRecord =
@@ -254,15 +254,15 @@ export function makeTwitterCardMeta<
 	if (args.length === 2) {
 		const [property, content] = args
 		return {
-			name: property,
 			content: String(content),
+			name: property,
 		} as const
 	}
 	const [property] = args
 	return (content: Content): TwitterCardMeta =>
 		({
-			name: property,
 			content: String(content),
+			name: property,
 		}) as const
 }
 

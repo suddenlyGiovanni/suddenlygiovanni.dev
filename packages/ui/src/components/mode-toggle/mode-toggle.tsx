@@ -34,9 +34,9 @@ const ModeToggle: FC<ModeToggleProps> = ({ setTheme, theme, className }) => {
 			<DropdownMenuTrigger asChild={true}>
 				<Button
 					className={clsx(className)}
+					data-testid={NAME}
 					size="icon"
 					variant="ghost"
-					data-testid={NAME}
 				>
 					{isLight || theme === null ? (
 						<Icons.moon className={clsx('h-[1.2rem] w-[1.2rem]')} />

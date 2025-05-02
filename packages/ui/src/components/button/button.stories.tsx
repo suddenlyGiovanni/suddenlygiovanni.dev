@@ -2,10 +2,10 @@ import { ChevronRightIcon, EnvelopeOpenIcon, ReloadIcon } from '@radix-ui/react-
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Button } from '#ui/button.tsx'
+
 import { T } from '../typography/typography.tsx'
 
 const meta = {
-	component: Button,
 	argTypes: {
 		onClick: { action: 'clicked' },
 		variant: {
@@ -13,6 +13,7 @@ const meta = {
 			options: ['default', 'secondary', 'destructive', 'outline', 'ghost', 'link'],
 		},
 	},
+	component: Button,
 } satisfies Meta<typeof Button>
 
 type Story = StoryObj<typeof meta>
@@ -52,8 +53,8 @@ export const Ghost: Story = {
 export const Icon: Story = {
 	args: {
 		children: <ChevronRightIcon className="h-4 w-4" />,
-		variant: 'outline',
 		size: 'icon',
+		variant: 'outline',
 	},
 }
 export const WithIcon: Story = {

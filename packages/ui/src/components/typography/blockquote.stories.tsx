@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+
 import { T } from './typography.tsx'
 
 const meta: Meta<typeof T.blockquote> = {

@@ -12,9 +12,9 @@ export class Meta extends Schema.Class<Meta>('Meta')({
 	}),
 
 	version: Schema.optionalWith(TrimmedNonEmpty, { exact: true }).annotations({
-		title: 'version',
 		description: 'A version field which follows semver - e.g. v1.0.0',
 		examples: ['v1.0.0'],
+		title: 'version',
 	}),
 }) {
 	static decode = Schema.decode(this)
