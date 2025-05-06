@@ -15,7 +15,7 @@ catalog:
   '@tailwindcss/vite': 4.1.5
   babel-plugin-react-compiler: ^19.1.0-rc.1
   typescript: 5.8.3
-  eslint: 9.25.1
+  eslint: 9.26.0
 onlyBuiltDependencies:
   - '@biomejs/biome'
   - '@parcel/watcher'
