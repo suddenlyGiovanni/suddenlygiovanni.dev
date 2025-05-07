@@ -1,8 +1,8 @@
 import { config } from '@repo/eslint-config/react-internal'
 import vitest from '@vitest/eslint-plugin'
+import { defineConfig } from 'eslint/config'
 
-/** @type {import("eslint").Linter.Config[]} */
-export default [
+export default defineConfig([
 	...config,
 	{
 		files: ['**/*.{spec,test}.{ts,tsx}'],
@@ -13,4 +13,4 @@ export default [
 			'vitest/no-hooks': 'off',
 		},
 	},
-]
+])

@@ -1,5 +1,8 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
+	"dependencies": {
+		"typescript-eslint": "8.32.0"
+	},
 	"devDependencies": {
 		"eslint": "catalog:",
 		"eslint-config-prettier": "10.1.5",
