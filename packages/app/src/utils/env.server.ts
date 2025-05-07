@@ -1,7 +1,6 @@
 import * as process from 'node:process'
 
-import { Either, Schema } from 'effect'
-import { TreeFormatter } from 'effect/ParseResult'
+import { Either, ParseResult, pipe, Schema } from 'effect'
 
 const envSchema = Schema.Struct({
 	ALLOW_INDEXING: Schema.optionalWith(
@@ -27,6 +26,11 @@ const envSchema = Schema.Struct({
 			exact: true,
 		},
 	),
+
+	APP_ENV: Schema.optionalWith(Schema.Literal('development', 'staging', 'production'), {
+		default: () => 'development',
+	}),
+
 	GITHUB_TOKEN: Schema.optionalWith(
 		Schema.NonEmptyString.annotations({
 			description: 'GitHub token',
@@ -43,50 +47,80 @@ const envSchema = Schema.Struct({
 	NODE_ENV: Schema.Literal('production', 'development', 'test'),
 })
 
+export class Config {
+	static #instance: Config
+	#env: Schema.Schema.Type<typeof envSchema>
+
+	private constructor() {
+		this.#init()
+	}
+
+	static get instance(): Config {
+		if (!Config.#instance) {
+			Config.#instance = new Config()
+		}
+
+		return Config.#instance
+	}
+
+	/**
+	 * Initialize the environment variables.
+	 */
+	#init(): void {
+		pipe(
+			process.env,
+			Schema.decodeUnknownEither(envSchema, { errors: 'all' }),
+			Either.match({
+				onLeft: (parseError): void => {
+					console.error(
+						'❌ Invalid environment variables:',
+						ParseResult.TreeFormatter.formatErrorSync(parseError),
+					)
+					throw new Error('Invalid environment variables')
+				},
+				onRight: (env): void => {
+					this.#env = env
+					Object.freeze(this.#env)
+
+					// Do not log the message when running tests
+					if (this.#env.NODE_ENV !== 'test') {
+						// biome-ignore lint/suspicious/noConsole: We want this to be logged
+						console.log('✅ Environment variables loaded successfully')
+					}
+				},
+			}),
+		)
+	}
+
+	get serverEnv() {
+		return this.#env
+	}
+
+	/**
+	 * Helper getter which returns a subset of the environment vars which are safe expose to the client.
+	 * Don't expose any secrets or sensitive data here.
+	 * Otherwise, you would expose your server vars to the client if you returned them from here as this is
+	 * directly sent in the root to the client and set on the window.env
+	 * @returns Subset of the whole process.env to be passed to the client and used there
+	 */
+	get clientEnv() {
+		const serverEnv = this.serverEnv
+		return {
+			NODE_ENV: serverEnv.NODE_ENV,
+		}
+	}
+}
+
+type ServerEnvVars = typeof Config.instance.serverEnv
+type ClientEnvVars = typeof Config.instance.clientEnv
+
 declare global {
 	namespace NodeJS {
-		interface ProcessEnv extends Schema.Schema.Encoded<typeof envSchema> {}
+		interface ProcessEnv extends ServerEnvVars {}
 	}
-}
 
-/**
- *
- * Validates the environment variables.
- * If the environment variables are invalid, an error is thrown...
- * Invoke this function at the edge of your application to ensure that the environment variables are set.
- * Later make sure to use {@link getEnv} to access the environment variables.
- */
-export function init(): void {
-	const maybeEnv = Schema.decodeUnknownEither(envSchema)(process.env, { errors: 'all' })
-	if (Either.isLeft(maybeEnv)) {
-		// biome-ignore lint/suspicious/noConsole: <explanation>
-		console.error('❌ Invalid environment variables:', TreeFormatter.formatError(maybeEnv.left))
-		throw new Error('Invalid environment variables')
-	}
-}
-
-/**
- * This is used in both `entry.server.ts` and `root.tsx` to ensure that
- * the environment variables are set and globally available before the app is
- * started.
- *
- * NOTE: Do *not* add any environment variables in here that you do not wish to
- * be included in the src.
- * @returns all public ENV variables
- */
-
-export function getEnv() {
-	return {
-		ALLOW_INDEXING: process.env.ALLOW_INDEXING,
-		MODE: process.env.NODE_ENV,
-	} as const
-}
-
-export type Env = ReturnType<typeof getEnv>
-
-declare global {
-	var ENV: Env
+	var ENV: ClientEnvVars
 	interface Window {
-		ENV: Env
+		ENV: ClientEnvVars
 	}
 }
