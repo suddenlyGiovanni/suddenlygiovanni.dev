@@ -42,7 +42,7 @@
 		"@vitest/ui": "catalog:",
 		"babel-plugin-react-compiler": "catalog:",
 		"globals": "16.0.0",
-		"msw": "2.7.3",
+		"msw": "2.7.6",
 		"react-router-devtools": "5.0.0",
 		"tailwindcss": "catalog:",
 		"vite": "catalog:",
