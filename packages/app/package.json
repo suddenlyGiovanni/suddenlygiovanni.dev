@@ -9,7 +9,7 @@
 		"@octokit/core": "6.1.5",
 		"@octokit/plugin-rest-endpoint-methods": "14.0.0",
 		"@octokit/request-error": "6.1.8",
-		"@react-router/node": "7.5.3",
+		"@react-router/node": "7.6.0",
 		"@repo/open-graph-protocol": "workspace:*",
 		"@repo/tailwind-config": "workspace:*",
 		"@repo/ui": "workspace:*",
@@ -20,7 +20,7 @@
 		"isbot": "5.1.27",
 		"react": "catalog:",
 		"react-dom": "catalog:",
-		"react-router": "7.5.3",
+		"react-router": "7.6.0",
 		"remix-utils": "8.3.1"
 	},
 	"devDependencies": {
@@ -28,7 +28,7 @@
 		"@codecov/vite-plugin": "1.9.0",
 		"@effect/language-service": "0.10.2",
 		"@mdx-js/rollup": "3.1.0",
-		"@react-router/dev": "7.5.3",
+		"@react-router/dev": "7.6.0",
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
 		"@tailwindcss/vite": "catalog:",
