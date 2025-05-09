@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM node:23.11-alpine3.21 AS base
+FROM --platform=$TARGETPLATFORM node:24-alpine3.21 AS base
 
 LABEL authors="suddenlyGiovanni"
 
