@@ -39,7 +39,7 @@ const HttpLive = ConfigService.pipe(
 								Effect.flatMap(viteDevServer =>
 									Effect.promise(
 										() =>
-											viteDevServer.ssrLoadModule('./server/handler/handler.ts') as Promise<
+											viteDevServer.ssrLoadModule('./src/server/handler/handler.ts') as Promise<
 												typeof import('./handler/handler.ts')
 											>,
 									),

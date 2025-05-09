@@ -24,6 +24,7 @@
 		"vite.config.ts",
 		".react-router/types/**/*",
 		"src/**/*",
+		"!src/server/**/*",
 		"types/*.d.ts",
 		"types/*.ts"
 	]
