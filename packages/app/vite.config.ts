@@ -118,7 +118,7 @@ export default defineConfig(({ isSsrBuild }) => ({
 		}),
 	],
 	test: {
-		includeSource: ['./src/**/*.{ts,tsx}', './server/**/*.ts', './types/**/*.ts'], // biome-ignore lint/complexity/useLiteralKeys: TS4111: Property 'CODECOV_TOKEN' comes from an index signature, so it must be accessed with ['CODECOV_TOKEN'].
+		includeSource: ['./src/**/*.{ts,tsx}', './src/server/**/*.ts', './types/**/*.ts'], // biome-ignore lint/complexity/useLiteralKeys: TS4111: Property 'CODECOV_TOKEN' comes from an index signature, so it must be accessed with ['CODECOV_TOKEN'].
 		reporters: process.env['GITHUB_ACTIONS'] ? ['dot', 'github-actions'] : ['default'],
 		globalSetup: './src/tests/test-globals.ts',
 		coverage: {
