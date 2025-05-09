@@ -25,6 +25,7 @@
 		"./mocks/**/*.ts",
 		"./react-router.config.ts",
 		"./server/**/*.ts",
+		"./shared/**/*.ts",
 		"./vite.config.ts",
 		"./vitest.setup.ts",
 		"./types/**/*.ts"
