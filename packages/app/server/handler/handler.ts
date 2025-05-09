@@ -1,14 +1,14 @@
 import { Headers, HttpServerRequest, HttpServerResponse } from '@effect/platform'
 import { NodeHttpServerRequest } from '@effect/platform-node'
 import * as ReactRouterNode from '@react-router/node'
-import { Effect, Stream } from 'effect'
+import { type ConfigError, Effect, Stream } from 'effect'
 import * as ReactRouter from 'react-router'
 
 import { ConfigService } from '../services/config-service.ts'
 
 export const handler: Effect.Effect<
 	HttpServerResponse.HttpServerResponse,
-	never,
+	ConfigError.ConfigError,
 	HttpServerRequest.HttpServerRequest
 > = Effect.gen(function* () {
 	const { NODE_ENV } = yield* ConfigService
