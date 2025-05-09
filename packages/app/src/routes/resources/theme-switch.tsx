@@ -8,9 +8,9 @@ import type { ReactElement } from 'react'
 import { data, redirect, useFetcher, useFetchers } from 'react-router'
 import { ServerOnly } from 'remix-utils/server-only'
 
-import { useHints, useOptionalHints } from '#root/client/utils/client-hints.tsx'
-import { useOptionalRequestInfo, useRequestInfo } from '#root/client/utils/request-info.ts'
-import { setTheme } from '#root/client/utils/theme.server.ts'
+import { useHints, useOptionalHints } from '#root/src/utils/client-hints.tsx'
+import { useOptionalRequestInfo, useRequestInfo } from '#root/src/utils/request-info.ts'
+import { setTheme } from '#root/src/utils/theme.server.ts'
 
 import type { Route } from '.react-router/types/src/routes/resources/+types/theme-switch.ts'
 

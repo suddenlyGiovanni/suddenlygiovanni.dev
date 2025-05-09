@@ -23,7 +23,7 @@
 	"include": [
 		"vite.config.ts",
 		".react-router/types/**/*",
-		"client/**/*",
+		"src/**/*",
 		"types/*.d.ts",
 		"types/*.ts"
 	]

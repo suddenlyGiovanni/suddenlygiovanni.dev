@@ -6,8 +6,8 @@ import { clsx } from '@repo/ui/lib/utils.ts'
 import avatarAssetUrl from 'content/assets/giovanni_ravalico-profile_bw.webp'
 import type { ReactElement, SyntheticEvent } from 'react'
 
-import { ThemeSwitch } from '#root/client/routes/resources/theme-switch.tsx'
-import { routesRecord } from '#root/client/routes-record.ts'
+import { ThemeSwitch } from '#root/src/routes/resources/theme-switch.tsx'
+import { routesRecord } from '#root/src/routes-record.ts'
 
 import { NavLink } from './nav-link.tsx'
 

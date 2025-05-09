@@ -29,7 +29,7 @@ export function useOptionalHints() {
 }
 
 /**
- * @returns inline script element that checks for client hints and sets cookies
+ * @returns inline script element that checks for src hints and sets cookies
  * if they are not set then reloads the page if any cookie was set to an
  * inaccurate value.
  */

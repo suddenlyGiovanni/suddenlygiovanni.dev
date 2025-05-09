@@ -3,8 +3,8 @@ import Motivations from 'content/copy/motivations.md'
 import type { ReactElement } from 'react'
 import { Link } from 'react-router'
 
-import { config } from '#root/client/config.ts'
-import { routesRecord } from '#root/client/routes-record.ts'
+import { config } from '#root/src/config.ts'
+import { routesRecord } from '#root/src/routes-record.ts'
 
 import type { Route } from './+types/motivations.ts'
 

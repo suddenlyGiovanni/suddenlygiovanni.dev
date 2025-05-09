@@ -9,8 +9,8 @@ import type * as Model from '@suddenly-giovanni/schema-resume'
 import { Either, Option } from 'effect'
 import type { ReactElement } from 'react'
 
-import { getDevIconComponent } from '#root/client/routes/resume/dev-icons.tsx'
-import { formatDateLocaleShort } from '#root/client/routes/resume/format-date-locale-short.ts'
+import { getDevIconComponent } from '#root/src/routes/resume/dev-icons.tsx'
+import { formatDateLocaleShort } from '#root/src/routes/resume/format-date-locale-short.ts'
 
 export function Experience(
 	work: Pick<

@@ -1,7 +1,7 @@
 import { JSONSchema } from 'effect'
 import { describe, expect, test } from 'vitest'
 
-import { expectEffectFailure, expectEffectSuccess } from '#root/client/schemas/test-utils.ts'
+import { expectEffectFailure, expectEffectSuccess } from '#root/src/schemas/test-utils.ts'
 
 import { Meta } from './meta.ts'
 

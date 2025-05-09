@@ -2,9 +2,9 @@ import { Resume } from '@suddenly-giovanni/schema-resume'
 import { Data, Effect, Option, Schema } from 'effect'
 import type { ParseError } from 'effect/ParseResult'
 
-import { Meta } from '#root/client/models/resume/meta/meta.ts'
-import { parseYml } from '#root/client/schemas/parse-yml.ts'
-import { Octokit, type OctokitError } from '#root/client/services/octokit.ts'
+import { Meta } from '#root/src/models/resume/meta/meta.ts'
+import { parseYml } from '#root/src/schemas/parse-yml.ts'
+import { Octokit, type OctokitError } from '#root/src/services/octokit.ts'
 
 /**
  * Could throw if GITHUB_TOKEN is invalid or expired;
@@ -14,7 +14,7 @@ import { Octokit, type OctokitError } from '#root/client/services/octokit.ts'
  *
  * @remarks
  * what is it?
- * a github api client singleton?
+ * a github api src singleton?
  * or just an object with a method? in-any case it needs to moved to a separate
  * file... but where?
  */
@@ -77,7 +77,7 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 			/**
 			 * Retrieves and decodes a file from a GitHub repository.
 			 *
-			 * This function uses the Octokit GitHub API client to fetch the content of a specified file. It verifies that the response represents a file matching the expected path and decodes its Base64-encoded content into a UTF-8 string. Additionally, it extracts metadata such as the canonical URL and the last modified date from the response headers, if available.
+			 * This function uses the Octokit GitHub API src to fetch the content of a specified file. It verifies that the response represents a file matching the expected path and decodes its Base64-encoded content into a UTF-8 string. Additionally, it extracts metadata such as the canonical URL and the last modified date from the response headers, if available.
 			 *
 			 * @param owner - The owner of the repository.
 			 * @param repo - The name of the repository.
