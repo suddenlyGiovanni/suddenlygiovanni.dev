@@ -2,9 +2,9 @@ import { clsx } from '@repo/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 import { Link } from 'react-router'
 
-import { config } from '#root/client/config.ts'
-import { routesRecord } from '#root/client/routes-record.ts'
 import Motivations from '#root/content/copy/motivations.md'
+import { config } from '#root/src/config.ts'
+import { routesRecord } from '#root/src/routes-record.ts'
 
 import type { Route } from './+types/motivations.ts'
 

@@ -71,7 +71,7 @@ export function init(): void {
  * started.
  *
  * NOTE: Do *not* add any environment variables in here that you do not wish to
- * be included in the client.
+ * be included in the src.
  * @returns all public ENV variables
  */
 

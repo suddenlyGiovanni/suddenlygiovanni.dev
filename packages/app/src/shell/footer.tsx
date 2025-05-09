@@ -7,7 +7,7 @@ import {
 import { clsx } from '@repo/ui/lib/utils.ts'
 import type { JSX } from 'react'
 
-import { config } from '#root/client/config.ts'
+import { config } from '#root/src/config.ts'
 
 const copyrightYear = new Date().getFullYear().toString()
 

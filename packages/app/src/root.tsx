@@ -12,16 +12,16 @@ import {
 	useRouteLoaderData,
 } from 'react-router'
 
-import { config } from '#root/client/config.ts'
-import { useOptionalTheme, useTheme } from '#root/client/routes/resources/theme-switch.tsx'
-import { Footer, GeneralErrorBoundary, Header } from '#root/client/shell/index.tsx'
-import tailwindStyleSheetUrl from '#root/client/styles/tailwind.css?url'
-import { ClientHintCheck, getHints } from '#root/client/utils/client-hints.tsx'
-import { getEnv } from '#root/client/utils/env.server.ts'
-import { getDomainUrl } from '#root/client/utils/misc.ts'
-import { getTheme } from '#root/client/utils/theme.server.ts'
 import hero2800wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import faviconAssertUrl from '#root/content/assets/suddenly_giovanni-icon-white.svg'
+import { config } from '#root/src/config.ts'
+import { useOptionalTheme, useTheme } from '#root/src/routes/resources/theme-switch.tsx'
+import { Footer, GeneralErrorBoundary, Header } from '#root/src/shell/index.tsx'
+import tailwindStyleSheetUrl from '#root/src/styles/tailwind.css?url'
+import { ClientHintCheck, getHints } from '#root/src/utils/client-hints.tsx'
+import { getEnv } from '#root/src/utils/env.server.ts'
+import { getDomainUrl } from '#root/src/utils/misc.ts'
+import { getTheme } from '#root/src/utils/theme.server.ts'
 
 import type { Route } from './+types/root.ts'
 
@@ -107,7 +107,7 @@ export function Layout(props: { children: ReactNode }): ReactElement {
 				{props.children}
 
 				{/**
-				 * Manages scroll position for client-side transitions
+				 * Manages scroll position for src-side transitions
 				 * If you use a nonce-based content security policy for scripts, you must provide the
 				 *  `nonce` prop. Otherwise, omit the nonce prop as shown here.
 				 */}

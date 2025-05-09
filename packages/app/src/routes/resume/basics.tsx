@@ -6,7 +6,7 @@ import type * as Model from '@suddenly-giovanni/schema-resume'
 import type { ReactElement, ReactNode } from 'react'
 import { Link } from 'react-router'
 
-import { routesRecord } from '#root/client/routes-record.ts'
+import { routesRecord } from '#root/src/routes-record.ts'
 
 import resumePdfAssetUrl from '/giovanni-ravalico-resume-2021.pdf?url'
 

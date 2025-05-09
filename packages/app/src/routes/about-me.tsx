@@ -3,7 +3,6 @@ import { T } from '@repo/ui/components/typography/typography.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 
-import { config } from '#root/client/config.ts'
 import hero200wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_200.webp?url'
 import hero811wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_811.webp?url'
 import hero1200wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_ar_1_1,c_fill,g_auto__c_scale,w_1200.webp?url'
@@ -17,6 +16,7 @@ import hero2314wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profi
 import hero2670wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2670.webp?url'
 import hero2800wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp?url'
 import AboutMeContent from '#root/content/copy/about-me-v4.md'
+import { config } from '#root/src/config.ts'
 import type { Strings } from '#root/types/index.ts'
 
 import type { Route } from './+types/about-me.ts'

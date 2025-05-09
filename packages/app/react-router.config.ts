@@ -1,7 +1,7 @@
 import type { Config } from '@react-router/dev/config'
 
 export default {
-	appDirectory: 'client',
+	appDirectory: 'src',
 	buildDirectory: 'build',
 	future: {
 		unstable_splitRouteModules: true,

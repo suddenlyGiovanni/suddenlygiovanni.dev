@@ -2,7 +2,7 @@ import { T } from '@repo/ui/components/typography/typography.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
 import type { ReactElement } from 'react'
 
-import { routesRecord } from '#root/client/routes-record.ts'
+import { routesRecord } from '#root/src/routes-record.ts'
 
 import type { Route } from './+types/second-brain.ts'
 
