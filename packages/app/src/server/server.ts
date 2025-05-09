@@ -21,7 +21,7 @@ const HttpLive = ConfigService.pipe(
 						'*',
 						Effect.promise(() => {
 							// @ts-expect-error - This is a dynamic import of build stuff
-							return import('../build/server/index.js') as Promise<
+							return import('../../build/server/index.js') as Promise<
 								typeof import('./handler/handler.ts')
 							>
 						}).pipe(Effect.flatMap(module => module.handler)),
@@ -39,7 +39,7 @@ const HttpLive = ConfigService.pipe(
 								Effect.flatMap(viteDevServer =>
 									Effect.promise(
 										() =>
-											viteDevServer.ssrLoadModule('./server/handler/handler.ts') as Promise<
+											viteDevServer.ssrLoadModule('./src/server/handler/handler.ts') as Promise<
 												typeof import('./handler/handler.ts')
 											>,
 									),
