@@ -18,7 +18,6 @@
 			"@types/mdx"
 		]
 	},
-	"exclude": ["build", "node_modules", "./~"],
 	"extends": ["./tsconfig.json", "@repo/typescript-config/remix.json"],
 	"include": [
 		"vite.config.ts",
