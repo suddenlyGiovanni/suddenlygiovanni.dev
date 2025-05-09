@@ -16,7 +16,7 @@ const ReactCompilerConfig = {
 
 export default defineConfig(({ isSsrBuild }) => ({
 	optimizeDeps: {
-		exclude: ['src/server/**'],
+		exclude: ['src/server/'],
 	},
 
 	build: {
