@@ -42,4 +42,4 @@ runs:
 
     - name: 🧩 Install dependencies
       shell: bash
-      run: pnpm install --recursive --frozen-lockfile
+      run: pnpm install --recursive --frozen-lockfile --prefer-offline

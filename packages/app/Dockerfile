@@ -1,4 +1,4 @@
-FROM --platform=$TARGETPLATFORM node:23.11-alpine3.21 AS base
+FROM --platform=$TARGETPLATFORM node:24-alpine3.21 AS base
 
 LABEL authors="suddenlyGiovanni"
 
@@ -36,7 +36,7 @@ ENV HOST="0.0.0.0"
 
 COPY --from=build --chown=node:node /home/node/pruned/package.json .
 COPY --from=build --chown=node:node /home/node/pruned/node_modules ./node_modules
-COPY --from=build --chown=node:node /home/node/packages/app/server ./server
+COPY --from=build --chown=node:node /home/node/packages/app/src/server ./src/server
 COPY --from=build --chown=node:node /home/node/packages/app/build ./build
 COPY --from=build --chown=node:node /home/node/packages/app/react-router.config.ts ./react-router.config.ts
 
@@ -44,4 +44,4 @@ USER node
 
 EXPOSE 5173
 
-CMD ["node", "--experimental-transform-types", "server/server.ts"]
+CMD ["node", "src/server/server.ts"]

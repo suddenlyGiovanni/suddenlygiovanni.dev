@@ -1,0 +1,24 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"compilerOptions": {
+		"baseUrl": ".",
+		"composite": true,
+		"module": "Preserve",
+		"noEmit": true,
+		"rootDirs": ["../", "../.react-router/types"],
+		"types": [
+			"@total-typescript/ts-reset",
+			"@octokit/core",
+			"react",
+			"react-dom",
+			"vite/client",
+			"vitest/config",
+			"vitest/importMeta",
+			"@react-router/node",
+			"@types/mdx"
+		]
+	},
+	"extends": ["../tsconfig.json", "@repo/typescript-config/remix.json"],
+	"include": ["/**/*", "../vite.config.ts", "../.react-router/types/**/*", "../types/*.ts"],
+	"exclude": ["server/**/*"]
+}

@@ -6,7 +6,6 @@ import mdx from '@mdx-js/rollup'
 import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
 import { reactRouterDevTools } from 'react-router-devtools'
-
 import { defineConfig } from 'vite'
 import babel from 'vite-plugin-babel'
 import tsconfigPaths from 'vite-tsconfig-paths'
@@ -16,14 +15,22 @@ const ReactCompilerConfig = {
 }
 
 export default defineConfig(({ isSsrBuild }) => ({
+	optimizeDeps: {
+		exclude: ['src/server/**'],
+	},
+
 	build: {
 		/** Disable minification for better debugging */
 		minify: false,
-		rollupOptions: isSsrBuild ? { input: './server/handler/handler.ts' } : {},
+
+		rollupOptions: isSsrBuild ? { input: './src/server/handler/handler.ts' } : {},
+
 		/** Enable source maps for better debugging experience */
 		sourcemap: true,
+
 		/** Target the latest ECMAScript features for better performance */
 		target: 'esnext',
+
 		externalImportAttributes: true,
 	},
 	plugins: [
@@ -34,7 +41,7 @@ export default defineConfig(({ isSsrBuild }) => ({
 			}),
 		},
 		babel({
-			include: ['./client/**/*', '../ui/src/**/*'],
+			include: ['./src/**/*', '../ui/src/**/*'],
 			filter(name: string): boolean {
 				return name.endsWith('.tsx')
 			},
@@ -111,9 +118,9 @@ export default defineConfig(({ isSsrBuild }) => ({
 		}),
 	],
 	test: {
-		includeSource: ['./client/**/*.{ts,tsx}', './server/**/*.ts', './types/**/*.ts'], // biome-ignore lint/complexity/useLiteralKeys: TS4111: Property 'CODECOV_TOKEN' comes from an index signature, so it must be accessed with ['CODECOV_TOKEN'].
+		includeSource: ['./src/**/*.{ts,tsx}', './src/server/**/*.ts', './types/**/*.ts'], // biome-ignore lint/complexity/useLiteralKeys: TS4111: Property 'CODECOV_TOKEN' comes from an index signature, so it must be accessed with ['CODECOV_TOKEN'].
 		reporters: process.env['GITHUB_ACTIONS'] ? ['dot', 'github-actions'] : ['default'],
-		globalSetup: './client/tests/test-globals.ts',
+		globalSetup: './src/tests/test-globals.ts',
 		coverage: {
 			provider: 'v8',
 			reporter: ['text', 'json', 'html'],

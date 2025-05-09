@@ -15,8 +15,8 @@
         # The Nix packages provided in the environment
         # Add any you need here
         packages = with pkgs; [
-          nodejs-slim_23
-          corepack_23
+          nodejs-slim_24
+          corepack_24
           biome
         ];
 
