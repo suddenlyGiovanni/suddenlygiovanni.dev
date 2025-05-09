@@ -3,11 +3,11 @@ import { NavigationMenuToggle } from '@repo/ui/components/navigation-menu-toggle
 import { SuddenlyGiovanni } from '@repo/ui/components/suddenly-giovanni/suddenly-giovanni.tsx'
 import { useToggle } from '@repo/ui/hooks/use-toggle.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
-import avatarAssetUrl from 'content/assets/giovanni_ravalico-profile_bw.webp'
 import type { ReactElement, SyntheticEvent } from 'react'
 
 import { ThemeSwitch } from '#root/client/routes/resources/theme-switch.tsx'
 import { routesRecord } from '#root/client/routes-record.ts'
+import avatarAssetUrl from '#root/content/assets/giovanni_ravalico-profile_bw.webp'
 
 import { NavLink } from './nav-link.tsx'
 

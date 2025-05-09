@@ -1,8 +1,6 @@
 import { makeOpenGraphWebsite, Types } from '@repo/open-graph-protocol'
 import { Layout as _Layout } from '@repo/ui/components/layout/layout.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
-import hero2800wAssetUrl from 'content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
-import faviconAssertUrl from 'content/assets/suddenly_giovanni-icon-white.svg'
 import type { ReactElement, ReactNode } from 'react'
 import {
 	Links,
@@ -22,6 +20,8 @@ import { ClientHintCheck, getHints } from '#root/client/utils/client-hints.tsx'
 import { getEnv } from '#root/client/utils/env.server.ts'
 import { getDomainUrl } from '#root/client/utils/misc.ts'
 import { getTheme } from '#root/client/utils/theme.server.ts'
+import hero2800wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
+import faviconAssertUrl from '#root/content/assets/suddenly_giovanni-icon-white.svg'
 
 import type { Route } from './+types/root.ts'
 
