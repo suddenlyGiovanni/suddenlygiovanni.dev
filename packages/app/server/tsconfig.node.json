@@ -20,14 +20,14 @@
 		"target": "es2024",
 		"types": ["node", "vite/client", "vitest/config", "vitest/importMeta"]
 	},
-	"extends": ["./tsconfig.json", "@repo/typescript-config/library.json"],
+	"extends": ["../tsconfig.json", "@repo/typescript-config/library.json"],
 	"include": [
-		"./mocks/**/*.ts",
-		"./react-router.config.ts",
-		"./server/**/*.ts",
-		"./shared/**/*.ts",
-		"./vite.config.ts",
-		"./vitest.setup.ts",
-		"./types/**/*.ts"
+		"**/*.ts",
+		"../mocks/**/*.ts",
+		"../react-router.config.ts",
+		"../shared/**/*.ts",
+		"../vite.config.ts",
+		"../vitest.setup.ts",
+		"../types/**/*.ts"
 	]
 }

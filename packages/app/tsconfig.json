@@ -15,5 +15,5 @@
 	},
 	"exclude": ["node_modules", "dist"],
 	"files": [],
-	"references": [{ "path": "./tsconfig.node.json" }, { "path": "./tsconfig.vite.json" }]
+	"references": [{ "path": "./server/tsconfig.node.json" }, { "path": "./tsconfig.vite.json" }]
 }
