@@ -5,7 +5,7 @@
 		"composite": true,
 		"module": "Preserve",
 		"noEmit": true,
-		"rootDirs": [".", "./.react-router/types"],
+		"rootDirs": ["../", "../.react-router/types"],
 		"types": [
 			"@total-typescript/ts-reset",
 			"@octokit/core",
@@ -18,13 +18,6 @@
 			"@types/mdx"
 		]
 	},
-	"extends": ["./tsconfig.json", "@repo/typescript-config/remix.json"],
-	"include": [
-		"vite.config.ts",
-		".react-router/types/**/*",
-		"./client/**/*",
-		"./shared/**/*",
-		"types/*.d.ts",
-		"types/*.ts"
-	]
+	"extends": ["../tsconfig.json", "@repo/typescript-config/remix.json"],
+	"include": ["/**/*", "../vite.config.ts", "../.react-router/types/**/*", "../types/*.ts"]
 }
