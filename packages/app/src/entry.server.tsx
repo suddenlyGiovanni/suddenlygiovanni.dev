@@ -6,12 +6,11 @@ import { isbot } from 'isbot'
 import { renderToPipeableStream } from 'react-dom/server'
 import { type AppLoadContext, type EntryContext, ServerRouter } from 'react-router'
 
-import { getEnv, init } from '#root/src/utils/env.server.ts'
+import { Config } from '#root/src/utils/env.server.ts'
 
 const ABORT_DELAY = 5_000
 
-init()
-global.ENV = getEnv()
+global.ENV = Config.instance.serverEnv
 
 export default function handleRequest(
 	request: Request,

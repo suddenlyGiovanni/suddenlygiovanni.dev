@@ -19,7 +19,7 @@ import { useOptionalTheme, useTheme } from '#root/src/routes/resources/theme-swi
 import { Footer, GeneralErrorBoundary, Header } from '#root/src/shell/index.tsx'
 import tailwindStyleSheetUrl from '#root/src/styles/tailwind.css?url'
 import { ClientHintCheck, getHints } from '#root/src/utils/client-hints.tsx'
-import { getEnv } from '#root/src/utils/env.server.ts'
+import { Config } from '#root/client/utils/env.server.ts'
 import { getDomainUrl } from '#root/src/utils/misc.ts'
 import { getTheme } from '#root/src/utils/theme.server.ts'
 
@@ -67,7 +67,7 @@ export function meta({ location }: Route.MetaArgs) {
 
 export function loader({ request }: Route.LoaderArgs) {
 	return {
-		ENV: getEnv(),
+		ENV: Config.instance.clientEnv,
 
 		requestInfo: {
 			hints: getHints(request),
