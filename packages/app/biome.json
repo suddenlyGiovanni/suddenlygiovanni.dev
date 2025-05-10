@@ -3,7 +3,7 @@
 	"extends": ["../../biome.json"],
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**/client/*", "!~", "!**/.react-router", "!**/node_modules/**"]
+		"includes": ["**/src/*", "!~", "!**/.react-router", "!**/node_modules/**"]
 	},
 	"linter": {
 		"rules": {
@@ -45,7 +45,7 @@
 	},
 	"overrides": [
 		{
-			"includes": ["**/server/**/*.ts", "!**/node_modules/**"],
+			"includes": ["**/src/server/**/*.ts", "!**/node_modules/**"],
 			"linter": {
 				"rules": {
 					"correctness": {
@@ -70,7 +70,7 @@
 			}
 		},
 		{
-			"includes": ["**/client/routes/**/*.tsx", "!**/node_modules/**"],
+			"includes": ["**/src/routes/**/*.tsx", "!**/node_modules/**"],
 			"linter": {
 				"rules": {
 					"style": {
