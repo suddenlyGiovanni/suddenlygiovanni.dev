@@ -132,8 +132,8 @@ importers:
         specifier: 1.9.0
         version: 1.9.0(vite@6.3.5(@types/node@22.15.17)(jiti@2.4.2)(lightningcss@1.29.2))
       '@effect/language-service':
-        specifier: 0.11.0
-        version: 0.11.0
+        specifier: 0.12.0
+        version: 0.12.0
       '@mdx-js/rollup':
         specifier: 3.1.0
         version: 3.1.0(acorn@8.14.1)(rollup@4.40.0)
@@ -752,8 +752,8 @@ packages:
       lmdb:
         optional: true
 
-  '@effect/language-service@0.11.0':
-    resolution: {integrity: sha512-srm9Kr/1cvURcQ3qCDuolKiwG2MfYtLrOZJ8nZv1NIRk3n4PE+bBaDs5vqUf8GLjy/BCULrlITr9bnBOJ5vtuw==}
+  '@effect/language-service@0.12.0':
+    resolution: {integrity: sha512-Ki4XOvghwa4/PT2BwlA45fy7+NAMN2sVTD13PgdAMNjPIjhbT3ra17oM/4jtfeh6sjrFkxkMluXzAtjGEDoDLw==}
 
   '@effect/platform-node-shared@0.32.1':
     resolution: {integrity: sha512-5BIEYmnT0xfiXdvz4j1HQ6V+XhiUUCRnPpejKBOJz4wVGvuv1ZUgsVd2R3l8jrCBwMGpzv150tcLCrHTboQ2EA==}
@@ -6556,7 +6556,7 @@ snapshots:
       effect: 3.14.22
       uuid: 11.1.0
 
-  '@effect/language-service@0.11.0': {}
+  '@effect/language-service@0.12.0': {}
 
   '@effect/platform-node-shared@0.32.1(@effect/cluster@0.29.22(@effect/platform@0.81.1(effect@3.14.22))(@effect/rpc@0.55.17(@effect/platform@0.81.1(effect@3.14.22))(effect@3.14.22))(@effect/sql@0.33.13(@effect/experimental@0.44.13(@effect/platform@0.81.1(effect@3.14.22))(effect@3.14.22))(@effect/platform@0.81.1(effect@3.14.22))(effect@3.14.22))(effect@3.14.22))(@effect/platform@0.81.1(effect@3.14.22))(@effect/rpc@0.55.17(@effect/platform@0.81.1(effect@3.14.22))(effect@3.14.22))(@effect/sql@0.33.13(@effect/experimental@0.44.13(@effect/platform@0.81.1(effect@3.14.22))(effect@3.14.22))(@effect/platform@0.81.1(effect@3.14.22))(effect@3.14.22))(effect@3.14.22)':
     dependencies:
