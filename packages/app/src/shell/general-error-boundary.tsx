@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noConsole: we need to print to stdout */
 import type { ReactElement } from 'react'
 import { type ErrorResponse, isRouteErrorResponse, useParams, useRouteError } from 'react-router'
 
@@ -13,7 +14,7 @@ function getErrorMessage(error: unknown): string {
 	) {
 		return error.message
 	}
-	// biome-ignore lint/suspicious/noConsole: <explanation>
+
 	console.error('Unable to get error message for error', error)
 	return 'Unknown Error'
 }
@@ -44,7 +45,6 @@ export function GeneralErrorBoundary({
 	const params = useParams()
 
 	if (typeof document !== 'undefined') {
-		// biome-ignore lint/suspicious/noConsole: <explanation>
 		console.error(error)
 	}
 

@@ -3,6 +3,7 @@ import { SocialIcon } from '@repo/ui/components/social/social-icon.tsx'
 import { T } from '@repo/ui/components/typography/typography.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
 import type * as Model from '@suddenly-giovanni/schema-resume'
+import { Hash } from 'effect'
 import type { ReactElement, ReactNode } from 'react'
 import { Link } from 'react-router'
 
@@ -41,10 +42,10 @@ function Header({
 				<T.h2>{label}</T.h2>
 			</hgroup>
 			<T.blockquote>
-				{summary.split('\n').map((p, i) => (
+				{summary.split('\n').map(p => (
 					<p
 						className="my-0"
-						key={i}
+						key={Hash.hash(p)}
 					>
 						{p}
 					</p>

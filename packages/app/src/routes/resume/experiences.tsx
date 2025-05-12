@@ -40,6 +40,7 @@ export function Experiences({ work }: { readonly work: readonly Model.Work[] }):
 				{work.map((work, idx) => (
 					<Experience
 						key={work.name}
+						// biome-ignore lint/style/noNonNullAssertion: it's ok
 						value={all.at(idx)!}
 						{...work}
 					/>

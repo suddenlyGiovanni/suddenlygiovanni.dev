@@ -8,9 +8,7 @@
 	"linter": {
 		"rules": {
 			"nursery": {
-				"noSecrets": "off",
-				"useComponentExportOnlyModules": "off",
-				"useConsistentCurlyBraces": "off"
+				"noSecrets": "off"
 			},
 			"style": {
 				"noArguments": "error",
@@ -80,10 +78,13 @@
 			}
 		},
 		{
+			"assist": {
+				"enabled": false
+			},
 			"formatter": {
 				"enabled": false
 			},
-			"includes": ["**/*.snapshot.json"]
+			"includes": ["src/**/*.snapshot.json"]
 		}
 	]
 }

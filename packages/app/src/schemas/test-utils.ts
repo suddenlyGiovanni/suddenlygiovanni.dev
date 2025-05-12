@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/suspicious/noConsole: ok here */
 import { Effect, Either, Option, Schema } from 'effect'
 import { type ParseError, TreeFormatter } from 'effect/ParseResult'
 import type { ParseOptions } from 'effect/SchemaAST'

@@ -73,11 +73,12 @@ export const viteMiddleware = HttpMiddleware.make(app =>
 			viteDevServer.middlewares(incomingMessage, serverResponse, (err?: unknown): void => {
 				if (err) {
 					serverResponse.off('close', listener)
-					return resume(Effect.fail(new MiddlewareError({ message: String(err) })))
-				} else {
-					serverResponse.off('close', listener)
-					return resume(app)
+					resume(Effect.fail(new MiddlewareError({ message: String(err) })))
+					return
 				}
+				serverResponse.off('close', listener)
+				resume(app)
+				return
 			})
 		})
 	}),

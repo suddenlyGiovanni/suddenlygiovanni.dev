@@ -7,44 +7,6 @@ import { parseYml } from '#root/src/schemas/parse-yml.ts'
 import { Octokit, type OctokitError } from '#root/src/services/octokit.ts'
 
 /**
- * Could throw if GITHUB_TOKEN is invalid or expired;
- * Not recoverable at runtime, strategy:
- * - fail
- * - notify
- *
- * @remarks
- * what is it?
- * a github api src singleton?
- * or just an object with a method? in-any case it needs to moved to a separate
- * file... but where?
- */
-
-// const octokit = new Octokit({ auth: env.GITHUB_TOKEN })
-
-/**
- * This error can be thrown when the GITHUB_TOKEN is not set in the environment variables.
- */
-
-class AuthenticationError extends Data.TaggedError('AuthenticationError')<{
-	readonly message?: string
-}> {}
-
-/**
- * This error can be thrown when the getContent request to the GitHub API fails due to network
- * issues.
- */
-class NetworkError extends Data.TaggedError('NetworkError')<{ readonly message?: string }> {}
-
-/**
- * This error can be thrown when the status code of the response from the getContent request is
- * not 200.
- */
-
-class ApiResponseError extends Data.TaggedError('ApiResponseError')<{
-	readonly message?: string
-}> {}
-
-/**
  * This error can be thrown when the data returned from the getContent request is not an object or
  * is an array, or does not have the correct type, name, or path.
  */

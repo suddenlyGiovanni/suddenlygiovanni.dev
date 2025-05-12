@@ -10,7 +10,6 @@
 			"a11y": {},
 			"nursery": {
 				"noSecrets": "off",
-				"useConsistentCurlyBraces": "off",
 				"useExplicitType": "info",
 				"useSortedClasses": {
 					"fix": "safe",
@@ -58,11 +57,7 @@
 			"includes": ["src/**/*.stories.tsx", "!**/node_modules/**"],
 			"linter": {
 				"rules": {
-					"nursery": {
-						"noEnum": "off",
-						"noImgElement": "off",
-						"useComponentExportOnlyModules": "off"
-					},
+					"nursery": {},
 					"style": {
 						"noDefaultExport": "off"
 					}

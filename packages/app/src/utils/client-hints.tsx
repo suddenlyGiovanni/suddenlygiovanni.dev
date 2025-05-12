@@ -39,10 +39,10 @@ export function ClientHintCheck({ nonce }: { nonce?: string }): ReactElement {
 
 	return (
 		<script
+			// biome-ignore lint/security/noDangerouslySetInnerHtml: this is intentional
 			dangerouslySetInnerHTML={{
 				__html: hintsUtils.getClientHintCheckScript(),
 			}}
-			// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
 			nonce={nonce}
 		/>
 	)

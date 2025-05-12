@@ -1,38 +1,38 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"devDependencies": {
-		"@biomejs/biome": "2.0.0-beta.2",
+		"@biomejs/biome": "2.0.0-beta.3",
 		"eslint": "catalog:",
 		"typescript": "catalog:"
 	},
 	"devEngines": {
 		"packageManager": {
 			"name": "pnpm",
-			"version": "10.10.0",
-			"onFail": "error"
+			"onFail": "error",
+			"version": "10.10.0"
 		},
 		"runtime": {
 			"name": "node",
-			"version": ">= 24",
-			"onFail": "error"
+			"onFail": "error",
+			"version": ">= 24"
 		}
 	},
 	"engines": {
 		"node": ">=24"
 	},
 	"pnpm": {
-		"overrides": {
-			"react": "catalog:",
-			"react-dom": "catalog:",
-			"@types/react": "catalog:"
-		},
 		"onlyBuiltDependencies": [
 			"@biomejs/biome",
 			"@parcel/watcher",
 			"esbuild",
 			"msgpackr-extract",
 			"msw"
-		]
+		],
+		"overrides": {
+			"@types/react": "catalog:",
+			"react": "catalog:",
+			"react-dom": "catalog:"
+		}
 	},
 	"private": true,
 	"scripts": {

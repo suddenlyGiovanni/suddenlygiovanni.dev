@@ -133,7 +133,7 @@ export function Layout(props: { children: ReactNode }): ReactElement {
 
 export default function App(_: Route.ComponentProps): ReactElement {
 	const { requestInfo } = useLoaderData<typeof loader>()
-	const theme = useTheme()
+	const _theme = useTheme()
 
 	return (
 		<>

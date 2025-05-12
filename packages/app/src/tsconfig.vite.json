@@ -18,7 +18,7 @@
 			"@types/mdx"
 		]
 	},
+	"exclude": ["server/**/*"],
 	"extends": ["../tsconfig.json", "@repo/typescript-config/remix.json"],
-	"include": ["/**/*", "../vite.config.ts", "../.react-router/types/**/*", "../types/*.ts"],
-	"exclude": ["server/**/*"]
+	"include": ["/**/*", "../vite.config.ts", "../.react-router/types/**/*", "../types/*.ts"]
 }
