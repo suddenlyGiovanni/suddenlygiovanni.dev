@@ -56,6 +56,7 @@ export function Education({
 						startDate={education.startDate}
 						studyType={education.studyType}
 						url={education.url}
+						// biome-ignore lint/style/noNonNullAssertion: it's ok
 						value={all.at(idx)!}
 					/>
 				))}

@@ -44,6 +44,7 @@ export function Skills({ skills }: { readonly skills: readonly ResumeSkill[] }):
 						key={name}
 						keywords={keywords}
 						name={name}
+						// biome-ignore lint/style/noNonNullAssertion: it's ok
 						value={all.at(idx)!}
 					/>
 				))}

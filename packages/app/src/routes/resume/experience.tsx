@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/noNonNullAssertion: it is ok here */
 import { Icons } from '@repo/ui/components/icons/icons.tsx'
 import { T } from '@repo/ui/components/typography/typography.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
