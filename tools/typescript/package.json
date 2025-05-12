@@ -24,8 +24,8 @@
 	"private": true,
 	"scripts": {
 		"clean": "rm -rf node_modules",
-	  	"lint": "biome lint",
-	  	"format": "biome format",
-	  	"format:write": "biome format"
+		"format": "biome format",
+		"format:write": "biome format",
+		"lint": "biome lint"
 	}
 }
