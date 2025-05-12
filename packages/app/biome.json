@@ -8,9 +8,7 @@
 	"linter": {
 		"rules": {
 			"nursery": {
-				"noSecrets": "off",
-				"useComponentExportOnlyModules": "off",
-				"useConsistentCurlyBraces": "off"
+				"noSecrets": "off"
 			},
 			"style": {
 				"noArguments": "error",
