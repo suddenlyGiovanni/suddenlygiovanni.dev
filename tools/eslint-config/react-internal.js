@@ -26,12 +26,12 @@ export const config = [
 		},
 	},
 	{
-		settings: { react: { version: 'detect' } },
 		rules: {
 			// React scope no longer necessary with new JSX transform.
 			'react-hooks/react-compiler': 'error',
 			'react/no-unescaped-entities': 'off',
 			'react/react-in-jsx-scope': 'off',
 		},
+		settings: { react: { version: 'detect' } },
 	},
 ]
