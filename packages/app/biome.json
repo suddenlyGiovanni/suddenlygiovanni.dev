@@ -78,10 +78,13 @@
 			}
 		},
 		{
+			"assist": {
+				"enabled": false
+			},
 			"formatter": {
 				"enabled": false
 			},
-			"includes": ["**/*.snapshot.json"]
+			"includes": ["src/**/*.snapshot.json"]
 		}
 	]
 }
