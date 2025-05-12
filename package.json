@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"devDependencies": {
-		"@biomejs/biome": "2.0.0-beta.2",
+		"@biomejs/biome": "2.0.0-beta.3",
 		"eslint": "catalog:",
 		"typescript": "catalog:"
 	},
