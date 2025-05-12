@@ -59,9 +59,6 @@
 			"linter": {
 				"rules": {
 					"nursery": {
-						"noEnum": "off",
-						"noImgElement": "off",
-						"useComponentExportOnlyModules": "off"
 					},
 					"style": {
 						"noDefaultExport": "off"
