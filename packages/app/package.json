@@ -46,7 +46,7 @@
 		"react-router-devtools": "5.0.5",
 		"tailwindcss": "catalog:",
 		"vite": "catalog:",
-		"vite-plugin-babel": "1.3.0",
+		"vite-plugin-babel": "1.3.1",
 		"vite-tsconfig-paths": "5.1.4",
 		"vitest": "catalog:"
 	},
