@@ -9,7 +9,7 @@ import { Link } from 'react-router'
 
 import { routesRecord } from '#root/src/routes-record.ts'
 
-import resumePdfAssetUrl from '/giovanni-ravalico-resume-2021.pdf?url'
+import resumePdfAssetUrl from '/giovanni-ravalico-resume-2025.pdf?url'
 
 export function Basics({ basics }: { basics: Model.Basics }): ReactElement {
 	return (
