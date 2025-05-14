@@ -2,7 +2,7 @@
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
 	"css": {
 		"assist": {
-			"enabled": true
+			"enabled": false
 		},
 		"formatter": {
 			"enabled": true
