@@ -46,7 +46,7 @@
 		"tailwind-merge": "catalog:rest",
 		"tailwindcss": "catalog:rest",
 		"vite": "catalog:rest",
-		"vitest": "catalog:rest"
+		"vitest": "catalog:test"
 	},
 	"exports": {
 		"./components/*": "./src/components/*",

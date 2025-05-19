@@ -37,18 +37,18 @@
 		"@types/node": "catalog:rest",
 		"@types/react": "catalog:rest",
 		"@types/react-dom": "catalog:rest",
-		"@vitest/coverage-v8": "catalog:rest",
+		"@vitest/coverage-v8": "catalog:test",
 		"@vitest/eslint-plugin": "catalog:rest",
-		"@vitest/ui": "catalog:rest",
+		"@vitest/ui": "catalog:test",
 		"babel-plugin-react-compiler": "catalog:rest",
 		"globals": "catalog:rest",
-		"msw": "catalog:rest",
+		"msw": "catalog:test",
 		"react-router-devtools": "catalog:rest",
 		"tailwindcss": "catalog:rest",
 		"vite": "catalog:rest",
 		"vite-plugin-babel": "catalog:rest",
 		"vite-tsconfig-paths": "catalog:rest",
-		"vitest": "catalog:rest"
+		"vitest": "catalog:test"
 	},
 	"imports": {
 		"#root/*": "./*"
