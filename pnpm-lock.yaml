@@ -41,9 +41,9 @@ catalogs:
       version: 3.1.3
 
 overrides:
+  '@types/react': ^19.1.2
   react: ~19.1.0
   react-dom: ~19.1.0
-  '@types/react': ^19.1.2
 
 importers:
 
@@ -403,9 +403,9 @@ importers:
       '@tsconfig/node-ts':
         specifier: 23.6.1
         version: 23.6.1
-      '@tsconfig/node23':
-        specifier: 23.0.1
-        version: 23.0.1
+      '@tsconfig/node24':
+        specifier: 24.0.0
+        version: 24.0.0
       '@tsconfig/strictest':
         specifier: 2.0.5
         version: 2.0.5
@@ -3008,8 +3008,8 @@ packages:
   '@tsconfig/node-ts@23.6.1':
     resolution: {integrity: sha512-1E5cUp+S65pLKKI9VrGMQPWDHxOEq3dAGM2onG3fLeSRwWbylYFwhIjnzJikjSN7w2nCgwxmv8ifvUKDFkK38Q==}
 
-  '@tsconfig/node23@23.0.1':
-    resolution: {integrity: sha512-oJ0Y42TmsBLuLAfEbPTS5JXSbJJEEU4bULROS6zsL54Gdlw5aOy27rpsquotMKGf2auP6rkbfYsjl43WdGrNcg==}
+  '@tsconfig/node24@24.0.0':
+    resolution: {integrity: sha512-3/6Cr4dELEAucgPIr6ufY7yBYMi4ttZFOewABADNZ+bm4DUZl4dup2VBcBeP1ejj3QblrWVWux/1XcRv/ZVikA==}
 
   '@tsconfig/strictest@2.0.5':
     resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
@@ -9311,7 +9311,7 @@ snapshots:
 
   '@tsconfig/node-ts@23.6.1': {}
 
-  '@tsconfig/node23@23.0.1': {}
+  '@tsconfig/node24@24.0.0': {}
 
   '@tsconfig/strictest@2.0.5': {}
 
