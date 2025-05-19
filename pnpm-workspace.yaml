@@ -23,17 +23,17 @@ catalogs:
     ts-brand: 0.2.0
   storybook:
     "@chromatic-com/storybook": 3.2.6
-    "@storybook/addon-a11y": 8.6.13
-    "@storybook/addon-essentials": 8.6.13
-    "@storybook/addon-interactions": 8.6.13
-    "@storybook/addon-links": 8.6.13
-    "@storybook/addon-onboarding": 8.6.13
-    "@storybook/addon-themes": 8.6.13
-    "@storybook/blocks": 8.6.13
-    "@storybook/react": 8.6.13
-    "@storybook/react-vite": 8.6.13
-    "@storybook/test": 8.6.13
-    storybook: 8.6.13
+    "@storybook/addon-a11y": 8.6.14
+    "@storybook/addon-essentials": 8.6.14
+    "@storybook/addon-interactions": 8.6.14
+    "@storybook/addon-links": 8.6.14
+    "@storybook/addon-onboarding": 8.6.14
+    "@storybook/addon-themes": 8.6.14
+    "@storybook/blocks": 8.6.14
+    "@storybook/react": 8.6.14
+    "@storybook/react-vite": 8.6.14
+    "@storybook/test": 8.6.14
+    storybook: 8.6.14
   test: # Packages used for testing
     vitest: 3.1.3
     "@vitest/ui": 3.1.3
