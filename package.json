@@ -1,9 +1,9 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"devDependencies": {
-		"@biomejs/biome": "catalog:",
-		"eslint": "catalog:",
-		"typescript": "catalog:"
+		"@biomejs/biome": "catalog:rest",
+		"eslint": "catalog:rest",
+		"typescript": "catalog:rest"
 	},
 	"devEngines": {
 		"packageManager": {
@@ -29,9 +29,9 @@
 			"msw"
 		],
 		"overrides": {
-			"@types/react": "catalog:",
-			"react": "catalog:",
-			"react-dom": "catalog:"
+			"@types/react": "catalog:rest",
+			"react": "catalog:rest",
+			"react-dom": "catalog:rest"
 		}
 	},
 	"private": true,
