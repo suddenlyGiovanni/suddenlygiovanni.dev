@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EslintConfiguration">
+    <extra-options value="--flag unstable_native_nodejs_ts_config --flag unstable_config_lookup_from_file" />
+  </component>
+</project>
