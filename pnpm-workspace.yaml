@@ -12,16 +12,13 @@ strictPeerDependencies: false
 resolvePeersFromWorkspaceRoot: true
 catalogs:
   rest:
-    "@babel/preset-typescript": 7.26.0
     "@chromatic-com/storybook": 3.2.6
-    "@codecov/vite-plugin": 1.9.0
     "@conform-to/react": 1.2.2
     "@effect/language-service": 0.16.1
     "@effect/platform": 0.82.3
     "@effect/platform-node": 0.81.0
     "@epic-web/client-hints": 1.3.5
     "@epic-web/invariant": 1.0.0
-    "@mdx-js/rollup": 3.1.0
     "@octokit/core": 6.1.5
     "@octokit/plugin-rest-endpoint-methods": 14.0.0
     "@octokit/request-error": 6.1.8
@@ -48,14 +45,11 @@ catalogs:
     "@storybook/react-vite": 8.6.13
     "@storybook/test": 8.6.13
     "@tailwindcss/typography": 0.5.16
-    "@tailwindcss/vite": 4.1.7
     "@total-typescript/ts-reset": 0.6.1
     "@tsconfig/node-ts": 23.6.1
     "@tsconfig/node24": 24.0.0
     "@tsconfig/strictest": 2.0.5
     "@tsconfig/vite-react": 3.4.0
-    "@vitejs/plugin-react": 4.4.1
-    babel-plugin-react-compiler: ^19.1.0-rc.1
     class-variance-authority: 0.7.1
     cookie: 1.0.2
     effect: 3.15.2
@@ -74,9 +68,6 @@ catalogs:
     tailwindcss: 4.1.7
     ts-brand: 0.2.0
     typescript: 5.8.3
-    vite-plugin-babel: 1.3.1
-    vite-tsconfig-paths: 5.1.4
-    vite: 6.3.5
   test:
     vitest: 3.1.3
     "@vitest/ui": 3.1.3
@@ -100,3 +91,13 @@ catalogs:
     eslint-plugin-storybook: 0.12.0
     eslint: 9.26.0
     typescript-eslint: 8.32.1
+  build:
+    "@babel/preset-typescript": 7.26.0
+    "@codecov/vite-plugin": 1.9.0
+    "@mdx-js/rollup": 3.1.0
+    "@tailwindcss/vite": 4.1.7
+    "@vitejs/plugin-react": 4.4.1
+    babel-plugin-react-compiler: ^19.1.0-rc.1
+    vite-plugin-babel: 1.3.1
+    vite-tsconfig-paths: 5.1.4
+    vite: 6.3.5
