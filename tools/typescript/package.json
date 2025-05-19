@@ -1,10 +1,10 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"dependencies": {
-		"@tsconfig/node-ts": "catalog:rest",
-		"@tsconfig/node24": "catalog:rest",
-		"@tsconfig/strictest": "catalog:rest",
-		"@tsconfig/vite-react": "catalog:rest"
+		"@tsconfig/node-ts": "catalog:typescript",
+		"@tsconfig/node24": "catalog:typescript",
+		"@tsconfig/strictest": "catalog:typescript",
+		"@tsconfig/vite-react": "catalog:typescript"
 	},
 	"exports": {
 		"./base.json": "./base.json",
@@ -14,7 +14,7 @@
 	},
 	"name": "@repo/typescript-config",
 	"peerDependencies": {
-		"typescript": "catalog:rest"
+		"typescript": "catalog:typescript"
 	},
 	"peerDependenciesMeta": {
 		"typescript": {

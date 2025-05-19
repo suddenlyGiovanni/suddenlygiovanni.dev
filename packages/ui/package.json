@@ -34,7 +34,7 @@
 		"@storybook/react-vite": "catalog:rest",
 		"@storybook/test": "catalog:rest",
 		"@tailwindcss/vite": "catalog:build",
-		"@total-typescript/ts-reset": "catalog:rest",
+		"@total-typescript/ts-reset": "catalog:types",
 		"@types/react": "catalog:types",
 		"@types/react-dom": "catalog:types",
 		"@vitejs/plugin-react": "catalog:build",

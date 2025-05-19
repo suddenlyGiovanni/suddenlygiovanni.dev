@@ -10,7 +10,7 @@
 		"eslint-plugin-react": "catalog:lint",
 		"eslint-plugin-react-hooks": "catalog:lint",
 		"globals": "catalog:lint",
-		"typescript": "catalog:rest",
+		"typescript": "catalog:typescript",
 		"typescript-eslint": "catalog:lint"
 	},
 	"exports": {

@@ -5,7 +5,7 @@
 	},
 	"devDependencies": {
 		"@repo/typescript-config": "workspace:*",
-		"typescript": "catalog:rest"
+		"typescript": "catalog:typescript"
 	},
 	"exports": {
 		".": "./src/index.ts"

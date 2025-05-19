@@ -3,7 +3,7 @@
 	"devDependencies": {
 		"@biomejs/biome": "catalog:lint",
 		"eslint": "catalog:lint",
-		"typescript": "catalog:rest"
+		"typescript": "catalog:typescript"
 	},
 	"devEngines": {
 		"packageManager": {
