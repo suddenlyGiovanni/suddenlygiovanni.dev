@@ -6,6 +6,6 @@
 		"useDefineForClassFields": true
 	},
 	"exclude": ["node_modules", "./~"],
-	"extends": "@repo/typescript-config/library.json",
+	"extends": "@repo/typescript-config/node.json",
 	"include": ["./src/**/*"]
 }

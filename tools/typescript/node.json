@@ -1,5 +1,5 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
-	"display": "Library",
+	"display": "Node_24",
 	"extends": ["./base.json", "@tsconfig/node24/tsconfig.json", "@tsconfig/node-ts/tsconfig.json"]
 }
