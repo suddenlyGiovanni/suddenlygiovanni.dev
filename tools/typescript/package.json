@@ -1,10 +1,10 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"dependencies": {
-		"@tsconfig/node-ts": "23.6.1",
-		"@tsconfig/node24": "24.0.0",
-		"@tsconfig/strictest": "2.0.5",
-		"@tsconfig/vite-react": "3.4.0"
+		"@tsconfig/node-ts": "catalog:",
+		"@tsconfig/node24": "catalog:",
+		"@tsconfig/strictest": "catalog:",
+		"@tsconfig/vite-react": "catalog:"
 	},
 	"exports": {
 		"./base.json": "./base.json",

@@ -6,36 +6,249 @@ settings:
 
 catalogs:
   default:
+    '@babel/preset-typescript':
+      specifier: 7.26.0
+      version: 7.26.0
+    '@biomejs/biome':
+      specifier: 2.0.0-beta.4
+      version: 2.0.0-beta.4
+    '@chromatic-com/storybook':
+      specifier: 3.2.6
+      version: 3.2.6
+    '@codecov/vite-plugin':
+      specifier: 1.9.0
+      version: 1.9.0
+    '@conform-to/react':
+      specifier: 1.2.2
+      version: 1.2.2
+    '@effect/language-service':
+      specifier: 0.16.1
+      version: 0.16.1
+    '@effect/platform':
+      specifier: 0.82.3
+      version: 0.82.3
+    '@effect/platform-node':
+      specifier: 0.81.0
+      version: 0.81.0
+    '@epic-web/client-hints':
+      specifier: 1.3.5
+      version: 1.3.5
+    '@epic-web/invariant':
+      specifier: 1.0.0
+      version: 1.0.0
+    '@eslint/js':
+      specifier: 9.26.0
+      version: 9.26.0
+    '@mdx-js/rollup':
+      specifier: 3.1.0
+      version: 3.1.0
+    '@octokit/core':
+      specifier: 6.1.5
+      version: 6.1.5
+    '@octokit/plugin-rest-endpoint-methods':
+      specifier: 14.0.0
+      version: 14.0.0
+    '@octokit/request-error':
+      specifier: 6.1.8
+      version: 6.1.8
+    '@radix-ui/react-accessible-icon':
+      specifier: 1.1.6
+      version: 1.1.6
+    '@radix-ui/react-accordion':
+      specifier: 1.2.10
+      version: 1.2.10
+    '@radix-ui/react-avatar':
+      specifier: 1.1.9
+      version: 1.1.9
+    '@radix-ui/react-collapsible':
+      specifier: 1.1.10
+      version: 1.1.10
+    '@radix-ui/react-dropdown-menu':
+      specifier: 2.1.14
+      version: 2.1.14
+    '@radix-ui/react-icons':
+      specifier: 1.3.2
+      version: 1.3.2
+    '@radix-ui/react-navigation-menu':
+      specifier: 1.2.12
+      version: 1.2.12
+    '@radix-ui/react-separator':
+      specifier: 1.1.6
+      version: 1.1.6
+    '@radix-ui/react-slot':
+      specifier: 1.2.2
+      version: 1.2.2
+    '@radix-ui/react-switch':
+      specifier: 1.2.4
+      version: 1.2.4
+    '@react-router/dev':
+      specifier: 7.6.0
+      version: 7.6.0
+    '@react-router/node':
+      specifier: 7.6.0
+      version: 7.6.0
+    '@storybook/addon-a11y':
+      specifier: 8.6.13
+      version: 8.6.13
+    '@storybook/addon-essentials':
+      specifier: 8.6.13
+      version: 8.6.13
+    '@storybook/addon-interactions':
+      specifier: 8.6.13
+      version: 8.6.13
+    '@storybook/addon-links':
+      specifier: 8.6.13
+      version: 8.6.13
+    '@storybook/addon-onboarding':
+      specifier: 8.6.13
+      version: 8.6.13
+    '@storybook/addon-themes':
+      specifier: 8.6.13
+      version: 8.6.13
+    '@storybook/blocks':
+      specifier: 8.6.13
+      version: 8.6.13
+    '@storybook/react':
+      specifier: 8.6.13
+      version: 8.6.13
+    '@storybook/react-vite':
+      specifier: 8.6.13
+      version: 8.6.13
+    '@storybook/test':
+      specifier: 8.6.13
+      version: 8.6.13
+    '@tailwindcss/typography':
+      specifier: 0.5.16
+      version: 0.5.16
     '@tailwindcss/vite':
       specifier: 4.1.7
       version: 4.1.7
     '@total-typescript/ts-reset':
       specifier: 0.6.1
       version: 0.6.1
+    '@tsconfig/node-ts':
+      specifier: 23.6.1
+      version: 23.6.1
+    '@tsconfig/node24':
+      specifier: 24.0.0
+      version: 24.0.0
+    '@tsconfig/strictest':
+      specifier: 2.0.5
+      version: 2.0.5
+    '@tsconfig/vite-react':
+      specifier: 3.4.0
+      version: 3.4.0
+    '@types/mdx':
+      specifier: 2.0.13
+      version: 2.0.13
+    '@types/node':
+      specifier: 22.15.19
+      version: 22.15.19
     '@types/react-dom':
       specifier: ^19.1.3
       version: 19.1.3
+    '@typescript-eslint/eslint-plugin':
+      specifier: 8.32.1
+      version: 8.32.1
+    '@typescript-eslint/parser':
+      specifier: 8.32.1
+      version: 8.32.1
+    '@vitejs/plugin-react':
+      specifier: 4.4.1
+      version: 4.4.1
     '@vitest/coverage-v8':
       specifier: 3.1.3
       version: 3.1.3
+    '@vitest/eslint-plugin':
+      specifier: 1.1.44
+      version: 1.1.44
     '@vitest/ui':
       specifier: 3.1.3
       version: 3.1.3
     babel-plugin-react-compiler:
       specifier: ^19.1.0-rc.1
       version: 19.1.0-rc.1
+    class-variance-authority:
+      specifier: 0.7.1
+      version: 0.7.1
+    cookie:
+      specifier: 1.0.2
+      version: 1.0.2
+    effect:
+      specifier: 3.15.2
+      version: 3.15.2
     eslint:
       specifier: 9.26.0
       version: 9.26.0
+    eslint-config-prettier:
+      specifier: 10.1.5
+      version: 10.1.5
+    eslint-plugin-only-warn:
+      specifier: 1.1.0
+      version: 1.1.0
+    eslint-plugin-react:
+      specifier: 7.37.5
+      version: 7.37.5
+    eslint-plugin-react-hooks:
+      specifier: 6.0.0-rc1
+      version: 6.0.0-rc1
+    eslint-plugin-storybook:
+      specifier: 0.12.0
+      version: 0.12.0
+    globals:
+      specifier: 16.0.0
+      version: 16.0.0
+    isbot:
+      specifier: 5.1.27
+      version: 5.1.27
+    msw:
+      specifier: 2.7.6
+      version: 2.7.6
+    react-aria-components:
+      specifier: 1.7.1
+      version: 1.7.1
+    react-router:
+      specifier: 7.6.0
+      version: 7.6.0
+    react-router-devtools:
+      specifier: 5.0.5
+      version: 5.0.5
+    remix-utils:
+      specifier: 8.3.1
+      version: 8.3.1
+    storybook:
+      specifier: 8.6.13
+      version: 8.6.13
+    tailwind-merge:
+      specifier: 3.3.0
+      version: 3.3.0
+    tailwind-variants:
+      specifier: 1.0.0
+      version: 1.0.0
     tailwindcss:
       specifier: 4.1.7
       version: 4.1.7
+    tailwindcss-animate:
+      specifier: 1.0.7
+      version: 1.0.7
+    ts-brand:
+      specifier: 0.2.0
+      version: 0.2.0
     typescript:
       specifier: 5.8.3
       version: 5.8.3
+    typescript-eslint:
+      specifier: 8.32.1
+      version: 8.32.1
     vite:
       specifier: 6.3.5
       version: 6.3.5
+    vite-plugin-babel:
+      specifier: 1.3.1
+      version: 1.3.1
+    vite-tsconfig-paths:
+      specifier: 5.1.4
+      version: 5.1.4
     vitest:
       specifier: 3.1.3
       version: 3.1.3
@@ -50,7 +263,7 @@ importers:
   .:
     devDependencies:
       '@biomejs/biome':
-        specifier: 2.0.0-beta.4
+        specifier: 'catalog:'
         version: 2.0.0-beta.4
       eslint:
         specifier: 'catalog:'
@@ -62,31 +275,31 @@ importers:
   packages/app:
     dependencies:
       '@conform-to/react':
-        specifier: 1.2.2
+        specifier: 'catalog:'
         version: 1.2.2(react@19.1.0)
       '@effect/platform':
-        specifier: 0.82.3
+        specifier: 'catalog:'
         version: 0.82.3(effect@3.15.2)
       '@effect/platform-node':
-        specifier: 0.81.0
+        specifier: 'catalog:'
         version: 0.81.0(@effect/cluster@0.29.22(@effect/platform@0.82.3(effect@3.15.2))(@effect/rpc@0.55.17(@effect/platform@0.82.3(effect@3.15.2))(effect@3.15.2))(@effect/sql@0.33.13(@effect/experimental@0.44.13(@effect/platform@0.82.3(effect@3.15.2))(effect@3.15.2))(@effect/platform@0.82.3(effect@3.15.2))(effect@3.15.2))(effect@3.15.2))(@effect/platform@0.82.3(effect@3.15.2))(@effect/rpc@0.55.17(@effect/platform@0.82.3(effect@3.15.2))(effect@3.15.2))(@effect/sql@0.33.13(@effect/experimental@0.44.13(@effect/platform@0.82.3(effect@3.15.2))(effect@3.15.2))(@effect/platform@0.82.3(effect@3.15.2))(effect@3.15.2))(effect@3.15.2)
       '@epic-web/client-hints':
-        specifier: 1.3.5
+        specifier: 'catalog:'
         version: 1.3.5
       '@epic-web/invariant':
-        specifier: 1.0.0
+        specifier: 'catalog:'
         version: 1.0.0
       '@octokit/core':
-        specifier: 6.1.5
+        specifier: 'catalog:'
         version: 6.1.5
       '@octokit/plugin-rest-endpoint-methods':
-        specifier: 14.0.0
+        specifier: 'catalog:'
         version: 14.0.0(@octokit/core@6.1.5)
       '@octokit/request-error':
-        specifier: 6.1.8
+        specifier: 'catalog:'
         version: 6.1.8
       '@react-router/node':
-        specifier: 7.6.0
+        specifier: 'catalog:'
         version: 7.6.0(react-router@7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)
       '@repo/open-graph-protocol':
         specifier: workspace:*
@@ -104,13 +317,13 @@ importers:
         specifier: jsr:0.0.7
         version: '@jsr/suddenly-giovanni__schema-resume@0.0.7'
       cookie:
-        specifier: 1.0.2
+        specifier: 'catalog:'
         version: 1.0.2
       effect:
-        specifier: 3.15.2
+        specifier: 'catalog:'
         version: 3.15.2
       isbot:
-        specifier: 5.1.27
+        specifier: 'catalog:'
         version: 5.1.27
       react:
         specifier: ~19.1.0
@@ -119,26 +332,26 @@ importers:
         specifier: ~19.1.0
         version: 19.1.0(react@19.1.0)
       react-router:
-        specifier: 7.6.0
+        specifier: 'catalog:'
         version: 7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       remix-utils:
-        specifier: 8.3.1
+        specifier: 'catalog:'
         version: 8.3.1(react-router@7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(zod@3.24.3)
     devDependencies:
       '@babel/preset-typescript':
-        specifier: 7.26.0
+        specifier: 'catalog:'
         version: 7.26.0(@babel/core@7.26.10)
       '@codecov/vite-plugin':
-        specifier: 1.9.0
+        specifier: 'catalog:'
         version: 1.9.0(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(lightningcss@1.30.1))
       '@effect/language-service':
-        specifier: 0.16.1
+        specifier: 'catalog:'
         version: 0.16.1
       '@mdx-js/rollup':
-        specifier: 3.1.0
+        specifier: 'catalog:'
         version: 3.1.0(acorn@8.14.1)(rollup@4.40.0)
       '@react-router/dev':
-        specifier: 7.6.0
+        specifier: 'catalog:'
         version: 7.6.0(@types/node@22.15.19)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(lightningcss@1.30.1)(react-router@7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(lightningcss@1.30.1))
       '@repo/eslint-config':
         specifier: workspace:*
@@ -153,10 +366,10 @@ importers:
         specifier: 'catalog:'
         version: 0.6.1
       '@types/mdx':
-        specifier: 2.0.13
+        specifier: 'catalog:'
         version: 2.0.13
       '@types/node':
-        specifier: 22.15.19
+        specifier: 'catalog:'
         version: 22.15.19
       '@types/react':
         specifier: ^19.1.2
@@ -168,7 +381,7 @@ importers:
         specifier: 'catalog:'
         version: 3.1.3(vitest@3.1.3)
       '@vitest/eslint-plugin':
-        specifier: 1.1.44
+        specifier: 'catalog:'
         version: 1.1.44(@typescript-eslint/utils@8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.1.3)
       '@vitest/ui':
         specifier: 'catalog:'
@@ -177,13 +390,13 @@ importers:
         specifier: 'catalog:'
         version: 19.1.0-rc.1
       globals:
-        specifier: 16.0.0
+        specifier: 'catalog:'
         version: 16.0.0
       msw:
-        specifier: 2.7.6
+        specifier: 'catalog:'
         version: 2.7.6(@types/node@22.15.19)(typescript@5.8.3)
       react-router-devtools:
-        specifier: 5.0.5
+        specifier: 'catalog:'
         version: 5.0.5(@types/react-dom@19.1.3(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react-router@7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(lightningcss@1.30.1))
       tailwindcss:
         specifier: 'catalog:'
@@ -192,10 +405,10 @@ importers:
         specifier: 'catalog:'
         version: 6.3.5(@types/node@22.15.19)(jiti@2.4.2)(lightningcss@1.30.1)
       vite-plugin-babel:
-        specifier: 1.3.1
+        specifier: 'catalog:'
         version: 1.3.1(@babel/core@7.26.10)(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(lightningcss@1.30.1))
       vite-tsconfig-paths:
-        specifier: 5.1.4
+        specifier: 'catalog:'
         version: 5.1.4(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(lightningcss@1.30.1))
       vitest:
         specifier: 'catalog:'
@@ -204,7 +417,7 @@ importers:
   packages/open-graph-protocol:
     dependencies:
       ts-brand:
-        specifier: 0.2.0
+        specifier: 'catalog:'
         version: 0.2.0
     devDependencies:
       '@repo/typescript-config':
@@ -220,34 +433,34 @@ importers:
         specifier: jsr:0.3.1
         version: '@jsr/nick__clsx@0.3.1'
       '@radix-ui/react-accessible-icon':
-        specifier: 1.1.6
+        specifier: 'catalog:'
         version: 1.1.6(@types/react-dom@19.1.3(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-accordion':
-        specifier: 1.2.10
+        specifier: 'catalog:'
         version: 1.2.10(@types/react-dom@19.1.3(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-avatar':
-        specifier: 1.1.9
+        specifier: 'catalog:'
         version: 1.1.9(@types/react-dom@19.1.3(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-collapsible':
-        specifier: 1.1.10
+        specifier: 'catalog:'
         version: 1.1.10(@types/react-dom@19.1.3(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-dropdown-menu':
-        specifier: 2.1.14
+        specifier: 'catalog:'
         version: 2.1.14(@types/react-dom@19.1.3(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-icons':
-        specifier: 1.3.2
+        specifier: 'catalog:'
         version: 1.3.2(react@19.1.0)
       '@radix-ui/react-navigation-menu':
-        specifier: 1.2.12
+        specifier: 'catalog:'
         version: 1.2.12(@types/react-dom@19.1.3(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-separator':
-        specifier: 1.1.6
+        specifier: 'catalog:'
         version: 1.1.6(@types/react-dom@19.1.3(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@radix-ui/react-slot':
-        specifier: 1.2.2
+        specifier: 'catalog:'
         version: 1.2.2(@types/react@19.1.4)(react@19.1.0)
       '@radix-ui/react-switch':
-        specifier: 1.2.4
+        specifier: 'catalog:'
         version: 1.2.4(@types/react-dom@19.1.3(@types/react@19.1.4))(@types/react@19.1.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@repo/tailwind-config':
         specifier: workspace:*
@@ -256,20 +469,20 @@ importers:
         specifier: ~19.1.0
         version: 19.1.0
       react-aria-components:
-        specifier: 1.7.1
+        specifier: 'catalog:'
         version: 1.7.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-dom:
         specifier: ~19.1.0
         version: 19.1.0(react@19.1.0)
       react-router:
-        specifier: 7.6.0
+        specifier: 'catalog:'
         version: 7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       tailwind-variants:
-        specifier: 1.0.0
+        specifier: 'catalog:'
         version: 1.0.0(tailwindcss@4.1.7)
     devDependencies:
       '@chromatic-com/storybook':
-        specifier: 3.2.6
+        specifier: 'catalog:'
         version: 3.2.6(react@19.1.0)(storybook@8.6.13(prettier@2.8.8))
       '@repo/eslint-config':
         specifier: workspace:*
@@ -278,34 +491,34 @@ importers:
         specifier: workspace:*
         version: link:../../tools/typescript
       '@storybook/addon-a11y':
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(storybook@8.6.13(prettier@2.8.8))
       '@storybook/addon-essentials':
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(@types/react@19.1.4)(storybook@8.6.13(prettier@2.8.8))
       '@storybook/addon-interactions':
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(storybook@8.6.13(prettier@2.8.8))
       '@storybook/addon-links':
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(react@19.1.0)(storybook@8.6.13(prettier@2.8.8))
       '@storybook/addon-onboarding':
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(storybook@8.6.13(prettier@2.8.8))
       '@storybook/addon-themes':
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(storybook@8.6.13(prettier@2.8.8))
       '@storybook/blocks':
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.13(prettier@2.8.8))
       '@storybook/react':
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(@storybook/test@8.6.13(storybook@8.6.13(prettier@2.8.8)))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.13(prettier@2.8.8))(typescript@5.8.3)
       '@storybook/react-vite':
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(@storybook/test@8.6.13(storybook@8.6.13(prettier@2.8.8)))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rollup@4.40.0)(storybook@8.6.13(prettier@2.8.8))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(lightningcss@1.30.1))
       '@storybook/test':
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(storybook@8.6.13(prettier@2.8.8))
       '@tailwindcss/vite':
         specifier: 'catalog:'
@@ -320,25 +533,25 @@ importers:
         specifier: 'catalog:'
         version: 19.1.3(@types/react@19.1.4)
       '@vitejs/plugin-react':
-        specifier: 4.4.1
+        specifier: 'catalog:'
         version: 4.4.1(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(lightningcss@1.30.1))
       babel-plugin-react-compiler:
         specifier: 'catalog:'
         version: 19.1.0-rc.1
       class-variance-authority:
-        specifier: 0.7.1
+        specifier: 'catalog:'
         version: 0.7.1
       eslint-plugin-storybook:
-        specifier: 0.12.0
+        specifier: 'catalog:'
         version: 0.12.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
       globals:
-        specifier: 16.0.0
+        specifier: 'catalog:'
         version: 16.0.0
       storybook:
-        specifier: 8.6.13
+        specifier: 'catalog:'
         version: 8.6.13(prettier@2.8.8)
       tailwind-merge:
-        specifier: 3.3.0
+        specifier: 'catalog:'
         version: 3.3.0
       tailwindcss:
         specifier: 'catalog:'
@@ -353,64 +566,64 @@ importers:
   tools/eslint-config:
     devDependencies:
       '@eslint/js':
-        specifier: 9.26.0
+        specifier: 'catalog:'
         version: 9.26.0
       '@typescript-eslint/eslint-plugin':
-        specifier: 8.32.1
+        specifier: 'catalog:'
         version: 8.32.1(@typescript-eslint/parser@8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
       '@typescript-eslint/parser':
-        specifier: 8.32.1
+        specifier: 'catalog:'
         version: 8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
       eslint:
         specifier: 'catalog:'
         version: 9.26.0(jiti@2.4.2)
       eslint-config-prettier:
-        specifier: 10.1.5
+        specifier: 'catalog:'
         version: 10.1.5(eslint@9.26.0(jiti@2.4.2))
       eslint-plugin-only-warn:
-        specifier: 1.1.0
+        specifier: 'catalog:'
         version: 1.1.0
       eslint-plugin-react:
-        specifier: 7.37.5
+        specifier: 'catalog:'
         version: 7.37.5(eslint@9.26.0(jiti@2.4.2))
       eslint-plugin-react-hooks:
-        specifier: 6.0.0-rc1
+        specifier: 'catalog:'
         version: 6.0.0-rc1(eslint@9.26.0(jiti@2.4.2))
       globals:
-        specifier: 16.0.0
+        specifier: 'catalog:'
         version: 16.0.0
       typescript:
         specifier: 'catalog:'
         version: 5.8.3
       typescript-eslint:
-        specifier: 8.32.1
+        specifier: 'catalog:'
         version: 8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
 
   tools/tailwind:
     dependencies:
       '@tailwindcss/typography':
-        specifier: 0.5.16
+        specifier: 'catalog:'
         version: 0.5.16(tailwindcss@4.1.7)
       tailwindcss:
         specifier: 'catalog:'
         version: 4.1.7
       tailwindcss-animate:
-        specifier: 1.0.7
+        specifier: 'catalog:'
         version: 1.0.7(tailwindcss@4.1.7)
 
   tools/typescript:
     dependencies:
       '@tsconfig/node-ts':
-        specifier: 23.6.1
+        specifier: 'catalog:'
         version: 23.6.1
       '@tsconfig/node24':
-        specifier: 24.0.0
+        specifier: 'catalog:'
         version: 24.0.0
       '@tsconfig/strictest':
-        specifier: 2.0.5
+        specifier: 'catalog:'
         version: 2.0.5
       '@tsconfig/vite-react':
-        specifier: 3.4.0
+        specifier: 'catalog:'
         version: 3.4.0
       typescript:
         specifier: 'catalog:'
@@ -456,10 +669,6 @@ packages:
     resolution: {integrity: sha512-UnJfnIpc/+JO0/+KRVQNGU+y5taA5vCbwN8+azkX6beii/ZF+enZJSOKo11ZSzGJjlNfJHfQtmQT8H+9TXPG2w==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/helper-annotate-as-pure@7.25.9':
-    resolution: {integrity: sha512-gv7320KBUFJz1RnylIg5WWYPRXKZ884AGkYpgpWW02TH66Dl+HaC1t1CKd0z3R4b6hdYEcmrNZHUmfCP+1u3/g==}
-    engines: {node: '>=6.9.0'}
-
   '@babel/helper-annotate-as-pure@7.27.1':
     resolution: {integrity: sha512-WnuuDILl9oOBbKnb4L+DyODx7iC47XfzmNCpTttFsSp6hTG7XZxu60+4IO+2/hPfcGOoKbFiwoI/+zwARbNQow==}
     engines: {node: '>=6.9.0'}
@@ -468,21 +677,11 @@ packages:
     resolution: {integrity: sha512-LVk7fbXml0H2xH34dFzKQ7TDZ2G4/rVTOrq9V+icbbadjbVxxeFeDsNHv2SrZeWoA+6ZiTyWYWtScEIW07EAcA==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/helper-create-class-features-plugin@7.27.0':
-    resolution: {integrity: sha512-vSGCvMecvFCd/BdpGlhpXYNhhC4ccxyvQWpbGL4CWbvfEoLFWUZuSuf7s9Aw70flgQF+6vptvgK2IfOnKlRmBg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0
-
   '@babel/helper-create-class-features-plugin@7.27.1':
     resolution: {integrity: sha512-QwGAmuvM17btKU5VqXfb+Giw4JcN0hjuufz3DYnpeVDvZLAObloM77bhMXiqry3Iio+Ai4phVRDwl6WU10+r5A==}
     engines: {node: '>=6.9.0'}
     peerDependencies:
       '@babel/core': ^7.0.0
-
-  '@babel/helper-member-expression-to-functions@7.25.9':
-    resolution: {integrity: sha512-wbfdZ9w5vk0C0oyHqAJbc62+vet5prjj01jjJ8sKn3j9h3MQQlflEdXYvuqRWjHnM12coDEqiC1IRCi0U/EKwQ==}
-    engines: {node: '>=6.9.0'}
 
   '@babel/helper-member-expression-to-functions@7.27.1':
     resolution: {integrity: sha512-E5chM8eWjTp/aNoVpcbfM7mLxu9XGLWYise2eBKGQomAk/Mb4XoxyqXTZbuTohbsl8EKqdlMhnDI2CCLfcs9wA==}
@@ -498,27 +697,13 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0
 
-  '@babel/helper-optimise-call-expression@7.25.9':
-    resolution: {integrity: sha512-FIpuNaz5ow8VyrYcnXQTDRGvV6tTjkNtCK/RYNDXGSLlUD6cBuQTSw43CShGxjvfBTfcUA/r6UhUCbtYqkhcuQ==}
-    engines: {node: '>=6.9.0'}
-
   '@babel/helper-optimise-call-expression@7.27.1':
     resolution: {integrity: sha512-URMGH08NzYFhubNSGJrpUEphGKQwMQYBySzat5cAByY1/YgIRkULnIy3tAMeszlL/so2HbeilYloUmSpd7GdVw==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/helper-plugin-utils@7.26.5':
-    resolution: {integrity: sha512-RS+jZcRdZdRFzMyr+wcsaqOmld1/EqTghfaBGQQd/WnRdzdlvSZ//kF7U8VQTxf1ynZ4cjUcYgjVGx13ewNPMg==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-plugin-utils@7.27.1':
     resolution: {integrity: sha512-1gn1Up5YXka3YYAHGKpbideQ5Yjf1tDa9qYcgysz+cNCXukyLl6DjPXhD3VRwSb8c0J9tA4b2+rHEZtc6R0tlw==}
     engines: {node: '>=6.9.0'}
-
-  '@babel/helper-replace-supers@7.26.5':
-    resolution: {integrity: sha512-bJ6iIVdYX1YooY2X7w1q6VITt+LnUILtNk7zT78ykuwStx8BauCzxvFqFaHjOpW1bVnSUM1PN1f0p5P21wHxvg==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0
 
   '@babel/helper-replace-supers@7.27.1':
     resolution: {integrity: sha512-7EHz6qDZc8RYS5ElPoShMheWvEgERonFCs7IAonWLLUTXW59DP14bCZt89/GKyreYn8g3S83m21FelHKbeDCKA==}
@@ -526,20 +711,12 @@ packages:
     peerDependencies:
       '@babel/core': ^7.0.0
 
-  '@babel/helper-skip-transparent-expression-wrappers@7.25.9':
-    resolution: {integrity: sha512-K4Du3BFa3gvyhzgPcntrkDgZzQaq6uozzcpGbOO1OEJaI+EJdqWIMTLgFgQf6lrfiDFo5FU+BxKepI9RmZqahA==}
-    engines: {node: '>=6.9.0'}
-
   '@babel/helper-skip-transparent-expression-wrappers@7.27.1':
     resolution: {integrity: sha512-Tub4ZKEXqbPjXgWLl2+3JpQAYBJ8+ikpQ2Ocj/q/r0LwE3UhENh7EUabyHjz2kCEsrRY83ew2DQdHluuiDQFzg==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-string-parser@7.27.1':
     resolution: {integrity: sha512-qMlSxKbpRlAridDExk92nSobyDdpPijUq2DW6oDnUqd0iOGxmQjyqhMIihI9+zv4LPyZdRje2cavWPbCbWm3eA==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/helper-validator-identifier@7.25.9':
-    resolution: {integrity: sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-identifier@7.27.1':
@@ -3117,10 +3294,6 @@ packages:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <5.9.0'
 
-  '@typescript-eslint/scope-manager@8.31.0':
-    resolution: {integrity: sha512-knO8UyF78Nt8O/B64i7TlGXod69ko7z6vJD9uhSlm0qkAbGeRUSudcm0+K/4CrRjrpiHfBCjMWlc08Vav1xwcw==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
   '@typescript-eslint/scope-manager@8.32.1':
     resolution: {integrity: sha512-7IsIaIDeZn7kffk7qXC3o6Z4UblZJKV3UBpkvRNpr5NSyLji7tvTcvmnMNYuYLyh26mN8W723xpo3i4MlD33vA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -3132,31 +3305,14 @@ packages:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <5.9.0'
 
-  '@typescript-eslint/types@8.31.0':
-    resolution: {integrity: sha512-Ch8oSjVyYyJxPQk8pMiP2FFGYatqXQfQIaMp+TpuuLlDachRWpUAeEu1u9B/v/8LToehUIWyiKcA/w5hUFRKuQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
   '@typescript-eslint/types@8.32.1':
     resolution: {integrity: sha512-YmybwXUJcgGqgAp6bEsgpPXEg6dcCyPyCSr0CAAueacR/CCBi25G3V8gGQ2kRzQRBNol7VQknxMs9HvVa9Rvfg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@typescript-eslint/typescript-estree@8.31.0':
-    resolution: {integrity: sha512-xLmgn4Yl46xi6aDSZ9KkyfhhtnYI15/CvHbpOy/eR5NWhK/BK8wc709KKwhAR0m4ZKRP7h07bm4BWUYOCuRpQQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      typescript: '>=4.8.4 <5.9.0'
 
   '@typescript-eslint/typescript-estree@8.32.1':
     resolution: {integrity: sha512-Y3AP9EIfYwBb4kWGb+simvPaqQoT5oJuzzj9m0i6FCY6SPvlomY2Ei4UEMm7+FXtlNJbor80ximyslzaQF6xhg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
-      typescript: '>=4.8.4 <5.9.0'
-
-  '@typescript-eslint/utils@8.31.0':
-    resolution: {integrity: sha512-qi6uPLt9cjTFxAb1zGNgTob4x9ur7xC6mHQJ8GwEzGMGE9tYniublmJaowOJ9V2jUzxrltTPfdG2nKlWsq0+Ww==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <5.9.0'
 
   '@typescript-eslint/utils@8.32.1':
@@ -3165,10 +3321,6 @@ packages:
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <5.9.0'
-
-  '@typescript-eslint/visitor-keys@8.31.0':
-    resolution: {integrity: sha512-QcGHmlRHWOl93o64ZUMNewCdwKGU6WItOU52H0djgNmn1EOrhVudrDzXz4OycCRSCPwFCDrE2iIt5vmuUdHxuQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@typescript-eslint/visitor-keys@8.32.1':
     resolution: {integrity: sha512-ar0tjQfObzhSaW3C3QNmTc5ofj0hDoNQ5XWrCy6zDyabdr0TWhCkClp+rywGNj/odAFBVzzJrK4tEq5M4Hmu4w==}
@@ -5639,9 +5791,6 @@ packages:
   tailwind-merge@3.0.2:
     resolution: {integrity: sha512-l7z+OYZ7mu3DTqrL88RiKrKIqO3NcpEO8V/Od04bNpvk0kiIFndGEoqfuzvj4yuhRkHKjRkII2z+KS2HfPcSxw==}
 
-  tailwind-merge@3.2.0:
-    resolution: {integrity: sha512-FQT/OVqCD+7edmmJpsgCsY820RTD5AkBryuG5IUqR5YQZSdj5xlH5nLgH7YPths7WsLPSpSBNneJdM8aS8aeFA==}
-
   tailwind-merge@3.3.0:
     resolution: {integrity: sha512-fyW/pEfcQSiigd5SNn0nApUOxx0zB/dm6UDU/rEwc2c3sX2smWUNbapHv+QRqLGVp9GWX3THIa7MUGPo+YkDzQ==}
 
@@ -6228,10 +6377,6 @@ snapshots:
       '@jridgewell/trace-mapping': 0.3.25
       jsesc: 3.0.2
 
-  '@babel/helper-annotate-as-pure@7.25.9':
-    dependencies:
-      '@babel/types': 7.27.1
-
   '@babel/helper-annotate-as-pure@7.27.1':
     dependencies:
       '@babel/types': 7.27.1
@@ -6244,19 +6389,6 @@ snapshots:
       lru-cache: 5.1.1
       semver: 6.3.1
 
-  '@babel/helper-create-class-features-plugin@7.27.0(@babel/core@7.26.10)':
-    dependencies:
-      '@babel/core': 7.26.10
-      '@babel/helper-annotate-as-pure': 7.25.9
-      '@babel/helper-member-expression-to-functions': 7.25.9
-      '@babel/helper-optimise-call-expression': 7.25.9
-      '@babel/helper-replace-supers': 7.26.5(@babel/core@7.26.10)
-      '@babel/helper-skip-transparent-expression-wrappers': 7.25.9
-      '@babel/traverse': 7.27.1
-      semver: 6.3.1
-    transitivePeerDependencies:
-      - supports-color
-
   '@babel/helper-create-class-features-plugin@7.27.1(@babel/core@7.26.10)':
     dependencies:
       '@babel/core': 7.26.10
@@ -6267,13 +6399,6 @@ snapshots:
       '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
       '@babel/traverse': 7.27.1
       semver: 6.3.1
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/helper-member-expression-to-functions@7.25.9':
-    dependencies:
-      '@babel/traverse': 7.27.1
-      '@babel/types': 7.27.1
     transitivePeerDependencies:
       - supports-color
 
@@ -6295,31 +6420,16 @@ snapshots:
     dependencies:
       '@babel/core': 7.26.10
       '@babel/helper-module-imports': 7.25.9
-      '@babel/helper-validator-identifier': 7.25.9
+      '@babel/helper-validator-identifier': 7.27.1
       '@babel/traverse': 7.27.1
     transitivePeerDependencies:
       - supports-color
-
-  '@babel/helper-optimise-call-expression@7.25.9':
-    dependencies:
-      '@babel/types': 7.27.1
 
   '@babel/helper-optimise-call-expression@7.27.1':
     dependencies:
       '@babel/types': 7.27.1
 
-  '@babel/helper-plugin-utils@7.26.5': {}
-
   '@babel/helper-plugin-utils@7.27.1': {}
-
-  '@babel/helper-replace-supers@7.26.5(@babel/core@7.26.10)':
-    dependencies:
-      '@babel/core': 7.26.10
-      '@babel/helper-member-expression-to-functions': 7.25.9
-      '@babel/helper-optimise-call-expression': 7.25.9
-      '@babel/traverse': 7.27.1
-    transitivePeerDependencies:
-      - supports-color
 
   '@babel/helper-replace-supers@7.27.1(@babel/core@7.26.10)':
     dependencies:
@@ -6327,13 +6437,6 @@ snapshots:
       '@babel/helper-member-expression-to-functions': 7.27.1
       '@babel/helper-optimise-call-expression': 7.27.1
       '@babel/traverse': 7.27.1
-    transitivePeerDependencies:
-      - supports-color
-
-  '@babel/helper-skip-transparent-expression-wrappers@7.25.9':
-    dependencies:
-      '@babel/traverse': 7.27.1
-      '@babel/types': 7.27.1
     transitivePeerDependencies:
       - supports-color
 
@@ -6345,8 +6448,6 @@ snapshots:
       - supports-color
 
   '@babel/helper-string-parser@7.27.1': {}
-
-  '@babel/helper-validator-identifier@7.25.9': {}
 
   '@babel/helper-validator-identifier@7.27.1': {}
 
@@ -6374,13 +6475,13 @@ snapshots:
   '@babel/plugin-syntax-typescript@7.25.9(@babel/core@7.26.10)':
     dependencies:
       '@babel/core': 7.26.10
-      '@babel/helper-plugin-utils': 7.26.5
+      '@babel/helper-plugin-utils': 7.27.1
 
   '@babel/plugin-transform-modules-commonjs@7.26.3(@babel/core@7.26.10)':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/helper-module-transforms': 7.26.0(@babel/core@7.26.10)
-      '@babel/helper-plugin-utils': 7.26.5
+      '@babel/helper-plugin-utils': 7.27.1
     transitivePeerDependencies:
       - supports-color
 
@@ -6405,10 +6506,10 @@ snapshots:
   '@babel/plugin-transform-typescript@7.27.0(@babel/core@7.26.10)':
     dependencies:
       '@babel/core': 7.26.10
-      '@babel/helper-annotate-as-pure': 7.25.9
-      '@babel/helper-create-class-features-plugin': 7.27.0(@babel/core@7.26.10)
-      '@babel/helper-plugin-utils': 7.26.5
-      '@babel/helper-skip-transparent-expression-wrappers': 7.25.9
+      '@babel/helper-annotate-as-pure': 7.27.1
+      '@babel/helper-create-class-features-plugin': 7.27.1(@babel/core@7.26.10)
+      '@babel/helper-plugin-utils': 7.27.1
+      '@babel/helper-skip-transparent-expression-wrappers': 7.27.1
       '@babel/plugin-syntax-typescript': 7.25.9(@babel/core@7.26.10)
     transitivePeerDependencies:
       - supports-color
@@ -6416,7 +6517,7 @@ snapshots:
   '@babel/preset-typescript@7.26.0(@babel/core@7.26.10)':
     dependencies:
       '@babel/core': 7.26.10
-      '@babel/helper-plugin-utils': 7.26.5
+      '@babel/helper-plugin-utils': 7.27.1
       '@babel/helper-validator-option': 7.25.9
       '@babel/plugin-syntax-jsx': 7.25.9(@babel/core@7.26.10)
       '@babel/plugin-transform-modules-commonjs': 7.26.3(@babel/core@7.26.10)
@@ -9429,11 +9530,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/scope-manager@8.31.0':
-    dependencies:
-      '@typescript-eslint/types': 8.31.0
-      '@typescript-eslint/visitor-keys': 8.31.0
-
   '@typescript-eslint/scope-manager@8.32.1':
     dependencies:
       '@typescript-eslint/types': 8.32.1
@@ -9450,23 +9546,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/types@8.31.0': {}
-
   '@typescript-eslint/types@8.32.1': {}
-
-  '@typescript-eslint/typescript-estree@8.31.0(typescript@5.8.3)':
-    dependencies:
-      '@typescript-eslint/types': 8.31.0
-      '@typescript-eslint/visitor-keys': 8.31.0
-      debug: 4.4.0
-      fast-glob: 3.3.3
-      is-glob: 4.0.3
-      minimatch: 9.0.5
-      semver: 7.7.1
-      ts-api-utils: 2.1.0(typescript@5.8.3)
-      typescript: 5.8.3
-    transitivePeerDependencies:
-      - supports-color
 
   '@typescript-eslint/typescript-estree@8.32.1(typescript@5.8.3)':
     dependencies:
@@ -9482,17 +9562,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.31.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)':
-    dependencies:
-      '@eslint-community/eslint-utils': 4.6.1(eslint@9.26.0(jiti@2.4.2))
-      '@typescript-eslint/scope-manager': 8.31.0
-      '@typescript-eslint/types': 8.31.0
-      '@typescript-eslint/typescript-estree': 8.31.0(typescript@5.8.3)
-      eslint: 9.26.0(jiti@2.4.2)
-      typescript: 5.8.3
-    transitivePeerDependencies:
-      - supports-color
-
   '@typescript-eslint/utils@8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
       '@eslint-community/eslint-utils': 4.7.0(eslint@9.26.0(jiti@2.4.2))
@@ -9503,11 +9572,6 @@ snapshots:
       typescript: 5.8.3
     transitivePeerDependencies:
       - supports-color
-
-  '@typescript-eslint/visitor-keys@8.31.0':
-    dependencies:
-      '@typescript-eslint/types': 8.31.0
-      eslint-visitor-keys: 4.2.0
 
   '@typescript-eslint/visitor-keys@8.32.1':
     dependencies:
@@ -10367,7 +10431,7 @@ snapshots:
   eslint-plugin-storybook@0.12.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3):
     dependencies:
       '@storybook/csf': 0.1.13
-      '@typescript-eslint/utils': 8.31.0(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
+      '@typescript-eslint/utils': 8.32.1(eslint@9.26.0(jiti@2.4.2))(typescript@5.8.3)
       eslint: 9.26.0(jiti@2.4.2)
       ts-dedent: 2.2.0
     transitivePeerDependencies:
@@ -12042,7 +12106,7 @@ snapshots:
       react-hotkeys-hook: 4.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-router: 7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-tooltip: 5.28.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
-      tailwind-merge: 3.2.0
+      tailwind-merge: 3.3.0
       vite: 6.3.5(@types/node@22.15.19)(jiti@2.4.2)(lightningcss@1.30.1)
     optionalDependencies:
       '@biomejs/cli-darwin-arm64': 1.9.4
@@ -12563,8 +12627,6 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   tailwind-merge@3.0.2: {}
-
-  tailwind-merge@3.2.0: {}
 
   tailwind-merge@3.3.0: {}
 

@@ -1,9 +1,9 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"dependencies": {
-		"@tailwindcss/typography": "0.5.16",
+		"@tailwindcss/typography": "catalog:",
 		"tailwindcss": "catalog:",
-		"tailwindcss-animate": "1.0.7"
+		"tailwindcss-animate": "catalog:"
 	},
 	"exports": {
 		"./style.css": "./style.css"
