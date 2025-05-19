@@ -40,7 +40,7 @@
 		"@vitejs/plugin-react": "catalog:rest",
 		"babel-plugin-react-compiler": "catalog:rest",
 		"class-variance-authority": "catalog:rest",
-		"eslint-plugin-storybook": "catalog:rest",
+		"eslint-plugin-storybook": "catalog:lint",
 		"globals": "catalog:rest",
 		"storybook": "catalog:rest",
 		"tailwind-merge": "catalog:rest",

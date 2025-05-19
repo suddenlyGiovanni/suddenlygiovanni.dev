@@ -1,8 +1,8 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"devDependencies": {
-		"@biomejs/biome": "catalog:rest",
-		"eslint": "catalog:rest",
+		"@biomejs/biome": "catalog:lint",
+		"eslint": "catalog:lint",
 		"typescript": "catalog:rest"
 	},
 	"devEngines": {

@@ -1,17 +1,17 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"devDependencies": {
-		"@eslint/js": "catalog:rest",
-		"@typescript-eslint/eslint-plugin": "catalog:rest",
-		"@typescript-eslint/parser": "catalog:rest",
-		"eslint": "catalog:rest",
-		"eslint-config-prettier": "catalog:rest",
-		"eslint-plugin-only-warn": "catalog:rest",
-		"eslint-plugin-react": "catalog:rest",
-		"eslint-plugin-react-hooks": "catalog:rest",
+		"@eslint/js": "catalog:lint",
+		"@typescript-eslint/eslint-plugin": "catalog:lint",
+		"@typescript-eslint/parser": "catalog:lint",
+		"eslint": "catalog:lint",
+		"eslint-config-prettier": "catalog:lint",
+		"eslint-plugin-only-warn": "catalog:lint",
+		"eslint-plugin-react": "catalog:lint",
+		"eslint-plugin-react-hooks": "catalog:lint",
 		"globals": "catalog:rest",
 		"typescript": "catalog:rest",
-		"typescript-eslint": "catalog:rest"
+		"typescript-eslint": "catalog:lint"
 	},
 	"exports": {
 		"./base": "./base.js",
@@ -19,7 +19,7 @@
 	},
 	"name": "@repo/eslint-config",
 	"peerDependencies": {
-		"eslint": "catalog:rest"
+		"eslint": "catalog:lint"
 	},
 	"private": true,
 	"scripts": {
