@@ -41,7 +41,7 @@
 		"@vitest/eslint-plugin": "catalog:lint",
 		"@vitest/ui": "catalog:test",
 		"babel-plugin-react-compiler": "catalog:build",
-		"globals": "catalog:rest",
+		"globals": "catalog:lint",
 		"msw": "catalog:test",
 		"react-router-devtools": "catalog:rest",
 		"tailwindcss": "catalog:frontend",

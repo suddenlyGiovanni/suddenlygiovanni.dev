@@ -9,7 +9,7 @@
 		"eslint-plugin-only-warn": "catalog:lint",
 		"eslint-plugin-react": "catalog:lint",
 		"eslint-plugin-react-hooks": "catalog:lint",
-		"globals": "catalog:rest",
+		"globals": "catalog:lint",
 		"typescript": "catalog:rest",
 		"typescript-eslint": "catalog:lint"
 	},

@@ -41,7 +41,7 @@
 		"babel-plugin-react-compiler": "catalog:build",
 		"class-variance-authority": "catalog:frontend",
 		"eslint-plugin-storybook": "catalog:lint",
-		"globals": "catalog:rest",
+		"globals": "catalog:lint",
 		"storybook": "catalog:rest",
 		"tailwind-merge": "catalog:frontend",
 		"tailwindcss": "catalog:frontend",
