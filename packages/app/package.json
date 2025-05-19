@@ -34,7 +34,7 @@
 		"@tailwindcss/vite": "catalog:",
 		"@total-typescript/ts-reset": "catalog:",
 		"@types/mdx": "2.0.13",
-		"@types/node": "22.15.17",
+		"@types/node": "22.15.19",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"@vitest/coverage-v8": "catalog:",
