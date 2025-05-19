@@ -1,16 +1,16 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"dependencies": {
-		"@tailwindcss/typography": "0.5.16",
-		"tailwindcss": "catalog:",
-		"tailwindcss-animate": "1.0.7"
+		"@tailwindcss/typography": "catalog:frontend",
+		"tailwindcss": "catalog:frontend",
+		"tailwindcss-animate": "catalog:frontend"
 	},
 	"exports": {
 		"./style.css": "./style.css"
 	},
 	"name": "@repo/tailwind-config",
 	"peerDependencies": {
-		"tailwindcss": "catalog:"
+		"tailwindcss": "catalog:frontend"
 	},
 	"peerDependenciesMeta": {
 		"tailwindcss": {

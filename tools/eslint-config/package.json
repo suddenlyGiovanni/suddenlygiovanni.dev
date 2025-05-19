@@ -1,17 +1,17 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"devDependencies": {
-		"@eslint/js": "9.26.0",
-		"@typescript-eslint/eslint-plugin": "8.32.1",
-		"@typescript-eslint/parser": "8.32.1",
-		"eslint": "catalog:",
-		"eslint-config-prettier": "10.1.5",
-		"eslint-plugin-only-warn": "1.1.0",
-		"eslint-plugin-react": "7.37.5",
-		"eslint-plugin-react-hooks": "6.0.0-rc1",
-		"globals": "16.0.0",
-		"typescript": "catalog:",
-		"typescript-eslint": "8.32.1"
+		"@eslint/js": "catalog:lint",
+		"@typescript-eslint/eslint-plugin": "catalog:lint",
+		"@typescript-eslint/parser": "catalog:lint",
+		"eslint": "catalog:lint",
+		"eslint-config-prettier": "catalog:lint",
+		"eslint-plugin-only-warn": "catalog:lint",
+		"eslint-plugin-react": "catalog:lint",
+		"eslint-plugin-react-hooks": "catalog:lint",
+		"globals": "catalog:lint",
+		"typescript": "catalog:typescript",
+		"typescript-eslint": "catalog:lint"
 	},
 	"exports": {
 		"./base": "./base.js",
@@ -19,7 +19,7 @@
 	},
 	"name": "@repo/eslint-config",
 	"peerDependencies": {
-		"eslint": "catalog:"
+		"eslint": "catalog:lint"
 	},
 	"private": true,
 	"scripts": {

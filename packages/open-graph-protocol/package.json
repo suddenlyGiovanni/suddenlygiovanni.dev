@@ -1,11 +1,11 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"dependencies": {
-		"ts-brand": "0.2.0"
+		"ts-brand": "catalog:lib"
 	},
 	"devDependencies": {
 		"@repo/typescript-config": "workspace:*",
-		"typescript": "catalog:"
+		"typescript": "catalog:typescript"
 	},
 	"exports": {
 		".": "./src/index.ts"
