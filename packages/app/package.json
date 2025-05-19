@@ -43,7 +43,7 @@
 		"babel-plugin-react-compiler": "catalog:build",
 		"globals": "catalog:lint",
 		"msw": "catalog:test",
-		"react-router-devtools": "catalog:rest",
+		"react-router-devtools": "catalog:build",
 		"tailwindcss": "catalog:frontend",
 		"vite": "catalog:build",
 		"vite-plugin-babel": "catalog:build",
