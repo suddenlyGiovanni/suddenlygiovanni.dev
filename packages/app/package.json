@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/package.json",
 	"dependencies": {
-		"@conform-to/react": "catalog:rest",
+		"@conform-to/react": "catalog:frontend",
 		"@effect/platform": "catalog:rest",
 		"@effect/platform-node": "catalog:rest",
 		"@epic-web/client-hints": "catalog:rest",
@@ -18,9 +18,9 @@
 		"cookie": "catalog:rest",
 		"effect": "catalog:rest",
 		"isbot": "catalog:rest",
-		"react": "catalog:rest",
-		"react-dom": "catalog:rest",
-		"react-router": "catalog:rest",
+		"react": "catalog:frontend",
+		"react-dom": "catalog:frontend",
+		"react-router": "catalog:frontend",
 		"remix-utils": "catalog:rest"
 	},
 	"devDependencies": {
@@ -44,7 +44,7 @@
 		"globals": "catalog:rest",
 		"msw": "catalog:test",
 		"react-router-devtools": "catalog:rest",
-		"tailwindcss": "catalog:rest",
+		"tailwindcss": "catalog:frontend",
 		"vite": "catalog:build",
 		"vite-plugin-babel": "catalog:build",
 		"vite-tsconfig-paths": "catalog:build",

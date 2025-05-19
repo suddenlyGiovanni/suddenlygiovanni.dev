@@ -30,8 +30,8 @@
 		],
 		"overrides": {
 			"@types/react": "catalog:types",
-			"react": "catalog:rest",
-			"react-dom": "catalog:rest"
+			"react": "catalog:frontend",
+			"react-dom": "catalog:frontend"
 		}
 	},
 	"private": true,

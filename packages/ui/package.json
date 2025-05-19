@@ -2,22 +2,22 @@
 	"$schema": "https://json.schemastore.org/package.json",
 	"dependencies": {
 		"@nick/clsx": "jsr:0.3.1",
-		"@radix-ui/react-accessible-icon": "catalog:rest",
-		"@radix-ui/react-accordion": "catalog:rest",
-		"@radix-ui/react-avatar": "catalog:rest",
-		"@radix-ui/react-collapsible": "catalog:rest",
-		"@radix-ui/react-dropdown-menu": "catalog:rest",
-		"@radix-ui/react-icons": "catalog:rest",
-		"@radix-ui/react-navigation-menu": "catalog:rest",
-		"@radix-ui/react-separator": "catalog:rest",
-		"@radix-ui/react-slot": "catalog:rest",
-		"@radix-ui/react-switch": "catalog:rest",
+		"@radix-ui/react-accessible-icon": "catalog:frontend",
+		"@radix-ui/react-accordion": "catalog:frontend",
+		"@radix-ui/react-avatar": "catalog:frontend",
+		"@radix-ui/react-collapsible": "catalog:frontend",
+		"@radix-ui/react-dropdown-menu": "catalog:frontend",
+		"@radix-ui/react-icons": "catalog:frontend",
+		"@radix-ui/react-navigation-menu": "catalog:frontend",
+		"@radix-ui/react-separator": "catalog:frontend",
+		"@radix-ui/react-slot": "catalog:frontend",
+		"@radix-ui/react-switch": "catalog:frontend",
 		"@repo/tailwind-config": "workspace:*",
-		"react": "catalog:rest",
-		"react-aria-components": "catalog:rest",
-		"react-dom": "catalog:rest",
-		"react-router": "catalog:rest",
-		"tailwind-variants": "catalog:rest"
+		"react": "catalog:frontend",
+		"react-aria-components": "catalog:frontend",
+		"react-dom": "catalog:frontend",
+		"react-router": "catalog:frontend",
+		"tailwind-variants": "catalog:frontend"
 	},
 	"devDependencies": {
 		"@chromatic-com/storybook": "catalog:rest",
@@ -39,12 +39,12 @@
 		"@types/react-dom": "catalog:types",
 		"@vitejs/plugin-react": "catalog:build",
 		"babel-plugin-react-compiler": "catalog:build",
-		"class-variance-authority": "catalog:rest",
+		"class-variance-authority": "catalog:frontend",
 		"eslint-plugin-storybook": "catalog:lint",
 		"globals": "catalog:rest",
 		"storybook": "catalog:rest",
-		"tailwind-merge": "catalog:rest",
-		"tailwindcss": "catalog:rest",
+		"tailwind-merge": "catalog:frontend",
+		"tailwindcss": "catalog:frontend",
 		"vite": "catalog:build",
 		"vitest": "catalog:test"
 	},
@@ -60,7 +60,7 @@
 	},
 	"name": "@repo/ui",
 	"peerDependencies": {
-		"react": "catalog:rest"
+		"react": "catalog:frontend"
 	},
 	"private": true,
 	"scripts": {
