@@ -11,7 +11,7 @@ dedupePeerDependents: true
 strictPeerDependencies: false
 resolvePeersFromWorkspaceRoot: true
 catalogs:
-  rest:
+  lib:
     "@effect/platform": 0.82.3
     "@epic-web/client-hints": 1.3.5
     "@epic-web/invariant": 1.0.0
