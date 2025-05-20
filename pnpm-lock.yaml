@@ -216,6 +216,9 @@ catalogs:
       specifier: 8.6.14
       version: 8.6.14
   test:
+    '@effect/vitest':
+      specifier: 0.22.2
+      version: 0.22.2
     '@vitest/coverage-v8':
       specifier: 3.1.4
       version: 3.1.4
@@ -229,6 +232,9 @@ catalogs:
       specifier: 3.1.4
       version: 3.1.4
   types:
+    '@octokit/openapi-types':
+      specifier: 25.0.0
+      version: 25.0.0
     '@total-typescript/ts-reset':
       specifier: 0.6.1
       version: 0.6.1
@@ -355,9 +361,15 @@ importers:
       '@effect/language-service':
         specifier: catalog:typescript
         version: 0.16.3
+      '@effect/vitest':
+        specifier: catalog:test
+        version: 0.22.2(effect@3.15.2)(vitest@3.1.4)
       '@mdx-js/rollup':
         specifier: catalog:build
         version: 3.1.0(acorn@8.14.1)(rollup@4.40.0)
+      '@octokit/openapi-types':
+        specifier: catalog:types
+        version: 25.0.0
       '@react-router/dev':
         specifier: catalog:backend
         version: 7.6.0(@types/node@22.15.19)(babel-plugin-macros@3.1.0)(jiti@2.4.2)(lightningcss@1.30.1)(react-router@7.6.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.19)(jiti@2.4.2)(lightningcss@1.30.1))
@@ -975,6 +987,12 @@ packages:
       '@effect/experimental': ^0.44.13
       '@effect/platform': ^0.80.13
       effect: ^3.14.13
+
+  '@effect/vitest@0.22.2':
+    resolution: {integrity: sha512-EZudN92GRXqD1FLk7wW5yjW3HN5BEWnDoBoi01Pn5os+8+RxLU8Bk4cXcjhgWUDsHjoPzGRJTn42x6GvR7lTkA==}
+    peerDependencies:
+      effect: ^3.15.2
+      vitest: ^3.0.0
 
   '@emotion/babel-plugin@11.13.5':
     resolution: {integrity: sha512-pxHCpT2ex+0q+HH91/zsdHkw/lXd468DIN2zvfvLtPKLLMo6gQj7oLObq8PhkrxOZb/gGCq03S3Z7PDhS8pduQ==}
@@ -6720,6 +6738,11 @@ snapshots:
       '@opentelemetry/semantic-conventions': 1.33.0
       effect: 3.15.2
       uuid: 11.1.0
+
+  '@effect/vitest@0.22.2(effect@3.15.2)(vitest@3.1.4)':
+    dependencies:
+      effect: 3.15.2
+      vitest: 3.1.4(@types/debug@4.1.12)(@types/node@22.15.19)(@vitest/ui@3.1.4)(jiti@2.4.2)(lightningcss@1.30.1)(msw@2.7.6(@types/node@22.15.19)(typescript@5.8.3))
 
   '@emotion/babel-plugin@11.13.5':
     dependencies:
