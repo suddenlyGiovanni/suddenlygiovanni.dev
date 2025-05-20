@@ -49,6 +49,14 @@ export const loader = loaderFunction(() =>
 	ResumeRepository.pipe(Effect.flatMap(repo => repo.getResume())),
 )
 
+/**
+ * Renders the résumé page with sections for basics, skills, work experience, education, interests, and languages.
+ *
+ * Displays résumé metadata such as last modified date and version in the footer, and provides a link back to the About Me page.
+ *
+ * @param loaderData - The loaded résumé data and associated metadata.
+ * @returns The complete résumé page as a React element.
+ */
 export default function Resume({ loaderData }: Route.ComponentProps): ReactElement {
 	const { resume, meta } = loaderData
 	const { basics, skills, work, education, interests, languages } = resume
@@ -91,6 +99,12 @@ export default function Resume({ loaderData }: Route.ComponentProps): ReactEleme
 	)
 }
 
+/**
+ * Displays the last modified date in a human-readable format if provided.
+ *
+ * @param lastModified - The date to display, or undefined to render nothing.
+ * @returns A span element with the formatted date, or null if no date is given.
+ */
 function LastModified({ lastModified }: { lastModified: undefined | Date }) {
 	const formatDate = (date: Date): string =>
 		date.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })
@@ -104,6 +118,14 @@ function LastModified({ lastModified }: { lastModified: undefined | Date }) {
 	)
 }
 
+/**
+ * Displays the résumé version as text or a link.
+ *
+ * If a URL is provided, the version is rendered as a hyperlink; otherwise, it is shown as plain text.
+ *
+ * @param version - The résumé version string to display.
+ * @param href - Optional URL to link the version text.
+ */
 function Version({ version, href }: { version: string; href: undefined | string }) {
 	const resumeVersion = `version ${version}`
 
