@@ -184,7 +184,7 @@ describe('Meta', () => {
 		it('fails to encode invalid canonical URLs', async () => {
 			await expectEncodeFailure(
 				Meta,
-				{ version: metaInput.version, canonical: '' },
+				{ canonical: '', version: metaInput.version },
 				`(Meta (Encoded side) <-> Meta)
 └─ Type side transformation failure
    └─ Meta (Type side)
@@ -198,7 +198,7 @@ describe('Meta', () => {
 		it('fails to encode invalid lastModified dates', async () => {
 			await expectEncodeFailure(
 				Meta,
-				{ version: metaInput.version, lastModified: new Date('invalid-date') },
+				{ lastModified: new Date('invalid-date'), version: metaInput.version },
 				`(Meta (Encoded side) <-> Meta)
 └─ Type side transformation failure
    └─ Meta (Type side)
