@@ -45,28 +45,9 @@ export const links: Route.LinksFunction = () => {
 	]
 }
 
-export const loader = loaderFunction(
-	() =>
-		Effect.gen(function* () {
-			const { getResume } = yield* ResumeRepository
-			return yield* getResume()
-		}),
-	// still need to handle the error cases here!!
+export const loader = loaderFunction(() =>
+	ResumeRepository.pipe(Effect.flatMap(repo => repo.getResume())),
 )
-
-// const _loader = async (_: LoaderFunctionArgs) => {
-// 	try {
-// 		const { resume, meta } = await Effect.runPromise(repository.github.getResume())
-// 		return json({ resume, meta })
-// 	} catch (error) {
-// 		console.error(error)
-// 		throw new Response('Some error !!!', {
-// 			// find the correct response code and message for this error caused by parsing issue....
-// 			status: 500,
-// 			statusText: 'Internal Server Error',
-// 		})
-// 	}
-// }
 
 export default function Resume({ loaderData }: Route.ComponentProps): ReactElement {
 	const { resume, meta } = loaderData
@@ -98,31 +79,47 @@ export default function Resume({ loaderData }: Route.ComponentProps): ReactEleme
 					&larr; back to my About Me
 				</Link>
 				<small>
-					{meta.lastModified ? (
-						<span>
-							last modified:{' '}
-							<time dateTime={new Date(meta.lastModified).toISOString()}>
-								{new Date(meta.lastModified).toLocaleDateString('en-US', {
-									day: 'numeric',
-									month: 'long',
-									year: 'numeric',
-								})}
-							</time>
-						</span>
-					) : null}
-					{meta.version ? (
-						<span className="ml-4">
-							<a
-								href={meta.canonical}
-								rel="noreferrer"
-								target="_blank"
-							>
-								version {meta.version}
-							</a>
-						</span>
-					) : null}
+					<LastModified lastModified={meta.lastModified} />
+
+					<Version
+						href={meta.canonical}
+						version={meta.version}
+					/>
 				</small>
 			</footer>
 		</article>
+	)
+}
+
+function LastModified({ lastModified }: { lastModified: undefined | Date }) {
+	const formatDate = (date: Date): string =>
+		date.toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })
+
+	if (!lastModified) return null
+
+	return (
+		<span>
+			last modified: <time dateTime={lastModified.toISOString()}>{formatDate(lastModified)}</time>
+		</span>
+	)
+}
+
+function Version({ version, href }: { version: string; href: undefined | string }) {
+	const resumeVersion = `version ${version}`
+
+	return (
+		<span className="ml-4">
+			{href ? (
+				<a
+					href={href}
+					rel="noreferrer"
+					target="_blank"
+				>
+					{resumeVersion}
+				</a>
+			) : (
+				resumeVersion
+			)}
+		</span>
 	)
 }
