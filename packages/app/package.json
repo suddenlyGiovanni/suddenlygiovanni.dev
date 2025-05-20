@@ -27,6 +27,7 @@
 		"@babel/preset-typescript": "catalog:build",
 		"@codecov/vite-plugin": "catalog:build",
 		"@effect/language-service": "catalog:typescript",
+		"@effect/vitest": "catalog:test",
 		"@mdx-js/rollup": "catalog:build",
 		"@octokit/openapi-types": "catalog:types",
 		"@react-router/dev": "catalog:backend",
