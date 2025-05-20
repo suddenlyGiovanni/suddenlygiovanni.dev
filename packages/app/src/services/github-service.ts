@@ -104,7 +104,7 @@ export class GithubService extends Effect.Service<GithubService>()('app/services
 							(data): data is Types.Array.NonArray<typeof data> => !Array.isArray(data),
 							() =>
 								new InvalidDataError({
-									message: `Expected an object, but got an Array of data`,
+									message: 'Expected an object, but got an Array of data',
 								}),
 						),
 
