@@ -1,9 +1,16 @@
+/**
+ * Testing framework: Vitest with @effect/vitest
+ */
 import { describe, expect, it, test } from '@effect/vitest'
 import { Effect, Exit, JSONSchema } from 'effect'
 
 import {
 	expectDecodeUnknownFailure,
 	expectDecodeUnknownSuccess,
+} from '#root/src/schemas/test-utils.ts'
+import {
+	expectEncodeUnknownFailure,
+	expectEncodeUnknownSuccess,
 } from '#root/src/schemas/test-utils.ts'
 
 import { Meta } from './meta.ts'
@@ -160,6 +167,99 @@ describe('Meta', () => {
 	test('JSONSchema', async () => {
 		await expect(JSON.stringify(JSONSchema.make(Meta), null, '\t')).toMatchFileSnapshot(
 			'meta-schema.snapshot.json',
+		)
+	})
+describe('encode', () => {
+		it.effect('encodes minimal Meta with only version', () =>
+			Effect.gen(function* () {
+				const input = { version: metaInput.version }
+				await expectEncodeUnknownSuccess(
+					Meta,
+					input,
+					{ version: metaInput.version }
+				)
+			})
+		)
+
+		it.effect('encodes full Meta with canonical and lastModified', () =>
+			Effect.gen(function* () {
+				const input = {
+					version: metaInput.version,
+					canonical: metaInput.canonical,
+					lastModified: new Date(metaInput.lastModified),
+				}
+				await expectEncodeUnknownSuccess(
+					Meta,
+					input,
+					{
+						version: metaInput.version,
+						canonical: metaInput.canonical,
+						lastModified: metaInput.lastModified,
+					}
+				)
+			})
+		)
+
+		it('fails to encode invalid canonical URLs', () => {
+			return expectEncodeUnknownFailure(
+				Meta,
+				{ version: metaInput.version, canonical: '' },
+				`(Meta (Encoded side) <-> Meta)
+└─ Encoded side transformation failure
+   └─ Meta (Encoded side)
+      └─ Encoded side transformation failure
+         └─ Struct (Encoded side)
+            └─ ["canonical"]
+               └─ UrlString | null | undefined
+                  ├─ Invalid URL string; got: ''
+                  ├─ Expected null, actual ""
+                  └─ Expected undefined, actual ""`,
+			)
+		})
+
+		it('fails to encode invalid lastModified dates', () => {
+			return expectEncodeUnknownFailure(
+				Meta,
+				{ version: metaInput.version, lastModified: new Date('invalid-date') },
+				`(Meta (Encoded side) <-> Meta)
+└─ Encoded side transformation failure
+   └─ Meta (Encoded side)
+      └─ Encoded side transformation failure
+         └─ Struct (Encoded side)
+            └─ ["lastModified"]
+               └─ Date | undefined
+                  ├─ Date
+                  │  └─ Predicate refinement failure
+                  │     └─ Expected a valid Date, actual Invalid Date
+                  └─ Expected undefined, actual Invalid Date`,
+			)
+		})
+
+		it('fails to encode invalid version strings', () => {
+			return expectEncodeUnknownFailure(
+				Meta,
+				{ version: '  ' },
+				`(Meta (Encoded side) <-> Meta)
+└─ Encoded side transformation failure
+   └─ Meta (Encoded side)
+      └─ Encoded side transformation failure
+         └─ Struct (Encoded side)
+            └─ ["version"]
+               └─ expected a non-empty string with no leading or trailing whitespace, got "  "`,
+			)
+		})
+
+		it.effect('roundtrips encode → decode for valid input', () =>
+			Effect.gen(function* () {
+				const original = {
+					version: metaInput.version,
+					canonical: metaInput.canonical,
+					lastModified: new Date(metaInput.lastModified),
+				}
+				const encoded = yield* Effect.exit(Meta.encode(original))
+				const decoded = yield* Effect.exit(Meta.decode(encoded))
+				expect(decoded).toStrictEqual(original)
+			})
 		)
 	})
 })
