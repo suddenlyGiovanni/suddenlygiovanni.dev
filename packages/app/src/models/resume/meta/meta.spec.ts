@@ -1,7 +1,10 @@
 import { describe, expect, it, test } from '@effect/vitest'
 import { Effect, Exit, JSONSchema } from 'effect'
 
-import { expectEffectFailure, expectEffectSuccess } from '#root/src/schemas/test-utils.ts'
+import {
+	expectDecodeUnknownFailure,
+	expectDecodeUnknownSuccess,
+} from '#root/src/schemas/test-utils.ts'
 
 import { Meta } from './meta.ts'
 
@@ -21,8 +24,12 @@ describe('Meta', () => {
 		)
 
 		test('canonical', async () => {
-			await expectEffectFailure(
-				Meta.decode({ canonical: '', version: metaInput.version }),
+			await expectDecodeUnknownFailure(
+				Meta,
+				{
+					canonical: '',
+					version: metaInput.version,
+				},
 				`(Meta (Encoded side) <-> Meta)
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
@@ -35,8 +42,12 @@ describe('Meta', () => {
                   └─ Expected undefined, actual ""`,
 			)
 
-			await expectEffectFailure(
-				Meta.decode({ canonical: '  ', version: metaInput.version }),
+			await expectDecodeUnknownFailure(
+				Meta,
+				{
+					canonical: '  ',
+					version: metaInput.version,
+				},
 				`(Meta (Encoded side) <-> Meta)
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
@@ -49,8 +60,12 @@ describe('Meta', () => {
                   └─ Expected undefined, actual "  "`,
 			)
 
-			await expectEffectSuccess(
-				Meta.decode({ canonical: metaInput.canonical, version: metaInput.version }),
+			await expectDecodeUnknownSuccess(
+				Meta,
+				{
+					canonical: metaInput.canonical,
+					version: metaInput.version,
+				},
 				{
 					canonical: 'https://example.com',
 					version: metaInput.version,
@@ -60,8 +75,12 @@ describe('Meta', () => {
 	})
 
 	test('lastModified', async () => {
-		await expectEffectFailure(
-			Meta.decode({ lastModified: '', version: metaInput.version }),
+		await expectDecodeUnknownFailure(
+			Meta,
+			{
+				lastModified: '',
+				version: metaInput.version,
+			},
 			`(Meta (Encoded side) <-> Meta)
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
@@ -74,8 +93,10 @@ describe('Meta', () => {
                   │     └─ Expected a valid Date, actual Invalid Date
                   └─ Expected undefined, actual ""`,
 		)
-		await expectEffectFailure(
-			Meta.decode({ lastModified: '  ', version: metaInput.version }),
+
+		await expectDecodeUnknownFailure(
+			Meta,
+			{ lastModified: '  ', version: metaInput.version },
 			`(Meta (Encoded side) <-> Meta)
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
@@ -89,8 +110,12 @@ describe('Meta', () => {
                   └─ Expected undefined, actual "  "`,
 		)
 
-		await expectEffectSuccess(
-			Meta.decode({ lastModified: metaInput.lastModified, version: metaInput.version }),
+		await expectDecodeUnknownSuccess(
+			Meta,
+			{
+				lastModified: metaInput.lastModified,
+				version: metaInput.version,
+			},
 			{
 				lastModified: new Date('2024-05-02T18:33:23.000Z'),
 				version: metaInput.version,
@@ -99,8 +124,9 @@ describe('Meta', () => {
 	})
 
 	test('version', async () => {
-		await expectEffectFailure(
-			Meta.decode({ version: '' }),
+		await expectDecodeUnknownFailure(
+			Meta,
+			{ version: '' },
 			`(Meta (Encoded side) <-> Meta)
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
@@ -110,8 +136,9 @@ describe('Meta', () => {
                └─ expected a non-empty string with no leading or trailing whitespace, got ""`,
 		)
 
-		await expectEffectFailure(
-			Meta.decode({ version: '  ' }),
+		await expectDecodeUnknownFailure(
+			Meta,
+			{ version: '  ' },
 			`(Meta (Encoded side) <-> Meta)
 └─ Encoded side transformation failure
    └─ Meta (Encoded side)
@@ -121,9 +148,13 @@ describe('Meta', () => {
                └─ expected a non-empty string with no leading or trailing whitespace, got "  "`,
 		)
 
-		await expectEffectSuccess(Meta.decode({ version: metaInput.version }), {
-			version: '6.9.0',
-		})
+		await expectDecodeUnknownSuccess(
+			Meta,
+			{ version: metaInput.version },
+			{
+				version: '6.9.0',
+			},
+		)
 	})
 
 	test('JSONSchema', async () => {
