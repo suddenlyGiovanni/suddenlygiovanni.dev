@@ -3,21 +3,25 @@
 	"$defs": {
 		"Meta": {
 			"type": "object",
-			"required": [],
+			"required": [
+				"version"
+			],
 			"properties": {
 				"canonical": {
-					"$ref": "#/$defs/UrlString"
+					"anyOf": [
+						{
+							"$ref": "#/$defs/UrlString"
+						},
+						{
+							"type": "null"
+						}
+					]
 				},
 				"lastModified": {
 					"$ref": "#/$defs/Date"
 				},
 				"version": {
-					"$ref": "#/$defs/TrimmedNonEmpty",
-					"description": "A version field which follows semver - e.g. v1.0.0",
-					"title": "version",
-					"examples": [
-						"v1.0.0"
-					]
+					"$ref": "#/$defs/TrimmedNonEmpty"
 				}
 			},
 			"additionalProperties": false
@@ -41,8 +45,8 @@
 		},
 		"TrimmedNonEmpty": {
 			"type": "string",
-			"description": "a non-empty string with no leading or trailing whitespace",
-			"title": "TrimmedNonEmpty",
+			"description": "A version field which follows semver - e.g. v1.0.0",
+			"title": "version",
 			"minLength": 1,
 			"pattern": "^[^\\s].*[^\\s]$"
 		}
