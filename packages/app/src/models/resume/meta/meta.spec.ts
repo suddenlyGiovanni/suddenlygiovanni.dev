@@ -4,6 +4,8 @@ import { Effect, Exit, JSONSchema } from 'effect'
 import {
 	expectDecodeUnknownFailure,
 	expectDecodeUnknownSuccess,
+	expectEncodeFailure,
+	expectEncodeSuccess,
 } from '#root/src/schemas/test-utils.ts'
 
 import { Meta } from './meta.ts'
@@ -155,6 +157,70 @@ describe('Meta', () => {
 				version: '6.9.0',
 			},
 		)
+	})
+
+	describe('encode', () => {
+		it('encodes minimal Meta with only version', async () => {
+			const input = { version: metaInput.version }
+			await expectEncodeSuccess(Meta, input, { version: metaInput.version })
+		})
+
+		it('encodes full Meta with canonical and lastModified', async () => {
+			await expectEncodeSuccess(
+				Meta,
+				{
+					canonical: metaInput.canonical,
+					lastModified: new Date(metaInput.lastModified),
+					version: metaInput.version,
+				},
+				{
+					canonical: metaInput.canonical,
+					lastModified: '2024-05-02T18:33:23.000Z',
+					version: metaInput.version,
+				},
+			)
+		})
+
+		it('fails to encode invalid canonical URLs', async () => {
+			await expectEncodeFailure(
+				Meta,
+				{ version: metaInput.version, canonical: '' },
+				`(Meta (Encoded side) <-> Meta)
+└─ Type side transformation failure
+   └─ Meta (Type side)
+      └─ ["canonical"]
+         └─ UrlString | undefined
+            ├─ Invalid URL string; got: ''
+            └─ Expected undefined, actual ""`,
+			)
+		})
+
+		it('fails to encode invalid lastModified dates', async () => {
+			await expectEncodeFailure(
+				Meta,
+				{ version: metaInput.version, lastModified: new Date('invalid-date') },
+				`(Meta (Encoded side) <-> Meta)
+└─ Type side transformation failure
+   └─ Meta (Type side)
+      └─ ["lastModified"]
+         └─ Date | undefined
+            ├─ Date
+            │  └─ Predicate refinement failure
+            │     └─ Expected a valid Date, actual Invalid Date
+            └─ Expected undefined, actual Invalid Date`,
+			)
+		})
+
+		it('fails to encode invalid version strings', async () =>
+			await expectEncodeFailure(
+				Meta,
+				{ version: '  ' },
+				`(Meta (Encoded side) <-> Meta)
+└─ Type side transformation failure
+   └─ Meta (Type side)
+      └─ ["version"]
+         └─ expected a non-empty string with no leading or trailing whitespace, got "  "`,
+			))
 	})
 
 	test('JSONSchema', async () => {
