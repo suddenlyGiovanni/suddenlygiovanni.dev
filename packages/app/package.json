@@ -28,6 +28,7 @@
 		"@codecov/vite-plugin": "catalog:build",
 		"@effect/language-service": "catalog:typescript",
 		"@mdx-js/rollup": "catalog:build",
+		"@octokit/openapi-types": "catalog:types",
 		"@react-router/dev": "catalog:backend",
 		"@repo/eslint-config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
