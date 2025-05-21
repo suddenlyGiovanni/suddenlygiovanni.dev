@@ -1,7 +1,7 @@
 import { Buffer } from 'node:buffer'
 
 import type { components } from '@octokit/openapi-types'
-import { Effect, Option, pipe, Schema, Struct } from 'effect'
+import { Console, Effect, Option, pipe, Schema, Struct } from 'effect'
 
 import { Octokit } from '#root/src/services/octokit.ts'
 import type * as Types from '#root/types/index.ts'
@@ -169,6 +169,31 @@ export class GithubService extends Effect.Service<GithubService>()('app/services
 				}),
 		)
 
-		return { getFileContent }
+		/**
+		 *
+		 * @param owner - The account owner of the repository. The name is not case sensitive.
+		 * @param repo - The name of the repository without the .git extension. The name is not case sensitive.
+		 * @param tree_sha - The SHA1 value or ref (branch or tag) name of the tree.
+		 */
+		const listFiles = (owner: string, repo: string, tree_sha: string) =>
+			Effect.gen(function* () {
+				const octokitResponse = yield* octokit.use((client, signal) =>
+					client.rest.git.getTree({
+						owner,
+						recursive: 'true',
+						repo,
+						request: { signal },
+						tree_sha,
+					}),
+				)
+				yield* Console.log(octokitResponse)
+
+				return octokitResponse
+			})
+
+		return {
+			getFileContent,
+			listFiles,
+		}
 	}),
 }) {}
