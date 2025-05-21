@@ -1,9 +1,10 @@
-import { Effect } from 'effect'
+import { Effect, Option, Struct } from 'effect'
 import type { ReactElement } from 'react'
+import { href, redirect } from 'react-router'
 
 import { loaderFunction } from '#root/src/services/index.ts'
 
-import type { Route } from './+types/team'
+import type { Route } from './+types/team.ts'
 
 // Meta function for SEO
 export function meta({ params }: Route.MetaArgs) {
@@ -14,15 +15,56 @@ export function meta({ params }: Route.MetaArgs) {
 // Loader function to demonstrate type checking with dynamic params
 export const loader = loaderFunction(({ params: { teamId } }: Route.LoaderArgs) =>
 	Effect.succeed({
+		description: `This is team ${teamId}'s page. This route demonstrates a dynamic segment in React Router v7.`,
 		id: teamId,
 		name: `Team ${teamId}`,
-		description: `This is team ${teamId}'s page. This route demonstrates a dynamic segment in React Router v7.`,
 	}),
 )
 
+export const action = async ({ request }: Route.ActionArgs) => {
+	const formData = await request.formData()
+	const note = formData.get('note')
+	if (typeof note !== 'string') throw new Error('note must be a string')
+
+	const errors: { formErrors: string[]; fieldErrors: { note: string[] } } = {
+		fieldErrors: {
+			note: [],
+		},
+		formErrors: [],
+	}
+
+	if (note === '') {
+		errors.fieldErrors.note.push('Note is required')
+	}
+
+	if (note.length > 10) {
+		errors.fieldErrors.note.push('Note must be less than 100 characters')
+	}
+
+	const hasError =
+		errors.formErrors.length > 0 ||
+		Object.values(errors.fieldErrors).some(fieldErrors => fieldErrors.length > 0)
+
+	if (hasError) {
+		return { errors }
+	}
+
+	return redirect(href('/'))
+}
+
+function ErrorList({ errors }: { errors: Option.Option<string[]> }) {
+	return Option.match(errors, {
+		onSome: e => <>{e}</>,
+		onNone: () => null,
+	})
+}
+
 // Component with minimal UI
-export default function Team({ loaderData }: Route.ComponentProps): ReactElement {
+export default function Team({ loaderData, actionData }: Route.ComponentProps): ReactElement {
 	const { id, name, description } = loaderData
+	console.dir(actionData)
+	const fieldErrors = Option.fromNullable(actionData?.errors?.fieldErrors)
+	const formatErrors = Option.fromNullable(actionData?.errors?.formErrors)
 
 	return (
 		<div className="p-4">
@@ -39,30 +81,37 @@ export default function Team({ loaderData }: Route.ComponentProps): ReactElement
 
 			<div className="mt-8">
 				<h2 className="text-xl font-semibold mb-2">Test Form for Action</h2>
+
 				<form
-					method="post"
 					className="space-y-4"
+					method="post"
+					noValidate
 				>
 					<div>
 						<label
-							htmlFor="note"
 							className="block mb-1"
+							htmlFor="note"
 						>
 							Add a note:
 						</label>
 						<input
-							type="text"
+							className="w-full p-2 border border-gray-300 rounded"
 							id="note"
 							name="note"
-							className="w-full p-2 border border-gray-300 rounded"
+							required
+							type="text"
 						/>
+						<div className="min-h-32 px-4 pb-3 pt-1">
+							<ErrorList errors={Option.map(fieldErrors, Struct.get('note'))} />
+						</div>
 					</div>
 					<button
-						type="submit"
 						className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+						type="submit"
 					>
 						Submit
 					</button>
+					<ErrorList errors={formatErrors} />
 				</form>
 			</div>
 		</div>
