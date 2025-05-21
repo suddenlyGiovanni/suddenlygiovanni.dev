@@ -69,4 +69,13 @@ export const routesRecord = {
 		uri: 'second-brain',
 		url: '/second-brain',
 	},
+
+	teams: {
+		description: 'Go to teams page',
+		disabled: false,
+		hidden: false,
+		title: 'teams',
+		uri: 'teams',
+		url: '/teams',
+	},
 } as const satisfies Readonly<Record<string, Route>>

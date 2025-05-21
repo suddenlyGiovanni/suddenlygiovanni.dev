@@ -6,6 +6,7 @@ export default [
 	route('/second-brain', 'routes/second-brain.tsx'),
 	route('/reading-journal', 'routes/reading-journal.tsx'),
 	route('/resume', 'routes/resume/resume.tsx'),
+	route('/teams/:teamId', 'routes/teams/team.tsx'),
 	...prefix('/resources', [
 		//
 		route('/theme-switch', 'routes/resources/theme-switch.tsx'),
