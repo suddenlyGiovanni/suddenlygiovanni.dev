@@ -1,19 +1,20 @@
 import { type Effect, type Layer, ManagedRuntime } from 'effect'
 import type * as T from 'react-router'
 
-export const makeRemixRuntime = <R, E>(layer: Layer.Layer<R, E, never>) => {
+export const makeRemixRuntime = <R, LayerError>(layer: Layer.Layer<R, LayerError, never>) => {
 	const runtime = ManagedRuntime.make(layer)
 
 	const loaderFunction =
-		<
-			A,
-			EffectError,
-			LoaderFunctionArgs extends T.LoaderFunctionArgs = T.LoaderFunctionArgs<T.AppLoadContext>,
-		>(
-			loaderFunction: (arg: LoaderFunctionArgs) => Effect.Effect<A, EffectError, R>,
+		<A, E, Arg extends T.LoaderFunctionArgs = T.LoaderFunctionArgs<T.AppLoadContext>>(
+			loaderFunction: (arg: Arg) => Effect.Effect<A, E, R>,
 		) =>
-		(arg: LoaderFunctionArgs): Promise<A> =>
+		(arg: Arg): Promise<A> =>
 			runtime.runPromise(loaderFunction(arg))
 
-	return { loaderFunction }
+	const makeActionFunction =
+		<A, E, Arg extends T.ActionFunctionArgs>(f: (arg: Arg) => Effect.Effect<A, E, R>) =>
+		(arg: Arg): Promise<A> =>
+			runtime.runPromise(f(arg))
+
+	return { loaderFunction, makeActionFunction }
 }
