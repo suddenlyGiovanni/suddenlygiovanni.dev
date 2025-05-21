@@ -175,21 +175,10 @@ export class GithubService extends Effect.Service<GithubService>()('app/services
 		 * @param repo - The name of the repository without the .git extension. The name is not case sensitive.
 		 * @param tree_sha - The SHA1 value or ref (branch or tag) name of the tree.
 		 */
-		const listFiles = (owner: string, repo: string, tree_sha: string) =>
-			Effect.gen(function* () {
-				const octokitResponse = yield* octokit.use((client, signal) =>
-					client.rest.git.getTree({
-						owner,
-						recursive: 'true',
-						repo,
-						request: { signal },
-						tree_sha,
-					}),
-				)
-				yield* Console.log(octokitResponse)
-
-				return octokitResponse
-			})
+		const listFiles = Effect.fn('GithubService.listFiles')(
+			(owner: string, repo: string, tree_sha: string) =>
+				pipe(octokit.getTree({ owner, repo, tree_sha }), Effect.tap(Console.dir)),
+		)
 
 		return {
 			getFileContent,

@@ -45,6 +45,23 @@ export class Octokit extends Effect.Service<Octokit>()('app/services/Octokit', {
 				),
 			)
 
-		return { client: octokitApi, getContent, use } as const
+		const getTree: (
+			this: Octokit,
+			params: RestEndpointMethodTypes['git']['getTree']['parameters'],
+		) => Effect.Effect<RestEndpointMethodTypes['git']['getTree']['response'], OctokitError, never> =
+			Effect.fn('Octokit.getContent')(({ repo, owner, tree_sha, request, ...rest }) =>
+				use((client, signal) =>
+					client.rest.git.getTree({
+						...rest,
+						owner,
+						recursive: rest.recursive ?? 'true',
+						repo,
+						request: { ...request, signal },
+						tree_sha,
+					}),
+				),
+			)
+
+		return { client: octokitApi, getContent, getTree, use } as const
 	}),
 }) {}
