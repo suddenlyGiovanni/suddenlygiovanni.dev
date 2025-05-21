@@ -21,17 +21,11 @@ export const meta: Route.MetaFunction = () => {
 }
 
 export const loader = loaderFunction(_ =>
-	Effect.gen(function* () {
-		const githubService = yield* GithubService
-
-		const octokitResponse = yield* githubService.listFiles(
-			'suddenlyGiovanni',
-			'second-brain',
-			'main',
-		)
-
-		return octokitResponse
-	}),
+	GithubService.pipe(
+		Effect.flatMap(githubService =>
+			githubService.listFiles('suddenlyGiovanni', 'second-brain', 'main'),
+		),
+	),
 )
 
 export default function SecondBrain({ loaderData }: Route.ComponentProps): ReactElement {
