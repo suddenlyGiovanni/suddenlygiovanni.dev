@@ -12,7 +12,9 @@ export const makeRemixRuntime = <R, LayerError>(layer: Layer.Layer<R, LayerError
 			runtime.runPromise(loaderFunction(arg))
 
 	const makeActionFunction =
-		<A, E, Arg extends T.ActionFunctionArgs>(f: (arg: Arg) => Effect.Effect<A, E, R>) =>
+		<A, E, Arg extends T.ActionFunctionArgs = T.ActionFunctionArgs<T.AppLoadContext>>(
+			f: (arg: Arg) => Effect.Effect<A, E, R>,
+		) =>
 		(arg: Arg): Promise<A> =>
 			runtime.runPromise(f(arg))
 

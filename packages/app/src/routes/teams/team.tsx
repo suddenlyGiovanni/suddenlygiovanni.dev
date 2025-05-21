@@ -1,8 +1,8 @@
-import { Effect, Option, Struct } from 'effect'
+import { Effect, Option, Schema, Struct } from 'effect'
 import type { ReactElement } from 'react'
 import { href, redirect } from 'react-router'
 
-import { loaderFunction } from '#root/src/services/index.ts'
+import { loaderFunction, makeActionFunction } from '#root/src/services/index.ts'
 
 import type { Route } from './+types/team.ts'
 
@@ -21,36 +21,48 @@ export const loader = loaderFunction(({ params: { teamId } }: Route.LoaderArgs) 
 	}),
 )
 
-export const action = async ({ request }: Route.ActionArgs) => {
-	const formData = await request.formData()
-	const note = formData.get('note')
-	if (typeof note !== 'string') throw new Error('note must be a string')
+export const action = makeActionFunction(({ request }: Route.ActionArgs) =>
+	Effect.gen(function* () {
+		const formData = yield* Effect.promise(() => request.formData())
+		const note = formData.get('note')
 
-	const errors: { formErrors: string[]; fieldErrors: { note: string[] } } = {
-		fieldErrors: {
-			note: [],
-		},
-		formErrors: [],
-	}
+		const FormSchema = Schema.Struct({
+			note: Schema.NonEmptyTrimmedString.pipe(Schema.maxLength(100)),
+		})
 
-	if (note === '') {
-		errors.fieldErrors.note.push('Note is required')
-	}
+		if (typeof note !== 'string') throw new Error('note must be a string')
 
-	if (note.length > 10) {
-		errors.fieldErrors.note.push('Note must be less than 100 characters')
-	}
+		const errors: {
+			formErrors: string[]
+			fieldErrors: {
+				note: string[]
+			}
+		} = {
+			fieldErrors: {
+				note: [],
+			},
+			formErrors: [],
+		}
 
-	const hasError =
-		errors.formErrors.length > 0 ||
-		Object.values(errors.fieldErrors).some(fieldErrors => fieldErrors.length > 0)
+		if (note === '') {
+			errors.fieldErrors.note.push('Note is required')
+		}
 
-	if (hasError) {
-		return { errors }
-	}
+		if (note.length > 10) {
+			errors.fieldErrors.note.push('Note must be less than 100 characters')
+		}
 
-	return redirect(href('/'))
-}
+		const hasError =
+			errors.formErrors.length > 0 ||
+			Object.values(errors.fieldErrors).some(fieldErrors => fieldErrors.length > 0)
+
+		if (hasError) {
+			return { errors }
+		}
+
+		return redirect(href('/'))
+	}),
+)
 
 function ErrorList({ errors }: { errors: Option.Option<string[]> }) {
 	return Option.match(errors, {
