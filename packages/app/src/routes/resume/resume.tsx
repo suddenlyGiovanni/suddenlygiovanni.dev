@@ -8,7 +8,7 @@ import hero2800wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profi
 import { config } from '#root/src/config.ts'
 import { Languages } from '#root/src/routes/resume/languages.tsx'
 import { routesRecord } from '#root/src/routes-record.ts'
-import { loaderFunction } from '#root/src/services/index.ts'
+import { makServerLoaderFunction } from '#root/src/services/index.ts'
 import { ResumeRepository } from '#root/src/services/resume-repository.ts'
 
 import type { Route } from './+types/resume.ts'
@@ -45,7 +45,7 @@ export const links: Route.LinksFunction = () => {
 	]
 }
 
-export const loader = loaderFunction(() =>
+export const loader = makServerLoaderFunction(() =>
 	ResumeRepository.pipe(Effect.flatMap(repo => repo.getResume())),
 )
 

@@ -2,7 +2,7 @@ import { Effect, Option, Schema, Struct } from 'effect'
 import type { ReactElement } from 'react'
 import { href, redirect } from 'react-router'
 
-import { loaderFunction, makeActionFunction } from '#root/src/services/index.ts'
+import { makeServerActionFunction, makServerLoaderFunction } from '#root/src/services/index.ts'
 
 import type { Route } from './+types/team.ts'
 
@@ -13,7 +13,7 @@ export function meta({ params }: Route.MetaArgs) {
 }
 
 // Loader function to demonstrate type checking with dynamic params
-export const loader = loaderFunction(({ params: { teamId } }: Route.LoaderArgs) =>
+export const loader = makServerLoaderFunction(({ params: { teamId } }: Route.LoaderArgs) =>
 	Effect.succeed({
 		description: `This is team ${teamId}'s page. This route demonstrates a dynamic segment in React Router v7.`,
 		id: teamId,
@@ -21,7 +21,7 @@ export const loader = loaderFunction(({ params: { teamId } }: Route.LoaderArgs) 
 	}),
 )
 
-export const action = makeActionFunction(({ request }: Route.ActionArgs) =>
+export const action = makeServerActionFunction(({ request }: Route.ActionArgs) =>
 	Effect.gen(function* () {
 		const formData = yield* Effect.promise(() => request.formData())
 		const note = formData.get('note')
