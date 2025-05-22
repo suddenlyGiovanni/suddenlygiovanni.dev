@@ -7,6 +7,6 @@ import { Octokit } from './octokit.ts'
 import { ResumeRepository } from './resume-repository.ts'
 import { TodoRepo } from './todos-repo.ts'
 
-export const { makServerLoaderFunction, makeServerActionFunction } = makeRemixRuntime(
+export const { makeServerLoaderFunction, makeServerActionFunction } = makeRemixRuntime(
 	Layer.mergeAll(TodoRepo.Live, Octokit.Default, ResumeRepository.Default, GithubService.Default),
 )
