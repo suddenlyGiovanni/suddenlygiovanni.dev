@@ -8,7 +8,7 @@ import hero2800wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profi
 import { config } from '#root/src/config.ts'
 import { Languages } from '#root/src/routes/resume/languages.tsx'
 import { routesRecord } from '#root/src/routes-record.ts'
-import { makServerLoaderFunction } from '#root/src/services/index.ts'
+import { makeServerLoaderFunction } from '#root/src/services/index.ts'
 import { ResumeRepository } from '#root/src/services/resume-repository.ts'
 
 import type { Route } from './+types/resume.ts'
