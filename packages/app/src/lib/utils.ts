@@ -18,5 +18,5 @@ export const makeRemixRuntime = <R, LayerError>(layer: Layer.Layer<R, LayerError
 		(arg: Arg): Promise<A> =>
 			runtime.runPromise(action(arg))
 
-	return { makeServerActionFunction, makServerLoaderFunction }
+	return { makeServerActionFunction, makeServerLoaderFunction }
 }
