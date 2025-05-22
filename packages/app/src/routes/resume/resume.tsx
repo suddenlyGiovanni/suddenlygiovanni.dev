@@ -45,7 +45,7 @@ export const links: Route.LinksFunction = () => {
 	]
 }
 
-export const loader = makServerLoaderFunction(() =>
+export const loader = makeServerLoaderFunction(() =>
 	ResumeRepository.pipe(Effect.flatMap(repo => repo.getResume())),
 )
 
