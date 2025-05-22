@@ -4,7 +4,7 @@ import type * as T from 'react-router'
 export const makeRemixRuntime = <R, LayerError>(layer: Layer.Layer<R, LayerError, never>) => {
 	const runtime = ManagedRuntime.make(layer)
 
-	const makServerLoaderFunction =
+	const makeServerLoaderFunction =
 		<A, E, Arg extends T.LoaderFunctionArgs = T.LoaderFunctionArgs<T.AppLoadContext>>(
 			loader: (arg: Arg) => Effect.Effect<A, E, R>,
 		) =>
