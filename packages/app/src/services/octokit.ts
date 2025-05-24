@@ -9,6 +9,8 @@ export class OctokitError extends Schema.TaggedError<OctokitError>()('OctokitErr
 	cause: Schema.Defect,
 }) {}
 
+export type GetContentResponse = RestEndpointMethodTypes['repos']['getContent']['response']
+
 export class Octokit extends Effect.Service<Octokit>()('app/services/Octokit', {
 	effect: Effect.gen(function* () {
 		const OctokitApi = Api.Octokit.plugin(restEndpointMethods)
@@ -28,22 +30,27 @@ export class Octokit extends Effect.Service<Octokit>()('app/services/Octokit', {
 
 		const getContent: (
 			this: Octokit,
-			params: { ref: Option.Option<string>; repo: string; path: string; owner: string },
-		) => Effect.Effect<RestEndpointMethodTypes['repos']['getContent']['response'], OctokitError> =
-			Effect.fn('Octokit.getContent')(({ owner, path, repo, ref }) =>
+			params: {
+				refOption: Option.Option<string>
+				repo: string
+				path: string
+				owner: string
+			},
+		) => Effect.Effect<GetContentResponse, OctokitError> = Effect.fn('Octokit.getContent')(
+			({ owner, path, repo, refOption }) =>
 				use(({ rest }, abortSignal) =>
 					rest.repos.getContent({
 						owner,
 						path,
 						repo,
 						request: { signal: abortSignal },
-						...Option.match(ref, {
+						...Option.match(refOption, {
 							onNone: () => ({}),
-							onSome: _ref => ({ ref: _ref }),
+							onSome: ref => ({ ref }),
 						}),
 					}),
 				),
-			)
+		)
 
 		return { client: octokitApi, getContent, use } as const
 	}),

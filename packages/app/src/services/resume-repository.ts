@@ -1,5 +1,5 @@
 import { Resume } from '@suddenly-giovanni/schema-resume'
-import { Effect, pipe, Schema, Struct } from 'effect'
+import { Effect, Option, pipe, Schema, Struct } from 'effect'
 import type { ParseError } from 'effect/ParseResult'
 
 import { Meta } from '#root/src/models/resume/meta/meta.ts'
@@ -39,12 +39,14 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 			 */
 			const getResume: (
 				this: ResumeRepository,
-				refOption?: string,
+				ref?: string,
 			) => Effect.Effect<
 				{ meta: typeof Meta.Type; resume: typeof Resume.Type },
 				DecodingError | InvalidDataError | ParseError | OctokitError,
 				never
-			> = Effect.fn('ResumeRepository.getResume')((refOption = 'main') => {
+			> = Effect.fn('ResumeRepository.getResume')(ref => {
+				const refOption = Option.fromNullable(ref).pipe(Option.orElse(() => Option.some('main')))
+
 				const resumeYml = pipe(
 					githubService.getFileContent({
 						owner,

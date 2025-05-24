@@ -1,7 +1,7 @@
 import { Buffer } from 'node:buffer'
 
 import type { components } from '@octokit/openapi-types'
-import { Effect, Option, pipe, Schema, Struct } from 'effect'
+import { Effect, type Option, pipe, Schema, Struct } from 'effect'
 
 import { Octokit } from '#root/src/services/octokit.ts'
 import type * as Types from '#root/types/index.ts'
@@ -75,14 +75,14 @@ export class GithubService extends Effect.Service<GithubService>()('app/services
 				/**
 				 * the branch, tag, or commit sha to get the file from
 				 */
-				readonly refOption: string
+				readonly refOption: Option.Option<string>
 			}) =>
 				Effect.gen(function* () {
 					const octokitResponse = yield* octokit.getContent({
-						owner: owner,
-						path: path,
-						ref: Option.fromNullable(refOption),
-						repo: repo,
+						owner,
+						path,
+						refOption,
+						repo,
 					})
 
 					const data: components['schemas']['content-file'] = yield* pipe(
