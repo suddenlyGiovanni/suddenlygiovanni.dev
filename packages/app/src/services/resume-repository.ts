@@ -39,17 +39,17 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 			 */
 			const getResume: (
 				this: ResumeRepository,
-				ref?: string,
+				refOption?: string,
 			) => Effect.Effect<
 				{ meta: typeof Meta.Type; resume: typeof Resume.Type },
 				DecodingError | InvalidDataError | ParseError | OctokitError,
 				never
-			> = Effect.fn('ResumeRepository.getResume')((ref = 'main') => {
+			> = Effect.fn('ResumeRepository.getResume')((refOption = 'main') => {
 				const resumeYml = pipe(
 					githubService.getFileContent({
 						owner,
 						path: 'packages/resume/src/resume.yml',
-						ref,
+						refOption,
 						repo,
 					}),
 					Effect.flatMap(({ decodedContent, lastModified, canonical }) =>
@@ -65,7 +65,7 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 					githubService.getFileContent({
 						owner,
 						path: 'packages/resume/deno.json',
-						ref,
+						refOption,
 						repo,
 					}),
 					Effect.map(Struct.get('decodedContent')),
