@@ -25,6 +25,12 @@ export class DecodingError extends Schema.TaggedError<DecodingError>()('Decoding
 	message: Schema.String,
 }) {}
 
+export interface FileContent {
+	canonical: string | null
+	decodedContent: string
+	lastModified: string | undefined
+}
+
 type GetFileContent = (
 	this: GithubService,
 	args: {
@@ -45,11 +51,7 @@ type GetFileContent = (
 		 */
 		readonly refOption: Option.Option<string>
 	},
-) => Effect.Effect<
-	{ canonical: string | null; decodedContent: string; lastModified: string | undefined },
-	OctokitError | InvalidDataError | DecodingError,
-	never
->
+) => Effect.Effect<FileContent, OctokitError | InvalidDataError | DecodingError, never>
 
 export class GithubService extends Effect.Service<GithubService>()('app/services/GithubService', {
 	dependencies: [Octokit.Default],
