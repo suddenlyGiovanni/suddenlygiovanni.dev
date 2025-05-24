@@ -3,8 +3,9 @@ import { Buffer } from 'node:buffer'
 import type { components } from '@octokit/openapi-types'
 import { Effect, type Option, pipe, Schema, Struct } from 'effect'
 
-import { Octokit, type OctokitError } from '#root/src/services/octokit.ts'
 import type * as Types from '#root/types/index.ts'
+
+import { Octokit, type OctokitError } from './octokit.server.ts'
 
 /**
  * This error can be thrown when the data returned from the getContent request is not an object or

@@ -4,12 +4,13 @@ import type { ParseError } from 'effect/ParseResult'
 
 import { Meta } from '#root/src/models/resume/meta/meta.ts'
 import { parseYml } from '#root/src/schemas/parse-yml.ts'
+
 import {
 	type DecodingError,
 	GithubService,
 	type InvalidDataError,
-} from '#root/src/services/github-service.server.ts'
-import type { OctokitError } from '#root/src/services/octokit.ts'
+} from './github-service.server.ts'
+import type { OctokitError } from './octokit.server.ts'
 
 class Package extends Schema.Class<Package>('Package')({
 	version: Schema.TemplateLiteral(Schema.Number, '.', Schema.Number, '.', Schema.Number),
