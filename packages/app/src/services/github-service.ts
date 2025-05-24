@@ -55,7 +55,7 @@ export class GithubService extends Effect.Service<GithubService>()('app/services
 				owner,
 				repo,
 				path,
-				ref,
+				refOption,
 			}: {
 				/**
 				 * The owner of a resource.
@@ -75,13 +75,13 @@ export class GithubService extends Effect.Service<GithubService>()('app/services
 				/**
 				 * the branch, tag, or commit sha to get the file from
 				 */
-				readonly ref?: string
+				readonly refOption: string
 			}) =>
 				Effect.gen(function* () {
 					const octokitResponse = yield* octokit.getContent({
 						owner: owner,
 						path: path,
-						ref: Option.fromNullable(ref),
+						ref: Option.fromNullable(refOption),
 						repo: repo,
 					})
 
