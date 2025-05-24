@@ -38,7 +38,7 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 			 * @param ref - The Git reference (branch, tag, etc.) to use when fetching the files. Defaults to "main".
 			 * @returns An effect that resolves to an object with the decoded resume and its metadata.
 			 */
-			const getResume: (
+			const getResumeWithMeta: (
 				this: ResumeRepository,
 				ref?: string,
 			) => Effect.Effect<
@@ -89,7 +89,7 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 				)
 			})
 
-			return { getResume } as const
+			return { getResumeWithMeta } as const
 		}),
 	},
 ) {}
