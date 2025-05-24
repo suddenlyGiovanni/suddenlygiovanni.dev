@@ -13,7 +13,7 @@
 		"@repo/open-graph-protocol": "workspace:*",
 		"@repo/tailwind-config": "workspace:*",
 		"@repo/ui": "workspace:*",
-		"@std/yaml": "jsr:1.0.6",
+		"@std/yaml": "catalog:backend",
 		"@suddenly-giovanni/schema-resume": "jsr:0.0.7",
 		"cookie": "catalog:backend",
 		"effect": "catalog:lib",

@@ -98,6 +98,7 @@ catalogs:
     "@effect/platform-node": 0.81.4
     "@react-router/dev": 7.6.1
     "@react-router/node": 7.6.1
+    "@std/yaml": jsr:1.0.6
     cookie: 1.0.2
     isbot: 5.1.27
   typescript:

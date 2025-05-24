@@ -15,6 +15,9 @@ catalogs:
     '@react-router/node':
       specifier: 7.6.1
       version: 7.6.1
+    '@std/yaml':
+      specifier: jsr:1.0.6
+      version: 1.0.6
     cookie:
       specifier: 1.0.2
       version: 1.0.2
@@ -325,7 +328,7 @@ importers:
         specifier: workspace:*
         version: link:../ui
       '@std/yaml':
-        specifier: jsr:1.0.6
+        specifier: catalog:backend
         version: '@jsr/std__yaml@1.0.6'
       '@suddenly-giovanni/schema-resume':
         specifier: jsr:0.0.7
