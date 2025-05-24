@@ -18,6 +18,23 @@ class Package extends Schema.Class<Package>('Package')({
 	static decode = Schema.decode(this)
 }
 
+class ResumeWithMetadata extends Schema.Class<ResumeWithMetadata>('ResumeWithMetadata')({
+	meta: Meta,
+	resume: Resume,
+}) {
+	static decode = Schema.decode(this)
+	static encode = Schema.encode(this)
+}
+
+type GetResumeWithMetadata = (
+	this: ResumeRepository,
+	ref?: string,
+) => Effect.Effect<
+	typeof ResumeWithMetadata.Type,
+	DecodingError | InvalidDataError | ParseError | OctokitError,
+	never
+>
+
 export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 	'app/services/ResumeRepository',
 	{
@@ -38,56 +55,48 @@ export class ResumeRepository extends Effect.Service<ResumeRepository>()(
 			 * @param ref - The Git reference (branch, tag, etc.) to use when fetching the files. Defaults to "main".
 			 * @returns An effect that resolves to an object with the decoded resume and its metadata.
 			 */
-			const getResumeWithMeta: (
-				this: ResumeRepository,
-				ref?: string,
-			) => Effect.Effect<
-				{ meta: typeof Meta.Type; resume: typeof Resume.Type },
-				DecodingError | InvalidDataError | ParseError | OctokitError,
-				never
-			> = Effect.fn('ResumeRepository.getResume')(ref => {
-				const refOption = Option.fromNullable(ref).pipe(Option.orElse(() => Option.some('main')))
+			const getResumeWithMeta: GetResumeWithMetadata = Effect.fn('ResumeRepository.getResume')(
+				ref => {
+					const refOption = Option.fromNullable(ref)
 
-				const resumeYml = pipe(
-					githubService.getFileContent({
-						owner,
-						path: 'packages/resume/src/resume.yml',
-						refOption,
-						repo,
-					}),
-					Effect.flatMap(({ decodedContent, lastModified, canonical }) =>
-						pipe(
-							decodedContent,
-							Schema.decode(parseYml(Resume)),
-							Effect.map(resume => ({ canonical, lastModified, resume })),
+					const resumeYml = pipe(
+						githubService.getFileContent({
+							owner,
+							path: 'packages/resume/src/resume.yml',
+							refOption,
+							repo,
+						}),
+						Effect.flatMap(({ decodedContent, lastModified, canonical }) =>
+							pipe(
+								decodedContent,
+								Schema.decode(parseYml(Resume)),
+								Effect.map(resume => ({ canonical, lastModified, resume })),
+							),
 						),
-					),
-				)
+					)
 
-				const version = pipe(
-					githubService.getFileContent({
-						owner,
-						path: 'packages/resume/deno.json',
-						refOption,
-						repo,
-					}),
-					Effect.map(Struct.get('decodedContent')),
-					Effect.flatMap(Schema.decode(Schema.parseJson(Package))),
-					Effect.map(Struct.get('version')),
-				)
+					const version = pipe(
+						githubService.getFileContent({
+							owner,
+							path: 'packages/resume/deno.json',
+							refOption,
+							repo,
+						}),
+						Effect.map(Struct.get('decodedContent')),
+						Effect.flatMap(Schema.decode(Schema.parseJson(Package))),
+						Effect.map(Struct.get('version')),
+					)
 
-				return pipe(
-					Effect.all({ resumeYml, version }, { concurrency: 2 }),
-
-					Effect.flatMap(({ resumeYml: { resume, lastModified, canonical }, version }) =>
-						pipe(
-							{ canonical, lastModified, version },
-							Meta.decode,
-							Effect.map(meta => ({ meta, resume })),
+					return Effect.all({ resumeYml, version }, { concurrency: 2 }).pipe(
+						Effect.flatMap(({ resumeYml: { resume, lastModified, canonical }, version }) =>
+							ResumeWithMetadata.decode({
+								meta: { canonical, lastModified, version },
+								resume,
+							}),
 						),
-					),
-				)
-			})
+					)
+				},
+			)
 
 			return { getResumeWithMeta } as const
 		}),
