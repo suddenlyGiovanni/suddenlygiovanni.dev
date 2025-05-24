@@ -1,6 +1,6 @@
 import { Layer, ManagedRuntime } from 'effect'
 
-import { GithubService } from './github-service.ts'
+import { GithubService } from './github-service.server.ts'
 import { makeReactRouterServersRuntime } from './make-react-router-runtime.ts'
 import { Octokit } from './octokit.ts'
 import { ResumeRepository } from './resume-repository.ts'

@@ -8,7 +8,7 @@ import {
 	type DecodingError,
 	GithubService,
 	type InvalidDataError,
-} from '#root/src/services/github-service.ts'
+} from '#root/src/services/github-service.server.ts'
 import type { OctokitError } from '#root/src/services/octokit.ts'
 
 class Package extends Schema.Class<Package>('Package')({
