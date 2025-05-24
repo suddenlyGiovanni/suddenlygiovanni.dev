@@ -1,1 +1,5 @@
 export type * from 'effect/Types'
+
+export type Prettify<T> = {
+	[K in keyof T]: T[K]
+} & {}
