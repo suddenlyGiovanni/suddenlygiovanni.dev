@@ -14,7 +14,7 @@
 		"@repo/tailwind-config": "workspace:*",
 		"@repo/ui": "workspace:*",
 		"@std/yaml": "catalog:backend",
-		"@suddenly-giovanni/schema-resume": "jsr:0.0.7",
+		"@suddenly-giovanni/schema-resume": "catalog:lib",
 		"cookie": "catalog:backend",
 		"effect": "catalog:lib",
 		"isbot": "catalog:backend",

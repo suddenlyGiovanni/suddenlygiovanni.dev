@@ -132,6 +132,9 @@ catalogs:
     '@octokit/request-error':
       specifier: 7.0.0
       version: 7.0.0
+    '@suddenly-giovanni/schema-resume':
+      specifier: jsr:0.0.7
+      version: 0.0.7
     effect:
       specifier: 3.15.4
       version: 3.15.4
@@ -331,7 +334,7 @@ importers:
         specifier: catalog:backend
         version: '@jsr/std__yaml@1.0.6'
       '@suddenly-giovanni/schema-resume':
-        specifier: jsr:0.0.7
+        specifier: catalog:lib
         version: '@jsr/suddenly-giovanni__schema-resume@0.0.7'
       cookie:
         specifier: catalog:backend
