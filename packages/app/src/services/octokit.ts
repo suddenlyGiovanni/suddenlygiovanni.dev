@@ -15,15 +15,13 @@ export type GetContentResponse = Simplify<
 	RestEndpointMethodTypes['repos']['getContent']['response']
 >
 
-// type x = operations['repos/get-content']['responses'][200]['content']['application/json']
 type GetContent = (
 	this: Octokit,
-	params: {
-		refOption: Option.Option<string>
-		repo: string
-		path: string
-		owner: string
-	},
+	params: Simplify<
+		RestEndpointMethodTypes['repos']['getContent']['parameters'] & {
+			refOption: Option.Option<string>
+		}
+	>,
 ) => Effect.Effect<GetContentResponse, OctokitError>
 
 export class Octokit extends Effect.Service<Octokit>()('app/services/Octokit', {
@@ -72,13 +70,14 @@ export class Octokit extends Effect.Service<Octokit>()('app/services/Octokit', {
 		 *   - Greater than 100 MB: This endpoint is not supported.
 		 */
 		const getContent: GetContent = Effect.fn('Octokit.getContent')(
-			({ owner, path, repo, refOption }) =>
+			({ owner, path, repo, refOption, ref: _, ...rest }) =>
 				use((client, abortSignal) =>
 					client.rest.repos.getContent({
+						...rest,
 						owner,
 						path,
 						repo,
-						request: { signal: abortSignal },
+						request: { ...rest.request, signal: abortSignal },
 						...Option.match(refOption, {
 							onNone: () => ({}),
 							onSome: ref => ({ ref }),
