@@ -8,8 +8,8 @@ import hero2800wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profi
 import { config } from '#root/src/config.ts'
 import { Languages } from '#root/src/routes/resume/languages.tsx'
 import { routesRecord } from '#root/src/routes-record.ts'
-import { ResumeRepository } from '#root/src/services/resume-repository.ts'
-import { ReactRouterServersRuntime } from '#root/src/services/runtime-server.ts'
+import { ResumeRepository } from '#root/src/services/resume-repository.server.ts'
+import { ReactRouterServersRuntime } from '#root/src/services/runtime.server.ts'
 
 import type { Route } from './+types/resume.ts'
 import { Basics } from './basics.tsx'
@@ -45,8 +45,8 @@ export const links: Route.LinksFunction = () => {
 	]
 }
 
-export const loader = ReactRouterServersRuntime.makeServerLoaderFunction(() =>
-	ResumeRepository.pipe(Effect.flatMap(repo => repo.getResume())),
+export const loader = ReactRouterServersRuntime.makeServerLoaderFunction(_ =>
+	ResumeRepository.pipe(Effect.flatMap(repo => repo.getResumeWithMeta())),
 )
 
 /**

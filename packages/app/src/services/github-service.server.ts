@@ -1,10 +1,11 @@
 import { Buffer } from 'node:buffer'
 
 import type { components } from '@octokit/openapi-types'
-import { Effect, Option, pipe, Schema, Struct } from 'effect'
+import { Effect, type Option, pipe, Schema, Struct } from 'effect'
 
-import { Octokit } from '#root/src/services/octokit.ts'
 import type * as Types from '#root/types/index.ts'
+
+import { Octokit, type OctokitError } from './octokit.server.ts'
 
 /**
  * This error can be thrown when the data returned from the getContent request is not an object or
@@ -24,6 +25,34 @@ export class DecodingError extends Schema.TaggedError<DecodingError>()('Decoding
 	encoding: Schema.String,
 	message: Schema.String,
 }) {}
+
+export interface FileContent {
+	canonical: string | null
+	decodedContent: string
+	lastModified: string | undefined
+}
+
+type GetFileContent = (
+	this: GithubService,
+	args: {
+		/**
+		 * The owner of a resource.
+		 */
+		readonly owner: string
+		/**
+		 * Repository variable.
+		 */
+		readonly repo: string
+		/**
+		 * The path variable represents a string that stores a file path.
+		 */
+		readonly path: string
+		/**
+		 * the branch, tag, or commit sha to get the file from
+		 */
+		readonly refOption: Option.Option<string>
+	},
+) => Effect.Effect<FileContent, OctokitError | InvalidDataError | DecodingError, never>
 
 export class GithubService extends Effect.Service<GithubService>()('app/services/GithubService', {
 	dependencies: [Octokit.Default],
@@ -50,12 +79,12 @@ export class GithubService extends Effect.Service<GithubService>()('app/services
 		 * The function may fail with a RequestError if the API request fails, an InvalidDataError if the response data
 		 * does not match the expected format, or a DecodingError if decoding the file content fails.
 		 */
-		const getFileContent = Effect.fn('GithubService.getFileContent')(
+		const getFileContent: GetFileContent = Effect.fn('GithubService.getFileContent')(
 			({
 				owner,
 				repo,
 				path,
-				ref,
+				refOption,
 			}: {
 				/**
 				 * The owner of a resource.
@@ -75,14 +104,14 @@ export class GithubService extends Effect.Service<GithubService>()('app/services
 				/**
 				 * the branch, tag, or commit sha to get the file from
 				 */
-				readonly ref?: string
+				readonly refOption: Option.Option<string>
 			}) =>
 				Effect.gen(function* () {
 					const octokitResponse = yield* octokit.getContent({
-						owner: owner,
-						path: path,
-						ref: Option.fromNullable(ref),
-						repo: repo,
+						owner,
+						path,
+						refOption,
+						repo,
 					})
 
 					const data: components['schemas']['content-file'] = yield* pipe(
