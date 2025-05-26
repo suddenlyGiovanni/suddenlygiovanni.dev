@@ -63,7 +63,7 @@ catalogs:
     typescript-eslint: 8.32.1
   build: # Packages used for building the project
     "@babel/preset-typescript": 7.26.0
-    "@codecov/vite-plugin": 1.9.0
+    "@codecov/vite-plugin": 1.9.1
     "@mdx-js/rollup": 3.1.0
     "@tailwindcss/vite": 4.1.7
     "@vitejs/plugin-react": 4.4.1
