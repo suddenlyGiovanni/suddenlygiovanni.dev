@@ -88,7 +88,7 @@ catalogs:
     class-variance-authority: 0.7.1
     react-aria-components: 1.7.1
     react-dom: ~19.1.0
-    react-router: 7.6.0
+    react-router: 7.6.1
     react: ~19.1.0
     tailwind-merge: 3.3.0
     tailwind-variants: 1.0.0
@@ -96,8 +96,8 @@ catalogs:
     tailwindcss: 4.1.7
   backend: # Packages for the backend server.
     "@effect/platform-node": 0.81.4
-    "@react-router/dev": 7.6.0
-    "@react-router/node": 7.6.0
+    "@react-router/dev": 7.6.1
+    "@react-router/node": 7.6.1
     cookie: 1.0.2
     isbot: 5.1.27
   typescript:
