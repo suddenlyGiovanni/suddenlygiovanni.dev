@@ -1,5 +1,5 @@
 import { DecoratorHelpers } from '@storybook/addon-themes'
-import type { Decorator } from '@storybook/react'
+import type { Decorator } from '@storybook/react-vite'
 import { useEffect } from 'react'
 
 export function withThemeByColorScheme<Themes extends Record<string, string>>({

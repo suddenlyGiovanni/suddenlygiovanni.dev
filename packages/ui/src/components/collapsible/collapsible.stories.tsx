@@ -1,5 +1,5 @@
 import { CaretSortIcon } from '@radix-ui/react-icons'
-import type { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react-vite'
 import { type ReactElement, useState } from 'react'
 
 import { clsx } from '#lib/utils.ts'
