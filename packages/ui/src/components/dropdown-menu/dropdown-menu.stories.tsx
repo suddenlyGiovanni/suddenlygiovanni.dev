@@ -1,5 +1,5 @@
 import type { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu'
-import type { Meta, StoryFn } from '@storybook/react'
+import type { Meta, StoryFn } from '@storybook/react-vite'
 import { useCallback, useState } from 'react'
 
 import { Button } from '#ui/button.tsx'

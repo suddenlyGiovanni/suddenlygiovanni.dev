@@ -1,5 +1,5 @@
 import { BellIcon, CheckIcon } from '@radix-ui/react-icons'
-import type { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react-vite'
 import { type ComponentProps, type ReactElement, useRef } from 'react'
 
 import { clsx } from '#lib/utils.ts'

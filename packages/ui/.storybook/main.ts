@@ -4,14 +4,13 @@ const defineConfig = (config: StorybookConfig): StorybookConfig => config
 
 export default defineConfig({
 	addons: [
-		'@storybook/addon-onboarding',
-		'@storybook/addon-links',
-		'@storybook/addon-essentials',
-		'@chromatic-com/storybook',
-		'@storybook/addon-interactions',
-		'@storybook/addon-themes',
-		'@storybook/addon-a11y',
-	],
+        '@storybook/addon-onboarding',
+        '@storybook/addon-links',
+        '@chromatic-com/storybook',
+        '@storybook/addon-themes',
+        '@storybook/addon-a11y',
+        '@storybook/addon-docs'
+    ],
 	docs: {},
 	framework: {
 		name: '@storybook/react-vite',

@@ -1,4 +1,4 @@
-import type { Meta } from '@storybook/react'
+import type { Meta } from '@storybook/react-vite'
 import type { ComponentPropsWithRef, FC, ReactElement } from 'react'
 import { Link } from 'react-router'
 

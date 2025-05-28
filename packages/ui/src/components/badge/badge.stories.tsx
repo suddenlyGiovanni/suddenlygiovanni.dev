@@ -1,5 +1,5 @@
 import { CheckIcon } from '@radix-ui/react-icons'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 import { Badge } from '#ui/badge.tsx'
 
