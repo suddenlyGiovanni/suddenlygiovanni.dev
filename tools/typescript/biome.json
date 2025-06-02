@@ -1,47 +1,42 @@
 {
-  "$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": [
-	"../../biome.json"
-  ],
-  "files": {
-	"includes": [
-	  "base.json",
-	  "library.json",
-	  "react-library.json",
-	  "remix.json"
-	]
-  },
-  "json": {
-	"formatter": {
-	  "enabled": true
-	}
-  },
-  "linter": {
-	"rules": {
-	  "style": {
-		"noArguments": "error",
-		"noCommaOperator": "error",
-		"noInferrableTypes": "error",
-		"noNonNullAssertion": "error",
-		"noParameterAssign": "error",
-		"noUnusedTemplateLiteral": "error",
-		"noUselessElse": "error",
-		"useAsConstAssertion": "error",
-		"useConst": "error",
-		"useDefaultParameterLast": "error",
-		"useEnumInitializers": "error",
-		"useExponentiationOperator": "error",
-		"useExportType": "error",
-		"useImportType": "error",
-		"useLiteralEnumMembers": "error",
-		"useNodejsImportProtocol": "error",
-		"useNumberNamespace": "error",
-		"useSelfClosingElements": "error",
-		"useShorthandFunctionType": "error",
-		"useSingleVarDeclarator": "error",
-		"useTemplate": "error"
-	  }
-	  }
-  },
-  "root": false
+	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"extends": ["../../biome.json"],
+	"files": {
+		"includes": ["base.json", "library.json", "react-library.json", "remix.json"]
+	},
+	"json": {
+		"formatter": {
+			"enabled": true
+		}
+	},
+	"linter": {
+		"rules": {
+			"complexity": {
+				"noArguments": "error",
+				"noCommaOperator": "error"
+			},
+			"style": {
+				"noInferrableTypes": "error",
+				"noNonNullAssertion": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
+				"useAsConstAssertion": "error",
+				"useConst": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useExponentiationOperator": "error",
+				"useExportType": "error",
+				"useImportType": "error",
+				"useLiteralEnumMembers": "error",
+				"useNodejsImportProtocol": "error",
+				"useNumberNamespace": "error",
+				"useSelfClosingElements": "error",
+				"useShorthandFunctionType": "error",
+				"useSingleVarDeclarator": "error",
+				"useTemplate": "error"
+			}
+		}
+	},
+	"root": false
 }

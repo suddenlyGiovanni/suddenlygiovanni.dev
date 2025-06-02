@@ -70,6 +70,21 @@
 	  "trailingCommas": "all"
 	}
   },
+  "json": {
+	"formatter": {
+	  "bracketSpacing": true,
+	  "enabled": true,
+	  "expand": "auto",
+	  "indentStyle": "tab",
+	  "indentWidth": 2,
+	  "lineEnding": "lf",
+	  "lineWidth": 120,
+	  "trailingCommas": "none"
+	},
+	"linter": {
+	  "enabled": true
+	}
+  },
   "linter": {
 	"domains": {
 	  "project": "all",
@@ -100,7 +115,17 @@
 		"recommended": true
 	  },
 	  "style": {
-		"recommended": true
+		"noInferrableTypes": "error",
+		"noParameterAssign": "error",
+		"noUnusedTemplateLiteral": "error",
+		"noUselessElse": "error",
+		"recommended": true,
+		"useAsConstAssertion": "error",
+		"useDefaultParameterLast": "error",
+		"useEnumInitializers": "error",
+		"useNumberNamespace": "error",
+		"useSelfClosingElements": "error",
+		"useSingleVarDeclarator": "error"
 	  },
 	  "suspicious": {
 		"noConsole": "info",
@@ -112,9 +137,9 @@
   "root": true,
   "vcs": {
 	"clientKind": "git",
-		"defaultBranch": "main",
-		"enabled": true,
-		"root": ".",
-		"useIgnoreFile": true
-	}
+	"defaultBranch": "main",
+	"enabled": true,
+	"root": ".",
+	"useIgnoreFile": true
+  }
 }

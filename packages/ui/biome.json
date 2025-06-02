@@ -1,84 +1,70 @@
 {
-  "$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": [
-	"../../biome.json"
-  ],
-  "files": {
-	"ignoreUnknown": true,
-	"includes": [
-	  "src/*",
-	  "!~",
-	  "!**/node_modules/**"
-	]
-  },
-  "linter": {
-	"rules": {
-	  "a11y": {},
-	  "nursery": {
-		"noSecrets": "off",
-		"useExplicitType": "info",
-		"useSortedClasses": {
-		  "fix": "safe",
-		  "level": "warn",
-		  "options": {
-			"attributes": [
-			  "class",
-			  "className"
-			],
-			"functions": [
-			  "clsx",
-			  "cva",
-			  "tw"
-			]
-		  }
-		}
-	  },
-	  "performance": {
-		"noBarrelFile": "off"
-	  },
-	  "style": {
-		"noArguments": "error",
-		"noCommaOperator": "error",
-		"noInferrableTypes": "error",
-		"noNonNullAssertion": "error",
-		"noParameterAssign": "error",
-		"noUnusedTemplateLiteral": "error",
-		"noUselessElse": "error",
-		"useAsConstAssertion": "error",
-		"useConst": "error",
-		"useDefaultParameterLast": "error",
-		"useEnumInitializers": "error",
-		"useExponentiationOperator": "error",
-		"useExportType": "error",
-		"useImportType": "error",
-		"useLiteralEnumMembers": "error",
-		"useNodejsImportProtocol": "error",
-		"useNumberNamespace": "error",
-		"useSelfClosingElements": "error",
-		"useShorthandFunctionType": "error",
-		"useSingleVarDeclarator": "error",
-		"useTemplate": "error"
-	  },
-	  "suspicious": {
-		"noReactSpecificProps": "off"
-	  }
-	}
-  },
-  "overrides": [
-	{
-	  "includes": [
-		"src/**/*.stories.tsx",
-		"!**/node_modules/**"
-	  ],
-	  "linter": {
+	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"extends": ["../../biome.json"],
+	"files": {
+		"ignoreUnknown": true,
+		"includes": ["src/*", "!~", "!**/node_modules/**"]
+	},
+	"linter": {
 		"rules": {
-		  "nursery": {},
-		  "style": {
-			"noDefaultExport": "off"
-				  }
-			  }
-		  }
-	  }
-  ],
-  "root": false
+			"a11y": {},
+			"complexity": {
+				"noArguments": "error",
+				"noCommaOperator": "error"
+			},
+			"nursery": {
+				"noSecrets": "off",
+				"useExplicitType": "info",
+				"useSortedClasses": {
+					"fix": "safe",
+					"level": "warn",
+					"options": {
+						"attributes": ["class", "className"],
+						"functions": ["clsx", "cva", "tw"]
+					}
+				}
+			},
+			"performance": {
+				"noBarrelFile": "off"
+			},
+			"style": {
+				"noInferrableTypes": "error",
+				"noNonNullAssertion": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
+				"useAsConstAssertion": "error",
+				"useConst": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useExponentiationOperator": "error",
+				"useExportType": "error",
+				"useImportType": "error",
+				"useLiteralEnumMembers": "error",
+				"useNodejsImportProtocol": "error",
+				"useNumberNamespace": "error",
+				"useSelfClosingElements": "error",
+				"useShorthandFunctionType": "error",
+				"useSingleVarDeclarator": "error",
+				"useTemplate": "error"
+			},
+			"suspicious": {
+				"noReactSpecificProps": "off"
+			}
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["src/**/*.stories.tsx", "!**/node_modules/**"],
+			"linter": {
+				"rules": {
+					"nursery": {},
+					"style": {
+						"noDefaultExport": "off"
+					}
+				}
+			}
+		}
+	],
+	"root": false
 }

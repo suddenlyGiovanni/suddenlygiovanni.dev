@@ -18,5 +18,21 @@
 	  "react-internal.js"
 	]
   },
+  "linter": {
+	"rules": {
+	  "style": {
+		"noInferrableTypes": "error",
+		"noParameterAssign": "error",
+		"noUnusedTemplateLiteral": "error",
+		"noUselessElse": "error",
+		"useAsConstAssertion": "error",
+		"useDefaultParameterLast": "error",
+		"useEnumInitializers": "error",
+		"useNumberNamespace": "error",
+		"useSelfClosingElements": "error",
+		"useSingleVarDeclarator": "error"
+	  }
+	}
+  },
   "root": false
 }
