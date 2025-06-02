@@ -1,5 +1,13 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"assist": {
+		"actions": {
+			"source": {
+				"useSortedProperties": "on"
+			}
+		},
+		"enabled": true
+	},
 	"css": {
 		"assist": {
 			"enabled": false
@@ -25,14 +33,14 @@
 				"recommended": true
 			},
 			"nursery": {
-				"noImportantStyles": "error",
-				"noUnknownAtRule": "error",
-				"noUselessEscapeInString": "error"
+				"noImportantStyles": "on",
+				"noUnknownAtRule": "on",
+				"noUselessEscapeInString": "on"
 			},
 			"recommended": true,
 			"style": {
-				"noDescendingSpecificity": "error",
-				"noValueAtRule": "error",
+				"noDescendingSpecificity": "on",
+				"noValueAtRule": "on",
 				"recommended": true
 			},
 			"suspicious": {
