@@ -12,28 +12,31 @@
 		}
 	},
 	"extends": "//",
-
 	"files": {
 		"includes": ["./style.css", "./package.json", "biome.json"]
 	},
-	"json": {
-		"formatter": {
-			"enabled": true
-		}
-	},
 	"linter": {
+		"enabled": true,
 		"rules": {
+			"a11y": {
+				"recommended": true
+			},
+			"correctness": {
+				"recommended": true
+			},
+			"nursery": {
+				"noImportantStyles": "error",
+				"noUnknownAtRule": "error",
+				"noUselessEscapeInString": "error"
+			},
+			"recommended": true,
 			"style": {
-				"noInferrableTypes": "error",
-				"noParameterAssign": "error",
-				"noUnusedTemplateLiteral": "error",
-				"noUselessElse": "error",
-				"useAsConstAssertion": "error",
-				"useDefaultParameterLast": "error",
-				"useEnumInitializers": "error",
-				"useNumberNamespace": "error",
-				"useSelfClosingElements": "error",
-				"useSingleVarDeclarator": "error"
+				"noDescendingSpecificity": "error",
+				"noValueAtRule": "error",
+				"recommended": true
+			},
+			"suspicious": {
+				"recommended": true
 			}
 		}
 	},
