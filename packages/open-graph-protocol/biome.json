@@ -1,40 +1,47 @@
 {
-	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
-	"extends": ["../../biome.json"],
-	"files": {
-		"ignoreUnknown": true,
-		"includes": ["**/src/*", "!~", "!**/node_modules/**"]
-	},
-	"linter": {
-		"rules": {
-			"performance": {
-				"noBarrelFile": "off",
-				"noReExportAll": "off"
-			},
-			"style": {
-				"noArguments": "error",
-				"noCommaOperator": "error",
-				"noInferrableTypes": "error",
-				"noNonNullAssertion": "error",
-				"noParameterAssign": "error",
-				"noUnusedTemplateLiteral": "error",
-				"noUselessElse": "error",
-				"useAsConstAssertion": "error",
-				"useConst": "error",
-				"useDefaultParameterLast": "error",
-				"useEnumInitializers": "error",
-				"useExponentiationOperator": "error",
-				"useExportType": "error",
-				"useImportType": "error",
-				"useLiteralEnumMembers": "error",
-				"useNamingConvention": "off",
-				"useNodejsImportProtocol": "error",
-				"useNumberNamespace": "error",
-				"useSelfClosingElements": "error",
-				"useShorthandFunctionType": "error",
-				"useSingleVarDeclarator": "error",
-				"useTemplate": "error"
-			}
-		}
-	}
+  "$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": [
+	"../../biome.json"
+  ],
+  "files": {
+	"ignoreUnknown": true,
+	"includes": [
+	  "**/src/*",
+	  "!~",
+	  "!**/node_modules/**"
+	]
+  },
+  "linter": {
+	"rules": {
+	  "performance": {
+		"noBarrelFile": "off",
+		"noReExportAll": "off"
+	  },
+	  "style": {
+		"noArguments": "error",
+		"noCommaOperator": "error",
+		"noInferrableTypes": "error",
+		"noNonNullAssertion": "error",
+		"noParameterAssign": "error",
+		"noUnusedTemplateLiteral": "error",
+		"noUselessElse": "error",
+		"useAsConstAssertion": "error",
+		"useConst": "error",
+		"useDefaultParameterLast": "error",
+		"useEnumInitializers": "error",
+		"useExponentiationOperator": "error",
+		"useExportType": "error",
+		"useImportType": "error",
+		"useLiteralEnumMembers": "error",
+		"useNamingConvention": "off",
+		"useNodejsImportProtocol": "error",
+		"useNumberNamespace": "error",
+		"useSelfClosingElements": "error",
+		"useShorthandFunctionType": "error",
+		"useSingleVarDeclarator": "error",
+		"useTemplate": "error"
+		  }
+	  }
+  },
+  "root": false
 }

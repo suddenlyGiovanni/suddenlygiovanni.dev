@@ -1,119 +1,117 @@
 {
-	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"assist": {
-		"actions": {
-			"source": {
-				"organizeImports": {
-					"level": "on",
-					"options": {
-						"groups": [
-							":URL:",
-							":BLANK_LINE:",
-
-							":BLANK_LINE:",
-							":NODE:",
-							":BUN:",
-							":BLANK_LINE:",
-
-							":BLANK_LINE:",
-							":PACKAGE_WITH_PROTOCOL:",
-							":PACKAGE:",
-							":BLANK_LINE:",
-
-							":BLANK_LINE:",
-							":ALIAS:",
-							"@repo/**",
-							":BLANK_LINE:",
-
-							":BLANK_LINE:",
-							":PATH:",
-							":BLANK_LINE:"
-						]
-					}
-				},
-				"recommended": true,
-				"useSortedAttributes": "on",
-				"useSortedKeys": "on",
-				"useSortedProperties": "on"
-			}
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "assist": {
+	"actions": {
+	  "source": {
+		"organizeImports": {
+		  "level": "on",
+		  "options": {
+			"groups": [
+			  ":URL:",
+			  ":BLANK_LINE:",
+			  ":BLANK_LINE:",
+			  ":NODE:",
+			  ":BUN:",
+			  ":BLANK_LINE:",
+			  ":BLANK_LINE:",
+			  ":PACKAGE_WITH_PROTOCOL:",
+			  ":PACKAGE:",
+			  ":BLANK_LINE:",
+			  ":BLANK_LINE:",
+			  ":ALIAS:",
+			  "@repo/**",
+			  ":BLANK_LINE:",
+			  ":BLANK_LINE:",
+			  ":PATH:",
+			  ":BLANK_LINE:"
+			]
+		  }
 		},
-		"enabled": true
+		"recommended": true,
+		"useSortedAttributes": "on",
+		"useSortedKeys": "on",
+		"useSortedProperties": "on"
+	  }
 	},
-	"css": {
-		"formatter": {
-			"enabled": true,
-			"indentStyle": "tab",
-			"indentWidth": 2,
-			"lineEnding": "lf",
-			"lineWidth": 80
-		},
-		"linter": {
-			"enabled": false
-		}
-	},
+	"enabled": true
+  },
+  "css": {
 	"formatter": {
-		"enabled": true,
-		"formatWithErrors": true,
-		"indentStyle": "tab",
-		"indentWidth": 2,
-		"lineEnding": "lf",
-		"lineWidth": 100,
-		"useEditorconfig": true
-	},
-	"javascript": {
-		"formatter": {
-			"arrowParentheses": "asNeeded",
-			"attributePosition": "multiline",
-			"bracketSameLine": false,
-			"bracketSpacing": true,
-			"enabled": true,
-			"jsxQuoteStyle": "double",
-			"quoteProperties": "asNeeded",
-			"quoteStyle": "single",
-			"semicolons": "asNeeded",
-			"trailingCommas": "all"
-		}
+	  "enabled": true,
+	  "indentStyle": "tab",
+	  "indentWidth": 2,
+	  "lineEnding": "lf",
+	  "lineWidth": 80
 	},
 	"linter": {
-		"domains": {
-			"react": "recommended",
-			"test": "recommended"
-		},
-		"enabled": true,
-		"rules": {
-			"a11y": {
-				"recommended": true
-			},
-			"complexity": {
-				"recommended": true
-			},
-			"correctness": {
-				"noUndeclaredDependencies": "off",
-				"recommended": true
-			},
-			"nursery": {
-				"recommended": true,
-				"useExplicitType": "off"
-			},
-			"performance": {
-				"recommended": true
-			},
-			"recommended": true,
-			"security": {
-				"recommended": true
-			},
-			"style": {
-				"recommended": true
-			},
-			"suspicious": {
-				"noConsole": "info",
-				"noReactSpecificProps": "off",
-				"recommended": true
-			}
-		}
+	  "enabled": false
+	}
+  },
+  "formatter": {
+	"enabled": true,
+	"formatWithErrors": true,
+	"indentStyle": "tab",
+	"indentWidth": 2,
+	"lineEnding": "lf",
+	"lineWidth": 120,
+	"useEditorconfig": true
+  },
+  "javascript": {
+	"formatter": {
+	  "arrowParentheses": "asNeeded",
+	  "attributePosition": "multiline",
+	  "bracketSameLine": false,
+	  "bracketSpacing": true,
+	  "enabled": true,
+	  "jsxQuoteStyle": "double",
+	  "quoteProperties": "asNeeded",
+	  "quoteStyle": "single",
+	  "semicolons": "asNeeded",
+	  "trailingCommas": "all"
+	}
+  },
+  "linter": {
+	"domains": {
+	  "project": "all",
+	  "react": "recommended",
+	  "test": "recommended"
 	},
-	"vcs": {
-		"clientKind": "git",
+	"enabled": true,
+	"rules": {
+	  "a11y": {
+		"recommended": true
+	  },
+	  "complexity": {
+		"recommended": true
+	  },
+	  "correctness": {
+		"noUndeclaredDependencies": "off",
+		"recommended": true
+	  },
+	  "nursery": {
+		"recommended": true,
+		"useExplicitType": "off"
+	  },
+	  "performance": {
+		"recommended": true
+	  },
+	  "recommended": true,
+	  "security": {
+		"recommended": true
+	  },
+	  "style": {
+		"recommended": true
+	  },
+	  "suspicious": {
+		"noConsole": "info",
+		"noReactSpecificProps": "off",
+		"recommended": true
+	  }
+	}
+  },
+  "root": true,
+  "vcs": {
+	"clientKind": "git",
 		"defaultBranch": "main",
 		"enabled": true,
 		"root": ".",

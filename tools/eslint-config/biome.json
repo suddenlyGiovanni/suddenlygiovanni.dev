@@ -1,16 +1,22 @@
 {
-	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
-	"assist": {
-		"actions": {
-			"source": {
-				"organizeImports": "on"
-			}
-		},
-		"enabled": true
+  "$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+  "assist": {
+	"actions": {
+	  "source": {
+		"organizeImports": "on"
+	  }
 	},
-	"extends": ["../../biome.json"],
-	"files": {
-		"ignoreUnknown": false,
-		"includes": ["base.js", "react-internal.js"]
-	}
+	"enabled": true
+  },
+  "extends": [
+	"../../biome.json"
+  ],
+  "files": {
+	"ignoreUnknown": false,
+	"includes": [
+	  "base.js",
+	  "react-internal.js"
+	]
+  },
+  "root": false
 }
