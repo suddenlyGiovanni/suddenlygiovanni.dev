@@ -14,10 +14,9 @@ import { getDevIconComponent } from '#root/src/routes/resume/dev-icons.tsx'
 import { formatDateLocaleShort } from '#root/src/routes/resume/format-date-locale-short.ts'
 
 export function Experience(
-	work: Pick<
-		Model.Work,
-		'contact' | 'description' | 'location' | 'name' | 'summary' | 'url' | 'roles'
-	> & { value: string },
+	work: Pick<Model.Work, 'contact' | 'description' | 'location' | 'name' | 'summary' | 'url' | 'roles'> & {
+		value: string
+	},
 ): ReactElement {
 	return (
 		<AccordionItem
@@ -84,9 +83,7 @@ function ExperienceHeader(work: {
 
 				<h3
 					aria-label="company"
-					className={clsx(
-						'mt-0 mb-0 flex flex-row items-center font-medium text-base accent-muted',
-					)}
+					className={clsx('mt-0 mb-0 flex flex-row items-center font-medium text-base accent-muted')}
 				>
 					{work.name}
 					{work.url ? (
@@ -147,9 +144,7 @@ function ExperienceHeader(work: {
 			) : null}
 			<Trigger asChild={true}>
 				<Button
-					className={clsx(
-						'absolute top-0 right-0 rounded-full transition-all [&[data-state=open]>svg]:rotate-180',
-					)}
+					className={clsx('absolute top-0 right-0 rounded-full transition-all [&[data-state=open]>svg]:rotate-180')}
 					size="icon"
 					type="button"
 					variant="ghost"
@@ -162,11 +157,7 @@ function ExperienceHeader(work: {
 	)
 }
 
-function ExperienceSummary({
-	summary,
-}: {
-	readonly summary: Model.Work['summary']
-}): null | ReactElement {
+function ExperienceSummary({ summary }: { readonly summary: Model.Work['summary'] }): null | ReactElement {
 	return summary ? (
 		<div className="mb-4">
 			{summary.split('\n').map(p => (
@@ -187,9 +178,7 @@ function Roles({ roles }: { readonly roles: Model.Work['roles'] }): ReactElement
 			{roles.map(role => (
 				<li key={role.startDate}>
 					<Role
-						{...(roles.length > 1
-							? { endDate: role.endDate, startDate: role.startDate, title: role.title }
-							: {})}
+						{...(roles.length > 1 ? { endDate: role.endDate, startDate: role.startDate, title: role.title } : {})}
 						highlights={role.highlights}
 						responsibilities={role.responsibilities}
 						technologies={role.technologies}
@@ -323,11 +312,7 @@ function Role(
 	)
 }
 
-function ExperienceContact({
-	contact,
-}: {
-	readonly contact: Model.Work['contact']
-}): null | ReactElement {
+function ExperienceContact({ contact }: { readonly contact: Model.Work['contact'] }): null | ReactElement {
 	return contact ? (
 		<>
 			<dt>Contacts:</dt>
@@ -344,9 +329,7 @@ function ExperienceContact({
 
 function Tech({ tech }: { readonly tech: string }): ReactElement {
 	const maybeIcon = getDevIconComponent(tech)
-	const classname = clsx(
-		'my-0 flex w-fit select-none flex-row items-center justify-start gap-1 align-middle',
-	)
+	const classname = clsx('my-0 flex w-fit select-none flex-row items-center justify-start gap-1 align-middle')
 
 	return maybeIcon.pipe(
 		Option.match({

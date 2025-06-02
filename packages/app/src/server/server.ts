@@ -21,9 +21,7 @@ const HttpLive = ConfigService.pipe(
 						'*',
 						Effect.promise(() => {
 							// @ts-expect-error - This is a dynamic import of build stuff
-							return import('../../build/server/index.js') as Promise<
-								typeof import('./handler/handler.ts')
-							>
+							return import('../../build/server/index.js') as Promise<typeof import('./handler/handler.ts')>
 						}).pipe(Effect.flatMap(module => module.handler)),
 					),
 

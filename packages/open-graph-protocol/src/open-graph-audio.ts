@@ -14,10 +14,7 @@ type Audio<T extends string = ''> = BaseOrExtended<'audio', T>
 
 export type IPropertyAudio = ValueOf<typeof PropertyAudio>
 
-type AudioMetaBase<Property extends IPropertyAudio, Content extends Types.Type> = MetaBase<
-	Property,
-	Content
->
+type AudioMetaBase<Property extends IPropertyAudio, Content extends Types.Type> = MetaBase<Property, Content>
 
 /** A URL to an audio file to accompany this object. */
 export type OgAudio = AudioMetaBase<og<Audio>, Types.URL>
@@ -53,11 +50,7 @@ export interface OpenGraphAudio {
 export function makeOpenGraphAudio(
 	openGraphAudio: Types.URL | OpenGraphAudio | readonly OpenGraphAudio[],
 ): readonly OpenGraphMeta[] {
-	function _makeOpenGraphAudio({
-		ogAudio,
-		ogAudioSecureUrl,
-		ogAudioType,
-	}: OpenGraphAudio): OpenGraphMeta[] {
+	function _makeOpenGraphAudio({ ogAudio, ogAudioSecureUrl, ogAudioType }: OpenGraphAudio): OpenGraphMeta[] {
 		return [
 			// AUDIO!
 			makeOpenGraphMeta(PropertyAudio.OG_AUDIO, ogAudio),

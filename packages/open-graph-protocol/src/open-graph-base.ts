@@ -7,12 +7,7 @@ import {
 	PropertyBasic,
 } from './open-graph.ts'
 import { type AudioRecord, makeOpenGraphAudio, type OpenGraphAudio } from './open-graph-audio.ts'
-import {
-	type ImageRecord,
-	makeOpenGraphImage,
-	type OgImage,
-	type OpenGraphImage,
-} from './open-graph-image.ts'
+import { type ImageRecord, makeOpenGraphImage, type OgImage, type OpenGraphImage } from './open-graph-image.ts'
 import { makeOpenGraphVideo, type OpenGraphVideo, type VideoRecord } from './open-graph-video.ts'
 import type * as Types from './types.ts'
 import { insertIf, isArray, type ValueOf } from './utils/index.ts'

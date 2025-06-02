@@ -24,16 +24,11 @@ export const handler: Effect.Effect<
 	const serverResponse = NodeHttpServerRequest.toServerResponse(httpServerRequest)
 
 	// Extract protocol
-	const xForwardedProto = incomingMessage.headersDistinct['x-forwarded-proto']?.[0] as
-		| undefined
-		| 'http'
-		| 'https'
+	const xForwardedProto = incomingMessage.headersDistinct['x-forwarded-proto']?.[0] as undefined | 'http' | 'https'
 
 	const protocol: 'http' | 'https' =
 		xForwardedProto ||
-		(incomingMessage.socket &&
-		'encrypted' in incomingMessage.socket &&
-		incomingMessage.socket.encrypted
+		(incomingMessage.socket && 'encrypted' in incomingMessage.socket && incomingMessage.socket.encrypted
 			? 'https'
 			: 'http')
 

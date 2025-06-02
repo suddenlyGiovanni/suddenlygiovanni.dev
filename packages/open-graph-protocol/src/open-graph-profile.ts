@@ -29,10 +29,7 @@ export type ProfileRecord =
 	| OgProfileUsername
 	| OgProfileGender
 
-type ProfileMetaBase<Property extends IPropertyProfile, Content extends Types.Type> = MetaBase<
-	Property,
-	Content
->
+type ProfileMetaBase<Property extends IPropertyProfile, Content extends Types.Type> = MetaBase<Property, Content>
 
 type OgTypeProfile = MetaBase<og<'type'>, Types.Enum<'profile'>>
 
@@ -90,27 +87,15 @@ export function makeOpenGraphProfile(openGraphProfile: OpenGraphProfile): readon
 		...makeOpenGraphBase(openGraphProfile),
 
 		// FIRST_NAME?
-		...insertIf(
-			openGraphProfile.ogProfileFirstName,
-			makeOpenGraphMeta(PropertyProfile.OG_PROFILE_FIRST_NAME),
-		),
+		...insertIf(openGraphProfile.ogProfileFirstName, makeOpenGraphMeta(PropertyProfile.OG_PROFILE_FIRST_NAME)),
 
 		// LAST_NAME?
-		...insertIf(
-			openGraphProfile.ogProfileLastName,
-			makeOpenGraphMeta(PropertyProfile.OG_PROFILE_LAST_NAME),
-		),
+		...insertIf(openGraphProfile.ogProfileLastName, makeOpenGraphMeta(PropertyProfile.OG_PROFILE_LAST_NAME)),
 
 		// USER_NAME?
-		...insertIf(
-			openGraphProfile.ogProfileUsername,
-			makeOpenGraphMeta(PropertyProfile.OG_PROFILE_USERNAME),
-		),
+		...insertIf(openGraphProfile.ogProfileUsername, makeOpenGraphMeta(PropertyProfile.OG_PROFILE_USERNAME)),
 
 		// GENDER?
-		...insertIf(
-			openGraphProfile.ogProfileGender,
-			makeOpenGraphMeta(PropertyProfile.OG_PROFILE_GENDER),
-		),
+		...insertIf(openGraphProfile.ogProfileGender, makeOpenGraphMeta(PropertyProfile.OG_PROFILE_GENDER)),
 	]
 }

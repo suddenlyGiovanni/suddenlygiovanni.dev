@@ -38,9 +38,7 @@ class ViteServiceSingleton {
 
 		const { createServer } = await import('vite')
 
-		ViteServiceSingleton.instance = new ViteServiceSingleton(
-			await createServer({ server: { middlewareMode: true } }),
-		)
+		ViteServiceSingleton.instance = new ViteServiceSingleton(await createServer({ server: { middlewareMode: true } }))
 		return ViteServiceSingleton.instance
 	}
 
@@ -59,11 +57,6 @@ class ViteServiceSingleton {
 	}
 }
 
-export class ViteDevServerService extends Effect.Service<ViteDevServerService>()(
-	'app/ViteDevServer',
-	{
-		effect: ViteServiceSingleton.getInstanceEffectually().pipe(
-			Effect.map(({ viteDevServer }) => viteDevServer),
-		),
-	},
-) {}
+export class ViteDevServerService extends Effect.Service<ViteDevServerService>()('app/ViteDevServer', {
+	effect: ViteServiceSingleton.getInstanceEffectually().pipe(Effect.map(({ viteDevServer }) => viteDevServer)),
+}) {}

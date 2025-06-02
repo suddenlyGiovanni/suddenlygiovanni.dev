@@ -23,10 +23,7 @@ export type VideoRecord =
 	| OgVideoHeight
 	| OgVideoAlt
 
-export type VideoMetaBase<Property extends IPropertyVideo, Content extends Types.Type> = MetaBase<
-	Property,
-	Content
->
+export type VideoMetaBase<Property extends IPropertyVideo, Content extends Types.Type> = MetaBase<Property, Content>
 
 /**
  * A URL to a video file that complements this object.

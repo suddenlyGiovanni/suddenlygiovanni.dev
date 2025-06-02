@@ -1,10 +1,4 @@
-import {
-	type MetaBase,
-	makeOpenGraphMeta,
-	type OpenGraphMeta,
-	type og,
-	PropertyMusicSong,
-} from './open-graph.ts'
+import { type MetaBase, makeOpenGraphMeta, type OpenGraphMeta, type og, PropertyMusicSong } from './open-graph.ts'
 import {
 	type BasicRecord,
 	makeOpenGraphBase,
@@ -28,10 +22,7 @@ export type MusicSongRecord =
 	| OgMusicSongAlbumTrack
 	| OgMusicSongMusician
 
-type MusicSongMetaBase<Property extends IPropertyMusicSong, Content extends Types.Type> = MetaBase<
-	Property,
-	Content
->
+type MusicSongMetaBase<Property extends IPropertyMusicSong, Content extends Types.Type> = MetaBase<Property, Content>
 
 type OgTypeMusicSong = MetaBase<og<'type'>, Types.Enum<music<'song'>>>
 
@@ -88,19 +79,14 @@ interface OpenGraphMusicSong extends OpenGraphBaseWithOptional {
 	ogMusicMusician?: Types.URL | Types.URL[]
 }
 
-export function makeOpenGraphMusicSong(
-	openGraphMusicSong: OpenGraphMusicSong,
-): readonly OpenGraphMeta[] {
+export function makeOpenGraphMusicSong(openGraphMusicSong: OpenGraphMusicSong): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphMusicSong),
 
 		// DURATION?
 		...insertIf(openGraphMusicSong.ogMusicDuration, ogMusicDuration =>
-			makeOpenGraphMeta(
-				PropertyMusicSong.OG_MUSIC_DURATION,
-				Types.Integer(Math.round(ogMusicDuration)),
-			),
+			makeOpenGraphMeta(PropertyMusicSong.OG_MUSIC_DURATION, Types.Integer(Math.round(ogMusicDuration))),
 		),
 
 		// ALBUM?
@@ -112,18 +98,12 @@ export function makeOpenGraphMusicSong(
 
 		// DISC?
 		...insertIf(openGraphMusicSong.ogMusicAlbumDisc, ogMusicAlbumDisc =>
-			makeOpenGraphMeta(
-				PropertyMusicSong.OG_MUSIC_ALBUM_DISC,
-				Types.Integer(Math.round(ogMusicAlbumDisc)),
-			),
+			makeOpenGraphMeta(PropertyMusicSong.OG_MUSIC_ALBUM_DISC, Types.Integer(Math.round(ogMusicAlbumDisc))),
 		),
 
 		// TRACK?
 		...insertIf(openGraphMusicSong.ogMusicAlbumTrack, ogMusicAlbumTrack =>
-			makeOpenGraphMeta(
-				PropertyMusicSong.OG_MUSIC_ALBUM_TRACK,
-				Types.Integer(Math.round(ogMusicAlbumTrack)),
-			),
+			makeOpenGraphMeta(PropertyMusicSong.OG_MUSIC_ALBUM_TRACK, Types.Integer(Math.round(ogMusicAlbumTrack))),
 		),
 
 		// MUSICIAN?

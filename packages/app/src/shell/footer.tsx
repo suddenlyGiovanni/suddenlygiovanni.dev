@@ -1,9 +1,5 @@
 import { Layout } from '@repo/ui/components/layout/layout.tsx'
-import {
-	GitHubIconLink,
-	LinkedInIconLink,
-	TwitterIconLink,
-} from '@repo/ui/components/social/social.tsx'
+import { GitHubIconLink, LinkedInIconLink, TwitterIconLink } from '@repo/ui/components/social/social.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
 import type { JSX } from 'react'
 

@@ -6,12 +6,7 @@ function getErrorMessage(error: unknown): string {
 	if (typeof error === 'string') {
 		return error
 	}
-	if (
-		error &&
-		typeof error === 'object' &&
-		'message' in error &&
-		typeof error.message === 'string'
-	) {
+	if (error && typeof error === 'object' && 'message' in error && typeof error.message === 'string') {
 		return error.message
 	}
 
@@ -19,10 +14,7 @@ function getErrorMessage(error: unknown): string {
 	return 'Unknown Error'
 }
 
-type StatusHandler = (info: {
-	error: ErrorResponse
-	params: Record<string, string | undefined>
-}) => ReactElement | null
+type StatusHandler = (info: { error: ErrorResponse; params: Record<string, string | undefined> }) => ReactElement | null
 
 interface GeneralErrorBoundaryProps {
 	defaultStatusHandler?: StatusHandler

@@ -8,21 +8,14 @@ import { type NavLinkProps, NavLink as UnstyledNavLink } from 'react-router'
  * @param className - Optional class name
  * @returns  Resulting class name
  */
-function calculateClassName({
-	isActive,
-	className,
-}: {
-	isActive: boolean
-	className?: undefined | string
-}): string {
+function calculateClassName({ isActive, className }: { isActive: boolean; className?: undefined | string }): string {
 	return clsx(
 		// baseClasses
 		'select-none p-1 font-medium text-foreground/60 capitalize transition-colors hover:text-foreground/80 md:text-sm',
 		// disabledClasses
 		'aria-[disabled]:pointer-events-none aria-[disabled]:cursor-not-allowed aria-[disabled]:line-through',
 		// isActiveClasses
-		isActive &&
-			'text-foreground underline decoration-auto decoration-foreground decoration-wavy underline-offset-8',
+		isActive && 'text-foreground underline decoration-auto decoration-foreground decoration-wavy underline-offset-8',
 		// Keyboard active classes
 		'focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring',
 		className,

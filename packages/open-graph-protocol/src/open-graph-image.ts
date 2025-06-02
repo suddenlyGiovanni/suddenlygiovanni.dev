@@ -34,10 +34,7 @@ export type ImageRecord =
 	| OgImageHeight
 	| OgImageAlt
 
-export type ImageMetaBase<Property extends IPropertyImage, Content extends Types.Type> = MetaBase<
-	Property,
-	Content
->
+export type ImageMetaBase<Property extends IPropertyImage, Content extends Types.Type> = MetaBase<Property, Content>
 
 /**
  * An image URL which should represent your object within the graph.

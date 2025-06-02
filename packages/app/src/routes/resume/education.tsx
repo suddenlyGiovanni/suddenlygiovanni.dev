@@ -10,11 +10,7 @@ import { type MouseEventHandler, type ReactElement, useState } from 'react'
 import { formatDateLocaleShort } from './format-date-locale-short.ts'
 import { generateDjb2Hash } from './generate-djb2-hash.ts'
 
-export function Education({
-	educations,
-}: {
-	readonly educations: readonly Model.Education[]
-}): ReactElement {
+export function Education({ educations }: { readonly educations: readonly Model.Education[] }): ReactElement {
 	const all: string[] = educations.map((_, idx) => `education-${idx}`)
 	const none: string[] = []
 	const initialState: string[] = all[0] ? [all[0]] : none
@@ -219,9 +215,7 @@ function EduHeader({
 			) : null}
 			<Trigger asChild={true}>
 				<Button
-					className={clsx(
-						'absolute top-0 right-0 rounded-full transition-all [&[data-state=open]>svg]:rotate-180',
-					)}
+					className={clsx('absolute top-0 right-0 rounded-full transition-all [&[data-state=open]>svg]:rotate-180')}
 					size="icon"
 					type="button"
 					variant="ghost"

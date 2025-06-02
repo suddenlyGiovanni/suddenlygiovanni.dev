@@ -27,10 +27,10 @@ export type MusicPlaylistRecord =
 	| OgMusicPlaylistSongTrack
 	| OgMusicPlaylistCreator
 
-type MusicPlaylistMetaBase<
-	Property extends IPropertyMusicPlaylist,
-	Content extends Types.Type,
-> = MetaBase<Property, Content>
+type MusicPlaylistMetaBase<Property extends IPropertyMusicPlaylist, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 type OgTypeMusicPlaylist = MetaBase<og<'type'>, Types.Enum<music<'playlist'>>>
 
@@ -83,9 +83,7 @@ interface OpenGraphMusicPlaylist extends OpenGraphBaseWithOptional {
 	ogMusicCreator?: Types.URL | readonly Types.URL[]
 }
 
-export function makeOpenGraphMusicPlaylist(
-	openGraphMusicPlaylist: OpenGraphMusicPlaylist,
-): readonly OpenGraphMeta[] {
+export function makeOpenGraphMusicPlaylist(openGraphMusicPlaylist: OpenGraphMusicPlaylist): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphMusicPlaylist),

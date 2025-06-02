@@ -16,10 +16,7 @@
  * @public
  */
 export function getDomainUrl(request: Request): string {
-	const host =
-		request.headers.get('X-Forwarded-Host') ??
-		request.headers.get('host') ??
-		new URL(request.url).host
+	const host = request.headers.get('X-Forwarded-Host') ?? request.headers.get('host') ?? new URL(request.url).host
 	const protocol = host.includes('localhost') || host.includes('127.0.0.1') ? 'http' : 'https'
 	return `${protocol}://${host}`
 }

@@ -24,10 +24,10 @@ export type RadioStationRecord =
 	| OptionalRecord
 	| OgMusicRadioStationCreator
 
-type MusicRadioStationMetaBase<
-	Property extends IPropertyMusicRadioStation,
-	Content extends Types.Type,
-> = MetaBase<Property, Content>
+type MusicRadioStationMetaBase<Property extends IPropertyMusicRadioStation, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 type OgTypeMusicRadioStation = MetaBase<og<'type'>, Types.Enum<music<'radio_station'>>>
 

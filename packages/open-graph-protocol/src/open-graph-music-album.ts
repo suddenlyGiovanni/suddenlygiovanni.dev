@@ -1,10 +1,4 @@
-import {
-	type MetaBase,
-	makeOpenGraphMeta,
-	type OpenGraphMeta,
-	type og,
-	PropertyMusicAlbum,
-} from './open-graph.ts'
+import { type MetaBase, makeOpenGraphMeta, type OpenGraphMeta, type og, PropertyMusicAlbum } from './open-graph.ts'
 import {
 	type BasicRecord,
 	makeOpenGraphBase,
@@ -28,10 +22,7 @@ export type MusicAlbumRecord =
 	| OgMusicAlbumMusician
 	| OgMusicAlbumReleaseDate
 
-type MusicAlbumMetaBase<
-	Property extends IPropertyMusicAlbum,
-	Content extends Types.Type,
-> = MetaBase<Property, Content>
+type MusicAlbumMetaBase<Property extends IPropertyMusicAlbum, Content extends Types.Type> = MetaBase<Property, Content>
 
 type OgTypeMusicAlbum = MetaBase<og<'type'>, Types.Enum<music<'album'>>>
 
@@ -104,9 +95,7 @@ interface OpenGraphMusicAlbum extends OpenGraphBaseWithOptional {
 	ogMusicReleaseData?: Types.DateTime
 }
 
-export function makeOpenGraphMusicAlbum(
-	openGraphMusicAlbum: OpenGraphMusicAlbum,
-): readonly OpenGraphMeta[] {
+export function makeOpenGraphMusicAlbum(openGraphMusicAlbum: OpenGraphMusicAlbum): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphMusicAlbum),
@@ -120,18 +109,12 @@ export function makeOpenGraphMusicAlbum(
 
 		// DISC?
 		...insertIf(openGraphMusicAlbum.ogMusicSongDisc, ogMusicSongDisc =>
-			makeOpenGraphMeta(
-				PropertyMusicAlbum.OG_MUSIC_SONG_DISC,
-				Types.Integer(Math.round(ogMusicSongDisc)),
-			),
+			makeOpenGraphMeta(PropertyMusicAlbum.OG_MUSIC_SONG_DISC, Types.Integer(Math.round(ogMusicSongDisc))),
 		),
 
 		// TRACK?
 		...insertIf(openGraphMusicAlbum.ogMusicSongTrack, ogMusicSongTrack =>
-			makeOpenGraphMeta(
-				PropertyMusicAlbum.OG_MUSIC_SONG_TRACK,
-				Types.Integer(Math.round(ogMusicSongTrack)),
-			),
+			makeOpenGraphMeta(PropertyMusicAlbum.OG_MUSIC_SONG_TRACK, Types.Integer(Math.round(ogMusicSongTrack))),
 		),
 
 		// MUSICIAN?
@@ -142,9 +125,6 @@ export function makeOpenGraphMusicAlbum(
 		).flat(),
 
 		// RELEASE_DATE?
-		...insertIf(
-			openGraphMusicAlbum.ogMusicReleaseData,
-			makeOpenGraphMeta(PropertyMusicAlbum.OG_MUSIC_RELEASE_DATE),
-		),
+		...insertIf(openGraphMusicAlbum.ogMusicReleaseData, makeOpenGraphMeta(PropertyMusicAlbum.OG_MUSIC_RELEASE_DATE)),
 	]
 }

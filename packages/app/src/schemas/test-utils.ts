@@ -60,10 +60,7 @@ export const expectFailure = async <A>(
 	}
 }
 
-export const expectSuccess = async <E, A>(
-	effect: Either.Either<A, E> | Effect.Effect<A, E>,
-	a: A,
-): Promise<void> => {
+export const expectSuccess = async <E, A>(effect: Either.Either<A, E> | Effect.Effect<A, E>, a: A): Promise<void> => {
 	if (Either.isEither(effect)) {
 		expectEitherRight(effect, a)
 	} else {
@@ -71,19 +68,13 @@ export const expectSuccess = async <E, A>(
 	}
 }
 
-export const expectEffectFailure = async <A>(
-	effect: Effect.Effect<A, ParseError>,
-	message: string,
-): Promise<void> => {
-	expect(
-		await Effect.runPromise(Effect.either(Effect.mapError(effect, TreeFormatter.formatErrorSync))),
-	).toStrictEqual(Either.left(message))
+export const expectEffectFailure = async <A>(effect: Effect.Effect<A, ParseError>, message: string): Promise<void> => {
+	expect(await Effect.runPromise(Effect.either(Effect.mapError(effect, TreeFormatter.formatErrorSync)))).toStrictEqual(
+		Either.left(message),
+	)
 }
 
-export const expectEffectSuccess = async <E, A>(
-	effect: Effect.Effect<A, E>,
-	a: A,
-): Promise<void> => {
+export const expectEffectSuccess = async <E, A>(effect: Effect.Effect<A, E>, a: A): Promise<void> => {
 	expect(await Effect.runPromise(Effect.either(effect))).toStrictEqual(Either.right(a))
 }
 
