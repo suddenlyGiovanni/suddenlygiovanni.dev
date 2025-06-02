@@ -4,11 +4,7 @@
 
 	"files": {
 		"ignoreUnknown": true,
-		"includes": [
-			"src/*",
-			"!~",
-			"!**/node_modules/**"
-		]
+		"includes": ["src/*", "!~", "!**/node_modules/**"]
 	},
 	"linter": {
 		"rules": {
@@ -24,15 +20,8 @@
 					"fix": "safe",
 					"level": "warn",
 					"options": {
-						"attributes": [
-							"class",
-							"className"
-						],
-						"functions": [
-							"clsx",
-							"cva",
-							"tw"
-						]
+						"attributes": ["class", "className"],
+						"functions": ["clsx", "cva", "tw"]
 					}
 				}
 			},
@@ -67,10 +56,7 @@
 	},
 	"overrides": [
 		{
-			"includes": [
-				"src/**/*.stories.tsx",
-				"!**/node_modules/**"
-			],
+			"includes": ["src/**/*.stories.tsx", "!**/node_modules/**"],
 			"linter": {
 				"rules": {
 					"nursery": {},

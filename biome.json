@@ -36,6 +36,9 @@
 		"enabled": true
 	},
 	"css": {
+		"assist": {
+			"enabled": true
+		},
 		"formatter": {
 			"enabled": true,
 			"indentStyle": "tab",
@@ -48,7 +51,10 @@
 		}
 	},
 	"formatter": {
+		"attributePosition": "auto",
+		"bracketSpacing": true,
 		"enabled": true,
+		"expand": "auto",
 		"formatWithErrors": true,
 		"indentStyle": "tab",
 		"indentWidth": 2,
@@ -71,6 +77,9 @@
 		}
 	},
 	"json": {
+		"assist": {
+			"enabled": true
+		},
 		"formatter": {
 			"bracketSpacing": true,
 			"enabled": true,

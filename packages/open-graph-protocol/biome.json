@@ -1,14 +1,9 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
 	"extends": "//",
-
 	"files": {
 		"ignoreUnknown": true,
-		"includes": [
-			"**/src/*",
-			"!~",
-			"!**/node_modules/**"
-		]
+		"includes": ["**/src/*", "!~", "!**/node_modules/**"]
 	},
 	"linter": {
 		"rules": {

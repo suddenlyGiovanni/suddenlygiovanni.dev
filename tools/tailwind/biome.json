@@ -14,11 +14,7 @@
 	"extends": "//",
 
 	"files": {
-		"includes": [
-			"./style.css",
-			"./package.json",
-			"biome.json"
-		]
+		"includes": ["./style.css", "./package.json", "biome.json"]
 	},
 	"json": {
 		"formatter": {

@@ -2,12 +2,7 @@
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
 	"extends": "//",
 	"files": {
-		"includes": [
-			"base.json",
-			"library.json",
-			"react-library.json",
-			"remix.json"
-		]
+		"includes": ["base.json", "library.json", "react-library.json", "remix.json"]
 	},
 	"json": {
 		"formatter": {

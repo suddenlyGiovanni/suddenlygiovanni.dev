@@ -3,11 +3,7 @@
 	"extends": "//",
 	"files": {
 		"ignoreUnknown": true,
-		"includes": [
-			"src/**",
-			"!~",
-			"!.react-router"
-		]
+		"includes": ["src/**", "!~", "!.react-router"]
 	},
 	"linter": {
 		"rules": {
@@ -48,9 +44,7 @@
 	},
 	"overrides": [
 		{
-			"includes": [
-				"src/server/**/*.ts"
-			],
+			"includes": ["src/server/**/*.ts"],
 			"linter": {
 				"rules": {
 					"correctness": {
@@ -67,9 +61,7 @@
 						"noConsole": {
 							"level": "off",
 							"options": {
-								"allow": [
-									"log"
-								]
+								"allow": ["log"]
 							}
 						}
 					}
@@ -77,9 +69,7 @@
 			}
 		},
 		{
-			"includes": [
-				"src/routes/**/*.tsx"
-			],
+			"includes": ["src/routes/**/*.tsx"],
 			"linter": {
 				"rules": {
 					"style": {
@@ -95,9 +85,7 @@
 			"formatter": {
 				"enabled": false
 			},
-			"includes": [
-				"src/**/*.snapshot.json"
-			]
+			"includes": ["src/**/*.snapshot.json"]
 		}
 	],
 	"root": false

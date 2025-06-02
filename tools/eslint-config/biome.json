@@ -12,10 +12,7 @@
 
 	"files": {
 		"ignoreUnknown": false,
-		"includes": [
-			"base.js",
-			"react-internal.js"
-		]
+		"includes": ["base.js", "react-internal.js"]
 	},
 	"linter": {
 		"rules": {
