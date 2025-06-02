@@ -11,9 +11,14 @@
 			"enabled": true
 		}
 	},
-	"extends": ["../../biome.json"],
+	"extends": "//",
+
 	"files": {
-		"includes": ["./style.css", "./package.json", "biome.json"]
+		"includes": [
+			"./style.css",
+			"./package.json",
+			"biome.json"
+		]
 	},
 	"json": {
 		"formatter": {
@@ -23,16 +28,16 @@
 	"linter": {
 		"rules": {
 			"style": {
-			  "noInferrableTypes": "error",
-			  "noParameterAssign": "error",
-			  "noUnusedTemplateLiteral": "error",
-			  "noUselessElse": "error",
-			  "useAsConstAssertion": "error",
-			  "useDefaultParameterLast": "error",
-			  "useEnumInitializers": "error",
-			  "useNumberNamespace": "error",
-			  "useSelfClosingElements": "error",
-			  "useSingleVarDeclarator": "error"
+				"noInferrableTypes": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useNumberNamespace": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error"
 			}
 		}
 	},

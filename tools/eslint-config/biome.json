@@ -1,38 +1,37 @@
 {
-  "$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
-  "assist": {
-	"actions": {
-	  "source": {
-		"organizeImports": "on"
-	  }
+	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "on"
+			}
+		},
+		"enabled": true
 	},
-	"enabled": true
-  },
-  "extends": [
-	"../../biome.json"
-  ],
-  "files": {
-	"ignoreUnknown": false,
-	"includes": [
-	  "base.js",
-	  "react-internal.js"
-	]
-  },
-  "linter": {
-	"rules": {
-	  "style": {
-		"noInferrableTypes": "error",
-		"noParameterAssign": "error",
-		"noUnusedTemplateLiteral": "error",
-		"noUselessElse": "error",
-		"useAsConstAssertion": "error",
-		"useDefaultParameterLast": "error",
-		"useEnumInitializers": "error",
-		"useNumberNamespace": "error",
-		"useSelfClosingElements": "error",
-		"useSingleVarDeclarator": "error"
-	  }
-	}
-  },
-  "root": false
+	"extends": "//",
+
+	"files": {
+		"ignoreUnknown": false,
+		"includes": [
+			"base.js",
+			"react-internal.js"
+		]
+	},
+	"linter": {
+		"rules": {
+			"style": {
+				"noInferrableTypes": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useNumberNamespace": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error"
+			}
+		}
+	},
+	"root": false
 }

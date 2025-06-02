@@ -1,50 +1,56 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
-	"extends": ["../../biome.json"],
+	"extends": "//",
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["src/**", "!~", "!.react-router"]
+		"includes": [
+			"src/**",
+			"!~",
+			"!.react-router"
+		]
 	},
 	"linter": {
 		"rules": {
-		  "complexity": {
-			"noArguments": "error",
-			"noCommaOperator": "error"
-		  },
-		  "nursery": {
-			"noSecrets": "off"
-		  },
-		  "style": {
-			"noDefaultExport": "off",
-			"noInferrableTypes": "error",
-			"noNamespace": "off",
-			"noNonNullAssertion": "error",
-			"noParameterAssign": "error",
-			"noUnusedTemplateLiteral": "error",
-			"noUselessElse": "error",
-			"useAsConstAssertion": "error",
-			"useConst": "error",
-			"useDefaultParameterLast": "error",
-			"useEnumInitializers": "error",
-			"useExponentiationOperator": "error",
-			"useExportType": "error",
-			"useImportType": "error",
-			"useLiteralEnumMembers": "error",
-			"useNodejsImportProtocol": "error",
-			"useNumberNamespace": "error",
-			"useSelfClosingElements": "error",
-			"useShorthandFunctionType": "error",
-			"useSingleVarDeclarator": "error",
-			"useTemplate": "error"
-		  },
-		  "suspicious": {
-			"noReactSpecificProps": "off"
-		  }
+			"complexity": {
+				"noArguments": "error",
+				"noCommaOperator": "error"
+			},
+			"nursery": {
+				"noSecrets": "off"
+			},
+			"style": {
+				"noDefaultExport": "off",
+				"noInferrableTypes": "error",
+				"noNamespace": "off",
+				"noNonNullAssertion": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
+				"useAsConstAssertion": "error",
+				"useConst": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useExponentiationOperator": "error",
+				"useExportType": "error",
+				"useImportType": "error",
+				"useLiteralEnumMembers": "error",
+				"useNodejsImportProtocol": "error",
+				"useNumberNamespace": "error",
+				"useSelfClosingElements": "error",
+				"useShorthandFunctionType": "error",
+				"useSingleVarDeclarator": "error",
+				"useTemplate": "error"
+			},
+			"suspicious": {
+				"noReactSpecificProps": "off"
+			}
 		}
 	},
 	"overrides": [
 		{
-			"includes": ["src/server/**/*.ts"],
+			"includes": [
+				"src/server/**/*.ts"
+			],
 			"linter": {
 				"rules": {
 					"correctness": {
@@ -61,7 +67,9 @@
 						"noConsole": {
 							"level": "off",
 							"options": {
-								"allow": ["log"]
+								"allow": [
+									"log"
+								]
 							}
 						}
 					}
@@ -69,7 +77,9 @@
 			}
 		},
 		{
-			"includes": ["src/routes/**/*.tsx"],
+			"includes": [
+				"src/routes/**/*.tsx"
+			],
 			"linter": {
 				"rules": {
 					"style": {
@@ -85,7 +95,9 @@
 			"formatter": {
 				"enabled": false
 			},
-			"includes": ["src/**/*.snapshot.json"]
+			"includes": [
+				"src/**/*.snapshot.json"
+			]
 		}
 	],
 	"root": false

@@ -1,145 +1,144 @@
 {
-  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "assist": {
-	"actions": {
-	  "source": {
-		"organizeImports": {
-		  "level": "on",
-		  "options": {
-			"groups": [
-			  ":URL:",
-			  ":BLANK_LINE:",
-			  ":BLANK_LINE:",
-			  ":NODE:",
-			  ":BUN:",
-			  ":BLANK_LINE:",
-			  ":BLANK_LINE:",
-			  ":PACKAGE_WITH_PROTOCOL:",
-			  ":PACKAGE:",
-			  ":BLANK_LINE:",
-			  ":BLANK_LINE:",
-			  ":ALIAS:",
-			  "@repo/**",
-			  ":BLANK_LINE:",
-			  ":BLANK_LINE:",
-			  ":PATH:",
-			  ":BLANK_LINE:"
-			]
-		  }
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							":URL:",
+							":BLANK_LINE:",
+							":BLANK_LINE:",
+							":NODE:",
+							":BUN:",
+							":BLANK_LINE:",
+							":BLANK_LINE:",
+							":PACKAGE_WITH_PROTOCOL:",
+							":PACKAGE:",
+							":BLANK_LINE:",
+							":BLANK_LINE:",
+							":ALIAS:",
+							"@repo/**",
+							":BLANK_LINE:",
+							":BLANK_LINE:",
+							":PATH:",
+							":BLANK_LINE:"
+						]
+					}
+				},
+				"recommended": true,
+				"useSortedAttributes": "on",
+				"useSortedKeys": "on",
+				"useSortedProperties": "on"
+			}
 		},
-		"recommended": true,
-		"useSortedAttributes": "on",
-		"useSortedKeys": "on",
-		"useSortedProperties": "on"
-	  }
+		"enabled": true
 	},
-	"enabled": true
-  },
-  "css": {
+	"css": {
+		"formatter": {
+			"enabled": true,
+			"indentStyle": "tab",
+			"indentWidth": 2,
+			"lineEnding": "lf",
+			"lineWidth": 80
+		},
+		"linter": {
+			"enabled": false
+		}
+	},
 	"formatter": {
-	  "enabled": true,
-	  "indentStyle": "tab",
-	  "indentWidth": 2,
-	  "lineEnding": "lf",
-	  "lineWidth": 80
+		"enabled": true,
+		"formatWithErrors": true,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 120,
+		"useEditorconfig": true
+	},
+	"javascript": {
+		"formatter": {
+			"arrowParentheses": "asNeeded",
+			"attributePosition": "multiline",
+			"bracketSameLine": false,
+			"bracketSpacing": true,
+			"enabled": true,
+			"jsxQuoteStyle": "double",
+			"quoteProperties": "asNeeded",
+			"quoteStyle": "single",
+			"semicolons": "asNeeded",
+			"trailingCommas": "all"
+		}
+	},
+	"json": {
+		"formatter": {
+			"bracketSpacing": true,
+			"enabled": true,
+			"expand": "auto",
+			"indentStyle": "tab",
+			"indentWidth": 2,
+			"lineEnding": "lf",
+			"lineWidth": 120,
+			"trailingCommas": "none"
+		},
+		"linter": {
+			"enabled": true
+		}
 	},
 	"linter": {
-	  "enabled": false
-	}
-  },
-  "formatter": {
-	"enabled": true,
-	"formatWithErrors": true,
-	"indentStyle": "tab",
-	"indentWidth": 2,
-	"lineEnding": "lf",
-	"lineWidth": 120,
-	"useEditorconfig": true
-  },
-  "javascript": {
-	"formatter": {
-	  "arrowParentheses": "asNeeded",
-	  "attributePosition": "multiline",
-	  "bracketSameLine": false,
-	  "bracketSpacing": true,
-	  "enabled": true,
-	  "jsxQuoteStyle": "double",
-	  "quoteProperties": "asNeeded",
-	  "quoteStyle": "single",
-	  "semicolons": "asNeeded",
-	  "trailingCommas": "all"
-	}
-  },
-  "json": {
-	"formatter": {
-	  "bracketSpacing": true,
-	  "enabled": true,
-	  "expand": "auto",
-	  "indentStyle": "tab",
-	  "indentWidth": 2,
-	  "lineEnding": "lf",
-	  "lineWidth": 120,
-	  "trailingCommas": "none"
+		"domains": {
+			"project": "all",
+			"react": "recommended",
+			"test": "recommended"
+		},
+		"enabled": true,
+		"rules": {
+			"a11y": {
+				"recommended": true
+			},
+			"complexity": {
+				"recommended": true
+			},
+			"correctness": {
+				"noUndeclaredDependencies": "off",
+				"recommended": true
+			},
+			"nursery": {
+				"recommended": true,
+				"useExplicitType": "off"
+			},
+			"performance": {
+				"recommended": true
+			},
+			"recommended": true,
+			"security": {
+				"recommended": true
+			},
+			"style": {
+				"noInferrableTypes": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
+				"recommended": true,
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useNumberNamespace": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error"
+			},
+			"suspicious": {
+				"noConsole": "info",
+				"noReactSpecificProps": "off",
+				"recommended": true
+			}
+		}
 	},
-	"linter": {
-	  "enabled": true
+	"vcs": {
+		"clientKind": "git",
+		"defaultBranch": "main",
+		"enabled": true,
+		"root": ".",
+		"useIgnoreFile": true
 	}
-  },
-  "linter": {
-	"domains": {
-	  "project": "all",
-	  "react": "recommended",
-	  "test": "recommended"
-	},
-	"enabled": true,
-	"rules": {
-	  "a11y": {
-		"recommended": true
-	  },
-	  "complexity": {
-		"recommended": true
-	  },
-	  "correctness": {
-		"noUndeclaredDependencies": "off",
-		"recommended": true
-	  },
-	  "nursery": {
-		"recommended": true,
-		"useExplicitType": "off"
-	  },
-	  "performance": {
-		"recommended": true
-	  },
-	  "recommended": true,
-	  "security": {
-		"recommended": true
-	  },
-	  "style": {
-		"noInferrableTypes": "error",
-		"noParameterAssign": "error",
-		"noUnusedTemplateLiteral": "error",
-		"noUselessElse": "error",
-		"recommended": true,
-		"useAsConstAssertion": "error",
-		"useDefaultParameterLast": "error",
-		"useEnumInitializers": "error",
-		"useNumberNamespace": "error",
-		"useSelfClosingElements": "error",
-		"useSingleVarDeclarator": "error"
-	  },
-	  "suspicious": {
-		"noConsole": "info",
-		"noReactSpecificProps": "off",
-		"recommended": true
-	  }
-	}
-  },
-  "root": true,
-  "vcs": {
-	"clientKind": "git",
-	"defaultBranch": "main",
-	"enabled": true,
-	"root": ".",
-	"useIgnoreFile": true
-  }
 }
