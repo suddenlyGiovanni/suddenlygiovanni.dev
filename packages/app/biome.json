@@ -21,41 +21,6 @@
 	},
 	"overrides": [
 		{
-			"includes": ["src/server/**/*.ts"],
-			"linter": {
-				"rules": {
-					"correctness": {
-						"noNodejsModules": "off"
-					},
-					"nursery": {
-						"noSecrets": "off",
-						"useExplicitType": "off"
-					},
-					"style": {
-						"useNamingConvention": "info"
-					},
-					"suspicious": {
-						"noConsole": {
-							"level": "off",
-							"options": {
-								"allow": ["log"]
-							}
-						}
-					}
-				}
-			}
-		},
-		{
-			"includes": ["src/routes/**/*.tsx"],
-			"linter": {
-				"rules": {
-					"style": {
-						"noDefaultExport": "off"
-					}
-				}
-			}
-		},
-		{
 			"assist": {
 				"enabled": false
 			},
