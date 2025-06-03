@@ -72,11 +72,15 @@
 			"bracketSameLine": false,
 			"bracketSpacing": true,
 			"enabled": true,
+			"expand": "auto",
 			"jsxQuoteStyle": "double",
 			"quoteProperties": "asNeeded",
 			"quoteStyle": "single",
 			"semicolons": "asNeeded",
 			"trailingCommas": "all"
+		},
+		"linter": {
+			"enabled": true
 		}
 	},
 	"json": {
@@ -112,12 +116,10 @@
 				"recommended": true
 			},
 			"correctness": {
-				"noUndeclaredDependencies": "off",
 				"recommended": true
 			},
 			"nursery": {
-				"recommended": true,
-				"useExplicitType": "off"
+				"recommended": true
 			},
 			"performance": {
 				"recommended": true
@@ -127,21 +129,9 @@
 				"recommended": true
 			},
 			"style": {
-				"noInferrableTypes": "error",
-				"noParameterAssign": "error",
-				"noUnusedTemplateLiteral": "error",
-				"noUselessElse": "error",
-				"recommended": true,
-				"useAsConstAssertion": "error",
-				"useDefaultParameterLast": "error",
-				"useEnumInitializers": "error",
-				"useNumberNamespace": "error",
-				"useSelfClosingElements": "error",
-				"useSingleVarDeclarator": "error"
+				"recommended": true
 			},
 			"suspicious": {
-				"noConsole": "info",
-				"noReactSpecificProps": "off",
 				"recommended": true
 			}
 		}

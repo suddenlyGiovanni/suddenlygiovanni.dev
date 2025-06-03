@@ -11,6 +11,9 @@
 				"noArguments": "error",
 				"noCommaOperator": "error"
 			},
+			"nursery": {
+				"noImportCycles": "off"
+			},
 			"performance": {
 				"noBarrelFile": "off",
 				"noReExportAll": "off"
