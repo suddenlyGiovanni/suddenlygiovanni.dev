@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useNamingConvention: we do not follow this convention for this file */
 import { Headers, HttpServerRequest, HttpServerResponse } from '@effect/platform'
 import { NodeHttpServerRequest } from '@effect/platform-node'
 import * as ReactRouterNode from '@react-router/node'

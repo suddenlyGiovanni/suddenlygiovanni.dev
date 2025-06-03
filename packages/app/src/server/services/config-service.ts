@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useNamingConvention: we do not follow this convention here */
 import { Config, pipe } from 'effect'
 
 export const ConfigService = Config.all({

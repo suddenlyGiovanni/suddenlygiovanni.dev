@@ -59,6 +59,7 @@ export function meta({ location }: Route.MetaArgs) {
 
 export function loader({ request }: Route.LoaderArgs) {
 	return {
+		// biome-ignore lint/style/useNamingConvention: this is fine here
 		ENV: getEnv(),
 
 		requestInfo: {

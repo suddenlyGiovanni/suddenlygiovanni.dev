@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useNamingConvention: we do not follow the convention here */
 type SocialNetwork = 'GitHub' | 'Twitter' | 'LinkedIn'
 interface SocialProfile {
 	readonly url: string

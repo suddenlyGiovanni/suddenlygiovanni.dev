@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useNamingConvention: we do not follow the convention here */
 import * as process from 'node:process'
 
 import { Either, Schema } from 'effect'
@@ -59,7 +60,6 @@ declare global {
 export function init(): void {
 	const maybeEnv = Schema.decodeUnknownEither(envSchema)(process.env, { errors: 'all' })
 	if (Either.isLeft(maybeEnv)) {
-		// biome-ignore lint/suspicious/noConsole: we want to log the error to the console
 		console.error('❌ Invalid environment variables:', TreeFormatter.formatError(maybeEnv.left))
 		throw new Error('Invalid environment variables')
 	}

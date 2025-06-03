@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useNamingConvention: we do not want to enforce this for this file. */
 import { createServer } from 'node:http'
 
 import { HttpMiddleware, HttpRouter, HttpServer, HttpServerResponse } from '@effect/platform'
