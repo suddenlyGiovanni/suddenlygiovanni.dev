@@ -22,7 +22,7 @@ export const expectDecodeUnknownSuccess = async <A, I>(
 	// biome-ignore lint/suspicious/noExplicitAny: ok here
 	expected: A = input as any,
 	options?: ParseOptions,
-): Promise<void> => expectSuccess(Schema.decodeUnknown(schema)(input, options), expected)
+): Promise<void> => await expectSuccess(Schema.decodeUnknown(schema)(input, options), expected)
 
 export const expectDecodeUnknownFailure = async <A, I>(
 	schema: Schema.Schema<A, I, never>,
@@ -84,7 +84,7 @@ export const expectEitherLeft = <A>(e: Either.Either<A, ParseError>, message: st
 }
 
 export const expectEitherRight = <E, A>(e: Either.Either<A, E>, a: A): void => {
-	expect(e).toStrictEqual(Either.right(a))
+	expect(e).toEqual<Either.Either<A, E>>(Either.right(a) as any)
 }
 
 export const expectNone = <A>(o: Option.Option<A>): void => {
@@ -92,5 +92,5 @@ export const expectNone = <A>(o: Option.Option<A>): void => {
 }
 
 export const expectSome = <A>(o: Option.Option<A>, a: A): void => {
-	expect(o).toStrictEqual(Option.some(a))
+	expect(o).toStrictEqual<Option.Option<A>>(Option.some(a) as any)
 }
