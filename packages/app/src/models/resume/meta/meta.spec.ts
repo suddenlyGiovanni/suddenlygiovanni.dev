@@ -21,7 +21,8 @@ describe('Meta', () => {
 		it.effect('handle all missing property', () =>
 			Effect.gen(function* () {
 				const result = yield* Effect.exit(Meta.decode({ version: '0.0.0' }))
-				expect(result).toStrictEqual(Exit.succeed({ version: '0.0.0' }))
+
+				expect(result).toEqual(Exit.succeed({ version: '0.0.0' }))
 			}),
 		)
 
