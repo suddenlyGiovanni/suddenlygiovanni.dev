@@ -2,13 +2,7 @@ import type { Meta } from '@storybook/react-vite'
 import { type ReactElement, useEffect, useRef, useState } from 'react'
 
 import { clsx } from '#lib/utils.ts'
-import {
-	Accordion,
-	AccordionContent,
-	AccordionHeader,
-	AccordionItem,
-	AccordionTrigger,
-} from '#ui/accordion.tsx'
+import { Accordion, AccordionContent, AccordionHeader, AccordionItem, AccordionTrigger } from '#ui/accordion.tsx'
 
 const meta = {
 	component: Accordion,
@@ -74,9 +68,7 @@ export function _Accordion(): ReactElement {
 
 			<AccordionItem value="item-3">
 				<AccordionTrigger>Is it animated?</AccordionTrigger>
-				<AccordionContent>
-					Yes. It's animated by default, but you can disable it if you prefer.
-				</AccordionContent>
+				<AccordionContent>Yes. It's animated by default, but you can disable it if you prefer.</AccordionContent>
 			</AccordionItem>
 		</Accordion>
 	)
@@ -96,9 +88,8 @@ export function SingleUncontrolled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
-					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
-					habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer ullamcorper
+					congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -109,8 +100,8 @@ export function SingleUncontrolled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
-					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum porta nascetur ac
+					dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -122,8 +113,8 @@ export function SingleUncontrolled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
-					euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos euismod magna, nec
+					tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -134,8 +125,8 @@ export function SingleUncontrolled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus
-					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
+					Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus dignissim vitae, enim
+					vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -144,9 +135,7 @@ export function SingleUncontrolled(): ReactElement {
 }
 
 export function SingleControlled(): ReactElement {
-	const [valueOne, setValueOne] = useState<('one' | 'two' | 'three' | 'four') | (string & {})>(
-		'one',
-	)
+	const [valueOne, setValueOne] = useState<('one' | 'two' | 'three' | 'four') | (string & {})>('one')
 
 	return (
 		<Accordion
@@ -163,9 +152,8 @@ export function SingleControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
-					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
-					habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer ullamcorper
+					congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -176,8 +164,8 @@ export function SingleControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
-					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum porta nascetur ac
+					dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -189,8 +177,8 @@ export function SingleControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
-					euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos euismod magna, nec
+					tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -201,8 +189,8 @@ export function SingleControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#2">quisque</a> sapien sagittis non sociis ligula penatibus
-					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
+					Odio placerat <a href="#2">quisque</a> sapien sagittis non sociis ligula penatibus dignissim vitae, enim
+					vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -226,9 +214,8 @@ export function SingleCollapsible(): ReactElement {
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
-					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
-					habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer ullamcorper
+					congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -239,8 +226,8 @@ export function SingleCollapsible(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
-					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum porta nascetur ac
+					dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -252,8 +239,8 @@ export function SingleCollapsible(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
-					euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos euismod magna, nec
+					tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -264,8 +251,8 @@ export function SingleCollapsible(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#3">quisque</a> sapien sagittis non sociis ligula penatibus
-					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
+					Odio placerat <a href="#3">quisque</a> sapien sagittis non sociis ligula penatibus dignissim vitae, enim
+					vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -287,9 +274,8 @@ export function MultipleUncontrolled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
-					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
-					habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer ullamcorper
+					congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -300,8 +286,8 @@ export function MultipleUncontrolled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
-					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum porta nascetur ac
+					dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -313,8 +299,8 @@ export function MultipleUncontrolled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
-					euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos euismod magna, nec
+					tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -325,8 +311,8 @@ export function MultipleUncontrolled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#4">quisque</a> sapien sagittis non sociis ligula penatibus
-					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
+					Odio placerat <a href="#4">quisque</a> sapien sagittis non sociis ligula penatibus dignissim vitae, enim
+					vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -335,10 +321,7 @@ export function MultipleUncontrolled(): ReactElement {
 }
 
 export function MultipleControlled(): ReactElement {
-	const [value, setValue] = useState<(('one' | 'two' | 'three' | 'four') | (string & {}))[]>([
-		'one',
-		'two',
-	])
+	const [value, setValue] = useState<(('one' | 'two' | 'three' | 'four') | (string & {}))[]>(['one', 'two'])
 
 	return (
 		<Accordion
@@ -355,9 +338,8 @@ export function MultipleControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
-					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
-					habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer ullamcorper
+					congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -368,8 +350,8 @@ export function MultipleControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
-					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum porta nascetur ac
+					dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -381,8 +363,8 @@ export function MultipleControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
-					euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos euismod magna, nec
+					tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -393,8 +375,8 @@ export function MultipleControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={contentClass}>
-					Odio placerat <a href="#5">quisque</a> sapien sagittis non sociis ligula penatibus
-					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
+					Odio placerat <a href="#5">quisque</a> sapien sagittis non sociis ligula penatibus dignissim vitae, enim
+					vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -466,9 +448,8 @@ export function Animated(): ReactElement {
 									}
 									style={{ padding: 10 }}
 								>
-									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-									viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
-									quam suscipit habitant sed.
+									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+									ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 								</div>
 							))}
 						</AccordionContent>
@@ -500,9 +481,8 @@ export function Animated(): ReactElement {
 									}
 									style={{ padding: 10 }}
 								>
-									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-									viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque
-									quam suscipit habitant sed.
+									Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+									ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 								</div>
 							))}
 						</AccordionContent>
@@ -533,9 +513,8 @@ export function Animated2D(): ReactElement {
 					<AccordionContent className={animated2dContentClass}>
 						<div style={{ background: 'whitesmoke', overflow: 'hidden', padding: 10 }}>
 							<div style={{ height: 100, width: 'calc(20em - 20px)' }}>
-								Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-								viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-								suscipit habitant sed.
+								Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+								ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 							</div>
 						</div>
 					</AccordionContent>
@@ -567,9 +546,8 @@ export function AnimatedControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={animatedContentClass}>
-					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
-					integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
-					habitant sed.
+					Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer ullamcorper
+					congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -580,8 +558,8 @@ export function AnimatedControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={animatedContentClass}>
-					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
-					porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+					Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum porta nascetur ac
+					dictum, leo tellus dis integer platea ultrices mi.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -592,8 +570,8 @@ export function AnimatedControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Three</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={animatedContentClass}>
-					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos
-					euismod magna, nec tempor pulvinar eu etiam mattis.
+					Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos euismod magna, nec
+					tempor pulvinar eu etiam mattis.
 				</AccordionContent>
 			</AccordionItem>
 			<AccordionItem
@@ -604,8 +582,8 @@ export function AnimatedControlled(): ReactElement {
 					<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 				</AccordionHeader>
 				<AccordionContent className={animatedContentClass}>
-					Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus
-					dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
+					Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus dignissim vitae, enim
+					vulputate nullam semper potenti etiam volutpat libero.
 					<button type="button">Cool</button>
 				</AccordionContent>
 			</AccordionItem>
@@ -619,8 +597,8 @@ export function OutsideViewport(): ReactElement {
 			<p>Scroll down to see tabs</p>
 			<div style={{ height: '150vh' }} />
 			<p>
-				When accordion buttons are focused and the user is navigating via keyboard, the page should
-				not scroll unless the next tab is entering the viewport.
+				When accordion buttons are focused and the user is navigating via keyboard, the page should not scroll unless
+				the next tab is entering the viewport.
 			</p>
 			<Accordion
 				className={rootClass}
@@ -634,9 +612,8 @@ export function OutsideViewport(): ReactElement {
 						<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
-						integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
-						habitant sed.
+						Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer ullamcorper
+						congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 					</AccordionContent>
 				</AccordionItem>
 				<AccordionItem
@@ -647,8 +624,8 @@ export function OutsideViewport(): ReactElement {
 						<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
-						porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+						Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum porta nascetur ac
+						dictum, leo tellus dis integer platea ultrices mi.
 					</AccordionContent>
 				</AccordionItem>
 				<AccordionItem
@@ -660,8 +637,8 @@ export function OutsideViewport(): ReactElement {
 						<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat
-						himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
+						Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos euismod magna, nec
+						tempor pulvinar eu etiam mattis.
 					</AccordionContent>
 				</AccordionItem>
 				<AccordionItem
@@ -672,8 +649,8 @@ export function OutsideViewport(): ReactElement {
 						<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus
-						dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
+						Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus dignissim vitae, enim
+						vulputate nullam semper potenti etiam volutpat libero.
 						{}
 						<button type="button">Cool</button>
 					</AccordionContent>
@@ -701,9 +678,8 @@ export function Horizontal(): ReactElement {
 						<AccordionTrigger className={triggerClass}>One</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra
-						integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit
-						habitant sed.
+						Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer ullamcorper
+						congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 					</AccordionContent>
 				</AccordionItem>
 				<AccordionItem
@@ -714,8 +690,8 @@ export function Horizontal(): ReactElement {
 						<AccordionTrigger className={triggerClass}>Two</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum
-						porta nascetur ac dictum, leo tellus dis integer platea ultrices mi.
+						Cursus sed mattis commodo fermentum conubia ipsum pulvinar sagittis, diam eget bibendum porta nascetur ac
+						dictum, leo tellus dis integer platea ultrices mi.
 					</AccordionContent>
 				</AccordionItem>
 				<AccordionItem
@@ -727,8 +703,8 @@ export function Horizontal(): ReactElement {
 						<AccordionTrigger className={triggerClass}>Three (disabled)</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat
-						himenaeos euismod magna, nec tempor pulvinar eu etiam mattis.
+						Sociis hac sapien turpis conubia sagittis justo dui, inceptos penatibus feugiat himenaeos euismod magna, nec
+						tempor pulvinar eu etiam mattis.
 					</AccordionContent>
 				</AccordionItem>
 				<AccordionItem
@@ -739,8 +715,8 @@ export function Horizontal(): ReactElement {
 						<AccordionTrigger className={triggerClass}>Four</AccordionTrigger>
 					</AccordionHeader>
 					<AccordionContent className={contentClass}>
-						Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus
-						dignissim vitae, enim vulputate nullam semper potenti etiam volutpat libero.
+						Odio placerat <a href="#1">quisque</a> sapien sagittis non sociis ligula penatibus dignissim vitae, enim
+						vulputate nullam semper potenti etiam volutpat libero.
 						<button type="button">Cool</button>
 					</AccordionContent>
 				</AccordionItem>
@@ -769,9 +745,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -793,9 +768,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -816,9 +790,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -840,9 +813,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -865,9 +837,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -889,9 +860,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -913,9 +883,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -938,9 +907,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -963,9 +931,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -989,9 +956,8 @@ export function Chromatic(): ReactElement {
 							className={contentClass}
 							forceMount={true}
 						>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -1015,9 +981,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerAttrClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentAttrClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -1041,9 +1006,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerAttrClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentAttrClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}
@@ -1067,9 +1031,8 @@ export function Chromatic(): ReactElement {
 							<AccordionTrigger className={triggerAttrClass}>{item}</AccordionTrigger>
 						</AccordionHeader>
 						<AccordionContent className={contentAttrClass}>
-							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate
-							viverra integer ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam
-							suscipit habitant sed.
+							{item}: Per erat orci nostra luctus sociosqu mus risus penatibus, duis elit vulputate viverra integer
+							ullamcorper congue curabitur sociis, nisi malesuada scelerisque quam suscipit habitant sed.
 						</AccordionContent>
 					</AccordionItem>
 				))}

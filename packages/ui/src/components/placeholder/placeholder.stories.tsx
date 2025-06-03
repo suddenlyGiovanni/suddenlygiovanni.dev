@@ -4,9 +4,7 @@ import { Placeholder } from './placeholder.tsx'
 
 const meta: Meta<typeof Placeholder> = {
 	component: Placeholder,
-	decorators: [
-		Story => <div className="flex items-center justify-center bg-blue-200 p-8">{Story()}</div>,
-	],
+	decorators: [Story => <div className="flex items-center justify-center bg-blue-200 p-8">{Story()}</div>],
 }
 
 type Story = StoryObj<typeof meta>

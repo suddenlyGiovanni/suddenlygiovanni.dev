@@ -21,17 +21,13 @@ export const Body = {
 				<div>
 					Body
 					<Layout.Header>
-						<Placeholder className="border-green-500 bg-green-200 text-green-500">
-							Header
-						</Placeholder>
+						<Placeholder className="border-green-500 bg-green-200 text-green-500">Header</Placeholder>
 					</Layout.Header>
 					<Layout.Main>
 						<Placeholder className="border-sky-500 bg-sky-200 text-sky-500">Main</Placeholder>
 					</Layout.Main>
 					<Layout.Footer>
-						<Placeholder className="border-purple-500 bg-purple-200 text-purple-500">
-							Footer
-						</Placeholder>
+						<Placeholder className="border-purple-500 bg-purple-200 text-purple-500">Footer</Placeholder>
 					</Layout.Footer>
 				</div>
 			</Layout.Body>

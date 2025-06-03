@@ -29,10 +29,7 @@ Th.displayName = 'Th'
 
 export const Td: FC<ComponentPropsWithRef<'td'>> = ({ className, children, ref, ...props }) => (
 	<td
-		className={clsx(
-			'border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right',
-			className,
-		)}
+		className={clsx('border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right', className)}
 		ref={ref}
 		{...props}
 	>

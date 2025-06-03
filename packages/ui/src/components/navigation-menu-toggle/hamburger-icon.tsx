@@ -13,12 +13,7 @@ export function HamburgerIcon({
 }): ReactElement {
 	return (
 		<div
-			className={clsx(
-				baseClasses,
-				isSelected && 'bg-transparent',
-				!isSelected && 'bg-foreground',
-				className,
-			)}
+			className={clsx(baseClasses, isSelected && 'bg-transparent', !isSelected && 'bg-foreground', className)}
 			{...props}
 		>
 			<div

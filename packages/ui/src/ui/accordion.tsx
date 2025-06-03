@@ -18,12 +18,7 @@ const AccordionItem: FC<ComponentPropsWithRef<typeof Item>> = ({ className, ref,
 )
 AccordionItem.displayName = 'AccordionItem'
 
-const AccordionTrigger: FC<CustomComponentPropsWithRef<typeof Trigger>> = ({
-	className,
-	children,
-	ref,
-	...props
-}) => (
+const AccordionTrigger: FC<CustomComponentPropsWithRef<typeof Trigger>> = ({ className, children, ref, ...props }) => (
 	<Header className="flex">
 		<Trigger
 			className={clsx(
@@ -34,20 +29,13 @@ const AccordionTrigger: FC<CustomComponentPropsWithRef<typeof Trigger>> = ({
 			{...props}
 		>
 			{children}
-			<ChevronDownIcon
-				className={clsx('h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200')}
-			/>
+			<ChevronDownIcon className={clsx('h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200')} />
 		</Trigger>
 	</Header>
 )
 AccordionTrigger.displayName = Trigger.displayName
 
-const AccordionContent: FC<CustomComponentPropsWithRef<typeof Content>> = ({
-	className,
-	children,
-	ref,
-	...props
-}) => (
+const AccordionContent: FC<CustomComponentPropsWithRef<typeof Content>> = ({ className, children, ref, ...props }) => (
 	<Content
 		className={clsx(
 			'overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',

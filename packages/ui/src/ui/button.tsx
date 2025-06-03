@@ -21,23 +21,17 @@ const buttonVariants = cva(
 			},
 			variant: {
 				default: clsx('bg-primary text-primary-foreground shadow-sm hover:bg-primary/90'),
-				destructive: clsx(
-					'bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive/90',
-				),
+				destructive: clsx('bg-destructive text-destructive-foreground shadow-xs hover:bg-destructive/90'),
 				ghost: clsx('hover:bg-accent hover:text-accent-foreground'),
 				link: clsx('text-primary underline-offset-4 hover:underline'),
-				outline: clsx(
-					'border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground',
-				),
+				outline: clsx('border border-input bg-background shadow-xs hover:bg-accent hover:text-accent-foreground'),
 				secondary: clsx('bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80'),
 			},
 		},
 	},
 )
 
-export interface ButtonProps
-	extends ComponentPropsWithRef<'button'>,
-		VariantProps<typeof buttonVariants> {
+export interface ButtonProps extends ComponentPropsWithRef<'button'>, VariantProps<typeof buttonVariants> {
 	asChild?: boolean
 }
 

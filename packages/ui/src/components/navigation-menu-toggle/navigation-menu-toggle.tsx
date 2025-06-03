@@ -18,15 +18,11 @@ const styles = tv({
 	},
 })
 
-export function NavigationMenuToggle(
-	props: Omit<ToggleButtonProps, 'children' | 'type'>,
-): ReactElement {
+export function NavigationMenuToggle(props: Omit<ToggleButtonProps, 'children' | 'type'>): ReactElement {
 	return (
 		<ToggleButton
 			{...props}
-			className={composeRenderProps(props.className, (className, renderProps) =>
-				styles({ ...renderProps, className }),
-			)}
+			className={composeRenderProps(props.className, (className, renderProps) => styles({ ...renderProps, className }))}
 			type="button"
 		>
 			{({ isSelected }): ReactElement => (
