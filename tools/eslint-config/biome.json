@@ -16,19 +16,7 @@
 	},
 	"linter": {
 		"rules": {
-			"nursery": { "noUnresolvedImports": "off" },
-			"style": {
-				"noInferrableTypes": "error",
-				"noParameterAssign": "error",
-				"noUnusedTemplateLiteral": "error",
-				"noUselessElse": "error",
-				"useAsConstAssertion": "error",
-				"useDefaultParameterLast": "error",
-				"useEnumInitializers": "error",
-				"useNumberNamespace": "error",
-				"useSelfClosingElements": "error",
-				"useSingleVarDeclarator": "error"
-			}
+			"nursery": { "noUnresolvedImports": "off" }
 		}
 	},
 	"root": false
