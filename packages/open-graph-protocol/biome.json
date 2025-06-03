@@ -3,7 +3,7 @@
 	"extends": "//",
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**/src/*", "!~", "!**/node_modules/**"]
+		"includes": ["**/src/**", "!~"]
 	},
 	"linter": {
 		"rules": {
