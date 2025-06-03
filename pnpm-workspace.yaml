@@ -68,7 +68,7 @@ catalogs:
     react-router-devtools: 5.0.5
     vite-plugin-babel: 1.3.1
     vite-tsconfig-paths: 5.1.4
-    vite: 6.3.5
+    vite: npm:rolldown-vite@latest
   frontend: # Packages for frontend development
     "@conform-to/react": 1.2.2
     "@radix-ui/react-accessible-icon": 1.1.7

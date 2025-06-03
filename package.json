@@ -25,7 +25,8 @@
 		"overrides": {
 			"@types/react": "catalog:types",
 			"react": "catalog:frontend",
-			"react-dom": "catalog:frontend"
+			"react-dom": "catalog:frontend",
+			"vite": "npm:rolldown-vite@latest"
 		}
 	},
 	"private": true,
