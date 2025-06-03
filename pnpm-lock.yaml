@@ -277,6 +277,9 @@ importers:
       typescript:
         specifier: catalog:typescript
         version: 5.8.3
+      vitest:
+        specifier: catalog:test
+        version: 3.2.1(@types/debug@4.1.12)(@types/node@22.15.29)(@vitest/ui@3.2.1)(esbuild@0.25.3)(jiti@2.4.2)(msw@2.7.6(@types/node@22.15.29)(typescript@5.8.3))
 
   packages/app:
     dependencies:

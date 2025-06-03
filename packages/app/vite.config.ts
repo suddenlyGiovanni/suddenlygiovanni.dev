@@ -1,7 +1,6 @@
 import { exec } from 'node:child_process'
 import process from 'node:process'
 
-import { codecovVitePlugin } from '@codecov/vite-plugin'
 import mdx from '@mdx-js/rollup'
 import { reactRouter } from '@react-router/dev/vite'
 import tailwindcss from '@tailwindcss/vite'
@@ -77,19 +76,5 @@ export default defineConfig(({ isSsrBuild }) => ({
 		reactRouter(),
 		tailwindcss(),
 		tsconfigPaths(),
-		codecovVitePlugin({
-			bundleName: 'web',
-			enableBundleAnalysis: process.env['CODECOV_TOKEN'] !== undefined,
-			uploadToken: process.env['CODECOV_TOKEN']!,
-		}),
-	],
-	test: {
-		coverage: {
-			provider: 'v8',
-			reporter: ['text', 'json', 'html'],
-		},
-		globalSetup: './src/tests/test-globals.ts',
-		includeSource: ['./src/**/*.{ts,tsx}', './src/server/**/*.ts', './types/**/*.ts'],
-		reporters: process.env['GITHUB_ACTIONS'] ? ['dot', 'github-actions'] : ['default'],
-	},
+	]
 }))
