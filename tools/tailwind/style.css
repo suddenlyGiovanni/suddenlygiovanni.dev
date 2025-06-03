@@ -151,11 +151,11 @@
 
 .font-comic-hero {
 	font-family: "Shantell Sans", cursive;
-	font-optical-sizing: auto;
-	font-weight: 500;
-	font-style: italic;
 	font-variation-settings:
 		"BNCE" 40,
 		"INFM" 75,
 		"SPAC" 0;
+	font-style: italic;
+	font-weight: 500;
+	font-optical-sizing: auto;
 }
