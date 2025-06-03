@@ -63,6 +63,9 @@
 		"useEditorconfig": true
 	},
 	"javascript": {
+		"assist": {
+			"enabled": true
+		},
 		"formatter": {
 			"arrowParentheses": "asNeeded",
 			"attributePosition": "multiline",
@@ -97,8 +100,8 @@
 	"linter": {
 		"domains": {
 			"project": "all",
-			"react": "recommended",
-			"test": "recommended"
+			"react": "all",
+			"test": "all"
 		},
 		"enabled": true,
 		"rules": {
