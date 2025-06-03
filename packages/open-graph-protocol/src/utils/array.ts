@@ -33,11 +33,7 @@ export function insertIf<Condition, Element>(
 	? readonly [element: Element] //
 	: readonly [] //
 
-export function insertIf<
-	Condition,
-	Element extends unknown[],
-	Elements extends readonly [...Element],
->(
+export function insertIf<Condition, Element extends unknown[], Elements extends readonly [...Element]>(
 	condition: Condition,
 	...elements: Elements
 ): Condition extends NotFalsy<Condition>

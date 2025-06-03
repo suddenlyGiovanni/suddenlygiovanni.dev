@@ -47,10 +47,7 @@ export function isNotFalsy<T>(value: T): value is NotFalsy<T> {
  */
 export function isArray<T>(
 	arg: T,
-): arg is
-	| Extract<unknown[], T>
-	| Extract<[unknown], T>
-	| (unknown extends T ? never : Extract<T, readonly unknown[]>) {
+): arg is Extract<unknown[], T> | Extract<[unknown], T> | (unknown extends T ? never : Extract<T, readonly unknown[]>) {
 	/*
    the first two clauses, `Extract<any[], T>` and `Extract<[any], T>`,
    ensure that the type predicate will extract `B[]` out of `A | B[]`
@@ -95,10 +92,7 @@ export function assert(condition: boolean, message?: string | (() => string)): a
  *
  * @public
  */
-export function assert<T>(
-	condition: T | null | undefined,
-	message?: string | (() => string),
-): asserts condition is T
+export function assert<T>(condition: T | null | undefined, message?: string | (() => string)): asserts condition is T
 
 /**
  * Asserts that the condition is of a specific type.
