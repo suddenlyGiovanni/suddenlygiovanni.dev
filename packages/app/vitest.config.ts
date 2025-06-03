@@ -18,6 +18,7 @@ export default defineConfig(configEnv => mergeConfig(
 				includeSource: ['./src/**/*.{ts,tsx}', './src/server/**/*.ts', './types/**/*.ts'],
 				coverage: {
 					provider: 'v8',
+					experimentalAstAwareRemapping: true,
 					reporter: ['text', 'json', 'html'],
 				},
 				reporters: process.env['GITHUB_ACTIONS'] ? ['dot', 'github-actions'] : ['default'],
