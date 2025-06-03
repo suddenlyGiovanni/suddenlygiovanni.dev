@@ -2,11 +2,7 @@ import { T } from '@repo/ui/components/typography/typography.tsx'
 import type * as Model from '@suddenly-giovanni/schema-resume'
 import type { ReactElement } from 'react'
 
-export function Languages({
-	languages,
-}: {
-	readonly languages: readonly Model.Language[]
-}): ReactElement {
+export function Languages({ languages }: { readonly languages: readonly Model.Language[] }): ReactElement {
 	return (
 		<section className="w-full">
 			<T.h2>Languages</T.h2>

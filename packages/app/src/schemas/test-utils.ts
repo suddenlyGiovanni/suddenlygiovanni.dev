@@ -45,6 +45,7 @@ export const expectEncodeFailure = async <A, I>(
 	options?: ParseOptions,
 ): Promise<void> => expectFailure(Schema.encode(schema)(a, options), message)
 
+// biome-ignore lint/style/useNamingConvention: this is for Abstract Syntax Tree
 export const printAST = <A, I, R>(schema: Schema.Schema<A, I, R>): void => {
 	console.log('%o', schema.ast)
 }
@@ -56,34 +57,25 @@ export const expectFailure = async <A>(
 	if (Either.isEither(effect)) {
 		expectEitherLeft(effect, message)
 	} else {
-		expectEffectFailure(effect, message)
+		await expectEffectFailure(effect, message)
 	}
 }
 
-export const expectSuccess = async <E, A>(
-	effect: Either.Either<A, E> | Effect.Effect<A, E>,
-	a: A,
-): Promise<void> => {
+export const expectSuccess = async <E, A>(effect: Either.Either<A, E> | Effect.Effect<A, E>, a: A): Promise<void> => {
 	if (Either.isEither(effect)) {
 		expectEitherRight(effect, a)
 	} else {
-		expectEffectSuccess(effect, a)
+		await expectEffectSuccess(effect, a)
 	}
 }
 
-export const expectEffectFailure = async <A>(
-	effect: Effect.Effect<A, ParseError>,
-	message: string,
-): Promise<void> => {
-	expect(
-		await Effect.runPromise(Effect.either(Effect.mapError(effect, TreeFormatter.formatErrorSync))),
-	).toStrictEqual(Either.left(message))
+export const expectEffectFailure = async <A>(effect: Effect.Effect<A, ParseError>, message: string): Promise<void> => {
+	expect(await Effect.runPromise(Effect.either(Effect.mapError(effect, TreeFormatter.formatErrorSync)))).toStrictEqual(
+		Either.left(message),
+	)
 }
 
-export const expectEffectSuccess = async <E, A>(
-	effect: Effect.Effect<A, E>,
-	a: A,
-): Promise<void> => {
+export const expectEffectSuccess = async <E, A>(effect: Effect.Effect<A, E>, a: A): Promise<void> => {
 	expect(await Effect.runPromise(Effect.either(effect))).toStrictEqual(Either.right(a))
 }
 

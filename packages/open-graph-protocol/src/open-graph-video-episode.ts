@@ -1,10 +1,4 @@
-import {
-	type MetaBase,
-	makeOpenGraphMeta,
-	type OpenGraphMeta,
-	type og,
-	PropertyVideoEpisode,
-} from './open-graph.ts'
+import { type MetaBase, makeOpenGraphMeta, type OpenGraphMeta, type og, PropertyVideoEpisode } from './open-graph.ts'
 import type { BasicRecord, OgType, OptionalRecord } from './open-graph-base.ts'
 import type { video } from './open-graph-video.ts'
 import { _makeOpenGraphVideoBase, type OpenGraphVideoBase } from './open-graph-video-base.ts'
@@ -26,10 +20,10 @@ export type VideoEpisodeRecord =
 	| OgVideoEpisodeTag
 	| OgVideoEpisodeSeries
 
-type VideoEpisodeMetaBase<
-	Property extends IPropertyVideoEpisode,
-	Content extends Types.Type,
-> = MetaBase<Property, Content>
+type VideoEpisodeMetaBase<Property extends IPropertyVideoEpisode, Content extends Types.Type> = MetaBase<
+	Property,
+	Content
+>
 
 type OgTypeVideoEpisode = MetaBase<og<'type'>, Types.Enum<video<'episode'>>>
 
@@ -91,17 +85,12 @@ interface OpenGraphVideoEpisode extends OpenGraphVideoBase {
 	ogVideoSeries?: Types.URL
 }
 
-export function makeOpenGraphVideoEpisode(
-	openGraphVideoEpisode: OpenGraphVideoEpisode,
-): readonly OpenGraphMeta[] {
+export function makeOpenGraphVideoEpisode(openGraphVideoEpisode: OpenGraphVideoEpisode): readonly OpenGraphMeta[] {
 	return [
 		// BASE_METADATA! + VIDEO_MOVIE_METADATA?
 		..._makeOpenGraphVideoBase(openGraphVideoEpisode),
 
 		// VIDEO_SERIES?
-		...insertIf(
-			openGraphVideoEpisode.ogVideoSeries,
-			makeOpenGraphMeta(PropertyVideoEpisode.OG_VIDEO_SERIES),
-		),
+		...insertIf(openGraphVideoEpisode.ogVideoSeries, makeOpenGraphMeta(PropertyVideoEpisode.OG_VIDEO_SERIES)),
 	]
 }

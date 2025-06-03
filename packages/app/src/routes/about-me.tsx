@@ -86,14 +86,11 @@ const imgSrcSet = concatSeparator(', ')(
 export default function AboutMe(_: Route.ComponentProps): ReactElement {
 	return (
 		<article
-			className={clsx(
-				'prose dark:prose-invert flex w-full max-w-full flex-col justify-start font-comic',
-			)}
+			className={clsx('prose dark:prose-invert flex w-full max-w-full flex-col justify-start font-comic')}
 			style={{ fontSynthesisWeight: 'initial' }}
 		>
 			<T.h2 className={clsx('font-comic')}>
-				<div className={clsx('inline-block animate-wiggle hover:animate-none')}>👋</div> Hi, I'm
-				Giovanni!
+				<div className={clsx('inline-block animate-wiggle hover:animate-none')}>👋</div> Hi, I'm Giovanni!
 			</T.h2>
 			<picture>
 				<source

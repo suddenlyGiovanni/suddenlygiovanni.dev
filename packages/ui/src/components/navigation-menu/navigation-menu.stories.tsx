@@ -20,8 +20,7 @@ const meta: Meta = {
 
 const components: { title: string; href: string; description: string }[] = [
 	{
-		description:
-			'A modal dialog that interrupts the user with important content and expects a response.',
+		description: 'A modal dialog that interrupts the user with important content and expects a response.',
 		href: '/docs/primitives/alert-dialog',
 		title: 'Alert Dialog',
 	},
@@ -42,8 +41,7 @@ const components: { title: string; href: string; description: string }[] = [
 		title: 'Scroll-area',
 	},
 	{
-		description:
-			'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
+		description: 'A set of layered sections of content—known as tab panels—that are displayed one at a time.',
 		href: '/docs/primitives/tabs',
 		title: 'Tabs',
 	},
@@ -62,9 +60,7 @@ export function Default(): ReactElement {
 				<NavigationMenuItem>
 					<NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
 					<NavigationMenuContent>
-						<ul
-							className={clsx('grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]')}
-						>
+						<ul className={clsx('grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]')}>
 							<li className="row-span-3">
 								<NavigationMenuLink asChild={true}>
 									<a
@@ -105,9 +101,7 @@ export function Default(): ReactElement {
 				<NavigationMenuItem>
 					<NavigationMenuTrigger>Components</NavigationMenuTrigger>
 					<NavigationMenuContent>
-						<ul
-							className={clsx('grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]')}
-						>
+						<ul className={clsx('grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]')}>
 							{components.map(component => (
 								<ListItem
 									href={component.href}
@@ -122,9 +116,7 @@ export function Default(): ReactElement {
 				</NavigationMenuItem>
 				<NavigationMenuItem>
 					<Link to="/docs">
-						<NavigationMenuLink className={navigationMenuTriggerStyle()}>
-							Documentation
-						</NavigationMenuLink>
+						<NavigationMenuLink className={navigationMenuTriggerStyle()}>Documentation</NavigationMenuLink>
 					</Link>
 				</NavigationMenuItem>
 			</NavigationMenuList>
@@ -132,13 +124,7 @@ export function Default(): ReactElement {
 	)
 }
 
-const ListItem: FC<ComponentPropsWithRef<'a'>> = ({
-	className,
-	title,
-	children,
-	ref,
-	...props
-}) => {
+const ListItem: FC<ComponentPropsWithRef<'a'>> = ({ className, title, children, ref, ...props }) => {
 	return (
 		<li>
 			<NavigationMenuLink asChild={true}>
@@ -151,9 +137,7 @@ const ListItem: FC<ComponentPropsWithRef<'a'>> = ({
 					{...props}
 				>
 					<div className={clsx('text-sm', 'font-medium', 'leading-none')}>{title}</div>
-					<p className={clsx('line-clamp-2', 'text-sm', 'leading-snug', 'text-muted-foreground')}>
-						{children}
-					</p>
+					<p className={clsx('line-clamp-2', 'text-sm', 'leading-snug', 'text-muted-foreground')}>{children}</p>
 				</a>
 			</NavigationMenuLink>
 		</li>

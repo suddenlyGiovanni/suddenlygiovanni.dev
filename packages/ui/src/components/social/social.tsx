@@ -9,10 +9,7 @@ function SocialLink({ className, children, ...props }: JSX.IntrinsicElements['a'
 	return (
 		<a
 			{...props}
-			className={clsx(
-				'flex cursor-pointer content-center items-center text-black hover:text-black/70',
-				className,
-			)}
+			className={clsx('flex cursor-pointer content-center items-center text-black hover:text-black/70', className)}
 		>
 			{children}
 		</a>

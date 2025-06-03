@@ -4,11 +4,7 @@ import type { ReactElement } from 'react'
 
 import { generateDjb2Hash } from '#root/src/routes/resume/generate-djb2-hash.ts'
 
-export function Interests({
-	interests,
-}: {
-	readonly interests: readonly Model.Interest[]
-}): ReactElement {
+export function Interests({ interests }: { readonly interests: readonly Model.Interest[] }): ReactElement {
 	return (
 		<section className="w-full">
 			<T.h2 className="mb-0">Interests</T.h2>

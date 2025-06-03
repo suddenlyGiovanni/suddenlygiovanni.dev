@@ -1,19 +1,24 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
-	"extends": ["../../biome.json"],
+	"extends": "//",
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**/src/*", "!~", "!**/node_modules/**"]
+		"includes": ["**/src/**", "!~"]
 	},
 	"linter": {
 		"rules": {
+			"complexity": {
+				"noArguments": "error",
+				"noCommaOperator": "error"
+			},
+			"nursery": {
+				"noImportCycles": "off"
+			},
 			"performance": {
 				"noBarrelFile": "off",
 				"noReExportAll": "off"
 			},
 			"style": {
-				"noArguments": "error",
-				"noCommaOperator": "error",
 				"noInferrableTypes": "error",
 				"noNonNullAssertion": "error",
 				"noParameterAssign": "error",
@@ -36,5 +41,6 @@
 				"useTemplate": "error"
 			}
 		}
-	}
+	},
+	"root": false
 }

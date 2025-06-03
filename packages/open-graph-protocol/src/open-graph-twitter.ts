@@ -54,10 +54,7 @@ export type TwitterRecord =
 	| TwitterAppIdGooglePlay
 	| TwitterAppUrlGooglePlay
 
-type TwitterMetaBase<Property extends IPropertyTwitter, Content extends Types.Type> = MetaBase<
-	Property,
-	Content
->
+type TwitterMetaBase<Property extends IPropertyTwitter, Content extends Types.Type> = MetaBase<Property, Content>
 
 /**
  * The card type
@@ -398,18 +395,12 @@ interface OpenGraphTwitterAppCard extends TwitterCardBase {
 	twitterAppURLGooglePlay?: Types.URL
 }
 
-export type OpenGraphTwitterCard =
-	| OpenGraphTwitterSummaryCard
-	| OpenGraphTwitterAppCard
-	| OpenGraphTwitterPlayerCard
+export type OpenGraphTwitterCard = OpenGraphTwitterSummaryCard | OpenGraphTwitterAppCard | OpenGraphTwitterPlayerCard
 
 function isOpenGraphTwitterSummaryCard(
 	openGraphTwitterCard: OpenGraphTwitterCard,
 ): openGraphTwitterCard is OpenGraphTwitterSummaryCard {
-	return (
-		openGraphTwitterCard.twitterCard === 'summary' ||
-		openGraphTwitterCard.twitterCard === 'summary_large_image'
-	)
+	return openGraphTwitterCard.twitterCard === 'summary' || openGraphTwitterCard.twitterCard === 'summary_large_image'
 }
 
 function isOpenGraphTwitterAppCard(
@@ -424,9 +415,7 @@ function isOpenGraphTwitterPlayerCard(
 	return openGraphTwitterCard.twitterCard === 'player'
 }
 
-export function makeOpenGraphTwitterCard(
-	openGraphTwitterCard: OpenGraphTwitterCard,
-): TwitterCardMeta[] {
+export function makeOpenGraphTwitterCard(openGraphTwitterCard: OpenGraphTwitterCard): TwitterCardMeta[] {
 	const cutAt420Characters = maxLength(420)
 	const cutAt200Characters = maxLength(200)
 	const cutAt70Characters = maxLength(70)
@@ -440,16 +429,10 @@ export function makeOpenGraphTwitterCard(
 			),
 
 			// SITE?
-			...insertIf(
-				openGraphTwitterCard.twitterSite,
-				makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE),
-			),
+			...insertIf(openGraphTwitterCard.twitterSite, makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE)),
 
 			// SITE_ID?
-			...insertIf(
-				openGraphTwitterCard.twitterSiteID,
-				makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE_ID),
-			),
+			...insertIf(openGraphTwitterCard.twitterSiteID, makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE_ID)),
 
 			// TITLE!
 			makeTwitterCardMeta(
@@ -458,36 +441,21 @@ export function makeOpenGraphTwitterCard(
 			),
 
 			// CREATOR?
-			...insertIf(
-				openGraphTwitterCard.twitterCreator,
-				makeTwitterCardMeta(PropertyTwitter.TWITTER_CREATOR),
-			),
+			...insertIf(openGraphTwitterCard.twitterCreator, makeTwitterCardMeta(PropertyTwitter.TWITTER_CREATOR)),
 			// CREATOR_ID?
-			...insertIf(
-				openGraphTwitterCard.twitterCreatorID,
-				makeTwitterCardMeta(PropertyTwitter.TWITTER_CREATOR_ID),
-			),
+			...insertIf(openGraphTwitterCard.twitterCreatorID, makeTwitterCardMeta(PropertyTwitter.TWITTER_CREATOR_ID)),
 
 			// DESCRIPTION?
 			...insertIf(openGraphTwitterCard.twitterDescription, description =>
-				makeTwitterCardMeta(
-					PropertyTwitter.TWITTER_DESCRIPTION,
-					Types.String(cutAt200Characters(description)),
-				),
+				makeTwitterCardMeta(PropertyTwitter.TWITTER_DESCRIPTION, Types.String(cutAt200Characters(description))),
 			),
 
 			// IMAGE?
-			...insertIf(
-				openGraphTwitterCard.twitterImage,
-				makeTwitterCardMeta(PropertyTwitter.TWITTER_IMAGE),
-			),
+			...insertIf(openGraphTwitterCard.twitterImage, makeTwitterCardMeta(PropertyTwitter.TWITTER_IMAGE)),
 
 			// IMAGE_ALT?
 			...insertIf(openGraphTwitterCard.twitterImageAlt, imageAlt =>
-				makeTwitterCardMeta(
-					PropertyTwitter.TWITTER_IMAGE_ALT,
-					Types.String(cutAt420Characters(imageAlt)),
-				),
+				makeTwitterCardMeta(PropertyTwitter.TWITTER_IMAGE_ALT, Types.String(cutAt420Characters(imageAlt))),
 			),
 		]
 	}
@@ -509,17 +477,11 @@ export function makeOpenGraphTwitterCard(
 			makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE, openGraphTwitterCard.twitterSite),
 
 			// SITE_ID?
-			...insertIf(
-				openGraphTwitterCard.twitterSiteID,
-				makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE_ID),
-			),
+			...insertIf(openGraphTwitterCard.twitterSiteID, makeTwitterCardMeta(PropertyTwitter.TWITTER_SITE_ID)),
 
 			// DESCRIPTION?
 			...insertIf(openGraphTwitterCard.twitterDescription, description =>
-				makeTwitterCardMeta(
-					PropertyTwitter.TWITTER_DESCRIPTION,
-					Types.String(cutAt200Characters(description)),
-				),
+				makeTwitterCardMeta(PropertyTwitter.TWITTER_DESCRIPTION, Types.String(cutAt200Characters(description))),
 			),
 
 			// IMAGE!
@@ -527,32 +489,20 @@ export function makeOpenGraphTwitterCard(
 
 			// IMAGE_ALT?
 			...insertIf(openGraphTwitterCard.twitterImageAlt, imageAlt =>
-				makeTwitterCardMeta(
-					PropertyTwitter.TWITTER_IMAGE_ALT,
-					Types.String(cutAt420Characters(imageAlt)),
-				),
+				makeTwitterCardMeta(PropertyTwitter.TWITTER_IMAGE_ALT, Types.String(cutAt420Characters(imageAlt))),
 			),
 
 			// PLAYER!
 			makeTwitterCardMeta(PropertyTwitter.TWITTER_PLAYER, openGraphTwitterCard.twitterPlayer),
 
 			// PLAYER_WIDTH!
-			makeTwitterCardMeta(
-				PropertyTwitter.TWITTER_PLAYER_WIDTH,
-				openGraphTwitterCard.twitterPlayerWidth,
-			),
+			makeTwitterCardMeta(PropertyTwitter.TWITTER_PLAYER_WIDTH, openGraphTwitterCard.twitterPlayerWidth),
 
 			// PLAYER_HEIGHT!
-			makeTwitterCardMeta(
-				PropertyTwitter.TWITTER_PLAYER_HEIGHT,
-				openGraphTwitterCard.twitterPlayerHeight,
-			),
+			makeTwitterCardMeta(PropertyTwitter.TWITTER_PLAYER_HEIGHT, openGraphTwitterCard.twitterPlayerHeight),
 
 			// PLAYER_STREAM?
-			...insertIf(
-				openGraphTwitterCard.twitterPlayerStream,
-				makeTwitterCardMeta(PropertyTwitter.TWITTER_PLAYER_STREAM),
-			),
+			...insertIf(openGraphTwitterCard.twitterPlayerStream, makeTwitterCardMeta(PropertyTwitter.TWITTER_PLAYER_STREAM)),
 		]
 	}
 
@@ -569,10 +519,7 @@ export function makeOpenGraphTwitterCard(
 
 			// DESCRIPTION?
 			...insertIf(openGraphTwitterCard.twitterDescription, description =>
-				makeTwitterCardMeta(
-					PropertyTwitter.TWITTER_DESCRIPTION,
-					Types.String(cutAt200Characters(description)),
-				),
+				makeTwitterCardMeta(PropertyTwitter.TWITTER_DESCRIPTION, Types.String(cutAt200Characters(description))),
 			),
 
 			// APP_NAME_IPHONE?
@@ -582,10 +529,7 @@ export function makeOpenGraphTwitterCard(
 			),
 
 			// APP_ID_IPHONE!
-			makeTwitterCardMeta(
-				PropertyTwitter.TWITTER_APP_ID_IPHONE,
-				openGraphTwitterCard.twitterAppIDIphone,
-			),
+			makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_ID_IPHONE, openGraphTwitterCard.twitterAppIDIphone),
 
 			// APP_URL_IPHONE?
 			...insertIf(
@@ -594,22 +538,13 @@ export function makeOpenGraphTwitterCard(
 			),
 
 			// APP_NAME_IPAD?
-			...insertIf(
-				openGraphTwitterCard.twitterAppNameIpad,
-				makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_NAME_IPAD),
-			),
+			...insertIf(openGraphTwitterCard.twitterAppNameIpad, makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_NAME_IPAD)),
 
 			// APP_ID_IPAD!
-			makeTwitterCardMeta(
-				PropertyTwitter.TWITTER_APP_ID_IPAD,
-				openGraphTwitterCard.twitterAppIDIpad,
-			),
+			makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_ID_IPAD, openGraphTwitterCard.twitterAppIDIpad),
 
 			// APP_URL_IPAD?
-			...insertIf(
-				openGraphTwitterCard.twitterAppURLIpad,
-				makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_URL_IPAD),
-			),
+			...insertIf(openGraphTwitterCard.twitterAppURLIpad, makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_URL_IPAD)),
 
 			// APP_NAME_GOOGLEPLAY?
 			...insertIf(
@@ -618,10 +553,7 @@ export function makeOpenGraphTwitterCard(
 			),
 
 			// APP_ID_APP_GOOGLEPLAY!
-			makeTwitterCardMeta(
-				PropertyTwitter.TWITTER_APP_ID_GOOGLEPLAY,
-				openGraphTwitterCard.twitterAppIDGooglePlay,
-			),
+			makeTwitterCardMeta(PropertyTwitter.TWITTER_APP_ID_GOOGLEPLAY, openGraphTwitterCard.twitterAppIDGooglePlay),
 
 			// APP_URL_GOOGLEPLAY?
 			...insertIf(

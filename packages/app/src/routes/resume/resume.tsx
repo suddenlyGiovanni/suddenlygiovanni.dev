@@ -20,8 +20,7 @@ import { Skills } from './skills.tsx'
 
 export function meta({ location }: Route.MetaArgs) {
 	const title = `${config.siteName} | Résumé`
-	const description =
-		"Giovanni Ravalico's Résumé. A place where I showcase my professional experience and skills."
+	const description = "Giovanni Ravalico's Résumé. A place where I showcase my professional experience and skills."
 	return [
 		{ title },
 		{ content: description, name: 'description' },

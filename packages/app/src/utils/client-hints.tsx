@@ -1,8 +1,5 @@
 import { getHintUtils } from '@epic-web/client-hints'
-import {
-	clientHint as colorSchemeHint,
-	subscribeToSchemeChange,
-} from '@epic-web/client-hints/color-scheme'
+import { clientHint as colorSchemeHint, subscribeToSchemeChange } from '@epic-web/client-hints/color-scheme'
 import { clientHint as reducedMotionSchemaHint } from '@epic-web/client-hints/reduced-motion'
 import { clientHint as timeZoneHint } from '@epic-web/client-hints/time-zone'
 import { type ReactElement, useEffect } from 'react'

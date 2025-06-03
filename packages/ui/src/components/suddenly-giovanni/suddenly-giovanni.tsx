@@ -19,10 +19,7 @@ export function SuddenlyGiovanni({
 	return (
 		<Link
 			aria-label={ariaLabel}
-			className={clsx(
-				'relative flex flex-row items-center no-underline hover:no-underline',
-				className,
-			)}
+			className={clsx('relative flex flex-row items-center no-underline hover:no-underline', className)}
 			to={to}
 		>
 			<Avatar>
@@ -40,9 +37,7 @@ export function SuddenlyGiovanni({
 				</AvatarFallback>
 			</Avatar>
 			<h1
-				className={clsx(
-					'my-auto ml-4 select-none font-comic font-comic-hero text-base text-foreground lg:text-base',
-				)}
+				className={clsx('my-auto ml-4 select-none font-comic font-comic-hero text-base text-foreground lg:text-base')}
 			>
 				suddenlyGiovanni
 			</h1>

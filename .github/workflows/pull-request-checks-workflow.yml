@@ -20,11 +20,9 @@ jobs:
       - name: 💅 Format code
         shell: sh
         run: |
-          pnpm --recursive --shell-mode exec biome ci \
+          pnpm --recursive --shell-mode --reporter-hide-prefix exec \
+          biome ci \
           --max-diagnostics=none \
-          --vcs-enabled=true \
-          --vcs-use-ignore-file=true \
-          --vcs-root="../../" \
           --formatter-enabled=true \
           --linter-enabled=false \
           --assist-enabled=true \
@@ -33,15 +31,13 @@ jobs:
       - name: 🚨 Lint code
         shell: sh
         run: |
-          pnpm --recursive --shell-mode exec biome ci \
+          pnpm --recursive --shell-mode --reporter-hide-prefix exec \
+          biome ci \
           --max-diagnostics=none \
-          --vcs-enabled=true \
-          --vcs-use-ignore-file=true \
-          --vcs-root="../../" \
           --formatter-enabled=false \
           --linter-enabled=true \
-          --assist-enabled=false \
-          --reporter=github .
+          --assist-enabled=true \
+          --reporter=github
 
       - name: 🔍 Typecheck code
         continue-on-error: true

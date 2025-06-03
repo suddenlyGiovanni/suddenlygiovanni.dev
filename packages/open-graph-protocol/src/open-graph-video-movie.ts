@@ -19,10 +19,7 @@ export type VideoMovieRecord =
 	| OgVideoMovieReleaseDate
 	| OgVideoMovieTag
 
-type VideoMovieMetaBase<
-	Property extends IPropertyVideoMovie,
-	Content extends Types.Type,
-> = MetaBase<Property, Content>
+type VideoMovieMetaBase<Property extends IPropertyVideoMovie, Content extends Types.Type> = MetaBase<Property, Content>
 
 export type OgTypeVideoMovie = MetaBase<og<'type'>, Types.Enum<video<'movie'>>>
 
@@ -72,8 +69,6 @@ interface OpenGraphVideoMovie extends OpenGraphVideoBase {
 	ogType: Types.Enum<'video.movie'>
 }
 
-export function makeOpenGraphVideoMovie(
-	openGraphVideoMovie: OpenGraphVideoMovie,
-): readonly OpenGraphMeta[] {
+export function makeOpenGraphVideoMovie(openGraphVideoMovie: OpenGraphVideoMovie): readonly OpenGraphMeta[] {
 	return _makeOpenGraphVideoBase(openGraphVideoMovie)
 }

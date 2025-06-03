@@ -61,8 +61,8 @@
 	"private": true,
 	"scripts": {
 		"build-storybook": "storybook build",
-		"check": "biome check .",
-		"check:fix": "biome check --apply .",
+		"check": "biome check --max-diagnostics=none .",
+		"check:fix": "biome check --max-diagnostics=none --write .",
 		"chromatic": "npx chromatic",
 		"clean": "rm -rf node_modules storybook-static",
 		"components-add": "pnpm dlx shadcn-ui@latest add",

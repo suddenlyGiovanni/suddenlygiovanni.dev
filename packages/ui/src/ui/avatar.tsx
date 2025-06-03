@@ -21,16 +21,9 @@ const AvatarImage: FC<ComponentPropsWithRef<typeof Image>> = ({ className, ref, 
 )
 AvatarImage.displayName = Image.displayName
 
-const AvatarFallback: FC<ComponentPropsWithRef<typeof Fallback>> = ({
-	className,
-	ref,
-	...props
-}) => (
+const AvatarFallback: FC<ComponentPropsWithRef<typeof Fallback>> = ({ className, ref, ...props }) => (
 	<Fallback
-		className={clsx(
-			'flex h-full w-full items-center justify-center rounded-full bg-muted',
-			className,
-		)}
+		className={clsx('flex h-full w-full items-center justify-center rounded-full bg-muted', className)}
 		ref={ref}
 		{...props}
 	/>

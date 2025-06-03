@@ -7,8 +7,7 @@ export const meta: Route.MetaFunction = () => {
 	return [
 		{ title: 'Reading Journal' },
 		{
-			content:
-				"My reading journal. A place where I write about the books I'm reading and my thoughts about them.",
+			content: "My reading journal. A place where I write about the books I'm reading and my thoughts about them.",
 			name: 'description',
 		},
 	]

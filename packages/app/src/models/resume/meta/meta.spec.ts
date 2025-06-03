@@ -224,8 +224,6 @@ describe('Meta', () => {
 	})
 
 	test('JSONSchema', async () => {
-		await expect(JSON.stringify(JSONSchema.make(Meta), null, '\t')).toMatchFileSnapshot(
-			'meta-schema.snapshot.json',
-		)
+		await expect(JSON.stringify(JSONSchema.make(Meta), null, '\t')).toMatchFileSnapshot('meta-schema.snapshot.json')
 	})
 })

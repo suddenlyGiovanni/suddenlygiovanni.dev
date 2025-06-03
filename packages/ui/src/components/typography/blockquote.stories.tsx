@@ -14,8 +14,7 @@ const meta: Meta<typeof T.blockquote> = {
 export const Blockquote: StoryObj<typeof meta> = {
 	render: args => (
 		<T.blockquote {...args}>
-			"After all," he said, "everyone enjoys a good joke, so it's only fair that they should pay for
-			the privilege."
+			"After all," he said, "everyone enjoys a good joke, so it's only fair that they should pay for the privilege."
 		</T.blockquote>
 	),
 }

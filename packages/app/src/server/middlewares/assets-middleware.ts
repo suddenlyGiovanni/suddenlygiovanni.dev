@@ -1,10 +1,4 @@
-import {
-	FileSystem,
-	Headers,
-	HttpMiddleware,
-	HttpServerRequest,
-	HttpServerResponse,
-} from '@effect/platform'
+import { FileSystem, Headers, HttpMiddleware, HttpServerRequest, HttpServerResponse } from '@effect/platform'
 import { Effect, Option } from 'effect'
 
 const oneMinute = 60
@@ -153,9 +147,9 @@ export const PublicAssetsMiddleware = HttpMiddleware.make(app =>
 				}
 			}
 
-			const maybeNestedFilePath = Option.fromNullable(
-				nestedFilePathMatcher.exec(url.slice(1)),
-			).pipe(Option.map(regExpExecArray => `build/client/${regExpExecArray[0]}`))
+			const maybeNestedFilePath = Option.fromNullable(nestedFilePathMatcher.exec(url.slice(1))).pipe(
+				Option.map(regExpExecArray => `build/client/${regExpExecArray[0]}`),
+			)
 
 			if (Option.isSome(maybeNestedFilePath)) {
 				const nestedFilePath = Option.getOrThrow(maybeNestedFilePath)

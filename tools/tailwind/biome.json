@@ -1,5 +1,13 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"assist": {
+		"actions": {
+			"source": {
+				"useSortedProperties": "on"
+			}
+		},
+		"enabled": true
+	},
 	"css": {
 		"assist": {
 			"enabled": false
@@ -11,13 +19,34 @@
 			"enabled": true
 		}
 	},
-	"extends": ["../../biome.json"],
+	"extends": "//",
 	"files": {
 		"includes": ["./style.css", "./package.json", "biome.json"]
 	},
-	"json": {
-		"formatter": {
-			"enabled": true
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"a11y": {
+				"recommended": true
+			},
+			"correctness": {
+				"recommended": true
+			},
+			"nursery": {
+				"noImportantStyles": "on",
+				"noUnknownAtRule": "on",
+				"noUselessEscapeInString": "on"
+			},
+			"recommended": true,
+			"style": {
+				"noDescendingSpecificity": "on",
+				"noValueAtRule": "on",
+				"recommended": true
+			},
+			"suspicious": {
+				"recommended": true
+			}
 		}
-	}
+	},
+	"root": false
 }

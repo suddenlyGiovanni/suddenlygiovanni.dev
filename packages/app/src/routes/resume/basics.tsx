@@ -89,9 +89,7 @@ const addressClasses = {
 		'mx-auto my-1 w-auto max-w-max rounded-md rounded-xl bg-card-foreground/5 p-4 shadow-lg ring-1 ring-black/5 backdrop-blur-3xl md:w-full md:max-w-none md:px-0 md:px-24',
 	),
 	li: clsx('mx-auto flex w-full max-w-72 flex-row items-center gap-3 text-start'),
-	ul: clsx(
-		'my-0 ml-0 grid grid-cols-1 pl-0 md:grid-flow-row-dense md:grid-cols-2 md:justify-items-start',
-	),
+	ul: clsx('my-0 ml-0 grid grid-cols-1 pl-0 md:grid-flow-row-dense md:grid-cols-2 md:justify-items-start'),
 }
 
 interface ContactsProps {

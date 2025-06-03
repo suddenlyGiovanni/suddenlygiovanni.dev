@@ -8,9 +8,16 @@
 		},
 		"enabled": true
 	},
-	"extends": ["../../biome.json"],
+	"extends": "//",
+
 	"files": {
 		"ignoreUnknown": false,
 		"includes": ["base.js", "react-internal.js"]
-	}
+	},
+	"linter": {
+		"rules": {
+			"nursery": { "noUnresolvedImports": "off" }
+		}
+	},
+	"root": false
 }

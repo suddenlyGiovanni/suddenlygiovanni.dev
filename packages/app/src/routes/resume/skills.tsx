@@ -85,11 +85,7 @@ function Skill({ name, keywords, value }: ResumeSkill & { readonly value: string
 function KeywordsList({ keywords }: { readonly keywords: ResumeSkill['keywords'] }): ReactElement {
 	return (
 		<AccordionContent asChild={true}>
-			<T.ul
-				className={clsx(
-					'my-0 ml-0 flex list-none flex-row flex-wrap items-start justify-start gap-x-4',
-				)}
-			>
+			<T.ul className={clsx('my-0 ml-0 flex list-none flex-row flex-wrap items-start justify-start gap-x-4')}>
 				{keywords.map(keyword => (
 					<Keyword
 						key={keyword}

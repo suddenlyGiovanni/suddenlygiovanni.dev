@@ -2,15 +2,7 @@ import { makeOpenGraphWebsite, Types } from '@repo/open-graph-protocol'
 import { Layout as _Layout } from '@repo/ui/components/layout/layout.tsx'
 import { clsx } from '@repo/ui/lib/utils.ts'
 import type { ReactElement, ReactNode } from 'react'
-import {
-	Links,
-	Meta,
-	Outlet,
-	Scripts,
-	ScrollRestoration,
-	useLoaderData,
-	useRouteLoaderData,
-} from 'react-router'
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData, useRouteLoaderData } from 'react-router'
 
 import hero2800wAssetUrl from '#root/content/assets/hero/giovanni_ravalico-profile_color_e4cily_c_scale,w_2800.webp'
 import faviconAssertUrl from '#root/content/assets/suddenly_giovanni-icon-white.svg'
@@ -67,6 +59,7 @@ export function meta({ location }: Route.MetaArgs) {
 
 export function loader({ request }: Route.LoaderArgs) {
 	return {
+		// biome-ignore lint/style/useNamingConvention: this is fine here
 		ENV: getEnv(),
 
 		requestInfo: {

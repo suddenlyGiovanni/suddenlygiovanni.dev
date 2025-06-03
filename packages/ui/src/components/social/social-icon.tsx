@@ -18,9 +18,7 @@ const SocialIcon: FC<SocialIconProps> = ({ network, ref, ...props }: SocialIconP
 	const Icon = IconMap.get(network)
 	if (!Icon) {
 		throw new Error(
-			`Couldn't find key "${network}" in the IconMap. Available keys are: [${Array.from(
-				IconMap.keys(),
-			)
+			`Couldn't find key "${network}" in the IconMap. Available keys are: [${Array.from(IconMap.keys())
 				.map(value => `"${value}"`)
 				.join(', ')}]`,
 		)

@@ -1,39 +1,18 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
-	"extends": ["../../biome.json"],
+	"extends": "//",
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["src/**", "!~", "!.react-router"]
+		"includes": ["src/**", "!~", ".react-router"]
 	},
 	"linter": {
 		"rules": {
+			"complexity": {
+				"noArguments": "error",
+				"noCommaOperator": "error"
+			},
 			"nursery": {
 				"noSecrets": "off"
-			},
-			"style": {
-				"noArguments": "error",
-				"noCommaOperator": "error",
-				"noDefaultExport": "off",
-				"noInferrableTypes": "error",
-				"noNamespace": "off",
-				"noNonNullAssertion": "error",
-				"noParameterAssign": "error",
-				"noUnusedTemplateLiteral": "error",
-				"noUselessElse": "error",
-				"useAsConstAssertion": "error",
-				"useConst": "error",
-				"useDefaultParameterLast": "error",
-				"useEnumInitializers": "error",
-				"useExponentiationOperator": "error",
-				"useExportType": "error",
-				"useImportType": "error",
-				"useLiteralEnumMembers": "error",
-				"useNodejsImportProtocol": "error",
-				"useNumberNamespace": "error",
-				"useSelfClosingElements": "error",
-				"useShorthandFunctionType": "error",
-				"useSingleVarDeclarator": "error",
-				"useTemplate": "error"
 			},
 			"suspicious": {
 				"noReactSpecificProps": "off"
@@ -41,41 +20,6 @@
 		}
 	},
 	"overrides": [
-		{
-			"includes": ["src/server/**/*.ts"],
-			"linter": {
-				"rules": {
-					"correctness": {
-						"noNodejsModules": "off"
-					},
-					"nursery": {
-						"noSecrets": "off",
-						"useExplicitType": "off"
-					},
-					"style": {
-						"useNamingConvention": "info"
-					},
-					"suspicious": {
-						"noConsole": {
-							"level": "off",
-							"options": {
-								"allow": ["log"]
-							}
-						}
-					}
-				}
-			}
-		},
-		{
-			"includes": ["src/routes/**/*.tsx"],
-			"linter": {
-				"rules": {
-					"style": {
-						"noDefaultExport": "off"
-					}
-				}
-			}
-		},
 		{
 			"assist": {
 				"enabled": false
@@ -85,5 +29,6 @@
 			},
 			"includes": ["src/**/*.snapshot.json"]
 		}
-	]
+	],
+	"root": false
 }

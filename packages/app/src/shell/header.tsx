@@ -37,11 +37,7 @@ export function Header({ theme }: { theme: 'light' | 'dark' | null }): ReactElem
 				'sticky top-0 z-10 w-full overflow-x-clip border-border/40 border-b bg-background/95 py-2 shadow-sm backdrop-blur-sm supports-backdrop-filter:bg-background/60',
 			])}
 		>
-			<div
-				className={clsx([
-					'container relative flex max-w-4xl flex-row items-center justify-between',
-				])}
-			>
+			<div className={clsx(['container relative flex max-w-4xl flex-row items-center justify-between'])}>
 				<SuddenlyGiovanni
 					ariaLabel={routesRecord['about-me'].description}
 					hrefUrl={avatarAssetUrl}

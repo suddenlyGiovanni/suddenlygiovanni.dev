@@ -10,21 +10,16 @@ export const badgeVariants = cva(
 		},
 		variants: {
 			variant: {
-				default:
-					'border-transparent bg-primary text-primary-foreground shadow-sm hover:bg-primary/80',
-				destructive:
-					'border-transparent bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/80',
+				default: 'border-transparent bg-primary text-primary-foreground shadow-sm hover:bg-primary/80',
+				destructive: 'border-transparent bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/80',
 				outline: 'text-foreground',
-				secondary:
-					'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
+				secondary: 'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
 			},
 		},
 	},
 )
 
-export interface BadgeProps
-	extends ComponentPropsWithRef<'div'>,
-		VariantProps<typeof badgeVariants> {}
+export interface BadgeProps extends ComponentPropsWithRef<'div'>, VariantProps<typeof badgeVariants> {}
 
 export const Badge: FC<BadgeProps> = ({ className, variant, ref, ...props }) => (
 	<div

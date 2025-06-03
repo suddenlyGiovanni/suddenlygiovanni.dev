@@ -7,9 +7,7 @@ export interface OpenGraphVideoBase extends OpenGraphBaseWithOptional {
 	ogType: Types.Enum<'video.movie' | 'video.episode' | 'video.tv_show' | 'video.other'>
 
 	/** Actors in the movie/episode/tv-show/other and the role they played. */
-	ogVideoActorAndRole?:
-		| { actor: Types.URL; role?: Types.String }
-		| readonly { actor: Types.URL; role?: Types.String }[]
+	ogVideoActorAndRole?: { actor: Types.URL; role?: Types.String } | readonly { actor: Types.URL; role?: Types.String }[]
 
 	/**
 	 * Directors of the movie/episode/tv-show/other.
@@ -42,9 +40,7 @@ export interface OpenGraphVideoBase extends OpenGraphBaseWithOptional {
 	ogVideoTag?: Types.String | readonly Types.String[]
 }
 
-export function _makeOpenGraphVideoBase(
-	openGraphVideoBase: OpenGraphVideoBase,
-): readonly OpenGraphMeta[] {
+export function _makeOpenGraphVideoBase(openGraphVideoBase: OpenGraphVideoBase): readonly OpenGraphMeta[] {
 	return [
 		// BASIC_METADATA!
 		...makeOpenGraphBase(openGraphVideoBase),
@@ -57,10 +53,7 @@ export function _makeOpenGraphVideoBase(
 					])
 				: [
 						makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_ACTOR, ogVideoActorAndRole.actor),
-						...insertIf(
-							ogVideoActorAndRole.role,
-							makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_ACTOR_ROLE),
-						),
+						...insertIf(ogVideoActorAndRole.role, makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_ACTOR_ROLE)),
 					],
 		).flat(2),
 
@@ -80,17 +73,11 @@ export function _makeOpenGraphVideoBase(
 
 		// DURATION?
 		...insertIf(openGraphVideoBase.ogVideoDuration, ogVideoDuration =>
-			makeOpenGraphMeta(
-				PropertyVideoBase.OG_VIDEO_DURATION,
-				Types.Integer(Math.round(ogVideoDuration)),
-			),
+			makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_DURATION, Types.Integer(Math.round(ogVideoDuration))),
 		),
 
 		// RELEASE_DATE?
-		...insertIf(
-			openGraphVideoBase.ogVideoReleaseDate,
-			makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_RELEASE_DATE),
-		),
+		...insertIf(openGraphVideoBase.ogVideoReleaseDate, makeOpenGraphMeta(PropertyVideoBase.OG_VIDEO_RELEASE_DATE)),
 
 		// TAGS?
 		...insertIf(openGraphVideoBase.ogVideoTag, ogVideoTag =>

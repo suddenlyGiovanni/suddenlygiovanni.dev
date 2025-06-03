@@ -1,16 +1,21 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
-	"extends": ["../../biome.json"],
+	"extends": "//",
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["src/*", "!~", "!**/node_modules/**"]
+		"includes": ["src/**"]
 	},
 	"linter": {
 		"rules": {
-			"a11y": {},
+			"complexity": {
+				"noArguments": "error",
+				"noCommaOperator": "error"
+			},
 			"nursery": {
 				"noSecrets": "off",
-				"useExplicitType": "info",
+				"useExplicitType": {
+					"level": "info"
+				},
 				"useSortedClasses": {
 					"fix": "safe",
 					"level": "warn",
@@ -23,29 +28,6 @@
 			"performance": {
 				"noBarrelFile": "off"
 			},
-			"style": {
-				"noArguments": "error",
-				"noCommaOperator": "error",
-				"noInferrableTypes": "error",
-				"noNonNullAssertion": "error",
-				"noParameterAssign": "error",
-				"noUnusedTemplateLiteral": "error",
-				"noUselessElse": "error",
-				"useAsConstAssertion": "error",
-				"useConst": "error",
-				"useDefaultParameterLast": "error",
-				"useEnumInitializers": "error",
-				"useExponentiationOperator": "error",
-				"useExportType": "error",
-				"useImportType": "error",
-				"useLiteralEnumMembers": "error",
-				"useNodejsImportProtocol": "error",
-				"useNumberNamespace": "error",
-				"useSelfClosingElements": "error",
-				"useShorthandFunctionType": "error",
-				"useSingleVarDeclarator": "error",
-				"useTemplate": "error"
-			},
 			"suspicious": {
 				"noReactSpecificProps": "off"
 			}
@@ -53,7 +35,7 @@
 	},
 	"overrides": [
 		{
-			"includes": ["src/**/*.stories.tsx", "!**/node_modules/**"],
+			"includes": ["src/**/*.stories.tsx"],
 			"linter": {
 				"rules": {
 					"nursery": {},
@@ -63,5 +45,6 @@
 				}
 			}
 		}
-	]
+	],
+	"root": false
 }

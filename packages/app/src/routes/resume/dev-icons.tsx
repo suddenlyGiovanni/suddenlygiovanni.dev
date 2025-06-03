@@ -533,9 +533,7 @@ export function getDevIconComponent<T extends keyof typeof DevIconRecord | (stri
 	}
 	let longestMatchingKey: Option.Option<IconKey> = Option.none()
 	if (matchingKeys.size > 0) {
-		longestMatchingKey = Option.some(
-			Array.from(matchingKeys).reduce((a, b) => (a.length > b.length ? a : b)),
-		)
+		longestMatchingKey = Option.some(Array.from(matchingKeys).reduce((a, b) => (a.length > b.length ? a : b)))
 	}
 
 	return Option.map(longestMatchingKey, key => DevIconRecord[key])

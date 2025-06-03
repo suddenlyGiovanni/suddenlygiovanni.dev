@@ -1,8 +1,5 @@
 import * as Api from '@octokit/core'
-import {
-	type RestEndpointMethodTypes,
-	restEndpointMethods,
-} from '@octokit/plugin-rest-endpoint-methods'
+import { type RestEndpointMethodTypes, restEndpointMethods } from '@octokit/plugin-rest-endpoint-methods'
 import { Config, Effect, Option, Redacted, Schema } from 'effect'
 
 import type { Simplify } from '#root/types/helpers.ts'
@@ -11,9 +8,7 @@ export class OctokitError extends Schema.TaggedError<OctokitError>()('OctokitErr
 	cause: Schema.Defect,
 }) {}
 
-export type GetContentResponse = Simplify<
-	RestEndpointMethodTypes['repos']['getContent']['response']
->
+export type GetContentResponse = Simplify<RestEndpointMethodTypes['repos']['getContent']['response']>
 
 type GetContent = (
 	this: Octokit,
@@ -32,9 +27,7 @@ export class Octokit extends Effect.Service<Octokit>()('app/services/Octokit', {
 		})
 
 		const use = Effect.fn('Octokit.use')(
-			<A>(
-				f: (client: typeof octokitApi, signal: AbortSignal) => Promise<A>,
-			): Effect.Effect<A, OctokitError> =>
+			<A>(f: (client: typeof octokitApi, signal: AbortSignal) => Promise<A>): Effect.Effect<A, OctokitError> =>
 				Effect.tryPromise({
 					catch: cause => new OctokitError({ cause }),
 					try: signal => f(octokitApi, signal),

@@ -35,10 +35,7 @@ export type ArticleRecord =
 	| OgArticleSection
 	| OgArticleTag
 
-type ArticleMetaBase<Property extends IPropertyArticle, Content extends Types.Type> = MetaBase<
-	Property,
-	Content
->
+type ArticleMetaBase<Property extends IPropertyArticle, Content extends Types.Type> = MetaBase<Property, Content>
 
 /**
  * This object represents an article on a website. It is the preferred type for blog posts and news stories.
@@ -120,16 +117,10 @@ export function makeOpenGraphArticle(openGraphArticle: OpenGraphArticle): readon
 		...makeOpenGraphBase(openGraphArticle),
 
 		// PUBLISHED_TIME?
-		...insertIf(
-			openGraphArticle.ogArticlePublishedTime,
-			makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_PUBLISHED_TIME),
-		),
+		...insertIf(openGraphArticle.ogArticlePublishedTime, makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_PUBLISHED_TIME)),
 
 		// MODIFIED_TIME?
-		...insertIf(
-			openGraphArticle.ogArticleModifiedTime,
-			makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_MODIFIED_TIME),
-		),
+		...insertIf(openGraphArticle.ogArticleModifiedTime, makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_MODIFIED_TIME)),
 
 		// EXPIRATION_TIME?
 		...insertIf(
@@ -149,10 +140,7 @@ export function makeOpenGraphArticle(openGraphArticle: OpenGraphArticle): readon
 		}).flat(2),
 
 		// SECTION?
-		...insertIf(
-			openGraphArticle.ogArticleSection,
-			makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_SECTION),
-		),
+		...insertIf(openGraphArticle.ogArticleSection, makeOpenGraphMeta(PropertyArticle.OG_ARTICLE_SECTION)),
 
 		// TAG?
 		...insertIf(openGraphArticle.ogArticleTag, ogArticleTag =>

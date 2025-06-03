@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useNamingConvention: we do not want to enforce this for this file. */
 import { createServer } from 'node:http'
 
 import { HttpMiddleware, HttpRouter, HttpServer, HttpServerResponse } from '@effect/platform'
@@ -21,9 +22,7 @@ const HttpLive = ConfigService.pipe(
 						'*',
 						Effect.promise(() => {
 							// @ts-expect-error - This is a dynamic import of build stuff
-							return import('../../build/server/index.js') as Promise<
-								typeof import('./handler/handler.ts')
-							>
+							return import('../../build/server/index.js') as Promise<typeof import('./handler/handler.ts')>
 						}).pipe(Effect.flatMap(module => module.handler)),
 					),
 

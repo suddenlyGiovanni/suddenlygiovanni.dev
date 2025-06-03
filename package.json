@@ -21,13 +21,7 @@
 		"node": ">=24"
 	},
 	"pnpm": {
-		"onlyBuiltDependencies": [
-			"@biomejs/biome",
-			"@parcel/watcher",
-			"esbuild",
-			"msgpackr-extract",
-			"msw"
-		],
+		"onlyBuiltDependencies": ["@biomejs/biome", "@parcel/watcher", "esbuild", "msgpackr-extract", "msw"],
 		"overrides": {
 			"@types/react": "catalog:types",
 			"react": "catalog:frontend",
