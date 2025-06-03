@@ -3,7 +3,7 @@
 	"extends": "//",
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["src/**", "!~", "!.react-router"]
+		"includes": ["src/**", "!~", ".react-router"]
 	},
 	"linter": {
 		"rules": {

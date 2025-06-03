@@ -119,6 +119,7 @@
 				"recommended": true
 			},
 			"nursery": {
+				"noUnresolvedImports": "off",
 				"recommended": true
 			},
 			"performance": {
@@ -129,7 +130,8 @@
 				"recommended": true
 			},
 			"style": {
-				"recommended": true
+				"recommended": true,
+				"useNamingConvention": "info"
 			},
 			"suspicious": {
 				"recommended": true

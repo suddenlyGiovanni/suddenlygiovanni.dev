@@ -16,6 +16,7 @@
 	},
 	"linter": {
 		"rules": {
+			"nursery": {"noUnresolvedImports": "off"},
 			"style": {
 				"noInferrableTypes": "error",
 				"noParameterAssign": "error",
