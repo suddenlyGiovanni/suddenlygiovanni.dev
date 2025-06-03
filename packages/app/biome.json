@@ -14,29 +14,6 @@
 			"nursery": {
 				"noSecrets": "off"
 			},
-			"style": {
-				"noDefaultExport": "off",
-				"noInferrableTypes": "error",
-				"noNamespace": "off",
-				"noNonNullAssertion": "error",
-				"noParameterAssign": "error",
-				"noUnusedTemplateLiteral": "error",
-				"noUselessElse": "error",
-				"useAsConstAssertion": "error",
-				"useConst": "error",
-				"useDefaultParameterLast": "error",
-				"useEnumInitializers": "error",
-				"useExponentiationOperator": "error",
-				"useExportType": "error",
-				"useImportType": "error",
-				"useLiteralEnumMembers": "error",
-				"useNodejsImportProtocol": "error",
-				"useNumberNamespace": "error",
-				"useSelfClosingElements": "error",
-				"useShorthandFunctionType": "error",
-				"useSingleVarDeclarator": "error",
-				"useTemplate": "error"
-			},
 			"suspicious": {
 				"noReactSpecificProps": "off"
 			}
