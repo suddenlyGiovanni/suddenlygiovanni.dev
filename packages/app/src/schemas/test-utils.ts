@@ -45,6 +45,7 @@ export const expectEncodeFailure = async <A, I>(
 	options?: ParseOptions,
 ): Promise<void> => expectFailure(Schema.encode(schema)(a, options), message)
 
+// biome-ignore lint/style/useNamingConvention: this is for Abstract Syntax Tree
 export const printAST = <A, I, R>(schema: Schema.Schema<A, I, R>): void => {
 	console.log('%o', schema.ast)
 }
@@ -56,7 +57,7 @@ export const expectFailure = async <A>(
 	if (Either.isEither(effect)) {
 		expectEitherLeft(effect, message)
 	} else {
-		expectEffectFailure(effect, message)
+		await expectEffectFailure(effect, message)
 	}
 }
 
@@ -64,7 +65,7 @@ export const expectSuccess = async <E, A>(effect: Either.Either<A, E> | Effect.E
 	if (Either.isEither(effect)) {
 		expectEitherRight(effect, a)
 	} else {
-		expectEffectSuccess(effect, a)
+		await expectEffectSuccess(effect, a)
 	}
 }
 
