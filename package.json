@@ -40,7 +40,7 @@
 		"format": "pnpm run --recursive --parallel --aggregate-output format",
 		"format:write": "pnpm run --recursive --parallel --aggregate-output format:write",
 		"lint": "pnpm run --recursive --parallel --aggregate-output lint",
-		"test": "pnpm run --recursive test run",
+		"test": "vitest run",
 		"typecheck": "pnpm run --recursive typecheck",
 		"typecheck:watch": "pnpm run --recursive --stream typecheck --watch --preserveWatchOutput"
 	}
