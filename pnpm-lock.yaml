@@ -355,7 +355,7 @@ importers:
         version: 7.26.0(@babel/core@7.26.10)
       '@codecov/vite-plugin':
         specifier: catalog:build
-        version: 1.9.1(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
+        version: 1.9.1(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
       '@effect/language-service':
         specifier: catalog:typescript
         version: 0.17.1
@@ -370,7 +370,7 @@ importers:
         version: 25.1.0
       '@react-router/dev':
         specifier: catalog:backend
-        version: 7.6.2(@types/node@22.15.29)(babel-plugin-macros@3.1.0)(esbuild@0.25.3)(jiti@2.4.2)(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3)
+        version: 7.6.2(@types/node@22.15.29)(babel-plugin-macros@3.1.0)(esbuild@0.25.3)(jiti@2.4.2)(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3)
       '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../tools/eslint-config
@@ -379,7 +379,7 @@ importers:
         version: link:../../tools/typescript
       '@tailwindcss/vite':
         specifier: catalog:build
-        version: 4.1.8(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
+        version: 4.1.8(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
       '@total-typescript/ts-reset':
         specifier: catalog:types
         version: 0.6.1
@@ -415,19 +415,19 @@ importers:
         version: 2.7.6(@types/node@22.15.29)(typescript@5.8.3)
       react-router-devtools:
         specifier: catalog:build
-        version: 5.0.5(@types/react-dom@19.1.3(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
+        version: 5.0.5(@types/react-dom@19.1.3(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
       tailwindcss:
         specifier: catalog:frontend
         version: 4.1.8
       vite:
         specifier: npm:rolldown-vite@latest
-        version: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+        version: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
       vite-plugin-babel:
         specifier: catalog:build
-        version: 1.3.1(@babel/core@7.26.10)(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
+        version: 1.3.1(@babel/core@7.26.10)(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
       vite-tsconfig-paths:
         specifier: catalog:build
-        version: 5.1.4(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3)
+        version: 5.1.4(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3)
       vitest:
         specifier: catalog:test
         version: 3.2.1(@types/debug@4.1.12)(@types/node@22.15.29)(@vitest/ui@3.2.1)(esbuild@0.25.3)(jiti@2.4.2)(msw@2.7.6(@types/node@22.15.29)(typescript@5.8.3))
@@ -525,10 +525,10 @@ importers:
         version: 9.1.0-alpha.2(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))
       '@storybook/react-vite':
         specifier: catalog:storybook
-        version: 9.1.0-alpha.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(rollup@4.40.0)(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))(typescript@5.8.3)
+        version: 9.1.0-alpha.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(rollup@4.40.0)(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))(typescript@5.8.3)
       '@tailwindcss/vite':
         specifier: catalog:build
-        version: 4.1.8(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
+        version: 4.1.8(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
       '@total-typescript/ts-reset':
         specifier: catalog:types
         version: 0.6.1
@@ -540,7 +540,7 @@ importers:
         version: 19.1.3(@types/react@19.1.6)
       '@vitejs/plugin-react':
         specifier: catalog:build
-        version: 4.5.1(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
+        version: 4.5.1(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))
       babel-plugin-react-compiler:
         specifier: catalog:build
         version: 19.1.0-rc.1
@@ -564,7 +564,7 @@ importers:
         version: 4.1.8
       vite:
         specifier: npm:rolldown-vite@latest
-        version: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+        version: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
       vitest:
         specifier: catalog:test
         version: 3.2.1(@types/debug@4.1.12)(@types/node@22.15.29)(@vitest/ui@3.2.1)(esbuild@0.25.3)(jiti@2.4.2)(msw@2.7.6(@types/node@22.15.29)(typescript@5.8.3))
@@ -2804,8 +2804,18 @@ packages:
     cpu: [arm64]
     os: [darwin]
 
+  '@rolldown/binding-darwin-arm64@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-0uIJQ0tf/2vOWMD9E0+4ixA8ZaRr3BiAXGZSDtpmTwgqEQfc2XiItL8c0mKfhwxyJtFsbo5vukgBm2Atnpu90A==}
+    cpu: [arm64]
+    os: [darwin]
+
   '@rolldown/binding-darwin-x64@1.0.0-beta.10-commit.174c548':
     resolution: {integrity: sha512-CVh4x4iwQLgWAQFODhX5Sx5wZTdKSlshZ9WXo1rPV+LNUPjEn1AZdpX6WI9mIF+9qXfOq+Rs1OgqHqA/B286ng==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@rolldown/binding-darwin-x64@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-OjpJo/ygwmsUh3GKB9BcnmroTzMlEvXfFLxk5sTvktCeUwFMOlBr4lWZSCPqMhmOSmORtsHoXZvI58YG+eeG3Q==}
     cpu: [x64]
     os: [darwin]
 
@@ -2814,8 +2824,18 @@ packages:
     cpu: [x64]
     os: [freebsd]
 
+  '@rolldown/binding-freebsd-x64@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-IS5CD+Wt0WQaxz4YKbWRivRORrJ1gyHtXTz11oTJpgTCLl5Fa7tIW+gvvzj4fdTV3NIOLbI+lZJn9vjLMww/ZQ==}
+    cpu: [x64]
+    os: [freebsd]
+
   '@rolldown/binding-linux-arm-gnueabihf@1.0.0-beta.10-commit.174c548':
     resolution: {integrity: sha512-YUBvJl+ffMguQBoy03vk7u8+0vUqKA5T39Mw1VPwqNKyluTzIOvIEXzM6rPib2RrSvs0eY48TTbV6bee9Ruh9A==}
+    cpu: [arm]
+    os: [linux]
+
+  '@rolldown/binding-linux-arm-gnueabihf@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-pxr+tBppnTQcI+aiiQR9qQKPL9A8X9JSMg7J3egH2AS6rEaHnEGwpCozgJoFIVoXD26CL97uM5O6f1Dg9JdB8g==}
     cpu: [arm]
     os: [linux]
 
@@ -2824,8 +2844,18 @@ packages:
     cpu: [arm64]
     os: [linux]
 
+  '@rolldown/binding-linux-arm64-gnu@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-gi58Y7/s5nra8irQhAN5MxOo6WkroYf8T+HIrFiZD1aSB7zhpq4phsC02erXu/iFBygJOtgiFpfvnSwsaezKxg==}
+    cpu: [arm64]
+    os: [linux]
+
   '@rolldown/binding-linux-arm64-musl@1.0.0-beta.10-commit.174c548':
     resolution: {integrity: sha512-e3jRs4+S79cnM7nksMIo2vrIgDIgAA5sdXOmK7R7qMWBsjSQX/i59XoIZlb+6LX5DvrGFDCzgqzfe5qX/s7BHw==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@rolldown/binding-linux-arm64-musl@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-kut+Li7aNrduUV6poJaIY0h6ruOYUARkckOw6yRuqP0dGvc0rvrfBelPIqtGsIBsNf6X1GCpGYzSJ0m3hIqvNw==}
     cpu: [arm64]
     os: [linux]
 
@@ -2834,8 +2864,18 @@ packages:
     cpu: [x64]
     os: [linux]
 
+  '@rolldown/binding-linux-x64-gnu@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-mCgpKgTiARn3jSgsCNI34c/gTeD69qFgu914CGllAuggD0n6BEezBcz5/ee/NQl2AKapcGCH+04EYHsu8ikPxg==}
+    cpu: [x64]
+    os: [linux]
+
   '@rolldown/binding-linux-x64-musl@1.0.0-beta.10-commit.174c548':
     resolution: {integrity: sha512-giMW/lKHOfrLWHr2qICPFWEGzMROFboh8CZxDSQjIEPCwzfENQxRgJpJdkdA/RdKuqk2AqwfW4qfE7deTPy+IA==}
+    cpu: [x64]
+    os: [linux]
+
+  '@rolldown/binding-linux-x64-musl@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-k34HW5JbtzeNDHyiFiZoyfcJp5FO7e6l7H3hQTiWv2qfKA3P++x60ZhPSSKlF8/JCKuzLFDzLV84I17OQPBN3w==}
     cpu: [x64]
     os: [linux]
 
@@ -2844,8 +2884,18 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [wasm32]
 
+  '@rolldown/binding-wasm32-wasi@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-Saygp82Na+oBhs/Zra5WMuUg5p7bQNzcbBk9jDldeHU0E/B/SyZFIPmsnYUcFtVt370bK5EYBQxNLNIdEo3cYg==}
+    engines: {node: '>=14.21.3'}
+    cpu: [wasm32]
+
   '@rolldown/binding-win32-arm64-msvc@1.0.0-beta.10-commit.174c548':
     resolution: {integrity: sha512-uHEL13Ey9Q8FWufCc0HlvzDLYxdXyqIxV+ngbsWYkC/sbhdPU28EEl39pM4t3yQZpIVeYYRfcSLApV5OyxeWvA==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@rolldown/binding-win32-arm64-msvc@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-WkuDNTUW/EDuwYOYMbIM6kqe2VS/H1g8+UEdo3uDYz2Hg3BYTKu4tr7+BJgUtuFS+KNqgk59jS2YkQfXw07Eaw==}
     cpu: [arm64]
     os: [win32]
 
@@ -2854,13 +2904,26 @@ packages:
     cpu: [ia32]
     os: [win32]
 
+  '@rolldown/binding-win32-ia32-msvc@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-TDImDdCct8wqLNoegIEI1KHAamXcewAPRz+jfd1BTFAIkDs43mVgTUBwN9eU+z2a3Ny+AkBGkwZ971010eARhw==}
+    cpu: [ia32]
+    os: [win32]
+
   '@rolldown/binding-win32-x64-msvc@1.0.0-beta.10-commit.174c548':
     resolution: {integrity: sha512-GBkOvOJk0x9RreZK8AONpFJMjvEK4kGH2k+AVGdvXb97GC+3y7iQkuxPZ9SeXqbVg76lwiGKbEJcSftLSS3TFg==}
     cpu: [x64]
     os: [win32]
 
+  '@rolldown/binding-win32-x64-msvc@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-kD4TBzy2B2uAYuQNB0s7jpKL82NxOMYSjq5RAH2aJ9Q1LURoDs4/Aj2qtO7d9e9OuKDTzEdwXHEGRE1O67WQ5A==}
+    cpu: [x64]
+    os: [win32]
+
   '@rolldown/pluginutils@1.0.0-beta.10-commit.174c548':
     resolution: {integrity: sha512-KPEn79vaz3R6/jQGWsGVpOYnZT1Ro+fDRC63JEtbskHGzg650ZQk/+ou9v6g2GZmIEy42zTSsCACCzd2v4xFmw==}
+
+  '@rolldown/pluginutils@1.0.0-beta.11-commit.83d4d62':
+    resolution: {integrity: sha512-1sT61QX+bwpzomBhzHDrHPVHWfSe39n5TAQgMzbMnB5aVhxhveHsh/LqLBm406sreHL2qLhYaluSTQyyAHpODg==}
 
   '@rolldown/pluginutils@1.0.0-beta.9':
     resolution: {integrity: sha512-e9MeMtVWo186sgvFFJOPGy7/d2j2mZhLJIdVW0C/xDluuOvymEATqz6zKsP0ZmXGzQtqlyjz5sC1sYQUoJG98w==}
@@ -5564,8 +5627,52 @@ packages:
       yaml:
         optional: true
 
+  rolldown-vite@6.3.17:
+    resolution: {integrity: sha512-V4SuOZMs2050JyKhY7e4ZrD5ZqQsRje1gHUYfvX5DM7u0FiiZ5AxtTg41TKC9o0bqrmen28A6C+8kUeEJ0TWYA==}
+    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
+    hasBin: true
+    peerDependencies:
+      '@types/node': ^18.0.0 || ^20.0.0 || >=22.0.0
+      esbuild: ^0.25.0
+      jiti: '>=1.21.0'
+      less: '*'
+      sass: '*'
+      sass-embedded: '*'
+      stylus: '*'
+      sugarss: '*'
+      terser: ^5.16.0
+      tsx: ^4.8.1
+      yaml: ^2.4.2
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      esbuild:
+        optional: true
+      jiti:
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      sass-embedded:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
+      tsx:
+        optional: true
+      yaml:
+        optional: true
+
   rolldown@1.0.0-beta.10-commit.174c548:
     resolution: {integrity: sha512-8kwmcwQILDPAcOhwVxaEjec5gTMTx34JTBrQ1BNj8sFiVCRc7ovmpeKbdEqcMgAtfYqo4w32ruu098ot2I6enQ==}
+    hasBin: true
+
+  rolldown@1.0.0-beta.11-commit.83d4d62:
+    resolution: {integrity: sha512-DkoEASMEJItNFA/90voQ21dq/7p/sFrmQiQpaOrlFQtH6p+rSkHyMgITcFLkKBtRaMzbq1McU6c/D9UbVOExEQ==}
     hasBin: true
 
   rollup@4.40.0:
@@ -6603,11 +6710,11 @@ snapshots:
       unplugin: 1.16.1
       zod: 3.24.3
 
-  '@codecov/vite-plugin@1.9.1(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))':
+  '@codecov/vite-plugin@1.9.1(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))':
     dependencies:
       '@codecov/bundler-plugin-core': 1.9.1
       unplugin: 1.16.1
-      vite: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+      vite: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
 
   '@conform-to/dom@1.2.2': {}
 
@@ -7014,12 +7121,12 @@ snapshots:
 
   '@istanbuljs/schema@0.1.3': {}
 
-  '@joshwooding/vite-plugin-react-docgen-typescript@0.6.0(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3)':
+  '@joshwooding/vite-plugin-react-docgen-typescript@0.6.0(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
       glob: 10.4.5
       magic-string: 0.30.17
       react-docgen-typescript: 2.2.2(typescript@5.8.3)
-      vite: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+      vite: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
     optionalDependencies:
       typescript: 5.8.3
 
@@ -8513,7 +8620,7 @@ snapshots:
       react: 19.1.0
       react-dom: 19.1.0(react@19.1.0)
 
-  '@react-router/dev@7.6.2(@types/node@22.15.29)(babel-plugin-macros@3.1.0)(esbuild@0.25.3)(jiti@2.4.2)(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3)':
+  '@react-router/dev@7.6.2(@types/node@22.15.29)(babel-plugin-macros@3.1.0)(esbuild@0.25.3)(jiti@2.4.2)(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/generator': 7.27.1
@@ -8542,7 +8649,7 @@ snapshots:
       semver: 7.7.1
       set-cookie-parser: 2.7.1
       valibot: 0.41.0(typescript@5.8.3)
-      vite: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+      vite: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
       vite-node: 3.2.1(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
     optionalDependencies:
       typescript: 5.8.3
@@ -8985,25 +9092,49 @@ snapshots:
   '@rolldown/binding-darwin-arm64@1.0.0-beta.10-commit.174c548':
     optional: true
 
+  '@rolldown/binding-darwin-arm64@1.0.0-beta.11-commit.83d4d62':
+    optional: true
+
   '@rolldown/binding-darwin-x64@1.0.0-beta.10-commit.174c548':
+    optional: true
+
+  '@rolldown/binding-darwin-x64@1.0.0-beta.11-commit.83d4d62':
     optional: true
 
   '@rolldown/binding-freebsd-x64@1.0.0-beta.10-commit.174c548':
     optional: true
 
+  '@rolldown/binding-freebsd-x64@1.0.0-beta.11-commit.83d4d62':
+    optional: true
+
   '@rolldown/binding-linux-arm-gnueabihf@1.0.0-beta.10-commit.174c548':
+    optional: true
+
+  '@rolldown/binding-linux-arm-gnueabihf@1.0.0-beta.11-commit.83d4d62':
     optional: true
 
   '@rolldown/binding-linux-arm64-gnu@1.0.0-beta.10-commit.174c548':
     optional: true
 
+  '@rolldown/binding-linux-arm64-gnu@1.0.0-beta.11-commit.83d4d62':
+    optional: true
+
   '@rolldown/binding-linux-arm64-musl@1.0.0-beta.10-commit.174c548':
+    optional: true
+
+  '@rolldown/binding-linux-arm64-musl@1.0.0-beta.11-commit.83d4d62':
     optional: true
 
   '@rolldown/binding-linux-x64-gnu@1.0.0-beta.10-commit.174c548':
     optional: true
 
+  '@rolldown/binding-linux-x64-gnu@1.0.0-beta.11-commit.83d4d62':
+    optional: true
+
   '@rolldown/binding-linux-x64-musl@1.0.0-beta.10-commit.174c548':
+    optional: true
+
+  '@rolldown/binding-linux-x64-musl@1.0.0-beta.11-commit.83d4d62':
     optional: true
 
   '@rolldown/binding-wasm32-wasi@1.0.0-beta.10-commit.174c548':
@@ -9011,16 +9142,32 @@ snapshots:
       '@napi-rs/wasm-runtime': 0.2.10
     optional: true
 
+  '@rolldown/binding-wasm32-wasi@1.0.0-beta.11-commit.83d4d62':
+    dependencies:
+      '@napi-rs/wasm-runtime': 0.2.10
+    optional: true
+
   '@rolldown/binding-win32-arm64-msvc@1.0.0-beta.10-commit.174c548':
+    optional: true
+
+  '@rolldown/binding-win32-arm64-msvc@1.0.0-beta.11-commit.83d4d62':
     optional: true
 
   '@rolldown/binding-win32-ia32-msvc@1.0.0-beta.10-commit.174c548':
     optional: true
 
+  '@rolldown/binding-win32-ia32-msvc@1.0.0-beta.11-commit.83d4d62':
+    optional: true
+
   '@rolldown/binding-win32-x64-msvc@1.0.0-beta.10-commit.174c548':
     optional: true
 
+  '@rolldown/binding-win32-x64-msvc@1.0.0-beta.11-commit.83d4d62':
+    optional: true
+
   '@rolldown/pluginutils@1.0.0-beta.10-commit.174c548': {}
+
+  '@rolldown/pluginutils@1.0.0-beta.11-commit.83d4d62': {}
 
   '@rolldown/pluginutils@1.0.0-beta.9': {}
 
@@ -9129,12 +9276,12 @@ snapshots:
       storybook: 9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8)
       ts-dedent: 2.2.0
 
-  '@storybook/builder-vite@9.1.0-alpha.2(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))':
+  '@storybook/builder-vite@9.1.0-alpha.2(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))':
     dependencies:
       '@storybook/csf-plugin': 9.1.0-alpha.2(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))
       storybook: 9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8)
       ts-dedent: 2.2.0
-      vite: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+      vite: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
 
   '@storybook/csf-plugin@9.1.0-alpha.2(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))':
     dependencies:
@@ -9158,11 +9305,11 @@ snapshots:
       react-dom: 19.1.0(react@19.1.0)
       storybook: 9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8)
 
-  '@storybook/react-vite@9.1.0-alpha.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(rollup@4.40.0)(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))(typescript@5.8.3)':
+  '@storybook/react-vite@9.1.0-alpha.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(rollup@4.40.0)(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))(typescript@5.8.3)':
     dependencies:
-      '@joshwooding/vite-plugin-react-docgen-typescript': 0.6.0(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3)
+      '@joshwooding/vite-plugin-react-docgen-typescript': 0.6.0(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3)
       '@rollup/pluginutils': 5.1.4(rollup@4.40.0)
-      '@storybook/builder-vite': 9.1.0-alpha.2(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))
+      '@storybook/builder-vite': 9.1.0-alpha.2(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))
       '@storybook/react': 9.1.0-alpha.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8))(typescript@5.8.3)
       find-up: 5.0.0
       magic-string: 0.30.17
@@ -9172,7 +9319,7 @@ snapshots:
       resolve: 1.22.10
       storybook: 9.1.0-alpha.2(@testing-library/dom@10.4.0)(prettier@2.8.8)
       tsconfig-paths: 4.2.0
-      vite: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+      vite: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -9264,12 +9411,12 @@ snapshots:
       postcss-selector-parser: 6.0.10
       tailwindcss: 4.1.8
 
-  '@tailwindcss/vite@4.1.8(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))':
+  '@tailwindcss/vite@4.1.8(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))':
     dependencies:
       '@tailwindcss/node': 4.1.8
       '@tailwindcss/oxide': 4.1.8
       tailwindcss: 4.1.8
-      vite: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+      vite: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
 
   '@testing-library/dom@10.4.0':
     dependencies:
@@ -9477,7 +9624,7 @@ snapshots:
 
   '@ungap/structured-clone@1.3.0': {}
 
-  '@vitejs/plugin-react@4.5.1(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))':
+  '@vitejs/plugin-react@4.5.1(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))':
     dependencies:
       '@babel/core': 7.26.10
       '@babel/plugin-transform-react-jsx-self': 7.25.9(@babel/core@7.26.10)
@@ -9485,7 +9632,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.9
       '@types/babel__core': 7.20.5
       react-refresh: 0.17.0
-      vite: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+      vite: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -11955,7 +12102,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.1.6
 
-  react-router-devtools@5.0.5(@types/react-dom@19.1.3(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)):
+  react-router-devtools@5.0.5(@types/react-dom@19.1.3(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react-router@7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)):
     dependencies:
       '@babel/core': 7.26.10
       '@babel/generator': 7.27.1
@@ -11980,7 +12127,7 @@ snapshots:
       react-router: 7.6.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       react-tooltip: 5.28.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       tailwind-merge: 3.3.0
-      vite: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+      vite: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
     optionalDependencies:
       '@biomejs/cli-darwin-arm64': 1.9.4
       '@rollup/rollup-darwin-arm64': 4.40.0
@@ -12198,6 +12345,21 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.4.2
 
+  rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2):
+    dependencies:
+      '@oxc-project/runtime': 0.72.2
+      fdir: 6.4.4(picomatch@4.0.2)
+      lightningcss: 1.30.1
+      picomatch: 4.0.2
+      postcss: 8.5.3
+      rolldown: 1.0.0-beta.11-commit.83d4d62
+      tinyglobby: 0.2.14
+    optionalDependencies:
+      '@types/node': 22.15.29
+      esbuild: 0.25.3
+      fsevents: 2.3.3
+      jiti: 2.4.2
+
   rolldown@1.0.0-beta.10-commit.174c548:
     dependencies:
       '@oxc-project/runtime': 0.72.2
@@ -12217,6 +12379,26 @@ snapshots:
       '@rolldown/binding-win32-arm64-msvc': 1.0.0-beta.10-commit.174c548
       '@rolldown/binding-win32-ia32-msvc': 1.0.0-beta.10-commit.174c548
       '@rolldown/binding-win32-x64-msvc': 1.0.0-beta.10-commit.174c548
+
+  rolldown@1.0.0-beta.11-commit.83d4d62:
+    dependencies:
+      '@oxc-project/runtime': 0.72.2
+      '@oxc-project/types': 0.72.2
+      '@rolldown/pluginutils': 1.0.0-beta.11-commit.83d4d62
+      ansis: 4.1.0
+    optionalDependencies:
+      '@rolldown/binding-darwin-arm64': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-darwin-x64': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-freebsd-x64': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-linux-arm-gnueabihf': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-linux-arm64-gnu': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-linux-arm64-musl': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-linux-x64-gnu': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-linux-x64-musl': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-wasm32-wasi': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-win32-arm64-msvc': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-win32-ia32-msvc': 1.0.0-beta.11-commit.83d4d62
+      '@rolldown/binding-win32-x64-msvc': 1.0.0-beta.11-commit.83d4d62
 
   rollup@4.40.0:
     dependencies:
@@ -12853,18 +13035,18 @@ snapshots:
       - tsx
       - yaml
 
-  vite-plugin-babel@1.3.1(@babel/core@7.26.10)(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)):
+  vite-plugin-babel@1.3.1(@babel/core@7.26.10)(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)):
     dependencies:
       '@babel/core': 7.26.10
-      vite: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+      vite: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
 
-  vite-tsconfig-paths@5.1.4(rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3):
+  vite-tsconfig-paths@5.1.4(rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2))(typescript@5.8.3):
     dependencies:
       debug: 4.4.0
       globrex: 0.1.2
       tsconfck: 3.1.5(typescript@5.8.3)
     optionalDependencies:
-      vite: rolldown-vite@6.3.16(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
+      vite: rolldown-vite@6.3.17(@types/node@22.15.29)(esbuild@0.25.3)(jiti@2.4.2)
     transitivePeerDependencies:
       - supports-color
       - typescript
