@@ -10,7 +10,7 @@ export default defineConfig(configEnv => mergeConfig(
 				codecovVitePlugin({
 					bundleName: 'web',
 					enableBundleAnalysis: process.env['CODECOV_TOKEN'] !== undefined,
-					uploadToken: process.env['CODECOV_TOKEN']!,
+					uploadToken: process.env['CODECOV_TOKEN'] || '',
 				})
 			],
 			test: {
