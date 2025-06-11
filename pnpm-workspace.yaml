@@ -23,7 +23,7 @@ catalogs:
     remix-utils: 8.3.1
     ts-brand: 0.2.0
   storybook:
-    "@chromatic-com/storybook": 4.0.0-next.16
+    "@chromatic-com/storybook": 4.0.0
     "@storybook/addon-a11y": 9.1.0-alpha.2
     "@storybook/addon-docs": 9.1.0-alpha.2
     "@storybook/addon-links": 9.1.0-alpha.2
