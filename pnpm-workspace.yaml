@@ -97,7 +97,7 @@ catalogs:
     "@react-router/node": 7.6.2
     "@std/yaml": jsr:1.0.6
     cookie: 1.0.2
-    isbot: 5.1.27
+    isbot: 5.1.28
   typescript:
     "@effect/language-service": 0.20.0
     "@tsconfig/node-ts": 23.6.1
