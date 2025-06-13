@@ -7,9 +7,10 @@ onlyBuiltDependencies:
   - esbuild
   - msw
 autoInstallPeers: true
+catalogMode: prefer
 dedupePeerDependents: true
-strictPeerDependencies: false
 resolvePeersFromWorkspaceRoot: true
+strictPeerDependencies: false
 catalogs:
   lib:
     "@effect/platform": 0.84.11
