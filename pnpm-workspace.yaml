@@ -9,7 +9,6 @@ onlyBuiltDependencies:
 autoInstallPeers: true
 catalogMode: prefer
 dedupePeerDependents: true
-enableGlobalVirtualStore: true
 resolvePeersFromWorkspaceRoot: true
 strictPeerDependencies: false
 catalogs:
