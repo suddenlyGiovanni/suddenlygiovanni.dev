@@ -252,8 +252,8 @@ catalogs:
       specifier: 2.0.5
       version: 2.0.5
     '@tsconfig/vite-react':
-      specifier: 6.3.5
-      version: 6.3.5
+      specifier: 6.3.6
+      version: 6.3.6
     typescript:
       specifier: 5.8.3
       version: 5.8.3
@@ -630,7 +630,7 @@ importers:
         version: 2.0.5
       '@tsconfig/vite-react':
         specifier: catalog:typescript
-        version: 6.3.5
+        version: 6.3.6
       typescript:
         specifier: catalog:typescript
         version: 5.8.3
@@ -3299,8 +3299,8 @@ packages:
   '@tsconfig/strictest@2.0.5':
     resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
 
-  '@tsconfig/vite-react@6.3.5':
-    resolution: {integrity: sha512-1JDbtNCgexy5HuQdBkFHv38u5j79XWI1KWs6Jxwnm9i2rD1IPWyzlPqh4vgsAiRu1Zy1d26wxxSJYVqGaDJ+PQ==}
+  '@tsconfig/vite-react@6.3.6':
+    resolution: {integrity: sha512-kPqtkccClIWmj5+J2EmenOLAazBPGhjqPEmYGHsu8rpleZY4oSVu0xYvZJ/3QvBOBRxmpPjzoPzSLHMg9UtW7w==}
 
   '@tybys/wasm-util@0.9.0':
     resolution: {integrity: sha512-6+7nlbMVX/PVDCwaIQ8nTOPveOcFLSt8GcXdx8hD0bt39uWxYT88uXzqTd4fTvqta7oeUJqudepapKNt2DYJFw==}
@@ -9672,7 +9672,7 @@ snapshots:
 
   '@tsconfig/strictest@2.0.5': {}
 
-  '@tsconfig/vite-react@6.3.5': {}
+  '@tsconfig/vite-react@6.3.6': {}
 
   '@tybys/wasm-util@0.9.0':
     dependencies:
