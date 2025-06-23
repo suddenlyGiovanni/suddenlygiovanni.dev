@@ -130,8 +130,18 @@
 				"recommended": true
 			},
 			"style": {
+				"noInferrableTypes": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
 				"recommended": true,
-				"useNamingConvention": "info"
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useNamingConvention": "info",
+				"useNumberNamespace": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error"
 			},
 			"suspicious": {
 				"recommended": true

@@ -1,5 +1,16 @@
 {
 	"$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+	"css": {
+		"assist": {
+			"enabled": true
+		},
+		"formatter": {
+			"enabled": true
+		},
+		"linter": {
+			"enabled": true
+		}
+	},
 	"extends": "//",
 	"files": {
 		"ignoreUnknown": true,
@@ -13,6 +24,7 @@
 			},
 			"nursery": {
 				"noSecrets": "off",
+				"noUnknownAtRule": "off",
 				"useExplicitType": {
 					"level": "info"
 				},
@@ -27,6 +39,18 @@
 			},
 			"performance": {
 				"noBarrelFile": "off"
+			},
+			"style": {
+				"noInferrableTypes": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useNumberNamespace": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error"
 			},
 			"suspicious": {
 				"noReactSpecificProps": "off"

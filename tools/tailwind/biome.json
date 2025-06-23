@@ -30,18 +30,29 @@
 				"recommended": true
 			},
 			"correctness": {
+				"noUnknownFunction": "info",
 				"recommended": true
 			},
 			"nursery": {
 				"noImportantStyles": "on",
-				"noUnknownAtRule": "on",
+				"noUnknownAtRule": "info",
 				"noUselessEscapeInString": "on"
 			},
 			"recommended": true,
 			"style": {
 				"noDescendingSpecificity": "on",
+				"noInferrableTypes": "error",
+				"noParameterAssign": "error",
+				"noUnusedTemplateLiteral": "error",
+				"noUselessElse": "error",
 				"noValueAtRule": "on",
-				"recommended": true
+				"recommended": true,
+				"useAsConstAssertion": "error",
+				"useDefaultParameterLast": "error",
+				"useEnumInitializers": "error",
+				"useNumberNamespace": "error",
+				"useSelfClosingElements": "error",
+				"useSingleVarDeclarator": "error"
 			},
 			"suspicious": {
 				"recommended": true

@@ -57,6 +57,7 @@ function handleBotRequest(
 					pipe(body)
 				},
 				onError(error: unknown): void {
+					// biome-ignore lint/style/noParameterAssign: ok to mutate this variable
 					responseStatusCode = 500
 					/*
 					 Log streaming rendering errors from inside the shell.  Don't log
@@ -93,6 +94,7 @@ function handleBrowserRequest(
 			/>,
 			{
 				onError(error: unknown): void {
+					// biome-ignore lint/style/noParameterAssign: ok to mutate this variable
 					responseStatusCode = 500
 					/*
 					 Log streaming rendering errors from inside the shell.  Don't log
