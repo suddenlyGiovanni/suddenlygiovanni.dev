@@ -26,7 +26,7 @@ jobs:
       - name: 🚨 Lint code
         shell: sh
         run: |
-          pnpm --recursive --shell-mode exec biome check \
+          pnpm --shell-mode exec biome check \
           --max-diagnostics=none \
           --vcs-enabled=true \
           --vcs-use-ignore-file=true \
@@ -47,7 +47,7 @@ jobs:
       - name: 💅 Format code
         shell: sh
         run: |
-          pnpm --recursive --shell-mode exec biome check \
+          pnpm --shell-mode exec biome check \
           --max-diagnostics=none \
           --vcs-enabled=true \
           --vcs-use-ignore-file=true \

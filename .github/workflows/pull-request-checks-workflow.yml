@@ -20,7 +20,7 @@ jobs:
       - name: 💅 Format code
         shell: sh
         run: |
-          pnpm --recursive --shell-mode --reporter-hide-prefix exec \
+          pnpm --shell-mode --reporter-hide-prefix exec \
           biome ci \
           --max-diagnostics=none \
           --formatter-enabled=true \
@@ -31,7 +31,7 @@ jobs:
       - name: 🚨 Lint code
         shell: sh
         run: |
-          pnpm --recursive --shell-mode --reporter-hide-prefix exec \
+          pnpm --shell-mode --reporter-hide-prefix exec \
           biome ci \
           --max-diagnostics=none \
           --formatter-enabled=false \
