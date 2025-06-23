@@ -93,14 +93,14 @@ catalogs:
     tailwindcss-animate: 1.0.7
     tailwindcss: 4.1.10
   backend: # Packages for the backend server.
-    "@effect/platform-node": 0.86.4
+    "@effect/platform-node": 0.86.5
     "@react-router/dev": 7.6.2
     "@react-router/node": 7.6.2
     "@std/yaml": jsr:1.0.6
     cookie: 1.0.2
     isbot: 5.1.28
   typescript:
-    "@effect/language-service": 0.21.4
+    "@effect/language-service": 0.21.8
     "@tsconfig/node-ts": 23.6.1
     "@tsconfig/node24": 24.0.1
     "@tsconfig/strictest": 2.0.5
