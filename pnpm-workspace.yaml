@@ -63,7 +63,7 @@ catalogs:
     "@babel/preset-typescript": 7.26.0
     "@codecov/vite-plugin": 1.9.1
     "@mdx-js/rollup": 3.1.0
-    "@tailwindcss/vite": 4.1.10
+    "@tailwindcss/vite": 4.1.11
     "@vitejs/plugin-react": 4.6.0
     babel-plugin-react-compiler: 19.1.0-rc.2
     react-router-devtools: 5.0.6
@@ -91,7 +91,7 @@ catalogs:
     tailwind-merge: 3.3.1
     tailwind-variants: 1.0.0
     tailwindcss-animate: 1.0.7
-    tailwindcss: 4.1.10
+    tailwindcss: 4.1.11
   backend: # Packages for the backend server.
     "@effect/platform-node": 0.88.3
     "@react-router/dev": 7.6.3
