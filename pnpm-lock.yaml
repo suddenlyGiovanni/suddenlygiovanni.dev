@@ -54,8 +54,8 @@ catalogs:
       version: 5.1.4
   frontend:
     '@conform-to/react':
-      specifier: 1.2.2
-      version: 1.2.2
+      specifier: 1.8.1
+      version: 1.8.1
     '@radix-ui/react-accessible-icon':
       specifier: 1.1.7
       version: 1.1.7
@@ -288,7 +288,7 @@ importers:
     dependencies:
       '@conform-to/react':
         specifier: catalog:frontend
-        version: 1.2.2(react@19.1.0)
+        version: 1.8.1(react@19.1.0)
       '@effect/platform':
         specifier: catalog:lib
         version: 0.87.8(effect@3.16.12)
@@ -957,11 +957,11 @@ packages:
     peerDependencies:
       vite: 4.x || 5.x || 6.x
 
-  '@conform-to/dom@1.2.2':
-    resolution: {integrity: sha512-f05EClpNP31o6lX4LYmmLqgsiTOHdGfY7z2XXK6U6rRp+EtxrkUBdrFlIGsfkf7e9AFO19h3/Cb/cXHVd1k1FA==}
+  '@conform-to/dom@1.8.1':
+    resolution: {integrity: sha512-Sg4Jz31ZyiqbFHAKOmG+sVHtukku2Xmxv9ObYzj/TrKMXF1R9qN3ShucAIZWtRaw9l9vZGiqpDnSyfevmiBxuQ==}
 
-  '@conform-to/react@1.2.2':
-    resolution: {integrity: sha512-1JBECb3NKi5/IlexaYLgnAxGJ55MRuO2sEQ10cJfUK2bfltNbTIQnYUDG6pU886A4lda/q6UH/adPsjiB/4Gkg==}
+  '@conform-to/react@1.8.1':
+    resolution: {integrity: sha512-+bm+j0MOeOxrhrjWeoLmpmt+m1djZmPM/qE+AH5+8RewuC6GyXEXPyWAyES9bw9mZJ/WqInVS6Ljrf4gQ0I0zA==}
     peerDependencies:
       react: ~19.1.0
 
@@ -6886,11 +6886,11 @@ snapshots:
       unplugin: 1.16.1
       vite: rolldown-vite@7.0.4(@types/node@22.15.32)(esbuild@0.25.3)(jiti@2.4.2)
 
-  '@conform-to/dom@1.2.2': {}
+  '@conform-to/dom@1.8.1': {}
 
-  '@conform-to/react@1.2.2(react@19.1.0)':
+  '@conform-to/react@1.8.1(react@19.1.0)':
     dependencies:
-      '@conform-to/dom': 1.2.2
+      '@conform-to/dom': 1.8.1
       react: 19.1.0
 
   '@effect/cluster@0.29.22(@effect/platform@0.87.8(effect@3.16.12))(@effect/rpc@0.55.17(@effect/platform@0.87.8(effect@3.16.12))(effect@3.16.12))(@effect/sql@0.33.13(@effect/experimental@0.44.13(@effect/platform@0.87.8(effect@3.16.12))(effect@3.16.12))(@effect/platform@0.87.8(effect@3.16.12))(effect@3.16.12))(effect@3.16.12)':
