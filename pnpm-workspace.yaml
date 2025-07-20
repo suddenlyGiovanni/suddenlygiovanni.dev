@@ -71,7 +71,7 @@ catalogs:
     vite-tsconfig-paths: 5.1.4
     vite: npm:rolldown-vite@latest
   frontend: # Packages for frontend development
-    "@conform-to/react": 1.8.1
+    "@conform-to/react": 1.8.2
     "@radix-ui/react-accessible-icon": 1.1.7
     "@radix-ui/react-accordion": 1.2.11
     "@radix-ui/react-avatar": 1.1.10
