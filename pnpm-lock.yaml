@@ -136,8 +136,8 @@ catalogs:
       specifier: 3.16.16
       version: 3.16.16
     remix-utils:
-      specifier: 8.3.1
-      version: 8.3.1
+      specifier: 8.7.0
+      version: 8.7.0
     ts-brand:
       specifier: 0.2.0
       version: 0.2.0
@@ -348,7 +348,7 @@ importers:
         version: 7.7.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       remix-utils:
         specifier: catalog:lib
-        version: 8.3.1(react-router@7.7.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(zod@3.24.3)
+        version: 8.7.0(react-router@7.7.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(zod@3.24.3)
     devDependencies:
       '@babel/preset-typescript':
         specifier: catalog:build
@@ -5656,11 +5656,12 @@ packages:
   remark-rehype@11.1.2:
     resolution: {integrity: sha512-Dh7l57ianaEoIpzbp0PC9UKAdCSVklD8E5Rpw7ETfbTl3FqcOOgq5q2LVDhgGCkaBv7p24JXikPdvhhmHvKMsw==}
 
-  remix-utils@8.3.1:
-    resolution: {integrity: sha512-tnUnQ3SORoIe9u8TYHKT6ZsRXDPRnXFFksk+5N0EZUc0sCNHhILl1JHms7uT6U5oUMmVxY2ZQKzwDRM5oGzbkw==}
+  remix-utils@8.7.0:
+    resolution: {integrity: sha512-oRumofsYFaxHyPtqLuYe3g2nQi4SMYjCoebaeed0gYHIOKBiPPYdNP6cgmQbFjQQ5pwXV+uQiKLqO6pM9ep3VA==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@edgefirst-dev/batcher': ^1.0.0
+      '@edgefirst-dev/jwt': ^1.2.0
       '@edgefirst-dev/server-timing': ^0.0.1
       '@oslojs/crypto': ^1.0.1
       '@oslojs/encoding': ^1.1.0
@@ -5671,6 +5672,8 @@ packages:
       zod: ^3.22.4
     peerDependenciesMeta:
       '@edgefirst-dev/batcher':
+        optional: true
+      '@edgefirst-dev/jwt':
         optional: true
       '@edgefirst-dev/server-timing':
         optional: true
@@ -12674,7 +12677,7 @@ snapshots:
       unified: 11.0.5
       vfile: 6.0.3
 
-  remix-utils@8.3.1(react-router@7.7.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(zod@3.24.3):
+  remix-utils@8.7.0(react-router@7.7.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)(zod@3.24.3):
     dependencies:
       type-fest: 4.40.0
     optionalDependencies:
