@@ -67,7 +67,7 @@ catalogs:
     "@vitejs/plugin-react": 4.7.0
     babel-plugin-react-compiler: 19.1.0-rc.2
     react-router-devtools: 5.0.6
-    vite-plugin-babel: 1.3.1
+    vite-plugin-babel: 1.3.2
     vite-tsconfig-paths: 5.1.4
     vite: npm:rolldown-vite@latest
   frontend: # Packages for frontend development
