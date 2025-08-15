@@ -13,9 +13,9 @@
 		"@radix-ui/react-slot": "catalog:frontend",
 		"@radix-ui/react-switch": "catalog:frontend",
 		"@repo/tailwind-config": "workspace:*",
-		"react": "~19.1.0",
+		"react": "catalog:frontend",
 		"react-aria-components": "catalog:frontend",
-		"react-dom": "~19.1.0",
+		"react-dom": "catalog:frontend",
 		"react-router": "catalog:frontend",
 		"tailwind-variants": "catalog:frontend"
 	},

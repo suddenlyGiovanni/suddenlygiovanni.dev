@@ -18,8 +18,8 @@
 		"cookie": "catalog:backend",
 		"effect": "catalog:lib",
 		"isbot": "catalog:backend",
-		"react": "~19.1.0",
-		"react-dom": "~19.1.0",
+		"react": "catalog:frontend",
+		"react-dom": "catalog:frontend",
 		"react-router": "catalog:frontend",
 		"remix-utils": "catalog:lib"
 	},
