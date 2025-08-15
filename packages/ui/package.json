@@ -13,9 +13,9 @@
 		"@radix-ui/react-slot": "catalog:frontend",
 		"@radix-ui/react-switch": "catalog:frontend",
 		"@repo/tailwind-config": "workspace:*",
-		"react": "catalog:frontend",
+		"react": "~19.1.0",
 		"react-aria-components": "catalog:frontend",
-		"react-dom": "catalog:frontend",
+		"react-dom": "~19.1.0",
 		"react-router": "catalog:frontend",
 		"tailwind-variants": "catalog:frontend"
 	},
@@ -31,7 +31,7 @@
 		"@storybook/react-vite": "catalog:storybook",
 		"@tailwindcss/vite": "catalog:build",
 		"@total-typescript/ts-reset": "catalog:types",
-		"@types/react": "catalog:types",
+		"@types/react": "19.1.8",
 		"@types/react-dom": "catalog:types",
 		"@vitejs/plugin-react": "catalog:build",
 		"babel-plugin-react-compiler": "catalog:build",
@@ -41,7 +41,7 @@
 		"storybook": "catalog:storybook",
 		"tailwind-merge": "catalog:frontend",
 		"tailwindcss": "catalog:frontend",
-		"vite": "catalog:build",
+		"vite": "npm:rolldown-vite@latest",
 		"vitest": "catalog:test"
 	},
 	"exports": {
@@ -56,7 +56,7 @@
 	},
 	"name": "@repo/ui",
 	"peerDependencies": {
-		"react": "catalog:frontend"
+		"react": "~19.1.0"
 	},
 	"private": true,
 	"scripts": {

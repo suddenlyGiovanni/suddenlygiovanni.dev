@@ -18,8 +18,8 @@
 		"cookie": "catalog:backend",
 		"effect": "catalog:lib",
 		"isbot": "catalog:backend",
-		"react": "catalog:frontend",
-		"react-dom": "catalog:frontend",
+		"react": "~19.1.0",
+		"react-dom": "~19.1.0",
 		"react-router": "catalog:frontend",
 		"remix-utils": "catalog:lib"
 	},
@@ -37,7 +37,7 @@
 		"@total-typescript/ts-reset": "catalog:types",
 		"@types/mdx": "catalog:types",
 		"@types/node": "catalog:types",
-		"@types/react": "catalog:types",
+		"@types/react": "19.1.8",
 		"@types/react-dom": "catalog:types",
 		"@vitest/coverage-v8": "catalog:test",
 		"@vitest/eslint-plugin": "catalog:lint",
@@ -47,7 +47,7 @@
 		"msw": "catalog:test",
 		"react-router-devtools": "catalog:build",
 		"tailwindcss": "catalog:frontend",
-		"vite": "catalog:build",
+		"vite": "npm:rolldown-vite@latest",
 		"vite-plugin-babel": "catalog:build",
 		"vite-tsconfig-paths": "catalog:build",
 		"vitest": "catalog:test"
