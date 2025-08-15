@@ -5,6 +5,7 @@ packages:
 autoInstallPeers: true
 
 catalog:
+  '@biomejs/biome': 2.2.0
   typescript: 5.9.2
 
 catalogMode: prefer
