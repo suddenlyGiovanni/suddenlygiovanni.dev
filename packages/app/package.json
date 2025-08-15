@@ -37,7 +37,7 @@
 		"@total-typescript/ts-reset": "catalog:types",
 		"@types/mdx": "catalog:types",
 		"@types/node": "catalog:types",
-		"@types/react": "19.1.8",
+		"@types/react": "catalog:types",
 		"@types/react-dom": "catalog:types",
 		"@vitest/coverage-v8": "catalog:test",
 		"@vitest/eslint-plugin": "catalog:lint",

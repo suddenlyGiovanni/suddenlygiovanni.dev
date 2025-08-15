@@ -31,7 +31,7 @@
 		"@storybook/react-vite": "catalog:storybook",
 		"@tailwindcss/vite": "catalog:build",
 		"@total-typescript/ts-reset": "catalog:types",
-		"@types/react": "19.1.8",
+		"@types/react": "catalog:types",
 		"@types/react-dom": "catalog:types",
 		"@vitejs/plugin-react": "catalog:build",
 		"babel-plugin-react-compiler": "catalog:build",
