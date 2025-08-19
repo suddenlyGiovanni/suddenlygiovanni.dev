@@ -11,7 +11,7 @@
 		"packageManager": {
 			"name": "pnpm",
 			"onFail": "error",
-			"version": "10.12.1"
+			"version": "10.14.0"
 		},
 		"runtime": {
 			"name": "node",
@@ -23,7 +23,7 @@
 		"node": ">=24"
 	},
 	"pnpm": {
-		"onlyBuiltDependencies": ["@biomejs/biome", "@parcel/watcher", "esbuild", "msgpackr-extract", "msw"],
+		"onlyBuiltDependencies": ["@biomejs/biome", "@parcel/watcher", "@tailwindcss/oxide", "esbuild", "msw"],
 		"overrides": {
 			"@types/react": "catalog:types",
 			"react": "catalog:frontend",

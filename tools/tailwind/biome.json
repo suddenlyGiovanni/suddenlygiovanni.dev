@@ -29,15 +29,14 @@
 			"a11y": {
 				"recommended": true
 			},
+			"complexity": {
+				"noImportantStyles": "on"
+			},
 			"correctness": {
 				"noUnknownFunction": "info",
 				"recommended": true
 			},
-			"nursery": {
-				"noImportantStyles": "on",
-				"noUnknownAtRule": "info",
-				"noUselessEscapeInString": "on"
-			},
+			"nursery": {},
 			"recommended": true,
 			"style": {
 				"noDescendingSpecificity": "on",
@@ -55,6 +54,8 @@
 				"useSingleVarDeclarator": "error"
 			},
 			"suspicious": {
+				"noUnknownAtRules": "info",
+				"noUselessEscapeInString": "on",
 				"recommended": true
 			}
 		}
