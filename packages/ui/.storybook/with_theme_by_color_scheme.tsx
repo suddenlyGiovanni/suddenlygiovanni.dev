@@ -11,17 +11,17 @@ export function withThemeByColorScheme<Themes extends Record<string, string>>({
 }): Decorator {
 	DecoratorHelpers.initializeThemeState(Object.keys(themes), defaultTheme as string)
 	return (storyFn, context) => {
-		const { themeOverride } = DecoratorHelpers.useThemeParameters()
+		const maybeThemes = DecoratorHelpers.useThemeParameters()
 		const selected = DecoratorHelpers.pluckThemeFromContext(context)
+		const themeKey: keyof Themes | string = maybeThemes?.themeOverride || selected || defaultTheme
 
 		useEffect(() => {
 			const parentElement = document.querySelector('html')
-			const themeKey: keyof Themes | string = themeOverride || selected || defaultTheme
 
 			if (parentElement) {
 				parentElement.style.setProperty('color-scheme', String(themes[themeKey]))
 			}
-		}, [themeOverride, selected])
+		}, [themeKey])
 
 		return storyFn()
 	}
