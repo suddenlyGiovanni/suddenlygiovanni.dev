@@ -23,7 +23,6 @@ export function NavigationMenuToggle(props: Omit<ToggleButtonProps, 'children' |
 		<ToggleButton
 			{...props}
 			className={composeRenderProps(props.className, (className, renderProps) => styles({ ...renderProps, className }))}
-			type="button"
 		>
 			{({ isSelected }): ReactElement => (
 				<AccessibleIcon label="Navigation menu toggle">
