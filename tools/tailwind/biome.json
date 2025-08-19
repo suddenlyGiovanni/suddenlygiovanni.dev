@@ -33,11 +33,7 @@
 				"noUnknownFunction": "info",
 				"recommended": true
 			},
-			"nursery": {
-				"noImportantStyles": "on",
-				"noUnknownAtRule": "info",
-				"noUselessEscapeInString": "on"
-			},
+			"nursery": {},
 			"recommended": true,
 			"style": {
 				"noDescendingSpecificity": "on",
@@ -55,7 +51,12 @@
 				"useSingleVarDeclarator": "error"
 			},
 			"suspicious": {
-				"recommended": true
+				"recommended": true,
+				"noUnknownAtRules": "info",
+				"noUselessEscapeInString": "on"
+			},
+			"complexity": {
+				"noImportantStyles": "on"
 			}
 		}
 	},
