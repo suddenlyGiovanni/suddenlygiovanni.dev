@@ -29,6 +29,9 @@
 			"a11y": {
 				"recommended": true
 			},
+			"complexity": {
+				"noImportantStyles": "on"
+			},
 			"correctness": {
 				"noUnknownFunction": "info",
 				"recommended": true
@@ -51,12 +54,9 @@
 				"useSingleVarDeclarator": "error"
 			},
 			"suspicious": {
-				"recommended": true,
 				"noUnknownAtRules": "info",
-				"noUselessEscapeInString": "on"
-			},
-			"complexity": {
-				"noImportantStyles": "on"
+				"noUselessEscapeInString": "on",
+				"recommended": true
 			}
 		}
 	},
