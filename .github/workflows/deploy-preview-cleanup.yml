@@ -33,7 +33,7 @@ jobs:
     environment:
       name: fly-preview-${{ github.event.number || github.event.inputs.pr_number }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0 # Needed for consistency with other workflows
 

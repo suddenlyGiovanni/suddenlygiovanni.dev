@@ -52,7 +52,7 @@ jobs:
                 body: '🔄 Preview deployment started... Please wait while we deploy your changes!'           
             })
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0 # Needed for flyctl release naming
           # If triggered manually, ensure we checkout the PR
