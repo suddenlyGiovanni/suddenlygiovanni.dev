@@ -105,4 +105,4 @@ catalogs:
     "@tsconfig/node24": 24.0.1
     "@tsconfig/strictest": 2.0.5
     "@tsconfig/vite-react": 7.0.0
-    typescript: 5.8.3
+    typescript: 5.9.1-rc
