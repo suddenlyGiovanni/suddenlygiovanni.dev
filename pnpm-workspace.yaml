@@ -95,7 +95,7 @@ catalogs:
   backend: # Packages for the backend server.
     "@effect/platform-node": 0.91.0
     "@react-router/dev": 7.7.0
-    "@react-router/node": 7.7.0
+    "@react-router/node": 7.9.4
     "@std/yaml": jsr:1.0.6
     cookie: 1.0.2
     isbot: 5.1.28
