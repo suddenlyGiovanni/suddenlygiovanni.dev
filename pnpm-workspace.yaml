@@ -20,7 +20,7 @@ catalogs:
     "@octokit/plugin-rest-endpoint-methods": 16.0.0
     "@octokit/request-error": 7.0.0
     "@suddenly-giovanni/schema-resume": jsr:0.0.7
-    effect: 3.16.16
+    effect: 3.20.0
     remix-utils: 8.7.0
     ts-brand: 0.2.0
   storybook:
